@@ -1,0 +1,44 @@
+[package]
+name = "cutile"
+version = "0.3.0"
+build = "build.rs"
+edition = "2021"
+authors = ["TriWeavon Team"]
+description = "Cubical Tiling & HIT Execution Bridge for TriWeavon Manifold + SRAC"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/toolate28/triweavon"
+
+[dependencies]
+cudarc = { version = "0.12", features = ["cuda-12040"], optional = true }
+wgpu = { version = "0.20", optional = true }
+pollster = { version = "0.3", optional = true }
+thiserror = "1.0"
+bytemuck = { version = "1.16", features = ["derive"], optional = true }
+eframe = { version = "0.29", optional = true, default-features = false, features = ["wgpu", "default_fonts"] }
+egui = { version = "0.29", optional = true }
+
+[features]
+default = ["wgpu-backend"]
+cuda = ["dep:cudarc"]
+wgpu-backend = ["dep:wgpu", "dep:bytemuck", "dep:pollster"]
+viz = ["dep:eframe", "dep:egui"]
+viz-async = ["viz"]
+
+[[example]]
+name = "basic_hit"
+path = "examples/basic_hit.rs"
+
+[[example]]
+name = "entropy_benchmark"
+path = "examples/entropy_benchmark.rs"
+
+[[example]]
+name = "tqec_braid_viz"
+path = "examples/tqec_braid_viz.rs"
+required-features = ["viz"]
+
+[[example]]
+name = "tqec_concurrent_cascade"
+path = "examples/tqec_concurrent_cascade.rs"
+required-features = ["viz-async"]

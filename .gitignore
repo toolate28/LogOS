@@ -1,0 +1,16 @@
+### Agda template
+*.agdai
+MAlonzo/**
+
+### Rust
+/target/
+**/*.rs.bk
+
+### Local archives / temp
+crates.zip
+crates/n.zip
+.tmp.driveupload/
+
+### Agda vendor (clone via agda/scripts/vendor.ps1)
+agda/vendor/agda-cubical/
+agda/vendor/agda-stdlib/

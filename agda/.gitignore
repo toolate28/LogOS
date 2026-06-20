@@ -1,0 +1,5 @@
+docs/generated/*.html
+docs/generated/Agda.css
+docs/generated/*.agdai
+*.agdai
+.MAlonzo_history/
