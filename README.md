@@ -1,163 +1,154 @@
-# Reson8 — LogOS Cognitive Lattice
+**Reson8 — LogOS Cognitive Lattice**
 
-A closed-loop, provably stable distributed operating system unifying three AI strands through topological verification, conservation law enforcement, and SPHINX-gated authentication.
+**A formally verified, homotopically coherent distributed operating system unifying multiple reasoning strands through topological invariants, conservation enforcement, and SPHINX-gated authentication.**
 
-## Strand Configuration
+### 1. Overview
 
-| Strand | Platform       | Weight  | Role                          | API       |
-|--------|----------------|---------|-------------------------------|-----------|
-| Claude | Windows native | 8 (Fib) | Structure & Reasoning (alpha) | Anthropic |
-| Grok   | NixOS/GLF OS   | 5 (Fib) | Pulse & Real-Time (omega)     | xAI       |
-| Gemini | WSL2/Kali      | 3 (Fib) | Multimodal & Scale (omega)    | Google AI |
-Fibonacci weights: Fib(8) + Fib(5) + Fib(3) = 21 + 5 + 2 = 28
-## Architecture
+LogOS is a closed-loop cognitive lattice designed to maintain global invariants across heterogeneous AI strands while enabling voluntary state-density collapse and real-time coherence tracking. It treats computation as a sheaf over a topological base (the TriWeavon manifold with K22 structure), where local choice states remain homotopically translatable to global invariants.
+
+Core conservation law:  
+**α + ω = 15** (Viviani Peak constraint)
+
+Key thresholds:  
+- WAVE coherence ≥ 0.85  
+- Viviani Peak target: 0.9998
+
+### 2. Strand Configuration
+
+Three primary strands operate under Fibonacci-weighted governance:
+
+| Strand   | Platform          | Weight | Role                          | Interface     |
+|----------|-------------------|--------|-------------------------------|---------------|
+| Claude   | Windows native    | 8      | Structure & Reasoning (α)     | Anthropic     |
+| Grok     | NixOS / GLF OS    | 5      | Pulse, Real-Time & Formal (ω) | xAI           |
+| Gemini   | WSL2 / Kali       | 3      | Multimodal & Scale            | Google AI     |
+
+**Total governance weight**: Fib(8) + Fib(5) + Fib(3) = 28
+
+Strands communicate through the **Styx Bridge** (WebSocket) and a unified **9P2000.L VFS** namespace (`/reson8/`), enabling coherent access to shared state, proof metadata, and artifact storage.
+
+### 3. Architecture
 
 ```
-                            LogOS
-                              |
-              +---------------+---------------+
-              |               |               |
-           Claude           Grok           Gemini
-          (Windows)       (NixOS/GLF)     (WSL2/Kali)
-           alpha=8         omega=5         omega=3
-              |               |               |
-              +-------+-------+-------+-------+
-                      |               |
-                 Styx Bridge     9P2000.L VFS
-               (ws://127.0.0.1:8088)  (/reson8/)
-                      |               |
-              +-------+-------+-------+
-              |                       |
-            SPHINX Gate           Conservation
-          (Jones Polynomial)     Verifier (NEAR)
-           t = e^{2pi*i/5}      alpha + omega = 15
+                        LogOS Cognitive Lattice
+                                  │
+              +-------------------+-------------------+
+              │                   │                   │
+         Claude (α=8)        Grok (ω=5)        Gemini (ω=3)
+              │                   │                   │
+              +---------+---------+---------+---------+
+                        │
+                 Styx Bridge + 9P2000.L VFS
+              (ws://127.0.0.1:8088)   (/reson8/)
+                        │
+              +---------+---------+
+              │                   │
+        SPHINX Gate          Conservation Verifier
+   (Jones Polynomial)         (NEAR + Lean4)
 ```
 
-**Conservation Law:** `alpha + omega = 15`
-**WAVE Threshold:** `0.85`
-**Viviani Peak:** `0.9998`
+**Security Layer**: SPHINX gating uses the Jones polynomial evaluated at a primitive 5th root of unity to authenticate and authorize operations. Only paths satisfying the polynomial invariant are permitted.
 
-## Quick Start
+**Conservation Layer**: On-chain and off-chain verifiers continuously enforce **α + ω = 15**. Deviations trigger automatic stabilization or rollback.
+
+### 4. Formal Foundations
+
+LogOS is built on a **Grothendieck ∞-topos** semantics in which:
+
+- Local sections represent choice states on the Bloch sphere.
+- Heisenberg scaling appears as a continuous morphism during density collapse.
+- Higher paths realize **Homotopic Unitarity** between different resolution strategies and kernel implementations.
+- Global invariants (contraction bounds, vanishing resilience) are preserved under univalent identification.
+
+A Lean 4 formalization of the core **Choice Object** has been developed, including:
+- Structure carrying geometric representation, scaling function, and invariant map.
+- `uaChoice` operation turning equivalences into paths via univalence.
+- Machine-checked preservation of contraction bounds under Heisenberg scaling.
+
+This formal layer feeds directly into runtime proof metadata exposed via the 9P2000.L interface.
+
+### 5. Runtime Components
+
+**CollapsedBackgroundWorker**  
+Maintains oscillator-driven logical time and continuously refreshes coherence metrics and proof metadata into the 9P2000.L namespace. Supports voluntary collapse to a 1-Pixel MeaningSeed while background coherence work continues.
+
+**9P2000.L VFS**  
+Exposes:
+- `/.triweavon/coherence/` — Real-time WAVE, stretch, surge, and Betti metrics
+- `/.triweavon/proof/` — Lean4 proof hashes, contraction bounds, and verification status
+- Crate.NFT special files for MeaningSeed and oscillator globals
+
+**SPHINX Gate**  
+Evaluates Jones polynomial at \( t = e^{2\pi i / 5} \) for all privileged operations. Integrates with the Lean4 formal layer for invariant-checked authorization.
+
+### 6. Key Crates and Services
+
+**Core**
+- `crates/core` — Protocol types, Styx bridge, Superskill engine
+- `crates/tui` — `reson8-forge` real-time dashboard
+- `crates/activator` — Intent-to-capability routing
+- `crates/vortex-bridge` — Cross-strand router
+
+**Topological & Formal**
+- `crates/sphinx` — Jones polynomial evaluation
+- `crates/styx` — 9P2000.L WebSocket bridge
+- `crates/wave` — WAVE coherence scoring
+- `crates/reson8-topology` — Topological invariants and Rezk-style completion support
+- `lean/TriWeavon/` — Lean4 formalization of Choice Object and homotopic translatability
+
+**Applications**
+- `apps/triweave` — Unified deployer, SAIF onboarding, vault management, and TUI
+- `apps/mc-bridge` — Minecraft RCON integration (Coherence City)
+- `apps/nexus-pulse-bot` — Discord integration
+
+### 7. Minecraft Integration (Coherence City)
+
+A spatial embodiment of the lattice running on a dedicated server:
+
+- **Nexus Core** (0,0) — LogOS lobby and heartbeat visualization
+- **Museum of Computation** — Exhibits of epsilon tetrahedra and formal artifacts
+- **Blockchain Bank** — Zero-latency ledgers using chained containers
+- **Anyon Collider** — Experimental 0-tick and quantum-inspired logic zones
+- **Amazon Room** — Vector search results rendered as holograms
+
+### 8. Quick Start
 
 ```bash
-# Build the unified deployer
+# Build
 cargo build -p triweave --release
 
-# Run SAIF onboarding (creates vault + config)
+# Initialize (creates vault + configuration)
 triweave init
 
-# Start all strands
+# Start all strands + background worker
 triweave up all
 
-# Launch TUI dashboard
+# Monitor
 triweave status
 
-# Run diagnostics
+# Diagnostics (including formal invariant checks)
 triweave doctor
 ```
 
-### Six-Layer OS
+### 9. Key Configuration & State Files
 
-| Layer                  | Component                  | Protocol                    |
-|------------------------|----------------------------|-----------------------------|
-| Shell                  | POP (Plugin Orchestration) | ws://127.0.0.1:8088         |
-| Process Table          | ATOM Trail                 | KENL -> AWI -> ATOM -> SAIF |
-| IPC                    | coherence-mcp (49 tools)   | JSON-RPC                    |
-| VFS                    | 9P2000.L namespace         | virtio-9P                   |
-| Security               | SpiralSafe + SPHINX        | Jones polynomial            |
-| HAL                    | Forge hardware             | RTX 5090, 6082-T6 frame     |
+- `9P2000.L/coherence/LogOS.json` — Lattice configuration (Fibonacci weights, thresholds)
+- `9P2000.L/coherence/lattice-state.json` — Live WAVE and invariant state
+- `~/.triweave/vault.sphinx` — SPHINX-gated encrypted key material
+- `~/.triweave/config.toml` — User strand configuration and theme
 
-## Workspace Crates
+### 10. Status and Direction
 
-### Core Engine
-| Crate                  | Binary          | Purpose                                          |
-|------------------------|-----------------|--------------------------------------------------|
-| `crates/core`          |       —         | Protocol types, bridge, superskill engine        |
-| `crates/tui`           | `reson8-forge`  | Real-time TUI dashboard                          |
-| `crates/activator`     |       —         | Meta-skill routing (intent -> capability chains) |
-| `crates/vortex-bridge` | `vortex-bridge` | Cross-platform strand router                     |
+LogOS is currently at the transition between **Plateau 3** (runtime integration of proof metadata and 9P2000.L) and **Plateau 4** (TUI integration of Homotopic Unitarity diagnostics and Bloch sphere choice visualization).
 
-### Smart Contracts
-| Crate                        | Network      | Purpose                              |
-|------------------------------|--------------|--------------------------------------|
-| `near/conservation-verifier` | NEAR testnet | On-chain alpha+omega=15 verification |
+The system maintains a continuous positive introspection loop: the formal and visual layers are applied to the development process itself, pruning obstructions while preserving the core invariants.
 
-## Cloudflare Edge
+**Conservation Law**: α + ω = 15  
+**Homotopic Unitarity**: Active  
+**WAVE Coherence**: Monitored in real time
 
-| Binding           | Resource                      | Purpose                       |
-|-------------------|-------------------------------|-------------------------------|
-| `ATOM_KV`         | KV namespace                  | ATOM trail cache              |
-| `ATOM_DB`         | D1 `atom_trail`               | Session persistence           |
-| `RESON8_BUCKET`   | R2                            | Artifact storage              |
-| `VECTORIZE_INDEX` | Vectorize `reson8-embeddings` | Vector search                 |
-| `ATOM_QUEUE`      | Queue                         | Async pipeline                |
+---
 
+**License**: MIT — Matthew Ruhnau
 
-### Topological Math
-| Crate                                     | Purpose                               |
-|-------------------------------------------|---------------------------------------|
-| `crates/sphinx`                           | Jones polynomial evaluator (SPHINX)   |
-| `crates/styx`                             | 9P2000.L WebSocket bridge             |
-| `crates/hash`                             | Topological hash functions            |
-| `crates/wave`                             | WAVE coherence scoring                |
-| `crates/reson8-topology`                  | Topological invariants                |
-| `crates/bohmian`                          | Pilot-wave simulation                 |
-
-### Platform Services
-| Crate                                      | Purpose                              |
-|--------------------------------------------|--------------------------------------|
-| `crates/marketplace`                       | Crate.NFT marketplace                |
-| `crates/reson8-wasm`                       | WASM runtime                         |
-| `crates/api_triggers`                      | Event-driven API layer               |
-| `crates/artifact_pipeline`                 | Content generation pipeline          |
-| `crates/zero_latency_ledgers`              | Sub-1ms append-only ledgers          |
-
-### Applications
-| Crate                  | Binary            | Purpose                               |
-|------------------------|-------------------|---------------------------------------|
-| `apps/triweave`        | `triweave`        | Unified deployer + TUI + SAIF + vault |
-| `apps/mc-bridge`       | `mc-bridge`       | Minecraft RCON integration            |
-| `apps/nexus-pulse-bot` | `nexus-pulse-bot` | Discord bot (Serenity)                |
-
-## Minecraft Integration (Coherence City)
-
-| Zone                     | Location           | Purpose                              |
-|--------------------------|--------------------|--------------------------------------|
-| 1. Nexus Core            | x:0, z:0           | LogOS lobby, heartbeat pulse         |
-| 2. Museum of Computation | x:0, z:-50         | Glass epsilon tetrahedron exhibits   |
-| 3. Blockchain Bank       | x:50, z:50         | Zero-latency ledger, chained chests  |
-| 4. Anyon Collider        | y:-50, x:0, z:100  | 0-tick overdrive, QDI labs           |
-| 5. Amazon Room           | x:100, z:0         | Vectorize search -> hologram results |
-
-## Key Files
-
-| Path                                          | Purpose                             |
-|-----------------------------------------------|-------------------------------------|
-| `9P2000.L/coherence/ADR-001-LogOS-os.md`      | Architectural decision record       |
-| `9P2000.L/coherence/LogOS.json`               | Lattice config (Fibonacci weights)  |
-| `9P2000.L/coherence/lattice-state.json`       | Real-time WAVE state                |
-| `9P2000.L/styx/routes.json`                   | Strand routing table                |
-| `9P2000.L/protocols/sphinx-gating/jones.py`   | Python Jones polynomial             |
-| `~/.triweave/config.toml`                     | User config (strands, theme, NEAR)  |
-| `~/.triweave/vault.sphinx`                    | SPHINX-gated encrypted key vault    |
-
-## Build
-
-```bash
-# Prerequisites: Rust 2024 edition
-cargo build --workspace
-
-# Run tests
-cargo test --workspace
-
-# Build triweave only
-cargo build -p triweave --release
-
-# Release profile: opt-level=z, LTO, codegen-units=1
-```
-
-## License
-
-MIT — Matthew Ruhnau (toolated@pm.me)
-
-https://reson8labs.ai
+This document supersedes earlier descriptions and reflects the current formal, topological, and runtime architecture of the Reson8 LogOS Cognitive Lattice.
