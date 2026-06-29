@@ -1,0 +1,8 @@
+{
+  "name": "openweight_list_models",
+  "description": "List available models at the open-weight endpoint (Ollama, vLLM, llama.cpp server, LM Studio).",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

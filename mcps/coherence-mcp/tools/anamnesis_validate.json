@@ -1,0 +1,32 @@
+{
+  "name": "anamnesis_validate",
+  "description": "Validate AI-generated exploit code using SpiralSafe verification primitives (WAVE, SPHINX gates, ATOM trail). Designed for Anamnesis-style exploit generators to check code coherence and security properties.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "JavaScript exploit code to validate"
+      },
+      "vulnerability": {
+        "type": "string",
+        "description": "CVE identifier or vulnerability description"
+      },
+      "targetBinary": {
+        "type": "string",
+        "description": "Optional: Binary being exploited"
+      },
+      "mitigations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional: Active protections (e.g., ['ASLR', 'PIE', 'NX'])"
+      }
+    },
+    "required": [
+      "code",
+      "vulnerability"
+    ]
+  }
+}

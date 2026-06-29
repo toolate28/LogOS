@@ -1,0 +1,13 @@
+{
+  "name": "gate_intention_to_execution",
+  "description": "Gate transition from intention phase to execution phase (AWI → ATOM) with real validation",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "context": {
+        "type": "object",
+        "description": "Context data for the gate transition"
+      }
+    }
+  }
+}

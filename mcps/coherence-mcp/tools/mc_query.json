@@ -1,0 +1,8 @@
+{
+  "name": "mc_query",
+  "description": "Query Minecraft server status — returns online player count, max players, and player list. Requires MC_RCON_PASSWORD env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

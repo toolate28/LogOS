@@ -1,0 +1,32 @@
+{
+  "name": "trigger_correction_burst",
+  "description": "Execute an SRAC correction burst on the TriWeavon coherence field. Params: intensity [0,1], duration [0.05,30]s, priority [1,10]. Set clamp=true to auto-clamp out-of-range values.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "intensity": {
+        "type": "number",
+        "description": "Correction intensity in [0, 1]"
+      },
+      "duration": {
+        "type": "number",
+        "description": "Burst duration in seconds [0.05, 30] (default: 1)"
+      },
+      "priority": {
+        "type": "number",
+        "description": "Dispatch priority [1, 10] (default: 5)"
+      },
+      "target": {
+        "type": "string",
+        "description": "Correction target (default: coherence_field)"
+      },
+      "clamp": {
+        "type": "boolean",
+        "description": "Clamp all numeric params instead of rejecting (default: false)"
+      }
+    },
+    "required": [
+      "intensity"
+    ]
+  }
+}

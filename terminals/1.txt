@@ -3,7 +3,7 @@ pid: 27028
 cwd: "F:\Users\Matthew Ruhnau\LogOS"
 command: "Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned; & c:\\Users\\toolated\\.virtualenvs\\.venv\\Scripts\\Activate.ps1; cd \"F:\\Users\\Matthew Ruhnau\\coherence-mcp\"; git status -sb; npx wrangler --version 2>&1; if ($env:CLOUDFLARE_API_TOKEN) { \"CF token: set\" } else { \"CF token: not set\" }"
 started_at: 2026-06-29T03:50:50.399Z
-running_for_ms: 320011   
+running_for_ms: 925007   
 ---
 ## main...origin/main [ahead 10]
 npm warn exec The following package was not found and will be installed: wrangler@4.105.0

@@ -1,0 +1,28 @@
+{
+  "name": "fetch_url",
+  "description": "Fetch content from a URL for coherence analysis. Supports HTML (auto-extracts text), JSON, Markdown, and plain text. No configuration required.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "URL to fetch"
+      },
+      "maxLength": {
+        "type": "number",
+        "description": "Maximum content length in characters (default: 100000)"
+      },
+      "extractText": {
+        "type": "boolean",
+        "description": "Strip HTML tags for text-only output (default: true)"
+      },
+      "headers": {
+        "type": "object",
+        "description": "Optional HTTP headers to include"
+      }
+    },
+    "required": [
+      "url"
+    ]
+  }
+}

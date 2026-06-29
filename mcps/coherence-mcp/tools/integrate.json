@@ -1,0 +1,59 @@
+{
+  "name": "integrate",
+  "description": "Integrate an entity into the coherence network. Entities: individual (collaborator), entity (org/company), repo (git), resource (API/service/model), platform (X/Telegram/Signal). The onboarding process IS the coherence — WAVE scoring, isomorphism mapping, and ATOM trail creation happen as a single self-completing pipeline. Entities with WAVE > 70% snap in automatically.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "kind": {
+        "type": "string",
+        "enum": [
+          "individual",
+          "entity",
+          "repo",
+          "resource",
+          "platform"
+        ],
+        "description": "What kind of thing is being integrated"
+      },
+      "name": {
+        "type": "string",
+        "description": "Human-readable name"
+      },
+      "origin": {
+        "type": "string",
+        "description": "Where this entity currently lives (URL, handle, address)"
+      },
+      "capabilities": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "What the entity brings — capabilities, content, signal"
+      },
+      "connections": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Existing connections — who/what does this entity already touch?"
+      },
+      "platformContext": {
+        "type": "object",
+        "description": "Platform-specific context (e.g. {x: '@handle', telegram: 'groupId'})"
+      },
+      "intent": {
+        "type": "string",
+        "description": "What the entity needs — what it's looking for in the network"
+      },
+      "context": {
+        "type": "string",
+        "description": "Free-form context for WAVE analysis"
+      }
+    },
+    "required": [
+      "kind",
+      "name",
+      "origin"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "github_status",
+  "description": "Post a coherence check status on a GitHub commit/PR. Appears in PR checks. Requires GITHUB_TOKEN env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "owner": {
+        "type": "string",
+        "description": "Repository owner"
+      },
+      "repo": {
+        "type": "string",
+        "description": "Repository name"
+      },
+      "sha": {
+        "type": "string",
+        "description": "Commit SHA to post status on"
+      },
+      "state": {
+        "type": "string",
+        "enum": [
+          "success",
+          "failure",
+          "pending",
+          "error"
+        ],
+        "description": "Status state"
+      },
+      "description": {
+        "type": "string",
+        "description": "Status description (e.g. 'WAVE score: 85%')"
+      }
+    },
+    "required": [
+      "owner",
+      "repo",
+      "sha",
+      "state",
+      "description"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "wave_coherence_check",
+  "description": "Validates coherence between documentation and implementation using WAVE algorithm. Returns alignment scores and recommendations.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "documentation": {
+        "type": "string",
+        "description": "Documentation text (markdown/yaml) to analyze"
+      },
+      "code": {
+        "type": "string",
+        "description": "Code implementation to compare against documentation"
+      },
+      "threshold": {
+        "type": "number",
+        "description": "Coherence threshold (60=minimum, 80=high, 99=critical). Defaults to 60."
+      }
+    },
+    "required": [
+      "documentation",
+      "code"
+    ]
+  }
+}
