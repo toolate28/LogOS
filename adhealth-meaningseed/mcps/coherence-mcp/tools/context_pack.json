@@ -1,0 +1,24 @@
+{
+  "name": "context_pack",
+  "description": "Pack document paths and metadata into .context.yaml structure with hash verification",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "docPaths": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of document paths to pack (relative to SpiralSafe root)"
+      },
+      "meta": {
+        "type": "object",
+        "description": "Metadata to include (domain, concepts, signals, confidence)"
+      }
+    },
+    "required": [
+      "docPaths",
+      "meta"
+    ]
+  }
+}

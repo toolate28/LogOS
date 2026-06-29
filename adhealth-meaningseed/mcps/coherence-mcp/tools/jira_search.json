@@ -1,0 +1,20 @@
+{
+  "name": "jira_search",
+  "description": "Search Jira issues using JQL. Requires JIRA_URL, JIRA_EMAIL, JIRA_TOKEN env vars.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "jql": {
+        "type": "string",
+        "description": "JQL query (e.g. 'labels = coherence AND status != Done')"
+      },
+      "maxResults": {
+        "type": "number",
+        "description": "Maximum results to return (default: 10)"
+      }
+    },
+    "required": [
+      "jql"
+    ]
+  }
+}

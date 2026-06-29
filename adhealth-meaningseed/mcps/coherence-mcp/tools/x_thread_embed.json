@@ -1,0 +1,24 @@
+{
+  "name": "x_thread_embed",
+  "description": "Tokenize an X thread: fetch conversation, BLAKE3 fingerprints per tweet, optional xAI embeddings + Grok coherence scores. Links to invariant_proof_hash for SpiralSafe audit chain. Requires X_BEARER_TOKEN; XAI_API_KEY optional.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "tweetId": {
+        "type": "string",
+        "description": "Root or any tweet id in the thread"
+      },
+      "includeCoherence": {
+        "type": "boolean",
+        "description": "Run grok_check_coherence per tweet (slower, needs XAI_API_KEY)"
+      },
+      "invariantProofHash": {
+        "type": "string",
+        "description": "Lean4 theorem anchor (default: TriWeavon/VanishingResilience.lean#...)"
+      }
+    },
+    "required": [
+      "tweetId"
+    ]
+  }
+}

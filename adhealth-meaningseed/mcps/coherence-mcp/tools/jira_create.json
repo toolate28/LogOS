@@ -1,0 +1,37 @@
+{
+  "name": "jira_create",
+  "description": "Create a Jira issue for a coherence finding. Requires JIRA_URL, JIRA_EMAIL, JIRA_TOKEN env vars.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "projectKey": {
+        "type": "string",
+        "description": "Jira project key (e.g. COH)"
+      },
+      "summary": {
+        "type": "string",
+        "description": "Issue summary"
+      },
+      "description": {
+        "type": "string",
+        "description": "Issue description"
+      },
+      "issueType": {
+        "type": "string",
+        "description": "Issue type (default: Bug)"
+      },
+      "labels": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Labels (default: ['coherence'])"
+      }
+    },
+    "required": [
+      "projectKey",
+      "summary",
+      "description"
+    ]
+  }
+}

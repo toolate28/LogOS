@@ -1,0 +1,25 @@
+{
+  "name": "mc_conservation_verify",
+  "description": "Verify the conservation law ALPHA + OMEGA = 15 (quantum-redstone normalisation constraint). Can verify locally with provided values or query from the Minecraft server scoreboard. Maps to Tensor Axis 2 (Constraints) points 16-20.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "alpha": {
+        "type": "number",
+        "description": "ALPHA value (creation/input energy). If omitted, queries server."
+      },
+      "omega": {
+        "type": "number",
+        "description": "OMEGA value (completion/output energy). If omitted, queries server."
+      },
+      "tolerance": {
+        "type": "number",
+        "description": "Acceptable residual (default: 0.001)"
+      },
+      "fromServer": {
+        "type": "boolean",
+        "description": "If true, query ALPHA/OMEGA from Minecraft scoreboard"
+      }
+    }
+  }
+}

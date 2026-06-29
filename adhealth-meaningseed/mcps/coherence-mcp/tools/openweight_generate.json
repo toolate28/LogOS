@@ -1,0 +1,24 @@
+{
+  "name": "openweight_generate",
+  "description": "Generate a completion from a locally-hosted open-weight model (Llama, DeepSeek, Qwen, Mistral) via OpenAI-compatible API (Ollama, vLLM, llama.cpp). Set OPENWEIGHT_BASE_URL (default: http://localhost:11434/v1).",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "type": "string",
+        "description": "User prompt for the model"
+      },
+      "systemPrompt": {
+        "type": "string",
+        "description": "Optional system prompt"
+      },
+      "model": {
+        "type": "string",
+        "description": "Model name (default: llama3.2). Examples: deepseek-r1, qwen2.5, mistral"
+      }
+    },
+    "required": [
+      "prompt"
+    ]
+  }
+}
