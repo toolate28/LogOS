@@ -1,0 +1,20 @@
+{
+  "name": "postgres_query",
+  "description": "Execute a read query against a PostgreSQL endpoint (PostgREST/Supabase). Requires POSTGRES_URL env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "SQL query or RPC function name"
+      },
+      "params": {
+        "type": "array",
+        "description": "Optional query parameters"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

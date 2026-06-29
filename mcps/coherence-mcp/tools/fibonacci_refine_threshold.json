@@ -1,0 +1,16 @@
+{
+  "name": "fibonacci_refine_threshold",
+  "description": "Refine threshold using golden ratio (φ ≈ 1.618). For optimal coherence: base threshold × φ. Example: 60 → 97.08 (optimal threshold).",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "baseThreshold": {
+        "type": "number",
+        "description": "Base threshold to refine"
+      }
+    },
+    "required": [
+      "baseThreshold"
+    ]
+  }
+}

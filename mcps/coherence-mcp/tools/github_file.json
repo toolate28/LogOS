@@ -1,0 +1,30 @@
+{
+  "name": "github_file",
+  "description": "Fetch a file from a GitHub repository for coherence analysis. Returns decoded text content. Requires GITHUB_TOKEN env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "owner": {
+        "type": "string",
+        "description": "Repository owner"
+      },
+      "repo": {
+        "type": "string",
+        "description": "Repository name"
+      },
+      "path": {
+        "type": "string",
+        "description": "File path within the repository"
+      },
+      "ref": {
+        "type": "string",
+        "description": "Optional git ref (branch, tag, SHA)"
+      }
+    },
+    "required": [
+      "owner",
+      "repo",
+      "path"
+    ]
+  }
+}

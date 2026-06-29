@@ -3,5 +3,6 @@ pid: 19280
 cwd: "F:\Users\Matthew Ruhnau\LogOS"
 command: "wsl -e bash -lc \"sudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq opam m4 pkg-config 2>&1 | tail -5\""
 started_at: 2026-06-29T03:55:52.285Z
-running_for_ms: 20002    
+running_for_ms: 620014   
 ---
+sudo: timed out

@@ -1,0 +1,38 @@
+{
+  "name": "fibonacci_optimize_allocation",
+  "description": "Optimize resource allocation across components using Fibonacci weights. Returns proportional allocation plan with efficiency metrics.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "components": {
+        "type": "array",
+        "description": "Array of weighted components",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "fibonacciWeight": {
+              "type": "number"
+            },
+            "impactMultiplier": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "budget": {
+        "type": "number",
+        "description": "Total resource budget to allocate"
+      }
+    },
+    "required": [
+      "components",
+      "budget"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "ops_status",
+  "description": "Get operational status via SpiralSafe API (https://api.spiralsafe.org/status)",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

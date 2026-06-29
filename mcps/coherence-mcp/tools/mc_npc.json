@@ -1,0 +1,56 @@
+{
+  "name": "mc_npc",
+  "description": "Control AI NPCs in Minecraft via the hope-ai-npc-suite pipeline. Actions: spawn, despawn, move, say, interact, query, scoreboard. Each action routes through RCON with NPC-specific formatting and ATOM trail logging.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": [
+          "spawn",
+          "despawn",
+          "move",
+          "say",
+          "interact",
+          "query",
+          "scoreboard"
+        ],
+        "description": "NPC action to perform"
+      },
+      "npcId": {
+        "type": "string",
+        "description": "NPC identifier (CustomName). Required for most actions."
+      },
+      "target": {
+        "type": "string",
+        "description": "Target entity/player for interact action"
+      },
+      "message": {
+        "type": "string",
+        "description": "Message for say action"
+      },
+      "position": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          }
+        },
+        "description": "World coordinates for spawn/move actions"
+      },
+      "data": {
+        "type": "object",
+        "description": "Additional data (e.g. {objective, value} for scoreboard)"
+      }
+    },
+    "required": [
+      "action"
+    ]
+  }
+}
