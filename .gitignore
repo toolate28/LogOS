@@ -1,3 +1,4 @@
 .tmp.driveupload/
 *.timestamp
 target/debug/*
+AI-NPC-SUITE/logs
