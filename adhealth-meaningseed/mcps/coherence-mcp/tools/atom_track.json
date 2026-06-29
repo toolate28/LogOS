@@ -1,0 +1,36 @@
+{
+  "name": "atom_track",
+  "description": "Track a decision in the ATOM trail (.atom-trail/decisions/) with files and tags",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "decision": {
+        "type": "string",
+        "description": "The decision being tracked"
+      },
+      "files": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Files associated with this decision"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Tags for categorizing (e.g., DOC, INIT, VERIFY)"
+      },
+      "type": {
+        "type": "string",
+        "description": "ATOM type (DOC, INIT, VERIFY, ENHANCE, etc.)"
+      }
+    },
+    "required": [
+      "decision",
+      "files",
+      "tags"
+    ]
+  }
+}

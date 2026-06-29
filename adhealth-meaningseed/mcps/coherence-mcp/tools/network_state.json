@@ -1,0 +1,8 @@
+{
+  "name": "network_state",
+  "description": "Get the current state of the coherence network — node count, total coherence, integration history, breakdown by entity kind. Use to monitor network health and integration progress.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "slack_notify",
+  "description": "Send a notification to Slack via Incoming Webhook. Use for coherence alerts, WAVE results, and gate transition events. Requires SLACK_WEBHOOK_URL env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "type": "string",
+        "description": "Message text to send"
+      },
+      "score": {
+        "type": "number",
+        "description": "Optional WAVE coherence score — triggers rich formatting"
+      },
+      "threshold": {
+        "type": "number",
+        "description": "Optional coherence threshold for pass/fail display"
+      },
+      "source": {
+        "type": "string",
+        "description": "Optional source identifier (file, PR, etc.)"
+      }
+    },
+    "required": [
+      "message"
+    ]
+  }
+}

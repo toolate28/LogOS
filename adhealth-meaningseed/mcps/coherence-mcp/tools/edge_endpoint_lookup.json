@@ -1,0 +1,29 @@
+{
+  "name": "edge_endpoint_lookup",
+  "description": "Resolve TriWeavon extension endpoints: WebSocket bridge (ws://127.0.0.1:8088), Cloudflare embedding worker URLs, wrangler worker configs, coherence.toolated.online surfaces, and broken-path scan. Embedding URL is NOT in wrangler — it lives in Chrome extension options (config.workerUrl). Optional live TCP/HTTP probes.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "target": {
+        "type": "string",
+        "enum": [
+          "triweavon",
+          "embedding",
+          "wrangler",
+          "broken_paths",
+          "coherence_site",
+          "all"
+        ],
+        "description": "Lookup scope (default: all)"
+      },
+      "probe": {
+        "type": "boolean",
+        "description": "Probe ws://127.0.0.1:8088 and known HTTP health endpoints"
+      },
+      "namespace": {
+        "type": "string",
+        "description": "Vectorize namespace for datumforge-ingest routes (default: handoffs)"
+      }
+    }
+  }
+}

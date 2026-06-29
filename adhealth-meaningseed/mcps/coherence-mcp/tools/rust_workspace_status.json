@@ -1,0 +1,8 @@
+{
+  "name": "rust_workspace_status",
+  "description": "LogOS Rust bedrock health: workspace member counts, critical gaps from logos-crates-map, and live filesystem checks (vortex-bridge src, coherence-mcp/cutile members, triweave binary).",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

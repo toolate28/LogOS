@@ -1,0 +1,16 @@
+{
+  "name": "mc_exec",
+  "description": "Execute a command on a Minecraft server via RCON. Returns the server response. Use for any Minecraft command (tp, give, scoreboard, data get, etc.). Requires MC_RCON_PASSWORD env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "command": {
+        "type": "string",
+        "description": "Minecraft command to execute (without leading /)"
+      }
+    },
+    "required": [
+      "command"
+    ]
+  }
+}

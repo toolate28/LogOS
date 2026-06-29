@@ -1,0 +1,25 @@
+{
+  "name": "vortex_verify",
+  "description": "Verify coherence between source content and a translation. Checks semantic preservation, structural fidelity, and noise removal. Use after any cross-platform hop.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "sourceContent": {
+        "type": "string",
+        "description": "Original source content"
+      },
+      "translatedContent": {
+        "type": "string",
+        "description": "Translated content to verify"
+      },
+      "threshold": {
+        "type": "number",
+        "description": "Coherence threshold (default: 60)"
+      }
+    },
+    "required": [
+      "sourceContent",
+      "translatedContent"
+    ]
+  }
+}

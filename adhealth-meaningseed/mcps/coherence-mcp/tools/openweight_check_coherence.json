@@ -1,0 +1,20 @@
+{
+  "name": "openweight_check_coherence",
+  "description": "Run a coherence check on content via a local open-weight model. Returns score (0-100) and analysis. Requires a running Ollama/vLLM endpoint.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to check for coherence"
+      },
+      "model": {
+        "type": "string",
+        "description": "Model name (default: llama3.2)"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

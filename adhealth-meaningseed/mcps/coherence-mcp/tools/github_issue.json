@@ -1,0 +1,38 @@
+{
+  "name": "github_issue",
+  "description": "Create a GitHub issue for a coherence violation or gate failure. Requires GITHUB_TOKEN env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "owner": {
+        "type": "string",
+        "description": "Repository owner"
+      },
+      "repo": {
+        "type": "string",
+        "description": "Repository name"
+      },
+      "title": {
+        "type": "string",
+        "description": "Issue title"
+      },
+      "body": {
+        "type": "string",
+        "description": "Issue body (markdown)"
+      },
+      "labels": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional labels (default: ['coherence'])"
+      }
+    },
+    "required": [
+      "owner",
+      "repo",
+      "title",
+      "body"
+    ]
+  }
+}

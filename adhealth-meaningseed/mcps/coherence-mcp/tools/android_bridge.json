@@ -1,0 +1,32 @@
+{
+  "name": "android_bridge",
+  "description": "Communicate with Android devices via ADB. List connected devices or send MCP tool invocations via broadcast intents to the coherence-mcp Android client app.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": [
+          "list_devices",
+          "send_intent"
+        ],
+        "description": "Action to perform"
+      },
+      "toolName": {
+        "type": "string",
+        "description": "MCP tool name (for send_intent)"
+      },
+      "toolArgs": {
+        "type": "object",
+        "description": "MCP tool arguments (for send_intent)"
+      },
+      "deviceId": {
+        "type": "string",
+        "description": "Optional: target specific device"
+      }
+    },
+    "required": [
+      "action"
+    ]
+  }
+}
