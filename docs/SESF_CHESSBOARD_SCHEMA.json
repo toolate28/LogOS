@@ -1,0 +1,36 @@
+{
+  "schema": "SESF_CHESSBOARD_SCHEMA",
+  "version": "0.1.3",
+  "authority_boundary": "Project telemetry only. Not scientific validation, geopolitical intelligence, or proof authority.",
+  "ledger": "sesf_moves.jsonl",
+  "fields": {
+    "date": "YYYY-MM-DD",
+    "move_id": "M001-style unique identifier",
+    "rank": ["ingestion", "units", "topology", "diagnostics", "validation", "publication"],
+    "lane": ["alpha_lane", "omega_lane", "witness_lane", "redteam_lane"],
+    "target": ["athena", "tng", "generic_hdf5", "benchmark", "docs"],
+    "corridor": ["A_real_data", "B_units", "C_topology", "D_diagnostics", "E_validation"],
+    "action": "short action label",
+    "insight": "what changed",
+    "confidence": "float in [0, 1]",
+    "void_delta": "float in [-1, 1]; uncertainty reduction if positive",
+    "obstruction": ["open", "lifted", "blocked", "deferred"],
+    "source": ["conversation", "github", "local_run", "external_data"]
+  },
+  "corridors": {
+    "A_real_data": "Locate and ingest real external solver output.",
+    "B_units": "Unit quarantine and conversion manifests.",
+    "C_topology": "AMR, ghost zones, particle/cell topology.",
+    "D_diagnostics": "Safe diagnostics and skipped reasons.",
+    "E_validation": "Benchmarks, reproduction, publication readiness."
+  },
+  "quarantined_claims": [
+    "AUKUS geopolitical meaning",
+    "military or diplomatic inference",
+    "alpha+omega symbolic conservation as SESF authority",
+    "WAVE threshold as validation",
+    "K22 topology as evidence",
+    "coherent closure without proof artifacts"
+  ],
+  "gate_rule": "No chessboard score, move count, confidence value, or heatmap can promote SESF without external evidence receipts."
+}
