@@ -1,5 +1,3 @@
-**Reson8 — LogOS Cognitive Lattice**
-
 **A formally verified, homotopically coherent distributed operating system unifying multiple reasoning strands through topological invariants, conservation enforcement, and SPHINX-gated authentication.**
 
 ### 1. Overview
