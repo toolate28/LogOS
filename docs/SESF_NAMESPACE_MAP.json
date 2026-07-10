@@ -1,0 +1,42 @@
+{
+  "schema": "SESF_NAMESPACE_MAP",
+  "version": "0.1.2",
+  "source_pattern": "LogOS runtime namespace /reson8 and 9P2000.L state surface",
+  "authority_boundary": "Engineering namespace only. No formal, physical, or scientific authority is inherited from LogOS claims.",
+  "namespace_root": "/sesf",
+  "paths": {
+    "/sesf/inputs": "Input files, bundle globs, and external source descriptors.",
+    "/sesf/bundles": "Per-file hashes, bundle SHA-256, chunk membership, and bundle receipts.",
+    "/sesf/units": "Unit-mode declarations, conversion manifests, and dimensional quarantine records.",
+    "/sesf/diagnostics": "Computed numerical diagnostics and skipped diagnostic reasons.",
+    "/sesf/receipts": "Authority-bearing JSON receipts with SHA-256 provenance and dependency metadata.",
+    "/sesf/validation": "Benchmark IDs, external dataset references, and reproduction status.",
+    "/sesf/quarantine": "Fields, diagnostics, or claims refused by policy.",
+    "/sesf/status": "E0-E5 evidence-gate state and promotion-blocking defects."
+  },
+  "claim_policy": {
+    "allowed": [
+      "runtime namespace organization",
+      "doctor/preflight diagnostic command",
+      "evidence gate architecture",
+      "receipt metadata exposure",
+      "status plateauing translated into E-gates"
+    ],
+    "quarantined": [
+      "formal verification claims without proof artifacts",
+      "Jones-polynomial authorization as SESF authority",
+      "homotopic/topos claims as scientific validation",
+      "WAVE coherence as physical correctness",
+      "any new-physics or solver-replacement claim"
+    ]
+  },
+  "evidence_gates": {
+    "E0": "Concept only",
+    "E1-Provisional": "Synthetic smoke-test ingestion works",
+    "E1": "Real external HDF5 solver output ingested with receipt",
+    "E2": "Accepted diagnostic safely computed from real data",
+    "E3": "Known benchmark reproduced",
+    "E4": "Independent reproduction",
+    "E5": "Peer-reviewable scientific use"
+  }
+}
