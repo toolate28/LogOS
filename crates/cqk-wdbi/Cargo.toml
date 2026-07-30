@@ -8,5 +8,5 @@ license = "MIT OR Apache-2.0"
 [dependencies]
 reson8-core = { path = "../core" }
 reson8-topology = { path = "../reson8-topology" }
-petgraph = "0.6"
+petgraph = "0.8"
 serde = { version = "1", features = ["derive"] }

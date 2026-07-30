@@ -10,7 +10,7 @@ reson8-core = { path = "../core" }
 serde = { version = "1", features = ["derive"] }
 
 [dependencies.petgraph]
-version = "0.6"
+version = "0.8"
 default-features = false
 features = ["serde-1"]
 optional = true
