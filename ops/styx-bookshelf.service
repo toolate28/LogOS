@@ -1,0 +1,17 @@
+[Unit]
+Description=LogOS Styx Bookshelf 9P2000.L daemon (GB-03)
+After=network.target
+
+[Service]
+Type=simple
+Environment=LOGOS_ROOT=%h/LogOS
+Environment=STYX_LISTEN=127.0.0.1:5640
+Environment=RUST_LOG=info
+# Built via: cargo build -p styx-vfs-layer  (workspace target)
+ExecStart=%h/LogOS/target/debug/styx-bookshelf
+Restart=on-failure
+RestartSec=2
+WorkingDirectory=%h/LogOS
+
+[Install]
+WantedBy=default.target

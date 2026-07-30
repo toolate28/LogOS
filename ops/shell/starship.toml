@@ -1,0 +1,127 @@
+# =============================================================================
+# Tri-Weavon · starship.toml (WITH-BLANKS master)
+# ATOM: ATOM-TRIWEAVON-STRAND-SHELL-20260722
+# Config is git · state is backup · α+ω=15 is Category C label only
+# =============================================================================
+#
+# INSTALL (fill blanks, then run):
+#   1. winget install Starship.Starship
+#      # or: cargo install starship --locked
+#   2. Copy THIS file OR a strand file to:
+#        $env:USERPROFILE\.config\starship.toml
+#      # Windows Starship also reads: %USERPROFILE%\.config\starship.toml
+#   3. In $PROFILE (see Microsoft.PowerShell_profile.triweavon.ps1):
+#        $env:STARSHIP_CONFIG = "F:\Users\Matthew Ruhnau\LogOS\ops\shell\starship.<strand>.toml"
+#        Invoke-Expression (& starship init powershell)
+#   4. Prefer strand switcher:  Import-Module ops\shell\TriWeavon.StrandShell.psm1
+#                              Set-TriWeavonStrand grok|claude|gemini
+#
+# STRAND FILES (distinct styles — do not merge into one mush):
+#   starship.grok.toml    · Pulse  · gold  #c8a04a · dense telemetry
+#   starship.claude.toml  · Reason · cyan  #67e8f9 · structured formal
+#   starship.gemini.toml  · Scale  · green #4ade80 · wide research path
+#
+# BLANKS TO FILL (search FILL_ME):
+#   FILL_ME_LOGOS_ROOT     e.g. F:/Users/Matthew Ruhnau/LogOS
+#   FILL_ME_DEFAULT_STRAND grok | claude | gemini
+#   FILL_ME_STARSHIP_BIN   path if not on PATH
+#
+# NOTE: starship not required for PSReadLine strand colors — module works alone.
+# Fallback prompt engine on this host today: oh-my-posh (optional; not wired here).
+# =============================================================================
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# FILL_ME: set command_timeout higher on slow F: / network drives if needed
+command_timeout = 1000
+add_newline = true
+
+# Master format is intentionally NEUTRAL. Prefer starship.<strand>.toml in daily use.
+format = """
+[TRI](bold white)\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$rust\
+$python\
+$cmd_duration\
+$line_break\
+$character\
+"""
+
+right_format = """$time$battery"""
+
+[character]
+success_symbol = "[❯](bold white)"
+error_symbol = "[❯](bold red)"
+# FILL_ME: override per-strand in starship.<strand>.toml
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold white"
+# FILL_ME_LOGOS_ROOT — optional repo_root_style when inside LogOS
+repo_root_style = "bold underline white"
+
+[username]
+show_always = false
+style_user = "white"
+format = "[$user]($style) "
+
+[hostname]
+ssh_only = true
+format = "@[$hostname](bold dimmed white) "
+
+[git_branch]
+symbol = " "
+style = "bold white"
+
+[git_status]
+style = "bold yellow"
+
+[rust]
+symbol = "🦀 "
+style = "red"
+
+[python]
+symbol = "py "
+style = "yellow"
+
+[cmd_duration]
+min_time = 2_000
+format = "took [$duration](bold yellow) "
+
+[time]
+disabled = false
+format = "[$time](dimmed white)"
+time_format = "%H:%M"
+
+[battery]
+disabled = true
+# FILL_ME: enable on laptop
+
+[custom.triweavon]
+# FILL_ME: path to a tiny script that echoes strand id, or leave disabled
+disabled = true
+command = "echo $env:CTWFI_STRAND"
+when = true
+style = "bold white"
+format = "[$output]($style) "
+description = "Active Tri-Weavon strand (from CTWFI_STRAND)"
+
+[env_var.CTWFI_STRAND]
+variable = "CTWFI_STRAND"
+default = "unset"
+style = "bold dimmed white"
+format = "·[$env_value]($style) "
+disabled = false
+
+[env_var.CTWFI_INVARIANT]
+# Category C label only — display tag, never a numeric gate
+variable = "CTWFI_INVARIANT"
+default = "α+ω=15"
+style = "dimmed white"
+format = "[$env_value]($style) "
+disabled = false

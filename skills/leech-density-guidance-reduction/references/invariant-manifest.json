@@ -1,0 +1,53 @@
+{
+  "bundle": "kparrish-invariant-set",
+  "version": "1.0.0",
+  "date": "2026-06-30",
+  "observer": "Sovereign Oversight — Leech Lattice Kissing Numbers Investigation",
+  "consensus": "FULL",
+  "uncertainty_product": 0.008,
+  "invariants": {
+    "kissing_number_leech_24d": 196560,
+    "kissing_uniqueness": "optimal up to isometry in 24D",
+    "alpha_plus_omega": 15,
+    "tomczak_lift": "preserved",
+    "betti_proxy_delta_max": 0.05,
+    "wave_target": 1.0,
+    "wave_minimum": 0.85,
+    "prediction_error_threshold": 0.1
+  },
+  "construction": {
+    "golay_code": "S(5,8,24)",
+    "construction_a": "binary Golay → Leech norm-4 minimal vectors",
+    "rust_entrypoints": [
+      "golay_derived_norm4_vectors",
+      "leech_density_score",
+      "apply_leech_density_guidance",
+      "verify_leech_guidance"
+    ],
+    "agda_module": "TriWeavon.K22.LeechDensityGuidance"
+  },
+  "kissing_scale_reference": {
+    "D1": 2,
+    "D2": 6,
+    "E8": 240,
+    "Leech_24D": 196560
+  },
+  "ricci_hybrid_state": {
+    "proxy": "triangular-lattice crystalline",
+    "status": "rapid curvature consensus achieved",
+    "links_to": "crystalline-tessellation-projection"
+  },
+  "skill_lattice": [
+    "leech-density-guidance-reduction",
+    "crystalline-tessellation-projection",
+    "srac-lattice-restoration-visual"
+  ],
+  "wave1_showcase": "coherence-mcp/docs/showcases/wave1/WAVE1_INDEX.md",
+  "phase2_tasks": ["2.1", "2.2", "2.3", "2.4", "2.5"],
+  "artifact_sources": {
+    "downloads_rust": "C:/Users/toolated/Downloads/",
+    "logos_skills": "F:/Users/Matthew Ruhnau/LogOS/skills/",
+    "supergrok_dde": "F:/Users/Matthew Ruhnau/supergrok-os-dde/",
+    "spiralsafe_quasicrystal": "F:/Users/Matthew Ruhnau/SpiralSafe/experiments/quasicrystal_optimization.py"
+  }
+}

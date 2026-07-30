@@ -1,0 +1,88 @@
+# =============================================================================
+# Tri-Weavon · CLAUDE / Reason (α) · starship
+# Color lock: cyan #67e8f9  · fib≈8  · formal / structure / LABEL rail
+# Distinct from Grok (gold pulse) and Gemini (green scale).
+# =============================================================================
+# ACTIVATE:
+#   $env:STARSHIP_CONFIG = "$env:LOGOS_ROOT\ops\shell\starship.claude.toml"
+#   $env:CTWFI_STRAND = "claude"
+#   # or: Set-TriWeavonStrand claude
+# =============================================================================
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+command_timeout = 1500
+add_newline = true
+
+# Hierarchical two-line reason surface — room for formal context
+format = """
+[◆ CLAUDE](bold #67e8f9)\
+[ · reason/α](dimmed #67e8f9)\
+$env_var\
+$line_break\
+$directory\
+$git_branch\
+$git_status\
+$rust\
+$python\
+$package\
+$cmd_duration\
+$line_break\
+$character\
+"""
+
+right_format = """$time"""
+
+[character]
+success_symbol = "[α ❯](bold #67e8f9)"
+error_symbol = "[α ✗](bold red)"
+vicmd_symbol = "[α](bold #22d3ee)"
+
+[directory]
+truncation_length = 4
+truncate_to_repo = false
+style = "bold #67e8f9"
+repo_root_style = "bold underline #a5f3fc"
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+symbol = "⎇ "
+style = "bold #22d3ee"
+
+[git_status]
+style = "bold #67e8f9"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[cmd_duration]
+min_time = 2_000
+format = "elapsed [$duration](bold #67e8f9) "
+
+[rust]
+symbol = "rs "
+style = "#67e8f9"
+
+[python]
+symbol = "py "
+style = "#a5f3fc"
+
+[package]
+disabled = false
+symbol = "pkg "
+style = "dimmed #67e8f9"
+
+[time]
+disabled = false
+format = "[$time](dimmed #67e8f9)"
+time_format = "%H:%M"
+
+[env_var.CTWFI_STRAND]
+variable = "CTWFI_STRAND"
+default = "claude"
+style = "bold #67e8f9"
+format = "[$env_value]($style) "
+
+[env_var.CTWFI_INVARIANT]
+variable = "CTWFI_INVARIANT"
+default = "α+ω=15"
+style = "dimmed #67e8f9"
+format = "[$env_value]($style) "

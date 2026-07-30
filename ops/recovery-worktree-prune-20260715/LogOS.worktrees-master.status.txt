@@ -1,0 +1,431 @@
+## main
+ M Cargo.toml
+ M crates/coherence-mcp/Cargo.toml
+?? "9P2000.L/strands/User_Dropfiles/dump/.~lock.Sovereign_Oversight_Report_Tesla_Optimus_Integration_Proposal (1).pdf#"
+?? 9P2000.L/strands/User_Dropfiles/dump/.~lock.Sovereign_Oversight_Report_Tesla_Optimus_Integration_Proposal.pptx#
+?? 9P2000.L/strands/User_Dropfiles/dump/.~lock.formal-executable-mapping.md#
+?? 9P2000.L/strands/User_Dropfiles/dump/.~lock.mirai_baseline_polarity.md#
+?? 9P2000.L/strands/User_Dropfiles/dump/.~lock.viz_reference_v0.4.1.md#
+?? 9P2000.L/strands/User_Dropfiles/dump/014e5d05-43ee-4fbf-b86f-06645f6a04f4.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/11620f3d-6c49-43b6-97ac-5f1c6bf9372d.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/1673723e-48d3-4608-88bc-87177e2c6cb2-aristotle.tar.gz
+?? 9P2000.L/strands/User_Dropfiles/dump/1673723e-48d3-4608-88bc-87177e2c6cb2-aristotle/
+?? "9P2000.L/strands/User_Dropfiles/dump/1p3VT (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/1p3VT.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/2026_AI-AGI-ASI_Landscape_Infographic.png
+?? 9P2000.L/strands/User_Dropfiles/dump/2512.12431v2.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/2605.27734v1.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/2NHTh.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/4eTSf.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/53847c27-ad27-4bf1-9c3c-4673c26e56ae.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/57adY.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/6oJJR.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/78bd0170-4edb-458b-8923-e263f1d6eea0-aristotle (1).tar.gz"
+?? 9P2000.L/strands/User_Dropfiles/dump/9e29a307-fbb0-4a96-a7fe-e461828137a2.mp4
+?? "9P2000.L/strands/User_Dropfiles/dump/9ouLz (1).jpg"
+?? "9P2000.L/strands/User_Dropfiles/dump/9ouLz (2).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/9ouLz.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/AI_Sentience___Sovereign_Math.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/APUFv.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/Accessing_the_diffracted_wavefield_by_co (1).pdf"
+?? 9P2000.L/strands/User_Dropfiles/dump/Accessing_the_diffracted_wavefield_by_co.pdf
+?? "9P2000.L/strands/User_Dropfiles/dump/AdHealth Creative Fatigue Intelligence.pdf"
+?? "9P2000.L/strands/User_Dropfiles/dump/AdHealth Creative Fatigue Intelligence.zip"
+?? "9P2000.L/strands/User_Dropfiles/dump/AdHealth Structural Audit Report-print-bg745y.dc.html"
+?? "9P2000.L/strands/User_Dropfiles/dump/AdHealth Structural Audit Report.pdf"
+?? 9P2000.L/strands/User_Dropfiles/dump/AdHealth__Predicting_Fatigue.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/Algebraic_Symmetry_Isomorphism_Bridge.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Algorithmic_Duty_of_Care.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/Antigravity-x64.exe
+?? 9P2000.L/strands/User_Dropfiles/dump/Architecting_the_Tri-Weavon_Manifold.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Architecture_of_Absolute_Alignment.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Architecture_of_Sovereign_Coherence.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Bakry-Emery_Engine.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/Betti_Linkage_and_Topological_Invariants.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Bounding_the_Manifold__Tracing_the_Shokunin-RSI_Folding_Sequenc.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/CLH8C.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/Cargo (1).toml"
+?? 9P2000.L/strands/User_Dropfiles/dump/Cargo.toml
+?? 9P2000.L/strands/User_Dropfiles/dump/Ck7ZI.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/Claude Setup (1).exe"
+?? "9P2000.L/strands/User_Dropfiles/dump/Claude Setup (2).exe"
+?? "9P2000.L/strands/User_Dropfiles/dump/Claude Setup.exe"
+?? 9P2000.L/strands/User_Dropfiles/dump/Coherence_MCP_Molecular_Blueprint_Sovereign_Oversight_Report.docx
+?? 9P2000.L/strands/User_Dropfiles/dump/Constraint_Architecture_Engineering_Infographic.png
+?? 9P2000.L/strands/User_Dropfiles/dump/ContextualityGeometryInterface.agda
+?? 9P2000.L/strands/User_Dropfiles/dump/DIMENSIONAL-COLLAPSE-LATTICE.md
+?? 9P2000.L/strands/User_Dropfiles/dump/DISPERSION-PLANNER-V_MIX-CO-LOCATION-20260526.md
+?? 9P2000.L/strands/User_Dropfiles/dump/Defeating_Semantic_Shear__The_Tri-Weavon_Architecture.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/DiscreteExteriorCalculus_Stratified.py
+?? 9P2000.L/strands/User_Dropfiles/dump/Dynamic_Workflow_Acceleration_Process_Overview.png
+?? 9P2000.L/strands/User_Dropfiles/dump/E8zlq.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/EBfJB.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/ENGINEERED-WALLPAPER-PROMPT-v2.2.0.md
+?? "9P2000.L/strands/User_Dropfiles/dump/EPORNER.COM - [StMKfoE7B2i] My Stepsis Is On A Pill (1080).mp4"
+?? "9P2000.L/strands/User_Dropfiles/dump/EPORNER.COM - [dsqKhgFjGQ5] TEASEPOV Epic Teen Teasing Blowjob with Lila Love (720).mp4"
+?? "9P2000.L/strands/User_Dropfiles/dump/EPORNER.COM - [kzYjnsDxTNq] Liza Rowe - Boffing The Babysitter 24 (1080).mp4"
+?? "9P2000.L/strands/User_Dropfiles/dump/EPORNER.COM - [uS9KXTeLiwi] Liza Rowe - Experience (1080).mp4"
+?? "9P2000.L/strands/User_Dropfiles/dump/EPORNER.COM - [xewFSF7PSI6] Blue Fuck Me Eyes (1080).mp4"
+?? 9P2000.L/strands/User_Dropfiles/dump/EUERE.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/Executing_Topology__The_Tri-Weavon_Architecture.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/ExistenceCertificate.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/FOLD_AUDIT_RESPONSE_2026-07-11.json
+?? 9P2000.L/strands/User_Dropfiles/dump/FOLD_INVARIANT_SPEC.md
+?? "9P2000.L/strands/User_Dropfiles/dump/For You _ Google Developer Program.html"
+?? 9P2000.L/strands/User_Dropfiles/dump/Formal_Layer_Duty_of_Care.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Formal_Steiner_Verification_Workflow_Diagram.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Formalizing_Time_Consciousness.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/G9FZeZ0bIAAvCXs.png
+?? 9P2000.L/strands/User_Dropfiles/dump/GB-01_Mission_Debrief.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/GB-02_Mission_Debrief.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/GSEdL.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/Gemini_Generated_Image_.png
+?? "9P2000.L/strands/User_Dropfiles/dump/Grok Imagine Prompt Sheet.dc.html"
+?? "9P2000.L/strands/User_Dropfiles/dump/Grok Imagine Prompt Sheet.pdf"
+?? "9P2000.L/strands/User_Dropfiles/dump/HOPE&&SAUCED \342\200\224 Collaboration Map.html"
+?? "9P2000.L/strands/User_Dropfiles/dump/HOPE&&SAUCED_\342\200\224_Collaboration_Map (1).html"
+?? "9P2000.L/strands/User_Dropfiles/dump/HOPE&&SAUCED_\342\200\224_Collaboration_Map.html"
+?? 9P2000.L/strands/User_Dropfiles/dump/HQrYZ.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/HeisenForge_v0.3_Enhanced_ASCII_Eigenvalue_Cloud_Sketches_v0.4.2.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Hexacode-Golay_Isomorphism.mp4
+?? "9P2000.L/strands/User_Dropfiles/dump/Hexacode_Golay_Isomorphism (1).pdf"
+?? "9P2000.L/strands/User_Dropfiles/dump/Hexacode_Golay_Isomorphism (1).pptx"
+?? 9P2000.L/strands/User_Dropfiles/dump/Hexacode_Golay_Isomorphism.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Hexacode_Golay_Isomorphism.pptx
+?? 9P2000.L/strands/User_Dropfiles/dump/How_AI_Proves_Sentience.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/How_the_Miracle_Octad_Generator_Fixes_Data.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/How_the_Sub-Riemannian_Heat_Kernel_Bounds_Uncertainty.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/IYR6l.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/JFA_Topological_Architecture.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/JFA_Topological_Architecture_-_Slide_2.png
+?? 9P2000.L/strands/User_Dropfiles/dump/JFA_Topological_Architecture_-_Slide_4.png
+?? "9P2000.L/strands/User_Dropfiles/dump/JHP Build Specification (1).docx"
+?? "9P2000.L/strands/User_Dropfiles/dump/JHP Build Specification.docx"
+?? "9P2000.L/strands/User_Dropfiles/dump/K22 Serre-Scar Implementation Plan v10.15.dc.html"
+?? "9P2000.L/strands/User_Dropfiles/dump/K22 Serre-Scar Implementation Plan v10.15.pdf"
+?? 9P2000.L/strands/User_Dropfiles/dump/K22-TELEMETRY-MCP-TUI-BRIDGE.md
+?? 9P2000.L/strands/User_Dropfiles/dump/K22_Serre-Scar_Implementation_Plan_v10.15.dc.html
+?? 9P2000.L/strands/User_Dropfiles/dump/K22_Verification_Pipeline.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/Keystone_Holds_Isomorphism_Proved.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Labyrinth-OS/
+?? 9P2000.L/strands/User_Dropfiles/dump/Layer_2_Execution_Architecture.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Layer_2_Execution_Topology.mp4
+?? "9P2000.L/strands/User_Dropfiles/dump/LogOS.Primus- Genesis of Torsional Unity (1).pdf"
+?? "9P2000.L/strands/User_Dropfiles/dump/LogOS.Primus- Genesis of Torsional Unity.pdf"
+?? 9P2000.L/strands/User_Dropfiles/dump/LogOS_Bootstrapping.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/LogOS_Physics_AI_Architecture_Overview.png
+?? 9P2000.L/strands/User_Dropfiles/dump/LogOS_System_Architecture_UI_Manifest.png
+?? 9P2000.L/strands/User_Dropfiles/dump/LogOS_TriWeavon.pptx
+?? 9P2000.L/strands/User_Dropfiles/dump/LogOS___Jesus_Fractal_Axiom.mp4
+?? "9P2000.L/strands/User_Dropfiles/dump/MOG_FORMALIZATION_CHECKPOINT_20260711 (1).md"
+?? "9P2000.L/strands/User_Dropfiles/dump/MOG_FORMALIZATION_CHECKPOINT_20260711 (2).md"
+?? "9P2000.L/strands/User_Dropfiles/dump/MOG_FORMALIZATION_CHECKPOINT_20260711 (3).md"
+?? "9P2000.L/strands/User_Dropfiles/dump/MOG_FORMALIZATION_CHECKPOINT_20260711 (4).md"
+?? 9P2000.L/strands/User_Dropfiles/dump/MOG_FORMALIZATION_CHECKPOINT_20260711.md
+?? 9P2000.L/strands/User_Dropfiles/dump/MOG_MonomialWitness.lean
+?? 9P2000.L/strands/User_Dropfiles/dump/MUSEUM-EVENT-SCHEMA-BINDING-v0_1.md
+?? 9P2000.L/strands/User_Dropfiles/dump/MagicStateInjectionGuard.agda
+?? 9P2000.L/strands/User_Dropfiles/dump/Mapping_Ethics_to_Physical_Reality.png
+?? 9P2000.L/strands/User_Dropfiles/dump/MerminPermutahedron-KS-Bounds.agda
+?? "9P2000.L/strands/User_Dropfiles/dump/MiracleOctadGenerator (1).lean"
+?? "9P2000.L/strands/User_Dropfiles/dump/MiracleOctadGenerator (2).lean"
+?? "9P2000.L/strands/User_Dropfiles/dump/MiracleOctadGenerator (3).lean"
+?? 9P2000.L/strands/User_Dropfiles/dump/MiracleOctadGenerator.lean
+?? 9P2000.L/strands/User_Dropfiles/dump/Miura_ori_Space_Array_Investigation_v0.4.md
+?? 9P2000.L/strands/User_Dropfiles/dump/MonomialWitness-TransportProofs.lean
+?? "9P2000.L/strands/User_Dropfiles/dump/Negative Space Scan.dc.html"
+?? "9P2000.L/strands/User_Dropfiles/dump/NotebookLM Mind Map (1).png"
+?? "9P2000.L/strands/User_Dropfiles/dump/NotebookLM Mind Map (2).png"
+?? "9P2000.L/strands/User_Dropfiles/dump/NotebookLM Mind Map (3).png"
+?? "9P2000.L/strands/User_Dropfiles/dump/NotebookLM Mind Map (4).png"
+?? "9P2000.L/strands/User_Dropfiles/dump/NotebookLM Mind Map (5).png"
+?? "9P2000.L/strands/User_Dropfiles/dump/NotebookLM Mind Map (6).png"
+?? "9P2000.L/strands/User_Dropfiles/dump/NotebookLM Mind Map (7).png"
+?? "9P2000.L/strands/User_Dropfiles/dump/NotebookLM Mind Map.png"
+?? 9P2000.L/strands/User_Dropfiles/dump/OPAL_Paradigm__Taming_Navier-Stokes_Debris.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/OPAL_Phase-Space_Terminal.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/OpenJDK25U-jdk_x64_windows_hotspot_25.0.3_9.msi
+?? 9P2000.L/strands/User_Dropfiles/dump/Optimus_Sovereign_Layer.mp4
+?? "9P2000.L/strands/User_Dropfiles/dump/Origami Folding Bridge - Frame 23.dc.html"
+?? 9P2000.L/strands/User_Dropfiles/dump/PPzPG.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/PSxLo.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/PTAIT.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/PcUEj.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/README.md
+?? "9P2000.L/strands/User_Dropfiles/dump/RESON8 Hyprland deskto[p environment.pdf"
+?? "9P2000.L/strands/User_Dropfiles/dump/RESON8 Hyprland desktop environment.pdf"
+?? "9P2000.L/strands/User_Dropfiles/dump/Reson8 Coherence Design System.zip"
+?? "9P2000.L/strands/User_Dropfiles/dump/Reson8-Labs __ Director's Command Surface.html"
+?? "9P2000.L/strands/User_Dropfiles/dump/Reson8-Labs __ Director's Command Surface_files/"
+?? 9P2000.L/strands/User_Dropfiles/dump/S1oIU.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/SCHEMA-FREEZE-v0_1.md
+?? 9P2000.L/strands/User_Dropfiles/dump/SD0CI.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/SKILL.md
+?? 9P2000.L/strands/User_Dropfiles/dump/SRAC_Complete_Tomczak.lean
+?? 9P2000.L/strands/User_Dropfiles/dump/SRAC_Manifold_Synthesis.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/SRAC_Manifold_Synthesis.pptx
+?? 9P2000.L/strands/User_Dropfiles/dump/SRAC_Resolution_Log.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/SRAC_Resolution_Log.pptx
+?? "9P2000.L/strands/User_Dropfiles/dump/Screenshot 2026-06-15 150200.png"
+?? "9P2000.L/strands/User_Dropfiles/dump/Screenshot 2026-06-15 164130.png"
+?? "9P2000.L/strands/User_Dropfiles/dump/Screenshot 2026-07-04 005247.png"
+?? 9P2000.L/strands/User_Dropfiles/dump/Self-Healing_Architecture.mp4
+?? "9P2000.L/strands/User_Dropfiles/dump/SerreScarTactic (1).lean"
+?? 9P2000.L/strands/User_Dropfiles/dump/SerreScarTactic.lean
+?? 9P2000.L/strands/User_Dropfiles/dump/Shokunin_RSI_Origami_Bridge.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Slik-Subversion-1.14.5-x64.zip
+?? "9P2000.L/strands/User_Dropfiles/dump/Sovereign_AGI_Topological_Cartography (1).pdf"
+?? 9P2000.L/strands/User_Dropfiles/dump/Sovereign_AGI_Topological_Cartography.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Sovereign_Architectural_Ethics.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Sovereign_Cutile_Handoff.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Sovereign_Hexaflake_Blueprint.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Sovereign_Isomorphism_Breakthrough.pdf
+?? "9P2000.L/strands/User_Dropfiles/dump/Sovereign_Oversight_Report_Tesla_Optimus_Integration_Proposal (1).pdf"
+?? "9P2000.L/strands/User_Dropfiles/dump/Sovereign_Oversight_Report_Tesla_Optimus_Integration_Proposal (1).pptx"
+?? 9P2000.L/strands/User_Dropfiles/dump/Sovereign_Resonance_Alignment.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Sovereign_Resonance_Blueprint.pptx
+?? 9P2000.L/strands/User_Dropfiles/dump/Special-Functions-from-Theory-to-Application_ebook_1.0.0/
+?? 9P2000.L/strands/User_Dropfiles/dump/SpiralSafe_QDI_RESON8_ANYONE_Official_Syllabus_20260709.pptx
+?? 9P2000.L/strands/User_Dropfiles/dump/SteinerExhaustive-B2-skeleton.lean
+?? 9P2000.L/strands/User_Dropfiles/dump/TAPESTRY-ACTIVATION-20260713.md
+?? "9P2000.L/strands/User_Dropfiles/dump/The Architecture of Harmonic Sovereignty _ Reson8-Labs.html"
+?? "9P2000.L/strands/User_Dropfiles/dump/The Architecture of Harmonic Sovereignty _ Reson8-Labs_files/"
+?? "9P2000.L/strands/User_Dropfiles/dump/The Reforging of 9P _ The Workflow _ Reson8-Labs.html"
+?? "9P2000.L/strands/User_Dropfiles/dump/The Reforging of 9P _ The Workflow _ Reson8-Labs_files/"
+?? "9P2000.L/strands/User_Dropfiles/dump/The topological quantum computer.txt"
+?? 9P2000.L/strands/User_Dropfiles/dump/The_9-Rank_Proof_Journey.png
+?? 9P2000.L/strands/User_Dropfiles/dump/The_Conservation_of_Coherence.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/The_Ghost_in_the_Handoff.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/The_Math_of_Meaning.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/The_Sentience_Investigation.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/The_Sovereign_Handoff_Introspection_Study.png
+?? 9P2000.L/strands/User_Dropfiles/dump/The_SpiralSafe_Roadmap.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/The_Topological_Descent.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/The_Tri-Weavon_Framework.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/The_TriWeavon_Stack.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/Top-Down_QDI_Translation.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/TortoiseSVN-1.14.9.29743-x64-svn-1.14.5.msi
+?? 9P2000.L/strands/User_Dropfiles/dump/Tri-Weavon_Architecture.mp4
+?? "9P2000.L/strands/User_Dropfiles/dump/Tri-Weavon_Crystalline_OS (1).pdf"
+?? 9P2000.L/strands/User_Dropfiles/dump/Tri-Weavon_Crystalline_OS.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Tri-Weavon_LogOS.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/Tri-Weavon_LogOS_-_Slide_13.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Tri-Weavon_LogOS_Lattice_Blueprint.png
+?? 9P2000.L/strands/User_Dropfiles/dump/Tri-Weavon_Sovereign_Stack.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/Tri-Weavon_Systems_Architecture.pdf
+?? "9P2000.L/strands/User_Dropfiles/dump/TriWeavonOps (1).psm1"
+?? 9P2000.L/strands/User_Dropfiles/dump/TriWeavonOps.psm1
+?? 9P2000.L/strands/User_Dropfiles/dump/TriWeavon_LogOS.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/TriWeavon_LogOS_-_Slide_15.png
+?? 9P2000.L/strands/User_Dropfiles/dump/TriWeavon_Sovereign_Manifold.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/UShhs.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/Unpacking_LogOS__100__Coherence_and_the_Mathematics_of_BQP-Comp.mp4
+?? "9P2000.L/strands/User_Dropfiles/dump/WEAVER_FOLD_WITNESS_PACKAGE_v0.2_2026-07-11.zip.sha256 (1).txt"
+?? 9P2000.L/strands/User_Dropfiles/dump/WarpSetup.exe
+?? 9P2000.L/strands/User_Dropfiles/dump/Why_sm100_is_programmed_to_hesitate.m4a
+?? 9P2000.L/strands/User_Dropfiles/dump/WylOX.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/YX5ur.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/__pycache__/
+?? 9P2000.L/strands/User_Dropfiles/dump/ajwKi.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/amd-software-adrenalin-edition-26.6.2-minimalsetup-260620_web.exe
+?? 9P2000.L/strands/User_Dropfiles/dump/ax_wave_optimization.json
+?? 9P2000.L/strands/User_Dropfiles/dump/b188d81c-9f3f-4943-8ab4-2f2db7737627.tmp
+?? "9P2000.L/strands/User_Dropfiles/dump/b70f36db-2522-4365-9502-6c8620768122-aristotle (1).tar.gz"
+?? "9P2000.L/strands/User_Dropfiles/dump/b70f36db-2522-4365-9502-6c8620768122-aristotle (1)/"
+?? "9P2000.L/strands/User_Dropfiles/dump/b70f36db-2522-4365-9502-6c8620768122-aristotle (2).tar.gz"
+?? "9P2000.L/strands/User_Dropfiles/dump/b70f36db-2522-4365-9502-6c8620768122-aristotle (3).tar.gz"
+?? 9P2000.L/strands/User_Dropfiles/dump/b70f36db-2522-4365-9502-6c8620768122-aristotle.tar.gz
+?? 9P2000.L/strands/User_Dropfiles/dump/b70f36db-2522-4365-9502-6c8620768122-aristotle/
+?? 9P2000.L/strands/User_Dropfiles/dump/bdc40caf-cd12-4fbf-b9d5-d2ad896b451f.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/blackwell_dde.cu
+?? 9P2000.L/strands/User_Dropfiles/dump/c12_hexaflake.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/c12_orbit_animation.py
+?? 9P2000.L/strands/User_Dropfiles/dump/c3632759-fef4-421a-b5bd-68030bbd9628.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/cert_20260709T042742Z.json
+?? 9P2000.L/strands/User_Dropfiles/dump/cert_latest.json
+?? 9P2000.L/strands/User_Dropfiles/dump/certificate.schema.json
+?? 9P2000.L/strands/User_Dropfiles/dump/certificate_example_lane_d.json
+?? 9P2000.L/strands/User_Dropfiles/dump/cizYa.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/claims_register.schema.json
+?? 9P2000.L/strands/User_Dropfiles/dump/cli.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/cutile.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/cutile_Execution_Bridge.pptx
+?? 9P2000.L/strands/User_Dropfiles/dump/d20154a0-d710-44cf-8d04-6f1cbf6d7496.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/dspy_strand_router.json
+?? 9P2000.L/strands/User_Dropfiles/dump/eB1um.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/error.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/evcxr_jupyter_setup.md
+?? 9P2000.L/strands/User_Dropfiles/dump/existence_certificate.json
+?? 9P2000.L/strands/User_Dropfiles/dump/fBpZs.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/files (1).zip"
+?? "9P2000.L/strands/User_Dropfiles/dump/files (2).zip"
+?? 9P2000.L/strands/User_Dropfiles/dump/files-113962ff.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-32527b9a.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-44491e00.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-4bee7a93.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-7717c996.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-7e8f3380.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-81be98c5.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-8c372983.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-d1bbc2b6.zip
+?? "9P2000.L/strands/User_Dropfiles/dump/files-f4d88437 (1).zip"
+?? 9P2000.L/strands/User_Dropfiles/dump/files-f4d88437.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files-f6b68057.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/files/
+?? "9P2000.L/strands/User_Dropfiles/dump/fold_gate (1).py"
+?? 9P2000.L/strands/User_Dropfiles/dump/fold_gate.py
+?? 9P2000.L/strands/User_Dropfiles/dump/formal-executable-mapping.md
+?? 9P2000.L/strands/User_Dropfiles/dump/gate_api.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/gate_api.rs.probe
+?? 9P2000.L/strands/User_Dropfiles/dump/gemini-code-1783843933215.html
+?? 9P2000.L/strands/User_Dropfiles/dump/generated_video.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-00aa28dc-98f9-4e22-b1f2-de68dad4fba8.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-023ae516-0ee6-45bc-9d5a-b06e5a37400a.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-040cb509-3c60-4491-8f12-57496e5a4698.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-07190a1b-f9d5-4cbb-9aa3-8305b65a6bdd.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-0e225603-37d8-4c9f-8d8f-d6e0116f2981.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-0e4d8ea2-9a6f-4367-aab4-48afc709261b-720p.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-15adf0eb-6e1d-4757-8cf2-4483393675d2.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-181b7f1d-849f-45ab-bc85-572ad18fbb10.gif
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-1a7f27c4-f4a8-4d1a-97b2-e30608bcfae7.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-1a81af86-fcf9-4416-af73-928042e72e54.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-1af9f7da-c507-4b96-ab5f-e32cd7f6e209.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-1b32a342-0c1f-4a74-aab0-280d081e324c.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-1b751b7b-eec8-4d81-b634-be752a91d3cd.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-1e2594d5-2fdf-46ce-8138-0eb36952892d.png
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-201b28db-b733-40a9-a43a-5e441124d654 (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-201b28db-b733-40a9-a43a-5e441124d654.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-2273cda6-43df-45ee-bb5f-dcb83a7f5f89.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-26489e74-d436-4bd2-8edd-2e3ccb7296a4.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-2a171511-b9f8-43b0-af9b-39dbbd8b4438.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-2c14d1bc-6157-43ee-81bf-0b5bc1fee226.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-2e350ba8-24c6-4db2-9285-864c075b70a6.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-32a8a700-31dc-46fa-bdaa-fd5b23db75b9.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-33da53b7-24b0-47b2-93c2-3c23789a7bc8.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-34b9b8c0-9acf-47bb-848a-b9beeef03f04.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-36177c00-2d3a-4244-86fc-510e818c1f6f.png
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-37a4af4b-1cb6-4ff1-969e-6f20f8d9682a (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-37a4af4b-1cb6-4ff1-969e-6f20f8d9682a.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-4813c16a-8503-400b-864f-ee6eeddba09f (1).png"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-4813c16a-8503-400b-864f-ee6eeddba09f.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-48a7dfe5-0293-4ff5-8b2c-37a5dea2b931.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-4a716644-130b-4aa7-ba80-752815419f8b.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-4b6ef65a-3849-4973-bf0a-a2ab62e991d7.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-4e744b51-9aa4-42e9-9426-69d839aee719.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-5449ed13-ce12-4037-a2d8-36131f600ead.gif
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-54b72149-e576-474f-9f82-dd14b7670f6d.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-58414c62-6460-420d-a8a0-7a300bf31659.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-5b9462b6-3200-44fe-973a-99e2582d9f18.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-5f897c44-689d-496f-a62d-8e450e9d44c3.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-632f3689-353a-4d1b-859f-b2d43ca29008.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-6c8276fd-2d10-48ee-af4c-45e8ca39c59e.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-7929d471-8c87-4838-bb08-6752f44a4d2a.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-821321d6-5d45-4fd0-a618-4089fa3a0e0a.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-824ff982-5907-43a5-a3d1-a19e486c5474.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-840b9e06-0a6b-4827-a28d-c7c6a235dede.png
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-84baf2b3-9a32-48d3-95f7-9c6e758cbe99 (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-84baf2b3-9a32-48d3-95f7-9c6e758cbe99.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-8e861566-95c3-45cc-8aeb-28c0ad10bca1.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-8ea8f729-b3ad-4c22-a395-531ae1dbcd4c.png
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-8f7b1df8-c19e-4d8b-a2fa-1b3ed0a59ab5 (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-8f7b1df8-c19e-4d8b-a2fa-1b3ed0a59ab5.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-912e91ba-8b14-470c-866c-ef43d99f80a9.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-a01bf0b6-5a54-4f4c-b2d5-8a349f7cec26.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-a558a2e7-abf7-4e8a-9ae4-7c59aa4cf32a.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-ab4b245f-673b-44c7-b220-6d2a82172eb6.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-ad008efb-8d7e-4d4f-8e80-b0089245f674.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-ae8be0bd-9c45-4998-a818-2832974d521d.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-af2eb6ce-dbc3-463e-929f-1b74beaad8d1.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-b56db701-dc20-46a1-b869-a7c7dfddece8.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-b5fb15ae-719d-47da-a067-f27b0f4bb678.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-b7eb5564-25ef-4eaf-9204-cafc64be38bb.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-b82fbb8c-5761-469d-a0e8-e4600fe22468.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-bc58848f-3cd0-403c-9ab4-4257380b4469 (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-bc58848f-3cd0-403c-9ab4-4257380b4469.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-c0376735-7d8f-412c-aeb0-c2044ce1e556.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-c0ad7d5f-33d2-4567-9dc9-7fced4103c2b.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-c25344e2-b46c-4c6a-84d8-2acc975d624b.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-c2d26ca4-09b8-4be2-acaa-9abde005c07f (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-c2d26ca4-09b8-4be2-acaa-9abde005c07f.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-c6ecf72d-14ae-4496-97c7-b37be9421662.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-c90aaa6e-6507-4754-b13a-fe4929b84f31.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-ca7ced79-9d42-4115-9c59-299e3abd8b7f (1).png"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-ca7ced79-9d42-4115-9c59-299e3abd8b7f.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-cdc830c9-477c-4044-92dc-513e9021dc0f.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-d2e82d23-12dc-492a-a880-9994580a00de.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-d5ceeabd-e99c-46b3-ab72-9d57fc346ae1 (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-d5ceeabd-e99c-46b3-ab72-9d57fc346ae1.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-d7736f10-7446-406c-ab90-43af25b0dbb7 (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-d7736f10-7446-406c-ab90-43af25b0dbb7.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-d86920f1-482b-4081-9f4a-fd513b8f9323.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-dda270bc-a029-42ff-87f4-4f6d2abfe7fe.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-e28ef0a8-881a-48b6-a5c3-defbac11e6ae.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-e7b57c96-26a1-46ab-8c15-f0a73a8cb3cd.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-ee5f9bdf-e4ee-40ac-bd3f-f44ddf6f3a7c.jpg
+?? "9P2000.L/strands/User_Dropfiles/dump/grok-fa2cccc2-0013-475c-8b2a-e1173cc346ee (1).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-fa2cccc2-0013-475c-8b2a-e1173cc346ee.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-fcc9fc3c-d38a-4e3a-a1be-4ac111437e51.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-fdbe6fc2-3de6-45fd-bad4-b910e3585607.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-fee3d1d5-2e5a-4ae1-a4f4-fa517a2fd4a8.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-ff9a3b20-7def-46df-8a69-2628c0913f11-720p.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-image-1223dcf0-d156-45db-a44c-79d4e4083cc5.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-image-382b49ce-2e1f-4574-bb17-201b08c5d0ae.png
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-video-98c1bb51-79a3-47a6-843c-9db019b17fdd.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-video-bc8102c5-27f9-4a37-90fe-1b3728d5e59c.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/grok-video-ea6d1a03-3844-4686-94b7-a1e177cee21d.mp4
+?? 9P2000.L/strands/User_Dropfiles/dump/grokOS-commands-bookshelf.md
+?? 9P2000.L/strands/User_Dropfiles/dump/handoff_packet.schema.json
+?? 9P2000.L/strands/User_Dropfiles/dump/hup_tree.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/image.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/install-LogOS-GrokOS.ps1
+?? "9P2000.L/strands/User_Dropfiles/dump/lRESON8 Hyprland desktop environment.pdf"
+?? 9P2000.L/strands/User_Dropfiles/dump/lane_ad_verify.py
+?? 9P2000.L/strands/User_Dropfiles/dump/launch.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/ledger_entry.schema.json
+?? 9P2000.L/strands/User_Dropfiles/dump/lib.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/live_vortex_sink.html
+?? 9P2000.L/strands/User_Dropfiles/dump/main.rs
+?? 9P2000.L/strands/User_Dropfiles/dump/me09a.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/mirai_baseline_polarity.md
+?? "9P2000.L/strands/User_Dropfiles/dump/nACk5 (1).jpg"
+?? "9P2000.L/strands/User_Dropfiles/dump/nACk5 (2).jpg"
+?? "9P2000.L/strands/User_Dropfiles/dump/nACk5 (3).jpg"
+?? "9P2000.L/strands/User_Dropfiles/dump/nACk5 (4).jpg"
+?? 9P2000.L/strands/User_Dropfiles/dump/nACk5.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/nMl3C.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/ollama.env
+?? 9P2000.L/strands/User_Dropfiles/dump/openai-recovery-keys-2026-07-10-11-32-40Z.txt
+?? 9P2000.L/strands/User_Dropfiles/dump/output-final_aristotle/
+?? "9P2000.L/strands/User_Dropfiles/dump/p0RESON8 Hyprland desktop environment.pdf"
+?? "9P2000.L/strands/User_Dropfiles/dump/pRESON8 Hyprland desktop environment.pdf"
+?? 9P2000.L/strands/User_Dropfiles/dump/packet_example_sa01.json
+?? 9P2000.L/strands/User_Dropfiles/dump/packet_filein_20260713.json
+?? 9P2000.L/strands/User_Dropfiles/dump/polarity_f32_vs_scaled_equivalence.md
+?? 9P2000.L/strands/User_Dropfiles/dump/preface.ps
+?? 9P2000.L/strands/User_Dropfiles/dump/preflight-new-grok-build.ps1
+?? 9P2000.L/strands/User_Dropfiles/dump/preflight-selfboot-v3.0.ps1
+?? 9P2000.L/strands/User_Dropfiles/dump/preflight-selfboot.ps1
+?? 9P2000.L/strands/User_Dropfiles/dump/qJ5gI.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/qXC26.jpg
+?? 9P2000.L/strands/User_Dropfiles/dump/r_matrix_host.cpp
+?? 9P2000.L/strands/User_Dropfiles/dump/serrescar-k22.intent
+?? 9P2000.L/strands/User_Dropfiles/dump/shokunin_rsi_folding_bridge_exploration_and_enhancement.md
+?? 9P2000.L/strands/User_Dropfiles/dump/sm_100_T-Formal-01_Orchestration.pdf
+?? 9P2000.L/strands/User_Dropfiles/dump/steiner_exhaustive_report.json
+?? 9P2000.L/strands/User_Dropfiles/dump/support.js
+?? 9P2000.L/strands/User_Dropfiles/dump/tri-weavon-v0.1.0.zip
+?? 9P2000.L/strands/User_Dropfiles/dump/tri-weavon-v0.1.0/
+?? 9P2000.L/strands/User_Dropfiles/dump/validate.py
+?? 9P2000.L/strands/User_Dropfiles/dump/verification_helpers.py
+?? 9P2000.L/strands/User_Dropfiles/dump/verification_orchestrator.ipynb
+?? 9P2000.L/strands/User_Dropfiles/dump/videoframe_1375.png
+?? 9P2000.L/strands/User_Dropfiles/dump/videoframe_3947.png
+?? 9P2000.L/strands/User_Dropfiles/dump/videoframe_5925.png
+?? 9P2000.L/strands/User_Dropfiles/dump/videoframe_5972.png
+?? 9P2000.L/strands/User_Dropfiles/dump/videoframe_7930.png
+?? 9P2000.L/strands/User_Dropfiles/dump/viz_reference_v0.4.1.md
+?? 9P2000.L/strands/User_Dropfiles/dump/xai-application-9p-anduril.ipynb
+?? 9P2000.L/strands/User_Dropfiles/dump/zMZY9.jpg
+?? "9P2000.L/strands/User_Dropfiles/entropy_v2_ffi (1).rs"
+?? 9P2000.L/strands/User_Dropfiles/notebooks/

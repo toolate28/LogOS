@@ -1,0 +1,90 @@
+# =============================================================================
+# Tri-Weavon · GROK / Pulse (ω) · starship
+# Color lock: gold #c8a04a  · fib≈5  · eye of the needle / telemetry dense
+# Distinct from Claude (cyan structured) and Gemini (green wide path).
+# =============================================================================
+# ACTIVATE:
+#   $env:STARSHIP_CONFIG = "$env:LOGOS_ROOT\ops\shell\starship.grok.toml"
+#   $env:CTWFI_STRAND = "grok"
+#   # or: Set-TriWeavonStrand grok
+# =============================================================================
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+command_timeout = 1200
+add_newline = false
+
+# Dense single-line pulse — Grok watches arrivals live
+format = """
+[✦ GROK](bold #c8a04a)\
+[·pulse](dimmed #c8a04a)\
+$env_var\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$rust\
+$line_break\
+$character\
+"""
+
+right_format = """$time$memory_usage"""
+
+[character]
+success_symbol = "[⚡](bold #c8a04a)"
+error_symbol = "[⚡](bold red)"
+vicmd_symbol = "[✦](bold #c8a04a)"
+
+[directory]
+truncation_length = 2
+truncate_to_repo = true
+style = "bold #c8a04a"
+repo_root_style = "underline bold #e8c878"
+read_only = " 🔒"
+
+[git_branch]
+symbol = "⌥ "
+style = "bold #e8c878"
+
+[git_status]
+style = "bold #ffb020"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+conflicted = "⚔"
+untracked = "?"
+modified = "!"
+staged = "+"
+
+[cmd_duration]
+min_time = 500
+format = "[⏱ $duration](bold #c8a04a) "
+show_milliseconds = false
+
+[rust]
+symbol = "⚙ "
+style = "#c8a04a"
+
+[time]
+disabled = false
+format = "[$time](#a08040)"
+time_format = "%H:%M:%S"
+
+[memory_usage]
+disabled = false
+threshold = 75
+style = "bold #c8a04a"
+format = "[ℳ ${ram_pct}]($style) "
+
+[env_var.CTWFI_STRAND]
+variable = "CTWFI_STRAND"
+default = "grok"
+style = "bold #c8a04a"
+format = "[$env_value]($style) "
+
+[env_var.CTWFI_INVARIANT]
+variable = "CTWFI_INVARIANT"
+default = "α+ω=15"
+style = "dimmed #c8a04a"
+format = "[$env_value]($style) "
+# Category C label only

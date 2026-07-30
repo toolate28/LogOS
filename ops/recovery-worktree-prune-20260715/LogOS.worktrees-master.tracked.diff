@@ -1,0 +1,25 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index bdb722ac..64aaf001 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -1,7 +1,5 @@
+ [workspace]
+ members = [
+-    "crates/resonance-invariant",
+-    "crates/styx-vfs-layer",
+     "crates/coherence-mcp",
+ ]
+ resolver = "2"
+diff --git a/crates/coherence-mcp/Cargo.toml b/crates/coherence-mcp/Cargo.toml
+index b6c6c4e1..ce0b6dad 100644
+--- a/crates/coherence-mcp/Cargo.toml
++++ b/crates/coherence-mcp/Cargo.toml
+@@ -9,7 +9,7 @@ repository = "https://github.com/toolate28/coherence-mcp"
+ readme = "README.md"
+ 
+ [dependencies]
+-cutile = { path = "../../cutiles/cutile" }
++cutile = { path = "../../../../LogOS/cutiles/cutile" }
+ 
+ [dev-dependencies]
+ 
