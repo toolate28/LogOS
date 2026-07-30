@@ -1,0 +1,12 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=.\\.\\.lake/packages\\batteries\\.lake\\build\\lib;.\\.\\.lake/packages\\Qq\\.lake\\build\\lib;.\\.\\.lake/packages\\aesop\\.lake\\build\\lib;.\\.\\.lake/packages\\proofwidgets\\.lake\\build\\lib;.\\.\\.lake/packages\\Cli\\.lake\\build\\lib;.\\.\\.lake/packages\\importGraph\\.lake\\build\\lib;.\\.\\.lake/packages\\mathlib\\.lake\\build\\lib;.\\.\\.lake\\build\\lib PATH c:\\Users\\toolated\\.elan\\toolchains\\leanprover--lean4---v4.8.0\\bin\\lean.exe -DautoImplicit=false .\\.\\.\\.\\K22\\Tactics.lean -R .\\.\\.\\. -o .\\.\\.lake\\build\\lib\\K22\\Tactics.olean -i .\\.\\.lake\\build\\lib\\K22\\Tactics.ilean -c .\\.\\.lake\\build\\ir\\K22\\Tactics.c --json",
+   "level": "trace"},
+  {"message":
+   ".\\.\\.\\.\\K22\\Tactics.lean:30:7: unknown identifier 'isBurauDetExponentGoalM'",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\Tactics.lean:30:2: failed to synthesize instance\n  Decidable __do_lift✝",
+   "level": "error"},
+  {"message": "Lean exited with code 1", "level": "error"}],
+ "depHash": "14860896724669038458"}
