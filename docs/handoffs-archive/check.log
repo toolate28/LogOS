@@ -1,0 +1,123 @@
+    Checking tokio v1.50.0
+    Checking native-tls v0.2.18
+    Checking rustls v0.23.37
+    Checking tracing-subscriber v0.3.23
+    Checking rustls v0.21.12
+    Checking rustls v0.22.4
+   Compiling audiopus_sys v0.2.2
+    Checking clap_builder v4.6.0
+warning: function `t_val` is never used
+  --> crates\sphinx\src\lib.rs:15:4
+   |
+15 | fn t_val() -> Complex64 {
+   |    ^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `sphinx` (lib) generated 1 warning
+    Checking near-sdk v5.24.1
+error: 1. ≡ƒö¿∩╕Å  Use `cargo near build` instead of `cargo build` to compile your contract
+       ≡ƒÆí  Install cargo-near from https://github.com/near/cargo-near
+       
+       2. Γ£à Use `cargo check --target wasm32-unknown-unknown` instead of `cargo check` to error-check your contract
+       
+       3. ΓÜÖ∩╕Å Only following cfg-s are considered VALID for `near-sdk`:
+         - `#[cfg(target_family = "wasm")]`
+         - `#[cfg(feature = "non-contract-usage")]` (intended for use of `near-sdk` in non-contract environment)
+         - `#[cfg(feature = "unit-testing")]` (intended for use of `near-sdk` as one of `[dev-dependencies]`)
+         - `#[cfg(feature = "__abi-generate")`
+         - `#[cfg(test)]`
+         - `#[cfg(doctest)]`
+         - `#[cfg(clippy)]`
+       ΓÜá∩╕Å a cfg, which is not one of the above, results in CURRENT compilation error to be emitted.
+       
+   --> C:\Users\Matthew Ruhnau\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\near-sdk-5.24.1\src\lib.rs:138:1
+    |
+138 | / compile_error!(
+139 | |     r#"1. ≡ƒö¿∩╕Å  Use `cargo near build` instead of `cargo build` to compile your contract
+140 | | ≡ƒÆí  Install cargo-near from https://github.com/near/cargo-near
+...   |
+153 | | "#
+154 | | );
+    | |_^
+
+error: failed to run custom build command for `audiopus_sys v0.2.2`
+note: To improve backtraces for build dependencies, set the CARGO_PROFILE_DEV_BUILD_OVERRIDE_DEBUG=true environment variable to enable debug information generation.
+
+Caused by:
+  process didn't exit successfully: `C:\Users\Matthew Ruhnau\reson8\target\debug\build\audiopus_sys-a1683852283bbfe6\build-script-build` (exit code: 101)
+  --- stdout
+  cargo:info=No feature or environment variable found, linking by default.
+  cargo:info=Opus source path used: "\\\\?\\C:\\Users\\Matthew Ruhnau\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\audiopus_sys-0.2.2\\opus".
+  cargo:info=Building Opus via CMake.
+  CMAKE_TOOLCHAIN_FILE_x86_64-pc-windows-msvc = None
+  CMAKE_TOOLCHAIN_FILE_x86_64_pc_windows_msvc = None
+  HOST_CMAKE_TOOLCHAIN_FILE = None
+  CMAKE_TOOLCHAIN_FILE = None
+  CMAKE_GENERATOR_x86_64-pc-windows-msvc = None
+  CMAKE_GENERATOR_x86_64_pc_windows_msvc = None
+  HOST_CMAKE_GENERATOR = None
+  CMAKE_GENERATOR = None
+  CMAKE_PREFIX_PATH_x86_64-pc-windows-msvc = None
+  CMAKE_PREFIX_PATH_x86_64_pc_windows_msvc = None
+  HOST_CMAKE_PREFIX_PATH = None
+  CMAKE_PREFIX_PATH = None
+  CMAKE_x86_64-pc-windows-msvc = None
+  CMAKE_x86_64_pc_windows_msvc = None
+  HOST_CMAKE = None
+  CMAKE = None
+  -- Configuring incomplete, errors occurred!
+
+  --- stderr
+  running: "cmake" "C:\\Users\\Matthew Ruhnau\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\audiopus_sys-0.2.2\\opus" "-B" "C:\\Users\\Matthew Ruhnau\\reson8\\target\\debug\\build\\audiopus_sys-6262f6004d8212ea\\out\\build" "-G" "Visual Studio 17 2022" "-Thost=x64" "-Ax64" "-DCMAKE_INSTALL_PREFIX=C:\\Users\\Matthew Ruhnau\\reson8\\target\\debug\\build\\audiopus_sys-6262f6004d8212ea\\out" "-DCMAKE_C_FLAGS= -nologo -MD -Brepro -W0" "-DCMAKE_C_FLAGS_DEBUG= -nologo -MD -Brepro -W0" "-DCMAKE_CXX_FLAGS= -nologo -MD -Brepro -W0" "-DCMAKE_CXX_FLAGS_DEBUG= -nologo -MD -Brepro -W0" "-DCMAKE_ASM_FLAGS= -nologo -MD -Brepro -W0" "-DCMAKE_ASM_FLAGS_DEBUG= -nologo -MD -Brepro -W0" "-DCMAKE_BUILD_TYPE=Debug"
+  CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+    Compatibility with CMake < 3.5 has been removed from CMake.
+
+    Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+    to tell CMake that the project requires at least <min> but has been updated
+    to work with policies introduced by <max> or earlier.
+
+    Or, add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to try configuring anyway.
+
+
+
+  thread 'main' (22028) panicked at C:\Users\Matthew Ruhnau\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cmake-0.1.57\src\lib.rs:1132:5:
+
+  command did not execute successfully, got: exit code: 1
+
+  build script failed, must exit now
+  stack backtrace:
+     0: std::panicking::panic_handler
+               at /rustc/4a4ef493e3a1488c6e321570238084b38948f6db/library\std\src\panicking.rs:689
+     1: core::panicking::panic_fmt
+               at /rustc/4a4ef493e3a1488c6e321570238084b38948f6db/library\core\src\panicking.rs:80
+     2: cmake::find_cmake_executable::{{closure}}
+     3: cmake::find_cmake_executable::{{closure}}
+     4: cmake::Config::build
+     5: std::rt::lang_start
+     6: __ImageBase
+     7: build_script_build::main
+     8: std::rt::lang_start
+     9: std::rt::lang_start
+    10: std::rt::lang_start
+    11: std::rt::lang_start_internal::closure$0
+               at /rustc/4a4ef493e3a1488c6e321570238084b38948f6db/library\std\src\rt.rs:175
+    12: std::panicking::catch_unwind::do_call
+               at /rustc/4a4ef493e3a1488c6e321570238084b38948f6db/library\std\src\panicking.rs:581
+    13: std::panicking::catch_unwind
+               at /rustc/4a4ef493e3a1488c6e321570238084b38948f6db/library\std\src\panicking.rs:544
+    14: std::panic::catch_unwind
+               at /rustc/4a4ef493e3a1488c6e321570238084b38948f6db/library\std\src\panic.rs:359
+    15: std::rt::lang_start_internal
+               at /rustc/4a4ef493e3a1488c6e321570238084b38948f6db/library\std\src\rt.rs:171
+    16: std::rt::lang_start
+    17: main
+    18: invoke_main
+               at D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    19: __scrt_common_main_seh
+               at D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    20: BaseThreadInitThunk
+    21: RtlUserThreadStart
+  note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `near-sdk` (lib) due to 1 previous error

@@ -1,0 +1,24 @@
+{
+  "atom_tag": "ATOM-VERIFY-20260710-007-refined-lane-d-complete-cert-reliable-true-tomczak",
+  "type": "VERIFY",
+  "description": "Refined Lane D complete: cert reliable=true tomczak=true wave=0.999 hash=18bf6e3a… prev=351d5fea…; generator_rows_for_lane_a.json extracted HG=[[1,0,0,1,1,1],[0,1,0,1,2,3],[0,0,1,1,3,2]] Conway=[[1,0,0,1,2,3],[0,1,0,1,3,2],[0,0,1,1,1,1]]; no .lean edits; LABEL remains Fable.",
+  "timestamp": "2026-07-10T19:30:56.719Z",
+  "files": [
+    "lean/K22/MOG/existence_certificate_mog.json",
+    "lean/K22/MOG/generator_rows_for_lane_a.json",
+    "lean/K22/MOG/lane_d_execution_log.txt",
+    "lean/K22/MOG/steiner_exhaustive_report.json",
+    "lean/K22/MOG/build_status.txt"
+  ],
+  "tags": [
+    "Lane-D",
+    "refined",
+    "generator-extraction",
+    "ATOM-MOG-PREFLIGHT-STEINER-FULL-20260711",
+    "Lane-A-handoff"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783711856,
+  "verified": false
+}

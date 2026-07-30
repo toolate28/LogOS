@@ -1,0 +1,24 @@
+{
+  "atom_tag": "ATOM-VERIFY-20260710-006-lane-d-complete-preflight-pass-existence-certifica",
+  "type": "VERIFY",
+  "description": "LANE-D complete: preflight PASS; existence_certificate_mog.json reliable=true tomczakPreserved=true waveScore=0.999; Steiner EXHAUSTIVE unique=42504 multi=0 none=0; legacy VOID non-gating; prevCertificateHash=351d5feac2309ebc34cd918e1dc3a3e7; handoff doc MOG-PROOF-LANEWAYS-HANDOFF-20260711.md. Lean Steiner sorry remains (Lane A+B2). LABEL authority: Fable.",
+  "timestamp": "2026-07-10T19:19:29.087Z",
+  "files": [
+    "lean/K22/MOG/existence_certificate_mog.json",
+    "lean/K22/MOG/steiner_exhaustive_report.json",
+    "lean/K22/MOG/preflight_mog_e2e.py",
+    "lean/K22/MOG/build_status.txt",
+    "docs/sovereign-handoff/MOG-PROOF-LANEWAYS-HANDOFF-20260711.md"
+  ],
+  "tags": [
+    "sm100",
+    "Lane-D",
+    "ATOM-MOG-PREFLIGHT-STEINER-FULL-20260711",
+    "Steiner",
+    "certificate"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783711169,
+  "verified": false
+}

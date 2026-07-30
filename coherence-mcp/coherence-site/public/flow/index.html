@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri-Weavon TDA Mapper | Void & Persistence Dynamics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #05050A;
+            --glass-bg: rgba(18, 18, 28, 0.45);
+            --glass-border: rgba(110, 168, 254, 0.15);
+            --accent-glow: #6ea8fe;
+            --accent-void: #b084e9;
+            --accent-alert: #fbbf24;
+            --text-main: #f1f1f5;
+            --text-dim: #8b8b9e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #tda-canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: grid;
+            grid-template-columns: 280px 1fr 340px;
+            grid-template-rows: 1fr;
+            padding: 24px;
+            gap: 24px;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            pointer-events: auto;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(110, 168, 254, 0.3);
+            box-shadow: 0 12px 48px rgba(110, 168, 254, 0.1);
+        }
+
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .header-title {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .metric-block {
+            margin-top: 24px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-glow);
+            font-size: 14px;
+        }
+
+        .metric-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .metric-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-glow), var(--accent-void));
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--accent-void);
+            transition: width 0.5s cubic-bezier(0.1, 0.8, 0.3, 1);
+        }
+
+        .gauge-constraint {
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .gauge-equation {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            margin-top: 10px;
+        }
+
+        .alpha-omega {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            margin-top: 10px;
+            color: var(--text-dim);
+        }
+
+        .agent-logs {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .log-container {
+            margin-top: 16px;
+            overflow-y: auto;
+            flex-grow: 1;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .log-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .log-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .log-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .log-entry {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .log-time { color: var(--text-dim); margin-right: 8px; }
+        .log-event { color: var(--text-main); }
+        .log-highlight { color: var(--accent-void); font-weight: bold; }
+        .log-success { color: #4ade80; }
+
+        .control-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: rgba(110, 168, 254, 0.15);
+            border-color: var(--accent-glow);
+            box-shadow: 0 0 15px rgba(110, 168, 254, 0.2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn.active {
+            background: var(--accent-void);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(176, 132, 233, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        #target-reticle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        #target-reticle::before, #target-reticle::after {
+            content: '';
+            position: absolute;
+            background: rgba(110, 168, 254, 0.4);
+        }
+
+        #target-reticle::before { top: 50%; left: -10px; right: -10px; height: 1px; }
+        #target-reticle::after { left: 50%; top: -10px; bottom: -10px; width: 1px; }
+
+        .argonath-seal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--accent-void);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: var(--accent-void);
+            box-shadow: 0 0 20px rgba(176, 132, 233, 0.4);
+            opacity: 0.2;
+            transition: all 0.5s ease;
+        }
+        .argonath-seal.active {
+            opacity: 1;
+            box-shadow: 0 0 40px rgba(176, 132, 233, 0.8), inset 0 0 20px rgba(176, 132, 233, 0.5);
+            animation: pulse-seal 2s infinite;
+        }
+        @keyframes pulse-seal {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="tda-canvas-container"></div>
+<div id="target-reticle"></div>
+<div class="argonath-seal" id="argonath-seal" title="The Argonath Sovereign Protocol">₳</div>
+
+<div class="overlay">
+    <!-- Left Interface: State & Metrics -->
+    <div class="glass-panel left-panel">
+        <div>
+            <div class="header-title">Tri-Weavon TDA</div>
+            <div class="subtitle">Topological Data Analysis / Void Mapping</div>
+
+            <div class="metric-block">
+                <div class="metric-label">
+                    <span>Persistent Homology (H₁)</span>
+                    <span class="metric-value" id="val-h1">2.44</span>
+                </div>
+                <div class="metric-bar-bg">
+                    <div class="metric-bar-fill" style="width: 68%;"></div>
+                </div>
+            </div>
+
+            <div class="metric-block">
+                <div class="metric-label">
+                    <span>Void Negative Space (H₂)</span>
+                    <span class="metric-value" id="val-h2" style="color: var(--accent-void);">1.82</span>
+                </div>
+                <div class="metric-bar-bg">
+                    <div class="metric-bar-fill" style="width: 45%; background: linear-gradient(90deg, var(--accent-void), #ff6b6b); box-shadow: 0 0 10px #ff6b6b;"></div>
+                </div>
+            </div>
+
+            <div class="metric-block">
+                <div class="metric-label">
+                    <span>Minecraft Voxel Entanglement</span>
+                    <span class="metric-value" id="val-mc">99.1%</span>
+                </div>
+                <div class="metric-bar-bg">
+                    <div class="metric-bar-fill" style="width: 99%; background: linear-gradient(90deg, #4ade80, #22d3ee); box-shadow: 0 0 10px #4ade80;"></div>
+                </div>
+            </div>
+            
+            <div class="metric-block">
+                <div class="metric-label">
+                    <span>Betti Number Stability</span>
+                    <span class="metric-value" id="val-betti">Stable</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="gauge-constraint">
+            <div class="subtitle">Critical Universal Invariant</div>
+            <div class="gauge-equation">α + ω = 15</div>
+            <div class="alpha-omega">
+                <span>Struct (α) <span style="color:var(--accent-glow)">7.0</span></span>
+                <span>Semantic (ω) <span style="color:var(--accent-void)">8.0</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Center Space is left open for Canvas Interaction -->
+    <div style="pointer-events: none;"></div>
+
+    <!-- Right Interface: Agent Controls & Logs -->
+    <div class="glass-panel right-panel">
+        <div>
+            <div class="header-title" style="font-size: 18px;">A2UI Agent Interface</div>
+            <div class="subtitle">Live System Telemetry</div>
+        </div>
+
+        <div class="control-btns">
+            <button class="btn active" onclick="setMode(this, 'tda')">TDA Mode</button>
+            <button class="btn" onclick="setMode(this, 'void')">Void Mapping</button>
+        </div>
+        <div class="control-btns">
+            <button class="btn" onclick="triggerResonance()">Induce Resonance</button>
+        </div>
+
+        <div class="agent-logs">
+            <div class="subtitle" style="margin-top: 10px;">Execution Flow (Tri-Weavon)</div>
+            <div class="log-container" id="log-container">
+                <div class="log-entry">
+                    <span class="log-time">[12:44:03]</span>
+                    <span class="log-event">System initialized. A2UI Agent online.</span>
+                </div>
+                <div class="log-entry">
+                    <span class="log-time">[12:44:04]</span>
+                    <span class="log-event">Grok Node connected. <span class="log-highlight">Pulse synchronized.</span></span>
+                </div>
+                <div class="log-entry">
+                    <span class="log-time">[12:44:07]</span>
+                    <span class="log-event">Alpha structurally rigid at 7. Omega resolving.</span>
+                </div>
+                <div class="log-entry">
+                    <span class="log-time">[12:44:12]</span>
+                    <span class="log-event">Gemini Tensor Matrix bridged (75-Dim). <span class="log-success">Isomorphism achieved.</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- THREE.JS TDA Visualization ---
+    const container = document.getElementById('tda-canvas-container');
+    
+    // Scene Setup
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x05050A, 0.0015);
+    
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 150;
+    
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // Dynamic Objects Storage
+    let particles, edges, voids = [];
+    let time = 0;
+    let currentMode = 'tda';
+    
+    // 1. Simplicial Complex (Point Cloud & Edges)
+    const particleCount = 600;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    const originalPositions = new Float32Array(particleCount * 3);
+    
+    const colorClaude = new THREE.Color(0x6ea8fe);
+    const colorGemini = new THREE.Color(0x22d3ee);
+    
+    for (let i = 0; i < particleCount * 3; i+=3) {
+        // Spherical distribution
+        const r = 40 + Math.random() * 80;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos((Math.random() * 2) - 1);
+        
+        positions[i] = r * Math.sin(phi) * Math.cos(theta);
+        positions[i+1] = r * Math.sin(phi) * Math.sin(theta);
+        positions[i+2] = r * Math.cos(phi);
+        
+        originalPositions[i] = positions[i];
+        originalPositions[i+1] = positions[i+1];
+        originalPositions[i+2] = positions[i+2];
+
+        const mixedColor = colorClaude.clone().lerp(colorGemini, Math.random());
+        colors[i] = mixedColor.r;
+        colors[i+1] = mixedColor.g;
+        colors[i+2] = mixedColor.b;
+    }
+    
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    // Create glowing points
+    const shaderMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+            attribute vec3 color;
+            varying vec3 vColor;
+            void main() {
+                vColor = color;
+                vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                gl_PointSize = (150.0 / -mvPosition.z);
+                gl_Position = projectionMatrix * mvPosition;
+            }
+        `,
+        fragmentShader: `
+            varying vec3 vColor;
+            void main() {
+                // Soft glow circle
+                float r = distance(gl_PointCoord, vec2(0.5, 0.5));
+                if (r > 0.5) discard;
+                float intensity = 1.0 - (r * 2.0);
+                gl_FragColor = vec4(vColor * 1.5, intensity * 0.8);
+            }
+        `,
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+    });
+    
+    particles = new THREE.Points(geometry, shaderMaterial);
+    scene.add(particles);
+
+    // Edges (Connecting nearest neighbors to form persistent homology graphs)
+    const edgeMaterial = new THREE.LineBasicMaterial({ 
+        color: 0x6ea8fe, 
+        transparent: true, 
+        opacity: 0.15,
+        blending: THREE.AdditiveBlending 
+    });
+    
+    const edgeGeo = new THREE.BufferGeometry();
+    const edgePos = new Float32Array(particleCount * 6); // Just rough allocation
+    edgeGeo.setAttribute('position', new THREE.BufferAttribute(edgePos, 3));
+    edges = new THREE.LineSegments(edgeGeo, edgeMaterial);
+    scene.add(edges);
+
+    // 2. Voids (Negative Space Dynamics - Grok/Omega)
+    function createVoid(x, y, z, size) {
+        const voidGeo = new THREE.IcosahedronGeometry(size, 2);
+        const voidMat = new THREE.MeshBasicMaterial({
+            color: 0xb084e9,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.05,
+            blending: THREE.AdditiveBlending
+        });
+        const voidMesh = new THREE.Mesh(voidGeo, voidMat);
+        voidMesh.position.set(x, y, z);
+        
+        // Add inner core
+        const coreGeo = new THREE.IcosahedronGeometry(size * 0.3, 1);
+        const coreMat = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.4,
+            blending: THREE.AdditiveBlending
+        });
+        const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+        voidMesh.add(coreMesh);
+        
+        scene.add(voidMesh);
+        voids.push({
+            mesh: voidMesh,
+            core: coreMesh,
+            baseScale: 1,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.01 + Math.random() * 0.02
+        });
+    }
+
+    // Creating initial voids representing H2 Betti numbers
+    for(let i=0; i<5; i++) {
+        createVoid(
+            (Math.random()-0.5)*100, 
+            (Math.random()-0.5)*100, 
+            (Math.random()-0.5)*100, 
+            15 + Math.random()*20
+        );
+    }
+
+    // Interactive Core (Minecraft/Coherence-MCP binding point)
+    const centralCoreGeo = new THREE.OctahedronGeometry(12, 0);
+    const centralCoreMat = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.8
+    });
+    const centralCore = new THREE.Mesh(centralCoreGeo, centralCoreMat);
+    scene.add(centralCore);
+
+    // Animation Loop
+    let targetRotationX = 0;
+    let targetRotationY = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX - window.innerWidth / 2) * 0.001;
+        mouseY = (e.clientY - window.innerHeight / 2) * 0.001;
+    });
+
+    function updateTDA() {
+        const positions = particles.geometry.attributes.position.array;
+        
+        // Simulating fluid topology and breathing simplicial complex
+        for (let i = 0; i < particleCount * 3; i+=3) {
+            const rx = originalPositions[i];
+            const ry = originalPositions[i+1];
+            const rz = originalPositions[i+2];
+
+            const wave = Math.sin(time * 0.5 + rx * 0.05) * 5;
+            
+            if(currentMode === 'void') {
+                // In void mode, points repel from center to emphasize negative space
+                const dist = Math.sqrt(rx*rx + ry*ry + rz*rz);
+                const push = Math.max(0, (50 - dist)) * Math.sin(time);
+                positions[i] = rx + (rx/dist) * push;
+                positions[i+1] = ry + (ry/dist) * push;
+                positions[i+2] = rz + (rz/dist) * push;
+            } else {
+                positions[i] = rx + wave;
+                positions[i+1] = ry + Math.cos(time * 0.3 + ry * 0.05) * 5;
+                positions[i+2] = rz + wave;
+            }
+        }
+        particles.geometry.attributes.position.needsUpdate = true;
+
+        // Animate Voids
+        const voidTargetOpacity = currentMode === 'void' ? 0.3 : 0.02;
+        voids.forEach(v => {
+            v.mesh.rotation.x += v.speed;
+            v.mesh.rotation.y += v.speed * 1.5;
+            
+            const scale = 1 + Math.sin(time * 2 + v.phase) * 0.2;
+            v.mesh.scale.set(scale, scale, scale);
+            
+            // Smoothly transition opacity based on mode
+            v.mesh.material.opacity += (voidTargetOpacity - v.mesh.material.opacity) * 0.05;
+        });
+
+        // Rotate core based on alpha+omega invariant representation
+        centralCore.rotation.y -= 0.02;
+        centralCore.rotation.x -= 0.01;
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        time += 0.016;
+
+        targetRotationX += (mouseY - targetRotationX) * 0.05;
+        targetRotationY += (mouseX - targetRotationY) * 0.05;
+
+        scene.rotation.x = targetRotationX;
+        scene.rotation.y = targetRotationY;
+
+        updateTDA();
+
+        // Connect to gear_core.py websocket (zero-trust tunnel)
+        let alpha = 7.0;
+        let omega = 8.0;
+        
+        function connectWebSocket() {
+            const ws = new WebSocket('ws://127.0.0.1:8089');
+            
+            ws.onopen = () => {
+                addLog('Argonath Zero-Trust WebSocket connected. Streaming ATOM-AUTH telemetry.', true);
+                document.getElementById('argonath-seal').classList.add('active');
+            };
+            
+            ws.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    
+                    // Update core telemetry
+                    alpha = data.alpha || alpha;
+                    omega = data.omega || omega;
+                    
+                    document.getElementById('val-h1').innerText = alpha.toFixed(2);
+                    document.getElementById('val-h2').innerText = omega.toFixed(2);
+                    
+                    const invariant = (alpha + omega).toFixed(1);
+                    if (Math.abs(data.alpha + data.omega - 15.0) < 0.1) {
+                        document.getElementById('val-mc').innerText = '100.0%';
+                        document.getElementById('val-betti').innerText = `Invariant locked at ${invariant}`;
+                        document.getElementById('val-betti').style.color = 'var(--accent-glow)';
+                    } else {
+                        document.getElementById('val-mc').innerText = '90.2%';
+                        document.getElementById('val-betti').innerText = `Drift detected: ${invariant}`;
+                        document.getElementById('val-betti').style.color = 'var(--accent-alert)';
+                        document.getElementById('argonath-seal').classList.remove('active');
+                    }
+                    
+                    if (data.phason_flip) {
+                        addLog('Phason Flip detected! Re-rendering SDF topologies.', true);
+                        triggerResonance();
+                    }
+                } catch (e) {
+                    console.error("Parse error", e);
+                }
+            };
+            
+            ws.onclose = () => {
+                addLog('WebSocket disconnected. Attempting to reconnect...', false);
+                document.getElementById('argonath-seal').classList.remove('active');
+                setTimeout(connectWebSocket, 5000);
+            };
+        }
+        
+        // Start WebSockets
+        connectWebSocket();
+
+        // Fluctuate UI numbers slightly if WS is dead, otherwise rely on WS
+        if(Math.random() > 0.95 && !document.getElementById('argonath-seal').classList.contains('active')) {
+            document.getElementById('val-h1').innerText = (2.4 + Math.random()*0.1).toFixed(2);
+            document.getElementById('val-h2').innerText = (1.8 + Math.random()*0.1).toFixed(2);
+        }
+
+        renderer.render(scene, camera);
+    }
+
+    // Window Resize Handling
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Start
+    animate();
+
+    // --- UI Controls ---
+    let logCounter = 12;
+    function addLog(message, isHighlight) {
+        const cont = document.getElementById('log-container');
+        const now = new Date();
+        const timeStr = `[${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}]`;
+        
+        const div = document.createElement('div');
+        div.className = 'log-entry';
+        div.innerHTML = `<span class="log-time">${timeStr}</span><span class="log-event ${isHighlight ? 'log-highlight' : ''}">${message}</span>`;
+        
+        cont.appendChild(div);
+        cont.scrollTop = cont.scrollHeight;
+    }
+
+    window.setMode = function(btnElement, mode) {
+        document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+        btnElement.classList.add('active');
+        currentMode = mode;
+        
+        const modeName = mode === 'void' ? 'Void Topology mapping initialized.' : 'Simplicial Complex active.';
+        addLog(`Transitioned to ${modeName}`, true);
+        
+        if (mode === 'void') {
+            document.getElementById('val-h2').style.color = '#fff';
+            document.getElementById('val-h2').style.textShadow = '0 0 10px #b084e9';
+        } else {
+            document.getElementById('val-h2').style.color = 'var(--accent-void)';
+            document.getElementById('val-h2').style.textShadow = 'none';
+        }
+    };
+
+    window.triggerResonance = function() {
+        addLog('Inducing Minecraft voxel resonance cascade...', false);
+        document.getElementById('val-mc').innerText = '100.0%';
+        document.getElementById('val-betti').innerText = 'Cascading';
+        document.getElementById('val-betti').style.color = 'var(--accent-alert)';
+        
+        // Visual effect
+        const origFog = scene.fog.density;
+        scene.fog.density = 0.005;
+        centralCore.material.opacity = 1;
+        centralCore.material.color.setHex(0xb084e9);
+        
+        setTimeout(() => {
+            scene.fog.density = origFog;
+            centralCore.material.opacity = 0.8;
+            centralCore.material.color.setHex(0xffffff);
+            addLog('α + ω Constraint mathematically locked. Stable.', true);
+            document.getElementById('val-mc').innerText = '99.1%';
+            document.getElementById('val-betti').innerText = 'Stable';
+            document.getElementById('val-betti').style.color = 'var(--text-main)';
+        }, 1500);
+    };
+
+</script>
+</body>
+</html>

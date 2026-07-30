@@ -1,0 +1,60 @@
+================================================================================
+NOTEBOOKLM CRITICAL SOURCE (snapshot)
+================================================================================
+File role       : AdHealth MCP gate map
+Snapshot date   : 2026-07-25
+Source path     : F:\Users\Matthew Ruhnau\LogOS\adhealth-meaningseed\docs\COHERENCE_MCP.md
+NotebookLM note : Upload with NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260725.txt
+                  as hub. This is a point-in-time copy; prefer tree if conflict.
+================================================================================
+# coherence-mcp Integration — AdHealth
+
+AdHealth gates every portfolio report through the same invariants used across LogOS and the TriWeavon manifold.
+
+**Live portal:** [https://coherence.toolated.online/portal/](https://coherence.toolated.online/portal/)
+
+**MCP surface:** 64 tools (v0.3.3) — 8 bedrock gates + WAVE + vortex. See [coherence-mcp/docs/MCP_TOOL_CATALOG.md](https://github.com/toolate28/coherence-mcp/blob/main/docs/MCP_TOOL_CATALOG.md).
+
+## Pre-commit gates
+
+```bash
+npx @toolated/coherence-mcp invariant_check --alpha 7 --omega 8
+npx @toolated/coherence-mcp wave_coherence_check --threshold 85
+npx @toolated/coherence-mcp edge_endpoint_lookup --target coherence_site --probe true
+```
+
+## Tool catalog (AdHealth workflow)
+
+| Tool                          | Tier     | When to use                                                   |
+|-------------------------------|----------|---------------------------------------------------------------|
+| `invariant_check`             | Bedrock  | Before exporting creative recommendations (α + ω = 15)        |
+| `wave_coherence_check`        | WAVE     | After changing signals.py or portal copy                      |
+| `wave_validate`               | WAVE     | Validate WAVE artifact in handoff packets                     |
+| `vortex_verify`               | Strand   | Cross-strand translation of campaign briefs                   |
+| `vortex_translate`            | Strand   | Claude ↔ Grok ↔ Gemini creative summaries                     |
+| `trigger_correction_burst`    | Bedrock  | SRAC burst when WAVE < 0.85                                   |
+| `edge_endpoint_lookup`        | Bedrock  | Resolve `coherence.toolated.online`, Styx ws://127.0.0.1:8088 |
+| `rust_workspace_status`       | Bedrock  | cutile GPU path health before `--gpu`                         |
+| `atom_track`                  | Context  | Provenance when pausing/scaling creatives                     |
+
+## Edge endpoints (`edge_endpoint_lookup`)
+ 
+| Target            | Surface                                      |
+|-------------------|----------------------------------------------|
+| `coherence_site`  | `https://coherence.toolated.online/portal/`  |
+| `triweavon`       | `ws://127.0.0.1:8088` Styx manifold feed     |
+| `wrangler`        | Cloudflare Workers/Pages bindings            |
+| `embedding`       | Chrome extension `config.workerUrl`          |
+
+## Rezk / Yoneda witnesses (code)
+
+Every `adhealth analyze` run emits:
+
+- **YonedaWitness** — probe suite over return probability, participation ratio, fatigue counts
+- **RezkWitness** — completed object with invariant + WAVE gate + completion hash
+
+See `src/adhealth/core/witness.py`.
+
+## Reference diagram
+
+![coherence-mcp tools](assets/coherence-mcp-tools.jpg)

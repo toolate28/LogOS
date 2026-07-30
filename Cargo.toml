@@ -1,0 +1,68 @@
+[workspace]
+members = [
+    # Foundation
+    "crates/core",
+    "crates/wave",
+    "crates/hash",
+    "crates/resonance-invariant",
+
+    # Infrastructure
+    "crates/styx",
+    "crates/styx-vfs-layer",
+    "crates/vortex-bridge",
+    "crates/sysctl",
+    "crates/reson8-wasm",
+    "crates/migration_helpers",
+    "crates/forge-core",
+
+    # Intelligence
+    "crates/reson8-topology",
+    "crates/sphinx",
+    "crates/bohmian",
+    "crates/spiral-safe",
+
+    # cQ-kitty-rips pipeline (NS singularity hunt)
+    "crates/cqk-ga",
+    "crates/cqk-microlocal",
+    "crates/cqk-entropy",
+    "crates/cqk-anyon",
+    "crates/cqk-wdbi",
+    "crates/cqk-kitty-rips-verify",
+
+    # Operations
+    "crates/activator",
+    "crates/api_triggers",
+    "crates/artifact_pipeline",
+    "crates/marketplace",
+    "crates/zero_latency_ledgers",
+    "crates/tui",
+    "crates/barcode-tui",
+
+    # Execution layer (Layer 2)
+    "cutiles/cutile",
+    # "crates/coherence-mcp",  # stub only (no Cargo.toml) — use root coherence-mcp / npm package
+    "crates/triweavon-cudarc",
+
+    # Apps
+    "apps/mc-bridge",
+    "apps/nexus-pulse-bot",
+    "apps/triweave",
+]
+resolver = "2"
+
+# NEAR smart contracts live in their own workspace because `near-sdk`
+# intentionally refuses host-target `cargo build` — it only compiles under
+# `cargo near build` with `--target wasm32-unknown-unknown`. Keeping them out
+# of the root workspace avoids tripping that guardrail every time we check
+# unrelated crates. Build them via `cargo near build -p reson8-conservation-verifier`
+# from inside `near/conservation-verifier/`.
+exclude = [
+    "near/conservation-verifier",
+    "crates/coherence-mcp",  # empty scaffold; keep out of workspace until packaged
+]
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"

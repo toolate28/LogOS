@@ -1,0 +1,24 @@
+{
+  "atom_tag": "ATOM-VERIFY-20260709-003-mog-first-principles-e2e-preflight-generative-pyth",
+  "type": "VERIFY",
+  "description": "MOG first-principles E2E preflight: generative Python mirror of Lean GF4/hexacode/isMOGOctad before discharging SlowStep sorries; ExistenceCertificate JSON emission",
+  "timestamp": "2026-07-09T12:16:43.767Z",
+  "files": [
+    "lean/K22/MiracleOctadGenerator.lean",
+    "lean/K22/MOG/preflight_mog_e2e.py",
+    "lean/K22/Existence.lean",
+    "lean/K22/MOG/OctadGenerators.lean"
+  ],
+  "tags": [
+    "MOG",
+    "hexacode",
+    "E2E",
+    "ExistenceCertificate",
+    "first-principles",
+    "SlowStep"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783599403,
+  "verified": false
+}

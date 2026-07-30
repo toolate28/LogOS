@@ -1,0 +1,12 @@
+# Coherence site — Cloudflare Pages (static public/ + optional lattice-react)
+# Windows: logos-wrangler pages-dev | logos-wrangler pages-deploy -Force
+# HITL: never embed API tokens; use `wrangler login` / CLOUDFLARE_API_TOKEN in env.
+
+name = "coherence-site"
+compatibility_date = "2024-11-01"
+pages_build_output_dir = "public"
+
+[vars]
+PRODUCT = "Coherence"
+INVARIANT = "alpha+omega=15"
+SITE_BASE = "https://coherence.toolated.online"

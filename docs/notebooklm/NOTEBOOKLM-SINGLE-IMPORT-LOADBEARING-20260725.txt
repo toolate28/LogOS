@@ -1,0 +1,469 @@
+================================================================================
+NOTEBOOKLM SINGLE IMPORT — Load-Bearing Cascade Pack
+LogOS · coherence-mcp · AdHealth
+================================================================================
+Document id     : NLM-LOADBEARING-TRIPLE-2026-07-25
+Audience        : NotebookLM (single-file upload) + Gemini research + Claude routing
+Conservation    : α + ω = 15  (Category C label — not a CPU/IO magic number)
+Strand seats    : Claude 8 · Grok 5 · Gemini 3  (sum 16, independent of 15)
+Session resume  : LogOS Grok session 019f8893… (2026-07-22→25) ·
+                  STRAND-INTEGRATION-20260724 · SAIF human queue 20260723
+Mind-map assist : coherence-mcp/docs/assets/NotebookLM_Mind_Map__2_.png
+                  (Tri-Weavon: Core Theory · Math Foundations · Framework ·
+                   Hardware · Physics/Apps · Collaborative Intelligence)
+Cascade SoT     : docs/sovereign-handoff/LAYER-CASCADE-MAP.md
+Rule            : Load-bearing first. Cascading solutions. Name gaps (TEMET NOSCE).
+                  Category A observation · B build claim · C convention · D proposal.
+================================================================================
+
+
+0. HOW TO USE THIS FILE IN NOTEBOOKLM
+-------------------------------------
+1. Create or open one notebook: "Reson8 Load-Bearing Triple (2026-07-25)".
+2. Upload THIS file as the primary source (optionally add the six unitary
+   changelogs from docs/notebooklm/ as secondary sources).
+3. Generate Mind Map — expect branches matching §1 topology below.
+4. Run the three "Web research prompts" under each product (Deep Research /
+   web grounding) to surface what we NEED NOW and DO NOT HAVE.
+5. Paste §6 Gemini tasks into Gemini (Deep Research / coadjoint orbit track).
+6. Paste §7 Claude tasks into Claude (routing / prioritisation / organisation).
+
+Suggested custom instructions for the notebook:
+  "Prefer load-bearing cascade order: formal → cutile R-matrix → MCP gates →
+   product surfaces. Never promote Category D proposals to A facts. Flag
+   missing live APIs, open sorries, human-only SAIF items, and version drift
+   between stdio tool counts and docs. Output: HAVE / NEED / CASCADE-BLOCKER."
+
+
+1. MIND-MAP TOPOLOGY (from NotebookLM_Mind_Map__2_ + live tree)
+--------------------------------------------------------------
+Root: Tri-Weavon Framework & Unified Manifold
+
+  Core Theory & Philosophy
+    · Alpha+Omega=15 Conservation Law → α structural · ω semantic · Viviani peak
+    · Information as ontological substrate
+    · Consciousness as topological handoff
+    · Self-constitution (Husserl flow)
+
+  Mathematical Foundations
+    · K22 cellular sheaf (22-vertex / 41-edge · stalks R8,R7,R15 · sheaf cohom)
+    · QDI (exact covariant functor · fixed-point · structure-preserving maps)
+    · TDA (Betti β0–β2 · persistent homology · Hopf fibration / Berry phase)
+    · Formal verification (Lean · Cubical Agda · Serre-scar cascade)
+    · Orbits (M24 / MOG / Conway) — coadjoint / symplectic annex still thin
+
+  Framework & Infrastructure
+    · Three helical strands + Multi-AI orchestration (Claude / Grok / Gemini)
+    · Unified infra: LogOS · 9P/Styx · Perfetto correlation layer
+    · Hardware: Blackwell sm_100 · cutile · CUDA · Rust · WSL2 · WASM
+
+  Physics & Engineering Applications
+    · Navier–Stokes / microlocal · Quantum Redstone · Anyon tensor nets
+    · Fusion-category mappings · AdHealth CTQW fatigue · media portfolio graph
+
+  Collaborative Intelligence
+    · Handoff protocols · trust–energy–work · Orchard / SpiralSafe · ATOM trail
+
+LOAD-BEARING CASCADE (data / proof / ship order — do not invert):
+
+  L1 empirical (notebooks/Qiskit)
+    → L2 cutile fundamental_r_matrix (canonical)
+      → L3/L5 CUDA/WGSL
+        → L4/L6 Lean/Agda conservation + K22
+          → L11 C ABI / L12 verification receipts
+            → L22 coherence-mcp stdio gates
+              → product surfaces (AdHealth portal, stitch, triweave, SAIF deploy)
+
+Human ship gates still open (SAIF queue, 2026-07-23/24):
+  A1 GCP/Cloud Run · A2 git surface reconcile · B1 Claude Code cold-start cert
+  Formal: 9 sorry MonomialWitness · cubical pin · OB2 strain/vorticity
+
+
+2. PRODUCT A — LogOS (Cognitive Lattice OS)
+-------------------------------------------
+
+2.1 ABOUT
+  Formally verified, homotopically coherent distributed OS that unifies
+  multiple AI strands through topological invariants, conservation
+  enforcement, and SPHINX-gated authentication.
+  Root: F:\Users\Matthew Ruhnau\LogOS  ·  github.com/toolate28/LogOS
+  Live hub: https://coherence.toolated.online/encyclopedia/
+
+2.2 FEATURES (what we HAVE)
+  · Strand governance: Claude(α seat 8) · Grok(ω seat 5) · Gemini(seat 3)
+  · Styx Bridge + 9P2000.L VFS (/reson8/, /.triweavon/coherence|proof/)
+  · SPHINX gate (Jones polynomial @ 5th root of unity)
+  · Conservation verifier path (NEAR + Lean) — α+ω=15 as Category C tag
+  · R-matrix cascade L1–L12 materialized (LAYER-CASCADE-MAP)
+  · cutile ExistenceCertificate · triweavon-cudarc manifold types
+  · Lean K22 HexacodeGolay + MOG stack; Agda TriWeavon HITs / Mehler / SerreScarr
+  · HUP instances M1 Mirage · M2 Redox · M3 RVM · dimensional collapse 768→2
+  · Apps: triweave · mc-bridge · nexus-pulse-bot
+  · Ops: marks spine (ops/marks/) · Claude Code cert path · SAIF human queue
+  · AdHealth subtree + coherence-mcp companion site under monorepo
+
+2.3 MATH (load-bearing objects)
+  · Conservation peak: α + ω = 15 (software constant CONSERVATION_SUM := 15)
+  · Fundamental R-matrix (all executable layers):
+        [ q    0     0    0  ]
+        [ 0   1/q  1-q²   0  ]
+        [ 0    0     q    0  ]
+        [ 0    0     0   1/q ]
+  · Hopf principal U(1)-bundle S³ → S²; fibers as phase orbits
+  · K22 sheaf / Golay / M24 orbit reduction / Serre spectral cascade E2→E∞
+  · WAVE coherence operational targets (≥0.85 handoff; ≥0.98 ops target —
+    operational, not constitutional block)
+  · CTQW / TDA join points for application layer (AdHealth, void-mapper)
+
+2.4 WHAT WE NEED NOW AND DO NOT HAVE (honest gap board)
+  · Origin/main reconcile before Claude Code countersign (D6 head_sha bind)
+  · Live mark detectors D1–D5 on origin (Category B until observed)
+  · ML-1: R-matrix params not injected into build_conservation_circuit angles
+  · 9 sorry remaining on MonomialWitness Steiner transport lane
+  · Cubical Agda pin decision (nixpkgs vs frozen formal packet)
+  · GCP deploy waist (human IAM) · optional 9P kernel mount sudo
+  · Coadjoint-orbit → product story not yet a first-class design doc
+  · positive_introspection.ipynb scaffold only (toml present; notebook TBD)
+
+2.5 THREE WEB RESEARCH PROMPTS (NotebookLM / Gemini web — LogOS gaps)
+  R-L1  "Survey production systems that expose formally verified conservation
+         or invariant checks as a runtime API (not just offline proof). Focus
+         on sheaf/TDA/quantum-inspired gates for multi-agent OS. Extract:
+         open-source projects, commercial APIs, failure modes when invariants
+         become magic numbers, and interface patterns we lack vs LogOS
+         SPHINX + WAVE + α+ω labels."
+
+  R-L2  "Find current (2024–2026) practice for multi-agent handoff certificates:
+         signed session digests, countersign workflows, dual-channel spines
+         (git trailers + local cert files). Compare to LogOS mark ledger
+         (Mark-Id, Mark-Cert-Head). List missing pieces for enterprise
+         auditability and GitHub-native enforcement."
+
+  R-L3  "Map real-world operators of 9P / FUSE / VFS bridges for AI tool
+         state (not pure research). What mounts, auth models, and latency
+         budgets exist? Identify gaps vs Styx 9P2000.L at 5640/ws 8088 for
+         shipping LogOS Bookshelf as a default agent surface."
+
+
+3. PRODUCT B — coherence-mcp (SAIF Tier-0 MCP bed rock)
+-------------------------------------------------------
+
+3.1 ABOUT
+  MCP server package @toolated/coherence-mcp — WAVE gates, ATOM trail,
+  Fibonacci weighting, vortex translation, SAIF pipeline (KENL→AWI→ATOM→
+  SAIF→Safe Spiral), industry connectors. Doctrine: emit local · verify
+  anywhere. Companion to LogOS cutile/formal stack (not a replacement).
+
+  Primary trees:
+    · F:\Users\Matthew Ruhnau\coherence-mcp-v042  (v0.4.2 release line)
+    · LogOS/coherence-mcp (site + map)
+    · Live stdio tool count historically drifted (12 live vs 58–64 catalog) —
+      ALWAYS verify runtime list_tools; do not trust docs alone.
+
+3.2 FEATURES (what we HAVE at v0.4.2 intent)
+  · WAVE / gate tools: wave_* · invariant_check · bump_validate
+  · ATOM / handoff: atom_track · handoff_packet_validate
+  · Fibonacci / vortex / strand bridges (grok_*, gemini_*, openweight_*)
+  · SAIF ops: ops_health · ops_status · ops_deploy (API-backed when tokens set)
+  · Bedrock LogOS helpers: manifest_read · dropout_scan · rust_workspace_status
+  · Connectors: github · jira · slack · postgres (env-gated)
+  · Edge lookup · Minecraft · cleanroom scour
+  · Capability map docs/CAPABILITY-MAP-v0.4.2.md · mcp-101
+
+3.3 MATH / INVARIANTS
+  · Same α + ω = 15 gate surface as LogOS (Category C label at gate boundary)
+  · WAVE thresholds: 60 dev · 80 production · 85 handoff · 99 safety-critical
+  · Fibonacci seat weighting for strand priority (align seats 8/5/3 when used)
+  · QDI / map_isomorphism for platform capability graphs
+  · Mehler plateau / SRAC — strong in Rust/CUDA companion, weak or absent in
+    some JS stdio builds (see LOGOS-COHERENCE-MCP-MAP)
+
+3.4 WHAT WE NEED NOW AND DO NOT HAVE
+  · Single source of truth for LIVE tool count (12 vs 58 vs 64 drift is a
+    load-bearing documentation failure)
+  · Tests rewritten for current src/lib architecture (historic P0 gap)
+  · ATOM-AUTH / rate limit / audit trail restoration path for production
+  · Mehler plateau monitor + SRAC tools in the same process agents actually run
+  · Stable env contract: LOGOS_ROOT · ATOM_TRAIL_ROOT · tokens
+  · Deploy waist still human-blocked (GCP) for cloud verification story
+
+3.5 THREE WEB RESEARCH PROMPTS (coherence-mcp gaps)
+  R-C1  "Compare MCP server security patterns in 2025–2026: authn/z for
+         tool invocation, audit logging, rate limits, secret isolation.
+         Which open servers implement production-grade patterns? Map gaps
+         vs coherence-mcp after ATOM-AUTH removal. Prioritize least-privilege
+         designs compatible with Claude/Cursor/Grok clients."
+
+  R-C2  "Survey multi-model orchestration MCPs and 'coherence' or 'guardrail'
+         servers that score content quality, entropy, or policy before
+         tool side-effects. Extract scoring APIs, threshold UX, and how they
+         handle false positives — feed design of WAVE ≥85 handoff gates."
+
+  R-C3  "Research production use of continuous-time quantum walks, persistent
+         homology, or Jones/SPHINX-like polynomial gates in agent toolchains.
+         What is hype vs shipping? What minimal classical fallback keeps
+         MCP useful without GPU? Inform coherence-mcp tool deprecation /
+         promotion decisions."
+
+
+4. PRODUCT C — AdHealth (Creative Fatigue Intelligence)
+-------------------------------------------------------
+
+4.1 ABOUT
+  It's Today Media · $5k Build Challenge entry. Models ad creative portfolios
+  as graphs; runs CTQW dynamics for early fatigue and concentration signals;
+  gates outputs through coherence-mcp invariants; emits Rezk/Yoneda witnesses.
+  Live demo: https://coherence.toolated.online/portal/
+  Tree: LogOS/adhealth-meaningseed/
+
+4.2 FEATURES (what we HAVE)
+  · CSV → campaign graph → CTQW (scipy expm) → portfolio signals
+  · Signals: return probability · participation ratio · concentration · flags
+  · CLI: adhealth analyze --demo · JSON export · portal static dashboard
+  · coherence gates + Rezk/Yoneda witness packaging
+  · Cloudflare Pages deploy path (wrangler) · sample campaign data · tests
+
+4.3 MATH
+  · Continuous-time quantum walk on undirected creative graph
+  · Return probability as structural fatigue proxy (not lagging CPA alone)
+  · Participation ratio / localization of attention mass
+  · Witness completion: probes → completed object + WAVE + invariant hash
+  · Future GPU path via LogOS cutile bridge (not required for demo)
+
+4.4 WHAT WE NEED NOW AND DO NOT HAVE
+  · Live Meta/Google/Taboola/TikTok reporting connectors (still "what next")
+  · Automated weekly brief (Slack/email) with pause/scale actions
+  · Landing-page subgraph join · agentic refresh briefs under MCP gates
+  · Production auth for portal · multi-tenant campaign isolation
+  · Calibration study: CTQW flags vs real CPA degradation (ground truth)
+  · Explicit coadjoint / symplectic framing of portfolio "orbits" of spend
+    attention (research → product language still missing)
+
+4.5 THREE WEB RESEARCH PROMPTS (AdHealth gaps)
+  R-A1  "Creative fatigue detection in paid media 2024–2026: which signals
+         (frequency, CTR decay, uniqueness, graph diversity) actually predict
+         CPA lift when acted on? Benchmark academic and vendor methods against
+         CTQW return-probability framing. List datasets and open benchmarks
+         AdHealth lacks."
+
+  R-A2  "Marketing API connector patterns (Meta Marketing API, Google Ads,
+         TikTok, Taboola): rate limits, attribution windows, creative-level
+         metrics availability, MCP or agent wrappers already shipping.
+         Produce a minimal connector matrix AdHealth should implement first."
+
+  R-A3  "Portfolio optimization and concentration risk for multi-platform
+         creative mix: entropy / Herfindahl / spectral methods used by
+         media traders. How do they productize recommendations? Extract UX
+         patterns for 'pause / diversify / test variant' briefs that buyers
+         trust — feed AdHealth portal and agent workflow design."
+
+
+5. LOAD-BEARING ITEMS → CASCADING SOLUTIONS
+-------------------------------------------
+Order is intentional. Solve higher layers only after lower seals or
+explicit amber acceptance.
+
+  LB-1  Epistemic hygiene (Category A/B/C/D ⊥ verification)
+        Solution cascade: CLAUDE.md + marks spine + countersign cert path
+        Blocks: false green on 9 sorry / fake α+ω gates
+
+  LB-2  Canonical R-matrix + conservation receipts (L2→L12)
+        Solution cascade: cutile tests → verification_orchestrator → cert JSON
+        Blocks: MCP gauge_verify without layer hash map
+
+  LB-3  Live MCP tool truth (stdio = catalog)
+        Solution cascade: list_tools snapshot → CAPABILITY-MAP pin → CI assert
+        Blocks: AdHealth docs calling tools that do not exist in process
+
+  LB-4  VERIFY strand (Claude Code cert with head_sha)
+        Solution cascade: reconcile origin → init survey → Emit cert →
+        countersign same Mark-Id → detectors on origin
+        Blocks: cloud deploy, "production ready" language
+
+  LB-5  Human deploy waist (GCP / push / optional 9P mount)
+        Solution cascade: SAIF A1–A3 operator packet → agent deploy smokes
+        Blocks: SAIF cloud story, receipt bucket append-only
+
+  LB-6  Formal shadow map (sorry / cubical pin / OB2)
+        Solution cascade: name gaps in mark ledger · close maskWeightN ·
+        MonomialWitness transport · cubical decision
+        Blocks: "flawless formal" claims (Category A)
+
+  LB-7  Product application orbit (coadjoint research → AdHealth/LogOS apps)
+        Solution cascade: Gemini §6 research → map to cascade L22 tools →
+        Claude §7 prioritisation → one shippable app vertical
+        Blocks: theory without buyer / operator pull
+
+
+6. GEMINI — TWO RESEARCH TASKS (coadjoint orbits → real-world need)
+-------------------------------------------------------------------
+Use Gemini Deep Research / large-context. Goal: find REAL-WORLD NEED that
+our applications (LogOS lattice, MCP gates, AdHealth CTQW) should be built
+INTO — not more pure math for its own sake.
+
+--- GEMINI TASK G1 — Coadjoint orbits as operational state spaces --------
+Title: Coadjoint orbits for multi-agent and media portfolio control
+
+Prompt:
+You are researching coadjoint orbits (Kirillov–Kostant–Souriau) as a design
+language for real software products.
+
+Context we already have (do not re-derive from scratch):
+- LogOS: Hopf U(1) fibers, M24/MOG orbits, K22 sheaf, R-matrix cascade,
+  WAVE gates, multi-strand AI OS.
+- AdHealth: creative graph + continuous-time quantum walk fatigue signals.
+- coherence-mcp: invariant_check / WAVE thresholds as tool gates.
+
+Research questions:
+1. Where do coadjoint orbits appear in engineering practice (rigid body /
+   spacecraft attitude, quantum control, plasma, finance, RL, network
+   congestion, multi-agent game theory)? Prefer 2020–2026 applications and
+   open implementations.
+2. What is the minimal mathematical object a product team can ship without
+   full symplectic geometry literacy? (moment maps, Casimirs, orbit
+   stratification as "modes", reduced dynamics as "policy".)
+3. Map three product slots for Reson8:
+   (a) AdHealth — creatives as points on an orbit of "attention Hamiltonian";
+   (b) LogOS strand handoff — reduced coadjoint dynamics as coherence modes;
+   (c) MCP gate — Casimir-like invariants as α+ω / WAVE without numerology.
+4. For each slot: buyer/user, pain, data available today, MVP algorithm
+   (CPU-only OK), evaluation metric, and what we MUST NOT claim yet.
+5. Deliver: HAVE (literature + code) · NEED (datasets, APIs, UX) · CASCADE
+   hook into LAYER-CASCADE-MAP L2/L22 · 5 open web sources with URLs.
+
+Output format: executive brief ≤1500 words + table + "build next week" list.
+
+--- GEMINI TASK G2 — Market pull for orbit-aware applications ------------
+Title: Who pays for orbit / mode / fatigue structure?
+
+Prompt:
+Find real market demand for tools that detect structural "modes", "orbits",
+or early fatigue in (1) multi-agent AI ops, (2) paid media creative systems,
+(3) formal/runtime certificate pipelines.
+
+Requirements:
+1. Interview-style synthesis from RFPs, job posts, vendor whitepapers,
+   papers with industrial co-authors, and open datasets (2023–2026).
+2. Competitive landscape: what AdHealth and LogOS would displace or plug
+   into (not replace wholesale).
+3. Regulatory / audit pull: where Rezk-style witnesses or signed handoffs
+   matter (finance ads, defense AUKUS-adjacent narrative only as optional
+   annex — do not invent classified claims).
+4. Rank 5 application wedges by: time-to-demo (weeks), data access,
+   cascade leverage (reuses cutile/MCP), and revenue path.
+5. Explicit "do not build" list: ideas that look coadjoint-cool but fail
+   cascade or buyer tests.
+
+Deliverable: ranked wedge table + 2-page narrative + sources.
+
+
+7. CLAUDE — TWO TASK ROUTING / PRIORITISATION TASKS
+---------------------------------------------------
+Use Claude for structure, routing, and organisation — not for inventing
+new formal mathematics. Align with seats: Claude = structure & reasoning.
+
+--- CLAUDE TASK C1 — Cascade priority board (single source) --------------
+Title: Load-bearing priority board for LogOS + MCP + AdHealth
+
+Prompt:
+You are the VERIFY/structure strand for Reson8. Using only the inventory
+in NLM-LOADBEARING-TRIPLE-2026-07-25 and SAIF-OUTSTANDING-HUMAN-ACTIONS,
+produce a prioritised work board.
+
+Rules:
+1. Separate HUMAN-ONLY ⚑ vs AGENT-CAN-FINISH ⚒ after human unlock.
+2. Every item: Category A/B/C/D · verification build-asserted|countersigned|
+   none · cascade layer L# · blocks which product surface.
+3. Forbid promoting D→A or using α+ω=15 as a resource limit.
+4. Produce three views:
+   (a) This week (max 7 items) — unblock cert + tool-truth + AdHealth next
+   (b) This month — formal sorries + connectors + deploy waist
+   (c) Parking lot — research without cascade hook
+5. Output as markdown tables + a dependency DAG (mermaid) from LB-1…LB-7.
+6. End with "first message to operator" (≤8 lines) stating exact next click.
+
+--- CLAUDE TASK C2 — Task routing matrix across strands ------------------
+Title: Route work to Claude Code · Grok Build · Gemini · Operator
+
+Prompt:
+Design a routing/organisation system for the open queue:
+
+Inputs:
+- SAIF A1–A3, B1–B3, C1–C3
+- Mark countersign path (STRAND-INTEGRATION-20260724)
+- NotebookLM research outputs from R-L*, R-C*, R-A* and Gemini G1–G2
+- AdHealth "what next" list
+- Formal 9-sorry map
+
+Produce:
+1. Routing matrix: Task → Owner strand → Tooling (Claude Code / Grok Build /
+   Gemini / NotebookLM / Human) → Entry artifact → Exit artifact → Done when.
+2. Prioritisation score: (cascade_depth × unblock_count × revenue_or_ship)
+   with transparent weights; no numerology.
+3. Organisation: folder/file names for ops/handoffs/ queue packets so agents
+   do not re-ingest full User_Dropfiles.
+4. Escalation: when WAVE-style doc drift or origin divergence forces STOP.
+5. One "positive introspection" operational checklist for agents (scaffold
+   from positive_introspection.toml) — short, not a full notebook fill.
+
+Deliverable: ROUTING-BOARD.md body ready to drop into ops/handoffs/.
+
+
+8. SUGGESTED NOTEBOOKLM FOLLOW-UPS (after upload)
+-------------------------------------------------
+Mind map prompts:
+  · "Redraw the mind map with only LOAD-BEARING edges; dim philosophy."
+  · "Where does AdHealth attach to the R-matrix cascade?"
+  · "List every claim that depends on tools not in live stdio MCP."
+
+Study guide prompts:
+  · "HAVE vs NEED for each product in one table."
+  · "Convert LB-1…LB-7 into a quiz with cascading failure scenarios."
+
+Audio overview angle:
+  · Operator-facing: what ships this week if Claude Code cert lands.
+
+
+9. SOURCE PATHS (for secondary uploads / citations)
+---------------------------------------------------
+In this folder (docs/notebooklm/) — CRITICAL snapshots (2026-07-25):
+  CRITICAL-LOGOS-README.txt
+  CRITICAL-LAYER-CASCADE-MAP.txt
+  CRITICAL-LOGOS-COHERENCE-MCP-MAP.txt
+  CRITICAL-STRAND-INTEGRATION-20260724.txt
+  CRITICAL-SAIF-HUMAN-QUEUE.txt
+  CRITICAL-CLAUDECODE-INIT.txt
+  CRITICAL-MARKS-SPINE.txt
+  CRITICAL-CASCADING-PROOF-WEAVE.txt
+  CRITICAL-HOPF-PRINCIPAL-BUNDLE.txt
+  CRITICAL-APPLICATIONS-WHITEPAPER-2026-2035.txt
+  CRITICAL-ENCYCLOPEDIA-EQUILIBRIA.txt
+  CRITICAL-ADHEALTH-README.txt
+  CRITICAL-ADHEALTH-COHERENCE-MCP.txt
+  CRITICAL-COHERENCE-MCP-README.txt
+  CRITICAL-COHERENCE-MCP-CAPABILITY-MAP-v0.4.2.txt
+  CRITICAL-COHERENCE-MCP-GAP-ANALYSIS.txt
+  *-UNITARY-CHANGELOG.txt (six layer files)
+  INDEX-NOTEBOOKLM-UPLOADS.txt
+
+Tree originals (authoritative if snapshot drifts):
+  README.md · LAYER-CASCADE-MAP.md · LOGOS-COHERENCE-MCP-MAP.md
+  STRAND-INTEGRATION-20260724.md · SAIF-OUTSTANDING-HUMAN-ACTIONS.md
+  CASCADING-PROOF-WEAVE-HUP-JFA.md · HOPF-PRINCIPAL-BUNDLE.md
+  APPLICATIONS-WHITEPAPER-2026-2035.md · CLAUDECODE-INIT-v0_1.md
+  ops/marks/README.md · adhealth-meaningseed/* · coherence-mcp-v042/*
+Mind map asset: coherence-mcp/docs/assets/NotebookLM_Mind_Map__2_.png
+graph-screenshot/* (session lattice visuals)
+artifacts/ingest/positive_introspection.toml
+
+
+10. EPISTEMIC FOOTER
+--------------------
+This pack is Category B synthesis (BUILD asserted from tree + handoffs) unless
+an item is marked Category A (direct observation). Do not treat marketing
+language ("flawless formal") as A while MonomialWitness carries sorries.
+Countersign does not change category — only verification status.
+
+Music conserved. Keystone holds. Cascade first.
+
+--- end NLM-LOADBEARING-TRIPLE-2026-07-25 ---

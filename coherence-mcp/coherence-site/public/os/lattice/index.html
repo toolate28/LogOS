@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LATTICE OS | Reson8-Labs Coherence Surface</title>
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #111118; --border: #1e1e2e;
+    --cyan: #22d3ee; --amber: #f59e0b; --green: #10b981;
+    --red: #ef4444; --purple: #a78bfa; --white: #e2e8f0;
+    --dim: #64748b; --grid: #16161f;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg); color: var(--white);
+    font-family: 'Courier New', monospace; overflow-x: hidden;
+  }
+  header {
+    border-bottom: 1px solid var(--border); padding: 16px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  header h1 { font-size: 18px; letter-spacing: 3px; color: var(--cyan); }
+  .conservation {
+    font-size: 12px; color: var(--amber);
+    border: 1px solid var(--amber); padding: 4px 12px; border-radius: 4px;
+  }
+  .status-bar {
+    display: flex; gap: 24px; padding: 8px 24px;
+    background: var(--grid); font-size: 11px; color: var(--dim);
+    border-bottom: 1px solid var(--border);
+  }
+  .status-bar .live { color: var(--green); }
+  .status-bar .warn { color: var(--amber); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px; padding: 24px;
+  }
+  .node {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; cursor: pointer;
+    transition: border-color 0.2s, transform 0.1s;
+    position: relative; overflow: hidden;
+  }
+  .node:hover { border-color: var(--cyan); transform: translateY(-2px); }
+  .node .domain {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--dim); margin-bottom: 8px;
+  }
+  .node h3 { font-size: 15px; margin-bottom: 6px; }
+  .node p { font-size: 12px; color: var(--dim); line-height: 1.5; }
+  .node .status-dot {
+    position: absolute; top: 16px; right: 16px;
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .node .status-dot.live { background: var(--green); box-shadow: 0 0 6px var(--green); }
+  .node .status-dot.pending { background: var(--amber); }
+  .node .status-dot.offline { background: var(--red); }
+
+  .node .tech { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .node .tech span {
+    font-size: 10px; padding: 2px 8px; border-radius: 4px;
+    background: var(--grid); color: var(--cyan); border: 1px solid var(--border);
+  }
+
+  .section-label {
+    padding: 16px 24px 0; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--dim); border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+
+  .search-bar {
+    padding: 16px 24px; display: flex; gap: 12px;
+  }
+  .search-bar input {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    color: var(--white); padding: 10px 16px; border-radius: 8px;
+    font-family: inherit; font-size: 13px; outline: none;
+  }
+  .search-bar input:focus { border-color: var(--cyan); }
+  .search-bar button {
+    background: var(--cyan); color: var(--bg); border: none;
+    padding: 10px 20px; border-radius: 8px; cursor: pointer;
+    font-family: inherit; font-weight: bold; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>LATTICE OS</h1>
+  <div class="conservation">&alpha; + &omega; = 15</div>
+</header>
+
+<div class="status-bar">
+  <span>STYX <span class="live">ws://127.0.0.1:8088</span></span>
+  <span>MCP <span class="live">localhost:6274</span></span>
+  <span>TDA <span class="live">tda.toolated.online</span></span>
+  <span>VECTORIZE <span class="live">4 indexes</span></span>
+  <span>FORGE <span class="warn">42.7C</span></span>
+</div>
+
+<div class="search-bar">
+  <input id="search" type="text" placeholder="Semantic search across all indexes..." />
+  <button onclick="queryTDA()">QUERY</button>
+</div>
+
+<!-- CORE INFRASTRUCTURE -->
+<div class="section-label">Core Infrastructure</div>
+<div class="grid">
+  <div class="node" onclick="nav('/os/terafab/')">
+    <div class="status-dot live"></div>
+    <div class="domain">World Builder</div>
+    <h3>TERAFAB</h3>
+    <p>Blueprint library, FAWE deployment, world-gen with auto Jones fingerprints</p>
+    <div class="tech"><span>FastAPI</span><span>mcrcon</span><span>FAWE</span></div>
+  </div>
+
+  <div class="node" onclick="nav('wss://127.0.0.1:8088')">
+    <div class="status-dot live"></div>
+    <div class="domain">SPHINX Gate</div>
+    <h3>STYX BRIDGE</h3>
+    <p>Jones polynomial verification at t=e^(2&pi;i/5), Kauffman bracket, LRU cache</p>
+    <div class="tech"><span>WebSocket</span><span>Python</span><span>BQP</span></div>
+  </div>
+
+  <div class="node" onclick="nav('https://tda.toolated.online/status')">
+    <div class="status-dot live"></div>
+    <div class="domain">Intelligence Sink</div>
+    <h3>TDA GATEWAY</h3>
+    <p>9 domains: research, circuits, hollywood, world_gen, tasks, skills, CFD, tools, atom_trail</p>
+    <div class="tech"><span>CF Worker</span><span>D1</span><span>R2</span><span>Vectorize</span><span>Queue</span></div>
+  </div>
+
+  <div class="node" onclick="nav('https://coherence.toolated.online')">
+    <div class="status-dot live"></div>
+    <div class="domain">MCP Server</div>
+    <h3>COHERENCE-MCP</h3>
+    <p>49 tools, wave_validate, conservation check, strand orchestration</p>
+    <div class="tech"><span>MCP</span><span>npm</span><span>190 tests</span></div>
+  </div>
+</div>
+
+<!-- VECTORIZE INDEXES -->
+<div class="section-label">Vectorize Indexes (768-dim BGE-base cosine)</div>
+<div class="grid">
+  <div class="node">
+    <div class="status-dot live"></div>
+    <div class="domain">Research + Skills</div>
+    <h3>tda-research</h3>
+    <p>Academic papers, site resonance, PERSIA layers, agent capabilities</p>
+    <div class="tech"><span>RESEARCH_INDEX</span></div>
+  </div>
+  <div class="node">
+    <div class="status-dot live"></div>
+    <div class="domain">Quantum Circuits</div>
+    <h3>tda-circuits</h3>
+    <p>Circuit maps, Jones polynomials, braid words, fidelity scores</p>
+    <div class="tech"><span>CIRCUIT_INDEX</span></div>
+  </div>
+  <div class="node">
+    <div class="status-dot live"></div>
+    <div class="domain">Video Timeline</div>
+    <h3>tda-hollywood</h3>
+    <p>Gemini-curated video segments, timeline_pos [0,1], narrative arcs</p>
+    <div class="tech"><span>HOLLYWOOD_INDEX</span></div>
+  </div>
+  <div class="node">
+    <div class="status-dot live"></div>
+    <div class="domain">World Generation</div>
+    <h3>embeddings-index</h3>
+    <p>TERAFAB blueprints, ATOM trails, Jones fingerprints, world-gen events</p>
+    <div class="tech"><span>VECTORIZE</span></div>
+  </div>
+</div>
+
+<!-- WORKERS -->
+<div class="section-label">Cloudflare Workers</div>
+<div class="grid">
+  <div class="node"><div class="status-dot live"></div><div class="domain">Edge</div><h3>coherence-site</h3><p>Static site + OS panes</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Edge</div><h3>coherence-mcp</h3><p>MCP server worker</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Edge</div><h3>vectorize-sink</h3><p>Embedding pipeline</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Edge</div><h3>coherence-articles</h3><p>Content delivery</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Edge</div><h3>spiralsafe-api</h3><p>Ethics + safety gate</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Edge</div><h3>reson8</h3><p>Core worker</p></div>
+</div>
+
+<!-- PACKAGES -->
+<div class="section-label">Monorepo Packages</div>
+<div class="grid">
+  <div class="node"><div class="status-dot live"></div><div class="domain">Package</div><h3>wave-toolkit</h3><p>WAVE scoring, coherence analysis</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Package</div><h3>wave-machine</h3><p>Braid, knot, trace modules</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Package</div><h3>atom-trail</h3><p>ATOM tag audit chain</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Package</div><h3>quantum-ethics</h3><p>Ethical quantum computing framework</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Package</div><h3>ax-signatures</h3><p>Ax LLM integration</p></div>
+  <div class="node"><div class="status-dot live"></div><div class="domain">Package</div><h3>core</h3><p>Shared types + utilities</p></div>
+</div>
+
+<!-- BRIDGES -->
+<div class="section-label">Bridges</div>
+<div class="grid">
+  <div class="node"><div class="status-dot pending"></div><div class="domain">Bridge</div><h3>9P2000.L / Styx</h3><p>VFS crystal filesystem, SPHINX gating</p></div>
+  <div class="node"><div class="status-dot pending"></div><div class="domain">Bridge</div><h3>Vortex Bridges</h3><p>Cross-platform protocol translation</p></div>
+  <div class="node"><div class="status-dot pending"></div><div class="domain">Bridge</div><h3>NEAR Sovereign</h3><p>On-chain gauge lock, x402 intents</p></div>
+  <div class="node"><div class="status-dot pending"></div><div class="domain">Bridge</div><h3>Minecraft / HOPE</h3><p>ClaudeNPC, redstone circuits, CTF</p></div>
+</div>
+
+<script>
+function nav(url) {
+  if (url.startsWith('ws')) { alert('WebSocket endpoint: ' + url); return; }
+  window.open(url, '_blank');
+}
+
+async function queryTDA() {
+  const q = document.getElementById('search').value;
+  if (!q) return;
+  try {
+    const res = await fetch('https://tda.toolated.online/query?q=' + encodeURIComponent(q) + '&top=8');
+    const data = await res.json();
+    alert(JSON.stringify(data, null, 2));
+  } catch(e) {
+    alert('TDA query failed: ' + e.message);
+  }
+}
+
+document.getElementById('search').addEventListener('keydown', e => {
+  if (e.key === 'Enter') queryTDA();
+});
+</script>
+</body>
+</html>

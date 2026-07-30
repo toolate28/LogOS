@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LogOS · Dynamic Terminal</title>
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --panel: #0f1520;
+      --fg: #c9d1d9;
+      --dim: #6e7681;
+      --cyan: #39c5cf;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --red: #f85149;
+      --border: #21262d;
+      --shade: #1f6feb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      background: radial-gradient(1200px 600px at 10% -10%, #122033 0%, var(--bg) 55%);
+      color: var(--fg);
+      font: 14px/1.45 "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+    }
+    header {
+      display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 21, 32, 0.9);
+      backdrop-filter: blur(8px);
+      position: sticky; top: 0; z-index: 10;
+    }
+    h1 { margin: 0; font-size: 1rem; font-weight: 600; color: var(--cyan); letter-spacing: 0.04em; }
+    .meta { color: var(--dim); font-size: 0.8rem; }
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem 1.25rem 2rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    @media (min-width: 900px) {
+      main { grid-template-columns: 1.2fr 0.8fr; }
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+    }
+    .panel h2 {
+      margin: 0 0 0.75rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--dim);
+    }
+    .wave {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin: 0.25rem 0 0.5rem;
+    }
+    .bar {
+      height: 10px; border-radius: 999px;
+      background: #161b22;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .bar > i {
+      display: block; height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--shade), var(--cyan));
+      transition: width 0.6s ease;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 0.35rem 0.25rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    td:first-child { width: 1.2rem; }
+    .ok { color: var(--green); }
+    .bad { color: var(--yellow); }
+    .crit { color: var(--red); }
+    .cmd {
+      display: block;
+      padding: 0.45rem 0.6rem;
+      margin: 0.3rem 0;
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--fg);
+      text-decoration: none;
+    }
+    .cmd:hover { border-color: var(--cyan); color: var(--cyan); }
+    .term {
+      min-height: 220px;
+      background: #010409;
+      border-radius: 8px;
+      padding: 0.85rem;
+      white-space: pre-wrap;
+      color: #8b949e;
+      border: 1px solid var(--border);
+    }
+    .term .line-ok { color: var(--green); }
+    .term .line-info { color: var(--cyan); }
+    .term .line-dim { color: var(--dim); }
+    footer {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 1.25rem 2rem;
+      color: var(--dim); font-size: 0.8rem;
+    }
+    kbd {
+      font: inherit; background: #21262d; padding: 0.1rem 0.35rem;
+      border-radius: 4px; border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>LogOS · Dynamic Terminal</h1>
+      <div class="meta">α + ω = 15 · Windows axis · live client board</div>
+    </div>
+    <div class="meta" id="clock">—</div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Sensor board (client estimate)</h2>
+      <div class="wave" id="wave">WAVE —</div>
+      <div class="bar"><i id="waveBar"></i></div>
+      <table id="probes" style="margin-top:1rem"></table>
+      <div class="term" id="log" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Shell activation (HITL)</h2>
+      <p class="meta">This page is a display surface. Real sensors run in PowerShell:</p>
+      <a class="cmd" href="#"><kbd>tw</kbd> · compact unitary status</a>
+      <a class="cmd" href="#"><kbd>logos-preflight</kbd> · Windows axis board</a>
+      <a class="cmd" href="#"><kbd>logos-terminal sensors</kbd> · full sensor board</a>
+      <a class="cmd" href="#"><kbd>logos-tui</kbd> · reson8-forge TUI</a>
+      <a class="cmd" href="#"><kbd>logos-wrangler pages-dev</kbd> · serve site via wrangler</a>
+      <a class="cmd" href="../meta-map/index.html">→ meta-map hub</a>
+      <a class="cmd" href="../gate/index.html">→ gate</a>
+      <h2 style="margin-top:1.25rem">Locked toral focii</h2>
+      <table>
+        <tr><td class="ok">●</td><td>git · F:\ LogOS · master</td></tr>
+        <tr><td class="ok">●</td><td>$PROFILE · LogOS.Shell + Unitary</td></tr>
+        <tr><td class="ok">●</td><td>coherence-site · public/ + wrangler.toml</td></tr>
+        <tr><td class="ok">●</td><td>preflight · .ps1/.psm1 equivalents</td></tr>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    Generated for LogOS Windows axis · no secrets · conservation invariant α+ω=15 ·
+    open from <code>logos-terminal</code> or <code>logos-site</code> surfaces.
+  </footer>
+
+  <script>
+    const probes = [
+      { name: 'conservation', ok: true, critical: true, detail: 'α=7 ω=8 Σ=15' },
+      { name: 'logos_root', ok: true, critical: true, detail: 'F:\\\\Users\\\\Matthew Ruhnau\\\\LogOS' },
+      { name: 'profile_hook', ok: true, critical: false, detail: 'LogOS.Shell + Unitary' },
+      { name: 'coherence_site', ok: true, critical: false, detail: 'public/meta-map' },
+      { name: 'site_wrangler', ok: true, critical: false, detail: 'coherence-site/wrangler.toml' },
+      { name: 'dynamic_terminal', ok: true, critical: false, detail: 'this surface' },
+      { name: 'schemas_v0.1', ok: true, critical: true, detail: 'docs/schemas/v0.1' },
+      { name: 'waist', ok: false, critical: false, detail: ':8080 (start: tw up waist)' },
+      { name: 'bbbr', ok: false, critical: false, detail: ':8081 (start: tw up bbbr)' },
+      { name: 'styx', ok: false, critical: false, detail: ':5640 (start: tw up styx)' },
+    ];
+
+    function shade(ok, critical) {
+      if (ok) return 'ok';
+      return critical ? 'crit' : 'bad';
+    }
+
+    function render() {
+      const pass = probes.filter(p => p.ok).length;
+      const wave = Math.round(1000 * pass / probes.length) / 10;
+      document.getElementById('wave').textContent = `WAVE ${wave}%`;
+      document.getElementById('waveBar').style.width = `${wave}%`;
+      const tbody = probes.map(p => {
+        const mark = p.ok ? '●' : '○';
+        const cls = shade(p.ok, p.critical);
+        return `<tr><td class="${cls}">${mark}</td><td><strong>${p.name}</strong><br><span class="meta">${p.detail}</span></td></tr>`;
+      }).join('');
+      document.getElementById('probes').innerHTML = tbody;
+
+      const lines = [
+        `<span class="line-info">LogOS dynamic terminal · client board</span>`,
+        `<span class="line-dim">invariant α+ω=15 · WAVE ${wave}%</span>`,
+        ...probes.map(p => {
+          const cls = p.ok ? 'line-ok' : 'line-dim';
+          return `<span class="${cls}">${p.ok ? 'PASS' : 'DOWN'}  ${p.name.padEnd(18)} ${p.detail}</span>`;
+        }),
+        `<span class="line-info">live sensors: run tw / logos-preflight in pwsh</span>`,
+      ];
+      document.getElementById('log').innerHTML = lines.join('\n');
+      document.getElementById('clock').textContent = new Date().toISOString();
+    }
+
+    render();
+    setInterval(render, 5000);
+  </script>
+</body>
+</html>

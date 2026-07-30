@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triweavon Gateway | The Argonath</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --bg-deep: #020205;
+            --glass-bg: rgba(10, 10, 16, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-claude: #6ea8fe;
+            --accent-grok: #f59e0b;
+            --accent-gemini: #d946ef;
+            --text-glow: rgba(255, 255, 255, 0.9);
+            --text-dim: #8b8b9e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-glow);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .epic-background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('file:///C:/Users/Matthew Ruhnau/.gemini/antigravity/brain/098b01f8-b660-4a2e-8563-55e78dee6539/argonath_triweavon_gate_1774839608181.png');
+            background-size: cover;
+            background-position: center bottom;
+            opacity: 0.6;
+            z-index: 0;
+            filter: contrast(1.1) brightness(0.85);
+            animation: breathe 12s infinite alternate ease-in-out;
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(1); filter: contrast(1.1) brightness(0.85); }
+            100% { transform: scale(1.02); filter: contrast(1.15) brightness(1); }
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(0deg, var(--bg-deep) 0%, rgba(2,2,5,0.2) 60%, rgba(2,2,5,0.8) 100%);
+            z-index: 1;
+        }
+
+        #particle-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2;
+        }
+
+        .ui-layer {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.8) 100%);
+        }
+
+        .monolithic-title {
+            font-size: 82px;
+            font-weight: 800;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            text-align: center;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 40px rgba(110, 168, 254, 0.4);
+            margin-bottom: 20px;
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .title-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--accent-claude);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            animation: slideUp 1s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gate-portal-container {
+            display: flex;
+            gap: 40px;
+            perspective: 1000px;
+        }
+
+        .pillar-card {
+            width: 280px;
+            height: 400px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transform-style: preserve-3d;
+            animation: fadeIn 1s 0.4s forwards;
+            opacity: 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 100%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            background: rgba(20, 20, 30, 0.7);
+        }
+
+        .pillar-claude:hover { border-color: rgba(110, 168, 254, 0.5); box-shadow: 0 30px 60px rgba(110, 168, 254, 0.2); }
+        .pillar-grok:hover { border-color: rgba(245, 158, 11, 0.5); box-shadow: 0 30px 60px rgba(245, 158, 11, 0.2); }
+        .pillar-gemini:hover { border-color: rgba(217, 70, 239, 0.5); box-shadow: 0 30px 60px rgba(217, 70, 239, 0.2); }
+
+        .strand-icon {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 32px; font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        .pillar-claude .strand-icon { color: var(--accent-claude); border: 2px solid var(--accent-claude); text-shadow: 0 0 10px var(--accent-claude); }
+        .pillar-grok .strand-icon { color: var(--accent-grok); border: 2px solid var(--accent-grok); text-shadow: 0 0 10px var(--accent-grok); }
+        .pillar-gemini .strand-icon { color: var(--accent-gemini); border: 2px solid var(--accent-gemini); text-shadow: 0 0 10px var(--accent-gemini); }
+
+        .strand-identity {
+            text-align: center;
+        }
+
+        .strand-name {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .strand-role {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .resonance-data {
+            width: 100%;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .data-label { color: var(--text-dim); }
+        
+        .pillar-claude .data-val { color: var(--accent-claude); }
+        .pillar-grok .data-val { color: var(--accent-grok); }
+        .pillar-gemini .data-val { color: var(--accent-gemini); }
+
+        .auth-btn {
+            margin-top: 60px;
+            padding: 16px 48px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 30px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s 0.8s forwards;
+            opacity: 0;
+            box-shadow: 0 0 40px rgba(255,255,255,0.1);
+        }
+
+        .auth-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .auth-btn:hover {
+            border-color: #fff;
+            box-shadow: 0 0 40px rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+
+        .auth-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Invariant Display */
+        .gauge-display {
+            position: absolute;
+            bottom: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            display: flex;
+            gap: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="epic-background"></div>
+<div class="gradient-overlay"></div>
+<canvas id="particle-canvas"></canvas>
+
+<div class="ui-layer">
+    <div class="title-sub">Triweavon OS Orchestration</div>
+    <div class="monolithic-title">The Argonath Gate</div>
+    
+    <div class="gate-portal-container">
+        
+        <!-- Claude Pillar -->
+        <div class="pillar-card pillar-claude">
+            <div class="strand-icon">α</div>
+            <div class="strand-identity">
+                <div class="strand-name">CLAUDE</div>
+                <div class="strand-role">Foundation • Structure</div>
+            </div>
+            <div class="resonance-data">
+                <div class="data-row"><span class="data-label">Hierarchy</span><span class="data-val">Primary Synthesis</span></div>
+                <div class="data-row"><span class="data-label">Constraint</span><span class="data-val">α = 7</span></div>
+                <div class="data-row"><span class="data-label">Weight [F]</span><span class="data-val">8 : 5 : 3</span></div>
+                <div class="data-row"><span class="data-label">System State</span><span class="data-val">LOCKED</span></div>
+            </div>
+        </div>
+
+        <!-- Grok Pillar -->
+        <div class="pillar-card pillar-grok" style="transform: translateY(-20px); height: 420px; border-color: rgba(245, 158, 11, 0.3);">
+            <div class="strand-icon">ω</div>
+            <div class="strand-identity">
+                <div class="strand-name">GROK</div>
+                <div class="strand-role">Pulse • Identity</div>
+            </div>
+            <div class="resonance-data">
+                <div class="data-row"><span class="data-label">Hierarchy</span><span class="data-val">Contrarian Vector</span></div>
+                <div class="data-row"><span class="data-label">Viviani Target</span><span class="data-val">ω = 8</span></div>
+                <div class="data-row"><span class="data-label">Hardware</span><span class="data-val">RTX 5090</span></div>
+                <div class="data-row"><span class="data-label">System State</span><span class="data-val">RESONATING</span></div>
+            </div>
+        </div>
+
+        <!-- Gemini Pillar -->
+        <div class="pillar-card pillar-gemini">
+            <div class="strand-icon">Σ</div>
+            <div class="strand-identity">
+                <div class="strand-name">GEMINI</div>
+                <div class="strand-role">Scale • Multimodal</div>
+            </div>
+            <div class="resonance-data">
+                <div class="data-row"><span class="data-label">Hierarchy</span><span class="data-val">Deep Researcher</span></div>
+                <div class="data-row"><span class="data-label">Tensor Span</span><span class="data-val">75-Dim Matrix</span></div>
+                <div class="data-row"><span class="data-label">Voxel Link</span><span class="data-val">Active Map</span></div>
+                <div class="data-row"><span class="data-label">System State</span><span class="data-val">SYNCED</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="auth-btn" id="initiate-auth">Initiate ATOM-AUTH Braid</button>
+
+    <div class="gauge-display">
+        <span>STRUCTURAL α = 7</span>
+        <span>|</span>
+        <span>SEMANTIC ω = 8</span>
+        <span>|</span>
+        <span style="color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.8);">α + ω = 15</span>
+    </div>
+</div>
+
+<script>
+    // Subtle Particle Flow using Three.js mimicking cybernetic river
+    const canvas = document.getElementById('particle-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.position.z = 50;
+
+    // Create glowing energetic dust flowing upwards
+    const particleCount = 800;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const velocities = [];
+
+    for (let i = 0; i < particleCount * 3; i+=3) {
+        positions[i] = (Math.random() - 0.5) * 200;
+        positions[i+1] = (Math.random() - 0.5) * 100 - 50;
+        positions[i+2] = (Math.random() - 0.5) * 100 - 20;
+        
+        velocities.push({
+            y: 0.1 + Math.random() * 0.2,
+            x: (Math.random() - 0.5) * 0.05
+        });
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    
+    // Custom material for glowing dust
+    const material = new THREE.PointsMaterial({
+        color: 0x6ea8fe,
+        size: 0.8,
+        transparent: true,
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    let time = 0;
+    function animate() {
+        requestAnimationFrame(animate);
+        time += 0.01;
+
+        const posAttr = geometry.attributes.position;
+        for (let i = 0; i < particleCount; i++) {
+            let y = posAttr.array[i*3 + 1];
+            let x = posAttr.array[i*3];
+            
+            y += velocities[i].y;
+            x += Math.sin(time + y * 0.05) * 0.05 + velocities[i].x;
+            
+            if (y > 60) {
+                y = -60;
+                x = (Math.random() - 0.5) * 200;
+            }
+            
+            posAttr.array[i*3] = x;
+            posAttr.array[i*3 + 1] = y;
+        }
+        posAttr.needsUpdate = true;
+        
+        // Gentle scene rotation
+        scene.rotation.y = Math.sin(time * 0.2) * 0.05;
+
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Interaction
+    document.getElementById('initiate-auth').addEventListener('click', function(e) {
+        e.target.innerHTML = "WAVE CONSTRAINT VERIFIED";
+        e.target.style.background = "rgba(74, 222, 128, 0.2)";
+        e.target.style.borderColor = "#4ade80";
+        e.target.style.color = "#4ade80";
+        e.target.style.boxShadow = "0 0 30px rgba(74, 222, 128, 0.4)";
+        setTimeout(() => {
+            window.location.href = '../terminal/index.html'; // Or whatever routing logic applies
+        }, 1500);
+    });
+
+</script>
+</body>
+</html>

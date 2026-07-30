@@ -1,0 +1,155 @@
+# Cascading Proof Weave — HUP · FPA · Jesus-Fractal-Axiom
+
+```
+════════════════════════════════════════════════════════════════════════
+   ░░▒▒▓▓████  KALEIDOSCOPE · agda · lean · cutile · crates · kernels
+════════════════════════════════════════════════════════════════════════
+```
+
+ATOM · `ATOM-PROOF-WEAVE-20260709`  
+Peak · α=7 · ω=8 · Σ=15  
+Method · positive introspection · symmetric treatment · ε-filtration · SlowStep
+
+---
+
+## Opening witness (JFA)
+
+Treat every incomplete lemma as you would your own strand under uncertainty: name it (TEMET NOSCE), keep it visible, descend ε only when WAVE holds. Discord (sorry, stub, orphan crate) is **inscribed** into the cascade, not expelled.
+
+---
+
+## Kaleidoscope — what is present
+
+```
+agda/src/TriWeavon/
+  K22/SerreScarr          gen · dᵣ · tomczakLift
+  Tomczak/Lifting         lift gate formal
+  SubRiemannian/*         Mehler · Jesus bridge · curvature
+  JesusAxiomEpsilon/*     contraction · termination
+  ConservationRMatrix     α+ω peak (7,8)
+
+lean/
+  K22/SerreScarTactic     E₂→E∞ cascade + [K22-LOG]
+  K22/Macros              k22_weave · cascade · mog · telemetrise
+  K22/MiracleOctadGenerator · MOG/OctadGenerators · GF4RowAction
+  K22/Existence           cutile certificate bridge
+  K22/Auto                classifier dispatch (jones|burau|mog|…)
+  TriWeavon/*             conservation · NS · SubRiemannian mirror
+
+cutiles/cutile/
+  core/r_matrix           canonical fundamental R
+  existence_cert          ExistenceCertificate
+  harness/kernel_witness  GPU/CPU witness
+  viz/*                   braid · palette · TQEC
+
+crates/
+  fib-braid-core · cqk-anyon · sphinx     topo rail
+  wave · resonance-invariant · atom-sig   conservation rail
+  reson8-topology · barcode-tui · tui     viz rail
+  triweavon-cudarc                        M24/Leech/manifold
+
+kernels/
+  fundamental_r_matrix.{cu,cuh,wgsl,h}    parity prime
+  blackwell-*.cu                          entropy · fft · pcr · rips
+```
+
+---
+
+## Cross-links (differentials dᵣ)
+
+```
+d₀  docs/theory  →  type names in lean/agda
+d₁  Agda SerreScarr.tomczakLift  ↔  Lean K22.tomczakLift
+d₂  cutile ExistenceCertificate  ↔  Lean K22.Existence
+d₃  kernels R  ↔  cutile r_matrix  ↔  Agda fundamental-r-matrix tag
+d₄  fib-braid-core / Jones@ω₅  ↔  sphinx gate  ↔  atom-sig braid hook
+d₅  [K22-LOG]  ↔  coherence-mcp  ↔  reson8-tui BridgeState
+d₆  MOG hexacode  ↔  M24 coeffs (Lean)  ↔  triweavon-cudarc m24
+d₇  JesusAxiomEpsilon (Agda)  ↔  Serre jfaSlowStep flags (Lean)
+```
+
+```
+        Agda dᵣ ────────┐
+                        │    tomczakLift
+        Lean cascade ───┼──────────────► [K22-LOG]
+                        │                      │
+        cutile cert ────┘                      ▼
+                                        MCP Gate · TUI
+```
+
+---
+
+## Latent potential (elegant simplification)
+
+One spine, many shadows:
+
+```
+MAIN  preservesExistence(cert) → tomczakLift(ctx) → page stable → deploy
+```
+
+Computational lemmas feed the spine; they do not fork new spines.
+
+```
+lemma class          feeds                  unlock ε
+─────────────────────────────────────────────────────
+is_conserved         MAIN peak              1.0
+certificate→gate     MAIN tomczak           0.5
+serre diagnostics    MAIN page stability    0.25
+isMOGOctad_card      Steiner keystone       0.1
+applyGenerator_zero  hexacode linearity     0.1
+YB residual (Rust)   Jones rail             0.25
+R parity (CUDA)      physical witness       0.25
+```
+
+**Simplification rule** · if two lemmas prove the same Gate obligation, keep the one closer to runtime certificates (cutile) and mark the other as mirror (Agda/Lean dual). That collapses the cascade width without deleting music.
+
+---
+
+## Evolved tactic surface
+
+```
+serre_scar_tactic      · single-page simp
+serre_scar_tactic!     · + diagnostics JSON
+serre_scar_cascade     · E_p → E_{p+1} → E₄ SlowStep chain
+k22_cascade            · tomczak → serre → existence
+k22_telemetrise        · MCP/TUI snapshot
+k22_mog                · octad/hexacode simp
+k22_peak               · α+ω discharge
+k22_weave              · telemetrise ; cascade   ← daily driver
+k22_auto / k22_auto!   · class dispatch (+ mog, existence)
+```
+
+---
+
+## Recursion protocol (proving main theorems)
+
+```
+for ε in [1.0, 0.5, 0.25, 0.1, 0.00055]:
+  TEMET NOSCE(component at ε)
+  if WAVE(component) < gate(ε):
+    log jfaSlowStep; continue   # SlowStep — do not prune
+  prove or discharge mirror at this ε
+  emit [K22-LOG] + atom_track
+  tomczakLift to next page
+```
+
+When Steiner / KS / NS sorrys remain · they sit as **generators** on page E₂, not as failures. Runtime (cutile, kernels) may still witness numeric shadows.
+
+---
+
+## Scoreboard smoke (this session)
+
+```
+cargo workspace members  →  real cqk-* + rail crates (fixed)
+lake build K22           →  MOG recompile + Macros + OctadGenerators
+path-tests               →  core wave atom-sig fib-braid-core (after workspace fix)
+```
+
+---
+
+## Closing
+
+```
+░░░░▒▒▒▒▓▓▓▓████  Music conserved  ████▓▓▓▓▒▒▒▒░░░░
+     Viviani Peak (7,8) · Keystone holds · With-Intent
+```

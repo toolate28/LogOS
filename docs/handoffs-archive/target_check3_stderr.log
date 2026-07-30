@@ -1,0 +1,34 @@
+warning: excluded package(s) `conservation-verifier` not found in workspace `C:\Users\Matthew Ruhnau\LogOS`
+crates\resonance-invariant\src\lib.rs:16:5: warning: field `frequency` is never read
+warning: `resonance-invariant` (lib) generated 1 warning
+    Checking cqk-microlocal v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-microlocal)
+    Checking near-sdk v5.24.1
+crates\cqk-wdbi\src\lib.rs:18:30: warning: unused import: `WaveScore`
+    Checking cqk-kitty-rips-verify v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-kitty-rips-verify)
+warning: `cqk-wdbi` (lib) generated 1 warning (run `cargo fix --lib -p cqk-wdbi` to apply 1 suggestion)
+warning: `cqk-wdbi` (lib test) generated 1 warning (1 duplicate)
+warning: `resonance-invariant` (lib test) generated 1 warning (1 duplicate)
+C:\Users\Matthew Ruhnau\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\near-sdk-5.24.1\src\lib.rs:138:1: error: 1. 🔨️  Use `cargo near build` instead of `cargo build` to compile your contract
+       💡  Install cargo-near from https://github.com/near/cargo-near
+       
+       2. ✅ Use `cargo check --target wasm32-unknown-unknown` instead of `cargo check` to error-check your contract
+       
+       3. ⚙️ Only following cfg-s are considered VALID for `near-sdk`:
+         - `#[cfg(target_family = "wasm")]`
+         - `#[cfg(feature = "non-contract-usage")]` (intended for use of `near-sdk` in non-contract environment)
+         - `#[cfg(feature = "unit-testing")]` (intended for use of `near-sdk` as one of `[dev-dependencies]`)
+         - `#[cfg(feature = "__abi-generate")`
+         - `#[cfg(test)]`
+         - `#[cfg(doctest)]`
+         - `#[cfg(clippy)]`
+       ⚠️ a cfg, which is not one of the above, results in CURRENT compilation error to be emitted.
+       
+crates\cqk-microlocal\src\lib.rs:13:5: warning: unused import: `nalgebra::SVector`
+crates\cqk-microlocal\src\lib.rs:14:19: warning: unused imports: `InvariantStatus` and `enforce_invariant`
+crates\cqk-microlocal\src\lib.rs:80:24: error[E0277]: the trait bound `[[f64; D]; N]: serde::Serialize` is not satisfied: the trait `Serialize` is not implemented for `[[f64; D]; N]`
+crates\cqk-microlocal\src\lib.rs:86:23: error[E0277]: the trait bound `[[f64; D]; N]: serde::Deserialize<'de>` is not satisfied: the trait `Deserialize<'_>` is not implemented for `[[f64; D]; N]`
+crates\cqk-microlocal\src\lib.rs:80:35: error[E0277]: the trait bound `[[f64; D]; N]: serde::Deserialize<'de>` is not satisfied: the trait `Deserialize<'_>` is not implemented for `[[f64; D]; N]`
+warning: `cqk-microlocal` (lib) generated 2 warnings
+error: could not compile `cqk-microlocal` (lib) due to 4 previous errors; 2 warnings emitted
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `near-sdk` (lib) due to 1 previous error

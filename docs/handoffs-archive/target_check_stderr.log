@@ -1,0 +1,215 @@
+   Compiling unicode-ident v1.0.24
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+    Checking cfg-if v1.0.4
+    Checking windows-link v0.2.1
+   Compiling autocfg v1.5.0
+   Compiling libm v0.2.16
+   Compiling serde_core v1.0.228
+   Compiling serde v1.0.228
+    Checking equivalent v1.0.2
+   Compiling zmij v1.0.21
+   Compiling getrandom v0.4.2
+    Checking hashbrown v0.16.1
+    Checking itoa v1.0.18
+   Compiling serde_json v1.0.149
+    Checking memchr v2.8.0
+   Compiling thiserror v2.0.18
+   Compiling num-traits v0.2.19
+    Checking windows-sys v0.61.2
+   Compiling parking_lot_core v0.9.12
+    Checking scopeguard v1.2.0
+    Checking indexmap v2.13.0
+    Checking smallvec v1.15.1
+    Checking bytes v1.11.1
+    Checking lock_api v0.4.14
+    Checking pin-project-lite v0.2.17
+   Compiling rustversion v1.0.22
+   Compiling typenum v1.19.0
+   Compiling ident_case v1.0.1
+    Checking once_cell v1.21.4
+   Compiling version_check v0.9.5
+   Compiling heck v0.5.0
+   Compiling strsim v0.11.1
+    Checking parking_lot v0.12.5
+   Compiling paste v1.0.15
+   Compiling generic-array v0.14.7
+   Compiling getrandom v0.3.4
+    Checking bitflags v2.11.0
+    Checking hex v0.4.3
+   Compiling syn v2.0.117
+   Compiling matrixmultiply v0.3.10
+   Compiling zerocopy v0.8.48
+   Compiling wasm-bindgen-shared v0.2.114
+   Compiling winnow v1.0.0
+    Checking rand_core v0.9.5
+    Checking rawpointer v0.2.1
+   Compiling toml_datetime v1.0.1+spec-1.1.0
+    Checking fastrand v2.4.1
+   Compiling cfg_aliases v0.2.1
+    Checking resonance-invariant v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\resonance-invariant)
+   Compiling winapi v0.3.9
+    Checking cpufeatures v0.2.17
+    Checking num-complex v0.4.6
+crates\resonance-invariant\src\lib.rs:16:5: warning: field `frequency` is never read
+    Checking num-integer v0.1.46
+warning: `resonance-invariant` (lib) generated 1 warning
+   Compiling borsh v1.6.1
+    Checking bit-vec v0.8.0
+    Checking crypto-common v0.1.7
+    Checking block-buffer v0.10.4
+    Checking wait-timeout v0.2.1
+    Checking fnv v1.0.7
+    Checking quick-error v1.2.3
+    Checking digest v0.10.7
+    Checking bit-set v0.8.0
+    Checking ndarray v0.16.1
+    Checking sha2 v0.10.9
+   Compiling toml_parser v1.0.10+spec-1.1.0
+    Checking uuid v1.22.0
+    Checking rand_xorshift v0.4.0
+    Checking rand v0.9.4
+    Checking allocator-api2 v0.2.21
+    Checking either v1.15.0
+    Checking regex-syntax v0.8.10
+   Compiling bumpalo v3.20.2
+    Checking mio v1.1.1
+    Checking socket2 v0.6.3
+   Compiling toml_edit v0.25.5+spec-1.1.0
+    Checking tempfile v3.27.0
+    Checking unarray v0.1.4
+   Compiling instability v0.3.12
+    Checking foldhash v0.1.5
+    Checking itertools v0.13.0
+    Checking approx v0.5.1
+    Checking rusty-fork v0.3.1
+    Checking hashbrown v0.15.5
+    Checking castaway v0.2.4
+   Compiling wasm-bindgen v0.2.114
+   Compiling indoc v2.0.7
+    Checking unicode-segmentation v1.12.0
+   Compiling proc-macro-crate v3.5.0
+    Checking utf8parse v0.2.2
+    Checking static_assertions v1.1.0
+    Checking once_cell_polyfill v1.70.2
+    Checking anstyle v1.0.14
+    Checking ryu v1.0.23
+    Checking crossterm_winapi v0.9.1
+    Checking unicode-width v0.1.14
+    Checking anstyle-wincon v3.0.11
+    Checking anstyle-parse v1.0.0
+    Checking compact_str v0.8.1
+    Checking crossterm v0.28.1
+    Checking lru v0.12.5
+    Checking simba v0.9.1
+    Checking anstyle-query v1.1.5
+    Checking unicode-truncate v1.1.0
+    Checking num-rational v0.4.2
+    Checking colorchoice v1.0.5
+   Compiling near-sdk-macros v5.24.1
+    Checking unicode-width v0.2.0
+    Checking cassowary v0.3.0
+    Checking is_terminal_polyfill v1.70.2
+    Checking base64 v0.22.1
+    Checking anstream v1.0.0
+   Compiling Inflector v0.11.4
+   Compiling strum v0.26.3
+    Checking clap_lex v1.1.0
+    Checking near-sys v0.2.7
+    Checking fixedbitset v0.4.2
+    Checking bs58 v0.5.1
+   Compiling darling_core v0.23.0
+   Compiling darling_core v0.20.11
+   Compiling wasm-bindgen-macro-support v0.2.114
+    Checking clap_builder v4.6.0
+    Checking petgraph v0.6.5
+warning: `resonance-invariant` (lib test) generated 1 warning (1 duplicate)
+    Checking ppv-lite86 v0.2.21
+    Checking rand_chacha v0.9.0
+   Compiling serde_derive v1.0.228
+   Compiling thiserror-impl v2.0.18
+   Compiling tokio-macros v2.6.1
+   Compiling strum_macros v0.26.4
+   Compiling borsh-derive v1.6.1
+    Checking proptest v1.11.0
+   Compiling clap_derive v4.6.0
+    Checking tokio v1.50.0
+   Compiling darling_macro v0.20.11
+   Compiling darling_macro v0.23.0
+   Compiling darling v0.20.11
+   Compiling darling v0.23.0
+    Checking clap v4.6.0
+    Checking nalgebra v0.33.3
+   Compiling serde_with_macros v3.18.0
+   Compiling wasm-bindgen-macro v0.2.114
+    Checking ratatui v0.29.0
+    Checking chrono v0.4.44
+    Checking near-account-id v2.6.0
+    Checking near-gas v0.3.4
+    Checking near-token v0.3.3
+    Checking serde_with v3.18.0
+    Checking js-sys v0.3.91
+    Checking reson8-core v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\core)
+    Checking styx-vfs-layer v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\styx-vfs-layer)
+    Checking reson8-wave v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\wave)
+    Checking cqk-ga v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-ga)
+    Checking reson8-hash v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\hash)
+    Checking reson8-bohmian v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\bohmian)
+    Checking cqk-anyon v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-anyon)
+    Checking reson8-migration-helpers v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\migration_helpers)
+    Checking reson8-zero-latency-ledgers v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\zero_latency_ledgers)
+    Checking reson8-vortex-bridge v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\vortex-bridge)
+    Checking reson8-topology v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\reson8-topology)
+    Checking reson8-activator v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\activator)
+    Checking reson8-sphinx v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\sphinx)
+    Checking reson8-styx v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\styx)
+    Checking reson8-nexus-pulse-bot v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\apps\nexus-pulse-bot)
+    Checking reson8-tui v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\tui)
+    Checking reson8-api-triggers v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\api_triggers)
+    Checking reson8-triweave v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\apps\triweave)
+    Checking cqk-kitty-rips-verify v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-kitty-rips-verify)
+crates\cqk-ga\src\octonion.rs:202:29: error[E0308]: mismatched types: expected `Octonion`, found `&Octonion`
+    Checking cqk-wdbi v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-wdbi)
+crates\cqk-ga\src\octonion.rs:214:28: error[E0308]: mismatched types: expected `Octonion`, found `&Octonion`
+crates\cqk-ga\src\octonion.rs:215:28: error[E0308]: mismatched types: expected `Octonion`, found `&Octonion`
+crates\cqk-ga\src\octonion.rs:243:24: error[E0308]: mismatched types: expected `Octonion`, found `&Octonion`
+crates\cqk-kitty-rips-verify\src\lib.rs:44:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `proptest`: use of unresolved module or unlinked crate `proptest`
+crates\tui\src\app.rs:5:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `reson8_forge_core`: use of unresolved module or unlinked crate `reson8_forge_core`
+error: could not compile `cqk-ga` (lib test) due to 4 previous errors
+warning: build failed, waiting for other jobs to finish...
+crates\tui\src\app.rs:6:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `reson8_forge_core`: use of unresolved module or unlinked crate `reson8_forge_core`
+crates\tui\src\app.rs:7:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `reson8_forge_core`: use of unresolved module or unlinked crate `reson8_forge_core`
+crates\tui\src\app.rs:8:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `reson8_forge_core`: use of unresolved module or unlinked crate `reson8_forge_core`
+crates\tui\src\app.rs:9:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `reson8_forge_core`: use of unresolved module or unlinked crate `reson8_forge_core`
+crates\tui\src\ui.rs:18:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `orchestrator_core`: use of unresolved module or unlinked crate `orchestrator_core`
+crates\tui\src\main.rs:25:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `reson8_forge_core`: use of unresolved module or unlinked crate `reson8_forge_core`
+crates\tui\src\main.rs:26:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `reson8_forge_core`: use of unresolved module or unlinked crate `reson8_forge_core`
+crates\tui\src\main.rs:98:57: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `serde_json`: use of unresolved module or unlinked crate `serde_json`
+crates\tui\src\main.rs:104:61: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `serde_json`: use of unresolved module or unlinked crate `serde_json`
+crates\cqk-kitty-rips-verify\src\lib.rs:57:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `prop`: use of unresolved module or unlinked crate `prop`
+crates\cqk-wdbi\src\lib.rs:18:30: warning: unused import: `WaveScore`
+crates\tui\src\app.rs:337:13: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `reson8_forge_core`: use of unresolved module or unlinked crate `reson8_forge_core`
+crates\cqk-kitty-rips-verify\src\lib.rs:63:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `prop`: use of unresolved module or unlinked crate `prop`
+crates\cqk-kitty-rips-verify\src\lib.rs:68:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `prop`: use of unresolved module or unlinked crate `prop`
+crates\vortex-bridge\src\main.rs:1:5: error[E0432]: unresolved import `tracing`: use of unresolved module or unlinked crate `tracing`
+crates\vortex-bridge\src\main.rs:2:5: error[E0432]: unresolved import `tracing_subscriber`: use of unresolved module or unlinked crate `tracing_subscriber`
+crates\vortex-bridge\src\main.rs:3:5: error[E0432]: unresolved import `vortex_bridge`: use of unresolved module or unlinked crate `vortex_bridge`
+crates\vortex-bridge\src\main.rs:13:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `tracing`: use of unresolved module or unlinked crate `tracing`
+crates\tui\src\ui.rs:291:17: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `orchestrator_core`: use of unresolved module or unlinked crate `orchestrator_core`
+crates\cqk-kitty-rips-verify\src\lib.rs:73:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `prop`: use of unresolved module or unlinked crate `prop`
+crates\cqk-kitty-rips-verify\src\lib.rs:56:27: error[E0405]: cannot find trait `Strategy` in this scope: not found in this scope
+crates\cqk-kitty-rips-verify\src\lib.rs:62:35: error[E0405]: cannot find trait `Strategy` in this scope: not found in this scope
+crates\cqk-kitty-rips-verify\src\lib.rs:67:31: error[E0405]: cannot find trait `Strategy` in this scope: not found in this scope
+crates\cqk-kitty-rips-verify\src\lib.rs:72:39: error[E0405]: cannot find trait `Strategy` in this scope: not found in this scope
+crates\tui\src\ui.rs:292:17: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `orchestrator_core`: use of unresolved module or unlinked crate `orchestrator_core`
+error: could not compile `cqk-kitty-rips-verify` (lib) due to 9 previous errors
+crates\vortex-bridge\src\main.rs:11:5: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `tracing`: use of unresolved module or unlinked crate `tracing`
+crates\tui\src\ui.rs:293:17: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `orchestrator_core`: use of unresolved module or unlinked crate `orchestrator_core`
+error: could not compile `reson8-vortex-bridge` (bin "reson8-vortex-bridge" test) due to 5 previous errors
+crates\tui\src\ui.rs:294:17: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `orchestrator_core`: use of unresolved module or unlinked crate `orchestrator_core`
+crates\tui\src\ui.rs:295:17: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `orchestrator_core`: use of unresolved module or unlinked crate `orchestrator_core`
+warning: `cqk-wdbi` (lib) generated 1 warning (run `cargo fix --lib -p cqk-wdbi` to apply 1 suggestion)
+crates\tui\src\main.rs:74:33: error[E0282]: type annotations needed: cannot infer type
+warning: `cqk-wdbi` (lib test) generated 1 warning (1 duplicate)
+error: could not compile `reson8-tui` (bin "reson8-tui") due to 16 previous errors
+error: could not compile `reson8-tui` (bin "reson8-tui" test) due to 17 previous errors

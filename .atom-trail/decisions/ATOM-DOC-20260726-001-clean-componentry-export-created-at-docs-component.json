@@ -1,0 +1,26 @@
+{
+  "atom_tag": "ATOM-DOC-20260726-001-clean-componentry-export-created-at-docs-component",
+  "type": "DOC",
+  "description": "Clean componentry export created at docs/componentry/ covering spine (Drive/WS/ZLL), coherence-mcp (12 live tools), theorem cascade, AI development, and Heisenpup QTDA companion. GB-06 held. Drive letter G: collapsed as non-project (RECOVERY).",
+  "timestamp": "2026-07-26T20:30:29.422Z",
+  "files": [
+    "docs/componentry/00-README.md",
+    "docs/componentry/01-SPINE-GDRIVE-ZERO-LATENCY-WEBSOCKET.md",
+    "docs/componentry/02-COHERENCE-MCP.md",
+    "docs/componentry/03-THEOREM-WORK.md",
+    "docs/componentry/04-AI-DEVELOPMENT.md",
+    "docs/componentry/05-HEISENPUP-QTDA-COMPANION.md",
+    "docs/componentry/UNCERTAINTY-MAP.yaml",
+    "docs/componentry/ATOMS/ATOM-COMPONENTRY-EXPORT-20260727.md"
+  ],
+  "tags": [
+    "HANDOFF",
+    "VERIFY",
+    "COMPONENTRY",
+    "HEISENPUP"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1785097829,
+  "verified": false
+}

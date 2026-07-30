@@ -1,0 +1,90 @@
+{
+  "atom": "ATOM-CLAUDE-SETTINGS-SKELETON-20260722",
+  "description": "Keyless Claude Code workspace skeleton. No secrets. Certs are state under .atom-trail.",
+  "keys": null,
+  "workspace": {
+    "primary_root": "F:/Users/Matthew Ruhnau/LogOS",
+    "roots": [
+      "F:/Users/Matthew Ruhnau/LogOS",
+      "F:/Users/Matthew Ruhnau/SpiralSafe",
+      "F:/Users/Matthew Ruhnau/coherence-mcp",
+      "F:/Users/Matthew Ruhnau/reson8-Labs",
+      "F:/Users/Matthew Ruhnau/QDI"
+    ],
+    "formal": {
+      "agda": "F:/Users/Matthew Ruhnau/LogOS/agda",
+      "lean": "F:/Users/Matthew Ruhnau/LogOS/lean",
+      "cutile": "F:/Users/Matthew Ruhnau/LogOS/cutiles/cutile"
+    }
+  },
+  "cold_start": {
+    "init_packet": "CLAUDECODE-INIT-v0_1.md",
+    "cert_emit_dir": ".atom-trail/certs/claude-code",
+    "cert_latest": ".atom-trail/certs/claude-code/latest.json",
+    "cert_schema": "ops/claude-code/cert.schema.json",
+    "cert_path_doc": "ops/claude-code/CERT-PATH.md",
+    "cert_emit_script": "ops/claude-code/Emit-ClaudeCodeCert.ps1",
+    "wrangler_repair_script": "ops/claude-code/Repair-Wrangler.ps1",
+    "notes": [
+      "Cert JSON is state/backup (gitignored under .atom-trail/certs/).",
+      "pass:true only from real Claude Code init or Emit-ClaudeCodeCert.ps1 -AsInitRun with all surfaces ok.",
+      "Deploy refuses pass:false or keys_present:true."
+    ]
+  },
+  "surfaces": {
+    "spiralsafe_wrangler": {
+      "repo": "F:/Users/Matthew Ruhnau/SpiralSafe",
+      "wrangler_candidates": [
+        "F:/Users/Matthew Ruhnau/SpiralSafe/ops/wrangler.toml",
+        "F:/Users/Matthew Ruhnau/LogOS/wrangler.toml",
+        "F:/Users/Matthew Ruhnau/LogOS/adhealth-meaningseed/wrangler.toml",
+        "F:/Users/Matthew Ruhnau/reson8-Labs/workers"
+      ],
+      "cli_repair": "ops/claude-code/Repair-Wrangler.ps1"
+    },
+    "vcs": {
+      "repo": "F:/Users/Matthew Ruhnau/LogOS",
+      "remotes": ["origin", "LogOS"]
+    },
+    "formal_core": {
+      "lean_toolchain_file": "lean/lean-toolchain",
+      "lakefile": "lean/lakefile.lean",
+      "agda_root": "agda",
+      "cubical_pin": "[CATEGORY B: PLANNED, NOT BUILT — GB-01 open]",
+      "als_binary": "[CATEGORY B: PLANNED, NOT BUILT — install als]"
+    }
+  },
+  "eye_of_the_needle": {
+    "crate": "crates/tui",
+    "package": "reson8-tui",
+    "binary": "reson8-forge",
+    "satellites_not_needle": [
+      "crates/barcode-tui",
+      "apps/triweave",
+      "F:/Users/Matthew Ruhnau/orchestrator-tui"
+    ]
+  },
+  "lsp": {
+    "lean": {
+      "command": "lake",
+      "args": ["serve"],
+      "cwd": "lean",
+      "fallback_command": "lean",
+      "fallback_args": ["--server"]
+    },
+    "agda": {
+      "command": "als",
+      "args": [],
+      "status": "[CATEGORY B: PLANNED, NOT BUILT]"
+    },
+    "tui_channel": "LspEvent mpsc → Formal diagnostics pane"
+  },
+  "constraints": {
+    "keyless": true,
+    "numerology_alpha_omega_15": "Category C label only — never a threshold or resource limit",
+    "config_is_git": true,
+    "state_is_backup": true,
+    "digest_not_tag": true,
+    "allow_unauthenticated": false
+  }
+}

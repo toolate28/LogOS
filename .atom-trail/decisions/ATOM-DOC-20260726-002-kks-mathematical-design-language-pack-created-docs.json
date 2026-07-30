@@ -1,0 +1,27 @@
+{
+  "atom_tag": "ATOM-DOC-20260726-002-kks-mathematical-design-language-pack-created-docs",
+  "type": "DOC",
+  "description": "KKS Mathematical Design Language pack created: docs/componentry/06-KKS-MATHEMATICAL-DESIGN-LANGUAGE.md + kks/bracket-handoff-v0.json. First worked instance = Marked Stream handoff modes (BUILD/VERIFY/HELD/QUARANTINED/RELEASED). Category B — Jacobi untested; Casimirs unearned; conservation tag and WAVE are not Casimirs. Onboarding Manifold contamination refused. GB-06 held.",
+  "timestamp": "2026-07-26T21:33:46.375Z",
+  "files": [
+    "docs/componentry/06-KKS-MATHEMATICAL-DESIGN-LANGUAGE.md",
+    "docs/componentry/kks/bracket-handoff-v0.json",
+    "docs/componentry/ATOMS/ATOM-KKS-DESIGN-LANGUAGE-20260727.md",
+    "docs/componentry/00-README.md",
+    "docs/componentry/UNCERTAINTY-MAP.yaml",
+    "ops/marks/README.md",
+    "ops/marks/MARKS.jsonl",
+    "ops/marks/spine.schema.json"
+  ],
+  "tags": [
+    "KKS",
+    "HANDOFF",
+    "DESIGN",
+    "MARKED-STREAM",
+    "CATEGORY-B"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1785101626,
+  "verified": false
+}

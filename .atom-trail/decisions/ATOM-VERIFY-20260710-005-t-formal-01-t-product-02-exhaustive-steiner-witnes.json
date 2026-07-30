@@ -1,0 +1,25 @@
+{
+  "atom_tag": "ATOM-VERIFY-20260710-005-t-formal-01-t-product-02-exhaustive-steiner-witnes",
+  "type": "VERIFY",
+  "description": "T-Formal-01 + T-Product-02: Exhaustive Steiner witness (C(24,5)=42504 unique covers), parity matrix rank(A)=9 via GF(2) Gaussian elim (Lean + preflight), ComponentResult.gating isolates legacy VOID. Certificate reliable=true tomczakPreserved=true. Lean SlowStep remains mogOctadsFormSteinerSystem; restricted MOG kernel glue open.",
+  "timestamp": "2026-07-10T19:05:43.882Z",
+  "files": [
+    "lean/K22/MOG/ParityLiftRank.lean",
+    "lean/K22/MOG/preflight_mog_e2e.py",
+    "lean/K22/MiracleOctadGenerator.lean",
+    "lean/K22/MOG/existence_certificate_mog.json"
+  ],
+  "tags": [
+    "sm100",
+    "T-Formal-01",
+    "T-Product-02",
+    "Steiner",
+    "rank-9",
+    "MOG",
+    "gaussian-elimination"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783710343,
+  "verified": false
+}

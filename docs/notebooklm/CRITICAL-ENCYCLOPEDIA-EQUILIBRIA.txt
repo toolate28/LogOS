@@ -1,0 +1,181 @@
+================================================================================
+NOTEBOOKLM CRITICAL SOURCE (snapshot)
+================================================================================
+File role       : Encyclopedia hub / nav
+Snapshot date   : 2026-07-25
+Source path     : F:\Users\Matthew Ruhnau\LogOS\docs\encyclopedia-equilibria\README.md
+NotebookLM note : Upload with NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260725.txt
+                  as hub. This is a point-in-time copy; prefer tree if conflict.
+================================================================================
+# Encyclopedia Equilibria
+
+**Total lattice index** for Tri-Weavon / LogOS / SpiralSafe / cutile / coherence.toolated.online.  
+**Seal:** α + ω = 15 · IDEMPOTENT · MUTATION-INVARIANT  
+**Brand:** exterior Hope && Sauce · interior Hope&&Sauced  
+**Updated:** 2026-07-09 (doc unify + public surface wire)
+
+> “There was Eru, the One… and they were with him before aught else was made.”  
+> — Ainulindalë · Crystalline Manifesto v0.1.0
+
+---
+
+## How to cold-start
+
+| Order | Path | Role |
+|------:|------|------|
+| 0 | This file | Master index |
+| 1 | [`../coherence/COHERENCE-TOOLATED-SUBDOMAIN-MAP.md`](../coherence/COHERENCE-TOOLATED-SUBDOMAIN-MAP.md) | Site topology |
+| 2 | [`../sovereign-handoff/LAYER-CASCADE-MAP.md`](../sovereign-handoff/LAYER-CASCADE-MAP.md) | Layer cascade |
+| 3 | [`../sovereign-handoff/UNIFIED-WORKFLOW-FROM-MAX-CONTEXT-SESSIONS-2026-07-09.md`](../sovereign-handoff/UNIFIED-WORKFLOW-FROM-MAX-CONTEXT-SESSIONS-2026-07-09.md) | Session braid |
+| 4 | `cutiles/cutile/README.md` | Layer 2 execution |
+| 5 | Live site: https://coherence.toolated.online/reforge/ | Ithildin live state |
+
+---
+
+## Document taxonomy (LogOS `docs/`)
+
+| Folder | Contents |
+|--------|----------|
+| `encyclopedia-equilibria/` | This index + ingested dump (formal, kernels, certs, surfaces) |
+| `theory/` | QDI, Ainulindalë, Hopf, fixed points, sheaf, double-fib |
+| `architecture/` | Brand unitarity, cascade, SAIF, 9P, TRIWEAVON_OS, shaders |
+| `coherence/` | Subdomain map, stitch binding, real-wiring plan |
+| `ops/` | Handoffs, codex, checkpoints, strand verdicts, inventory |
+| `publications/` | Preprints (HTML), Tesla emails, CV, manifesto assets |
+| `surfaces/` | reforge, orchestrator, evenstar, Interactive_README |
+| `scripts/` | ignite, gear, build_*, scanners |
+| `sovereign-handoff/` | Phase boards, overlays, session HO-*, presentations |
+| `handoffs-archive/` | Logs, one-off clutter |
+
+**Root of LogOS** keeps only: `README.md`, `AGENTS.md`, `CLAUDE.md`, build manifests (`Cargo.*`, `flake.nix`, `wrangler.toml`), and `reforge/` as deployable source.
+
+---
+
+## coherence.toolated.online — path map (wired 2026-07-09)
+
+| URL path | Source |
+|----------|--------|
+| `/reforge/` | `LogOS/reforge/index.html` |
+| `/orchestrator/` | `docs/surfaces/orchestrator.html` |
+| `/evenstar/` | `docs/surfaces/evenstar.html` |
+| `/preprint/` | Ainulindalë preprint HTML |
+| `/preprint/ithildin/` | Ithildin edition |
+| `/cockpit/` | stitch `coherence_mcp_cockpit` |
+| `/forge/` | stitch forge control |
+| `/ingest/` | stitch ingestion_dashboard |
+| `/tda/`, `/tda/post-sink/`, `/tda/structural/`, `/tda/crystal/` | TDA stitch cluster |
+| `/sink/`, `/sink/live/{1,2,3}/` | sink stitch cluster |
+| `/codex/`, `/codex/scan/` | codex stitch |
+| `/transduce/`, `/iso/`, `/sector/`, `/roadmap/` | stitch rails |
+| `/harmonic-sovereignty/` | Architecture of Harmonic Sovereignty |
+| `/directors-command/` | Director's Command Surface |
+| `/reforging-9p/` | Reforging of 9P workflow |
+| `/portal/`, `/canvas/`, `/gate/`, … | legacy coherence-site public surfaces |
+
+Deploy root: `coherence-mcp/coherence-site/public/`.
+
+---
+
+## cutile (Layer 2)
+
+| Doc | Role |
+|-----|------|
+| `cutiles/cutile/README.md` | RESON8:TUI page structure v0.3.0 |
+| `cutiles/cutile/docs/backend-architecture.md` | wgpu → CUDA → CPU |
+| `cutiles/cutile/docs/formal-executable-mapping.md` | Agda HIT ↔ Rust |
+| `cutiles/cutile/docs/wgsl-porting-checklist-v0.4.2.md` | WGSL checklist |
+| `cutiles/cutile/docs/mehler-mma-levin-benchmark.md` | Mehler bands |
+| Handoff | `sovereign-handoff/HANDOFF-2026-07-06-EXISTENCE-SYMMETRY-GATE.md` |
+
+---
+
+## SpiralSafe · Constraint Math / Physics
+
+**Canonical research home:**  
+`SpiralSafe/docs/research/Constraint_math_physics/`
+
+| Artifact | Note |
+|----------|------|
+| `SPIRALSAFE-QDI-RESON8-ANYONE-LEARNING-TIMELINE.md` | **Canonical** full timeline |
+| LogOS `SPIRALSAFE-…-LEARNING-TIMELINE.md` | **Pointer stub** only |
+| Syllabus `.pptx` | LogOS `sovereign-handoff/presentations/` |
+| `CONSTRAINT_MATHEMATICS*.md`, `LAMBDA_ZERO_*`, formal tex/ipynb | SpiralSafe research |
+
+---
+
+## Presentations (sovereign-handoff)
+
+| Deck | Theme |
+|------|-------|
+| `RESON8_TriWeavon_LogOS_Sovereign_Bridge_20260709.pptx` | Bridge / LogOS |
+| `SpiralSafe_QDI_RESON8_ANYONE_Official_Syllabus_20260709.pptx` | ANYONE syllabus |
+| `Sovereign_Oversight_Report_Tesla_Optimus_Integration_Proposal.pptx` | Tesla Optimus (style parent for Encyclopedia decks) |
+
+---
+
+## Ingested dump (`encyclopedia-equilibria/`)
+
+From `LogOS.worktrees/master/9P2000.L/strands/User_Dropfiles/dump/`:
+
+| Bucket | Examples |
+|--------|----------|
+| `formal-agda/` | MagicStateInjectionGuard, TomczakObstruction, MerminPermutahedron, SequentInterpolation, … |
+| `formal-lean/` | MiracleOctadGenerator, SRAC_Complete_Tomczak |
+| `kernels/` | blackwell_dde.cu, r_matrix_host.cpp |
+| `certificates/` | existence_certificate.json, ax_wave_optimization.json, cert_latest.json |
+| `notebooks/` | verification_orchestrator.ipynb |
+| `presentations/` | HeisenForge PDF, Tesla Optimus PDF/PPTX |
+| `scripts/` | c12_orbit_animation.py, verification_helpers.py |
+| `surfaces/` | Harmonic Sovereignty, Director's Command, Reforging 9P |
+
+---
+
+## HUP Python (tuning rails)
+
+```
+LogOS/hup/python/constraint_mathematics.py   # QuantumRail α+ω=15
+LogOS/hup/python/dimensional_collapse.py     # 768→75→50→2 collapse
+LogOS/hup/python/claude_integration.py       # offline ClaudeLocal stub
+```
+
+Run from repo:
+
+```powershell
+python hup/python/constraint_mathematics.py
+python hup/python/dimensional_collapse.py
+python hup/python/claude_integration.py
+```
+
+---
+
+## Overlay trainmaps
+
+See [`../sovereign-handoff/overlays/README.md`](../sovereign-handoff/overlays/README.md) — Agda · Lean · cudarc · cutile · WGSL · interjoin.
+
+---
+
+## Session handovers
+
+See [`../sovereign-handoff/session-handovers/README.md`](../sovereign-handoff/session-handovers/README.md) — HO-01 … HO-06.
+
+---
+
+## Reson8_Labs Drive archive
+
+Google Drive root `My Drive/Reson8_Labs/` remains the **bulk media archive** (pptx/pdf/html experiments, NotebookLM maps, Lean/Agda orphans).  
+Do **not** duplicate wholesale into git. Promote only sealed artifacts into:
+
+- `docs/publications/` (canonical prose)
+- `docs/encyclopedia-equilibria/` (formal + certs)
+- `coherence-site/public/` (deployed surfaces)
+- `docs/sovereign-handoff/presentations/` (decks)
+
+---
+
+## Conservation
+
+```
+α + ω = 15
+WAVE ≥ 0.85 operational · ≥ 0.98 peak
+~ Hope&&Sauced ✦ The Keystone Holds ✦
+```

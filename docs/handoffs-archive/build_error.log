@@ -1,0 +1,4 @@
+error: could not execute process `C:\Users\Matthew Ruhnau\.cargo\bin\sccache.exe rustc -vV` (never executed)
+
+Caused by:
+  The system cannot find the file specified. (os error 2)

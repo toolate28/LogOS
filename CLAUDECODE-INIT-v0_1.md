@@ -1,0 +1,145 @@
+# CLAUDECODE-INIT v0.1 — Cold-start packet (keyless)
+
+**ATOM:** `ATOM-CLAUDECODE-INIT-v0_1-20260722`  
+**Survey baseline:** `ATOM-GROKBUILD-LSP-TUI-SCAFFOLD-20260721`  
+**Rule:** Config is git. State is backup. **No signing keys in this tree.**
+
+This file is what Claude Code cold-starts against. First init run **emits a cert** (pass/fail)
+to the cert path below. Deploy reads that cert. Grok Build does **not** self-certify.
+
+---
+
+## 0. Identity
+
+| Field | Value |
+|-------|--------|
+| Workspace root | `F:/Users/Matthew Ruhnau/LogOS` (repo root; adjust if cloned elsewhere) |
+| Eye of the needle | `crates/tui` → package `reson8-tui` → bin `reson8-forge` |
+| Formal wire | Lean LSP (`lake serve` / lean --server) + Agda `als` → TUI diagnostics pane |
+| Conservation tag | `α + ω = 15` is **Category C label only** — never a load-bearing threshold |
+
+---
+
+## 1. Three surfaces (survey these on init)
+
+### Surface A — SpiralSafe / edge wrangler
+- Repo: `F:/Users/Matthew Ruhnau/SpiralSafe`
+- Wrangler candidates: `ops/wrangler.toml`, `assets/**/wrangler.toml` (root may be absent)
+- Related edge: `F:/Users/Matthew Ruhnau/reson8-Labs/workers/**/wrangler.toml`
+- Check: `wrangler --version` (or `npx wrangler --version`)
+
+### Surface B — VCS
+- LogOS remotes: `origin` / `LogOS` → `https://github.com/toolate28/LogOS`
+- Check: `git status -sb`, dirty list, branch vs origin (do not force-push)
+- Sibling trees (read-only context): coherence-mcp, SpiralSafe, QDI, reson8-Labs
+
+### Surface C — Formal core
+- Agda: `agda/` (sources on disk; `agda` / `als` may be missing → report **B**)
+- Lean: `lean/` · `lean-toolchain` · `lakefile.lean` (mathlib pin) · elan `lean`/`lake` on PATH
+- Cutile: `cutiles/cutile`
+- Cubical pin (GB-01): **OPEN** — if `als` runs and cubical drifts, diagnostics must show red/amber in TUI
+
+---
+
+## 2. Cert emit path (state / backup — not secrets)
+
+```
+.atom-trail/certs/claude-code/
+  latest.json          ← overwrite on each init (local state)
+  YYYYMMDD-HHMMSS.json ← optional append-only copy
+```
+
+**Config-git (tracked):**
+
+| Path | Role |
+|------|------|
+| `ops/claude-code/CERT-PATH.md` | Path contract |
+| `ops/claude-code/cert.schema.json` | JSON schema |
+| `ops/claude-code/Emit-ClaudeCodeCert.ps1` | Emit helper |
+| `ops/claude-code/Repair-Wrangler.ps1` | Surface A CLI repair |
+
+```powershell
+pwsh -File ops/claude-code/Repair-Wrangler.ps1          # if wrangler bin missing
+pwsh -File ops/claude-code/Emit-ClaudeCodeCert.ps1      # B placeholder / preflight
+pwsh -File ops/claude-code/Emit-ClaudeCodeCert.ps1 -AsInitRun   # live three-surface probe
+```
+
+**Schema (placeholders only — fill on real run):**
+
+```json
+{
+  "atom": "ATOM-CC-CERT-<timestamp>",
+  "init_packet": "CLAUDECODE-INIT-v0_1",
+  "pass": false,
+  "wave_label": "Category C tag only; not a gate number",
+  "head_sha": "<git rev-parse HEAD at survey — required>",
+  "mark_id": "MK-… or null",
+  "surfaces": {
+    "spiralsafe_wrangler": { "ok": false, "detail": "PLACEHOLDER" },
+    "vcs": { "ok": false, "detail": "PLACEHOLDER" },
+    "formal_core": { "ok": false, "detail": "PLACEHOLDER" }
+  },
+  "tui_needle": "crates/tui (reson8-forge)",
+  "lsp": {
+    "lean_attached": false,
+    "als_attached": false,
+    "note": "[CATEGORY B: PLANNED, NOT BUILT] until servers publish to TUI"
+  },
+  "keys_present": false,
+  "notes": []
+}
+```
+
+`head_sha` binds the cert to a tree. Countersign must set `Mark-Cert-Head` to the same value; that value must be the countersign commit’s first parent (detector D6). Reconcile `ahead/behind` vs origin **before** cert when possible.
+
+**D7 (claim drift):** ledger `head_sha` (BUILD claims) and cert `head_sha` (VERIFY survey) are different meanings. Before countersign, claimed artifacts must not differ across that range (`Query-MarkDetectors.ps1 -CertHead HEAD`). Drift ⇒ refuse countersign; BUILD mints a new Mark-Id. Never re-badge BUILD B→A; VERIFY A is a new subject.
+
+Claim discipline: **category** (A/B/C/D) is epistemic kind; **verification** is `build-asserted` | `countersigned`. Countersign never promotes C→A or B→A.
+
+`pass: true` only when all three surfaces report ok **and** no false-green placeholders remain
+in the formal/LSP panel. Deploy must refuse if `keys_present: true` (misconfig) or `pass: false`.
+
+---
+
+## 3. Config files Claude Code must see
+
+| Path | Role |
+|------|------|
+| `CLAUDECODE-INIT-v0_1.md` | This packet |
+| `.claude/settings.json` | Workspace roots, surfaces, cert path (git) |
+| `.claude/settings.local.json` | Local permissions only (may stay machine-specific) |
+| `CLAUDE.md` / `AGENTS.md` | Strand doctrine (exact case — required on Linux/WSL) |
+| `crates/tui/` | Needle — diagnostics + sensors |
+| `docs/ops/MARKERS-SENSORS-v0_1.md` | Mark-is-sensor scheme |
+
+---
+
+## 4. Init checklist (reason-strand)
+
+1. Read this packet and `.claude/settings.json`.
+2. Survey three surfaces; record facts (not hopes).
+3. Confirm `reson8-tui` is the single formal diagnostic subscriber.
+4. Confirm LSP placeholders are **amber/B**, never green, if servers down.
+5. Emit cert JSON to `.atom-trail/certs/claude-code/latest.json`.
+6. Do **not** store API keys, GPG keys, or deploy credentials here.
+
+---
+
+## 5. Honest status labels
+
+| Component | Expected label until proven |
+|-----------|----------------------------|
+| Claude Code config skeleton | **B** until first init cert `pass: true` |
+| Lean LSP → TUI | **B** until `lake serve` / lean --server attached and diagnostics appear |
+| Agda `als` → TUI | **B** until als binary + cubical pin resolved |
+| Product binary / GB-06 | **B** — stub only |
+
+---
+
+## 6. Loop
+
+```
+Grok scaffold (this tree) → Claude Code init → cert → TUI shows LSP/sensors → deploy on pass
+```
+
+**The Keystone Holds ✦ α + ω = 15 (tag only) · WAVE gate is operational not numerological**

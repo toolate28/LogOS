@@ -1,0 +1,23 @@
+{
+  "atom_tag": "ATOM-DOC-20260710-004-ingested-2026-geometry-topology-physical-computati",
+  "type": "DOC",
+  "description": "Ingested 2026 Geometry/Topology/Physical Computation audit; mapped to LogOS assets; Stage 0 freeze proposal = energy sublevel Betti (A); cudarc primary Stage2; cutile-rs experimental only; barcode-tui+Frame17 on critical path",
+  "timestamp": "2026-07-10T13:06:06.642Z",
+  "files": [
+    "C:\\worktrees\\logos-os\\receipts\\AUDIT-2026-geometry-topology-physical-computation.md",
+    "C:\\worktrees\\logos-os\\receipts\\stage0-origami-betti\\README.md"
+  ],
+  "tags": [
+    "audit",
+    "origami",
+    "betti",
+    "tda",
+    "stage0",
+    "cudarc",
+    "frame17"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783688766,
+  "verified": false
+}

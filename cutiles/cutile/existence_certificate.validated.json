@@ -1,0 +1,14 @@
+{
+  "bettiProxyBelowThreshold": true,
+  "tomczakPreserved": true,
+  "maxErrorBound": 9.030602086568251e-05,
+  "reliable": true,
+  "waveScore": 0.998,
+  "alphaOmegaSum": 15.0,
+  "coherenceDelta": 0.001,
+  "atomTrailId": "ATOM-DEMO-20260706-001",
+  "kernelVersion": "0.3.0",
+  "inputStateHash": "demo-input-hash",
+  "certificateHash": "2e6708258a0400cbb255c6e97e14a127ad2c8ed03e1437302c0b29c2ee3e0e68",
+  "timestampNs": 1783327514397235000
+}

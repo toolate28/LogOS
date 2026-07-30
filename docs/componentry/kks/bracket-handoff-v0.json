@@ -1,0 +1,159 @@
+{
+  "$schema": "https://logos.local/schemas/kks-bracket.v0.json",
+  "id": "handoff-coherence-v0",
+  "atom": "ATOM-KKS-DESIGN-LANGUAGE-20260727",
+  "category": "B",
+  "status": "structure_constants_declared_jacobi_untested",
+  "description": "Lie algebra for Marked Stream handoff modes. Productization of KKS design language — not a certified symplectic realization.",
+  "basis": [
+    {
+      "index": 0,
+      "name": "build",
+      "symbol": "e_B",
+      "product_meaning": "BUILD authority — mint Mark-Id, assert claims, never self-countersign"
+    },
+    {
+      "index": 1,
+      "name": "verify",
+      "symbol": "e_V",
+      "product_meaning": "VERIFY authority — survey tree, countersign, never mint Mark-Id"
+    },
+    {
+      "index": 2,
+      "name": "hold",
+      "symbol": "e_H",
+      "product_meaning": "HELD stratum — authority seam or unresolved detector fire"
+    },
+    {
+      "index": 3,
+      "name": "quarantine",
+      "symbol": "e_Q",
+      "product_meaning": "QUARANTINED stratum — key leak, label mutation, untrusted origin"
+    }
+  ],
+  "structure_constants": {
+    "convention": "antisymmetric; [e_i, e_j] = sum_k c^k_{ij} e_k; stored as upper triangle with sign flip for lower",
+    "comment": "Category B proposal until Jacobi numeric smoke exists. See 06-KKS-MATHEMATICAL-DESIGN-LANGUAGE.md §D.1.1",
+    "brackets": [
+      {
+        "left": "build",
+        "right": "verify",
+        "result": { "hold": 1.0 },
+        "product_reading": "Simultaneous BUILD and VERIFY without resolution → HELD (authority seam)"
+      },
+      {
+        "left": "build",
+        "right": "hold",
+        "result": { "build": 1.0 },
+        "product_reading": "Hold does not erase build intent; re-enter BUILD when hold lifts"
+      },
+      {
+        "left": "build",
+        "right": "quarantine",
+        "result": { "quarantine": 1.0 },
+        "product_reading": "Quarantine absorbs build generator"
+      },
+      {
+        "left": "verify",
+        "right": "hold",
+        "result": { "verify": 1.0 },
+        "product_reading": "Hold does not erase verify intent"
+      },
+      {
+        "left": "verify",
+        "right": "quarantine",
+        "result": { "quarantine": 1.0 },
+        "product_reading": "Quarantine absorbs verify generator"
+      },
+      {
+        "left": "hold",
+        "right": "quarantine",
+        "result": { "quarantine": 1.0 },
+        "product_reading": "Quarantine absorbs hold generator"
+      }
+    ]
+  },
+  "declared_invariants": [
+    {
+      "id": "mark_id_immutable",
+      "rule": "VERIFY never mints a new Mark-Id",
+      "source": "ops/marks/README.md"
+    },
+    {
+      "id": "category_ceiling_nonincreasing",
+      "rule": "Countersign never re-badges category (no C→A, no B→A)",
+      "source": "ops/marks/README.md"
+    },
+    {
+      "id": "builder_not_verifier",
+      "rule": "BUILD never sets verification: countersigned",
+      "source": "ops/marks/README.md"
+    }
+  ],
+  "candidate_casimirs": [
+    {
+      "id": "provenance_class",
+      "status": "unearned",
+      "note": "Must pass Jacobi + flow-invariance tests before Casimir label"
+    },
+    {
+      "id": "authority_separation",
+      "status": "unearned",
+      "note": "Must pass §E validation in 06-KKS-MATHEMATICAL-DESIGN-LANGUAGE.md"
+    }
+  ],
+  "not_casimirs_until_earned": [
+    "alpha_plus_omega_15",
+    "wave_threshold",
+    "category_ceilings",
+    "strand_weights_8_5_3"
+  ],
+  "state_coordinates": [
+    {
+      "name": "freshness",
+      "observable": "ledger.head_sha vs Mark-Cert-Head / working tree",
+      "detector": "D7"
+    },
+    {
+      "name": "authority",
+      "observable": "role on Mark-Id: BUILD | VERIFY",
+      "source": "ops/marks/spine.schema.json"
+    },
+    {
+      "name": "uncertainty",
+      "observable": "open detector fires D1-D7",
+      "source": "ops/marks/Query-MarkDetectors.ps1"
+    },
+    {
+      "name": "tool_availability",
+      "observable": "MCP tools/list + shell probes",
+      "source": "ops/command-surface.json"
+    },
+    {
+      "name": "provenance_completeness",
+      "observable": "five BUILD trailers present; cert sha bound",
+      "source": "ops/marks/README.md"
+    }
+  ],
+  "modes": ["BUILD", "VERIFY", "HELD", "QUARANTINED", "RELEASED"],
+  "actions": ["emit", "countersign", "re-snapshot", "reconcile", "promote", "quarantine"],
+  "hamiltonian_terms": [
+    "verification_debt",
+    "stale_state_penalty",
+    "authority_seam_penalty",
+    "provenance_discontinuity"
+  ],
+  "reference_trace": {
+    "mark_id": "MK-20260724T0400Z-b0und01",
+    "source": "ops/marks/MARKS.jsonl",
+    "classify": "BUILD",
+    "verification_debt": 1,
+    "note": "Executable process trace in 06 §D.1.9 — not certified Hamiltonian flow"
+  },
+  "validation": {
+    "jacobi": "untested",
+    "kks_pairing": "not_implemented",
+    "casimir_drift": "not_measured",
+    "category": "B"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "atom_tag": "ATOM-BUILD-20260710-003-cascade-tui-popups-notifications-test-map-coded-di",
+  "type": "BUILD",
+  "description": "Cascade: TUI popups/notifications/test-map coded; Director Command Surface v0.5 portal written; Gitea portable config+start script ready (binary download pending under IO load)",
+  "timestamp": "2026-07-10T12:44:41.228Z",
+  "files": [
+    "F:\\Users\\Matthew Ruhnau\\LogOS\\crates\\tui\\src\\app.rs",
+    "F:\\Users\\Matthew Ruhnau\\LogOS\\crates\\tui\\src\\ui.rs",
+    "F:\\Users\\Matthew Ruhnau\\LogOS\\crates\\tui\\src\\main.rs",
+    "C:\\worktrees\\logos-os\\portal\\directors-command-surface.html",
+    "C:\\worktrees\\logos-os\\gitea\\custom\\conf\\app.ini",
+    "C:\\worktrees\\logos-os\\gitea\\start-gitea.ps1"
+  ],
+  "tags": [
+    "gitea",
+    "tui",
+    "portal",
+    "command-surface",
+    "notifications",
+    "popups"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783687481,
+  "verified": false
+}

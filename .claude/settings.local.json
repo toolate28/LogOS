@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:christitus.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(for d:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/Matthew Ruhnau/reson8/$HOME/coherence-mcp/coherence-site/public/**)"
+    ]
+  }
+}

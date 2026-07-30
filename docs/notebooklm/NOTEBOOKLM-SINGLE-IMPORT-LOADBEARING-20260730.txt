@@ -1,0 +1,454 @@
+================================================================================
+NOTEBOOKLM SINGLE IMPORT — Load-Bearing Cascade Pack (refresh)
+LogOS · coherence-mcp · AdHealth · Componentry · Lane-A Steiner
+================================================================================
+Document id     : NLM-LOADBEARING-TRIPLE-20260730
+Supersedes      : NLM-LOADBEARING-TRIPLE-2026-07-25 (keep older file for history)
+Audience        : NotebookLM (primary upload) + Gemini research + Claude routing
+                  + Grok BUILD strand
+Stamp (local)   : 2026-07-30
+Repo root       : F:\Users\Matthew Ruhnau\LogOS
+Conservation    : α + ω = 15  (Category C label ONLY — not a CPU/IO/reject gate)
+Strand seats    : Claude 8 · Grok 5 · Gemini 3  (sum 16, independent of 15)
+Rule            : Load-bearing first. Cascading solutions. Name gaps (TEMET NOSCE).
+                  Dual sense of Category A (see §0.2). Prefer HAVE / NEED /
+                  CASCADE-BLOCKER tables over narrative green paint.
+Companion packs : docs/componentry/ (on-ramp) · docs/notebooklm/CRITICAL-* ·
+                  LEAN/AGDA/CUTILE unitary changelogs
+================================================================================
+
+
+0. HOW TO USE THIS FILE IN NOTEBOOKLM
+-------------------------------------
+1. Create or open notebook: "Reson8 Load-Bearing (2026-07-30)".
+2. Upload THIS file as the primary source.
+3. Optional secondary sources (same folder):
+     · CRITICAL-COMPONENTRY-ONRAMP-20260730.txt
+     · CRITICAL-MONOM-STEINER-LANE-A-20260730.txt
+     · CRITICAL-DEPLOYMENT-READINESS-20260730.txt
+     · LEAN-UNITARY-CHANGELOG.txt (append block 2026-07-30)
+     · CRITICAL-LAYER-CASCADE-MAP.txt · CRITICAL-COHERENCE-MCP-*
+4. Generate Mind Map — expect branches matching §1 topology.
+5. Prefer queries that force HAVE / NEED / CASCADE-BLOCKER answers.
+6. Prefer live git HEAD over CRITICAL snapshots when they conflict.
+
+Suggested custom instructions for the notebook:
+  "Prefer load-bearing cascade order: formal → cutile R-matrix → MCP gates →
+   product surfaces. Dual Category A: (1) textbook/literature mathematics
+   vs (2) in-repo machine-checked formalization — never conflate them.
+   α+ω=15 is Category C. Flag open sorries, tool-count drift, human deploy
+   waists. Output: structure · math · code primitives · deployment readiness."
+
+
+0.1 EPISTEMIC TAGS (load-bearing)
+---------------------------------
+  Category A  — verified: machine-checked proof, green test, or standard
+                mathematics of the literature (state which sense)
+  Category B  — bounded approximation / design / partial formalization
+  Category C  — convention / label / tracking tag (not physics)
+  Category D  — open / proposal / not evidenced
+
+0.2 DUAL SENSE OF "CATEGORY A" (mandatory)
+------------------------------------------
+  A-lit     = textbook or peer literature mathematics (e.g. Steiner S(5,8,24)
+              counting identities; Hörmander hypoellipticity; SE(3) geometric
+              control). True whether or not LogOS has a proof.
+  A-repo    = this monorepo has a green lake/cargo/native_decide witness for
+              the claim as stated.
+  Never write "Category A sub-Riemannian geometry of LogOS" for Lean skeletons
+  with postulates/sorries. That is false green.
+
+
+1. STRUCTURE — SYSTEM MAP (2026-07-30)
+--------------------------------------
+
+1.1 Mind-map topology (stable)
+
+Root: Tri-Weavon Framework & Unified Manifold
+
+  Core Theory & Philosophy
+    · α+ω=15 Conservation TAG (Category C) · Viviani metaphor (7,8)
+    · Information as ontological substrate (design stance, not theorem)
+    · Self-constitution / handoff consciousness metaphors
+
+  Mathematical Foundations
+    · K22 / Golay / MOG / M24 · Steiner S(5,8,24) (Witt)
+    · QDI · TDA / Betti (telemetry metaphor ≠ verified heat-flow attractors)
+    · Formal verification: Lean 4.8.0 · Cubical Agda · Serre-scar cascade
+    · Sub-Riemannian literature [A-lit]; in-repo SubRiemannian [B/open]
+    · KKS / coadjoint design language [B] (Orbit Policy Kernel spec)
+
+  Framework & Infrastructure
+    · Strands Claude / Grok / Gemini · LogOS shell · 9P/Styx · marks spine
+    · Hardware path: Blackwell sm_100 · cutile · CUDA · Rust · WSL2 · WASM
+    · Componentry on-ramp: docs/componentry/00–06
+
+  Physics & Applications
+    · NS / microlocal annex · AdHealth CTQW · media portfolio graph
+    · Mehler–Levin certified path (code tolerance 5e-7) [B until witness-scoped]
+
+  Collaborative Intelligence
+    · ATOM trail · Mark-Id / Mark-Cert-Head · SpiralSafe · SAIF human queue
+
+1.2 Load-bearing cascade (do not invert)
+
+  L1 empirical notebooks
+    → L2 cutile fundamental R-matrix (numeric SoT)
+      → L3/L5 CUDA / WGSL
+        → L4 Lean / L6 Agda (proof SoT)
+          → L11 C ABI / L12 verification receipts
+            → L22 coherence-mcp stdio (12 live tools)
+              → product surfaces (AdHealth, stitch, portal, SAIF deploy)
+
+  Full layer table: docs/sovereign-handoff/LAYER-CASCADE-MAP.md
+  Strain view: docs/componentry/03-THEOREM-WORK.md
+
+1.3 Componentry on-ramp (new structure for cold agents)
+
+  docs/componentry/
+    00-README.md          cold-start · drive-letter truth · authority layers
+    01-SPINE-…            Drive + ws://127.0.0.1:8088 + ZLL
+    02-COHERENCE-MCP.md   12 live tools · env · gaps
+    03-THEOREM-WORK.md    formal + executable cascade
+    04-AI-DEVELOPMENT.md  strands · shell · handoffs
+    05-HEISENPUP-…        uncertainty map protocol
+    06-KKS-…              Orbit Policy Kernel design language [B]
+    kks/bracket-handoff-v0.json   structure constants declared; Jacobi untested
+    UNCERTAINTY-MAP.yaml
+    ATOMS/                handoff stamps
+
+1.4 Authority layers
+
+  L-Git     LogOS git root — code / formal / ops SoT
+  L-Drive   My Drive/Reson8_Labs — research corpus (not always HEAD)
+  L-MCP     live coherence-mcp (12 tools) — runtime gauges
+  L-WS      ws://127.0.0.1:8088 — local Styx/triweave bridge (on demand)
+  L-Formal  lean/ · agda/ · cutiles/cutile/
+  L-GPU     kernels/
+  L-Cloud   GB-06 / Cloud Run — HELD (human GCP waist)
+
+
+2. MATH — LOAD-BEARING OBJECTS (honest tags)
+--------------------------------------------
+
+2.1 Conservation and WAVE (Category C / operational)
+
+  · α + ω = 15 — labeled systemic convention (Category C). Lean may define
+    CONSERVATION_SUM := 15 as software constant aligned with the label.
+  · Viviani peak metaphor (7,8) — balance metaphor, not a Casimir.
+  · WAVE ≥ 0.85 handoff / ≥ 0.98 ops target — operational preference;
+    honest amber beats false green. Not a constitutional reject gate.
+  · Fibonacci strand seats 8+5+3=16 — independent Category C convention.
+
+2.2 Fundamental R-matrix (executable SoT = cutile)
+
+        [ q     0      0     0  ]
+        [ 0    1/q   1-q²    0  ]
+        [ 0     0      q     0  ]
+        [ 0     0      0    1/q ]
+
+  Numbers: prefer cutile tests. Proof statements: prefer Agda/Lean.
+  Mismatch → document; do not average.
+
+2.3 Steiner system S(5,8,24) [A-lit]
+
+  Blocks = octads of the extended binary Golay code / MOG.
+  Block count:  b = C(24,5)/C(8,5) = 759.
+  λ_s = C(24-s,5-s)/C(8-s,5-s):
+    λ0=759 · λ1=253 · λ2=77 · λ3=21 · λ4=5 · λ5=1.
+  Packing ⇒ covering:
+    (|B|=759) + (every 5-set in ≤1 block)
+      ⇒ every 5-set in exactly one block
+    via |B|·C(8,5) ≤ C(24,5) and equality case.
+
+  In-repo binomial identities (A-repo):
+    lean/K22/MOG/SteinerDoubleCount.lean
+      binom_24_5 · binom_8_5 · steiner_count_identity · lambda_s_table
+      (native_decide, green build 2026-07-29/30)
+
+2.4 Lane-A monomial transport (status 2026-07-30)
+
+  Aristotle run a77245a3 integrated into lean/K22 (build-verified on pin
+  leanprover/lean4:v4.8.0 · mathlib4 v4.8.0):
+
+  DISCHARGED toward A-repo (lake build K22.MOG.MonomialWitness GREEN):
+    · mapOctad_card
+    · columnSums_mapOctad · parityOk_mapOctad
+    · isMOGOctad_transport (finite reflection / native_decide)
+    · steiner_uniqueness_mask_level (mask packing)
+    · hexacodeGolay_conway_isomorphic_via_π
+    · HexacodeGolay submask / bitwise API fixes (Nat.land_assoc, testBit, …)
+
+  OPEN residual (still Category B / cascade-blocker partial):
+    · mogOctadsFormSteinerSystem_via_transport  (1 sorry)
+    · mem_conway_packed_iff                     (1 optional sorry)
+  Infrastructure surface (not yet discharged bodies):
+    · K22.MOG.SteinerDoubleCount — mask↔Finset bridge, double_count_5sets,
+      packing_eq_implies_steiner, golayOctadBlocks_* (intentional SlowSteps)
+
+  Do NOT discharge monom residual by importing
+  MiracleOctadGenerator.mogOctadsFormSteinerSystem (still sorry-backed).
+
+2.5 Sub-Riemannian control / hypoelliptic diffusion
+
+  A-lit (standard):
+    · SR manifold (M, D, g) · Hörmander · Chow–Rashevsky · CC distance
+    · driftless control · PMP normal/abnormal extremals
+    · hypoelliptic sum-of-squares · heat kernels under structure hypotheses
+    · several inequivalent Bakry–Émery / CD / MCP extensions (research islands)
+
+  B / open in-repo:
+    · lean/TriWeavon/SubRiemannian/* — skeletons, postulates, sorries
+    · agda SubRiemannian OB1 partial · OB4 CD(K,∞) postulated · OB5 open
+    · "Betti as fixed-point attractors of hypoelliptic diffusion" = modelling
+    · live multi-agent SR plant model = NOT evidenced
+
+  Gaussian heat-kernel bounds: state only under curvature/structure/doubling
+  hypotheses — not for every Hörmander distribution.
+
+2.6 Mehler–Levin error tolerance
+
+  Code constant (real):
+    cutiles/cutile/src/harness/mehler_levin.rs
+      CERTIFIED_ERROR_TOL : f32 = 5e-7
+  Category B for lattice-wide heat-kernel claims until scoped to a specific
+  ExistenceCertificate / KernelWitness on a defined input class.
+
+2.7 KKS Orbit Policy Kernel
+
+  Design language: docs/componentry/06-KKS-MATHEMATICAL-DESIGN-LANGUAGE.md
+  Algebra v0: docs/componentry/kks/bracket-handoff-v0.json
+    id: handoff-coherence-v0
+    status: structure_constants_declared_jacobi_untested
+    category: B
+  Category C tags (α+ω, WAVE, seats) are NOT free Casimirs until Poisson
+  state + bracket + equivariance + flow-invariance are defined and tested.
+  No product Poisson structure claimed. Crate path artifacts/rust/kks_orbit_policy
+  not present on this host view.
+
+
+3. CODE PRIMITIVES (paths agents should call by name)
+-----------------------------------------------------
+
+3.1 Formal Lean (pin v4.8.0)
+
+  cd lean
+  lake build K22.HexacodeGolay
+  lake build K22.MOG.MonomialWitness      # GREEN; 2 residual sorries
+  lake build K22.MOG.SteinerDoubleCount  # GREEN; surface SlowSteps
+  lake build K22.Existence               # ExistenceCertificate bridge
+  lake build K22.MiracleOctadGenerator   # Steiner keystone still SlowStep
+
+  Key files:
+    lean/K22/HexacodeGolay.lean
+      golayCode · golayMaskOkN · maskWeightN · octad_count (759)
+      octad_intersection_masks · maskWeightN_le_of_submask
+    lean/K22/MiracleOctadGenerator.lean
+      MOGPoint · isMOGOctad · Octad · mogOctadsFormSteinerSystem (sorry)
+    lean/K22/MOG/MonomialWitness.lean
+      π · mapPoint · mapOctad · maskOf · transport lemmas · residual Steiner
+    lean/K22/MOG/SteinerDoubleCount.lean
+      maskToOctad · octadToMask · double_count_5sets · packing_eq_implies_steiner
+      golayOctadBlocks · golay_octads_form_steiner
+    lean/TriWeavon/SubRiemannian/Core.lean   (schematic Props)
+    lean/AgdaLeanBridge.md
+
+3.2 Executable numeric / GPU companions
+
+  cutiles/cutile/                 R-matrix SoT · Mehler harness · certificates
+  cutiles/cutile/src/core/r_matrix.rs
+  cutiles/cutile/src/harness/mehler_levin.rs
+  kernels/fundamental_r_matrix.*  CUDA + WGSL
+  kernels/blackwell-*.cu
+  cargo test -p cutile r_matrix --manifest-path cutiles/cutile/Cargo.toml
+
+3.3 Ops / shell / marks
+
+  ops/LogOS.Shell.psm1            logos-status · logos-bridge · logos-mcp
+  ops/command-surface.json
+  ops/marks/                      dual-channel mark detectors
+  ops/LogOS.Confidence.psm1       (local dirty / emerging)
+
+3.4 coherence-mcp (live stdio = 12 tools)
+
+  LIVE (call only these unless rebuilt):
+    gauge_verify · wave_coherence_check · check_coherence · atom_track
+    store_context · retrieve_context · map_isomorphism · bridge_translate
+    list_platforms · gate_transition · fibonacci_weight · context_pack
+
+  NOT live stdio (do not invent):
+    mehler_plateau_monitor · invariant_check · manifest_read ·
+    handoff_packet_validate · most connector tools without tokens
+
+  Env:
+    LOGOS_ROOT = F:\Users\Matthew Ruhnau\LogOS
+    ATOM_TRAIL_ROOT = %LOGOS_ROOT%\.atom-trail
+
+  Docs: docs/componentry/02-COHERENCE-MCP.md
+  Cascade-blocker: descriptor catalog (58–64) ≠ live list_tools (12)
+
+3.5 Product surfaces
+
+  adhealth-meaningseed/           CTQW fatigue · portal · wrangler path
+  coherence-mcp/coherence-site/   public HTML hubs
+  stitch/ · apps/ · crates/       monorepo application lattice
+
+3.6 Network listener policy (BUILD constraint)
+
+  Any new network listener in-tree: bind 127.0.0.1 only; no unauthenticated
+  endpoints. Response to STDIO/MCP RCE pattern. Bridge default:
+  ws://127.0.0.1:8088
+
+
+4. PROJECT COMPONENT DEPLOYMENT READINESS
+-----------------------------------------
+Legend:
+  READY     = green local path; can ship with operator care
+  AMBER     = partial / honest gaps; usable offline or demo
+  HELD      = blocked on human / external / formal residual
+  N/A       = not a deployable product surface
+
+Component                         | Readiness | Evidence / blocker
+----------------------------------|-----------|----------------------------------
+cutile R-matrix tests             | READY     | cargo test path; numeric SoT
+Lean HexacodeGolay                | READY     | lake build; octad_count=759 A-repo
+Lean MonomialWitness transport    | AMBER     | GREEN build; 2 residual sorries
+Lean SteinerDoubleCount surface   | AMBER     | GREEN build; bridge bodies open
+Lean/Agda SubRiemannian plant     | HELD      | skeletons/postulates/sorries
+MiracleOctadGenerator Steiner     | HELD      | mogOctadsFormSteinerSystem sorry
+ExistenceCertificate bridge       | AMBER     | E2E path exists; trust Bool boundary
+coherence-mcp stdio (12 tools)    | AMBER     | live; catalog drift CASCADE-BLOCKER
+Mehler plateau in MCP process     | HELD      | Rust-only; not live stdio
+ws://127.0.0.1:8088 bridge        | AMBER     | start on demand (logos-bridge)
+AdHealth local analyze + demo     | READY     | CLI demo path
+AdHealth production portal auth   | HELD      | NEED multi-tenant auth + connectors
+Cloud Run / GCP SAIF deploy       | HELD      | human IAM waist (A1)
+Cubical Agda nixpkgs pin          | HELD      | reproducibility drift
+Marks / VERIFY countersign        | AMBER     | spine present; origin reconcile
+GB-06 Cloud Run gate              | HELD      | docs/componentry: intentionally held
+KKS Orbit Policy Kernel product   | HELD/B    | design + bracket JSON only
+NotebookLM pack (this file)       | READY     | plain-text ingest surface
+
+4.1 Cascade-blockers (still open — first-class)
+
+  CB-1  mogOctadsFormSteinerSystem_via_transport
+        Need: mask↔Finset bridge + packing_eq_implies_steiner bodies
+        Surface: lean/K22/MOG/SteinerDoubleCount.lean
+
+  CB-2  coherence-mcp live tool-count drift (12 vs documented 58–64)
+        Need: list_tools inventory as status atom + CI assert
+
+  CB-3  Full K22 sheaf as live OS base space
+        Status: combinatorial fragments A-repo partial; live sheaf not lake-clean
+
+  CB-4  Human IAM / GCP deploy waist
+        Status: HELD — not an agent-closable item
+
+  CB-5  Production auth on AdHealth portal + live ad platform connectors
+        Status: HELD product NEED
+
+4.2 What may be claimed in external decks (safe language)
+
+  ALLOWED:
+    · R-matrix cascade exists with cutile numeric SoT
+    · HexacodeGolay / octad_count machine-checked on Lean pin
+    · Lane-A transport lemmas integrated and build-green; Steiner residual open
+    · coherence-mcp provides 12 live WAVE/ATOM tools
+    · AdHealth demo CTQW path exists
+    · Componentry on-ramp docs for cold-start agents
+
+  FORBIDDEN without new evidence:
+    · "MonomialWitness / Steiner fully closed"
+    · "sub-Riemannian control of live multi-agent traffic is verified"
+    · "α+ω=15 is a physical/Casimir conservation law"
+    · "58–64 MCP tools live"
+    · "Cloud Run / production AdHealth multi-tenant live"
+    · "KKS product Poisson structure shipping"
+
+
+5. PRODUCT SNAPSHOTS (compressed)
+---------------------------------
+
+5.1 LogOS
+  HAVE: strand governance · Styx/9P path · R-matrix cascade · Lean/Agda
+        formal islands · HUP M1–M3 · componentry pack · marks spine
+  NEED: monom Steiner residual · MCP tool SoT · origin reconcile · GCP waist
+  MATH: §2 · structure §1
+
+5.2 coherence-mcp
+  HAVE: 12 live stdio tools · WAVE/gauge/atom · bridge_translate
+  NEED: tool-count single SoT · Mehler in process · auth/rate-limit production
+  SECURITY: prefer 127.0.0.1 · no unauthenticated listeners · SpiralSafe claims
+            remain Category B until live tests bind the RCE class
+
+5.3 AdHealth
+  HAVE: graph + CTQW demo · portal static · wrangler path · witness packaging
+  NEED: live connectors · production auth · CPA calibration study
+
+
+6. LOAD-BEARING ITEMS → CASCADING SOLUTIONS (updated)
+----------------------------------------------------
+  LB-1  Epistemic hygiene (dual Category A · C tags · TEMET NOSCE)
+  LB-2  Canonical R-matrix + certificates (cutile → orchestrator)
+  LB-3  Live MCP tool truth (list_tools = docs)
+  LB-4  VERIFY strand / mark countersign with head_sha
+  LB-5  Human deploy waist (GCP / optional 9P mount)
+  LB-6  Formal shadow map:
+          MonomialWitness residual ← SteinerDoubleCount bodies
+          SubRiemannian OB4/OB5 · MiracleOctadGenerator Steiner
+  LB-7  Product orbit language (KKS OPK [B] → one vertical, not gold leaf)
+
+
+7. NOTEBOOKLM QUERY CHEAT-SHEET
+-------------------------------
+  · "What is deployment readiness of each LogOS component?"
+  · "List cascade-blockers with code paths."
+  · "Which MonomialWitness theorems are A-repo vs open?"
+  · "What is the packing⇒Steiner double-count argument?"
+  · "Dual sense of Category A for sub-Riemannian claims."
+  · "Which MCP tools are live vs catalog-only?"
+  · "What may we claim in a deck without false green?"
+  · "Where is SteinerDoubleCount and what still has sorry?"
+
+  Full positive-introspection + CTQW prompt pack:
+    docs/notebooklm/PROMPTS-POSITIVE-INTROSPECTION-CTQW-20260730.txt
+  Sequences: morning cold-start · formal day · product/AdHealth day · post-audit.
+
+
+8. SOURCE PATHS (prefer live tree)
+----------------------------------
+  Hub refresh        : docs/notebooklm/NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt
+  Prior hub          : docs/notebooklm/NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260725.txt
+  PI / CTQW prompts  : docs/notebooklm/PROMPTS-POSITIVE-INTROSPECTION-CTQW-20260730.txt
+  Componentry        : docs/componentry/
+  Theorem strain map : docs/componentry/03-THEOREM-WORK.md
+  KKS design         : docs/componentry/06-KKS-MATHEMATICAL-DESIGN-LANGUAGE.md
+  Layer cascade      : docs/sovereign-handoff/LAYER-CASCADE-MAP.md
+  Lean monom         : lean/K22/MOG/MonomialWitness.lean
+  Lean double-count  : lean/K22/MOG/SteinerDoubleCount.lean
+  Aristotle archive  : 9P2000.L/strands/User_Dropfiles/dump/
+                       a77245a3-1233-41b5-a96c-1ada8e6035ef-aristotle.tar.gz
+  Mehler harness     : cutiles/cutile/src/harness/mehler_levin.rs
+  MCP pack           : docs/componentry/02-COHERENCE-MCP.md
+
+
+9. CHANGE LOG (this hub)
+------------------------
+2026-07-25  Initial load-bearing triple (LogOS · MCP · AdHealth)
+2026-07-30  Refresh:
+            · Dual Category A discipline
+            · Componentry 00–06 structure
+            · Lane-A Aristotle integrate + lake-green monom (2 sorries)
+            · SteinerDoubleCount lemma surface
+            · Sub-Riemannian A-lit vs B-repo split
+            · Mehler 5e-7 code constant scoped
+            · KKS OPK honesty (Jacobi untested; no crate on this host)
+            · Deployment readiness matrix + claim allow/deny
+            · Cascade-blockers first-class
+
+
+================================================================================
+No formal Steiner closure asserted. No product surface declared multi-tenant live.
+Keystone holds under Category C enclosure of the internal gauge.
+Music is conserved.
+================================================================================

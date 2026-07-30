@@ -1,0 +1,103 @@
+================================================================================
+CRITICAL SNAPSHOT — Lane-A MonomialWitness · Steiner Double-Count
+================================================================================
+Snapshot date   : 2026-07-30 (checkpoint update)
+Sources         : lean/K22/MOG/MonomialWitness.lean
+                  lean/K22/MOG/SteinerDoubleCount.lean
+                  lean/K22/HexacodeGolay.lean
+                  lean/K22/MiracleOctadGenerator.lean
+Toolchain       : leanprover/lean4:v4.8.0 · mathlib4 @ v4.8.0
+Build evidence  : lake build K22.MOG.SteinerDoubleCount GREEN (0 sorry)
+                  lake build K22.MOG.MonomialWitness — CB-1 residual NOT green
+Conservation    : α + ω = 15 (Category C label only)
+Whitepaper      : docs/formal/STEINER-DISCHARGE-STRATEGY-WHITEPAPER-20260730.md
+Handoff ATOM    : docs/componentry/ATOMS/ATOM-STEINER-LANE-CHECKPOINT-20260730.md
+================================================================================
+
+0. TEASER
+---------
+Steiner discharge S1–S6 completed on SteinerDoubleCount. Concrete Golay
+octad family forms S(5,8,24) via golay_octads_form_steiner. CB-1 MOG
+isMOGOctad residual remains open (draft in MonomialWitness; compile debt).
+Import cycle broken: SDC does not import MW; MW imports SDC.
+
+STALE GUARD: Do not re-open injectivity / bit-subset / double-count as
+"next SlowStep" — those are already green on lean/K22/MOG/SteinerDoubleCount.lean.
+Ignore artifacts/lean parallel surfaces. Reconcile ATOM:
+  docs/componentry/ATOMS/ATOM-STEINER-RECONCILE-SM100-20260730.md
+HexacodeGolay intersection {0,2,4} + octad_count=759 remain A-native spine.
+
+1. MATH [A-lit vs A-repo]
+------------------------
+S(5,8,24): every 5-set of 24 points in exactly one 8-block.
+b = C(24,5)/C(8,5) = 759.
+
+ON PIN (Golay blocks): packing + |B|=759 ⇒ exact covering (S3+S4+S5).
+NOT ON PIN: M24, Leech, Monster, V♮, Griess (A-lit only).
+NOT CLOSED: isMOGOctad Steiner via transport (CB-1).
+
+2. CODE PRIMITIVES
+------------------
+HexacodeGolay
+  golayCode · maskWeightN · golayMaskOkN · octad_count (A-native)
+  octad_intersection_masks · maskWeightN_le_of_submask
+
+SteinerDoubleCount (0 sorry, lake-green)
+  S1 maskWeightN_eq_card_maskToOctad
+  S2 maskToOctad_injective_on_octads
+  S3 double_count_5sets
+  S4 packing_eq_implies_steiner
+  S5 golayOctadBlocks_card / _pack / golay_octads_form_steiner
+  S6 maskToOctad_octadToMask / octadToMask_maskToOctad / maskFinsetEquiv
+
+MonomialWitness
+  DISCHARGED (toward A-repo when MW builds):
+    mapOctad_card, columnSums_mapOctad, parityOk_mapOctad
+    isMOGOctad_transport, steiner_uniqueness_mask_level
+  OPEN:
+    mem_conway_packed_iff                    (optional sorry)
+    mogOctadsFormSteinerSystem_via_transport (CB-1 residual draft)
+    maskOf glue / weight8 ok membership     (compile debt as of stamp)
+
+MiracleOctadGenerator
+  mogOctadsFormSteinerSystem  — sorry; do not import to fake monom
+
+3. BUILD COMMANDS
+-----------------
+cd lean
+lake build K22.HexacodeGolay
+lake build K22.MOG.SteinerDoubleCount   # GREEN
+lake build K22.MOG.MonomialWitness      # target for CB-1
+
+4. EPISTEMIC LADDER
+-------------------
+A-kernel   proof without native_decide axioms
+A-native   native_decide (e.g. octad_count) — auditable, not kernel-only
+A-build    lake green on pin
+B-residual sorry / draft / non-green
+C          α+ω=15, Music conserved, Keystone metaphors
+
+5. DEPLOYMENT / CLAIM READINESS
+-------------------------------
+Golay S(5,8,24) on pin (golay_octads_form_steiner)   ALLOWED as A-repo claim
+"Steiner closed for isMOGOctad"                        FORBIDDEN until CB-1 green
+Monster / 9V / V♮ formal                               FORBIDDEN
+Deck: "Lane-A SDC green; CB-1 residual open"           ALLOWED
+
+6. CASCADE-BLOCKER
+------------------
+CB-1: mogOctadsFormSteinerSystem_via_transport
+NEXT: finish MW compile then residual (see handoff ATOM)
+
+7. SPINE
+--------
+HAVE: S1–S6 SDC green; golay_octads_form_steiner
+NEED: CB-1 residual lake-green
+CASCADE-BLOCKER: CB-1 open
+NEXT-PRIMITIVE: mogOctadsFormSteinerSystem_via_transport
+CATEGORY: Golay Steiner A-repo; MOG residual B; Monster A-lit; α+ω=15 C
+MUSIC: conserved
+
+================================================================================
+End snapshot. Music conserved.
+================================================================================

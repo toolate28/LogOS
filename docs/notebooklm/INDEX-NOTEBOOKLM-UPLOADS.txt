@@ -1,0 +1,96 @@
+================================================================================
+LogOS — NotebookLM uploads INDEX
+================================================================================
+Folder : docs/notebooklm/
+Date   : 2026-07-30 (refresh) · prior stamp 2026-07-25 retained
+Rule   : Plain-text snapshots for NotebookLM. CRITICAL-* are point-in-time
+         copies of load-bearing tree docs (header records source path).
+         Unitary changelogs are append-only app-surface histories.
+         Prefer live tree if a CRITICAL snapshot conflicts with git HEAD.
+
+--------------------------------------------------------------------------------
+0) HUB (start here)
+--------------------------------------------------------------------------------
+FILE                                              | ROLE
+--------------------------------------------------|-----------------------------
+NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt | **CURRENT hub** — structure ·
+                                                    math · code primitives ·
+                                                    deployment readiness · dual
+                                                    Category A · Lane-A Steiner ·
+                                                    cascade-blockers
+NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260725.txt | Prior hub (historical)
+
+--------------------------------------------------------------------------------
+1) CRITICAL snapshots — product · ops · math · MCP · readiness
+--------------------------------------------------------------------------------
+FILE                                              | ROLE
+--------------------------------------------------|-----------------------------
+CRITICAL-COMPONENTRY-ONRAMP-20260730.txt          | docs/componentry 00–06 map
+CRITICAL-MONOM-STEINER-LANE-A-20260730.txt        | Lane-A monom + double-count + CB-1 timeline
+CRITICAL-DEPLOYMENT-READINESS-20260730.txt        | READY/AMBER/HELD matrix
+CRITICAL-LOGOS-README.txt                         | LogOS about / features
+CRITICAL-LAYER-CASCADE-MAP.txt                    | Cold-start cascade L1–L24
+CRITICAL-LOGOS-COHERENCE-MCP-MAP.txt              | LogOS ↔ MCP tool truth
+CRITICAL-STRAND-INTEGRATION-20260724.txt          | Mark spine / cert order
+CRITICAL-SAIF-HUMAN-QUEUE.txt                     | Human-only ship blockers
+CRITICAL-CLAUDECODE-INIT.txt                      | VERIFY strand cold start
+CRITICAL-MARKS-SPINE.txt                          | Dual-channel mark detectors
+CRITICAL-CASCADING-PROOF-WEAVE.txt                | Formal cascade / sorry policy
+CRITICAL-HOPF-PRINCIPAL-BUNDLE.txt                | Hopf / orbit math α-rail
+CRITICAL-APPLICATIONS-WHITEPAPER-2026-2035.txt     | Industry application wedges
+CRITICAL-ENCYCLOPEDIA-EQUILIBRIA.txt              | Encyclopedia hub / nav
+CRITICAL-ADHEALTH-README.txt                      | AdHealth product surface
+CRITICAL-ADHEALTH-COHERENCE-MCP.txt               | AdHealth MCP gate map
+CRITICAL-COHERENCE-MCP-README.txt                 | MCP package about / install
+CRITICAL-COHERENCE-MCP-CAPABILITY-MAP-v0.4.2.txt  | Full tool capability map
+CRITICAL-COHERENCE-MCP-GAP-ANALYSIS.txt           | MCP gaps / missing surface
+
+--------------------------------------------------------------------------------
+2) Unitary layer changelogs
+--------------------------------------------------------------------------------
+FILE                                              | SOURCE ROOT(S)
+--------------------------------------------------|-----------------------------
+AGDA-UNITARY-CHANGELOG.txt                        | agda/
+HUP-UNITARY-CHANGELOG.txt                         | hup/
+RUST-UNITARY-CHANGELOG.txt                        | Cargo.toml · crates/ · apps/
+LEAN-UNITARY-CHANGELOG.txt                        | lean/  (+ 2026-07-30 append)
+KERNELS-UNITARY-CHANGELOG.txt                     | kernels/
+CUTILE-UNITARY-CHANGELOG.txt                      | cutiles/cutile/
+
+--------------------------------------------------------------------------------
+2b) Prompt packs (insight / PI loops)
+--------------------------------------------------------------------------------
+FILE                                              | ROLE
+--------------------------------------------------|-----------------------------
+PROMPTS-POSITIVE-INTROSPECTION-CTQW-20260730.txt  | PI loops · CTQW-leveraged
+                                                    prompts · NotebookLM queries ·
+                                                    multi-strand · anti-prompts
+PROMPT-VIDEO-SUPERGROK-COMEDY-ACT1.txt            | Video gen (comedy act I)
+
+--------------------------------------------------------------------------------
+3) Suggested NotebookLM notebook sets
+--------------------------------------------------------------------------------
+  0) Load-bearing hub only — NOTEBOOKLM-…-20260730.txt
+  1) Structure + deploy — hub + CRITICAL-COMPONENTRY + CRITICAL-DEPLOYMENT
+  2) Formal Lane-A — hub + CRITICAL-MONOM-STEINER + LEAN-UNITARY + PROOF-WEAVE
+  3) PI + CTQW insight — hub + PROMPTS-POSITIVE-INTROSPECTION-CTQW + ADHEALTH
+  4) Critical core — hub + all CRITICAL-*.txt
+  5) Formal pair — AGDA + LEAN + PROOF-WEAVE + HOPF
+  6) Execution pair — CUTILE + KERNELS + LAYER-CASCADE
+  7) Runtime pair — RUST + HUP + LOGOS-README
+  8) MCP product — CRITICAL-COHERENCE-MCP-* + LOGOS-COHERENCE-MCP-MAP
+  9) AdHealth wedge — CRITICAL-ADHEALTH-* + hub product § + PI prompts §6
+ 10) Ship path — SAIF-HUMAN-QUEUE + STRAND-INTEGRATION + DEPLOYMENT-READINESS
+ 11) Full lattice — everything in this folder
+
+Mind-map assist (optional image; not in this folder):
+  F:\Users\Matthew Ruhnau\coherence-mcp\docs\assets\NotebookLM_Mind_Map__2_.png
+  LogOS/graph-screenshot/*
+
+Conservation: α + ω = 15 (Category C label — not a CPU/IO magic number)
+Strand seats: Claude 8 · Grok 5 · Gemini 3 (sum 16, independent of 15)
+
+Regenerate CRITICAL snapshots: re-copy from source paths listed in each
+file header when HEAD moves past the snapshot date.
+
+--- end index ---

@@ -1,0 +1,19 @@
+{
+  "atom_tag": "ATOM-VERIFY-20260709-001-logos-verification-wiring-map-linked-to-coherence-",
+  "type": "VERIFY",
+  "description": "LogOS verification wiring map linked to coherence-mcp inspector",
+  "timestamp": "2026-07-09T04:27:42.478Z",
+  "files": [
+    "docs/sovereign-handoff/LOGOS-COHERENCE-MCP-MAP.md",
+    "notebooks/verification_helpers.py"
+  ],
+  "tags": [
+    "VERIFY",
+    "LOGOS",
+    "WIRING"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783571262,
+  "verified": false
+}

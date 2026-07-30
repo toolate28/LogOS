@@ -1,0 +1,27 @@
+{
+  "atom_tag": "ATOM-BUILD-20260711-001-wire-logos-shell-command-surface-through-coherence",
+  "type": "BUILD",
+  "description": "Wire LogOS shell command surface through coherence-mcp, reson8-tui, meta-map/RUST_Market HTML hubs via ops/command-surface.json registry",
+  "timestamp": "2026-07-11T11:43:49.126Z",
+  "files": [
+    "ops/LogOS.Shell.psm1",
+    "ops/command-surface.json",
+    "ops/logos-mcp.mjs",
+    "ops/LogOS.Shell.md",
+    "coherence-mcp/coherence-site/public/meta-map/index.html",
+    "coherence-mcp/coherence-site/public/RUST_Market/index.html",
+    "docs/surfaces/Interactive_README.md"
+  ],
+  "tags": [
+    "command-surface",
+    "shell",
+    "coherence-mcp",
+    "reson8-tui",
+    "meta-map",
+    "RUST_Market"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783770229,
+  "verified": false
+}

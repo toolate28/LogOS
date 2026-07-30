@@ -1,0 +1,86 @@
+# GB-05 kustomize base — waist only (stateless, no PVs, no 9P, no keys)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reson8-waist
+  labels:
+    app.kubernetes.io/name: reson8-waist
+    app.kubernetes.io/component: waist
+    app.kubernetes.io/part-of: logos
+    atom: ATOM-GB05-ORCH-20260713
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: reson8-waist
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: reson8-waist
+        app.kubernetes.io/component: waist
+    spec:
+      # No service account tokens needed for verify-only v0
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: waist
+          # Image by digest only — no :latest (GB-02)
+          image: reson8-waist@sha256:88b870e3011605d36d6d23bdd56c8b254e4bb1606168e700299a3e4c19965d6b
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: SCHEMAS_DIR
+              value: /schemas
+            - name: PYTHONDONTWRITEBYTECODE
+              value: "1"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 64Mi
+      # No bookshelf / 9P mounts in v0

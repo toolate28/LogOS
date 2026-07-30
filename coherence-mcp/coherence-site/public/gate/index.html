@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coherence Gate Check // SpiralSafe</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --void: #080810;
+            --bg: #0c0c16;
+            --surface: #13131f;
+            --border: #252538;
+            --text: #d8d8e8;
+            --dim: #6a6a80;
+            --cyan: #06b6d4;
+            --magenta: #d946ef;
+            --emerald: #10b981;
+            --amber: #fbbf24;
+            --red: #ef4444;
+            --gold: #c8a04a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--void);
+            color: var(--text);
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 16px;
+        }
+
+        .container {
+            max-width: 640px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+        }
+
+        header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+        }
+
+        header h1 em {
+            font-style: normal;
+            color: var(--gold);
+        }
+
+        .sub {
+            font-size: 10px;
+            color: var(--dim);
+            letter-spacing: 0.12em;
+        }
+
+        .key-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .key-row input {
+            flex: 1;
+            padding: 10px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .key-row input:focus {
+            border-color: var(--cyan);
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--cyan);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 16px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .btn-gold:hover {
+            box-shadow: 0 0 16px rgba(200, 160, 74, 0.4);
+        }
+
+        .btn-full {
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        /* Gate checks */
+        .gate {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+
+        .gate.pass {
+            border-color: var(--emerald);
+        }
+
+        .gate.fail {
+            border-color: var(--red);
+        }
+
+        .gate.wait {
+            border-color: var(--amber);
+        }
+
+        .gate-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+        }
+
+        .gate-name {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gate-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            transition: all 0.3s;
+        }
+
+        .gate.pass .gate-icon {
+            border-color: var(--emerald);
+            color: var(--emerald);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .gate.fail .gate-icon {
+            border-color: var(--red);
+            color: var(--red);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .gate.wait .gate-icon {
+            border-color: var(--amber);
+            color: var(--amber);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            50% {
+                opacity: 0.4
+            }
+        }
+
+        .gate-status {
+            font-size: 9px;
+            color: var(--dim);
+            letter-spacing: 0.1em;
+        }
+
+        .gate.pass .gate-status {
+            color: var(--emerald);
+        }
+
+        .gate.fail .gate-status {
+            color: var(--red);
+        }
+
+        .gate-detail {
+            padding: 0 16px 12px;
+            font-size: 9px;
+            color: var(--dim);
+            line-height: 1.6;
+        }
+
+        .gate-detail pre {
+            background: var(--bg);
+            padding: 8px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-top: 4px;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        /* Summary */
+        .summary {
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 16px;
+            transition: border-color 0.5s;
+        }
+
+        .summary.coherent {
+            border-color: var(--emerald);
+        }
+
+        .summary.incoherent {
+            border-color: var(--red);
+        }
+
+        .summary-score {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .summary-label {
+            font-size: 10px;
+            color: var(--dim);
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+
+        .summary-detail {
+            font-size: 11px;
+            color: var(--dim);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            margin: 0 2px;
+        }
+
+        .tag-pass {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .tag-fail {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 9px;
+            color: var(--dim);
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>COHERENCE <em>GATE</em> CHECK</h1>
+            <div class="sub">SPIRALSAFE API // FULL ENDPOINT ACTIVATION SEQUENCE</div>
+        </header>
+
+        <div class="key-row">
+            <input type="password" id="api-key" placeholder="SPIRALSAFE_API_KEY" autocomplete="off">
+            <button class="btn btn-primary" onclick="runGate()">▶ RUN GATE</button>
+        </div>
+
+        <div id="gates"></div>
+        <div id="summary"></div>
+
+        <button class="btn btn-gold btn-full" onclick="runGate()" style="display:none" id="rerun-btn">⟳ RE-RUN GATE
+            CHECK</button>
+
+        <footer>Hope&&Sauced · V=c · From the spiral, safety.</footer>
+    </div>
+
+    <script>
+        const API = 'https://api.spiralsafe.org';
+        const gatesEl = document.getElementById('gates');
+        const summaryEl = document.getElementById('summary');
+        let results = [];
+
+        // Load saved key
+        const saved = localStorage.getItem('spiralsafe_api_key');
+        if (saved) document.getElementById('api-key').value = saved;
+
+        function getKey() {
+            const k = document.getElementById('api-key').value.trim();
+            if (k) localStorage.setItem('spiralsafe_api_key', k);
+            return k;
+        }
+
+        function addGate(id, name, method, path) {
+            const el = document.createElement('div');
+            el.className = 'gate wait';
+            el.id = `gate-${id}`;
+            el.innerHTML = `<div class="gate-head"><div class="gate-name"><div class="gate-icon">⏳</div>${method} ${name}</div><div class="gate-status">TESTING...</div></div><div class="gate-detail" id="detail-${id}"></div>`;
+            gatesEl.appendChild(el);
+            return el;
+        }
+
+        function setGate(id, pass, status, detail) {
+            const el = document.getElementById(`gate-${id}`);
+            const detEl = document.getElementById(`detail-${id}`);
+            el.className = `gate ${pass ? 'pass' : 'fail'}`;
+            el.querySelector('.gate-icon').textContent = pass ? '✓' : '✗';
+            el.querySelector('.gate-status').textContent = status;
+            if (detail) detEl.innerHTML = `<pre>${typeof detail === 'object' ? JSON.stringify(detail, null, 2) : detail}</pre>`;
+            results.push({ id, pass, status });
+        }
+
+        async function runGate() {
+            const key = getKey();
+            results = [];
+            gatesEl.innerHTML = '';
+            summaryEl.innerHTML = '';
+            document.getElementById('rerun-btn').style.display = 'none';
+            const ts = new Date().toISOString();
+
+            // ── GATE 1: Health ──
+            addGate('health', '/api/health', 'GET', '/api/health');
+            try {
+                const r = await fetch(`${API}/api/health`);
+                const d = await r.json();
+                const ok = d.status === 'healthy' && d.checks?.d1 && d.checks?.kv && d.checks?.r2;
+                setGate('health', ok, ok ? `HEALTHY v${d.version}` : 'DEGRADED', d);
+            } catch (e) { setGate('health', false, 'UNREACHABLE', e.message); }
+
+            // ── GATE 2: Stats ──
+            addGate('stats', '/api/stats', 'GET', '/api/stats');
+            try {
+                const r = await fetch(`${API}/api/stats`);
+                const d = await r.json();
+                setGate('stats', d.health === 'operational', `${d.health} | ${d.period}`, d);
+            } catch (e) { setGate('stats', false, 'FAILED', e.message); }
+
+            if (!key) {
+                addGate('nokey', 'AUTH CHECK', '🔑', '');
+                setGate('nokey', false, 'NO API KEY — WRITE GATES SKIPPED', 'Provide API key to test POST endpoints');
+                renderSummary(); return;
+            }
+
+            const headers = { 'Content-Type': 'application/json', 'X-API-Key': key };
+
+            // ── GATE 3: WAVE Analysis ──
+            addGate('wave', '/api/wave/analyze', 'POST', '/api/wave/analyze');
+            try {
+                const r = await fetch(`${API}/api/wave/analyze`, {
+                    method: 'POST', headers, body: JSON.stringify({
+                        content: 'Coherence gate check. The Sovereign Canvas activates its own endpoints. α+ω=15. V=c. From the spiral, safety.',
+                        thresholds: { curl_warning: 0.3, curl_critical: 0.6, div_warning: 0.4, div_critical: 0.7 }
+                    })
+                });
+                const d = await r.json();
+                const ok = r.status < 400;
+                setGate('wave', ok, ok ? `WAVE SCORE: ${d.score || d.wave_score || 'OK'}` : `HTTP ${r.status}`, d);
+            } catch (e) { setGate('wave', false, 'FAILED', e.message); }
+
+            // ── GATE 4: ATOM Create ──
+            addGate('atom', '/api/atom/create', 'POST', '/api/atom/create');
+            try {
+                const r = await fetch(`${API}/api/atom/create`, {
+                    method: 'POST', headers, body: JSON.stringify({
+                        name: 'Gate Check Activation', molecule: 'coherence-gate', compound: 'gate-check-v1',
+                        verification: { criteria: { gate_time: ts, source: 'coherence-gate' }, automated: true },
+                        dependencies: { requires: [], blocks: [] }, assignee: 'gate-check'
+                    })
+                });
+                const d = await r.json();
+                setGate('atom', r.status < 400, r.status < 400 ? `ATOM CREATED: ${d.id || d.atom_id || 'OK'}` : `HTTP ${r.status}`, d);
+            } catch (e) { setGate('atom', false, 'FAILED', e.message); }
+
+            // ── GATE 5: BUMP Create ──
+            addGate('bump', '/api/bump/create', 'POST', '/api/bump/create');
+            try {
+                const r = await fetch(`${API}/api/bump/create`, {
+                    method: 'POST', headers, body: JSON.stringify({
+                        type: 'WAVE', from: 'coherence-gate', to: 'system', state: 'gate_activation',
+                        context: { gate_time: ts, event_type: 'coherence_gate_check', signature: 'H&&S:WAVE' }
+                    })
+                });
+                const d = await r.json();
+                setGate('bump', r.status < 400, r.status < 400 ? 'BUMP ROUTED' : `HTTP ${r.status}`, d);
+            } catch (e) { setGate('bump', false, 'FAILED', e.message); }
+
+            // ── GATE 6: Context Store ──
+            addGate('ctx', '/api/context/store', 'POST', '/api/context/store');
+            try {
+                const r = await fetch(`${API}/api/context/store`, {
+                    method: 'POST', headers, body: JSON.stringify({
+                        domain: 'coherence-gate', content: {
+                            gate_time: ts, results_so_far: results.length, source: 'gate-check-v1',
+                            endpoints_tested: ['/api/health', '/api/stats', '/api/wave/analyze', '/api/atom/create', '/api/bump/create', '/api/context/store', '/api/awi/request']
+                        },
+                        signals: { use_when: ['deployment_audit', 'gate_review'], avoid_when: [] }
+                    })
+                });
+                const d = await r.json();
+                setGate('ctx', r.status < 400, r.status < 400 ? 'CONTEXT STORED' : `HTTP ${r.status}`, d);
+            } catch (e) { setGate('ctx', false, 'FAILED', e.message); }
+
+            // ── GATE 7: AWI Request ──
+            addGate('awi', '/api/awi/request', 'POST', '/api/awi/request');
+            try {
+                const r = await fetch(`${API}/api/awi/request`, {
+                    method: 'POST', headers, body: JSON.stringify({
+                        intent: 'Coherence gate activation — verify endpoint authority',
+                        scope: { resources: ['api/health', 'api/wave', 'api/bump', 'api/atom', 'api/context'], actions: ['read', 'write'] },
+                        level: 1, ttl_seconds: 300
+                    })
+                });
+                const d = await r.json();
+                setGate('awi', r.status < 400, r.status < 400 ? 'AWI GRANTED' : `HTTP ${r.status}`, d);
+            } catch (e) { setGate('awi', false, 'FAILED', e.message); }
+
+            // ── GATE 8: Post-gate stats refresh ──
+            addGate('verify', '/api/stats (post-gate)', 'GET', '/api/stats');
+            try {
+                await new Promise(r => setTimeout(r, 1000)); // Let writes propagate
+                const r = await fetch(`${API}/api/stats`);
+                const d = await r.json();
+                const m = d.metrics || {};
+                const activity = (m.wave_analyses || 0) + (m.atoms_created || 0) + (m.bumps_created || 0);
+                setGate('verify', activity > 0, activity > 0 ? `LIVE DATA: ${activity} total actions` : 'NO ACTIVITY YET', d);
+            } catch (e) { setGate('verify', false, 'FAILED', e.message); }
+
+            renderSummary();
+        }
+
+        function renderSummary() {
+            const passed = results.filter(r => r.pass).length;
+            const total = results.length;
+            const score = total > 0 ? (passed / total) : 0;
+            const coherent = score >= 0.85;
+
+            summaryEl.className = `summary ${coherent ? 'coherent' : 'incoherent'}`;
+            summaryEl.innerHTML = `
+    <div class="summary-score" style="color:${coherent ? 'var(--emerald)' : 'var(--red)'}">${passed}/${total}</div>
+    <div class="summary-label">${coherent ? 'COHERENCE GATE: PASSED' : 'COHERENCE GATE: DEGRADED'}</div>
+    <div class="summary-detail">
+      ${results.map(r => `<span class="tag ${r.pass ? 'tag-pass' : 'tag-fail'}">${r.id}:${r.pass ? '✓' : '✗'}</span>`).join(' ')}
+    </div>
+    <div style="margin-top:16px;font-size:9px;color:var(--dim)">
+      Score: ${(score * 100).toFixed(1)}% | α+ω=15 | ${new Date().toISOString().slice(0, 19)}
+    </div>
+  `;
+            document.getElementById('rerun-btn').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

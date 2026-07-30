@@ -1,0 +1,60 @@
+
+running 3 tests
+test sanity::boundary_rejects_non_fifteen ... ok
+test sanity::cl13_distance_self_zero ... ok
+test sanity::viviani_holds ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+running 8 tests
+test exhaustive_integer_grid ... ok
+test float_invariant_rejects_drift ... ok
+test float_invariant_sum_identity ... ok
+test lattice_default_is_coherent ... ok
+test lattice_is_fixed_point_under_transformations ... ok
+test lattice_rejects_invariant_breach ... ok
+test viviani_crossing_specifically ... ok
+test zero_fifteen_endpoints ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.62s
+
+
+running 4 tests
+test geometric_product_distributes_over_addition ... ok
+test geometric_product_is_associative ... ok
+test scalar_linearity ... ok
+test scalar_one_is_identity ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.54s
+
+
+running 4 tests
+test conjugation_involution ... ok
+test norm_is_multiplicative ... ok
+test norm_squared_is_multiplicative ... ok
+test product_with_conjugate_is_norm_squared ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.59s
+
+
+running 5 tests
+test all_three_moufang ... ok
+test alternative_law ... ok
+test left_moufang ... ok
+test middle_moufang ... ok
+test right_moufang ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.27s
+
+
+running 1 test
+test thtw_parallel_transport_placeholder ... ignored, enable with --features thtw after weyl_graph is added to root workspace
+
+test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

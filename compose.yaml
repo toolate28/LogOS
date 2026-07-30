@@ -1,0 +1,39 @@
+# GB-05 — local waist parity (PKT-GB05 / ATOM-GB05-ORCH-20260713)
+# Image by content digest only — no :latest. Bookshelf stays on host (not mounted).
+# Rebuild: nix build .#waist-image && docker load < result && update image id below.
+
+name: reson8-waist
+
+services:
+  waist:
+    # GB-02 docker image content id (linux/amd64)
+    image: "sha256:88b870e3011605d36d6d23bdd56c8b254e4bb1606168e700299a3e4c19965d6b"
+    pull_policy: never
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      SCHEMAS_DIR: /schemas
+      PYTHONDONTWRITEBYTECODE: "1"
+    read_only: true
+    tmpfs:
+      - /tmp:size=64M,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    user: "65534:65534"
+    cap_drop:
+      - ALL
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health')",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 6
+      start_period: 5s
+    # Local axis: keep waist up across WSL/Docker flaps (GB-05 attestation used restart:no once)
+    restart: unless-stopped

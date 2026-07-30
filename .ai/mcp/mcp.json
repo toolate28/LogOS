@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "coherence-mcp": {
+      "command": "coherence-mcp",
+      "args": [],
+      "env": {
+        "LOGOS_ROOT": "F:/Users/Matthew Ruhnau/LogOS",
+        "COHERENCE_MCP_ROOT": "F:/Users/Matthew Ruhnau/coherence-mcp",
+        "RESON8_LOGOS_ROOT": "F:/Users/Matthew Ruhnau/LogOS",
+        "CTWFI_INVARIANT": "alpha+omega=15",
+        "CTWFI_STRAND": "reason"
+      }
+    },
+    "gitnexus": {
+      "command": "npx",
+      "args": ["-y", "gitnexus", "mcp"],
+      "cwd": "F:/Users/Matthew Ruhnau/LogOS"
+    }
+  }
+}

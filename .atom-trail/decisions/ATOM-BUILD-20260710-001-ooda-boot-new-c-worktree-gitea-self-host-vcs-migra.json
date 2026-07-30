@@ -1,0 +1,25 @@
+{
+  "atom_tag": "ATOM-BUILD-20260710-001-ooda-boot-new-c-worktree-gitea-self-host-vcs-migra",
+  "type": "BUILD",
+  "description": "OODA boot: new C worktree + Gitea self-host VCS + migrate F: degraded repos for LogOS/TriWeavon/reson8/SpiralSafe; fold Frame 17 Hamiltonian into session context",
+  "timestamp": "2026-07-10T10:30:00.076Z",
+  "files": [
+    "C:\\worktrees",
+    "F:\\Users\\Matthew Ruhnau",
+    "C:\\Reson8",
+    "C:\\SpiralSafe",
+    "C:\\TriWeavon-SelfBoot-v2.2.1"
+  ],
+  "tags": [
+    "ooda",
+    "gitea",
+    "migration",
+    "logos",
+    "frame17",
+    "hamiltonian"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783679400,
+  "verified": false
+}

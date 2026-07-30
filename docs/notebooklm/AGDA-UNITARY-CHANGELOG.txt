@@ -1,0 +1,243 @@
+================================================================================
+LogOS / Tri-Weavon — AGDA FORMAL LAYER
+Unitary NotebookLM document + cumulative changelog
+================================================================================
+Document id     : NLM-AGDA-UNITARY-2026-07-11
+Source root     : agda/
+Repo            : LogOS (Tri-Weavon lattice)
+Audience        : NotebookLM corpus upload (single-file, self-contained)
+Conservation    : α + ω = 15  (peak resonance Viviani (α,ω)=(7,8), ε★=0.00055)
+Cascade role    : Formal symbolic layer (cubical type theory / HIT)
+Sibling systems : lean/ · cutiles/cutile · kernels/ · hup/ · crates/
+Generated       : 2026-07-11 (cumulative through git history + tree inventory)
+Git commits on path: 8 (first 2026-06-20, last 2026-07-09)
+================================================================================
+
+1. PURPOSE
+----------
+This file is the single uploadable text surface for the Agda formalization of
+Tri-Weavon. It consolidates location, structure, obligation status, bridges to
+Lean/Rust/GPU, and a cumulative chronological changelog so NotebookLM (or any
+RAG notebook) can answer “what is Agda doing in LogOS?” without multi-file
+navigation.
+
+2. LOCATION AND LIBRARY IDENTITY
+--------------------------------
+Root path          : agda/
+Library name       : TriWeavon  (TriWeavon.agda-lib)
+Include path       : src
+Cubical flags      : --cubical --safe
+Dependencies       :
+  - vendor/agda-cubical  (agda/cubical)
+  - vendor/agda-stdlib   (agda/agda-stdlib)
+Scripts            : agda/scripts/check.ps1, html.ps1, vendor.ps1
+Makefile           : agda/Makefile
+Status doc         : agda/docs/SUBRIEMANNIAN-OB-STATUS-2026-07-03.md
+Mehler DAG yaml    : agda/docs/Certified_Mehler_Dependency_DAG.yaml
+Imagine assets     : agda/docs/IMAGINE/*.jpg (visual companions; not formal content)
+
+Inventory (excluding vendor/):
+  ~37 first-party .agda modules under src/
+  ~66 image assets under docs/
+  scripts + Makefile + agda-lib
+
+3. ROLE IN THE LATTICE
+----------------------
+Agda owns structural rigidity (α-rail) for constructive, cubical statements:
+  - Conservation invariant (WavePair / α+ω=15)
+  - Sub-Riemannian geometry obligations (OB1–OB5)
+  - K22 Serre page / Serre-Scarr formal skeletons
+  - Jesus Axiom ε contraction / termination
+  - HIT manifold scaffolding (TriWeavonManifold)
+  - Tomczak lifting statements
+  - Real analysis minimal constructive reals + log-Lipschitz foundations
+  - Path induction / Merleau-Ponty philosophical formal sketches
+
+Numeric R-matrix algebra is intentionally NOT the primary Agda surface;
+executable R-matrix identity lives in kernels/ and Rust (cutile / cudarc).
+Agda holds symbolic tags and conservation proofs; Lean mirrors many statements
+with Mathlib; cutile emits ExistenceCertificates that Lean consumes.
+
+Bridge note (lean/AgdaLeanBridge.md, 2026-07-09):
+  Lean:  TriWeavon.ConservationInvariant / WavePair / is_conserved
+  Agda:  TriWeavon.ConservationRMatrix / WavePair / is-conserved
+  Peak:  (7,8) conserved by refl / rfl on both sides
+
+4. SOURCE TREE MAP (first-party)
+--------------------------------
+agda/src/
+  Everything.agda                 — umbrella entry
+  ConstructiveRealsMinimal.agda
+  FixedPoints.agda
+  K22_QDI_Functor.agda
+  MerleauPontyChiasm.agda
+  MerleauPontyFleshOntology.agda
+  PathInductionExploration.agda
+  RezkCompletionSimplicialSets.agda
+  SerreScarPathInduction.agda
+  TriWeavonPathInduction.agda
+  TriWeavonPhilosophy.agda
+  RealAnalysis/
+    ConstructiveBisection.agda
+    Foundations.agda
+    LogLipschitz.agda
+  TriWeavon/
+    Core.agda
+    ConservationRMatrix.agda
+    LeechDensityGuidance.agda
+    MagicStateInjectionGuard.agda
+    MerminPermutahedron-KS-Bounds.agda
+    SerrePage.agda
+    SerreScarr.agda
+    SerreScarrPathInduction-KS-Bounds.agda
+    TomczakLifting.agda
+    HITs/
+      TriWeavonManifold.agda
+    JesusAxiomEpsilon/
+      Contraction.agda
+      Core.agda
+      Termination.agda
+    K22/
+      SerrePage.agda
+      SerreScarr.agda
+    SubRiemannian/
+      Core.agda
+      Cosphere.agda
+      CurvatureBound.agda
+      Geometry.agda
+      HorizontalCommutator.agda
+      MehlerJesusBridge.agda
+      MehlerWiring.agda
+    Tomczak/
+      Lifting.agda
+
+5. SUB-RIEMANNIAN OBLIGATION TRACKER (status 2026-07-03)
+--------------------------------------------------------
+ATOM: ATOM-SUBRIEMANNIAN-OB-TRACKER-20260703
+
+Layer mapping Agda ↔ Lean:
+  Core            Agda SubRiemannian/Core.agda      ↔ Lean SubRiemannian/Core.lean
+  S*M / Cosphere  Agda Cosphere.agda                ↔ Lean fields on manifold
+  OB1 commutators Agda HorizontalCommutator.agda    ↔ Lean CurvatureBound.lean
+  Explicit K      Agda CurvatureBound.agda           ↔ same Lean module
+  Reals           Agda ConstructiveRealsMinimal     ↔ Mathlib
+
+Obligations:
+  OB1 Horizontal commutator → Ricci + Riemann
+      Agda: DISCHARGED (horizontal-commutator-curvature-terms)
+      Lean: mirrored (sorry body)
+      GPU:  riemannBound in MehlerConfig
+  OB2 Strain–vorticity Γ₂ coefficient
+      Agda: STAGED (strainCouplingCoeff)
+      Lean: strain_coupling_term
+      GPU:  omegaStrain
+  OB3 Popp volume + W error
+      Agda: STAGED (poppWErrorBound)
+      Lean: axiom error_bounded_by_popp_and_W
+  OB4 CD(K,∞) → Log-Sobolev
+      Agda/Lean: POSTULATED
+  OB5 Exponential SRAC descent
+      Agda: POSTULATED
+      Lean: srac_descent_with_subriemannian_curvature (sorry)
+      Runtime: subRiemannianK kernel gate
+
+OB1 discharge (coefficient-level constructive reals):
+  |commutator-expansion-value M i j|
+    ≤ |baseRicLower M| + Cn * |riemannBound M|
+  via abs-triangle + term-domination postulates.
+
+Next micro-steps (from status doc):
+  1. OB2 pin strainCouplingCoeff from Γ₂ of HorizontalSubLaplacian
+  2. Mirror coefficients into Lean explicit curvature bound
+  3. Wire subRiemannianK into mehler kernel WAVE gate (K>0 → certified path)
+
+6. CROSS-SYSTEM JOINS
+---------------------
+→ Lean        : lean/AgdaLeanBridge.md; SubRiemannian + Conservation mirrors
+→ cutile      : docs/formal-executable-mapping.md (HIT ↔ Rust); ExistenceCert E2E
+→ kernels     : MehlerConfig fields subRiemannianK, omegaStrain, riemannBound
+→ HUP         : formal overlays under docs/sovereign-handoff/overlays/
+→ Encyclopedia: docs/encyclopedia-equilibria/formal-agda/
+
+7. BUILD / CHECK (Windows-oriented)
+-----------------------------------
+cd agda
+# vendor cubical + stdlib if missing:
+#   pwsh -File scripts/vendor.ps1
+# typecheck:
+#   pwsh -File scripts/check.ps1
+# or Makefile targets if Agda on PATH
+
+Vendor README notes paths relative to TriWeavon.agda-lib.
+
+8. CUMULATIVE CHANGELOG (chronological)
+---------------------------------------
+Format: DATE | GIT | SUMMARY
+
+2026-06-20 | c71c9e69 | INITIAL SCAFFOLD
+  feat(cutile): v0.3 backends, clamping, TQEC viz, Agda scaffold.
+  Introduces TriWeavon Agda formal layer alongside cutile Layer-2 crate and
+  triweavon-cudarc skeleton. First appearance of agda/ in monorepo history
+  as a first-class formal surface.
+
+2026-07-02 | 042d3077 | merge wt
+  Worktree merge; Agda tree carried forward with lattice merge.
+
+2026-07-03 | 5add88ce | maintenance / lattice sync
+  Dot commit wave; Sub-Riemannian status document dated this day
+  (SUBRIEMANNIAN-OB-STATUS-2026-07-03.md) records OB1 discharge and OB2–OB5
+  staging. Module map for Core/Cosphere/HorizontalCommutator/CurvatureBound
+  and constructive reals foundation established as authoritative tracker.
+
+2026-07-04 | 6ba15560 | lattice punctuation commit
+  Intermediate sync.
+
+2026-07-04 | 9c397e1e | MAJOR: Sub-Riemannian formalization + Mehler docs
+  feat: 9P lock-off lattice, Mehler kernel docs, Sub-Riemannian formalization.
+  Adds Agda (and Lean) SubRiemannian modules (OB1), Mehler-related docs,
+  cutile Mehler benchmarks/WGSL checklist, ops handoffs, README session resume.
+  Conservation reaffirmed: α+ω=15.
+
+2026-07-08 | 9e7b78e2 | lattice sync
+  Dot commit; formal tree retained.
+
+2026-07-09 | 40f97668 | build metadata timestamps (repo-wide)
+  Timestamp files for TUI/deps; Agda path touched as part of monorepo wave.
+  Not a semantic Agda proof change.
+
+2026-07-09 | a5347350 | lattice sync
+  Latest git touch on agda/ path as of changelog generation.
+  AgdaLeanBridge.md on Lean side documents conservation equivalence mapping
+  for WavePair / peak (7,8) / CONSERVATION_SUM=15.
+
+9. WHAT COUNTS AS “DONE” VS OPEN
+--------------------------------
+DONE / strong:
+  - Library scaffold with cubical+stdlib vendor pins
+  - ConservationRMatrix symbolic conservation
+  - SubRiemannian Core + HorizontalCommutator OB1 discharge (Agda)
+  - JesusAxiomEpsilon contraction/termination modules present
+  - K22 Serre skeletons present
+  - HIT TriWeavonManifold present
+
+OPEN / staged:
+  - OB2–OB5 full constructive discharge
+  - Replace OB1 term-domination postulates with frame-level Christoffel calc
+  - Mechanized Lean↔Agda witness import (JSON/OpenTheory) after checksum
+  - Keep numeric R-matrix out of Agda until complex formalization ready
+
+10. NOTEBOOKLM USAGE HINTS
+--------------------------
+Suggested prompts after upload:
+  - “Summarize Agda Sub-Riemannian obligations OB1–OB5 and which are discharged.”
+  - “Map Agda modules to Lean counterparts for conservation and curvature.”
+  - “What did the 2026-07-04 Sub-Riemannian commit add?”
+  - “Where does Agda stop and cutile/kernels take over for R-matrix?”
+
+11. APPEND PROTOCOL (cumulative law)
+------------------------------------
+Future agents: APPEND dated blocks below; do not rewrite prior history.
+Prefer ATOM ids for major obligation flips. Keep this file unitary and plain
+text (no binary embeds).
+
+--- END OF UNITARY AGDA CHANGELOG (baseline 2026-07-11) ---

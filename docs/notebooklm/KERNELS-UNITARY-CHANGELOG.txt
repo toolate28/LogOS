@@ -1,0 +1,161 @@
+================================================================================
+LogOS / Tri-Weavon — KERNELS (CUDA / WGSL / C INTERFACE)
+Unitary NotebookLM document + cumulative changelog
+================================================================================
+Document id     : NLM-KERNELS-UNITARY-2026-07-11
+Source root     : kernels/
+Repo            : LogOS
+Audience        : NotebookLM single-file corpus for GPU/host kernel contracts
+Conservation    : α + ω = 15  (orthogonal but coupled to R-matrix algebra)
+Cascade role    : L11 unified kernel interface · Blackwell execution surfaces ·
+                  structural R-matrix identity across languages
+Sibling systems : cutiles/cutile/kernels · crates/triweavon-cudarc · hup/ ·
+                  lean/ · agda/ · docs/encyclopedia-equilibria/kernels
+Generated       : 2026-07-11
+Git commits on path: 4 (first 2026-04-18, last 2026-07-10)
+File count      : 8 first-party sources
+================================================================================
+
+1. PURPOSE
+----------
+Unitary map + cumulative changelog for the top-level kernels/ directory: the
+language-agnostic R-matrix contract and Blackwell-oriented CUDA/WGSL kernels
+used by the Tri-Weavon lattice. Distinct from cutile’s in-crate kernels/ (which
+hold Mehler-Levin, entropy v2, hypa boundary, etc.) but joined by the same
+conservation and R-matrix structural identity.
+
+2. LOCATION AND FILE ROSTER
+---------------------------
+kernels/
+  r_matrix_interface.h          — C ABI contract (host-callable pure fill)
+  fundamental_r_matrix.cuh      — CUDA header / device helpers
+  fundamental_r_matrix.cu       — CUDA implementation
+  fundamental_r_matrix.wgsl     — WGSL portable port
+  blackwell-entropy.cu          — entropy kernel (Blackwell)
+  blackwell-fft.cu              — FFT kernel surface
+  blackwell-pcr.cu              — PCR kernel surface
+  blackwell-rips.cu             — Vietoris-Rips / TDA-oriented kernel surface
+
+Related (NOT in this directory, but part of kernel story):
+  cutiles/cutile/kernels/
+    blackwell_entropy_v2.cu
+    entropy_reduce.wgsl
+    gpu_interval_arithmetic.cuh
+    hypa_boundary_reduction.cu
+    mehler_mma_levin_batched.cu
+    mehler_levin_ffi.cpp / .h
+  cutiles/r_matrix_host.cpp     — host-side R-matrix companion at cutiles root
+  crates/triweavon-cudarc       — high-level domain GPU types (skeleton)
+  docs/encyclopedia-equilibria/kernels/ — encyclopedia notes
+
+3. R-MATRIX CONTRACT (r_matrix_interface.h)
+-------------------------------------------
+Cascade layer: unified kernel interface (L11)
+
+Structural identity across Rust / CUDA / WGSL / Python:
+  R = diag-block form with entries q, 1/q, and off-diagonal (1 - q²)
+  Layout: row-major 4×4 over complex doubles (re, im interleaved or paired)
+
+Types:
+  typedef struct RMatrixC64 {
+    double re_im[32];  /* 16 complex pairs → 32 doubles, flattened row-major */
+  } RMatrixC64;
+
+API:
+  int fundamental_r_matrix_host(double q, RMatrixC64* out);
+  /* 0 success; non-zero if q invalid (e.g. q == 0) */
+  /* GPU kernels in fundamental_r_matrix.cu share the same algebra */
+
+Conservation law (orthogonal but coupled): α + ω = 15
+
+4. BLACKWELL KERNEL FAMILY
+--------------------------
+Named for NVIDIA Blackwell-class targets (e.g. RTX 5090 / sm_100 class tooling
+used elsewhere in cutile PTX scripts).
+
+  blackwell-entropy.cu  — entropy diagnostics / reductions on device
+  blackwell-fft.cu      — spectral transforms supporting lattice analysis
+  blackwell-pcr.cu      — PCR-related compute path
+  blackwell-rips.cu     — topological data analysis (rips) acceleration path
+
+These are host-repo “fundamental” kernels; cutile may ship versioned variants
+(e.g. blackwell_entropy_v2.cu) for crate-local backends.
+
+5. LANGUAGE-AGNOSTIC IDENTITY STORY
+-----------------------------------
+Goal: same R algebra and conservation coupling whether called from:
+  - C/C++ host (r_matrix_interface.h / r_matrix_host.cpp)
+  - CUDA device (fundamental_r_matrix.cu)
+  - WGSL (fundamental_r_matrix.wgsl) for wgpu portable path
+  - Rust (cutile core r_matrix.rs; cudarc bindings)
+  - Formal tags in Agda (symbolic) and executable checks in Lean/Rust demos
+
+AgdaLeanBridge recommendation: keep numeric R-matrix out of Agda until complex
+formalization is ready; keep structural identity in Rust/CUDA/WGSL.
+
+6. JOINS TO OTHER SYSTEMS
+-------------------------
+→ cutile backends (wgpu pri1, CUDA pri2, CPU pri3) consume related shaders/PTX
+→ MehlerConfig (documented in Agda SubRiemannian status) accepts:
+     subRiemannianK, omegaStrain, riemannBound for certified WAVE gating
+→ HUP instance3 RVM rvm-gpu path targets cutile/cudarc/kernels R-matrix
+→ Encyclopedia formal-executable mapping and GPU roadmaps under cutile/docs
+→ verification_orchestrator notebooks for cross-backend checksums
+
+7. BUILD / INVOCATION NOTES
+---------------------------
+Top-level kernels/ are sources; integration typically via:
+  - cutile build.rs + scripts/build_ptx.ps1 (crate-local PTX)
+  - Host compile of r_matrix_host / FFI from C++ or Rust bindgen-style links
+  - WGSL load into wgpu pipelines (entropy_reduce.wgsl sibling in cutile)
+
+Exact nvcc flags depend on host CUDA toolkit; project docs reference sm_100
+Blackwell for 5090-class machines.
+
+8. CUMULATIVE CHANGELOG (chronological)
+---------------------------------------
+2026-04-18 | 9060bc46 | PHASE 1 STABLE CLOSE — kernels path baseline
+  Phase 1 stable close includes shader glossary and Gate/QDI frameworks that
+  establish the multi-shader visual + formal story. kernels/ directory enters
+  git history as part of this lattice baseline. Conservation α=7 ω=8 Σ=15.
+
+2026-07-02 | 042d3077 | merge wt
+  Worktree merge carries kernels forward with monorepo merge.
+
+2026-07-09 | a5347350 | lattice sync + contract crystallization window
+  R-matrix interface and language-agnostic contract documented in-header;
+  AgdaLeanBridge same day points to kernels/fundamental_r_matrix.cu as
+  executable R-matrix home. HUP M3 maps rvm-gpu → cutile/cudarc/kernels.
+
+2026-07-10 | 5c0cd592 | latest kernels/ path tip
+
+STRUCTURAL THEMES (across sibling cutile kernels, often same era):
+  - Mehler MMA-Levin batched CUDA + FFI (cutile/kernels)
+  - Entropy reduce WGSL for portable backend
+  - Hypa boundary reduction
+  - Interval arithmetic headers for certified numeric paths
+  - ExistenceCertificate emission uses kernel witnesses from cutile harness
+
+9. OPEN / NEXT
+--------------
+  - Keep fundamental_r_matrix.* bit-identical (within float policy) across
+    CUDA / WGSL / Rust CPU reference
+  - Wire subRiemannianK / omegaStrain / riemannBound into Mehler WAVE gate
+    when OB2+ discharge advances
+  - Document explicit checksum fixtures in verification_orchestrator
+  - Avoid diverging blackwell-entropy.cu vs cutile blackwell_entropy_v2.cu
+    without a version matrix note
+
+10. NOTEBOOKLM USAGE HINTS
+--------------------------
+  - “What is the C ABI for the fundamental R-matrix?”
+  - “Which files implement R-matrix on CUDA vs WGSL?”
+  - “How do top-level kernels differ from cutiles/cutile/kernels?”
+  - “How does α+ω=15 couple to the R-matrix interface?”
+
+11. APPEND PROTOCOL
+-------------------
+When adding a kernel file, append a dated entry with: filename, cascade layer,
+consumer crates/apps, and any ABI change (breaking or not).
+
+--- END OF UNITARY KERNELS CHANGELOG (baseline 2026-07-11) ---

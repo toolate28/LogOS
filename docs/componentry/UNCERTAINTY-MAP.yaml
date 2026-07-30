@@ -1,0 +1,134 @@
+# Heisenpup Uncertainty Map — LogOS componentry export
+# Update when confidence moves. Schema: heisenberg-grok skill.
+
+uncertainty_map:
+  anchor: LogOS/docs/componentry
+  atom: ATOM-COMPONENTRY-EXPORT-20260727
+  updated: "2026-07-30T12:00:00+10:00"
+  updated_utc: "2026-07-30T02:00:00Z"
+  axes:
+    position: 0.84   # local path/tool truth (+ monom lake-green)
+    momentum: 0.76   # architectural coherence (+ dual-A + deploy matrix)
+  components:
+    - id: monom-lane-a-transport
+      purpose: high
+      interfaces: high
+      invariants: high
+      risks: med
+      hypothesis: "Aristotle transport integrated; lake GREEN; 2 residual sorries"
+    - id: steiner-doublecount-surface
+      purpose: high
+      interfaces: med
+      invariants: med
+      risks: med
+      hypothesis: "SteinerDoubleCount binomial A-repo; bridge bodies open"
+    - id: notebooklm-hub-20260730
+      purpose: high
+      interfaces: high
+      invariants: high
+      risks: low
+      hypothesis: "NLM pack: structure/math/primitives/deploy readiness"
+    - id: drive-letter-spine
+      purpose: high
+      interfaces: high
+      invariants: high
+      risks: low
+      hypothesis: "G: is RECOVERY; My Drive + LogOS are SoTs"
+    - id: google-drive-content
+      purpose: high
+      interfaces: high
+      invariants: med
+      risks: med
+      hypothesis: "I: label + F:\\Users\\Matthew Ruhnau\\My Drive content"
+    - id: ws-8088
+      purpose: high
+      interfaces: high
+      invariants: med
+      risks: med
+      hypothesis: "bridge down at stamp; start on demand via logos-bridge"
+    - id: styx-routes
+      purpose: high
+      interfaces: high
+      invariants: high
+      risks: low
+      hypothesis: "routes.json endpoint 8088 + SPHINX jones path"
+    - id: zero-latency-ledgers
+      purpose: med
+      interfaces: med
+      invariants: med
+      risks: med
+      hypothesis: "crate BQP/Jones + Drive notes; not Drive RTT"
+    - id: coherence-mcp-live-12
+      purpose: high
+      interfaces: high
+      invariants: high
+      risks: med
+      hypothesis: "12 stdio tools live; 64 descriptors are backlog"
+    - id: mehler-stdio-gap
+      purpose: med
+      interfaces: med
+      invariants: med
+      risks: med
+      hypothesis: "mehler_plateau_monitor Rust-only until promoted"
+    - id: theorem-cascade
+      purpose: high
+      interfaces: med
+      invariants: high
+      risks: med
+      hypothesis: "cutile numeric SoT; Agda/Lean proof SoT"
+    - id: hup-instances
+      purpose: med
+      interfaces: med
+      invariants: med
+      risks: med
+      hypothesis: "M1/M2/M3 present; depth not fully re-probed this session"
+    - id: ai-command-surface
+      purpose: high
+      interfaces: high
+      invariants: med
+      risks: med
+      hypothesis: "LogOS.Shell + command-surface.json in local dirty tree"
+    - id: gb-06-cloudrun
+      purpose: high
+      interfaces: low
+      invariants: high
+      risks: low
+      hypothesis: "HELD — human GCP gate; local coherence sufficient"
+    - id: kks-design-language
+      purpose: high
+      interfaces: med
+      invariants: med
+      risks: med
+      hypothesis: "Category B OPK spec; Marked Stream wedge; Jacobi untested"
+    - id: kks-bracket-handoff-v0
+      purpose: high
+      interfaces: high
+      invariants: low
+      risks: med
+      hypothesis: "structure constants declared in kks/bracket-handoff-v0.json"
+    - id: marked-stream-orbit
+      purpose: high
+      interfaces: high
+      invariants: high
+      risks: med
+      hypothesis: "modes BUILD/VERIFY/HELD/QUARANTINED/RELEASED map to mark observables"
+    - id: gitnexus-impact
+      purpose: med
+      interfaces: unknown
+      invariants: med
+      risks: med
+      hypothesis: "impact MCP may be offline; do not fake"
+  collapsed:
+    - id: H1-gdrive-letter
+      text: "G: is the Google Drive project root on this host"
+      evidence: "Get-PSDrive G → RECOVERY; My Drive under F:"
+    - id: H2-kks-theory-absent
+      text: "LogOS obstruction is missing KKS theory"
+      evidence: "KKS exists; obstruction is tractable product-orbit realization"
+  blocking: []
+  next_sharpen: position
+  notes:
+    - "Category C: alpha+omega=15 is label not reject gate"
+    - "Category C: strand seats 8+5+3=16 independent of 15"
+    - "GB-06 deferred by operator intent 2026-07-27"
+    - "KKS: declared_invariants ≠ candidate_casimirs; gold-leaf detector active"

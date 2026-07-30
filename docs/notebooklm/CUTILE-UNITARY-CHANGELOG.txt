@@ -1,0 +1,236 @@
+================================================================================
+LogOS / Tri-Weavon — CUTILE (Layer 2 execution crate)
+Unitary NotebookLM document + cumulative changelog
+================================================================================
+Document id     : NLM-CUTILE-UNITARY-2026-07-11
+Source root     : cutiles/cutile/   (workspace member path: cutiles/cutile)
+Repo            : LogOS
+Audience        : NotebookLM single-file corpus for cutile
+Conservation    : α + ω = 15 · IDEMPOTENT · MUTATION-INVARIANT
+Cascade role    : Layer 2 execution — portable tiling · entropy · SRAC ·
+                  Mehler-Levin · ExistenceCertificate · tiered GPU backends
+Sibling systems : kernels/ · crates/triweavon-cudarc · lean/K22.Existence ·
+                  agda/ · hup/ · docs/sovereign-handoff/
+Generated       : 2026-07-11
+Package version : 0.3.0 (Cargo.toml)
+Git commits on path cutiles/: ~10 (first 2026-06-20, last 2026-07-10)
+Status (README) : 2026-07-06 · compiles · demo runnable · Lean bridge verified
+================================================================================
+
+1. PURPOSE
+----------
+Unitary upload for cutile: the Layer-2 execution crate of Tri-Weavon. Captures
+backends, modules, E2E ExistenceCertificate flow, docs index, and cumulative
+changelog so NotebookLM can treat cutile as one coherent product surface.
+
+2. IDENTITY
+-----------
+Crate name     : cutile
+Version        : 0.3.0
+Edition        : 2021
+License        : MIT OR Apache-2.0
+Description    : Cubical Tiling & HIT Execution Bridge for TriWeavon Manifold
+                 + SRAC
+Path           : cutiles/cutile/
+Workspace      : member of root Cargo.toml under “Execution layer (Layer 2)”
+Brand seal     : exterior Hope && Sauce · interior Hope&&Sauced
+Handoff        : docs/sovereign-handoff/HANDOFF-2026-07-06-EXISTENCE-SYMMETRY-GATE.md
+
+Relationship to triweavon-cudarc:
+  cutile owns tiling, backends (wgpu/CUDA/CPU), entropy kernels, HIT execution,
+  Mehler-Levin harness, ExistenceCertificate emission.
+  triweavon-cudarc owns domain GPU types (GpuManifold, Jones, K22_SHEAF, SRAC
+  buffers) — skeleton v0.1.0 with CPU fallback.
+
+3. BACKENDS (PRIORITY LOCKED)
+-----------------------------
+Priority | Backend | Feature        | Notes
+1        | wgpu    | wgpu-backend   | default; portable AMD+NVIDIA
+2        | CUDA    | cuda           | Blackwell sm_100 PTX
+3        | CPU     | always         | reference + CI
+
+See docs/backend-architecture.md and docs/gpu-acceleration-roadmap.md.
+
+Features (Cargo.toml):
+  default = ["wgpu-backend"]
+  cuda, wgpu-backend, viz, viz-async
+Optional deps: cudarc 0.12, wgpu 0.20, eframe/egui for viz
+
+4. MODULE MAP (src/)
+--------------------
+lib.rs, error.rs, traits.rs, clamping.rs, existence_cert.rs, mog_bridge.rs,
+l39_harmony.rs
+
+backend/
+  cpu.rs · cuda.rs · wgpu.rs · types.rs · mod.rs
+
+core/
+  c12_hexaflake.rs · hexaflake.rs · entropy.rs · r_matrix.rs · srac.rs ·
+  srac_strategies.rs
+
+harness/
+  kernel_witness.rs · mehler_levin.rs · polarity.rs · polarity_harness.rs
+
+hit/
+  cubical.rs · triweavon_hit.rs
+
+prime/
+  prime_11/ apparent_pairs, lock_free_reduction
+  prime_13/ tda_pipeline
+  prime_17/ provenance
+
+viz/ (feature viz)
+  braid.rs · palette.rs · tqec_syndrome.rs
+
+bin/
+  demo_existence_certificate_emission.rs
+
+kernels/ (crate-local)
+  blackwell_entropy_v2.cu
+  entropy_reduce.wgsl
+  gpu_interval_arithmetic.cuh
+  hypa_boundary_reduction.cu
+  mehler_mma_levin_batched.cu
+  mehler_levin_ffi.cpp / .h
+
+examples/
+  basic_hit.rs · entropy_benchmark.rs · telemetry_diagnostic_tick.rs ·
+  tqec_braid_viz.rs · tqec_concurrent_cascade.rs
+
+tests/
+  backend.rs · clamping.rs · cuda_fallback.rs · integration.rs
+
+scripts/
+  build_ptx.ps1 / .sh · demo_bridge_to_lean.py · levin_weights_generator.py ·
+  profile_mehler_ncu.ps1
+
+docs/
+  backend-architecture.md
+  entropy-kernel-performance.md
+  formal-executable-mapping.md     — Agda HIT ↔ Rust
+  gpu-acceleration-roadmap.md
+  mehler-mma-levin-benchmark.md
+  tqec-visualization.md
+  wgsl-porting-checklist-v0.4.2.md
+
+Artifacts:
+  existence_certificate.json
+  existence_certificate.validated.json
+
+5. EXISTENCECERTIFICATE E2E
+---------------------------
+Emit (Rust):
+  cargo run --bin demo_existence_certificate_emission
+  → existence_certificate.json (BLAKE3 self-hash, camelCase JSON)
+
+Validate (Python):
+  python scripts/demo_bridge_to_lean.py
+  → existence_certificate.validated.json
+
+Consume (Lean):
+  cd lean && lake build K22.Existence
+  K22.Existence.fromExistenceCertificate → TomczakExistence
+  Trust: caller Bool=true; gate construction verified in Lean
+
+Modules status (README 2026-07-06):
+  existence_cert            OK — ExistenceCertificate, TomczakGateWitness, BLAKE3 C(C)
+  harness::mehler_levin     OK — CPU + optional CUDA
+  harness::kernel_witness   OK — emit_existence_certificate
+  hit::triweavon_hit        OK
+  viz::braid                OK (feature viz)
+
+6. MEHLER MMA-LEVIN
+-------------------
+Fast path relative error ~1.2e-5
+Certified path relative error < 5e-7
+
+API sketch:
+  use cutile::harness::{MehlerLevinHarness, N_LEVIN_NODES};
+  let h = MehlerLevinHarness::new(0.1, true);
+  let out = h.evaluate(&z_batch, &f_nodes)?;
+
+Benchmark doc: docs/mehler-mma-levin-benchmark.md
+
+7. BUILD
+--------
+  cmd /c "set RUSTC_WRAPPER=&& cargo test -p cutile"
+  cargo run -p cutile --example basic_hit
+
+CUDA PTX (RTX 5090 / sm_100):
+  pwsh -File cutiles/cutile/scripts/build_ptx.ps1
+  cargo test -p cutile --features "wgpu-backend cuda"
+
+8. CUMULATIVE CHANGELOG (chronological)
+---------------------------------------
+2026-06-20 | c71c9e69 | v0.3 INITIAL LANDING
+  feat(cutile): v0.3 backends, clamping, TQEC viz, Agda scaffold.
+  - cutile crate with CPU / wgpu / CUDA backends
+  - SRAC clamping mirror
+  - TQEC visualization
+  - triweavon-cudarc skeleton co-landed
+  - TriWeavon Agda formal layer co-landed
+  - Fix wgpu entropy shader for WGSL validation
+  This is the birth commit for cutiles/cutile as Layer-2 execution.
+
+2026-07-02 | 042d3077 | merge wt
+  Worktree merge; cutile carried through lattice merge.
+
+2026-07-03 | 5add88ce | lattice sync
+  Maintenance wave; SubRiemannian formal side (Agda/Lean) advances same era,
+  informing MehlerConfig field expectations for certified kernels.
+
+2026-07-04 | 6ba15560 | punctuation sync
+2026-07-04 | 9c397e1e | MEHLER DOCS + FORMAL JOIN
+  feat: 9P lock-off lattice, Mehler kernel docs, Sub-Riemannian formalization.
+  Adds cutile Mehler benchmarks and WGSL porting checklist (v0.4.2 doc),
+  ops handoffs, session-resume assets. Ties execution layer to formal OB1 work.
+  Conservation α+ω=15.
+
+2026-07-06 | (README / handoff seal date)
+  Status seal: compiles · demo runnable · Lean bridge verified.
+  HANDOFF-2026-07-06-EXISTENCE-SYMMETRY-GATE documents Existence symmetry gate.
+  K22.Existence verified E2E consumer (see Lean unitary doc).
+
+2026-07-08 | 9e7b78e2 | lattice sync
+2026-07-09 | 40f97668 | monorepo timestamp/metadata wave
+2026-07-09 | a5347350 | lattice sync
+2026-07-09 | d0a7f5d0 | notebook metadata fix (adjacent notebooks path touch)
+2026-07-10 | ec71a803 | latest cutiles/ path tip
+
+MODULE THEMES ADDED ACROSS v0.3 LINE:
+  - ExistenceCertificate + BLAKE3 idempotent emission
+  - Mehler-Levin harness (CPU/CUDA) with certified error bands
+  - Kernel witness harness bridging GPU/CPU to certs
+  - HIT cubical / triweavon_hit execution
+  - Prime-11/13/17 TDA / lock-free / provenance pipelines
+  - TQEC braid + syndrome visualization (viz feature)
+  - MOG bridge hooks toward Golay/octad world (Lean K22)
+  - Clamping / SRAC strategies for correction loops
+  - Hexaflake / C12 patterns for geometric tiling
+  - L39 harmony module
+  - Backend priority stack wgpu > CUDA > CPU
+
+9. OPEN / NEXT
+--------------
+  - GPU roadmap items in docs/gpu-acceleration-roadmap.md
+  - Keep WGSL checklist current when shaders change
+  - Align top-level kernels/fundamental_r_matrix.* with core/r_matrix.rs
+  - Expand CUDA feature CI where hardware available
+  - Continue MOG/Lean joint via existence_certificate_mog.json paths
+  - triweavon-cudarc domain types consuming cutile buffers
+
+10. NOTEBOOKLM USAGE HINTS
+--------------------------
+  - “Explain cutile backend priority and feature flags.”
+  - “Walk the ExistenceCertificate path from Rust to Lean.”
+  - “What Mehler error bands does cutile claim?”
+  - “What landed in the 2026-06-20 v0.3 cutile commit?”
+  - “How does cutile differ from kernels/ and triweavon-cudarc?”
+
+11. APPEND PROTOCOL
+-------------------
+On version bump (0.3.x → 0.4.0 etc.), append a dated section with:
+  version, backends changed, cert schema changes, Lean bridge status.
+Never rewrite prior changelog sections; keep unitary plain text.
+
+--- END OF UNITARY CUTILE CHANGELOG (baseline 2026-07-11) ---

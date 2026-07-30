@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>/RUST_Market · LogOS Crate Surface</title>
+  <meta name="description" content="RUST Market Protocol — certified crates, workspace map, logos-cargo bridge. α + ω = 15." />
+  <style>
+    :root {
+      --bg: #050808; --panel: #0a1214; --border: #1a2a2c;
+      --ink: #c8d3d1; --cyan: #5eead4; --gold: #f5d485;
+      --muted: #5a7970; --ok: #34d399;
+      --mono: "JetBrains Mono", Consolas, monospace;
+      --serif: Garamond, "Palatino Linotype", Georgia, serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      background: radial-gradient(ellipse at top, #0a1012 0%, var(--bg) 60%);
+      color: var(--ink); font-family: var(--serif); font-size: 17px;
+    }
+    header {
+      padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 1rem; align-items: baseline;
+      justify-content: space-between;
+    }
+    h1 { margin: 0; font-family: var(--mono); font-size: 1rem; color: var(--cyan); letter-spacing: 0.06em; }
+    .inv { font-family: var(--mono); font-size: 0.75rem; color: var(--gold); }
+    main { max-width: 960px; margin: 0 auto; padding: 2rem; }
+    p.lead { color: var(--muted); max-width: 58ch; line-height: 1.55; }
+    table {
+      width: 100%; border-collapse: collapse; margin: 1.5rem 0;
+      font-family: var(--mono); font-size: 0.78rem;
+    }
+    th, td {
+      text-align: left; padding: 0.55rem 0.65rem;
+      border-bottom: 1px solid var(--border);
+    }
+    th { color: var(--gold); font-weight: 600; letter-spacing: 0.05em; font-size: 0.68rem; text-transform: uppercase; }
+    td.ok { color: var(--ok); }
+    td.gap { color: #f87171; }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    pre {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1rem; font-family: var(--mono); font-size: 0.78rem; overflow-x: auto;
+      line-height: 1.5;
+    }
+    h2 {
+      font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--gold); margin: 2rem 0 0.75rem;
+    }
+    .nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.25rem 0; font-family: var(--mono); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>/RUST_Market</h1>
+    <div class="inv">α + ω = 15 · WAVE gate on publish</div>
+  </header>
+  <main>
+    <p class="lead">
+      Market surface for LogOS / Reson8 crates. Certification path: compile →
+      <code style="font-family:var(--mono);color:var(--cyan)">logos-mcp workspace</code> →
+      WAVE ≥ 0.85 → optional NEAR witness. Shell entry: <code style="font-family:var(--mono);color:var(--cyan)">logos-cargo</code>.
+    </p>
+
+    <div class="nav">
+      <a href="../meta-map/">← meta-map</a>
+      <a href="../../../../docs/surfaces/Interactive_README.md">crate graph</a>
+      <a href="../../../../docs/surfaces/orchestrator.html">orchestrator</a>
+    </div>
+
+    <h2>Primary market members</h2>
+    <table>
+      <thead>
+        <tr><th>Package</th><th>Path</th><th>Role</th><th>Surface</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>reson8-core</td><td>crates/core</td><td>invariant foundation</td><td class="ok">α</td></tr>
+        <tr><td>reson8-wave</td><td>crates/wave</td><td>WAVE metrics</td><td class="ok">α</td></tr>
+        <tr><td>reson8-forge-core</td><td>crates/forge-core</td><td>bridge + superskill</td><td class="ok">α</td></tr>
+        <tr><td>reson8-tui</td><td>crates/tui</td><td>bin: reson8-forge</td><td class="ok">TUI</td></tr>
+        <tr><td>barcode-tui</td><td>crates/barcode-tui</td><td>PH barcodes</td><td class="ok">TUI</td></tr>
+        <tr><td>reson8-topology</td><td>crates/reson8-topology</td><td>TDA / Rezk</td><td class="ok">α</td></tr>
+        <tr><td>vortex-bridge</td><td>crates/vortex-bridge</td><td>cross-strand translate</td><td class="ok">α</td></tr>
+        <tr><td>marketplace</td><td>crates/marketplace</td><td>market protocol</td><td class="ok">β</td></tr>
+        <tr><td>cutile</td><td>cutiles/cutile</td><td>execution layer</td><td class="ok">L2</td></tr>
+        <tr><td>reson8-triweave</td><td>apps/triweave</td><td>WS bridge :8088</td><td class="ok">ω</td></tr>
+        <tr><td>coherence-mcp</td><td>sibling / npm</td><td>tool bus</td><td class="ok">MCP</td></tr>
+        <tr><td>conservation-verifier</td><td>near/…</td><td>NEAR wasm only</td><td class="gap">exclude</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Shell / MCP probes</h2>
+    <pre>logos-cargo                 # list workspace packages
+logos-mcp rust              # rust_toolchain_status
+logos-mcp workspace         # rust_workspace_status + gaps
+logos-tui                   # cargo run -p reson8-tui
+logos-barcode               # cargo run -p barcode-tui
+logos-bridge                # ops/serve.ps1 → :8088</pre>
+
+    <h2>Certification gate (publish path)</h2>
+    <pre>1. cargo check -p &lt;crate&gt;
+2. logos-mcp gauge --alpha 7 --omega 8
+3. logos-mcp wave --content "&lt;crate notes&gt;"
+4. WAVE ≥ 0.85  ∧  α+ω=15  → market listing eligible
+5. Optional: cargo near build (conservation-verifier)</pre>
+
+    <p class="lead" style="margin-top:2rem;font-size:0.95rem">
+      Empty directory filled 2026-07-11 as command-surface hub.
+      Live binary builds still via workspace; this page is the ω projection of the α crate graph.
+    </p>
+  </main>
+</body>
+</html>

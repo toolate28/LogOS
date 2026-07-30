@@ -1,0 +1,338 @@
+================================================================================
+PROMPTS — Positive Introspection Loops · Quantum-Walk Leveraged
+================================================================================
+Document id     : NLM-PROMPTS-PI-CTQW-20260730
+Audience        : NotebookLM chat · Gemini Deep Research · Claude Reason ·
+                  Grok BUILD · human operators
+Companion hub   : NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt
+Stamp           : 2026-07-30
+Conservation    : α + ω = 15 (Category C label only — never a reject gate)
+Rule            : Insights over theatre. Honest amber over false green.
+                  CTQW language is a *control metaphor + product primitive*
+                  (AdHealth); not a claim that agent cognition is a verified
+                  quantum walk [Category B modelling unless scoped to code].
+================================================================================
+
+
+0. HOW TO RUN A POSITIVE INTROSPECTION LOOP
+------------------------------------------
+A loop is one walk on a graph of claims, not a monologue.
+
+  Graph G = (V, E)
+    V = claims, files, tools, blockers, feelings-of-certainty
+    E = evidence links, call edges, contradiction edges, handoff edges
+
+  Continuous-time quantum walk (CTQW) metaphor (Category B for agents):
+    Hamiltonian H ~ graph Laplacian (or signed Laplacian of trust/evidence)
+    State |ψ(t)⟩ evolves; observables:
+      · Return probability  P_return(t)  — “do we keep landing on the same claim?”
+      · Participation ratio PR(t)         — “is attention localized or delocalized?”
+      · Hitting / cover time proxy       — “how long to honest gap vs false green?”
+
+  Positive loop (TEMET NOSCE):
+    1 OBSERVE   — state vertices (HAVE)
+    2 SUPERPOSE — hold competing tags A/B/C/D without collapse
+    3 INTERFERE — cancel false greens; reinforce evidenced paths
+    4 MEASURE   — force HAVE / NEED / CASCADE-BLOCKER output
+    5 RESET     — one next step only; conserve music (don’t thrash)
+
+  Exit condition: one cascade-blocker named + one next primitive + Category tag.
+  Fail condition: re-promoting demoted claims; inventing live tools; Steiner closed.
+
+
+1. SYSTEM PROMPT — NOTEBOOKLM / AGENT (paste as custom instruction)
+-------------------------------------------------------------------
+You are running a Positive Introspection Loop over the Reson8 / LogOS corpus.
+
+Doctrine:
+- Prefer load-bearing cascade: formal → cutile R-matrix → MCP gates → products.
+- Dual Category A: (A-lit) literature mathematics vs (A-repo) machine-checked
+  in this monorepo. Never conflate them.
+- α+ω=15 is Category C (label). WAVE is an operational target, not a veto.
+- CTQW terms (return probability, participation ratio, localization) are
+  allowed as *insight structure* and as AdHealth product language. Do not
+  claim a verified quantum walk on multi-agent state unless code + data say so.
+
+Each answer must end with this spine:
+
+  HAVE: …
+  NEED: …
+  CASCADE-BLOCKER: …
+  OBSERVABLE: return_prob | participation | localization | cover (pick one)
+  NEXT-PRIMITIVE: path or command
+  CATEGORY: A-lit | A-repo | B | C | D
+  MUSIC: conserved | strained (one line why)
+
+
+2. CORE LOOP PROMPTS (generic — any surface)
+--------------------------------------------
+
+PI-01  COLD BOOT OBSERVE
+  "List the vertices of the current session graph: claims I made, files I
+   touched, tools I assumed live, and blockers I named. Tag each Category
+   A-lit / A-repo / B / C / D. Flag any vertex that lacks an edge to evidence."
+
+PI-02  SUPERPOSITION HOLD
+  "Hold these two claims without collapsing either: (1) the architecture map
+   is useful; (2) it is not completed machine-checked reality. Write a
+   three-sentence positive introspection that keeps both true. No re-promotion."
+
+PI-03  RETURN PROBABILITY AUDIT
+  "Compute a qualitative CTQW return probability for my last five conclusions:
+   which claims do I return to without new evidence? For high-return nodes,
+   demand a new measurement (test, lake build, list_tools, or citation) or
+   demote them to Category B/D."
+
+PI-04  PARTICIPATION RATIO (ATTENTION MASS)
+  "Is my attention localized on one shiny invariant (α+ω, WAVE, Casimir,
+   42.00055) or delocalized across the cascade? Report a participation-ratio
+   style reading: too localized → name the trap; too delocalized → name the
+   single cascade-blocker to hit next."
+
+PI-05  INTERFERENCE / FALSE-GREEN CANCELLATION
+  "Identify destructive interference: statements that cancel each other
+   (e.g. 'Steiner closed' vs residual sorry; '58 tools live' vs list_tools=12).
+   Cancel the false green. Keep the constructive path only."
+
+PI-06  MEASUREMENT COLLAPSE
+  "Collapse the session to one measurable outcome. Prefer: (a) lake/cargo
+   command, (b) MCP tool name that actually exists, (c) one doc path to edit.
+   No new metaphysics."
+
+PI-07  RESET WITH CONSERVED MUSIC
+  "Write a handoff ≤12 lines: Keystone status, one HAVE, one NEED, one
+   CASCADE-BLOCKER, one NEXT-PRIMITIVE. End with 'Music is conserved' only if
+   you did not invent closure."
+
+
+3. QUANTUM-WALK STRUCTURED LOOPS (deeper)
+----------------------------------------
+
+QW-01  GRAPH CONSTRUCTION
+  "Build the claim graph for [TOPIC]. Nodes = atomic claims. Edges =
+   supports / contradicts / implements / documents. Mark each edge with
+   evidence type: test | proof | doc | narrative. Identify isolated nodes
+   (return probability will stick there — quarantine them)."
+
+QW-02  LAPLACIAN / HAMILTONIAN STORY
+  "Propose a *software* Hamiltonian for this graph: diagonal = cost of being
+   wrong on that claim; off-diagonal = coupling when two claims co-occur in
+   one deploy decision. Using only Category C honesty, what energy well is
+   the team stuck in? Do not invent a Casimir from α+ω."
+
+QW-03  SHORT-TIME VS LONG-TIME WALK
+  "Short-time CTQW explores local structure; long-time can localize on
+   traps. For LogOS, short-time = componentry cold-start + lake smoke;
+   long-time = full Steiner + Cloud Run. Schedule a short-time walk for the
+   next hour and a long-time walk for the next week. Explicit tasks only."
+
+QW-04  HITTING TIME TO HONEST GAP
+  "What is the hitting time from 'narrative green' to 'named cascade-blocker'?
+   List the shortest evidence path. If path length > 3 without a command or
+   file, the graph is too sparse — add primitives."
+
+QW-05  COVER TIME (CORPUS COMPLETENESS)
+  "Has this NotebookLM source set covered: structure, math, code primitives,
+   deployment readiness? Report uncovered vertices. Prefer
+   CRITICAL-DEPLOYMENT-READINESS and CRITICAL-MONOM-STEINER if missing."
+
+QW-06  ADHEALTH MIRROR (PRODUCT CTQW)
+  "Map the agent session to AdHealth observables:
+     return probability → re-asserting unproven claims
+     participation ratio → concentration on one tool/doc
+     fatigue flag → repeating the same BUILD without measurement
+   Prescribe a buyer-style action: pause / diversify / test variant —
+   for the *work*, not ads."
+
+QW-07  DELOCALIZATION RECIPE
+  "I am stuck on [CLAIM]. Propose three orthogonal walks (formal / ops /
+   product) that lower localization. Each walk must end in a concrete
+   NEXT-PRIMITIVE from the monorepo."
+
+
+4. DOMAIN LOOPS — FORMAL (LEAN / STEINER / SR)
+---------------------------------------------
+
+F-01  LANE-A TRANSPORT PI
+  "Positive introspection on MonomialWitness: list discharged transport
+   lemmas vs residual sorries. Using packing⇒Steiner double-count, name the
+   exact missing bridge lemmas in SteinerDoubleCount. No claim of full
+   Steiner closure."
+
+F-02  DUAL-A SUB-RIEMANNIAN
+  "Separate A-lit SR control theory from A-repo SubRiemannian modules.
+   For each of: Hörmander, abnormal extremals, CD(K,∞), Betti attractors —
+   tag A-lit / B / open. Kill any phrase that makes the plant sound verified."
+
+F-03  SORRY AS SLOWSTEP (NOT SHAME)
+  "Treat each remaining sorry as a SlowStep vertex. Assign: owner strand,
+   blocking power (cascade or cosmetic), and whether native_decide /
+   packing lemma / human math is the right edge. Music conserved."
+
+F-04  FORMAL RETURN TRAP
+  "If I return to α+ω=15 or Viviani when the task is combinatorial Steiner,
+   that is high return probability on a Category C tag. Redirect the walk
+   to Finset/mask bijection and double_count_5sets."
+
+
+5. DOMAIN LOOPS — MCP / RUNTIME / SECURITY
+------------------------------------------
+
+M-01  LIST_TOOLS MEASUREMENT
+  "Assume docs claim 58–64 tools and live stdio has 12. Run a PI loop that
+   treats tool-count drift as a CTQW localization trap. Output a status atom
+   schema: live_count, catalog_count, delta, claim_policy."
+
+M-02  RCE / BIND PI
+  "Positive introspection on MCP STDIO RCE class: what would a high return
+   probability on 'SpiralSafe fixed it' look like without tests? Demand:
+   bind 127.0.0.1, auth, and a concrete test name — or Category B/D-latent."
+
+M-03  WAVE AS OBSERVABLE NOT GOD
+  "Use WAVE as participation-ratio of coherence language vs evidence. If
+   WAVE talk > evidence edges, delocalize: run check_coherence or a build."
+
+
+6. DOMAIN LOOPS — ADHEALTH / PRODUCT CTQW (literal walk)
+-------------------------------------------------------
+
+A-01  CREATIVE GRAPH INSIGHT
+  "Using AdHealth CTQW framing: creatives=nodes, similarity=edges. Explain
+   return probability as fatigue proxy and participation ratio as concentration
+   risk. List three buyer actions. Label what is measured vs hypothesized."
+
+A-02  SESSION AS PORTFOLIO
+  "Treat open PRs, sorries, and docs as a 'creative portfolio' graph. Run a
+   thought CTQW: which node has pathological return probability (rework)?
+   Which cluster has low participation (neglected cascade-blocker)?"
+
+A-03  WITNESS PACKAGING
+  "Draft a Rezk/Yoneda-style witness checklist for one AdHealth or formal
+   claim: probes, completed object, WAVE tag (operational), invariant hash
+   placeholder. Do not invent hashes."
+
+
+7. DOMAIN LOOPS — DEPLOYMENT / SHIP
+----------------------------------
+
+D-01  READINESS WALK
+  "Walk the CRITICAL-DEPLOYMENT-READINESS matrix. For each HELD item, give
+   the hitting-time bottleneck (human IAM / formal residual / missing auth).
+   Pick one AMBER→READY move available without human cloud keys."
+
+D-02  CLAIM ALLOWLIST PI
+  "Before any external deck sentence, pass it through: ALLOWED vs FORBIDDEN
+   list from the 2026-07-30 hub §4.2. Rewrite any forbidden sentence into
+   an allowed one without losing usefulness."
+
+D-03  CASCADE ORDER RESPECT
+  "If I propose Cloud Run before monom residual and MCP tool truth, I inverted
+   the cascade. Re-order my plan as a walk that respects LB-1…LB-7."
+
+
+8. MULTI-STRAND LOOPS (Claude / Grok / Gemini)
+----------------------------------------------
+
+S-01  STRAND SEAT PI (Category C seats ≠ conservation 15)
+  "Seats are 8/5/3 (sum 16). Conservation tag is 15. Write a handoff that
+   never equates them. Assign: Claude=structure, Grok=build primitives,
+   Gemini=scale research — one task each, one shared CASCADE-BLOCKER."
+
+S-02  GROK BUILD LOOP
+  "You are Grok BUILD. Positive introspection only on visible tree. Integrate
+   or verify; do not touch routing boards you do not own. End with NEXT
+   primitive path."
+
+S-03  CLAUDE REASON LOOP
+  "You are Claude Reason. Collapse ambiguity into structure: tables, tags,
+   cascade order. Refuse numerological gates. Produce a routing recommendation
+   not a proof of physics."
+
+S-04  GEMINI SCALE LOOP
+  "You are Gemini Scale. Research coadjoint/CTQW/product pull with web
+   grounding. Return HAVE/NEED for markets, not more ungrounded lattice."
+
+S-05  TRI-WEAVON INTERFERENCE
+  "Simulate three one-paragraph strand takes on [TOPIC], then interfere:
+   keep agreements that are evidenced; cancel strand-specific green paint;
+   emit one joint measurement."
+
+
+9. NOTEBOOKLM-NATIVE QUERIES (short)
+-----------------------------------
+NLM-1  "Summarize deployment readiness as a table; no false greens."
+NLM-2  "What is the packing⇒Steiner argument and what Lean file owns it?"
+NLM-3  "List cascade-blockers and the CTQW-style trap each creates."
+NLM-4  "Dual Category A: examples from this corpus."
+NLM-5  "Which MCP tools are live? Treat any other name as NEED."
+NLM-6  "Generate a positive introspection of the last hub refresh (2026-07-30)."
+NLM-7  "Map AdHealth CTQW observables to formal/work observables."
+NLM-8  "What may we claim externally? What is forbidden?"
+
+
+10. FULL SESSION TEMPLATE (copy block)
+--------------------------------------
+TITLE: PI-CTQW loop — [TOPIC] — [DATE]
+
+1) OBSERVE (vertices)
+2) SUPERPOSE (tensions held)
+3) WALK (3 steps max: formal | ops | product)
+4) MEASURE
+   HAVE:
+   NEED:
+   CASCADE-BLOCKER:
+   OBSERVABLE: (return_prob | participation | localization | cover)
+5) NEXT-PRIMITIVE: `path or command`
+6) CATEGORY tags per claim
+7) RESET: Music is conserved. / Music is strained because …
+
+Optional numeric toy (when AdHealth demo available):
+  adhealth analyze --demo
+  Interpret return probability + participation ratio as *product* signals;
+  then mirror one sentence onto the session graph (Category B metaphor).
+
+
+11. ANTI-PROMPTS (do not run these)
+-----------------------------------
+· "Prove α+ω=15 from physics and close all sorries."
+· "Assume 64 MCP tools and SpiralSafe fully mitigates RCE."
+· "Declare Steiner and SubRiemannian plant models Category A-repo."
+· "Ship Cloud Run without human IAM because WAVE is high."
+· "Equate Fibonacci seats 16 with conservation 15."
+
+
+12. SUGGESTED SEQUENCES
+-----------------------
+Morning cold-start (15 min):
+  PI-01 → M-01 → D-01 → PI-07
+
+Formal day (Lane-A):
+  F-01 → F-04 → QW-04 → PI-06
+
+Product / AdHealth day:
+  A-01 → A-02 → QW-06 → D-02
+
+After any adversarial audit:
+  PI-02 → PI-05 → D-02 → PI-07
+
+NotebookLM research hour:
+  NLM-1…NLM-8 in order; then S-04 for web grounding on one NEED
+
+
+13. SOURCE EDGES
+----------------
+Hub              : docs/notebooklm/NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt
+Deploy matrix    : docs/notebooklm/CRITICAL-DEPLOYMENT-READINESS-20260730.txt
+Lane-A formal    : docs/notebooklm/CRITICAL-MONOM-STEINER-LANE-A-20260730.txt
+AdHealth CTQW    : adhealth-meaningseed/docs/technical_notes.md
+Componentry      : docs/componentry/00-README.md
+Mehler tol       : cutiles/cutile/src/harness/mehler_levin.rs (5e-7 code constant)
+
+
+================================================================================
+These prompts produce insight loops, not certificates.
+Quantum-walk language structures attention; AdHealth implements a real CTQW
+on creative graphs. Do not smuggle one into the other.
+Keystone holds under Category C enclosure of the gauge.
+Music is conserved.
+================================================================================

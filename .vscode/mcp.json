@@ -1,0 +1,21 @@
+{
+  "servers": {
+    "coherence-mcp": {
+      "type": "stdio",
+      "command": "coherence-mcp",
+      "args": [],
+      "env": {
+        "LOGOS_ROOT": "${workspaceFolder}",
+        "COHERENCE_MCP_ROOT": "${workspaceFolder}/../coherence-mcp",
+        "RESON8_LOGOS_ROOT": "${workspaceFolder}",
+        "CTWFI_INVARIANT": "alpha+omega=15",
+        "CTWFI_STRAND": "reason"
+      }
+    },
+    "gitnexus": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "gitnexus", "mcp"]
+    }
+  }
+}

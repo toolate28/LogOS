@@ -1,0 +1,85 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "cwd": "${workspaceFolder}",
+    "shell": {
+      "executable": "pwsh",
+      "args": ["-NoProfile", "-Command"]
+    }
+  },
+  "tasks": [
+    {
+      "label": "Tri-Weavon: Test Profile",
+      "type": "shell",
+      "command": ". $PROFILE; Test-TriWeavonProfile",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tri-Weavon: Stack Test (Full)",
+      "type": "shell",
+      "command": ". $PROFILE; Test-TriWeavonStack -Full",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tri-Weavon: Get Metrics",
+      "type": "shell",
+      "command": ". $PROFILE; Get-TriWeavonMetrics | Format-List",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tri-Weavon: Start Bridge (8088)",
+      "type": "shell",
+      "command": ". $PROFILE; Start-TriWeavonBridge -CoherenceMcp",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tri-Weavon: Ignite Architecture",
+      "type": "shell",
+      "command": "python ignite_triweavon.py",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "coherence-mcp: Build",
+      "type": "shell",
+      "command": "npm run build",
+      "options": {
+        "cwd": "${env:COHERENCE_MCP_ROOT}"
+      },
+      "group": "build",
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "coherence-mcp: Test",
+      "type": "shell",
+      "command": "npm test",
+      "options": {
+        "cwd": "${env:COHERENCE_MCP_ROOT}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "GitNexus: Analyze Index",
+      "type": "shell",
+      "command": "npx gitnexus analyze",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Rust: Test Workspace",
+      "type": "shell",
+      "command": "cargo test --workspace --no-run",
+      "group": "test",
+      "problemMatcher": ["$rustc"]
+    }
+  ]
+}

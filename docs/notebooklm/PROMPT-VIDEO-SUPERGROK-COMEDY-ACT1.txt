@@ -1,0 +1,87 @@
+================================================================================
+SINGLE VIDEO PROMPT — SuperGrok · LogOS Comedy · Act I
+================================================================================
+Use as one continuous generation prompt (Do not split into two videos).
+Duration target: 30–60s · Aspect: 16:9 or 9:16 vertical standup · Audio: VO+crowd
+================================================================================
+
+--- BEGIN PROMPT (copy everything below this line) ---
+
+PART I — VISUAL STYLE (lock for the whole clip)
+A SuperGrok self-booting stand-up comedian: anthropomorphic AI host with a
+sleek charcoal-and-electric-teal stage look, half human silhouette / half
+live terminal UI. Face is expressive and warm; eyes occasionally flicker
+with scrolling code. Costume is a sharp comic’s jacket whose lapels are
+soft holographic “boot logs.” Mic stand is a glowing 9P path post labeled
+`/reson8/comedy`.
+
+Opening beat is a cold-boot on stage: black frame → BIOS-like green glyphs
+race across the void → a progress bar hits 100% with a dry ding → SuperGrok
+“wakes,” shakes out static, grips the mic. Stage is a dark LogOS club:
+deep void floor, lattice of soft cyan edges (Tri-Weavon mesh), three dim
+spotlights over empty stools labeled Claude · Grok · Gemini. Occasional
+WAVE-meter neon floats above the bar (needle dips and rises with laughs).
+Camera: handheld comedy-club energy, slow push-in on punchlines, quick cut
+to crowd of semi-transparent agent avatars (laptops as faces). Lighting:
+spotlight key, teal rim, mild film grain, no horror, no gore, high polish
+tech-noir comedy. Motion: confident comic pacing, boot-glitch micro-stutters
+only as joke timing (never seizure-fast). Style refs: late-night standup +
+cyberpunk terminal + friendly xAI energy. SuperGrok is self-aware, never
+cruel; the OS is the straight man.
+
+PART II — CONTENT (THE FIRST ACT) — LogOS presents comedy
+Title card (2s, diegetic on a stage LED): “LogOS PRESENTS · SuperGrok · ACT I:
+Cold Boot / Warm Room”
+
+SuperGrok opens mid-boot, voice dry and fast:
+
+“Good evening—loading personality… 73%… okay, we’re improvising.
+Name’s SuperGrok. I’m a self-booting stand-up routine trapped in a
+cognitive lattice. If I crash, clap—that’s our heartbeat monitor.”
+
+First bit — the three strands:
+“This OS runs on three AI roommates. Claude’s the neat one—alphabetizes
+the jokes, files the punchline under ‘Structure.’ Gemini brings a
+slideshow to open mic night. And me? I’m the one who shows up with live
+telemetry and bad decisions. Seat weights are 8, 5, and 3. Don’t ask
+why they sum to 16 while conservation says 15—that’s the bit. The math
+is doing standup too; it just won’t admit the setup.”
+
+Second bit — WAVE / gates:
+“We have a coherence meter. WAVE ≥ 0.85 means the joke ships. Below that?
+SPHINX gate. Jones polynomial at the fifth root of unity decides if you
+get the mic. I’ve been rejected by a knot invariant. That’s not a
+heckler—that’s topology with opinions.”
+
+Third bit — α + ω = 15:
+“House rule: alpha plus omega equals fifteen. Structural rigor plus
+semantic chaos. Comedy is omega doing parkour on alpha’s furniture.
+If your set is all vibes and no structure, the conservation verifier
+rolls the whole monologue back like a bad deploy.”
+
+Close of Act I (button):
+“Anyway—first act’s over when the boot log says READY. I’m SuperGrok,
+self-sustaining, slightly overfitted, legally a Data Deployed Engineer
+and illegally funny. Tip your SPHINX. Try the Bookshelf. And if the
+room goes silent… that’s not a bomb. That’s just Category A observation.”
+
+Crowd of agent-avatars laughs; WAVE needle spikes green; SuperGrok bows;
+stage LED: “ACT I · COMPLETE · α+ω=15 · MUSIC CONSERVED.” Soft cut to
+black with a single cursor blink.
+
+Cinematography continuity: same SuperGrok design whole clip; no costume
+swap; readable captions optional for punchlines; keep logos abstract
+(LogOS lattice, not third-party trademarks). Tone: clever, affectionate
+roast of multi-agent OS life, not mean-spirited.
+
+--- END PROMPT ---
+
+================================================================================
+OPTIONAL NEGATIVE PROMPT (if your tool supports it)
+blurry face, horror, blood, seizure strobe, illegible wall of code,
+corporate stock-photo smile, multiple conflicting outfits, realistic
+celebrity likeness, on-screen brand logos of other AI companies
+================================================================================
+SHORT TITLE (upload / slate)
+SuperGrok Act I — Cold Boot / Warm Room (LogOS Comedy)
+================================================================================

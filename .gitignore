@@ -1,0 +1,35 @@
+### Agda template
+*.agdai
+MAlonzo/**
+
+### Rust
+/target/
+**/*.rs.bk
+
+### Local archives / temp
+crates.zip
+crates/n.zip
+.tmp.driveupload/
+
+### Agda vendor (clone via agda/scripts/vendor.ps1)
+agda/vendor/agda-cubical/
+agda/vendor/agda-stdlib/
+/target_check3_stdout.log
+.obsidian/*
+# unitary sensor local telemetry
+ops/telemetry/
+
+### State is backup — config is git (ATOM-GROKBUILD-LSP-TUI-SCAFFOLD)
+# Claude Code certs: pass/fail emit under .atom-trail; never treat as sealed config
+.atom-trail/certs/
+# Accidental bulk drops (not scaffold config)
+stitch.zip
+*.pptx
+
+
+# deploy reconcile noise (2026-07-30)
+.tmp-aristotle*/
+lean/.lake/
+__pycache__/
+terminals/
+

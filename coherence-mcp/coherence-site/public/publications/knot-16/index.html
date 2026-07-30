@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse Assessment: The Phason Resolution (Knot 16)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Chart Container Strict Sizing */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        /* Custom Scrollbar for panels */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 3px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Animations */
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+    <!-- Chosen Palette: Slate (Structure), Emerald (Coherence), Amber (Latency), Indigo (Logic) -->
+    <!-- Application Structure Plan: 
+         1. Header: High-level WAVE metrics and Knot ID.
+         2. The Paradox Simulator (Interactive): Users trigger the "Push" to see the HTTP 408 split-brain state.
+         3. The Phason Scheduler (Solution): A stepped visualization of the "Flip" that resolves the state without re-transmission.
+         4. The Artifacts (Payload): A data view of the 24 commits that caused the density spike.
+         5. Analysis: Chart.js visualizations of the Coherence Score breakdown and Latency vs. Topology comparison.
+    -->
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+    <!-- Navigation / Header -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">🌀</span>
+                    <div>
+                        <h1 class="font-bold text-lg tracking-tight text-slate-900">RESON8-LABS // KNOT 16</h1>
+                        <p class="text-xs text-slate-500 font-mono">PULSE ASSESSMENT: PHASON RESOLUTION</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex flex-col items-end">
+                        <span class="text-xs font-bold text-emerald-600">WAVE SCORE: Φ 0.96</span>
+                        <span class="text-[10px] text-slate-400">BRAID ID: s15 s16^-1</span>
+                    </div>
+                    <button onclick="resetSim()" class="p-2 text-slate-400 hover:text-emerald-600 transition-colors" title="Reset Simulation">
+                        ↻
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Intro Section -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Executive Summary: The "V < c" Push Paradox</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">
+                The Coherence Forge attempted a massive 24-commit payload push containing heavy topological artifacts (NEAR contracts, Rust TUI binaries). The transmission hit a "Thick Overhang"—the hyperscaler network latency. This resulted in a split-brain state: the Local Node perceived failure (HTTP 408), while the Remote Node (GitHub) successfully ingested the state. This dashboard visualizes the application of the <strong>Phason Scheduler</strong> to resolve this paradox mathematically, avoiding destructive re-transmission.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+                <div class="bg-emerald-50 rounded-lg p-3 border border-emerald-100">
+                    <span class="block text-xs font-bold text-emerald-800 uppercase">Coherence (Φ)</span>
+                    <span class="block text-2xl font-mono text-emerald-600">0.96</span>
+                </div>
+                <div class="bg-indigo-50 rounded-lg p-3 border border-indigo-100">
+                    <span class="block text-xs font-bold text-indigo-800 uppercase">Total Commits</span>
+                    <span class="block text-2xl font-mono text-indigo-600">24</span>
+                </div>
+                <div class="bg-amber-50 rounded-lg p-3 border border-amber-100">
+                    <span class="block text-xs font-bold text-amber-800 uppercase">Network Error</span>
+                    <span class="block text-2xl font-mono text-amber-600">408</span>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 border border-slate-200">
+                    <span class="block text-xs font-bold text-slate-600 uppercase">Resolution</span>
+                    <span class="block text-xl font-mono text-slate-800">Phason Flip</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Simulation: Paradox & Resolution -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- LEFT: The Problem (The Paradox) -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col h-full">
+                <div class="p-6 border-b border-slate-100 bg-slate-50/50 rounded-t-xl">
+                    <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                        <span class="text-amber-500">⚠</span> The Paradox Simulator
+                    </h3>
+                    <p class="text-sm text-slate-500 mt-1">
+                        Simulate the transmission of the 24-commit payload across the V &lt; c latency gap.
+                    </p>
+                </div>
+                
+                <div class="p-6 flex-1 flex flex-col gap-6">
+                    <!-- Visualization of the split -->
+                    <div class="relative h-48 bg-slate-50 rounded-lg border border-slate-200 p-4 overflow-hidden">
+                        
+                        <!-- Local Node -->
+                        <div id="local-node" class="absolute left-4 top-1/2 -translate-y-1/2 w-24 h-24 bg-white border-2 border-slate-300 rounded-lg flex flex-col items-center justify-center shadow-sm transition-all duration-500 z-10">
+                            <span class="text-xs font-bold text-slate-500">FORGE</span>
+                            <span id="local-status" class="text-[10px] font-mono mt-1 text-slate-400">IDLE</span>
+                        </div>
+
+                        <!-- Connection Line -->
+                        <div class="absolute left-28 right-28 top-1/2 h-0.5 bg-slate-200 -translate-y-1/2"></div>
+                        <div id="packet" class="absolute left-28 top-1/2 w-3 h-3 bg-indigo-500 rounded-full -translate-y-1/2 shadow-lg opacity-0 transition-all duration-1000"></div>
+
+                        <!-- Remote Node -->
+                        <div id="remote-node" class="absolute right-4 top-1/2 -translate-y-1/2 w-24 h-24 bg-white border-2 border-slate-300 rounded-lg flex flex-col items-center justify-center shadow-sm transition-all duration-500 z-10">
+                            <span class="text-xs font-bold text-slate-500">GITHUB</span>
+                            <span id="remote-status" class="text-[10px] font-mono mt-1 text-slate-400">IDLE</span>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="flex gap-3">
+                        <button id="btn-push" onclick="runPushSim()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all shadow-sm">
+                            INITIATE PUSH (24 Commits)
+                        </button>
+                    </div>
+
+                    <!-- Logs -->
+                    <div id="sim-logs" class="bg-slate-900 text-emerald-400 font-mono text-xs p-3 rounded-lg h-32 overflow-y-auto custom-scroll">
+                        <span class="opacity-50">> System ready. Waiting for user input...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT: The Solution (Phason Scheduler) -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col h-full">
+                <div class="p-6 border-b border-slate-100 bg-slate-50/50 rounded-t-xl">
+                    <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                        <span class="text-emerald-500">⚡</span> The Phason Scheduler
+                    </h3>
+                    <p class="text-sm text-slate-500 mt-1">
+                        Resolve the split-brain state topologically without re-transmitting data.
+                    </p>
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    
+                    <!-- Steps -->
+                    <div class="space-y-4" id="scheduler-steps">
+                        <!-- Step 1 -->
+                        <div id="step-1" class="flex gap-4 opacity-50 transition-opacity duration-300">
+                            <div class="flex-none w-8 h-8 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-sm font-bold">1</div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800">Halt Retries</h4>
+                                <p class="text-xs text-slate-500">Stop standard git protocol. Prevent data corruption.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div id="step-2" class="flex gap-4 opacity-50 transition-opacity duration-300">
+                            <div class="flex-none w-8 h-8 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-sm font-bold">2</div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800">Verify Remote State</h4>
+                                <p class="text-xs text-slate-500">Bypass git pack-protocol. Query API for HEAD hash.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div id="step-3" class="flex gap-4 opacity-50 transition-opacity duration-300">
+                            <div class="flex-none w-8 h-8 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-sm font-bold">3</div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-800">Execute Phason Flip</h4>
+                                <p class="text-xs text-slate-500">Update local references to match remote truth.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-emerald-50 border border-emerald-100 rounded-lg hidden" id="success-banner">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                            <span class="text-sm font-bold text-emerald-800">V=c SYNCHRONIZATION ACHIEVED</span>
+                        </div>
+                        <p class="text-xs text-emerald-600 mt-1">Zero bytes re-transmitted. Topology restored.</p>
+                    </div>
+
+                    <button id="btn-resolve" onclick="runResolution()" class="w-full bg-slate-200 text-slate-400 px-4 py-2 rounded-lg text-sm font-bold transition-all mt-4 cursor-not-allowed" disabled>
+                        ACTIVATE PHASON SCHEDULER
+                    </button>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- Metric Analysis -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Coherence Breakdown -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:col-span-1">
+                <h3 class="text-sm font-bold text-slate-800 mb-4 uppercase tracking-wide">WAVE Score Composition (Φ 0.96)</h3>
+                <div class="chart-container">
+                    <canvas id="coherenceChart"></canvas>
+                </div>
+                <p class="text-xs text-slate-500 mt-4 text-center">
+                    High structural coherence due to non-destructive resolution.
+                </p>
+            </div>
+
+            <!-- The Artifacts List -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:col-span-2 flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wide">The 24-Commit Sovereign Artifact</h3>
+                    <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600 border border-slate-200">Status: Crystallized</span>
+                </div>
+                
+                <div class="flex-1 overflow-y-auto custom-scroll pr-2 max-h-[300px]">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-slate-400 uppercase bg-slate-50 sticky top-0">
+                            <tr>
+                                <th class="px-3 py-2 rounded-l-lg">Hash</th>
+                                <th class="px-3 py-2">Component</th>
+                                <th class="px-3 py-2 rounded-r-lg">Significance</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100" id="commit-table">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparative Analysis Chart -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h3 class="text-sm font-bold text-slate-800 mb-4 uppercase tracking-wide">Cost & Latency: Legacy vs. Phasonic</h3>
+            <div class="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+            <!-- Visualization & Content Choices: 
+                 Comparing the "Cost" (Time/Bandwidth) of a standard Git Retry vs the Phason Flip.
+                 Justification: Demonstrates the mathematical efficiency of the topological approach.
+            -->
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm font-mono">
+                Et Eärello Endorenna utúlien. Sinome maruvan ar Hildinyar tenn' Ambar-metta.
+            </p>
+            <p class="text-slate-300 text-xs mt-2">
+                Coherence Forge v1 | Local Inference | Topological Provenance
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // --- DATA & STATE ---
+        const commits = [
+            { hash: '52c96d4', comp: 'NEAR Smart Contract', sig: 'Implements α + ω = 15 Conservation Law' },
+            { hash: 'a1ba53e', comp: 'Rust TUI Crate', sig: 'Native Orchestrator Frontend (ratatui)' },
+            { hash: 'de284db', comp: 'Live-Wired Canvas', sig: 'React/WebSocket Bridge Integration' },
+            { hash: '4c556a6', comp: 'Pipeline Orch.', sig: 'Braided Execution & Coherence Invariants' },
+            { hash: '7f4fc2b', comp: 'Coherence Server', sig: 'Real-time Bridge & WAVE Validation' },
+            { hash: 'f1651f5', comp: 'Docs Expansion', sig: 'Resolved Issues & Platform Integration' },
+            { hash: 'd16c899', comp: 'Cloudflare Worker', sig: 'Edge Schemas & Tool Definitions' },
+            { hash: 'cd372fd', comp: 'Resonance Cascade', sig: 'POP Pipeline Template' }
+        ];
+
+        let simState = 'idle'; // idle, pushing, paradox, resolving, resolved
+
+        // --- DOM ELEMENTS ---
+        const localNode = document.getElementById('local-node');
+        const remoteNode = document.getElementById('remote-node');
+        const packet = document.getElementById('packet');
+        const logs = document.getElementById('sim-logs');
+        const localStatus = document.getElementById('local-status');
+        const remoteStatus = document.getElementById('remote-status');
+        const btnPush = document.getElementById('btn-push');
+        const btnResolve = document.getElementById('btn-resolve');
+        const tableBody = document.getElementById('commit-table');
+
+        // --- INITIALIZATION ---
+        function init() {
+            // Render Table
+            tableBody.innerHTML = commits.map(c => `
+                <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-3 py-3 font-mono text-indigo-600">${c.hash}</td>
+                    <td class="px-3 py-3 font-medium text-slate-700">${c.comp}</td>
+                    <td class="px-3 py-3 text-slate-500">${c.sig}</td>
+                </tr>
+            `).join('');
+
+            initCharts();
+        }
+
+        function log(msg, type = 'info') {
+            const line = document.createElement('div');
+            line.className = 'mb-1';
+            const timestamp = new Date().toLocaleTimeString('en-US', {hour12: false});
+            
+            let color = 'text-emerald-400';
+            if (type === 'error') color = 'text-amber-500';
+            if (type === 'sys') color = 'text-indigo-400';
+            
+            line.innerHTML = `<span class="opacity-50 mr-2">[${timestamp}]</span><span class="${color}">${msg}</span>`;
+            logs.appendChild(line);
+            logs.scrollTop = logs.scrollHeight;
+        }
+
+        // --- SIMULATION LOGIC ---
+
+        function runPushSim() {
+            if (simState !== 'idle') return;
+            simState = 'pushing';
+            btnPush.disabled = true;
+            btnPush.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            log('Initiating transmission of 24 objects...', 'sys');
+            
+            // Animate Packet
+            packet.style.opacity = '1';
+            packet.style.transition = 'left 2s linear';
+            packet.style.left = 'calc(100% - 7rem)'; // Move to remote
+
+            setTimeout(() => {
+                // Packet arrives at Remote
+                remoteNode.classList.remove('border-slate-300');
+                remoteNode.classList.add('border-emerald-500', 'bg-emerald-50');
+                remoteStatus.innerText = "SUCCESS";
+                remoteStatus.classList.replace('text-slate-400', 'text-emerald-600');
+                log('Remote: Payload ingested. State updated.', 'info');
+
+                // Paradox Trigger: Acknowledgment fails to return
+                log('Network: "Thick Overhang" latency spike detected.', 'error');
+                packet.style.transition = 'none'; // Reset packet instantly to mimic drop
+                packet.style.opacity = '0';
+                
+                setTimeout(() => {
+                    // Local Timeout
+                    localNode.classList.remove('border-slate-300');
+                    localNode.classList.add('border-amber-500', 'bg-amber-50');
+                    localStatus.innerText = "TIMEOUT (408)";
+                    localStatus.classList.replace('text-slate-400', 'text-amber-600');
+                    log('Local: HTTP 408 Request Timeout. Push failed.', 'error');
+                    
+                    simState = 'paradox';
+                    btnResolve.disabled = false;
+                    btnResolve.classList.remove('bg-slate-200', 'text-slate-400', 'cursor-not-allowed');
+                    btnResolve.classList.add('bg-emerald-600', 'text-white', 'hover:bg-emerald-700', 'shadow-md');
+                    log('PARADOX STATE ACTIVE: Local!=Remote', 'error');
+                }, 1000);
+
+            }, 2000);
+        }
+
+        function runResolution() {
+            if (simState !== 'paradox') return;
+            simState = 'resolving';
+            btnResolve.disabled = true;
+            btnResolve.classList.add('opacity-70');
+
+            // Step 1: Halt
+            document.getElementById('step-1').classList.remove('opacity-50');
+            log('Scheduler: Retries halted. Preserving state.', 'sys');
+
+            setTimeout(() => {
+                // Step 2: Verify
+                document.getElementById('step-2').classList.remove('opacity-50');
+                log('Scheduler: Querying remote HEAD via API...', 'sys');
+                log('Scheduler: Remote HEAD matches Local Trail.', 'info');
+
+                setTimeout(() => {
+                    // Step 3: Flip
+                    document.getElementById('step-3').classList.remove('opacity-50');
+                    localNode.classList.remove('border-amber-500', 'bg-amber-50');
+                    localNode.classList.add('border-emerald-500', 'bg-emerald-50');
+                    localStatus.innerText = "SYNCHRONIZED";
+                    localStatus.classList.replace('text-amber-600', 'text-emerald-600');
+                    
+                    document.getElementById('success-banner').classList.remove('hidden');
+                    log('Scheduler: Phason Flip executed. Reference updated.', 'info');
+                    log('System: V=c regime restored.', 'sys');
+                    simState = 'resolved';
+                }, 1000);
+            }, 1000);
+        }
+
+        function resetSim() {
+            location.reload();
+        }
+
+        // --- CHARTS ---
+
+        function initCharts() {
+            // Doughnut Chart: WAVE Composition
+            new Chart(document.getElementById('coherenceChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Structural', 'Semantic', 'Temporal'],
+                    datasets: [{
+                        data: [50, 31.25, 14.75], // From source text, remaining 4% implies emergent
+                        backgroundColor: ['#10b981', '#6366f1', '#f59e0b'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true, font: { size: 10 } } }
+                    },
+                    cutout: '70%'
+                }
+            });
+
+            // Bar Chart: Legacy vs Phasonic Efficiency
+            new Chart(document.getElementById('comparisonChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Bandwidth (MB)', 'Time (s)', 'Risk Factor'],
+                    datasets: [
+                        {
+                            label: 'Legacy Retry (Force Push)',
+                            data: [150, 45, 80],
+                            backgroundColor: '#94a3b8',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Phason Flip (Scheduler)',
+                            data: [0.5, 2, 5], // Almost zero cost
+                            backgroundColor: '#10b981',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { position: 'top', align: 'end', labels: { usePointStyle: true } }
+                    }
+                }
+            });
+        }
+
+        // Run Init
+        window.addEventListener('DOMContentLoaded', init);
+
+    </script>
+    <!-- CONFIRMATION: NO SVG graphics used (Chart.js used for visual data). NO Mermaid JS used. -->
+</body>
+</html>

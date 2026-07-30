@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  lattice-ui:
+    build:
+      context: ./lattice-react
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - tri-weavon-net
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  crucix-core:
+    build:
+      context: ../../../Crucix
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Based on standard OSINT dashboard ports
+    networks:
+      - tri-weavon-net
+
+  shadowbroker-osint:
+    # Shadowbroker utilizes its own ecosystem, mapping local path context
+    build:
+      context: ../../../Shadowbroker
+    ports:
+      - "4000:4000"
+    networks:
+      - tri-weavon-net
+
+networks:
+  tri-weavon-net:
+    driver: bridge

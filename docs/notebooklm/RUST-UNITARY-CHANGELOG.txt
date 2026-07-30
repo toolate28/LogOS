@@ -1,0 +1,221 @@
+================================================================================
+LogOS / Tri-Weavon — RUST WORKSPACE (crates + apps + root Cargo)
+Unitary NotebookLM document + cumulative changelog
+================================================================================
+Document id     : NLM-RUST-UNITARY-2026-07-11
+Source roots    : Cargo.toml (workspace) · crates/ · apps/
+                  (related: cutiles/cutile member · hup/rust standalone · near/)
+Repo            : LogOS
+Audience        : NotebookLM single-file corpus for the Rust execution plane
+Conservation    : α + ω = 15
+Cascade role    : Host runtime · crates foundation · apps · Layer-2 execution join
+Sibling systems : cutiles/cutile · kernels/ · lean/ · agda/ · hup/ · near/
+Generated       : 2026-07-11
+Git commits     : crates/ ~12 (2026-03-31 → 2026-07-10)
+                  apps/   ~7  (2026-03-31 → 2026-07-04)
+================================================================================
+
+1. PURPOSE
+----------
+Unitary text covering the monorepo Rust workspace: what members exist, how
+layers are grouped, which apps ship, how cutile/cudarc attach, and cumulative
+changelog of crates/apps evolution. This is the “Rust app surface” for LogOS
+as distinct from formal Agda/Lean and raw CUDA kernels.
+
+2. WORKSPACE ROOT
+-----------------
+File: Cargo.toml (repository root)
+Resolver: 2
+Release profile: opt-level=3, lto=fat, codegen-units=1, panic=abort
+
+Workspace members (grouped as in Cargo.toml):
+
+FOUNDATION
+  crates/core
+  crates/wave
+  crates/hash
+  crates/resonance-invariant
+
+INFRASTRUCTURE
+  crates/styx
+  crates/styx-vfs-layer
+  crates/vortex-bridge
+  crates/sysctl
+  crates/reson8-wasm
+  crates/migration_helpers
+  crates/forge-core
+
+INTELLIGENCE
+  crates/reson8-topology
+  crates/sphinx
+  crates/bohmian
+  crates/spiral-safe
+
+cQ-KITTY-RIPS PIPELINE (NS singularity hunt)
+  crates/cqk-ga
+  crates/cqk-microlocal
+  crates/cqk-entropy
+  crates/cqk-anyon
+  crates/cqk-wdbi
+  crates/cqk-kitty-rips-verify
+
+OPERATIONS
+  crates/activator
+  crates/api_triggers
+  crates/artifact_pipeline
+  crates/marketplace
+  crates/zero_latency_ledgers
+  crates/tui
+  crates/barcode-tui
+
+EXECUTION LAYER (Layer 2)
+  cutiles/cutile          — portable tiling / entropy / SRAC / Mehler / ExistenceCert
+  crates/triweavon-cudarc — domain GPU types skeleton (GpuManifold, Jones, K22 sheaf)
+
+APPS
+  apps/mc-bridge
+  apps/nexus-pulse-bot
+  apps/triweave
+  (apps/supergrok-dde exists in tree; confirm workspace membership if added later)
+
+EXCLUDE
+  near/conservation-verifier  — separate near-sdk wasm workspace
+  crates/coherence-mcp        — empty scaffold until packaged
+
+Standalone (NOT root workspace):
+  hup/rust  — package hup-rust 0.2.0 with its own [workspace] members=["."]
+
+3. CRATES INVENTORY (high level)
+--------------------------------
+~100 .rs / ~32 Cargo.toml under crates/ (excluding target/)
+
+Notable crates:
+  core              — adapter, agent, anyon, bridge, bus, capability, logic,
+                      memory, orchestrator, protocol, sapper, superskill, task,
+                      trace_n_braid
+  spiral-safe       — audit, crypto, key_rotation, meaning_seed
+  styx / styx-vfs   — VFS / routing bridge
+  vortex-bridge     — server, xai_client, models, router
+  sysctl            — hypervisor, package, privacy, process, winget backend
+  barcode-tui       — persistent homology / Vietoris-Rips style TUI (ph, vr,
+                      point_cloud, render)
+  triweavon-cudarc  — coherence, golay, kernel, leech, m24, manifold, moonshine,
+                      polynomial, sheaf; features cpu-fallback (default) | cuda
+  cqk-*             — GA / microlocal / entropy / anyon / WDBI + verify tests
+                      (alpha_omega_boundary, cl13, octonion Moufang, THTW)
+  activator         — awesome_skill, pipeline, router
+  zero_latency_ledgers, marketplace, artifact_pipeline, api_triggers
+  fib-braid-core, atom-sig, forge-core, hash, wave, resonance-invariant
+  bohmian, sphinx, reson8-topology, reson8-wasm
+  tui               — ratatui host UI
+
+Legacy / demo singles under crates/:
+  cl13/cl13.rs, octonian/octonion.rs, weyl/weyl.rs, weyl_graph/, thtw_weyl_demo/
+
+4. APPS INVENTORY
+-----------------
+apps/mc-bridge/
+  Minecraft RCON bridge (main.rs, rcon.rs)
+
+apps/nexus-pulse-bot/
+  Invariant + RCON + voice surfaces (invariant.rs, rcon.rs, voice.rs)
+
+apps/triweave/
+  Primary multi-surface app: CLI, doctor, strand, theme, vault, SAIF,
+  Amazon blueprint/hologram/search, POP handlers/server, TUI dashboard/
+  frames/onboard, RCON, deploy (Dockerfile, cloudbuild, cloudrun, deploy.sh)
+  README present
+
+apps/supergrok-dde/
+  CLI + telemetry DDE-style surface (cli.rs, telemetry.rs)
+
+5. LAYER RELATIONSHIPS
+----------------------
+  Formal (Agda/Lean)  →  Existence / conservation / curvature proofs
+  cutile Layer 2      →  tiling, backends (wgpu/CUDA/CPU), HIT, Mehler, cert emit
+  triweavon-cudarc    →  domain GPU types (skeleton v0.1.0)
+  kernels/            →  raw Blackwell CUDA + WGSL R-matrix + entropy/fft/pcr/rips
+  crates/core…        →  orchestration, anyons, styx, spiral-safe, topology
+  apps/*              →  user-facing binaries / bots / deployable services
+  hup/rust            →  instance core (quantum handle / scheme relay)
+  near/*              →  on-chain conservation verifier (isolated workspace)
+
+triweavon-cudarc README:
+  cutile owns tiling/backends/entropy/HIT;
+  triweavon-cudarc will own GpuManifold, Jones ops, K22_SHEAF, SRAC buffers.
+  Status: Skeleton v0.1.0 — invariant + CPU fallback; GPU kernels TBD.
+
+6. BUILD NOTES
+--------------
+  cargo test                 # whole workspace (respect excludes)
+  cargo test -p cutile
+  cargo run -p cutile --example basic_hit
+  cargo run -p triweave …
+  # near contracts:
+  #   cargo near build -p reson8-conservation-verifier
+  #   from near/conservation-verifier/
+
+7. CUMULATIVE CHANGELOG (chronological)
+---------------------------------------
+2026-03-30 | 8b1fb29d | early Cargo.toml workspace roots appear
+
+2026-03-31 | eb688702, 153edc88 | crates/ + apps/ early presence
+  Initial monorepo Rust surfaces enter history (dot commits in log).
+
+2026-04-18 | 9060bc46 | PHASE 1 STABLE CLOSE
+  Phase 1 stable close: Tri-Weavon preprints, shader glossary, Phase 1 crates,
+  Gate spec. Introduces/stabilizes atom-sig + fib-braid-core Phase 1 stubs,
+  coherence gate oracle reference, QDI formal algebraic framework docs,
+  cross-strand handoffs. Ratifies .gitignore; untracks node_modules/target/etc.
+  Conservation stated α=7 ω=8 Σ=15. Major baseline for crates + apps.
+
+2026-04-21 | 8c7799f0 | Cargo.lock churn (workspace deps)
+
+2026-06-20 | c71c9e69 / 68d417d1 | CUTILE v0.3 + CUDARC SKELETON
+  feat(cutile): v0.3 backends, clamping, TQEC viz, Agda scaffold.
+  Workspace gains Layer-2 cutile member path; triweavon-cudarc skeleton;
+  wgpu entropy shader WGSL validation fix. Rust execution plane joins formal
+  Agda scaffold and GPU tiling story.
+
+2026-06-21 | 289c503b, e447968a, e59f9e68 | toolchain + Lean adjacency
+  Cargo.toml member/dependency updates; tools for GitHub interactions.
+  (Lean VanishingResilience lands same day — formal side, not Rust body.)
+
+2026-06-22 | d429aa60 | deps + atom_tag tests
+  Update Cargo.toml/Cargo.lock; remove unused deps; add tests for atom_tag.
+
+2026-07-03 | 5add88ce | crates lattice sync
+2026-07-04 | 6ba15560 | apps touch + lattice punctuation
+2026-07-08 | 9e7b78e2 | crates/Cargo sync
+2026-07-10 | 5c0cd592, ec71a803 | latest crates path tip
+
+PHASE THEMES ACROSS CRATES (structural, multi-commit):
+  - SpiralSafe meaning-seed / crypto / key rotation as intelligence guardian
+  - Styx VFS bridge as 9P-adjacent host routing
+  - barcode-tui as live TDA visualization host
+  - cqk-* pipeline for NS singularity / entropy / anyon / microlocal hunt
+  - vortex-bridge for external model/API routing
+  - sysctl for host package/hypervisor/privacy controls
+  - apps triweave as deployable multi-strand operator console
+  - mc-bridge / nexus-pulse-bot as Minecraft/RCON pulse surfaces
+
+8. OPEN / NEXT
+--------------
+  - triweavon-cudarc: move from CPU-fallback skeleton to real GPU kernels
+  - Keep near contracts outside root workspace (near-sdk constraint)
+  - Package coherence-mcp crate only when real Cargo.toml lands
+  - Align apps/supergrok-dde membership with workspace if productized
+  - Continuous cutile↔Lean ExistenceCert E2E in CI
+
+9. NOTEBOOKLM USAGE HINTS
+-------------------------
+  - “List all Cargo workspace members by layer.”
+  - “What is the difference between cutile and triweavon-cudarc?”
+  - “What happened at Phase 1 stable close 2026-04-18?”
+  - “Which apps are Minecraft/RCON related?”
+
+10. APPEND PROTOCOL
+-------------------
+Append dated blocks. Cite package versions (e.g. cutile 0.3.0) when they bump.
+
+--- END OF UNITARY RUST CHANGELOG (baseline 2026-07-11) ---

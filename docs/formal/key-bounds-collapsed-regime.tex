@@ -1,0 +1,75 @@
+% Key Mathematical Bounds — TriWeavon Collapsed Regime
+% Requires: \usepackage{booktabs}
+% Usage: \input{docs/formal/key-bounds-collapsed-regime.tex}
+
+\begin{table}[htbp]
+\centering
+\caption{Key Mathematical Bounds in the Collapsed Regime ($\text{density} \leq 0.05$)}
+\label{tab:key_bounds}
+\small
+\begin{tabular}{@{}p{5.8cm}llp{5.5cm}@{}}
+\toprule
+\textbf{Quantity / Map}
+  & \textbf{Bound / Value}
+  & \textbf{Type}
+  & \textbf{Derivation / Notes} \\
+\midrule
+
+\multicolumn{4}{@{}l}{\textit{\textbf{Lipschitz Constants}}}\\
+Single-step $\texttt{dynamics\_map}$
+  & $\leq 0.94$
+  & Lipschitz
+  & Bounded drive + linear restoring term \\
+Return map $P$ (recommended)
+  & $\leq (0.94)^3 \approx 0.8306$
+  & Lipschitz
+  & Composition of $\geq 3$ steps ($m_0 = 3$) \\
+Conservative return map
+  & $\leq (0.94)^2 \approx 0.8836$
+  & Lipschitz
+  & Using weaker return-time bound ($m_0 = 2$) \\
+Swarm-average contraction
+  & $\leq 0.94$
+  & Lipschitz
+  & Coupling reduces variance + per-node contraction \\
+
+\midrule
+\multicolumn{4}{@{}l}{\textit{\textbf{Return Time \& Convergence}}}\\
+Minimum analytical return time to Poincar\'{e} section ($m_0$)
+  & $\geq 3$ steps
+  & Analytical
+  & Bounded phase change + contraction preventing rapid recrossing \\
+Typical observed return time (near attractor)
+  & 4--6 steps
+  & Empirical
+  & From phase-space visualizations \\
+Number of returns $N$ to reduce distance by factor $r$
+  & $N \geq \dfrac{\log r}{\log L_P}$
+  & Formula
+  & Standard contraction-mapping iteration bound \\
+Steps to reduce distance by factor of 1000
+  & $\approx 150$--$230$ total steps
+  & Numerical
+  & Using $L_P \approx 0.8306$ + avg.\ return time $\sim 5$ \\
+
+\midrule
+\multicolumn{4}{@{}l}{\textit{\textbf{Supporting Analytical Bounds}}}\\
+Drive magnitude $\lVert\texttt{hyper\_oscillator\_drive}\rVert$
+  & $\leq 0.6$
+  & Analytical
+  & Feigenbaum + resonance + leakage terms \\
+Single-step phase change
+  & $\leq 0.036$
+  & Analytical
+  & $(0.6 + 0.12) \times 0.05$ \\
+Restoring term (when $\lvert\phi - 15\rvert \leq 1$)
+  & $\leq 0.12$
+  & Analytical
+  & Linear restoring coefficient \\
+Variance scaling under coupling
+  & $(1 - s)^2$
+  & Exact
+  & Vanishing cross-term identity (list induction) \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,66 @@
+crates\resonance-invariant\src\lib.rs:16:5: warning: field `frequency` is never read
+warning: `resonance-invariant` (lib) generated 1 warning
+    Checking cqk-ga v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-ga)
+    Checking serde-wasm-bindgen v0.6.5
+    Checking near-sdk v5.24.1
+    Checking reson8-topology v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\reson8-topology)
+    Checking reson8-artifact-pipeline v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\artifact_pipeline)
+    Checking reson8-marketplace v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\marketplace)
+crates\cqk-wdbi\src\lib.rs:18:30: warning: unused import: `WaveScore`
+warning: `cqk-wdbi` (lib) generated 1 warning (run `cargo fix --lib -p cqk-wdbi` to apply 1 suggestion)
+warning: `cqk-wdbi` (lib test) generated 1 warning (1 duplicate)
+    Checking reson8-hash v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\hash)
+    Checking reson8-mc-bridge v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\apps\mc-bridge)
+    Checking reson8-styx v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\styx)
+    Checking reson8-sysctl v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\sysctl)
+    Checking reson8-activator v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\activator)
+    Checking reson8-sphinx v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\sphinx)
+    Checking cqk-anyon v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-anyon)
+    Checking reson8-migration-helpers v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\migration_helpers)
+warning: `resonance-invariant` (lib test) generated 1 warning (1 duplicate)
+    Checking cqk-kitty-rips-verify v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-kitty-rips-verify)
+    Checking cqk-microlocal v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-microlocal)
+C:\Users\Matthew Ruhnau\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\near-sdk-5.24.1\src\lib.rs:138:1: error: 1. 🔨️  Use `cargo near build` instead of `cargo build` to compile your contract
+       💡  Install cargo-near from https://github.com/near/cargo-near
+       
+       2. ✅ Use `cargo check --target wasm32-unknown-unknown` instead of `cargo check` to error-check your contract
+       
+       3. ⚙️ Only following cfg-s are considered VALID for `near-sdk`:
+         - `#[cfg(target_family = "wasm")]`
+         - `#[cfg(feature = "non-contract-usage")]` (intended for use of `near-sdk` in non-contract environment)
+         - `#[cfg(feature = "unit-testing")]` (intended for use of `near-sdk` as one of `[dev-dependencies]`)
+         - `#[cfg(feature = "__abi-generate")`
+         - `#[cfg(test)]`
+         - `#[cfg(doctest)]`
+         - `#[cfg(clippy)]`
+       ⚠️ a cfg, which is not one of the above, results in CURRENT compilation error to be emitted.
+       
+crates\sysctl\src\backends\winget.rs:5:12: error[E0432]: unresolved import `crate::package`: could not find `package` in the crate root
+crates\sysctl\src\backends\winget.rs:6:13: error[E0432]: unresolved imports `crate::ExecResult`, `crate::Substrate`: no `ExecResult` in the root, no `Substrate` in the root
+crates\sysctl\src\backends\winget.rs:3:5: error[E0432]: unresolved import `async_trait`: use of unresolved module or unlinked crate `async_trait`
+crates\cqk-microlocal\src\lib.rs:13:5: warning: unused import: `nalgebra::SVector`
+crates\cqk-microlocal\src\lib.rs:14:19: warning: unused imports: `InvariantStatus` and `enforce_invariant`
+    Checking reson8-wasm v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\reson8-wasm)
+crates\cqk-microlocal\src\lib.rs:80:24: error[E0277]: the trait bound `[[f64; D]; N]: serde::Serialize` is not satisfied: the trait `Serialize` is not implemented for `[[f64; D]; N]`
+crates\cqk-microlocal\src\lib.rs:86:23: error[E0277]: the trait bound `[[f64; D]; N]: serde::Deserialize<'de>` is not satisfied: the trait `Deserialize<'_>` is not implemented for `[[f64; D]; N]`
+crates\cqk-microlocal\src\lib.rs:80:35: error[E0277]: the trait bound `[[f64; D]; N]: serde::Deserialize<'de>` is not satisfied: the trait `Deserialize<'_>` is not implemented for `[[f64; D]; N]`
+crates\sysctl\src\backends\winget.rs:16:44: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `anyhow`: use of unresolved module or unlinked crate `anyhow`
+crates\sysctl\src\backends\winget.rs:21:46: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `anyhow`: use of unresolved module or unlinked crate `anyhow`
+crates\sysctl\src\backends\winget.rs:25:48: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `anyhow`: use of unresolved module or unlinked crate `anyhow`
+crates\sysctl\src\backends\winget.rs:29:46: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `anyhow`: use of unresolved module or unlinked crate `anyhow`
+crates\sysctl\src\backends\winget.rs:33:36: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `anyhow`: use of unresolved module or unlinked crate `anyhow`
+crates\sysctl\src\backends\winget.rs:37:39: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `anyhow`: use of unresolved module or unlinked crate `anyhow`
+crates\sysctl\src\backends\winget.rs:42:40: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `anyhow`: use of unresolved module or unlinked crate `anyhow`
+crates\sysctl\src\backends\winget.rs:48:31: error[E0433]: failed to resolve: use of unresolved module or unlinked crate `anyhow`: use of unresolved module or unlinked crate `anyhow`
+error: could not compile `reson8-sysctl` (lib) due to 11 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `reson8-sysctl` (lib test) due to 11 previous errors
+warning: `cqk-microlocal` (lib) generated 2 warnings
+error: could not compile `cqk-microlocal` (lib) due to 4 previous errors; 2 warnings emitted
+warning: `cqk-microlocal` (lib test) generated 2 warnings (2 duplicates)
+error: could not compile `cqk-microlocal` (lib test) due to 4 previous errors; 2 warnings emitted
+crates\cqk-kitty-rips-verify\tests\alpha_omega_boundary.rs:52:36: error[E0599]: no function or associated item named `default` found for struct `LevinWenLattice` in the current scope: function or associated item not found in `LevinWenLattice`
+crates\cqk-kitty-rips-verify\tests\alpha_omega_boundary.rs:58:36: error[E0599]: no function or associated item named `default` found for struct `LevinWenLattice` in the current scope: function or associated item not found in `LevinWenLattice`
+crates\cqk-kitty-rips-verify\tests\alpha_omega_boundary.rs:115:40: error[E0599]: no function or associated item named `default` found for struct `LevinWenLattice` in the current scope: function or associated item not found in `LevinWenLattice`
+error: could not compile `cqk-kitty-rips-verify` (test "alpha_omega_boundary") due to 3 previous errors
+error: could not compile `near-sdk` (lib) due to 1 previous error

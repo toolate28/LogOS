@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Tri-Weavon: Ignite Architecture",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/ignite_triweavon.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Tri-Weavon: GEAR Core",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/gear_core.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Rust: triweave serve",
+      "type": "lldb",
+      "request": "launch",
+      "cargo": {
+        "args": ["run", "-p", "reson8-triweave", "--", "serve", "--addr", "127.0.0.1:8088"],
+        "filter": { "name": "triweave", "kind": "bin" }
+      },
+      "cwd": "${workspaceFolder}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Tri-Weavon: Full Stack",
+      "configurations": [
+        "Tri-Weavon: GEAR Core",
+        "Tri-Weavon: Ignite Architecture"
+      ],
+      "stopAll": true
+    }
+  ]
+}

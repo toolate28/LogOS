@@ -1,0 +1,64 @@
+{
+  "editor.formatOnSave": true,
+  "editor.rulers": [100],
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "terminal.integrated.defaultProfile.windows": "Tri-Weavon",
+  "terminal.integrated.profiles.windows": {
+    "Tri-Weavon": {
+      "source": "PowerShell",
+      "icon": "circuit-board",
+      "args": ["-NoExit", "-Command", ". $PROFILE; Set-TriWeavonEnv | Out-Null"]
+    },
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    }
+  },
+  "python.defaultInterpreterPath": "python",
+  "python.terminal.activateEnvironment": false,
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "rust-analyzer.linkedProjects": [
+    "Cargo.toml",
+    "cutiles/cutile/Cargo.toml",
+    "near/conservation-verifier/Cargo.toml"
+  ],
+  "rust-analyzer.cargo.buildScripts.enable": true,
+  "search.exclude": {
+    "**/target": true,
+    "**/node_modules": true,
+    "**/.gitnexus": true
+  },
+  "files.watcherExclude": {
+    "**/target/**": true,
+    "**/node_modules/**": true
+  },
+  "terminal.integrated.env.windows": {
+    "LOGOS_ROOT": "${workspaceFolder}",
+    "COHERENCE_MCP_ROOT": "${workspaceFolder}/../coherence-mcp",
+    "RESON8_LOGOS_ROOT": "${workspaceFolder}",
+    "CTWFI_INVARIANT": "alpha+omega=15",
+    "CTWFI_STRAND": "reason"
+  },
+  "python.testing.pytestArgs": [
+    "ops"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python-envs.pythonProjects": [
+    {
+      "path": ".",
+      "envManager": "ms-python.python:venv",
+      "packageManager": "ms-python.python:pip"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+   Compiling cfg-if v1.0.4
+   Compiling windows-link v0.2.1
+   Compiling serde v1.0.228
+   Compiling serde_core v1.0.228
+   Compiling num-traits v0.2.19
+   Compiling zerocopy v0.8.48
+   Compiling zmij v1.0.21
+   Compiling itoa v1.0.18
+   Compiling fastrand v2.4.1
+   Compiling serde_json v1.0.149
+   Compiling once_cell v1.21.4
+   Compiling syn v2.0.117
+   Compiling getrandom v0.4.2
+   Compiling getrandom v0.3.4
+   Compiling windows-sys v0.61.2
+   Compiling memchr v2.8.0
+   Compiling rand_core v0.9.5
+   Compiling wait-timeout v0.2.1
+   Compiling bit-vec v0.8.0
+   Compiling fnv v1.0.7
+   Compiling quick-error v1.2.3
+   Compiling regex-syntax v0.8.10
+   Compiling unarray v0.1.4
+   Compiling rand_xorshift v0.4.0
+   Compiling rand v0.9.4
+   Compiling bitflags v2.11.0
+   Compiling bit-set v0.8.0
+   Compiling resonance-invariant v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\resonance-invariant)
+warning: field `frequency` is never read
+  --> crates\resonance-invariant\src\lib.rs:16:5
+   |
+13 | pub struct LevinWenLattice {
+   |            --------------- field in this struct
+...
+16 |     frequency: AtomicU32,
+   |     ^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `resonance-invariant` (lib) generated 1 warning
+   Compiling tempfile v3.27.0
+   Compiling rusty-fork v0.3.1
+   Compiling serde_derive v1.0.228
+   Compiling thiserror-impl v2.0.18
+   Compiling uuid v1.22.0
+   Compiling thiserror v2.0.18
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.9.0
+   Compiling proptest v1.11.0
+   Compiling chrono v0.4.44
+   Compiling reson8-core v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\core)
+   Compiling cqk-ga v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-ga)
+   Compiling cqk-kitty-rips-verify v0.1.0 (C:\Users\Matthew Ruhnau\LogOS\crates\cqk-kitty-rips-verify)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 29.42s
+     Running unittests src\lib.rs (target\debug\deps\cqk_kitty_rips_verify-dfac8398ea8bc306.exe)
+     Running tests\alpha_omega_boundary.rs (target\debug\deps\alpha_omega_boundary-a1c7d362f1ebd359.exe)
+     Running tests\cl13_associativity.rs (target\debug\deps\cl13_associativity-e22cca50eb739369.exe)
+     Running tests\octonion_composition.rs (target\debug\deps\octonion_composition-ee4d6d246db897cf.exe)
+     Running tests\octonion_moufang.rs (target\debug\deps\octonion_moufang-8278c9e134591f98.exe)
+     Running tests\thtw_parallel_transport.rs (target\debug\deps\thtw_parallel_transport-600ca9cf350bd471.exe)
+   Doc-tests cqk_kitty_rips_verify

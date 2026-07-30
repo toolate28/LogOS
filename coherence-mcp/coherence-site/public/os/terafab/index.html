@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>TERAFAB - WORLD BUILDER</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-cyan-300 font-mono p-8">
+
+<h1 class="text-4xl mb-8 text-white">TERAFAB WORLD BUILDER</h1>
+
+<div class="grid grid-cols-2 gap-8">
+  <!-- Blueprint Gallery -->
+  <div>
+    <h2 class="text-xl mb-4">BLUEPRINT LIBRARY</h2>
+    <div id="blueprint-list" class="space-y-3"></div>
+  </div>
+
+  <!-- Deploy Panel -->
+  <div class="bg-zinc-950 border border-cyan-900 rounded-3xl p-6">
+    <h2 class="text-xl mb-4">DEPLOY STRUCTURE</h2>
+    <input id="blueprint-name" placeholder="blueprint name" class="bg-zinc-900 p-3 w-full rounded-xl mb-4">
+    <input id="position" value="~ -200 64 0" class="bg-zinc-900 p-3 w-full rounded-xl mb-4">
+    <button onclick="deploy()"
+            class="bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold w-full">
+      DEPLOY TO WORLD
+    </button>
+  </div>
+</div>
+
+<script>
+async function loadBlueprints() {
+  const res = await fetch('/api/terafab/blueprints');
+  const data = await res.json();
+  const container = document.getElementById('blueprint-list');
+  container.innerHTML = data.blueprints.map(b => `
+    <div class="bg-zinc-900 p-4 rounded-2xl cursor-pointer hover:bg-zinc-800" onclick="selectBlueprint('${b}')">
+      ${b}
+    </div>
+  `).join('');
+}
+
+async function deploy() {
+  const name = document.getElementById('blueprint-name').value;
+  await fetch('/api/terafab/deploy', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ blueprint: name })
+  });
+  alert("Deployment command sent to FAWE!");
+}
+
+function selectBlueprint(name) {
+  document.getElementById('blueprint-name').value = name;
+}
+
+loadBlueprints();
+</script>
+</body>
+</html>

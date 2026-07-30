@@ -1,0 +1,271 @@
+================================================================================
+LogOS / Tri-Weavon — LEAN 4 FORMAL LAYER
+Unitary NotebookLM document + cumulative changelog
+================================================================================
+Document id     : NLM-LEAN-UNITARY-2026-07-11
+Source root     : lean/
+Repo            : LogOS
+Audience        : NotebookLM single-file corpus for Lean formalization
+Conservation    : α + ω = 15 · tomczak_preserved · ε = 0.00055 basin
+Cascade role    : L10 formal bridge · Mathlib-backed proofs · K22 tactics ·
+                  ExistenceCertificate consumer
+Sibling systems : agda/ · cutiles/cutile · kernels/ · hup/ · crates/
+Generated       : 2026-07-11
+Git commits on path: 8 (first 2026-04-18, last 2026-07-10)
+Status snapshot : K22 README 2026-07-06 + AgdaLeanBridge 2026-07-09
+================================================================================
+
+1. PURPOSE
+----------
+Unitary changelog and map for the Lean 4 libraries: Ns (NS entropy), TriWeavon
+(sub-Riemannian / resilience / conservation), and K22 (tactics, Golay/MOG,
+Existence bridge). Intended for NotebookLM upload as one plain-text file.
+
+2. LOCATION AND BUILD IDENTITY
+------------------------------
+Root               : lean/
+Package (lakefile) : «ns-entropy»
+Toolchain          : lean/lean-toolchain
+Mathlib pin        : mathlib4 @ v4.8.0
+Libraries          :
+  - Ns          (srcDir Ns)
+  - TriWeavon   (srcDir TriWeavon)
+  - K22         (globs K22.+)
+Bridge notes       : lean/AgdaLeanBridge.md
+K22 README         : lean/K22/README.md
+MOG ingest dumps   : lean/K22/MOG/DUMP-INGEST-*.md
+
+Inventory (~57 files excluding .lake/): ~38 .lean, docs, JSON certificates, py helpers
+
+3. LIBRARY MAP
+--------------
+lean/Ns/
+  Bridge.lean
+  ESS.lean
+  Monotone.lean
+  NoShrinker.lean
+  ShrinkerEnergy.lean
+  W.lean
+  — NS singularity / shrinker energy / ESS / monotone formal fragments
+
+lean/TriWeavon/
+  ConservationInvariant.lean   — WavePair, CONSERVATION_SUM=15, peak (7,8)
+  VanishingResilience.lean     — strange-loop dynamics, hyper_oscillator_drive,
+                                 dynamics_map, restoring_force, collapsed regime
+  NS/
+    L3_Shrinker.lean
+    SelfSimilarAnsatz.lean
+  SubRiemannian/
+    Core.lean
+    CurvatureBound.lean
+    FanoDiscreteCurvature.lean  — constant K=1/2; pairs with hup/python/
+                                  fano_discrete_curvature.py
+
+lean/K22/
+  Existence.lean               — fromExistenceCertificate / demoCertificate
+  Tomczak.lean, TomczakBridge.lean
+  ReducedBurau.lean, Jones.lean
+  HexacodeGolay.lean           — GF(4) Field + Golay/MOG + syndrome map
+  MiracleOctadGenerator.lean
+  SerreScarTactic.lean
+  Tactics.lean, Auto.lean, Macros.lean, Syntax.lean, ExprMatch.lean
+  Diagnostics.lean, Bridge.lean, K22Log.lean
+  M24Coefficient.lean (+ index md)
+  MOG/
+    SyndromeLookup.lean
+    SyndromeLookupConcrete.lean
+    GF4RowAction.lean
+    HexacodeMonomial.lean
+    MonomialWitness.lean
+    OctadGenerators.lean
+    ParityLiftRank.lean
+    existence_certificate_mog.json
+    generator_rows_for_lane_a.json
+    octad_witnesses.json
+    steiner_exhaustive_report.json
+    preflight_mog_e2e.py, _lane_d_finalize.py
+    DUMP-INGEST-*.md
+
+4. K22 MODULE STATUS (2026-07-06 README)
+----------------------------------------
+Module                         | Build | Proofs
+K22.ReducedBurau               | OK    | Verified
+K22.Jones                      | OK    | Verified
+K22.Tomczak                    | OK    | Stubs (intentional)
+K22.Existence                  | OK    | Verified E2E bridge
+K22.HexacodeGolay              | OK    | Sorry-free GF(4)+Golay/MOG+syndrome
+                                       | (golaySyndromeN, sphere injectivity /
+                                       |  decode on wt≤3)
+K22.MOG.SyndromeLookup         | WARN  | Skeletal decoder types + stub lookup
+K22.MOG.SyndromeLookupConcrete | PART  | Real H from golayBasisN; sphere decoder;
+                                       | grid+octad; Finset glue / Lipschitz SlowStep open
+K22.Auto / tactics             | WARN  | Imports fixed; lake build K22
+K22.MiracleOctadGenerator      | WARN  | Conway set recognition; Steiner uniqueness
+                                       | still SlowStep sorry
+K22.MOG.ParityLiftRank         | OK    | rank(A)=9 GF(2) Gaussian + global dep;
+                                       | ker dim 15; Steiner glue open
+
+HexacodeGolay = algebraic spine for RESON8:QWALK Heroes 2–5 (combinatorics +
+self-dual syndrome / sphere decode).
+SyndromeLookupConcrete = decoder geometry joint (real H ≅ G, not toy proxy).
+
+5. EXISTENCE CERTIFICATE BRIDGE
+-------------------------------
+Cutile demo emits existence_certificate.json (BLAKE3, camelCase).
+Python scripts/demo_bridge_to_lean.py validates → validated JSON.
+Lean:
+  import K22.Existence
+  #check K22.Existence.fromExistenceCertificate
+  #check K22.Existence.demoCertificate
+Build: lake build K22.Existence
+Trust boundary: caller supplies Bool=true proofs; gate construction verified.
+
+E2E (from cutile README):
+  cd cutiles/cutile
+  cargo run --bin demo_existence_certificate_emission
+  python scripts/demo_bridge_to_lean.py
+  cd ../../lean && lake build K22.Existence
+
+6. AGDA ↔ LEAN EQUIVALENCE (2026-07-09)
+---------------------------------------
+Shared: α + ω = CONSERVATION_SUM = 15
+
+Concept        | Lean                              | Agda
+Module         | TriWeavon.Conservation            | TriWeavon.ConservationRMatrix
+Path           | lean/TriWeavon/Conservation…      | agda/src/TriWeavon/Conservation…
+Constant       | CONSERVATION_SUM : Nat            | CONSERVATION-SUM : ℕ
+Record         | structure WavePair                | record WavePair
+Property       | is_conserved                      | is-conserved
+Peak           | peak_resonance (7,8)              | peak-resonance (7,8)
+Peak proof     | peak_resonance_conserved (rfl)    | peak-conserved (refl)
+R-matrix       | executable Rust/CUDA              | fundamental-r-matrix symbolic tag
+
+Recommended next mechanization:
+  1. Export Lean JSON/OpenTheory witness for peak pair
+  2. Import Agda postulates only after verification_orchestrator checksum
+  3. Keep numeric R-matrix out of Agda until complex formalization ready
+
+7. SUB-RIEMANNIAN MIRROR (with Agda)
+------------------------------------
+See also NLM-AGDA doc / SUBRIEMANNIAN-OB-STATUS-2026-07-03.md
+  OB1: Lean mirrors horizontal_commutator_curvature_terms (sorry body)
+  OB2–OB5: staged/postulated as on Agda side
+  Fano discrete curvature K=1/2: Lean FanoDiscreteCurvature + HUP python
+
+8. TACTICS SURFACE
+------------------
+  ring_matrix       — Burau / matrix automation
+  k22_auto / k22_auto! — goal classification dispatch
+  tomczak_bridge    — Tomczak lift gate
+  serre_scar_tactic — Serre-Scarr skeleton
+Cheat sheet: lean/K22/K22_TACTICS_CHEATSHEET.md
+
+9. CUMULATIVE CHANGELOG (chronological)
+---------------------------------------
+2026-04-18 | 9060bc46 | PHASE 1 STABLE CLOSE — lean path enters
+  Phase 1 stable close commits carry formal framework docs and early Lean
+  presence aligned with Gate / QDI / preprints. Conservation α=7 ω=8 Σ=15.
+
+2026-06-21 | e59f9e68 | VANISHING RESILIENCE
+  feat: Add TriWeavon Vanishing Resilience core implementation in Lean 4.
+  - VanishingResilience.lean: strange-loop dynamics structures/theorems
+  - hyper_oscillator_drive, dynamics_map, restoring_force
+  - Mathematical bounds and convergence for collapsed regime
+  Same window: Heisengrok handover docs; coherence-mcp verify tooling.
+
+2026-07-04 | 9c397e1e | SUB-RIEMANNIAN + MEHLER
+  feat: 9P lock-off lattice, Mehler kernel docs, Sub-Riemannian formalization.
+  Lean SubRiemannian modules (OB1) alongside Agda; cutile Mehler docs;
+  conservation α+ω=15 reaffirmed.
+
+2026-07-06 | (documented in K22 README; may land inside larger commits)
+  K22 status table: HexacodeGolay sorry-free; Existence E2E verified;
+  ParityLiftRank rank=9; SyndromeLookupConcrete real H; Steiner SlowSteps open.
+
+2026-07-08 | 9e7b78e2 | lattice sync
+2026-07-09 | 40f97668 | monorepo timestamp wave (metadata)
+2026-07-09 | a5347350 | AgdaLeanBridge window + lattice sync
+  Explicit Lean↔Agda conservation mapping document dated 2026-07-09.
+
+2026-07-10 | 5c0cd592, ec71a803 | latest lean/ path tip
+
+MOG LANE WORK (ongoing inside K22/MOG):
+  Dump-ingest docs for HexacodeGolay, MiracleOctadGenerator, SyndromeLookup,
+  Fano Discrete Curvature. JSON witnesses for octads, generator rows, Steiner
+  reports. Python preflight_mog_e2e and lane_d finalize helpers.
+
+10. OPEN / NEXT
+---------------
+  - Steiner uniqueness / glue SlowSteps
+  - SyndromeLookup full concrete Lipschitz steps
+  - K22.Auto tactics polish under lake build K22
+  - OB1–OB5 Lean discharge mirroring Agda coefficients
+  - Mechanized witness export to Agda after checksum
+  - Keep Existence trust boundary explicit (Bool proofs from emitter)
+
+11. NOTEBOOKLM USAGE HINTS
+--------------------------
+  - “Which K22 modules are sorry-free vs SlowStep?”
+  - “How does ExistenceCertificate flow from cutile into Lean?”
+  - “Map conservation WavePair between Lean and Agda.”
+  - “What did VanishingResilience introduce on 2026-06-21?”
+
+12. APPEND PROTOCOL
+-------------------
+Append dated blocks. When a module flips from sorry→verified, note module name
+and lake target.
+
+--- END OF UNITARY LEAN CHANGELOG (baseline 2026-07-11) ---
+
+================================================================================
+APPEND — 2026-07-30 | Lane-A Aristotle integrate + SteinerDoubleCount surface
+================================================================================
+Source archive : a77245a3-1233-41b5-a96c-1ada8e6035ef-aristotle.tar.gz
+                 (9P2000.L/strands/User_Dropfiles/dump/)
+Integrated to  : lean/K22/MOG/MonomialWitness.lean
+                 lean/K22/HexacodeGolay.lean
+New module     : lean/K22/MOG/SteinerDoubleCount.lean
+Toolchain      : leanprover/lean4:v4.8.0 · mathlib4 @ v4.8.0 (unchanged pin)
+
+BUILD EVIDENCE
+  lake build K22.MOG.MonomialWitness     → GREEN (2 residual sorries)
+  lake build K22.MOG.SteinerDoubleCount  → GREEN (intentional surface SlowSteps)
+
+MONOMIALWITNESS — discharged toward A-repo
+  mapOctad_card
+  columnSums_mapOctad · parityOk_mapOctad
+  isMOGOctad_transport (native_decide / finite reflection)
+  steiner_uniqueness_mask_level (with Nat.land_assoc / submask glue)
+  hexacodeGolay_conway_isomorphic_via_π
+
+MONOMIALWITNESS — still open
+  mem_conway_packed_iff                         (optional SlowStep)
+  mogOctadsFormSteinerSystem_via_transport      (genuine residual)
+
+STEINERDOUBLECOUNT — lemma surface (not full closure)
+  A-repo arithmetic: binom_24_5 · binom_8_5 · steiner_count_identity · lambda_s_table
+  Open bodies: mask↔Finset bridge · double_count_5sets · packing_eq_implies_steiner
+               golayOctadBlocks_* · transport glue
+  Policy: do not import MiracleOctadGenerator.mogOctadsFormSteinerSystem to fake close
+
+HEXACODEGOLAY
+  Bitwise/Mathlib API compatibility updates retained from Aristotle
+  (Nat.land_assoc, Nat.testBit_succ-related paths). Still no real sorries.
+
+SUB-RIEMANNIAN (re-tag for NotebookLM dual-A)
+  Literature SR control / hypoelliptic heat: Category A-lit
+  lean/TriWeavon/SubRiemannian/* : still Category B / open (postulates, sorries)
+  Do not claim verified multi-agent SR plant model
+
+NOTEBOOKLM
+  Hub: docs/notebooklm/NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt
+  CRITICAL-MONOM-STEINER-LANE-A-20260730.txt
+  CRITICAL-DEPLOYMENT-READINESS-20260730.txt
+
+OPEN / NEXT (updated)
+  1. Discharge SteinerDoubleCount bridge + packing bodies
+  2. Close mogOctadsFormSteinerSystem_via_transport
+  3. Optional mem_conway_packed_iff
+  4. Keep MiracleOctadGenerator Steiner as separate keystone (or unify after monom)
+
+--- end append 2026-07-30 ---

@@ -1,0 +1,23 @@
+{
+  "atom_tag": "ATOM-DOC-20260709-002-ratified-hup-fractal-uncertainty-map-for-logos-19-",
+  "type": "DOC",
+  "description": "Ratified HUP Fractal Uncertainty Map for LogOS (19 roots): uncertainty-rated fractal mapping, dependency differentials, JFA ε-unlock playbook. ATOM-HUP-FRACTAL-MAP-20260709. Linked from HUP-FUNCTIONALITY-TREE and INSTANCE.md cold-start.",
+  "timestamp": "2026-07-09T08:46:40.406Z",
+  "files": [
+    "hup/HUP-FRACTAL-UNCERTAINTY-MAP-20260709.md",
+    "9P2000.L/ops/HUP-FUNCTIONALITY-TREE.md",
+    "hup/INSTANCE.md"
+  ],
+  "tags": [
+    "hup",
+    "fractal",
+    "jfa",
+    "uncertainty",
+    "triweavon",
+    "pulse"
+  ],
+  "freshness_level": "fresh",
+  "bedrock_eligible": false,
+  "created_epoch": 1783586800,
+  "verified": false
+}

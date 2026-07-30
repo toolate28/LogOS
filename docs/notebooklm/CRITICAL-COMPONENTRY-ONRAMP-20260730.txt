@@ -1,0 +1,73 @@
+================================================================================
+CRITICAL SNAPSHOT — LogOS Componentry On-Ramp
+================================================================================
+Snapshot date   : 2026-07-30
+Source (prefer) : docs/componentry/ (live tree)
+Role            : NotebookLM secondary source — structure / cold-start authority
+Conservation    : α + ω = 15 (Category C label only)
+================================================================================
+
+0. PURPOSE
+----------
+Single on-ramp for agents under strain: where truth lives in ~90 seconds.
+Not a dump of the monorepo. Not a claim that Cloud Run is live.
+
+1. FILE MAP
+-----------
+00-README.md                 cold-start · drive letters · authority layers
+01-SPINE-GDRIVE-ZERO-…       Drive + ws://127.0.0.1:8088 + ZLL
+02-COHERENCE-MCP.md          12 live tools · env · gaps
+03-THEOREM-WORK.md           formal + executable cascade
+04-AI-DEVELOPMENT.md         strands · shell · handoffs · NotebookLM pointer
+05-HEISENPUP-QTDA-COMPANION  uncertainty map protocol
+06-KKS-MATHEMATICAL-…        Orbit Policy Kernel design language [Category B]
+kks/bracket-handoff-v0.json  structure constants; Jacobi untested
+UNCERTAINTY-MAP.yaml         machine-readable confidence
+ATOMS/                       handoff stamps
+
+2. DRIVE LETTER TRUTH (host-verified 2026-07-27; re-check if machine changes)
+-----------------------------------------------------------------------------
+G:   Windows RECOVERY media — NOT project root
+I:   DriveFS label "Google Drive" — entry only
+F:\Users\Matthew Ruhnau\My Drive\   live Drive content (research)
+F:\Users\Matthew Ruhnau\LogOS\      bare-metal git implementation root
+H:   opportunistic artifacts
+
+3. AUTHORITY LAYERS
+-------------------
+L-Git     LogOS git — code/formal/ops SoT
+L-Drive   Reson8_Labs research — strategy corpus
+L-MCP     live coherence-mcp (12 tools)
+L-WS      ws://127.0.0.1:8088 on demand
+L-Formal  lean/ agda/ cutile
+L-GPU     kernels/
+L-Cloud   GB-06 / Cloud Run — HELD
+
+4. CONVENTIONS THAT PREVENT FALSE GREEN
+---------------------------------------
+· α+ω=15 is Category C (not reject gate, not Casimir)
+· Fibonacci seats 8+5+3=16 independent of 15
+· WAVE ≥0.98 operational target; honest amber OK
+· Descriptor JSON count ≠ live stdio tool count (12)
+· Category C conventions are not free Casimirs (see 06-KKS)
+
+5. COLD-START SHELL
+-------------------
+$env:LOGOS_ROOT = 'F:\Users\Matthew Ruhnau\LogOS'
+$env:ATOM_TRAIL_ROOT = "$env:LOGOS_ROOT\.atom-trail"
+Import-Module "$env:LOGOS_ROOT\ops\LogOS.Shell.psm1" -Force
+# logos-status · logos-bridge · logos-mcp gauge
+
+6. DEPLOYMENT READINESS (componentry view)
+------------------------------------------
+Local on-ramp docs          READY
+Bridge 8088                 AMBER (start on demand)
+MCP 12 tools                AMBER (drift vs catalog is cascade-blocker)
+Cloud Run / GB-06           HELD
+KKS OPK product             HELD (spec only; Jacobi untested)
+
+7. NOTEBOOKLM HUB
+-----------------
+docs/notebooklm/NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt
+
+--- end CRITICAL-COMPONENTRY-ONRAMP-20260730 ---

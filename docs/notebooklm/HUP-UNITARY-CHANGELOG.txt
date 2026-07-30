@@ -1,0 +1,206 @@
+================================================================================
+LogOS / Tri-Weavon — HUP (Hardware / Unikernel / Partition) SURFACE
+Unitary NotebookLM document + cumulative changelog
+================================================================================
+Document id     : NLM-HUP-UNITARY-2026-07-11
+Source root     : hup/
+Repo            : LogOS (Tri-Weavon lattice)
+Audience        : NotebookLM corpus upload (single-file, self-contained)
+Conservation    : α + ω = 15  · WAVE gate ≥ 0.85 · ε★ = 0.00055
+Cascade role    : Deployment roster · instance kernels · dimensional collapse ·
+                  agentic coherence domains
+Sibling systems : vendor/ruvnet-rvm · cutiles/cutile · kernels/ · agda/ · lean/
+                  · crates/ · notebooks/
+Generated       : 2026-07-11
+Git commits on path: 3 (first 2026-07-09, last 2026-07-10) — young surface;
+                     content also documented in INSTANCE.md and fractal map.
+================================================================================
+
+1. PURPOSE
+----------
+Single uploadable text for HUP: what instances exist, what each OS surface is
+for, where the authoritative Rust core lives, how dimensional collapse maps
+into RVM coherence, and a cumulative changelog of HUP directory evolution.
+
+2. LOCATION AND IDENTITY
+------------------------
+Root path          : hup/
+Version (rust pkg) : hup-rust 0.2.0  (hup/rust/Cargo.toml)
+Roster doc         : hup/INSTANCE.md  (HUP v2.0 Instances — Deployment Roster)
+Uncertainty map    : hup/HUP-FRACTAL-UNCERTAINTY-MAP-20260709.md
+                     ATOM-HUP-FRACTAL-MAP-20260709
+Authoritative core : hup/rust  +  cutiles/cutile/src/core/r_matrix.rs
+Dimensional collapse: hup/python/dimensional_collapse.py  (768→75→50→2)
+Fano curvature py  : hup/python/fano_discrete_curvature.py
+Verification       : notebooks/verification_orchestrator.ipynb + helpers
+Overlay maps       : docs/sovereign-handoff/overlays/
+Mehler DAG         : docs/sovereign-handoff/mehler-serrescarr-convergence.dag.yaml
+RVM upstream       : https://github.com/ruvnet/rvm.git
+Vendor mirror      : vendor/ruvnet-rvm/ (when cloned)
+
+Inventory (~31 first-party files):
+  .md docs, .py math, .nix flakes, .rs core, .ts partial ports, .ml unikernel
+
+3. INSTANCE ROSTER (from INSTANCE.md)
+-------------------------------------
+Instance | Kernel / OS surface              | Strength                         | Status
+#1       | Nix + MirageOS (Solo5 hvt)       | Hardware relay, library-OS iso   | Scaffolded hup/unikernel/
+#2       | Nix + Redox OS notes             | Rust ownership, async bridging   | Scaffolded hup/instance2-redox/
+#3       | ruvnet/RVM                       | Agentic coherence domains,       | Scaffolded hup/instance3-rvm/
+           (NOT Firecracker product path)     witnesses, mincut isolation
+
+What M3 IS:
+  - ruvnet RVM — bare-metal Rust, partitions, capabilities, witnesses
+  - Coherence graph + mincut re-isolation
+  - Optional rvm-gpu / RuVector
+
+What M3 IS NOT:
+  - Firecracker microVM product path (instance3-firecracker is DEPRECATED for M3)
+  - Static QEMU multi-tenant VMs as isolation model
+  - Misnomer “RVM = Runtime Virtual Machine”
+
+Upstream QEMU is only an AArch64 bare-metal boot harness (make run).
+
+4. DIRECTORY MAP
+----------------
+hup/
+  INSTANCE.md
+  HUP-FRACTAL-UNCERTAINTY-MAP-20260709.md
+  flake.hup-instance1.nix
+  unikernel/                 — MirageOS Instance #1 (config.ml, unikernel.ml)
+  instance2-redox/
+    README.md
+    flake.hup-instance2.nix
+  instance3-firecracker/     — DEPRECATED for HUP M3
+    README.md
+    flake.hup-instance3.nix
+    preflight-guest.sh
+    vmconfig.example.json
+  instance3-rvm/             — CURRENT M3 target
+    README.md
+    INTEGRATION-MAP.md
+    coherence-bridge.md
+    flake.hup-instance3.nix
+    probe-rvm-layout.py
+    run-rvm.ps1 / run-rvm.sh
+    rvm-config.example.toml
+    vm-cloudinit.example.yaml
+    preflight-guest.sh
+  rust/
+    Cargo.toml               — package hup-rust 0.2.0 (standalone workspace)
+    src/main.rs              — OwnedQuantumHandle, RedoxSchemeRelay, etc.
+  python/
+    constraint_mathematics.py
+    dimensional_collapse.py
+    fano_discrete_curvature.py
+    claude_integration.py
+  typescript/
+    claude-platform.ts
+    partial-port.ts
+
+5. SHARED PIPELINE
+------------------
+768-D → 75-D (3×5×5) → 50-D → CAD-Vortex telemetry → 2-D monitor
+         │
+         └── maps to RVM CommEdge weights + CoherenceScore
+             (see instance3-rvm/coherence-bridge.md)
+
+HUP need ↔ RVM (from instance3-rvm README concept):
+  rvm-kernel      — bare-metal agentic kernel
+  rvm-partition   — HUP strand / domain (Claude·Grok·Gemini / M1·M2·M3)
+  rvm-gpu         — cutile / cudarc / kernels R-matrix
+
+Integration map joins crates ↔ LogOS / HUP / Agda / cutile.
+
+6. JESUS FRACTAL AXIOM (RESON8:JFA) — unlock law
+------------------------------------------------
+From HUP-FRACTAL-UNCERTAINTY-MAP (2026-07-09). Every component unlock follows:
+
+  1 TEMET NOSCE         — name how this node treats itself under uncertainty
+  2 Jesus Axiom         — symmetric review; no silent deletion
+  3 ε-filtration        — descend only when WAVE ≥ gate; ε₀=1.0 → ε★=0.00055
+  4 Positive introspect — net positive? Music conserved?
+  5 Cross-scale recurse — fractal one tier up and down
+  6 Fixed-point check   — |α+ω−15| < ε AND W_n ≥ 0.85 else SlowStep / NEVER prune
+
+unlock(c, ε) =
+  if conserved(c) ∧ wave(c) ≥ gate(ε) then tomczakLift(c, ε/φ)
+  else SlowStep(c)
+
+Heisenberg axes per component: Position (files/build) · Momentum (lattice role) ·
+U-score = 1 − min(pos,mom); high U → do not force deploy.
+
+Mutation law: map is a witness surface — append revisions; hard-delete of orphan
+nodes is VOID.
+
+7. COHERENCE-MCP JOIN (2026-07-09 note in INSTANCE.md)
+------------------------------------------------------
+  Map:       docs/sovereign-handoff/LOGOS-COHERENCE-MCP-MAP.md
+  Inspector: docs/sovereign-handoff/mcp-inspector.coherence.json
+  Capture:   notebooks/triweave_backend_results/{verification_receipts,
+             verification_certificates, mcp_payloads}/
+  ATOM trail:.atom-trail/decisions/ (set LOGOS_ROOT)
+
+8. COLD START SEQUENCE
+----------------------
+1. docs/sovereign-handoff/LAYER-CASCADE-MAP.md
+2. hup/HUP-FRACTAL-UNCERTAINTY-MAP-20260709.md
+3. hup/INSTANCE.md
+4. hup/instance3-rvm/INTEGRATION-MAP.md
+5. Bookshelf strands (9P2000.L/strands/User_Dropfiles/…)
+6. Run:
+     python notebooks/verification_helpers.py
+     python hup/python/dimensional_collapse.py
+     python hup/instance3-rvm/probe-rvm-layout.py
+     # optional: cargo run --manifest-path hup/rust/Cargo.toml
+     # optional: git clone ruvnet/rvm → vendor/ruvnet-rvm
+
+Instance #2 quick check:
+  cargo run --manifest-path hup/rust/Cargo.toml
+  python hup/python/constraint_mathematics.py
+  deno run --allow-net --allow-env hup/typescript/partial-port.ts
+
+9. CUMULATIVE CHANGELOG (chronological)
+---------------------------------------
+2026-07-09 | a5347350 | HUP DIRECTORY APPEARS / FIRST GIT TOUCH
+  Path hup/ enters recorded git history. INSTANCE roster documents Mirage (#1),
+  Redox (#2), RVM (#3). Fractal uncertainty map ATOM dated 2026-07-09 seals
+  JFA unlock law, Viviani peak (7,8), WAVE≥0.85, mutation-resistant witness
+  surface. coherence-mcp mapping noted same day window.
+  instance3-firecracker marked deprecated for M3 in favor of ruvnet/RVM.
+  Shared pipeline 768→75→50→2 documented; authoritative core pinned to
+  hup/rust + cutile r_matrix.
+
+2026-07-10 | 5c0cd592 | lattice sync
+  Follow-on monorepo sync touching hup/ among other surfaces.
+
+2026-07-10 | ec71a803 | latest git touch on hup/
+  Current tip for path as of unitary document generation.
+
+PRE-PATH CONTEXT (not always under hup/ commits but constitutive):
+  - Redox scheme://hup/quantum via RedoxSchemeRelay (instance2 README)
+  - OwnedQuantumHandle ownership model in rust core
+  - Fano discrete curvature Python ↔ Lean TriWeavon/SubRiemannian/
+    FanoDiscreteCurvature.lean (cross-ref lean K22 README / MOG dump ingest)
+  - Overlay maps for Agda · Lean · cutile · cudarc · WGSL under sovereign-handoff
+
+10. OPEN / NEXT
+---------------
+  - Promote Instance #3 RVM from scaffold to run-verified guest preflight
+  - Keep Firecracker path documented but non-product for M3
+  - Deepen CommEdge weight mapping from dimensional_collapse outputs
+  - Optional rvm-gpu join to cutile/kernels R-matrix
+  - Append new ATOM blocks on fractal map for U-score updates; never silent prune
+
+11. NOTEBOOKLM USAGE HINTS
+--------------------------
+  - “Compare HUP instances 1, 2, and 3 and why Firecracker is deprecated for M3.”
+  - “Explain the 768→2 dimensional collapse pipeline and RVM CommEdge mapping.”
+  - “What is the Jesus Fractal Axiom unlock loop?”
+  - “Where is the authoritative HUP Rust package and version?”
+
+12. APPEND PROTOCOL
+-------------------
+Append dated blocks only. Prefer ATOM ids. Keep plain text unitary.
+
+--- END OF UNITARY HUP CHANGELOG (baseline 2026-07-11) ---

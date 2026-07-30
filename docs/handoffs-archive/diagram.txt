@@ -1,0 +1,41 @@
+```mermaid
+graph TD
+  subgraph Reson8_Workspace [reson8 Cargo Workspace]
+    reson8_forge_core["reson8-forge-core"]
+    reson8_forge["reson8-forge"]
+    reson8_forge --> reson8_forge_core
+    coherence_activator["coherence-activator"]
+    vortex_bridge["vortex-bridge"]
+    coherence_hash["coherence-hash"]
+    coherence_wave["coherence-wave"]
+    reson8_topology["reson8-topology"]
+    reson8_forge_bohmian["reson8-forge-bohmian"]
+    reson8_forge_bohmian --> reson8_forge_core
+    sphinx["sphinx"]
+    styx["styx"]
+    styx --> sphinx
+    reson8_forge_marketplace["reson8-forge-marketplace"]
+    reson8_forge_marketplace --> reson8_forge_core
+    reson8_forge_marketplace --> reson8_forge_zero_latency_ledgers
+    reson8_forge_zero_latency_ledgers["reson8-forge-zero-latency-ledgers"]
+    reson8_forge_zero_latency_ledgers --> reson8_forge_core
+    reson8_wasm["reson8-wasm"]
+    reson8_forge_api_triggers["reson8-forge-api-triggers"]
+    reson8_forge_api_triggers --> reson8_forge_core
+    reson8_forge_api_triggers --> reson8_forge_zero_latency_ledgers
+    reson8_forge_artifact_pipeline["reson8-forge-artifact-pipeline"]
+    reson8_forge_artifact_pipeline --> reson8_forge_core
+    reson8_forge_artifact_pipeline --> reson8_forge_zero_latency_ledgers
+    reson8_forge_migration_helpers["reson8-forge-migration-helpers"]
+    reson8_forge_migration_helpers --> reson8_forge_core
+    reson8_forge_migration_helpers --> reson8_forge_zero_latency_ledgers
+    nexus_pulse_bot["nexus-pulse-bot"]
+    mc_bridge["mc-bridge"]
+    triweave["triweave"]
+    triweave --> coherence_activator
+    triweave --> reson8_forge_core
+    triweave --> sphinx
+    triweave --> styx
+    conservation_verifier["conservation-verifier"]
+  end
+```
