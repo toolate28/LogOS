@@ -10,7 +10,7 @@ readme = "README.md"
 repository = "https://github.com/toolate28/triweavon"
 
 [dependencies]
-cudarc = { version = "0.12", features = ["cuda-12040"], optional = true }
+cudarc = { version = "0.19", features = ["cuda-12040"], optional = true }
 wgpu = { version = "0.20", optional = true }
 pollster = { version = "0.3", optional = true }
 thiserror = "1.0"
