@@ -1,0 +1,32 @@
+[package]
+name = "barcode-tui"
+version = "0.1.0"
+edition = "2021"
+description = "Terminal-native persistent-homology barcode viewer (first-in-Rust). See BARCODE-TUI-FIXED-POINT.md."
+license = "MIT OR Apache-2.0"
+
+# Library surface is consumed by `forge-cockpit` (cascade child) —
+# see CASCADE-PLAN.md. Binary is the standalone viewer.
+[lib]
+name = "barcode_tui"
+path = "src/lib.rs"
+
+[[bin]]
+name = "barcode-tui"
+path = "src/main.rs"
+
+[dependencies]
+reson8-core = { path = "../core" }
+reson8-wave = { path = "../wave" }
+
+# Ratatui stack — kept minimal; no `canvas` feature so the crate stays
+# under 2 MB stripped (TODO(manus): verify with `--profile tiny`).
+ratatui = { version = "0.28", default-features = false, features = ["crossterm"] }
+crossterm = "0.28"
+
+# CLI parsing for `--cloud` flag. clap kept feature-light.
+clap = { version = "4", features = ["derive"] }
+
+[dev-dependencies]
+# TODO(claude): add proptest for H0 count invariant (see FIXED-POINT §5).
+proptest = "1"

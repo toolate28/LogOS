@@ -1,0 +1,12 @@
+[package]
+name = "reson8-api-triggers"
+version = "0.1.0"
+edition = "2021"
+description = "API trigger handlers for webhook and event-driven activation"
+
+[dependencies]
+reson8-core = { path = "../core" }
+reson8-activator = { path = "../activator" }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

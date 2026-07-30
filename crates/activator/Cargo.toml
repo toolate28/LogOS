@@ -1,0 +1,11 @@
+[package]
+name = "reson8-activator"
+version = "0.1.0"
+edition = "2021"
+description = "Skill activation, routing, and composition engine"
+
+[dependencies]
+reson8-core = { path = "../core" }
+reson8-wave = { path = "../wave" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

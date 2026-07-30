@@ -1,0 +1,65 @@
+[package]
+name = "atom-sig"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["Matthew Ruhnau <matthew.ruhnau@gmail.com>"]
+description = "Canonical ATOM commitment format: CBOR + BLAKE3 + ed25519. no_std."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/toolate28/coherence-mcp"
+keywords = ["atom", "commitment", "cbor", "blake3", "ed25519"]
+categories = ["cryptography", "no-std", "data-structures"]
+readme = "README.md"
+
+# ──────────────────────────────────────────────────────────────────────
+# Design intent
+# ──────────────────────────────────────────────────────────────────────
+# atom-sig canonicalises a Tri-Weavon ATOM into a reproducible byte
+# string, hashes it with BLAKE3, and signs with ed25519. The output is
+# the AtomCommitment — what lands in the ledger, what braid-augmented
+# signatures reference, what conservation.spiralsafe.near stores.
+#
+# no_std by default so the crate can live inside:
+#   - Invariant Gate middleware (hot path)
+#   - vault-9p read-only commitment verifier
+#   - Limbo/Dis sandbox Gate-side verifier
+#   - future embedded/wasm deployments
+#
+# Feature `std` pulls in ciborium (full CBOR impl) and std Vec support.
+# Default no_std uses minicbor for tight memory behaviour.
+# ──────────────────────────────────────────────────────────────────────
+
+[features]
+default = ["std"]
+std = ["ciborium", "blake3/std", "ed25519-dalek/std"]
+nostd = ["minicbor"]
+
+[dependencies]
+# Hashing: BLAKE3 is the canonical α-rail digest for the Tri-Weavon.
+blake3 = { version = "1.5", default-features = false }
+
+# Signatures: ed25519 for classical rail. fib-braid-core adds the
+# topological rail; atom-sig composes both via the AtomCommitment struct.
+ed25519-dalek = { version = "2.1", default-features = false, features = ["rand_core"] }
+
+# CBOR canonicalisation: two paths depending on std vs nostd.
+ciborium = { version = "0.2", optional = true }
+minicbor = { version = "0.24", optional = true, default-features = false, features = ["alloc", "derive"] }
+
+# Serde only for std path — minicbor has its own derive.
+serde = { version = "1", optional = true, default-features = false, features = ["derive", "alloc"] }
+
+# Byte ordering, fixed-width integer helpers.
+zerocopy = { version = "0.7", features = ["derive"] }
+
+[dev-dependencies]
+hex = "0.4"
+proptest = "1.4"
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+# α-rail is pedantic. Accept the strictness; it's the job.
