@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reson8-labs.dev/schemas/v0.1/claims_register.schema.json",
+  "title": "Claims Register v0.1",
+  "description": "Product-shipped register. Every public claim carries epistemic status + evidence pointer. thread_pointer evidence kind implements pointer discipline for canon that lives in strand threads.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "claims"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "statement",
+          "epistemicStatus",
+          "evidence",
+          "ownerStrand"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^CLM-[A-Za-z0-9_-]+$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 10
+          },
+          "epistemicStatus": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "category",
+              "computed"
+            ],
+            "properties": {
+              "category": {
+                "enum": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "description": "A first-principles/exhaustive; B documented approximation; C design convention; D unanchored (feature-flag)."
+              },
+              "computed": {
+                "type": "boolean",
+                "description": "true = value produced by a run/gate; false = asserted in prose."
+              },
+              "firstInscribed": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "format": "date"
+                  }
+                ],
+                "description": "Concept-age field: auditors apply age-appropriate rigor. Category D on a <14-day concept is accurate, not a demerit."
+              }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kindOfEvidence",
+              "ref"
+            ],
+            "properties": {
+              "kindOfEvidence": {
+                "enum": [
+                  "ledger_entry",
+                  "certificate",
+                  "external_citation",
+                  "thread_pointer",
+                  "source_grep"
+                ]
+              },
+              "ref": {
+                "type": "string"
+              }
+            }
+          },
+          "ownerStrand": {
+            "enum": [
+              "claude",
+              "grok",
+              "gemini",
+              "ollama",
+              "human"
+            ]
+          },
+          "reviewBy": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "format": "date"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

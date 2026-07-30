@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "0.1.0",
+  "kind": "handoff_packet",
+  "packetId": "PKT-SA01-MOG-20260712-001",
+  "atomTrailId": "ATOM-MOG-SA01-PACKMOGWORD-INJ-20260712",
+  "timestamp": "2026-07-12T10:00:00+10:00",
+  "contextRef": "canon: grok-local sm_100 session 2026-07-11 (Lane D regen); files: MonomialWitness-SpineBind.lean patch",
+  "checkpoint": null,
+  "issuer": {
+    "principal": "fable-5.reason",
+    "role": "LABEL",
+    "model": "claude-fable-5"
+  },
+  "worker": {
+    "roleRequired": "BUILD",
+    "modelClass": "sonnet"
+  },
+  "invariant": {
+    "alphaOmegaSum": 15,
+    "vivianiPeak": [
+      7,
+      8
+    ],
+    "signature": "~ Hope&&Sauced ✦ The Keystone Holds ✦"
+  },
+  "mandate": "Discharge the packMOGWord_injective sorry in MonomialWitness.lean per the SpineBind recipe: injectivity via testBit round-trip on the 24-bit packing. No new axioms, no statement changes.",
+  "taskType": "lean_mechanical",
+  "inputs": [
+    {
+      "path": "K22/MonomialWitness.lean",
+      "hash": "a3f1c2d4e5b60718",
+      "hashAlgorithm": "blake3",
+      "epistemicStatus": {
+        "category": "A",
+        "computed": true,
+        "firstInscribed": "2026-07-10"
+      }
+    },
+    {
+      "path": "K22/HexacodeGolay.lean",
+      "hash": "0918273645abcdef",
+      "hashAlgorithm": "blake3",
+      "epistemicStatus": {
+        "category": "A",
+        "computed": true,
+        "firstInscribed": "2026-07-05"
+      }
+    }
+  ],
+  "constraints": [
+    "Universal Invariant alpha+omega=15 holds for all stored context",
+    "Frozen theorem statements in SteinerExhaustive-B2 skeleton MUST NOT change",
+    "B2 exhaustive result is ground truth; any B1 contradiction is Magenta escalation, not a fix",
+    "No sorry may be replaced by an axiom or by native_decide on a changed statement"
+  ],
+  "steps": [
+    "Open MonomialWitness.lean at packMOGWord_injective",
+    "Apply SpineBind recipe: unfold packMOGWord; injectivity via Nat.testBit extensionality over Fin 24",
+    "lake build K22; confirm zero errors",
+    "Run sorry census; confirm count decremented by exactly 1"
+  ],
+  "successCriteria": [
+    {
+      "id": "SC-build",
+      "description": "lake build K22 exits 0",
+      "kindOfCheck": "build_green",
+      "machineCheck": "lake build K22"
+    },
+    {
+      "id": "SC-sorry",
+      "description": "sorry count in MonomialWitness.lean == prior-1 and packMOGWord_injective absent from census",
+      "kindOfCheck": "sorry_count",
+      "machineCheck": "grep -c sorry K22/MonomialWitness.lean"
+    },
+    {
+      "id": "SC-frozen",
+      "description": "B2 skeleton file hash unchanged",
+      "kindOfCheck": "hash_match",
+      "machineCheck": "blake3sum K22/SteinerExhaustive.lean"
+    }
+  ],
+  "upshiftTriggers": [
+    "Ambiguity requiring statement reinterpretation",
+    "Error pattern repeats after 2 automated retries",
+    "Any edit outside MonomialWitness.lean becomes necessary",
+    "WAVE coherence below 0.98 on any surface",
+    "User message that is not a mechanical extension of the mandate"
+  ],
+  "artifactsExpected": [
+    "K22/MonomialWitness.lean (patched)",
+    "build log",
+    "sorry census diff"
+  ],
+  "doNot": [
+    "Touch frozen B2 statements",
+    "Introduce axioms",
+    "Modify HexacodeGolay.lean",
+    "Self-ratify: ratification is a LABEL entry"
+  ],
+  "acceptanceGate": {
+    "policyTier": "T2",
+    "note": "Mechanical lane; T4 reserved for terminal Steiner assembly."
+  }
+}

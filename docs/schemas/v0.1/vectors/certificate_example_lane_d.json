@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "0.1.0",
+  "kind": "existence_certificate",
+  "packetId": "PKT-LANED-REGEN-20260711-003",
+  "atomTrailId": "ATOM-MOG-PREFLIGHT-STEINER-FULL-20260711",
+  "kernelVersion": "mog-e2e-preflight-0.2.0",
+  "bettiProxyBelowThreshold": true,
+  "tomczakPreserved": true,
+  "reliable": true,
+  "maxErrorBound": 0.0,
+  "waveScore": 0.999,
+  "alphaOmegaSum": 15.0,
+  "coherenceDelta": 0.001,
+  "inputStateHash": "bd7856d9a84e7701",
+  "certificateHash": "f6187303500a23c82dd2e650284f3067",
+  "hashAlgorithm": "md5-legacy",
+  "timestampNs": 1783850400000000000,
+  "gate": {
+    "policyTier": "T2",
+    "waveThreshold": 0.92,
+    "gateFunction": "preflight_mog_e2e.gate_v2_nonvoid",
+    "gateVersion": "2.0",
+    "componentsConsidered": 3,
+    "voidExcluded": [
+      "legacy columnSymbol VOID (count-only)"
+    ]
+  },
+  "chain": {
+    "chainPosition": 2,
+    "prevCertificateHash": "485325b42f0c25ef129b1c469778e9e1"
+  },
+  "authority": {
+    "emittedBy": {
+      "principal": "orchestrator.gate-0",
+      "role": "GATE"
+    },
+    "buildAttestations": [
+      {
+        "principal": "sm_100.grok-local",
+        "role": "BUILD",
+        "signature": {
+          "algorithm": "ed25519",
+          "keyId": "sm100-build-k1",
+          "value": "VECTOR-PLACEHOLDER-SIGNATURE-0000"
+        }
+      }
+    ],
+    "labelRatification": {
+      "principal": "fable-5.reason",
+      "role": "LABEL",
+      "signature": {
+        "algorithm": "ed25519",
+        "keyId": "fable5-label-k1",
+        "value": "VECTOR-PLACEHOLDER-SIGNATURE-0000"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "steiner_exhaustive",
+      "ok": true,
+      "detail": "unique=42504 none=0 multi=0; 759*56=C(24,5)",
+      "alphaLocal": 5,
+      "omegaLocal": 10,
+      "evidenceHash": "485325b42f0c25ef129b1c469778e9e1"
+    },
+    {
+      "name": "pair_intersections",
+      "ok": true,
+      "detail": "287661 pairs; {0:11385,2:170016,4:106260} == Conway-Sloane",
+      "alphaLocal": 6,
+      "omegaLocal": 9
+    },
+    {
+      "name": "monomial_witness_pi",
+      "ok": true,
+      "detail": "pi=[0,3,1,2,4,5] scalings all-1; IA<->Conway 759/759 both directions",
+      "alphaLocal": 7,
+      "omegaLocal": 8
+    }
+  ],
+  "signature": {
+    "algorithm": "ed25519",
+    "keyId": "gate0-emit-k1",
+    "value": "VECTOR-PLACEHOLDER-SIGNATURE-0000"
+  },
+  "extensions": {
+    "mog": {
+      "octads": 759,
+      "steinerTarget": 759,
+      "definition": "parity+column_sum_hexacode"
+    }
+  }
+}

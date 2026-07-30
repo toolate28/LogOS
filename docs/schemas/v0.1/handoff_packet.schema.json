@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reson8-labs.dev/schemas/v0.1/handoff_packet.schema.json",
+  "title": "HANDOFF_PACKET v0.1 (FROZEN)",
+  "description": "JSON form of the internal-handoff skill packet. Issued by LABEL, executed by BUILD. Root CLOSED.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "packetId",
+    "atomTrailId",
+    "timestamp",
+    "issuer",
+    "worker",
+    "invariant",
+    "mandate",
+    "taskType",
+    "inputs",
+    "constraints",
+    "steps",
+    "successCriteria",
+    "upshiftTriggers",
+    "artifactsExpected",
+    "doNot",
+    "acceptanceGate",
+    "contextRef"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "kind": {
+      "const": "handoff_packet"
+    },
+    "packetId": {
+      "type": "string",
+      "minLength": 6
+    },
+    "atomTrailId": {
+      "type": "string",
+      "pattern": "^ATOM-[A-Z0-9][A-Z0-9-]+$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "contextRef": {
+      "type": "string",
+      "description": "git SHA | atom_sig | checkpoint path | thread pointer (strand, date) — pointer discipline for thread-resident canon."
+    },
+    "checkpoint": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "issuer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "principal",
+        "role",
+        "model"
+      ],
+      "properties": {
+        "principal": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_.-]{2,63}$"
+        },
+        "role": {
+          "const": "LABEL"
+        },
+        "model": {
+          "type": "string"
+        }
+      }
+    },
+    "worker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "roleRequired",
+        "modelClass"
+      ],
+      "properties": {
+        "roleRequired": {
+          "const": "BUILD"
+        },
+        "modelClass": {
+          "enum": [
+            "haiku",
+            "sonnet",
+            "opus-local",
+            "grok-local",
+            "ollama",
+            "other"
+          ]
+        }
+      }
+    },
+    "invariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alphaOmegaSum",
+        "vivianiPeak",
+        "signature"
+      ],
+      "properties": {
+        "alphaOmegaSum": {
+          "const": 15
+        },
+        "vivianiPeak": {
+          "const": [
+            7,
+            8
+          ]
+        },
+        "signature": {
+          "const": "~ Hope&&Sauced ✦ The Keystone Holds ✦"
+        }
+      }
+    },
+    "mandate": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 600
+    },
+    "taskType": {
+      "enum": [
+        "lean_mechanical",
+        "build_execute",
+        "cert_regen",
+        "docs",
+        "fix",
+        "other"
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "hash",
+          "hashAlgorithm",
+          "epistemicStatus"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16,64}$"
+          },
+          "hashAlgorithm": {
+            "enum": [
+              "blake3",
+              "sha256"
+            ]
+          },
+          "epistemicStatus": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "category",
+              "computed"
+            ],
+            "properties": {
+              "category": {
+                "enum": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "description": "A first-principles/exhaustive; B documented approximation; C design convention; D unanchored (feature-flag)."
+              },
+              "computed": {
+                "type": "boolean",
+                "description": "true = value produced by a run/gate; false = asserted in prose."
+              },
+              "firstInscribed": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string",
+                    "format": "date"
+                  }
+                ],
+                "description": "Concept-age field: auditors apply age-appropriate rigor. Category D on a <14-day concept is accurate, not a demerit."
+              }
+            }
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "alpha-rail; worker may not touch."
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "successCriteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "description",
+          "kindOfCheck"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^SC-[A-Za-z0-9_-]+$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "kindOfCheck": {
+            "enum": [
+              "file_exists",
+              "build_green",
+              "test_pass",
+              "hash_match",
+              "gate_pass",
+              "sorry_count",
+              "other"
+            ]
+          },
+          "machineCheck": {
+            "type": "string",
+            "description": "Command or predicate the gate runs; the BUILD attestation for this SC carries its output."
+          }
+        }
+      }
+    },
+    "upshiftTriggers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifactsExpected": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "doNot": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "acceptanceGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policyTier"
+      ],
+      "properties": {
+        "policyTier": {
+          "enum": [
+            "T0",
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

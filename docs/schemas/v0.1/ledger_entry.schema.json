@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reson8-labs.dev/schemas/v0.1/ledger_entry.schema.json",
+  "title": "ATOM Ledger Entry v0.1 (FROZEN)",
+  "description": "Hash-chained, role-signed ledger entry. entryKind→signerRole binding is schema-enforced below and type-enforced in Rust via CanSign. PULSE and DOCS are advisory: their entries never alter certificate state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "seq",
+    "entryKind",
+    "signerRole",
+    "signerPrincipal",
+    "atomTrailId",
+    "payloadHash",
+    "prevEntryHash",
+    "entryHash",
+    "hashAlgorithm",
+    "signature",
+    "timestampNs"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "kind": {
+      "const": "ledger_entry"
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "entryKind": {
+      "enum": [
+        "packet_issued",
+        "build_attested",
+        "certificate_emitted",
+        "label_ratified",
+        "fix_packet_issued",
+        "fix_applied",
+        "upshift_requested",
+        "pulse_advisory",
+        "docs_note",
+        "migration"
+      ]
+    },
+    "signerRole": {
+      "enum": [
+        "LABEL",
+        "BUILD",
+        "GATE",
+        "FIX",
+        "PULSE",
+        "DOCS"
+      ]
+    },
+    "signerPrincipal": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_.-]{2,63}$"
+    },
+    "atomTrailId": {
+      "type": "string",
+      "pattern": "^ATOM-[A-Z0-9][A-Z0-9-]+$"
+    },
+    "packetId": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "payloadHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32,64}$"
+    },
+    "prevEntryHash": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32,64}$"
+        }
+      ]
+    },
+    "entryHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32,64}$"
+    },
+    "hashAlgorithm": {
+      "enum": [
+        "blake3",
+        "sha256",
+        "md5-legacy"
+      ]
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "keyId",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "enum": [
+            "ed25519",
+            "slh-dsa-shake-128s"
+          ],
+          "description": "slh-dsa-shake-128s reserved for PQC migration (G7 2035 roadmap); ed25519 for v0.1 emissions."
+        },
+        "keyId": {
+          "type": "string",
+          "minLength": 4
+        },
+        "value": {
+          "type": "string",
+          "minLength": 16
+        }
+      }
+    },
+    "timestampNs": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "packet_issued"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "LABEL"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "build_attested"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "BUILD"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "certificate_emitted"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "GATE"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "label_ratified"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "LABEL"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "fix_packet_issued"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "LABEL"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "fix_applied"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "FIX"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "upshift_requested"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "BUILD"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "pulse_advisory"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "PULSE"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "docs_note"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "DOCS"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entryKind": {
+            "const": "migration"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "signerRole": {
+            "const": "LABEL"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "seq": {
+            "const": 0
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "prevEntryHash": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "prevEntryHash": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,635 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reson8-labs.dev/schemas/v0.1/certificate.schema.json",
+  "title": "Existence Certificate v0.1 (FROZEN)",
+  "description": "Certificate emitted ONLY by the gate function over builder-attested components. Flags are gate outputs. No emitter may accept flag values as inputs. Root is CLOSED: unknown top-level fields are schema violations (drift detector); domain payloads live under extensions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "packetId",
+    "atomTrailId",
+    "kernelVersion",
+    "bettiProxyBelowThreshold",
+    "tomczakPreserved",
+    "reliable",
+    "maxErrorBound",
+    "waveScore",
+    "alphaOmegaSum",
+    "coherenceDelta",
+    "inputStateHash",
+    "certificateHash",
+    "hashAlgorithm",
+    "timestampNs",
+    "gate",
+    "chain",
+    "authority",
+    "components",
+    "signature"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "kind": {
+      "const": "existence_certificate"
+    },
+    "packetId": {
+      "type": "string",
+      "minLength": 6,
+      "description": "Binds certificate to the HANDOFF_PACKET whose successCriteria it covers."
+    },
+    "atomTrailId": {
+      "type": "string",
+      "pattern": "^ATOM-[A-Z0-9][A-Z0-9-]+$"
+    },
+    "kernelVersion": {
+      "type": "string"
+    },
+    "bettiProxyBelowThreshold": {
+      "type": "boolean",
+      "description": "GATE OUTPUT."
+    },
+    "tomczakPreserved": {
+      "type": "boolean",
+      "description": "GATE OUTPUT. No setter exists in any conformant emitter."
+    },
+    "reliable": {
+      "type": "boolean",
+      "description": "GATE OUTPUT: conjunction over policy-selected components + thresholds."
+    },
+    "maxErrorBound": {
+      "type": "number",
+      "minimum": 0
+    },
+    "waveScore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "COMPUTED by WAVE module over attested inputs; never a caller argument."
+    },
+    "alphaOmegaSum": {
+      "type": "number",
+      "minimum": 14.95,
+      "maximum": 15.05
+    },
+    "coherenceDelta": {
+      "type": "number"
+    },
+    "inputStateHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{16,64}$"
+    },
+    "certificateHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32,64}$",
+      "description": "Self-hash computed over the serialized certificate with this field empty. Emitters MUST use blake3; md5-legacy accepted for verification of pre-freeze chain entries only."
+    },
+    "hashAlgorithm": {
+      "enum": [
+        "blake3",
+        "sha256",
+        "md5-legacy"
+      ],
+      "description": "md5-legacy is read/verify-only (deprecated); gate REJECTS it for new emissions."
+    },
+    "timestampNs": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policyTier",
+        "waveThreshold",
+        "gateFunction",
+        "gateVersion",
+        "componentsConsidered",
+        "voidExcluded"
+      ],
+      "properties": {
+        "policyTier": {
+          "enum": [
+            "T0",
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ]
+        },
+        "waveThreshold": {
+          "enum": [
+            0.85,
+            0.92,
+            0.9998
+          ]
+        },
+        "gateFunction": {
+          "type": "string"
+        },
+        "gateVersion": {
+          "type": "string"
+        },
+        "componentsConsidered": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "voidExcluded": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of components excluded as VOID/out-of-scope by policy. Exclusion is declared here, never by editing component.ok."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "policyTier": {
+                "enum": [
+                  "T0",
+                  "T1"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "waveThreshold": {
+                "const": 0.85
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "policyTier": {
+                "enum": [
+                  "T2",
+                  "T3"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "waveThreshold": {
+                "const": 0.92
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "policyTier": {
+                "const": "T4"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "waveThreshold": {
+                "const": 0.9998
+              }
+            }
+          }
+        }
+      ]
+    },
+    "chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chainPosition",
+        "prevCertificateHash"
+      ],
+      "properties": {
+        "chainPosition": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "prevCertificateHash": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{32,64}$"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "chainPosition": {
+                "const": 0
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "prevCertificateHash": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "prevCertificateHash": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "emittedBy",
+        "buildAttestations",
+        "labelRatification"
+      ],
+      "properties": {
+        "emittedBy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "principal",
+            "role"
+          ],
+          "properties": {
+            "principal": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_.-]{2,63}$"
+            },
+            "role": {
+              "const": "GATE"
+            }
+          }
+        },
+        "buildAttestations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "principal",
+              "role",
+              "signature"
+            ],
+            "properties": {
+              "principal": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_.-]{2,63}$"
+              },
+              "role": {
+                "const": "BUILD"
+              },
+              "signature": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "algorithm",
+                  "keyId",
+                  "value"
+                ],
+                "properties": {
+                  "algorithm": {
+                    "enum": [
+                      "ed25519",
+                      "slh-dsa-shake-128s"
+                    ],
+                    "description": "slh-dsa-shake-128s reserved for PQC migration (G7 2035 roadmap); ed25519 for v0.1 emissions."
+                  },
+                  "keyId": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 16
+                  }
+                }
+              }
+            }
+          }
+        },
+        "labelRatification": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "principal",
+                "role",
+                "signature"
+              ],
+              "properties": {
+                "principal": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_.-]{2,63}$"
+                },
+                "role": {
+                  "const": "LABEL"
+                },
+                "signature": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "algorithm",
+                    "keyId",
+                    "value"
+                  ],
+                  "properties": {
+                    "algorithm": {
+                      "enum": [
+                        "ed25519",
+                        "slh-dsa-shake-128s"
+                      ],
+                      "description": "slh-dsa-shake-128s reserved for PQC migration (G7 2035 roadmap); ed25519 for v0.1 emissions."
+                    },
+                    "keyId": {
+                      "type": "string",
+                      "minLength": 4
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 16
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "description": "GATE-ENFORCED (not schema-expressible): labelRatification.principal MUST differ from every buildAttestations[].principal. Self-certification is rejected at emit and at ledger-write."
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "ok",
+          "detail",
+          "alphaLocal",
+          "omegaLocal"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ok": {
+            "type": "boolean",
+            "description": "COMPUTED by the check itself. VOID components carry ok:false with detail explaining scope; gate policy decides inclusion, never rewrites ok."
+          },
+          "detail": {
+            "type": "string"
+          },
+          "alphaLocal": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 15
+          },
+          "omegaLocal": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 15
+          },
+          "evidenceHash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16,64}$"
+          }
+        },
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 0
+                  },
+                  "omegaLocal": {
+                    "const": 15
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 1
+                  },
+                  "omegaLocal": {
+                    "const": 14
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 2
+                  },
+                  "omegaLocal": {
+                    "const": 13
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 3
+                  },
+                  "omegaLocal": {
+                    "const": 12
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 4
+                  },
+                  "omegaLocal": {
+                    "const": 11
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 5
+                  },
+                  "omegaLocal": {
+                    "const": 10
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 6
+                  },
+                  "omegaLocal": {
+                    "const": 9
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 7
+                  },
+                  "omegaLocal": {
+                    "const": 8
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 8
+                  },
+                  "omegaLocal": {
+                    "const": 7
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 9
+                  },
+                  "omegaLocal": {
+                    "const": 6
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 10
+                  },
+                  "omegaLocal": {
+                    "const": 5
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 11
+                  },
+                  "omegaLocal": {
+                    "const": 4
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 12
+                  },
+                  "omegaLocal": {
+                    "const": 3
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 13
+                  },
+                  "omegaLocal": {
+                    "const": 2
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 14
+                  },
+                  "omegaLocal": {
+                    "const": 1
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "alphaLocal": {
+                    "const": 15
+                  },
+                  "omegaLocal": {
+                    "const": 0
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "description": "GATE-ENFORCED coverage: component names must cover every successCriteria[].id of the bound packet."
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "keyId",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "enum": [
+            "ed25519",
+            "slh-dsa-shake-128s"
+          ],
+          "description": "slh-dsa-shake-128s reserved for PQC migration (G7 2035 roadmap); ed25519 for v0.1 emissions."
+        },
+        "keyId": {
+          "type": "string",
+          "minLength": 4
+        },
+        "value": {
+          "type": "string",
+          "minLength": 16
+        }
+      }
+    },
+    "sracCorrections": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "harmonicBenefit": {
+      "type": "number"
+    },
+    "mehlerReliable": {
+      "type": "boolean"
+    },
+    "ottoCdCertificate": {
+      "type": "boolean"
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Open domain payloads (e.g. extensions.mog). The ONLY open region of the certificate."
+    }
+  }
+}
