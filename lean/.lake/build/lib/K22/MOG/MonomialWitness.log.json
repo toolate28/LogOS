@@ -1,0 +1,84 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=.\\.\\.lake/packages\\batteries\\.lake\\build\\lib;.\\.\\.lake/packages\\Qq\\.lake\\build\\lib;.\\.\\.lake/packages\\aesop\\.lake\\build\\lib;.\\.\\.lake/packages\\proofwidgets\\.lake\\build\\lib;.\\.\\.lake/packages\\Cli\\.lake\\build\\lib;.\\.\\.lake/packages\\importGraph\\.lake\\build\\lib;.\\.\\.lake/packages\\mathlib\\.lake\\build\\lib;.\\.\\.lake\\build\\lib PATH c:\\Users\\toolated\\.elan\\toolchains\\leanprover--lean4---v4.8.0\\bin\\lean.exe -DautoImplicit=false .\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean -R .\\.\\.\\. -o .\\.\\.lake\\build\\lib\\K22\\MOG\\MonomialWitness.olean -i .\\.\\.lake\\build\\lib\\K22\\MOG\\MonomialWitness.ilean -c .\\.\\.lake\\build\\ir\\K22\\MOG\\MonomialWitness.c --json",
+   "level": "trace"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:70:18: ambiguous, possible interpretations \n  GF4.GF4 : Type\n  \n  MiracleOctadGenerator.GF4 : Type",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:76:46: ambiguous, possible interpretations \n  GF4.GF4 : Type\n  \n  MiracleOctadGenerator.GF4 : Type",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:83:54: The rfl tactic failed. Possible reasons:\n- The goal is not a reflexive relation (neither `=` nor a relation with a @[refl] lemma).\n- The arguments of the relation are not equal.\nTry using the reflexivitiy lemma for your relation explicitly, e.g. `exact Eq.rfl`.\ncase zero\n⊢ toConwayGF4 (ofConwayGF4 MiracleOctadGenerator.GF4.zero) = MiracleOctadGenerator.GF4.zero",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:83:54: The rfl tactic failed. Possible reasons:\n- The goal is not a reflexive relation (neither `=` nor a relation with a @[refl] lemma).\n- The arguments of the relation are not equal.\nTry using the reflexivitiy lemma for your relation explicitly, e.g. `exact Eq.rfl`.\ncase one\n⊢ toConwayGF4 (ofConwayGF4 MiracleOctadGenerator.GF4.one) = MiracleOctadGenerator.GF4.one",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:83:54: The rfl tactic failed. Possible reasons:\n- The goal is not a reflexive relation (neither `=` nor a relation with a @[refl] lemma).\n- The arguments of the relation are not equal.\nTry using the reflexivitiy lemma for your relation explicitly, e.g. `exact Eq.rfl`.\ncase omega\n⊢ toConwayGF4 (ofConwayGF4 MiracleOctadGenerator.GF4.omega) = MiracleOctadGenerator.GF4.omega",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:83:54: The rfl tactic failed. Possible reasons:\n- The goal is not a reflexive relation (neither `=` nor a relation with a @[refl] lemma).\n- The arguments of the relation are not equal.\nTry using the reflexivitiy lemma for your relation explicitly, e.g. `exact Eq.rfl`.\ncase omegabar\n⊢ toConwayGF4 (ofConwayGF4 MiracleOctadGenerator.GF4.omegabar) = MiracleOctadGenerator.GF4.omegabar",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:83:39: unsolved goals\ncase zero\n⊢ toConwayGF4 (ofConwayGF4 MiracleOctadGenerator.GF4.zero) = MiracleOctadGenerator.GF4.zero\n\ncase one\n⊢ toConwayGF4 (ofConwayGF4 MiracleOctadGenerator.GF4.one) = MiracleOctadGenerator.GF4.one\n\ncase omega\n⊢ toConwayGF4 (ofConwayGF4 MiracleOctadGenerator.GF4.omega) = MiracleOctadGenerator.GF4.omega\n\ncase omegabar\n⊢ toConwayGF4 (ofConwayGF4 MiracleOctadGenerator.GF4.omegabar) = MiracleOctadGenerator.GF4.omegabar",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:85:37: ambiguous, possible interpretations \n  GF4.GF4 : Type\n  \n  MiracleOctadGenerator.GF4 : Type",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:98:15: ambiguous, possible interpretations \n  GF4.GF4 : Type\n  \n  MiracleOctadGenerator.GF4 : Type",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:107:29: ambiguous, possible interpretations \n  GF4.GF4 : Type\n  \n  MiracleOctadGenerator.GF4 : Type",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:131:33: ambiguous, possible interpretations \n  GF4.GF4 : Type\n  \n  MiracleOctadGenerator.GF4 : Type",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:143:8: (kernel) cannot evaluate code because 'K22.MOG.MonomialWitness.hexacodePacked_IA' uses 'sorry' and/or contains errors",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:147:8: (kernel) cannot evaluate code because 'K22.MOG.MonomialWitness.hexacodePacked_IA' uses 'sorry' and/or contains errors",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:157:15: unknown identifier 'hexacode_packed_iso_via_π'",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:156:78: unsolved goals\nn : ℕ\n⊢ n ∈ hexacodePacked_Conway ↔ reindexPackedByπsymm n ∈ hexacodePacked_IA",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:162:30: ambiguous, possible interpretations \n  GF4.GF4 : Type\n  \n  MiracleOctadGenerator.GF4 : Type",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:165:63: ambiguous, possible interpretations \n  GF4.GF4 : Type\n  \n  MiracleOctadGenerator.GF4 : Type",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:169:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:213:2: failed to synthesize instance\n  Std.Commutative fun x x_1 => x ||| x_1",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:218:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:222:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:226:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:236:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:257:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:284:15: unknown identifier 'hexacode_packed_iso_via_π'",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\MonomialWitness.lean:282:65: unsolved goals\nfiveSet : Finset MOGPoint\nh_five : fiveSet.card = 5\n⊢ ∃! oct, isMOGOctad oct = true ∧ fiveSet ⊆ oct",
+   "level": "error"},
+  {"message": "Lean exited with code 1", "level": "error"}],
+ "depHash": "2083890552118256054"}
