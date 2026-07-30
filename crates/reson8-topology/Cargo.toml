@@ -8,4 +8,4 @@ description = "TDA engine — Vietoris-Rips, persistent homology, Betti numbers,
 reson8-core = { path = "../core" }
 reson8-wave = { path = "../wave" }
 serde = { version = "1", features = ["derive"] }
-ndarray = "0.16"
+ndarray = "0.17"
