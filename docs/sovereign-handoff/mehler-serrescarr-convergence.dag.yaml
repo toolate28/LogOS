@@ -1,0 +1,141 @@
+# Certified Mehler → Serre-Scarr Convergence Dependency DAG
+# Machine-readable proof manifest (Pass 3–5 protocol applied)
+# Generated under Monitoring & Consensus Verifier oversight
+# ATOM Trail: sm100-MEHLER-DAG-20260706
+# Status legend: proved | partial | postulated | imported | not_written
+# Linked rails: agda/src/TriWeavon/K22/SerreScarr.agda, SubRiemannian/Mehler*, lean/K22/Tomczak*
+
+- theorem: SerreScarrConvergence
+  kind: theorem
+  status: partial
+  depends:
+    - certifiedMehler
+    - tomczak_preserved_under_heat_kernel_flow
+    - WAVE_monotonicity_under_Krawczyk
+    - SerreScar_HIT_stabilization
+  blocker: tomczak_preserved_under_heat_kernel_flow (needs full commutation proof)
+
+- theorem: certifiedMehler
+  kind: theorem
+  status: partial
+  depends:
+    - ResidualBoundLemma
+    - enclosureContainsTrueKernel
+    - tomczak_lift_commutes_with_heat_kernel_flow
+    - WAVE_monotonicity_under_Krawczyk
+  blocker: tomczak_lift_commutes_with_heat_kernel_flow
+
+- theorem: ResidualBoundLemma
+  kind: theorem
+  status: proved
+  depends: []
+  blocker: null
+
+- theorem: enclosureContainsTrueKernel
+  kind: theorem
+  status: proved
+  depends: []
+  blocker: null
+
+# Promoted from root-only alias (Verifier audit P0, 2026-07-09)
+- theorem: tomczak_preserved_under_heat_kernel_flow
+  kind: theorem
+  status: partial
+  depends:
+    - tomczak_lift_commutes_with_heat_kernel_flow
+    - tomczakPreserved_under_firstBCH
+  blocker: tomczak_lift_commutes_with_heat_kernel_flow (commutation + BCH preservation)
+
+- theorem: tomczak_lift_commutes_with_heat_kernel_flow
+  kind: theorem
+  status: partial
+  depends:
+    - tomczakPreserved_under_firstBCH
+    - heat_kernel_Levin_approximation
+    - Krawczyk_contraction_stability
+  blocker: heat_kernel_Levin_approximation (needs explicit error bound under FP8)
+
+- theorem: WAVE_monotonicity_under_Krawczyk
+  kind: theorem
+  status: proved
+  depends: []
+  blocker: null
+
+- theorem: SerreScar_HIT_stabilization
+  kind: theorem
+  status: partial
+  depends:
+    - d_r_differentials_coherence
+    - sracCascade_idempotence
+    - tomczakLift_KS_guard
+  blocker: d_r_differentials_coherence (path induction in HIT)
+
+- theorem: tomczakPreserved_under_firstBCH
+  kind: theorem
+  status: postulated
+  depends: []
+  blocker: needs first-order Poisson bracket preservation proof in Agda
+
+- theorem: heat_kernel_Levin_approximation
+  kind: theorem
+  status: partial
+  depends:
+    - Levin_collocation_N16_error_bound
+    - Mehler_kernel_oscillatory_integral_bound
+  blocker: Levin_collocation_N16_error_bound (needs geometric series bound)
+
+- theorem: Levin_collocation_N16_error_bound
+  kind: theorem
+  status: not_written
+  depends:
+    - geometric_series_bound
+  blocker: geometric_series_bound (single missing lemma)
+
+- theorem: geometric_series_bound
+  kind: theorem
+  status: imported
+  depends: []
+  blocker: classical external assumption (standard analysis)
+
+- theorem: Mehler_kernel_oscillatory_integral_bound
+  kind: theorem
+  status: proved
+  depends: []
+  blocker: null
+
+- theorem: Krawczyk_contraction_stability
+  kind: theorem
+  status: proved
+  depends: []
+  blocker: null
+
+- theorem: d_r_differentials_coherence
+  kind: theorem
+  status: postulated
+  depends: []
+  blocker: needs HIT path constructor for d_r² = sracCascade
+
+- theorem: sracCascade_idempotence
+  kind: theorem
+  status: proved
+  depends: []
+  blocker: null
+
+- theorem: tomczakLift_KS_guard
+  kind: theorem
+  status: postulated
+  depends: []
+  blocker: needs formalization of ksGuard and merminGuard predicates
+
+# Summary statistics (for verifier audit — corrected 2026-07-09 Pass-3 re-count)
+# total_nodes: 17  # 16 original + promoted tomczak_preserved_under_heat_kernel_flow
+# proved: 6
+# partial: 6  # was undercount 4; includes heat_kernel_Levin + alias node + root + certifiedMehler + lift + HIT
+# postulated: 3
+# imported: 1
+# not_written: 1
+# critical_path_length: 5
+# primary_blocker: tomczak_lift_commutes_with_heat_kernel_flow
+# secondary_blocker: heat_kernel_Levin_approximation → Levin_collocation_N16_error_bound → geometric_series_bound (imported)
+# policy: imported geometric_series_bound counts as external axiom (not locally discharged) until Pass-5 axiom policy closes
+# audit: sm100-MEHLER-DAG-20260706 Monitoring & Consensus Verifier — stats Accept after P0

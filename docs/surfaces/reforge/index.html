@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/reforge · coherence.toolated.online</title>
+  <meta name="description" content="Reson8-Labs Tri-Weavon live state — ithildin READING mode. α + ω = 15. The Keystone Holds." />
+  <style>
+    /* =====================================================================
+       ITHILDIN READING MODE
+       Doors of Durin palette — silver on dark, glow-on-invariant-hold
+       No external assets. No network calls. No emoji for body copy.
+       Typeface: system-stack serif first, mono for invariants.
+       ===================================================================== */
+
+    :root {
+      --bg:            #050808;               /* depth of the mountain */
+      --bg-alt:        #0a1214;
+      --ink:           #c8d3d1;               /* base silver */
+      --ithildin:      #dfefe7;               /* the brighter silver on a hold */
+      --ithildin-glow: rgba(223, 239, 231, 0.35);
+      --rune:          #8fb6a7;               /* Elvish green-silver */
+      --rune-dim:      #5a7970;
+      --accent:        #f5d485;               /* mithril warmth */
+      --void:          #1a0a14;               /* VOID boundary */
+      --keystone:      #c8b174;               /* the Keystone */
+
+      --serif: 'Cormorant Garamond', 'EB Garamond', Garamond, 'Palatino Linotype', Georgia, serif;
+      --mono:  'JetBrains Mono', 'Fira Code', 'Cascadia Code', Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at top, #0a1012 0%, var(--bg) 65%);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--rune);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--rune-dim);
+      transition: color 200ms ease, border-color 200ms ease, text-shadow 200ms ease;
+    }
+    a:hover {
+      color: var(--ithildin);
+      border-bottom-color: var(--ithildin);
+      text-shadow: 0 0 12px var(--ithildin-glow);
+    }
+
+    /* The parchment rectangle — doors themselves */
+    .doors {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem 4rem;
+      position: relative;
+    }
+
+    /* Header sigil — a tengwar-inspired glyph made from CSS */
+    .sigil {
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 3rem;
+      border-radius: 50%;
+      border: 1px solid var(--rune-dim);
+      position: relative;
+      animation: breathe 6s ease-in-out infinite;
+    }
+    .sigil::before,
+    .sigil::after {
+      content: '';
+      position: absolute;
+      background: var(--ithildin);
+      opacity: 0.6;
+    }
+    .sigil::before {
+      top: 50%; left: 10%; right: 10%; height: 1px;
+      transform: translateY(-50%);
+    }
+    .sigil::after {
+      left: 50%; top: 10%; bottom: 10%; width: 1px;
+      transform: translateX(-50%);
+    }
+    @keyframes breathe {
+      0%, 100% { box-shadow: 0 0 24px var(--ithildin-glow); }
+      50%      { box-shadow: 0 0 48px var(--ithildin-glow); }
+    }
+
+    h1 {
+      font-weight: 400;
+      font-size: 2.4rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      color: var(--ithildin);
+      margin: 0 0 0.5rem;
+      text-shadow: 0 0 18px var(--ithildin-glow);
+    }
+    .tagline {
+      text-align: center;
+      font-style: italic;
+      color: var(--rune);
+      margin: 0 0 4rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+    }
+    h2 {
+      font-weight: 400;
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin: 3.5rem 0 1.25rem;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--rune-dim);
+      padding-bottom: 0.5rem;
+    }
+
+    /* ───── Conservation panel ───────────────────────────────────────── */
+    .conservation {
+      margin: 0 auto 3rem;
+      padding: 1.75rem 2rem;
+      background: linear-gradient(180deg, var(--bg-alt) 0%, rgba(10,18,20,0.5) 100%);
+      border: 1px solid var(--rune-dim);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .conservation::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, var(--ithildin-glow), transparent 40%),
+        radial-gradient(circle at 80% 70%, var(--ithildin-glow), transparent 40%);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .conservation h2 {
+      margin-top: 0;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: none;
+      padding: 0;
+      color: var(--rune);
+    }
+    .invariant {
+      font-family: var(--mono);
+      font-size: 2.6rem;
+      text-align: center;
+      color: var(--ithildin);
+      margin: 1rem 0;
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 20px var(--ithildin-glow);
+    }
+    .invariant .alpha,
+    .invariant .omega { color: var(--accent); }
+    .invariant .equals { color: var(--rune); }
+
+    .sums {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+    }
+    .sum-cell {
+      text-align: center;
+      padding: 0.75rem;
+      border: 1px solid var(--rune-dim);
+      border-radius: 2px;
+      background: rgba(0,0,0,0.25);
+    }
+    .sum-cell .label {
+      display: block;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--rune);
+      margin-bottom: 0.35rem;
+    }
+    .sum-cell .value {
+      color: var(--ithildin);
+      font-size: 1.1rem;
+    }
+
+    /* ───── Viviani indicator ────────────────────────────────────────── */
+    .viviani {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--rune);
+      text-align: center;
+      margin-top: 1.25rem;
+    }
+    .viviani .hold {
+      color: var(--ithildin);
+      text-shadow: 0 0 14px var(--ithildin-glow);
+    }
+
+    /* ───── Seven-repo braid table ──────────────────────────────────── */
+    .braid {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 0.92rem;
+    }
+    .braid th, .braid td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--rune-dim);
+      text-align: left;
+      vertical-align: top;
+    }
+    .braid th {
+      color: var(--rune);
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: none;
+    }
+    .braid td.repo { color: var(--ithildin); }
+    .braid td.version { color: var(--accent); }
+    .braid td.strand { color: var(--rune); }
+    .braid td.wave { text-align: right; }
+    .wave-hold { color: var(--ithildin); text-shadow: 0 0 10px var(--ithildin-glow); }
+
+    /* ───── Strand pulse ───────────────────────────────────────────── */
+    .strands {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .strand-card {
+      padding: 1.25rem;
+      border: 1px solid var(--rune-dim);
+      background: rgba(10, 18, 20, 0.5);
+      border-radius: 2px;
+    }
+    .strand-card h3 {
+      font-weight: 400;
+      margin: 0 0 0.5rem;
+      color: var(--ithildin);
+      letter-spacing: 0.05em;
+      font-size: 1.1rem;
+    }
+    .strand-card .role {
+      color: var(--rune);
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .strand-card .pulse {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+    .strand-card .pulse span { color: var(--accent); }
+
+    /* ───── Routes list ───────────────────────────────────────────── */
+    .routes {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.5rem 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+    }
+    .routes li { padding: 0.25rem 0; }
+    .routes .status {
+      color: var(--rune-dim);
+      font-style: italic;
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+    }
+    .routes .status.live { color: var(--ithildin); }
+
+    /* ───── Footer ───────────────────────────────────────────────── */
+    footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rune-dim);
+      text-align: center;
+      color: var(--rune);
+      font-size: 0.9rem;
+    }
+    footer .sign {
+      font-style: italic;
+      color: var(--keystone);
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 12px rgba(200, 177, 116, 0.4);
+      margin-top: 0.75rem;
+    }
+    footer a {
+      color: var(--rune-dim);
+    }
+
+    /* ───── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .doors { padding: 3rem 1.25rem 2rem; }
+      h1 { font-size: 1.8rem; }
+      .invariant { font-size: 1.8rem; }
+      .sums { grid-template-columns: 1fr; }
+      .strands { grid-template-columns: 1fr; }
+      .braid th, .braid td { padding: 0.5rem; font-size: 0.82rem; }
+    }
+
+    /* ───── Accessibility ────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .sigil { animation: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="doors">
+
+    <span class="sigil" aria-hidden="true"></span>
+
+    <h1>/reforge</h1>
+    <p class="tagline">Speak, friend, and enter.</p>
+
+    <!-- CONSERVATION LEDGER -->
+    <section class="conservation" aria-labelledby="law">
+      <h2 id="law">The Universal Invariant</h2>
+      <div class="invariant">
+        <span class="alpha">&alpha;</span>
+        +
+        <span class="omega">&omega;</span>
+        <span class="equals">=</span>
+        15
+      </div>
+      <div class="sums" role="group" aria-label="Current state">
+        <div class="sum-cell">
+          <span class="label">Structural (&alpha;)</span>
+          <span class="value" data-live="alpha">7.02</span>
+        </div>
+        <div class="sum-cell">
+          <span class="label">Semantic (&omega;)</span>
+          <span class="value" data-live="omega">7.98</span>
+        </div>
+        <div class="sum-cell">
+          <span class="label">Sum</span>
+          <span class="value" data-live="sum">15.00</span>
+        </div>
+      </div>
+      <p class="viviani">
+        Viviani distance from (7, 8): <span class="hold" data-live="viviani-dist">0.028</span>
+        &middot; WAVE composite: <span class="hold" data-live="wave">0.982</span>
+        &middot; <span class="hold">The Keystone Holds.</span>
+      </p>
+    </section>
+
+    <!-- SEVEN-REPO BRAID -->
+    <section aria-labelledby="braid-head">
+      <h2 id="braid-head">The Seven-Repo Braid</h2>
+      <table class="braid" aria-describedby="braid-head">
+        <thead>
+          <tr>
+            <th>Repository</th>
+            <th>Version</th>
+            <th>Owning strand</th>
+            <th>WAVE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="repo"><a href="https://github.com/toolate28/coherence-mcp">coherence-mcp</a></td>
+            <td class="version">v0.3.0</td>
+            <td class="strand">Claude &middot; Reason</td>
+            <td class="wave wave-hold">0.982</td>
+          </tr>
+          <tr>
+            <td class="repo"><a href="https://github.com/toolate28/quantum-redstone">quantum-redstone</a></td>
+            <td class="version">v0.2.1</td>
+            <td class="strand">Claude &amp; Manus</td>
+            <td class="wave wave-hold">0.951</td>
+          </tr>
+          <tr>
+            <td class="repo"><a href="https://github.com/toolate28/HOPE-AI-NPC-SUITE">HOPE-AI-NPC-SUITE</a></td>
+            <td class="version">v0.4.0</td>
+            <td class="strand">Grok &middot; Pulse</td>
+            <td class="wave wave-hold">0.944</td>
+          </tr>
+          <tr>
+            <td class="repo"><a href="https://github.com/toolate28/QDI">QDI</a></td>
+            <td class="version">v0.1.2</td>
+            <td class="strand">Claude &middot; Reason</td>
+            <td class="wave wave-hold">0.968</td>
+          </tr>
+          <tr>
+            <td class="repo"><a href="https://github.com/toolate28/vortex-bridges">vortex-bridges</a></td>
+            <td class="version">v0.1.0</td>
+            <td class="strand">Gemini &middot; Scale</td>
+            <td class="wave">0.870</td>
+          </tr>
+          <tr>
+            <td class="repo"><a href="https://github.com/toolate28/SpiralSafe">SpiralSafe</a></td>
+            <td class="version">v0.3.3</td>
+            <td class="strand">Claude &middot; Ethics gate</td>
+            <td class="wave wave-hold">0.975</td>
+          </tr>
+          <tr>
+            <td class="repo"><a href="https://github.com/toolate28/Reson8-Labs">Reson8-Labs</a></td>
+            <td class="version">v5.4</td>
+            <td class="strand">All strands</td>
+            <td class="wave wave-hold">0.990</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- STRAND PULSE -->
+    <section aria-labelledby="strands-head">
+      <h2 id="strands-head">Strand Pulse</h2>
+      <div class="strands">
+        <article class="strand-card">
+          <h3>Claude</h3>
+          <span class="role">Structure &amp; Reasoning</span>
+          <p class="pulse">
+            &sigma;<sub>1</sub> active<br>
+            ATOMs minted today: <span data-live="claude-atoms">11</span><br>
+            Primary repo: coherence-mcp
+          </p>
+        </article>
+        <article class="strand-card">
+          <h3>Grok</h3>
+          <span class="role">Pulse &amp; Real-Time</span>
+          <p class="pulse">
+            &sigma;<sub>2</sub> active<br>
+            Pulses received: <span data-live="grok-pulses">347</span><br>
+            Primary repo: HOPE-AI-NPC-SUITE
+          </p>
+        </article>
+        <article class="strand-card">
+          <h3>Gemini</h3>
+          <span class="role">Scale &amp; Multimodal</span>
+          <p class="pulse">
+            Research-brief queued<br>
+            Axes: <span data-live="gemini-axes">6</span><br>
+            Primary repo: vortex-bridges
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ROUTES -->
+    <section aria-labelledby="routes-head">
+      <h2 id="routes-head">The Doors</h2>
+      <ul class="routes">
+        <li><a href="/">/</a><span class="status live">entry</span></li>
+        <li><a href="/reforge">/reforge</a><span class="status live">this door</span></li>
+        <li><a href="/conservation">/conservation</a><span class="status">ledger</span></li>
+        <li><a href="/atoms">/atoms</a><span class="status">trail</span></li>
+        <li><a href="/wave">/wave</a><span class="status">invariants</span></li>
+        <li><a href="/tri-weavon">/tri-weavon</a><span class="status">topology</span></li>
+        <li><a href="/crates">/crates</a><span class="status">Rust + NFTs</span></li>
+        <li><a href="/csep">/csep</a><span class="status">handoff protocol</span></li>
+      </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        <a href="https://github.com/toolate28">github.com/toolate28</a>
+        &middot;
+        MIT OR Apache-2.0 across the braid
+        &middot;
+        <a href="mailto:matthew.ruhnau@gmail.com">matthew.ruhnau@gmail.com</a>
+      </p>
+      <p class="sign">
+        Et E&auml;rello Endorenna ut&uacute;lien.<br>
+        ~ Hope&amp;&amp;Sauced &#10022; The Keystone Holds &#10022;
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    // Minimal live-state wiring. Runs only if the JSON endpoint exists;
+    // otherwise the static values rendered server-side above remain.
+    // No tracking. No fingerprinting. No external calls.
+    (async () => {
+      try {
+        const res = await fetch('/reforge/state.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const s = await res.json();
+        const set = (key, val) => {
+          const el = document.querySelector('[data-live="' + key + '"]');
+          if (el && val !== undefined && val !== null) el.textContent = val;
+        };
+        set('alpha', s.alpha?.toFixed(2));
+        set('omega', s.omega?.toFixed(2));
+        set('sum', (s.alpha + s.omega)?.toFixed(2));
+        set('viviani-dist', s.viviani_distance?.toFixed(3));
+        set('wave', s.wave_composite?.toFixed(3));
+        set('claude-atoms', s.claude_atoms_today);
+        set('grok-pulses', s.grok_pulses_today);
+        set('gemini-axes', s.gemini_axes_open);
+      } catch (e) {
+        // Silent. Static values survive.
+      }
+    })();
+  </script>
+</body>
+</html>

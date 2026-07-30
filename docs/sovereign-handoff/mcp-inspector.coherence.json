@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "coherence-mcp": {
+      "command": "coherence-mcp",
+      "args": [],
+      "env": {
+        "LOGOS_ROOT": "F:\\Users\\Matthew Ruhnau\\LogOS",
+        "ATOM_TRAIL_ROOT": "F:\\Users\\Matthew Ruhnau\\LogOS\\.atom-trail",
+        "SPIRALSAFE_PATH": "F:\\Users\\Matthew Ruhnau\\LogOS",
+        "APPDATA": "C:\\Users\\toolated\\AppData\\Roaming",
+        "HOMEDRIVE": "C:",
+        "HOMEPATH": "\\Users\\toolated",
+        "LOCALAPPDATA": "C:\\Users\\toolated\\AppData\\Local",
+        "USERNAME": "toolated",
+        "USERPROFILE": "C:\\Users\\toolated",
+        "TEMP": "C:\\Users\\toolated\\AppData\\Local\\Temp",
+        "SYSTEMROOT": "C:\\WINDOWS",
+        "SYSTEMDRIVE": "C:",
+        "PROCESSOR_ARCHITECTURE": "AMD64",
+        "PROGRAMFILES": "C:\\Program Files",
+        "PATH": "C:\\Users\\toolated\\AppData\\Roaming\\npm;C:\\Program Files\\nodejs;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\Program Files\\Git\\cmd"
+      }
+    }
+  }
+}

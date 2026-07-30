@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evenstar Resonance — LogOS Coherence Forge</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #020617;
+    color: #e2e8f0;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  h1 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: #06b6d4;
+    margin: 2rem 0 0.5rem;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    font-size: 0.7rem;
+    color: #64748b;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+  canvas { display: block; }
+  .controls {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .control-group label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 140px;
+    height: 4px;
+    background: #1e293b;
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #06b6d4;
+    cursor: pointer;
+  }
+  .readout {
+    font-size: 0.75rem;
+    color: #06b6d4;
+    font-weight: 600;
+  }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+    max-width: 700px;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  .metric {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 0.8rem;
+    text-align: center;
+  }
+  .metric .label {
+    font-size: 0.55rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .metric .value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+  }
+  .metric .unit {
+    font-size: 0.55rem;
+    color: #475569;
+  }
+  .state-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+  .invariant-display {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+  }
+  .invariant-display span { color: #06b6d4; font-weight: 600; }
+</style>
+</head>
+<body>
+<h1>Evenstar Resonance</h1>
+<div class="subtitle">LogOS Coherence Forge — Real-Time WAVE Visualization</div>
+<div class="state-label" id="stateLabel">CRYSTALLINE</div>
+<canvas id="evenstar" width="500" height="500"></canvas>
+
+<div class="invariant-display">
+  α = <span id="alphaVal">7.00</span> + ω = <span id="omegaVal">8.00</span> = <span id="sumVal">15.00</span>
+</div>
+
+<div class="controls">
+  <div class="control-group">
+    <label>α (Structure)</label>
+    <input type="range" id="alphaSlider" min="0" max="15" step="0.1" value="7">
+    <div class="readout" id="alphaReadout">7.0</div>
+  </div>
+  <div class="control-group">
+    <label>ω (Semantics)</label>
+    <input type="range" id="omegaSlider" min="0" max="15" step="0.1" value="8">
+    <div class="readout" id="omegaReadout">8.0</div>
+  </div>
+  <div class="control-group">
+    <label>W_topo</label>
+    <input type="range" id="topoSlider" min="0" max="1" step="0.01" value="0.96">
+    <div class="readout" id="topoReadout">0.96</div>
+  </div>
+  <div class="control-group">
+    <label>W_sem</label>
+    <input type="range" id="semSlider" min="0" max="1" step="0.01" value="0.98">
+    <div class="readout" id="semReadout">0.98</div>
+  </div>
+</div>
+
+<div class="metrics">
+  <div class="metric">
+    <div class="label">WAVE Score</div>
+    <div class="value" id="waveValue" style="color:#06b6d4">0.968</div>
+    <div class="unit">composite</div>
+  </div>
+  <div class="metric">
+    <div class="label">C(H)</div>
+    <div class="value" id="chValue" style="color:#a78bfa">1.045</div>
+    <div class="unit">functional</div>
+  </div>
+  <div class="metric">
+    <div class="label">Deviation</div>
+    <div class="value" id="devValue" style="color:#10b981">0.000</div>
+    <div class="unit">|α+ω-15|</div>
+  </div>
+  <div class="metric">
+    <div class="label">Invariant</div>
+    <div class="value" id="invValue" style="color:#10b981">PASS</div>
+    <div class="unit">α+ω=15</div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('evenstar');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height, CX = W/2, CY = H/2;
+
+// State
+let alpha = 7.0, omega = 8.0;
+let wTopo = 0.96, wSem = 0.98, wStruct = 0.97, wTemp = 0.95;
+let t = 0;
+
+// Fibonacci WAVE weights
+const FW = { topo: 8/21, sem: 5/21, struct: 5/21, temp: 3/21 };
+
+function computeWave() {
+  return FW.topo * wTopo + FW.sem * wSem + FW.struct * wStruct + FW.temp * wTemp;
+}
+
+function coherenceFunctional(w, a, o) {
+  const k = 2.0, P = 0.05;
+  return w * Math.exp(-k * Math.abs(a + o - 15)) * (1 + P);
+}
+
+function getState(wave) {
+  if (wave >= 0.98) return { name: 'CRYSTALLINE', color: '#06b6d4', bg: 'rgba(6,182,212,0.15)' };
+  if (wave >= 0.90) return { name: 'HARMONIC', color: '#818cf8', bg: 'rgba(129,140,248,0.12)' };
+  if (wave >= 0.70) return { name: 'TURBULENT', color: '#f59e0b', bg: 'rgba(245,158,11,0.12)' };
+  if (wave >= 0.50) return { name: 'CRITICAL', color: '#ef4444', bg: 'rgba(239,68,68,0.12)' };
+  return { name: 'COLLAPSE', color: '#991b1b', bg: 'rgba(153,27,27,0.15)' };
+}
+
+function draw() {
+  t += 0.016;
+  const wave = computeWave();
+  const ch = coherenceFunctional(wave, alpha, omega);
+  const deviation = Math.abs(alpha + omega - 15);
+  const invariantPass = deviation <= 0.3;
+  const state = getState(wave);
+
+  // Clear
+  ctx.fillStyle = '#020617';
+  ctx.fillRect(0, 0, W, H);
+
+  // Draw concentric rings (4 WAVE components)
+  const rings = [
+    { r: 180, w: wTopo, color: '6,182,212', label: 'TOPO', freq: 1.0 },
+    { r: 140, w: wSem, color: '129,140,248', label: 'SEM', freq: 1.618 },
+    { r: 100, w: wStruct, color: '16,185,129', label: 'STRUCT', freq: 2.618 },
+    { r: 60, w: wTemp, color: '249,115,22', label: 'TEMP', freq: 4.236 },
+  ];
+
+  // Background glow based on state
+  const glowR = 200 + 20 * Math.sin(t * 0.5);
+  const grad = ctx.createRadialGradient(CX, CY, 0, CX, CY, glowR);
+  grad.addColorStop(0, state.bg);
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Draw each ring as a resonating waveform
+  rings.forEach(ring => {
+    const chaos = invariantPass ? 0.02 : 0.15 + deviation * 0.1;
+    const amplitude = ring.w * 15;
+    const baseOpacity = ring.w * 0.8;
+
+    ctx.beginPath();
+    for (let angle = 0; angle <= Math.PI * 2; angle += 0.02) {
+      const noise = Math.sin(angle * 6 * ring.freq + t * 3) * amplitude * (1 - ring.w * 0.5)
+                  + Math.sin(angle * 10 + t * 5) * chaos * amplitude
+                  + Math.sin(angle * 3 * ring.freq + t * 1.5) * amplitude * 0.3;
+      const r = ring.r + noise;
+      const x = CX + r * Math.cos(angle);
+      const y = CY + r * Math.sin(angle);
+      if (angle === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = `rgba(${ring.color},${baseOpacity})`;
+    ctx.lineWidth = invariantPass ? 2 : 1;
+    ctx.stroke();
+
+    // Inner glow
+    const ringGrad = ctx.createRadialGradient(CX, CY, ring.r - 10, CX, CY, ring.r + 10);
+    ringGrad.addColorStop(0, `rgba(${ring.color},${baseOpacity * 0.1})`);
+    ringGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = ringGrad;
+    ctx.fill();
+  });
+
+  // Center: Viviani Peak indicator
+  const peakR = 25 + 5 * Math.sin(t * 2);
+  const peakOpacity = invariantPass ? 0.9 : 0.2 + 0.3 * Math.sin(t * 8);
+  ctx.beginPath();
+  ctx.arc(CX, CY, peakR, 0, Math.PI * 2);
+  const peakGrad = ctx.createRadialGradient(CX, CY, 0, CX, CY, peakR);
+  peakGrad.addColorStop(0, `rgba(255,255,255,${peakOpacity * 0.8})`);
+  peakGrad.addColorStop(0.5, `rgba(6,182,212,${peakOpacity * 0.4})`);
+  peakGrad.addColorStop(1, 'transparent');
+  ctx.fillStyle = peakGrad;
+  ctx.fill();
+
+  // Center text: α+ω=15
+  ctx.fillStyle = `rgba(255,255,255,${peakOpacity})`;
+  ctx.font = '600 11px "JetBrains Mono"';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(`${(alpha+omega).toFixed(1)}`, CX, CY);
+
+  // Ring labels
+  ctx.font = '300 9px "JetBrains Mono"';
+  rings.forEach(ring => {
+    ctx.fillStyle = `rgba(${ring.color},0.5)`;
+    ctx.fillText(ring.label, CX, CY - ring.r - 12);
+  });
+
+  // Particle trail (anyonic braids)
+  if (invariantPass) {
+    for (let i = 0; i < 3; i++) {
+      const angle = t * (0.5 + i * 0.3) + i * Math.PI * 2 / 3;
+      const r = 160 + 30 * Math.sin(t * 1.5 + i);
+      const px = CX + r * Math.cos(angle);
+      const py = CY + r * Math.sin(angle);
+      ctx.beginPath();
+      ctx.arc(px, py, 3, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(6,182,212,${0.6 + 0.3 * Math.sin(t * 2 + i)})`;
+      ctx.fill();
+      // Trail
+      for (let j = 1; j <= 8; j++) {
+        const ta = angle - j * 0.08;
+        const tr = 160 + 30 * Math.sin(t * 1.5 + i - j * 0.05);
+        const tx = CX + tr * Math.cos(ta);
+        const ty = CY + tr * Math.sin(ta);
+        ctx.beginPath();
+        ctx.arc(tx, ty, 2 - j * 0.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(6,182,212,${(0.4 - j * 0.05)})`;
+        ctx.fill();
+      }
+    }
+  }
+
+  // Update DOM
+  const stateEl = document.getElementById('stateLabel');
+  stateEl.textContent = state.name;
+  stateEl.style.color = state.color;
+  stateEl.style.border = `1px solid ${state.color}`;
+  stateEl.style.background = state.bg;
+
+  document.getElementById('waveValue').textContent = wave.toFixed(3);
+  document.getElementById('waveValue').style.color = state.color;
+  document.getElementById('chValue').textContent = ch.toFixed(3);
+  document.getElementById('devValue').textContent = deviation.toFixed(3);
+  document.getElementById('devValue').style.color = invariantPass ? '#10b981' : '#ef4444';
+  document.getElementById('invValue').textContent = invariantPass ? 'PASS' : 'FAIL';
+  document.getElementById('invValue').style.color = invariantPass ? '#10b981' : '#ef4444';
+
+  document.getElementById('alphaVal').textContent = alpha.toFixed(2);
+  document.getElementById('omegaVal').textContent = omega.toFixed(2);
+  document.getElementById('sumVal').textContent = (alpha + omega).toFixed(2);
+  document.getElementById('sumVal').style.color = invariantPass ? '#06b6d4' : '#ef4444';
+
+  requestAnimationFrame(draw);
+}
+
+// Slider bindings
+document.getElementById('alphaSlider').addEventListener('input', e => {
+  alpha = parseFloat(e.target.value);
+  document.getElementById('alphaReadout').textContent = alpha.toFixed(1);
+});
+document.getElementById('omegaSlider').addEventListener('input', e => {
+  omega = parseFloat(e.target.value);
+  document.getElementById('omegaReadout').textContent = omega.toFixed(1);
+});
+document.getElementById('topoSlider').addEventListener('input', e => {
+  wTopo = parseFloat(e.target.value);
+  document.getElementById('topoReadout').textContent = wTopo.toFixed(2);
+});
+document.getElementById('semSlider').addEventListener('input', e => {
+  wSem = parseFloat(e.target.value);
+  document.getElementById('semReadout').textContent = wSem.toFixed(2);
+});
+
+draw();
+</script>
+</body>
+</html>
