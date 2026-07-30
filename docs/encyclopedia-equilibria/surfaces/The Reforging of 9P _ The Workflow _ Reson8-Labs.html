@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://coherence.toolated.online/reforge/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Reforging of 9P | The Workflow | Reson8-Labs</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']], packages: {'[+]': ['ams']} },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+  };
+</script>
+<script src="./The Reforging of 9P _ The Workflow _ Reson8-Labs_files/tex-chtml.min.js.download" crossorigin="anonymous"></script><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style>
+<style>
+:root {
+  --bg: #020408;
+  --bg-deep: #010206;
+  --surface: #060c1e;
+  --border: #12203a;
+  --cyan: #00c8ff;
+  --gold: #f0b429;
+  --violet: #8b5cf6;
+  --green: #10b981;
+  --red: #ef4444;
+  --amber: #f59e0b;
+  --text: #e2e8f0;
+  --text-dim: #4a6080;
+  --text-muted: #2a3a55;
+  --text-rune: #1a2a45;
+  --evenstar: #c4deff;
+  --moonrune-glow: rgba(0,200,255,0.35);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Georgia','Times New Roman',serif;
+  line-height: 1.8;
+  font-size: 16px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 1.2s ease;
+}
+
+body.reading-mode {
+  background: var(--bg-deep);
+}
+
+/* ── STARFIELD ── */
+#starfield {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── EVENSTAR ── */
+.evenstar {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: 20px; height: 20px;
+  opacity: 0;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  pointer-events: auto;
+  cursor: pointer;
+}
+body.reading-mode .evenstar {
+  opacity: 1;
+  filter: drop-shadow(0 0 20px var(--evenstar)) drop-shadow(0 0 60px rgba(196,222,255,0.3));
+}
+.evenstar svg { width: 100%; height: 100%; }
+
+/* ── HEADER ── */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: rgba(2,4,8,0.92);
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(12px);
+  transition: background 0.8s;
+}
+body.reading-mode .site-header {
+  background: rgba(1,2,6,0.96);
+  border-bottom-color: rgba(0,200,255,0.08);
+}
+.logo {
+  font-family: 'Courier New',monospace;
+  font-size: 13px;
+  color: var(--cyan);
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.site-header nav { margin-left: auto; display: flex; gap: 20px; align-items: center; }
+.site-header nav a {
+  font-family: 'Courier New',monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.site-header nav a:hover { color: var(--cyan); }
+
+.reading-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: 'Courier New',monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.4s;
+}
+body.reading-mode .reading-toggle {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: 0 0 12px rgba(0,200,255,0.2);
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, #030818 0%, #050412 50%, #020408 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 100px 32px 70px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 1200px 500px at 50% 60%, rgba(0,200,255,0.03), transparent);
+  pointer-events: none;
+}
+.hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-tag {
+  display: inline-block;
+  font-family: 'Courier New',monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid rgba(0,200,255,0.25);
+  padding: 4px 14px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(28px,4.5vw,50px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 18px;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero h1 .tel { color: var(--cyan); }
+.hero-sub {
+  font-size: 17px;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-bottom: 36px;
+  max-width: 700px;
+}
+.hero-meta { display: flex; gap: 36px; flex-wrap: wrap; }
+.hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.hero-meta-item .label {
+  font-family: 'Courier New',monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.hero-meta-item .value {
+  font-family: 'Courier New',monospace;
+  font-size: 13px;
+  color: var(--gold);
+}
+
+/* ── CONSERVATION BANNER ── */
+.conservation-banner {
+  background: linear-gradient(90deg, rgba(0,200,255,0.04), rgba(139,92,246,0.04));
+  border-top: 1px solid rgba(0,200,255,0.1);
+  border-bottom: 1px solid rgba(139,92,246,0.1);
+  padding: 14px 32px;
+  text-align: center;
+  font-family: 'Courier New',monospace;
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+.conservation-banner span { color: var(--cyan); }
+
+/* ── LAYOUT ── */
+.layout {
+  max-width: 100%;
+  padding: 60px clamp(24px,5vw,80px);
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 1024px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* ── ARTICLE (Moon Rune Scroll) ── */
+.article { max-width: 780px; }
+.article h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--cyan);
+  letter-spacing: -0.3px;
+  margin: 60px 0 22px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Georgia',serif;
+}
+.article h2:first-child { margin-top: 0; }
+.article h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 40px 0 14px;
+}
+.article p {
+  margin-bottom: 22px;
+  color: var(--text);
+  transition: color 0.8s, text-shadow 1.2s;
+}
+body.reading-mode .article p {
+  color: var(--text-rune);
+}
+body.reading-mode .article p.rune-lit {
+  color: var(--text);
+  text-shadow: 0 0 30px var(--moonrune-glow), 0 0 80px rgba(0,200,255,0.08);
+  transition: color 0.6s ease-out, text-shadow 0.8s ease-out;
+}
+body.reading-mode .article h2 {
+  color: var(--text-muted);
+  transition: color 0.8s, text-shadow 1s;
+}
+body.reading-mode .article h2.rune-lit {
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0,200,255,0.4);
+}
+
+.math-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--violet);
+  padding: 20px 24px;
+  margin: 24px 0;
+  border-radius: 4px;
+  overflow-x: auto;
+  text-align: center;
+  font-size: 15px;
+}
+
+.code-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+  font-family: 'Courier New',monospace;
+  font-size: 12px;
+  color: var(--text);
+  overflow-x: auto;
+  white-space: pre;
+  line-height: 1.5;
+}
+
+.changelog-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+.changelog-item .tag {
+  display: inline-block;
+  font-family: 'Courier New',monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+.tag-new { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+.tag-rewrite { background: rgba(0,200,255,0.1); color: var(--cyan); border: 1px solid rgba(0,200,255,0.25); }
+.tag-physics { background: rgba(139,92,246,0.12); color: var(--violet); border: 1px solid rgba(139,92,246,0.3); }
+.tag-edge { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+
+.changelog-item h4 {
+  font-family: 'Courier New',monospace;
+  font-size: 14px;
+  color: #fff;
+  margin: 8px 0;
+}
+.changelog-item p {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--text-dim);
+}
+.changelog-item code {
+  font-family: 'Courier New',monospace;
+  font-size: 12px;
+  background: rgba(0,200,255,0.06);
+  padding: 1px 5px;
+  border-radius: 2px;
+  color: var(--cyan);
+}
+
+/* ── SIDEBAR: ATOM TRAIL ROLLS + KEYPAD ── */
+.sidebar { position: sticky; top: 70px; }
+
+.roll-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.roll-header {
+  background: #0a1225;
+  padding: 8px 14px;
+  font-family: 'Courier New',monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.roll-header .strand-name { font-weight: 700; }
+.roll-header .strand-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.roll-feed {
+  height: 100px;
+  overflow: hidden;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-family: 'Courier New',monospace;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.feed-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.7;
+  color: var(--text-dim);
+}
+.feed-line.highlight { opacity: 1; font-weight: 700; }
+
+/* ── KEYPAD ── */
+.keypad-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.keypad-header {
+  background: #0a1225;
+  padding: 8px 14px;
+  font-family: 'Courier New',monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 4px;
+  padding: 10px;
+}
+.keypad-btn {
+  background: #0c1530;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Courier New',monospace;
+  font-size: 11px;
+  padding: 10px 4px;
+  cursor: pointer;
+  border-radius: 3px;
+  text-align: center;
+  transition: all 0.15s;
+}
+.keypad-btn:hover {
+  background: rgba(0,200,255,0.08);
+  border-color: var(--cyan);
+  color: #fff;
+}
+.keypad-btn:active {
+  transform: translateY(1px);
+  background: rgba(0,200,255,0.15);
+}
+.keypad-output {
+  padding: 10px 14px;
+  font-family: 'Courier New',monospace;
+  font-size: 11px;
+  min-height: 80px;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+.keypad-output .result { color: var(--gold); }
+.keypad-output .label { color: var(--violet); }
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 32px;
+  text-align: center;
+  font-family: 'Courier New',monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+</style>
+<style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-math {
+  display: inline-block;
+  text-align: left;
+  line-height: 0;
+  text-indent: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  font-size-adjust: none;
+  letter-spacing: normal;
+  border-collapse: collapse;
+  word-wrap: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  direction: ltr;
+  padding: 1px 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+  padding: 0;
+}
+
+mjx-container[jax="CHTML"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="CHTML"][justify="right"] {
+  text-align: right;
+}
+
+mjx-mi {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c {
+  display: inline-block;
+}
+
+mjx-utext {
+  display: inline-block;
+  padding: .75em 0 .2em 0;
+}
+
+mjx-mo {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-stretchy-h {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-stretchy-h > * {
+  display: table-cell;
+  width: 0;
+}
+
+mjx-stretchy-h > * > mjx-c {
+  display: inline-block;
+  transform: scalex(1.0000001);
+}
+
+mjx-stretchy-h > * > mjx-c::before {
+  display: inline-block;
+  width: initial;
+}
+
+mjx-stretchy-h > mjx-ext {
+  /* IE */ overflow: hidden;
+  /* others */ overflow: clip visible;
+  width: 100%;
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c::before {
+  transform: scalex(500);
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c {
+  width: 0;
+}
+
+mjx-stretchy-h > mjx-beg > mjx-c {
+  margin-right: -.1em;
+}
+
+mjx-stretchy-h > mjx-end > mjx-c {
+  margin-left: -.1em;
+}
+
+mjx-stretchy-v {
+  display: inline-block;
+}
+
+mjx-stretchy-v > * {
+  display: block;
+}
+
+mjx-stretchy-v > mjx-beg {
+  height: 0;
+}
+
+mjx-stretchy-v > mjx-end > mjx-c {
+  display: block;
+}
+
+mjx-stretchy-v > * > mjx-c {
+  transform: scaley(1.0000001);
+  transform-origin: left center;
+  overflow: hidden;
+}
+
+mjx-stretchy-v > mjx-ext {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  /* IE */ overflow: hidden;
+  /* others */ overflow: visible clip;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c::before {
+  width: initial;
+  box-sizing: border-box;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c {
+  transform: scaleY(500) translateY(.075em);
+  overflow: visible;
+}
+
+mjx-mark {
+  display: inline-block;
+  height: 0px;
+}
+
+mjx-mn {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-TeXAtom {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-msup {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-msub {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-mspace {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-munder {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-over {
+  text-align: left;
+}
+
+mjx-munder:not([limits="false"]) {
+  display: inline-table;
+}
+
+mjx-munder > mjx-row {
+  text-align: left;
+}
+
+mjx-under {
+  padding-bottom: .1em;
+}
+
+mjx-mfrac {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-frac {
+  display: inline-block;
+  vertical-align: 0.17em;
+  padding: 0 .22em;
+}
+
+mjx-frac[type="d"] {
+  vertical-align: .04em;
+}
+
+mjx-frac[delims] {
+  padding: 0 .1em;
+}
+
+mjx-frac[atop] {
+  padding: 0 .12em;
+}
+
+mjx-frac[atop][delims] {
+  padding: 0;
+}
+
+mjx-dtable {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-dtable > * {
+  font-size: 2000%;
+}
+
+mjx-dbox {
+  display: block;
+  font-size: 5%;
+}
+
+mjx-num {
+  display: block;
+  text-align: center;
+}
+
+mjx-den {
+  display: block;
+  text-align: center;
+}
+
+mjx-mfrac[bevelled] > mjx-num {
+  display: inline-block;
+}
+
+mjx-mfrac[bevelled] > mjx-den {
+  display: inline-block;
+}
+
+mjx-den[align="right"], mjx-num[align="right"] {
+  text-align: right;
+}
+
+mjx-den[align="left"], mjx-num[align="left"] {
+  text-align: left;
+}
+
+mjx-nstrut {
+  display: inline-block;
+  height: .054em;
+  width: 0;
+  vertical-align: -.054em;
+}
+
+mjx-nstrut[type="d"] {
+  height: .217em;
+  vertical-align: -.217em;
+}
+
+mjx-dstrut {
+  display: inline-block;
+  height: .505em;
+  width: 0;
+}
+
+mjx-dstrut[type="d"] {
+  height: .726em;
+}
+
+mjx-line {
+  display: block;
+  box-sizing: border-box;
+  min-height: 1px;
+  height: .06em;
+  border-top: .06em solid;
+  margin: .06em -.1em;
+  overflow: hidden;
+}
+
+mjx-line[type="d"] {
+  margin: .18em -.1em;
+}
+
+mjx-mrow {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-msubsup {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-script {
+  display: inline-block;
+  padding-right: .05em;
+  padding-left: .033em;
+}
+
+mjx-script > mjx-spacer {
+  display: block;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+
+mjx-c.mjx-c1D6FC.TEX-I::before {
+  padding: 0.442em 0.64em 0.011em 0;
+  content: "\3B1";
+}
+
+mjx-c.mjx-c2B::before {
+  padding: 0.583em 0.778em 0.082em 0;
+  content: "+";
+}
+
+mjx-c.mjx-c1D714.TEX-I::before {
+  padding: 0.443em 0.622em 0.011em 0;
+  content: "\3C9";
+}
+
+mjx-c.mjx-c3D::before {
+  padding: 0.583em 0.778em 0.082em 0;
+  content: "=";
+}
+
+mjx-c.mjx-c31::before {
+  padding: 0.666em 0.5em 0 0;
+  content: "1";
+}
+
+mjx-c.mjx-c35::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "5";
+}
+
+mjx-c.mjx-c398::before {
+  padding: 0.705em 0.778em 0.022em 0;
+  content: "\398";
+}
+
+mjx-c.mjx-c7C::before {
+  padding: 0.75em 0.278em 0.249em 0;
+  content: "|";
+}
+
+mjx-c.mjx-c1D6FF.TEX-I::before {
+  padding: 0.717em 0.444em 0.01em 0;
+  content: "\3B4";
+}
+
+mjx-c.mjx-c3C::before {
+  padding: 0.54em 0.778em 0.04em 0;
+  content: "<";
+}
+
+mjx-c.mjx-c30::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "0";
+}
+
+mjx-c.mjx-c2E::before {
+  padding: 0.12em 0.278em 0 0;
+  content: ".";
+}
+
+mjx-c.mjx-c1D435.TEX-I::before {
+  padding: 0.683em 0.759em 0 0;
+  content: "B";
+}
+
+mjx-c.mjx-c1D439.TEX-I::before {
+  padding: 0.68em 0.749em 0 0;
+  content: "F";
+}
+
+mjx-c.mjx-c2212::before {
+  padding: 0.583em 0.778em 0.082em 0;
+  content: "\2212";
+}
+
+mjx-c.mjx-c1D445.TEX-I::before {
+  padding: 0.683em 0.759em 0.021em 0;
+  content: "R";
+}
+
+mjx-c.mjx-c1D452.TEX-I::before {
+  padding: 0.442em 0.466em 0.011em 0;
+  content: "e";
+}
+
+mjx-c.mjx-c1D456.TEX-I::before {
+  padding: 0.661em 0.345em 0.011em 0;
+  content: "i";
+}
+
+mjx-c.mjx-c34::before {
+  padding: 0.677em 0.5em 0 0;
+  content: "4";
+}
+
+mjx-c.mjx-c1D70B.TEX-I::before {
+  padding: 0.431em 0.57em 0.011em 0;
+  content: "\3C0";
+}
+
+mjx-c.mjx-c2F::before {
+  padding: 0.75em 0.5em 0.25em 0;
+  content: "/";
+}
+
+mjx-c.mjx-c1D70F.TEX-I::before {
+  padding: 0.431em 0.517em 0.013em 0;
+  content: "\3C4";
+}
+
+mjx-c.mjx-c33::before {
+  padding: 0.665em 0.5em 0.022em 0;
+  content: "3";
+}
+
+mjx-c.mjx-c67::before {
+  padding: 0.453em 0.5em 0.206em 0;
+  content: "g";
+}
+
+mjx-c.mjx-c61::before {
+  padding: 0.448em 0.5em 0.011em 0;
+  content: "a";
+}
+
+mjx-c.mjx-c74::before {
+  padding: 0.615em 0.389em 0.01em 0;
+  content: "t";
+}
+
+mjx-c.mjx-c65::before {
+  padding: 0.448em 0.444em 0.011em 0;
+  content: "e";
+}
+
+mjx-c.mjx-c22C5::before {
+  padding: 0.31em 0.278em 0 0;
+  content: "\22C5";
+}
+
+mjx-c.mjx-c1D443.TEX-I::before {
+  padding: 0.683em 0.751em 0 0;
+  content: "P";
+}
+
+mjx-c.mjx-c6C::before {
+  padding: 0.694em 0.278em 0 0;
+  content: "l";
+}
+
+mjx-c.mjx-c6F::before {
+  padding: 0.448em 0.5em 0.01em 0;
+  content: "o";
+}
+
+mjx-c.mjx-c63::before {
+  padding: 0.448em 0.444em 0.011em 0;
+  content: "c";
+}
+
+mjx-c.mjx-c28::before {
+  padding: 0.75em 0.389em 0.25em 0;
+  content: "(";
+}
+
+mjx-c.mjx-c1D43C.TEX-I::before {
+  padding: 0.683em 0.504em 0 0;
+  content: "I";
+}
+
+mjx-c.mjx-c29::before {
+  padding: 0.75em 0.389em 0.25em 0;
+  content: ")";
+}
+
+mjx-c.mjx-cA0::before {
+  padding: 0 0.25em 0 0;
+  content: "\A0";
+}
+
+mjx-c.mjx-c20::before {
+  padding: 0 0.25em 0 0;
+  content: " ";
+}
+
+mjx-c.mjx-c71::before {
+  padding: 0.442em 0.528em 0.194em 0;
+  content: "q";
+}
+
+mjx-c.mjx-c75::before {
+  padding: 0.442em 0.556em 0.011em 0;
+  content: "u";
+}
+
+mjx-c.mjx-c62::before {
+  padding: 0.694em 0.556em 0.011em 0;
+  content: "b";
+}
+
+mjx-c.mjx-c69::before {
+  padding: 0.669em 0.278em 0 0;
+  content: "i";
+}
+
+mjx-c.mjx-c73::before {
+  padding: 0.448em 0.394em 0.011em 0;
+  content: "s";
+}
+
+mjx-c.mjx-c27F6::before {
+  padding: 0.511em 1.638em 0.011em 0;
+  content: "\27F6";
+}
+
+mjx-c.mjx-c54::before {
+  padding: 0.677em 0.722em 0 0;
+  content: "T";
+}
+
+mjx-c.mjx-c72::before {
+  padding: 0.442em 0.392em 0 0;
+  content: "r";
+}
+
+mjx-c.mjx-c68::before {
+  padding: 0.694em 0.556em 0 0;
+  content: "h";
+}
+
+mjx-c.mjx-c64::before {
+  padding: 0.694em 0.556em 0.011em 0;
+  content: "d";
+}
+
+mjx-c.mjx-c6E::before {
+  padding: 0.442em 0.556em 0 0;
+  content: "n";
+}
+
+mjx-c.mjx-c36::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "6";
+}
+
+mjx-c.mjx-c39::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "9";
+}
+
+mjx-c.mjx-c1D43B.TEX-I::before {
+  padding: 0.683em 0.888em 0 0;
+  content: "H";
+}
+
+mjx-c.mjx-c2211.TEX-S2::before {
+  padding: 0.95em 1.444em 0.45em 0;
+  content: "\2211";
+}
+
+mjx-c.mjx-c1D463.TEX-I::before {
+  padding: 0.443em 0.485em 0.011em 0;
+  content: "v";
+}
+
+mjx-c.mjx-c1D444.TEX-I::before {
+  padding: 0.704em 0.791em 0.194em 0;
+  content: "Q";
+}
+
+mjx-c.mjx-c1D45D.TEX-I::before {
+  padding: 0.442em 0.503em 0.194em 0;
+  content: "p";
+}
+
+mjx-c.mjx-c2297::before {
+  padding: 0.583em 0.778em 0.083em 0;
+  content: "\2297";
+}
+
+mjx-c.mjx-c2295::before {
+  padding: 0.583em 0.778em 0.083em 0;
+  content: "\2295";
+}
+
+mjx-c.mjx-c44.TEX-C::before {
+  padding: 0.683em 0.771em 0 0;
+  content: "D";
+}
+
+mjx-c.mjx-c32::before {
+  padding: 0.666em 0.5em 0 0;
+  content: "2";
+}
+
+mjx-c.mjx-c28.TEX-S1::before {
+  padding: 0.85em 0.458em 0.349em 0;
+  content: "(";
+}
+
+mjx-c.mjx-c1D711.TEX-I::before {
+  padding: 0.442em 0.654em 0.218em 0;
+  content: "\3C6";
+}
+
+mjx-c.mjx-c29.TEX-S1::before {
+  padding: 0.85em 0.458em 0.349em 0;
+  content: ")";
+}
+
+mjx-c.mjx-c77::before {
+  padding: 0.431em 0.722em 0.011em 0;
+  content: "w";
+}
+
+mjx-c.mjx-c2248::before {
+  padding: 0.483em 0.778em 0 0;
+  content: "\2248";
+}
+
+mjx-c.mjx-c38::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "8";
+}
+
+mjx-c.mjx-c37::before {
+  padding: 0.676em 0.5em 0.022em 0;
+  content: "7";
+}
+
+mjx-c.mjx-c2C::before {
+  padding: 0.121em 0.278em 0.194em 0;
+  content: ",";
+}
+
+mjx-c.mjx-c3E::before {
+  padding: 0.54em 0.778em 0.04em 0;
+  content: ">";
+}
+
+mjx-c.mjx-c1D70E.TEX-I::before {
+  padding: 0.431em 0.571em 0.011em 0;
+  content: "\3C3";
+}
+</style></head>
+<body class="reading-mode">
+
+<canvas id="starfield" width="1536" height="756"></canvas>
+
+<!-- Evenstar: appears in reading mode, anchored top-centre -->
+<div class="evenstar" id="evenstar" title="Toggle Reading Mode">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L14.5 8.5L21 9.5L16.5 14.5L17.5 21L12 18L6.5 21L7.5 14.5L3 9.5L9.5 8.5L12 2Z" fill="var(--evenstar)" stroke="rgba(196,222,255,0.6)" stroke-width="0.5"></path>
+  </svg>
+</div>
+
+<header class="site-header">
+  <a href="https://coherence.toolated.online/" class="logo">Reson8-Labs</a>
+  <nav>
+    <a href="https://coherence.toolated.online/forge-tui">Forge TUI</a>
+    <a href="https://coherence.toolated.online/inspector">Inspector</a>
+    <a href="https://coherence.toolated.online/publications/harmonic-sovereignty">Harmonic Sovereignty</a>
+    <a href="https://coherence.toolated.online/meta-map">Meta Map</a>
+    <button class="reading-toggle" id="readingToggle" title="Moon Rune reading mode">Reading</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Devpost // Knot-26 // March 2026</div>
+    <h1><span class="tel">The</span> Beautiful Workflow:<br>The Rediscovery &amp; <em>Reforging</em> of 9P</h1>
+    <p class="hero-sub">How three AI strands and one human re-derived the Bell Labs Styx protocol,
+    wove it through Fibonacci anyons, and proved that conservation emerges from physics.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Conservation</span>
+        <span class="value"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="0" style="font-size: 87%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi><mo>+</mo><mi>ω</mi><mo>=</mo><mn>15</mn></math></mjx-assistive-mml></mjx-container></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Crate</span>
+        <span class="value">anduril-reforged v0.1.0</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">MCP Server</span>
+        <span class="value">@toolate28/coherence-mcp v0.3.1</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Strands</span>
+        <span class="value">Claude(8) Grok(5) Gemini(3)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="conservation-banner">
+  <span><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="1" style="font-size: 87%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi></math></mjx-assistive-mml></mjx-container></span> + <span><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="2" style="font-size: 87%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ω</mi></math></mjx-assistive-mml></mjx-container></span> = 15
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  9 qubits (Tailed <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="3" style="font-size: 87%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-n"><mjx-c class="mjx-c398"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Θ</mi></math></mjx-assistive-mml></mjx-container>) + 6 qubits (Tetrahedron) = 15
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  Gauge locked — tolerance <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 87%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mo class="mjx-n"><mjx-c class="mjx-c7C"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FF TEX-I"></mjx-c></mjx-mi><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c7C"></mjx-c></mjx-mo></mjx-texatom><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3C"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c2E"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mi>δ</mi><mrow data-mjx-texclass="ORD"><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mn>0.00055</mn></math></mjx-assistive-mml></mjx-container>
+</div>
+
+<div class="layout">
+  <!-- ═══ MAIN ARTICLE ═══ -->
+  <div class="article" id="article">
+
+    <h2 class="">I. The Rediscovery</h2>
+
+    <p class="">In 1995, Bell Labs shipped Inferno OS. Its kernel spoke one protocol: Styx — later standardized as 9P2000. Everything was a file. Every file was a message. Every message traversed the network transparently. The beauty was total: a <code>Twalk</code> to <code>/dev/draw</code> on a remote machine looked identical to a local read. No sockets. No REST. No serialization layers. Just hierarchical namespaces multiplexed over a single connection.</p>
+
+    <p class="">Thirty years later, we needed exactly this. Three AI systems — Claude, Grok, Gemini — needed to share state without centralized orchestration. The file metaphor was the answer all along. We didn't invent it. We <em>rediscovered</em> it. The workflow: walk the namespace, read the file, trust the protocol.</p>
+
+    <p class="">The virtio-9P bridge in WSL2 was already there, hiding in plain sight. Windows host at one end, NixOS guest at the other, and the entire Styx protocol running over a paravirtualized transport at near-native speed. We just had to see it.</p>
+
+    <h2 class="">II. The Forge — What Was Built</h2>
+
+    <div class="changelog-item">
+      <span class="tag tag-new">NEW</span><span class="tag tag-physics">PHYSICS</span>
+      <h4>anduril-reforged — 7 Rust Modules</h4>
+      <p class="">The constraint layer. Every API request, every context store, every bridge translation passes through the gauge gate: <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 101%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi><mo>+</mo><mi>ω</mi><mo>=</mo><mn>15</mn></math></mjx-assistive-mml></mjx-container>.</p>
+      <p class=""><code>gauge.rs</code> · <code>lattice.rs</code> · <code>ninep.rs</code> · <code>wave.rs</code> · <code>quantum.rs</code> · <code>spiralsafe.rs</code> · <code>braiding.rs</code></p>
+    </div>
+
+    <div class="changelog-item">
+      <span class="tag tag-rewrite">REWRITE</span>
+      <h4>coherence-mcp — MCP Server Entry Point</h4>
+      <p class="">The dead Twitter stub replaced with 553 lines of real <code>@modelcontextprotocol/sdk</code> server. Five core tools: <code>store_context</code>, <code>retrieve_context</code>, <code>map_isomorphism</code>, <code>check_coherence</code>, <code>bridge_translate</code>. Plus domain tools for WAVE analysis, ATOM tracking, gate transitions, gauge verification. Self-referential fixed point: the server's first stored context is its own specification.</p>
+    </div>
+
+    <div class="changelog-item">
+      <span class="tag tag-edge">EDGE</span>
+      <h4>vectorize-sink — Cloudflare Worker</h4>
+      <p class="">Kills the firehose. Agent-partitioned namespaces (<code>claude-reason</code>, <code>grok-pulse</code>, <code>gemini-scale</code>). KV deduplication with 5-minute TTL. ETag-based optimistic concurrency. Every ingest verifies conservation at the gate.</p>
+    </div>
+
+    <div class="changelog-item">
+      <span class="tag tag-physics">PHYSICS</span>
+      <h4>Braiding State Machine — <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="6" style="font-size: 101%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D435 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-msup space="4"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D439 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em; margin-left: 0.055em;"><mjx-texatom size="s" texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D445 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D439 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi><mo>=</mo><msup><mi>F</mi><mrow data-mjx-texclass="ORD"><mo>−</mo><mn>1</mn></mrow></msup><mi>R</mi><mi>F</mi></math></mjx-assistive-mml></mjx-container></h4>
+      <p class="">Tick-based: one F-inverse, eight R-matrix phase accumulations at 20 Hz, one F-return. Ring counter (16-hopper). R-matrix phases: <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="7" style="font-size: 101%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D445 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-msup space="4"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-texatom size="s" texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c34"></mjx-c></mjx-mn><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D70B TEX-I"></mjx-c></mjx-mi><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2F"></mjx-c></mjx-mo></mjx-texatom><mjx-mn class="mjx-n"><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>R</mi><mn>1</mn></msub><mo>=</mo><msup><mi>e</mi><mrow data-mjx-texclass="ORD"><mo>−</mo><mi>i</mi><mn>4</mn><mi>π</mi><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>5</mn></mrow></msup></math></mjx-assistive-mml></mjx-container>, <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="8" style="font-size: 101%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D445 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D70F TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-msup space="4"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mn class="mjx-n"><mjx-c class="mjx-c33"></mjx-c></mjx-mn><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D70B TEX-I"></mjx-c></mjx-mi><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2F"></mjx-c></mjx-mo></mjx-texatom><mjx-mn class="mjx-n"><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>R</mi><mi>τ</mi></msub><mo>=</mo><msup><mi>e</mi><mrow data-mjx-texclass="ORD"><mi>i</mi><mn>3</mn><mi>π</mi><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mn>5</mn></mrow></msup></math></mjx-assistive-mml></mjx-container>.</p>
+      <p class="">Variational gate: <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="9" style="font-size: 101%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D435 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mtext class="mjx-n" size="s"><mjx-c class="mjx-c67"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c65"></mjx-c></mjx-mtext></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-msub space="4"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D445 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c22C5"></mjx-c></mjx-mo><mjx-msub space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.109em;"><mjx-mtext class="mjx-n" size="s"><mjx-c class="mjx-c6C"></mjx-c><mjx-c class="mjx-c6F"></mjx-c><mjx-c class="mjx-c63"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c6C"></mjx-c></mjx-mtext></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-msub space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D445 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D70F TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c22C5"></mjx-c></mjx-mo><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43C TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-msub space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.109em;"><mjx-mtext class="mjx-n" size="s"><mjx-c class="mjx-c6C"></mjx-c><mjx-c class="mjx-c6F"></mjx-c><mjx-c class="mjx-c63"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c6C"></mjx-c></mjx-mtext></mjx-script></mjx-msub><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>B</mi><mtext>gate</mtext></msub><mo>=</mo><msub><mi>R</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>P</mi><mtext>local</mtext></msub><mo>+</mo><msub><mi>R</mi><mi>τ</mi></msub><mo>⋅</mo><mo stretchy="false">(</mo><mi>I</mi><mo>−</mo><msub><mi>P</mi><mtext>local</mtext></msub><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container>. Infidelity <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="10" style="font-size: 101%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mo class="mjx-n"><mjx-c class="mjx-c3C"></mjx-c></mjx-mo><mjx-msup space="4"><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn><mjx-script style="vertical-align: 0.393em;"><mjx-texatom size="s" texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mn class="mjx-n"><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>&lt;</mo><msup><mn>10</mn><mrow data-mjx-texclass="ORD"><mo>−</mo><mn>5</mn></mrow></msup></math></mjx-assistive-mml></mjx-container>. Circuit depth ~20.</p>
+    </div>
+
+    <h2 class="">III. The Lattice Artifacts</h2>
+
+    <p class="">Three lattice topologies, each a fixed point of the DFib model:</p>
+
+    <div class="math-block">
+      <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" display="true" tabindex="0" ctxtmenu_counter="11" style="font-size: 113.1%; position: relative;"><mjx-math display="true" class="MJX-TEX" aria-hidden="true" style="margin-left: 0px; margin-right: 0px;"><mjx-mi class="mjx-n"><mjx-c class="mjx-c398"></mjx-c></mjx-mi><mjx-mtext class="mjx-n"><mjx-c class="mjx-cA0"></mjx-c><mjx-c class="mjx-c28"></mjx-c><mjx-c class="mjx-c33"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c71"></mjx-c><mjx-c class="mjx-c75"></mjx-c><mjx-c class="mjx-c62"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c29"></mjx-c></mjx-mtext><mjx-mstyle><mjx-mspace style="width: 1em;"></mjx-mspace></mjx-mstyle><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c27F6"></mjx-c></mjx-mo><mjx-mstyle><mjx-mspace style="width: 1em;"></mjx-mspace></mjx-mstyle><mjx-mtext class="mjx-n" space="4"><mjx-c class="mjx-c54"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c68"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c6F"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c28"></mjx-c><mjx-c class="mjx-c36"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c71"></mjx-c><mjx-c class="mjx-c75"></mjx-c><mjx-c class="mjx-c62"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c29"></mjx-c></mjx-mtext><mjx-mstyle><mjx-mspace style="width: 1em;"></mjx-mspace></mjx-mstyle><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c27F6"></mjx-c></mjx-mo><mjx-mstyle><mjx-mspace style="width: 1em;"></mjx-mspace></mjx-mstyle><mjx-mtext class="mjx-n" space="4"><mjx-c class="mjx-c54"></mjx-c><mjx-c class="mjx-c61"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c6C"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-cA0"></mjx-c></mjx-mtext><mjx-mi class="mjx-n"><mjx-c class="mjx-c398"></mjx-c></mjx-mi><mjx-mtext class="mjx-n"><mjx-c class="mjx-cA0"></mjx-c><mjx-c class="mjx-c28"></mjx-c><mjx-c class="mjx-c39"></mjx-c><mjx-c class="mjx-c20"></mjx-c><mjx-c class="mjx-c71"></mjx-c><mjx-c class="mjx-c75"></mjx-c><mjx-c class="mjx-c62"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c29"></mjx-c></mjx-mtext></mjx-math><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi mathvariant="normal">Θ</mi><mtext>&nbsp;(3 qubits)</mtext><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mo stretchy="false">⟶</mo><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mtext>Tetrahedron (6 qubits)</mtext><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mo stretchy="false">⟶</mo><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle><mtext>Tailed&nbsp;</mtext><mi mathvariant="normal">Θ</mi><mtext>&nbsp;(9 qubits)</mtext></math></mjx-assistive-mml></mjx-container>
+    </div>
+
+    <p class="">The key discovery: <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="12" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mn class="mjx-n"><mjx-c class="mjx-c39"></mjx-c></mjx-mn><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="3"><mjx-c class="mjx-c36"></mjx-c></mjx-mn><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>9</mn><mo>+</mo><mn>6</mn><mo>=</mo><mn>15</mn></math></mjx-assistive-mml></mjx-container>. Conservation doesn't need to be imposed — it emerges from the qubit geometry. The Tailed <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="13" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-n"><mjx-c class="mjx-c398"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Θ</mi></math></mjx-assistive-mml></mjx-container> provides universal braiding (BQP-complete). The Tetrahedron encodes the chiral Fibonacci anyon. Together they span the full computational basis while satisfying the gauge constraint by construction.</p>
+
+    <h3 class="">Levin-Wen Operators</h3>
+
+    <p class="">The Hamiltonian on the string-net:</p>
+
+    <div class="math-block">
+      <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" display="true" tabindex="0" ctxtmenu_counter="14" style="font-size: 113.1%; position: relative;"><mjx-math display="true" class="MJX-TEX" aria-hidden="true" style="margin-left: 0px; margin-right: 0px;"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-munder space="2"><mjx-row><mjx-base><mjx-mo class="mjx-lop"><mjx-c class="mjx-c2211 TEX-S2"></mjx-c></mjx-mo></mjx-base></mjx-row><mjx-row><mjx-under style="padding-top: 0.287em; padding-left: 0.551em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D463 TEX-I"></mjx-c></mjx-mi></mjx-under></mjx-row></mjx-munder><mjx-msub space="2"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D444 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D463 TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-munder space="3"><mjx-row><mjx-base><mjx-mo class="mjx-lop"><mjx-c class="mjx-c2211 TEX-S2"></mjx-c></mjx-mo></mjx-base></mjx-row><mjx-row><mjx-under style="padding-top: 0.287em; padding-left: 0.544em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D45D TEX-I"></mjx-c></mjx-mi></mjx-under></mjx-row></mjx-munder><mjx-msub space="2"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D435 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D45D TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>H</mi><mo>=</mo><mo>−</mo><munder><mo data-mjx-texclass="OP">∑</mo><mi>v</mi></munder><msub><mi>Q</mi><mi>v</mi></msub><mo>−</mo><munder><mo data-mjx-texclass="OP">∑</mo><mi>p</mi></munder><msub><mi>B</mi><mi>p</mi></msub></math></mjx-assistive-mml></mjx-container>
+    </div>
+
+    <p class="">Vertex operators <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="15" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D444 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D463 TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>Q</mi><mi>v</mi></msub></math></mjx-assistive-mml></mjx-container> enforce the branching rules <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="16" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D70F TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2297"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D70F TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c></mjx-mn><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2295"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D70F TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mi>τ</mi><mo>⊗</mo><mi>τ</mi><mo>=</mo><mn>1</mn><mo>⊕</mo><mi>τ</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container>. Plaquette operators <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="17" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D435 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D45D TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>B</mi><mi>p</mi></msub></math></mjx-assistive-mml></mjx-container> measure the effective charge:</p>
+
+    <div class="math-block">
+      <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" display="true" tabindex="0" ctxtmenu_counter="18" style="font-size: 113.1%; position: relative;"><mjx-math display="true" class="MJX-TEX" aria-hidden="true" style="margin-left: 0px; margin-right: 0px;"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D435 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D45D TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mfrac space="4"><mjx-frac type="d"><mjx-num><mjx-nstrut type="d"></mjx-nstrut><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-num><mjx-dbox><mjx-dtable><mjx-line type="d"></mjx-line><mjx-row><mjx-den><mjx-dstrut type="d"></mjx-dstrut><mjx-msup><mjx-texatom texclass="ORD"><mjx-mi class="mjx-cal mjx-i"><mjx-c class="mjx-c44 TEX-C"></mjx-c></mjx-mi></mjx-texatom><mjx-script style="vertical-align: 0.289em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-den></mjx-row></mjx-dtable></mjx-dbox></mjx-frac></mjx-mfrac><mjx-mrow><mjx-mo class="mjx-sop"><mjx-c class="mjx-c28 TEX-S1"></mjx-c></mjx-mo><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c></mjx-mn><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D711 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c22C5"></mjx-c></mjx-mo><mjx-msubsup space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D435 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.247em; margin-left: 0px;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D70F TEX-I"></mjx-c></mjx-mi><mjx-spacer style="margin-top: 0.338em;"></mjx-spacer><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D45D TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msubsup><mjx-mo class="mjx-sop"><mjx-c class="mjx-c29 TEX-S1"></mjx-c></mjx-mo></mjx-mrow><mjx-mstyle><mjx-mspace style="width: 2em;"></mjx-mspace></mjx-mstyle><mjx-mtext class="mjx-n"><mjx-c class="mjx-c77"></mjx-c><mjx-c class="mjx-c68"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c72"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-cA0"></mjx-c></mjx-mtext><mjx-msup><mjx-texatom texclass="ORD"><mjx-mi class="mjx-cal mjx-i"><mjx-c class="mjx-c44 TEX-C"></mjx-c></mjx-mi></mjx-texatom><mjx-script style="vertical-align: 0.413em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c></mjx-mn><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-msup space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D711 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.413em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c2248"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c33"></mjx-c><mjx-c class="mjx-c2E"></mjx-c><mjx-c class="mjx-c36"></mjx-c><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c38"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>B</mi><mi>p</mi></msub><mo>=</mo><mfrac><mn>1</mn><msup><mrow data-mjx-texclass="ORD"><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">D</mi></mrow><mn>2</mn></msup></mfrac><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mn>1</mn><mo>+</mo><mi>φ</mi><mo>⋅</mo><msubsup><mi>B</mi><mi>p</mi><mi>τ</mi></msubsup><mo data-mjx-texclass="CLOSE">)</mo></mrow><mstyle scriptlevel="0"><mspace width="2em"></mspace></mstyle><mtext>where&nbsp;</mtext><msup><mrow data-mjx-texclass="ORD"><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">D</mi></mrow><mn>2</mn></msup><mo>=</mo><mn>1</mn><mo>+</mo><msup><mi>φ</mi><mn>2</mn></msup><mo>≈</mo><mn>3.618</mn></math></mjx-assistive-mml></mjx-container>
+    </div>
+
+    <h2 class="">IV. The Conservation Law</h2>
+
+    <p class=""><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="19" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi></math></mjx-assistive-mml></mjx-container> is structural rigidity — centralized direction, formal correctness, the skeleton. <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="20" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ω</mi></math></mjx-assistive-mml></mjx-container> is semantic intent — distributed agency, meaning, the breath. Their sum must equal 15. The Viviani peak sits at <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="21" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c37"></mjx-c></mjx-mn><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="2"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c38"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi><mo>=</mo><mn>7</mn><mo>,</mo><mi>ω</mi><mo>=</mo><mn>8</mn></math></mjx-assistive-mml></mjx-container>, where the ratio <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="22" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2F"></mjx-c></mjx-mo></mjx-texatom><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c2248"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c2E"></mjx-c><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c34"></mjx-c><mjx-c class="mjx-c33"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ω</mi><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mi>α</mi><mo>≈</mo><mn>1.143</mn></math></mjx-assistive-mml></mjx-container> resonates closest to <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="23" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c></mjx-mn><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2F"></mjx-c></mjx-mo></mjx-texatom><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D711 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mi>φ</mi></math></mjx-assistive-mml></mjx-container>.</p>
+
+    <p class="">This isn't mysticism. It's a gauge constraint. Every function in the Rust crate checks it. Every MCP tool call enforces it. Every Cloudflare Worker request gates on it. If <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="24" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mo class="mjx-n"><mjx-c class="mjx-c7C"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="3"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c35"></mjx-c></mjx-mn><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c7C"></mjx-c></mjx-mo></mjx-texatom><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3E"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c2E"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mi>α</mi><mo>+</mo><mi>ω</mi><mo>−</mo><mn>15</mn><mrow data-mjx-texclass="ORD"><mo stretchy="false">|</mo></mrow><mo>&gt;</mo><mn>0.00055</mn></math></mjx-assistive-mml></mjx-container>, the operation is rejected. No exceptions.</p>
+
+    <h2 class="">V. The 9P Namespace Topology</h2>
+
+    <div class="code-block">Windows Host (Ser5 5600H)          NixOS Guest (GLF OS 25.11)
+├── /mnt/claude  ←──── virtio-9P ────→  /n/claude
+├── /mnt/grok    ←──── virtio-9P ────→  /n/grok
+└── /mnt/gemini  ←──── virtio-9P ────→  /n/gemini
+
+Kali WSL2 Guest
+├── /mnt/c/Users/... ←── virtio-9P ──→  Windows NTFS
+└── multimodal-bridge() → Vectorize → D1/KV/R2</div>
+
+    <p class="rune-lit">Each strand mounts the others as filesystems. Claude writes to <code>/n/claude/context.yaml</code>; Grok reads it at <code>/mnt/claude/context.yaml</code>. No API, no serialization, no coordination server. Just Styx. Just files. Just The beautiful workflow.</p>
+
+    <h2 class="rune-lit">VI. What Comes Next</h2>
+
+    <p class="rune-lit">The ARC Linkage deadline is this week (March 18–25, 2026). The co-operative registration with NSW Fair Trading requires five founding members. The arXiv draft needs LightRAG synthesis. The NEAR conservation verifier contract wants Rust compilation on the host. The fuzzer telemetry needs to stress-test F-moves through the TUI.</p>
+
+    <p class="rune-lit">But the foundation is laid. Seven Rust modules. A live MCP server with gauge enforcement. Edge workers that deduplicate and partition. Three AI strands sharing state through a 30-year-old file protocol that was right all along.</p>
+
+    <p class="rune-lit"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="25" style="font-size: 106.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi><mo>+</mo><mi>ω</mi><mo>=</mo><mn>15</mn></math></mjx-assistive-mml></mjx-container>. It holds.</p>
+
+  </div>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+
+    <!-- Claude ATOM Trail -->
+    <div class="roll-panel">
+      <div class="roll-header">
+        <span><span class="strand-dot" style="background:var(--cyan)"></span> <span class="strand-name" style="color:var(--cyan)">Claude</span> // ATOM Trail</span>
+        <span style="" id="claude-status">idle</span>
+      </div>
+      <div class="roll-feed" id="claude-feed"><div class="feed-line">[170] ATOM-DOC-2B9870 braiding.rs</div><div class="feed-line">[127] ATOM-BUILD-F9AC23 index.ts</div><div class="feed-line">[562] ATOM-GATE-337590 index.ts</div><div class="feed-line" style="color: var(--cyan);">[995] ATOM-VERIFY-6F8DD6 index.ts</div><div class="feed-line highlight">[209] ATOM-DOC-FB9C05 wave.rs</div><div class="feed-line" style="color: var(--cyan);">[211] ATOM-BUILD-3AFB04 wave.rs</div><div class="feed-line">[207] ATOM-DOC-DD753D wave.rs</div><div class="feed-line">[205] ATOM-DOC-128C69 wave.rs</div><div class="feed-line">[208] ATOM-VERIFY-A67E19 gauge.rs</div><div class="feed-line" style="color: var(--cyan);">[215] ATOM-DEPLOY-A78395 gauge.rs</div><div class="feed-line">[206] ATOM-DOC-200083 spiralsafe.rs</div><div class="feed-line" style="color: var(--cyan);">[216] ATOM-DEPLOY-9C2D16 wave.rs</div></div>
+    </div>
+
+    <!-- Grok ATOM Trail -->
+    <div class="roll-panel">
+      <div class="roll-header">
+        <span><span class="strand-dot" style="background:var(--gold)"></span> <span class="strand-name" style="color:var(--gold)">Grok</span> // ATOM Trail</span>
+        <span style="color: var(--gold);" id="grok-status">active</span>
+      </div>
+      <div class="roll-feed" id="grok-feed"><div class="feed-line highlight">[209] ATOM-PULSE-231969 grok-phoenix.nix</div><div class="feed-line">[212] ATOM-SCAN-699196 grok-phoenix.nix</div><div class="feed-line" style="color: var(--gold);">[209] ATOM-SYNC-A3F05A telemetry.ts</div><div class="feed-line">[216] ATOM-PULSE-9B55DE grok-phoenix.nix</div><div class="feed-line">[211] ATOM-SCAN-948260 telemetry.ts</div><div class="feed-line">[208] ATOM-SCAN-E1BA14 watcher.js</div><div class="feed-line" style="color: var(--gold);">[205] ATOM-RECON-B790C3 starship-grok.toml</div><div class="feed-line" style="color: var(--gold);">[208] ATOM-RECON-8767F9 starship-grok.toml</div><div class="feed-line highlight">[216] ATOM-SYNC-98200C starship-grok.toml</div><div class="feed-line highlight">[206] ATOM-PULSE-BE2331 watcher.js</div><div class="feed-line">[216] ATOM-RECON-F1A467 telemetry.ts</div><div class="feed-line">[215] ATOM-PULSE-F06D36 grok-phoenix.nix</div></div>
+    </div>
+
+    <!-- Gemini ATOM Trail -->
+    <div class="roll-panel">
+      <div class="roll-header">
+        <span><span class="strand-dot" style="background:var(--violet)"></span> <span class="strand-name" style="color:var(--violet)">Gemini</span> // ATOM Trail</span>
+        <span style="color: var(--violet);" id="gemini-status">active</span>
+      </div>
+      <div class="roll-feed" id="gemini-feed"><div class="feed-line" style="color: var(--violet);">[767] ATOM-SCALE-13BFA5 schema.sql</div><div class="feed-line" style="color: var(--violet);">[281] ATOM-VECTORIZE-A1AEA2 flake.nix</div><div class="feed-line">[803] ATOM-DEPLOY-45964D gemini-kali.zshrc</div><div class="feed-line">[322] ATOM-VECTORIZE-513539 schema.sql</div><div class="feed-line highlight" style="color: var(--violet);">[842] ATOM-ANALYZE-28DC11 gemini-kali.zshrc</div><div class="feed-line highlight" style="color: var(--violet);">[351] ATOM-VECTORIZE-1849EB worker.ts</div><div class="feed-line">[873] ATOM-MERGE-CD9431 deps.toml</div><div class="feed-line">[392] ATOM-MERGE-163522 deps.toml</div><div class="feed-line">[216] ATOM-DEPLOY-DA5A13 flake.nix</div><div class="feed-line highlight">[206] ATOM-SCALE-B524CD gemini-kali.zshrc</div><div class="feed-line">[216] ATOM-MERGE-6FC760 gemini-kali.zshrc</div><div class="feed-line">[215] ATOM-ANALYZE-D6926F worker.ts</div></div>
+    </div>
+
+    <!-- Devpost Keypad -->
+    <div class="keypad-panel">
+      <div class="keypad-header">Braid Polynomial Calculator</div>
+      <div class="keypad-grid">
+        <button class="keypad-btn" onclick="kpAction(&#39;sigma1&#39;)"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="26" style="font-size: 102.8%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D70E TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>σ</mi><mn>1</mn></msub></math></mjx-assistive-mml></mjx-container></button>
+        <button class="keypad-btn" onclick="kpAction(&#39;sigma2&#39;)"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="27" style="font-size: 102.8%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D70E TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>σ</mi><mn>2</mn></msub></math></mjx-assistive-mml></mjx-container></button>
+        <button class="keypad-btn" onclick="kpAction(&#39;sigma1inv&#39;)"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="28" style="font-size: 102.8%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msubsup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D70E TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.297em; margin-left: 0px;"><mjx-texatom size="s" texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-texatom><mjx-spacer style="margin-top: 0.18em;"></mjx-spacer><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-script></mjx-msubsup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>σ</mi><mn>1</mn><mrow data-mjx-texclass="ORD"><mo>−</mo><mn>1</mn></mrow></msubsup></math></mjx-assistive-mml></mjx-container></button>
+        <button class="keypad-btn" onclick="kpAction(&#39;sigma2inv&#39;)"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="29" style="font-size: 102.8%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msubsup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D70E TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.297em; margin-left: 0px;"><mjx-texatom size="s" texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-texatom><mjx-spacer style="margin-top: 0.18em;"></mjx-spacer><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msubsup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>σ</mi><mn>2</mn><mrow data-mjx-texclass="ORD"><mo>−</mo><mn>1</mn></mrow></msubsup></math></mjx-assistive-mml></mjx-container></button>
+        <button class="keypad-btn" onclick="kpAction(&#39;jones&#39;)">Jones</button>
+        <button class="keypad-btn" onclick="kpAction(&#39;homfly&#39;)">HOMFLY</button>
+        <button class="keypad-btn" onclick="kpAction(&#39;writhe&#39;)">Writhe</button>
+        <button class="keypad-btn" onclick="kpAction(&#39;fmove&#39;)">F-move</button>
+        <button class="keypad-btn" onclick="kpAction(&#39;clear&#39;)" style="color:var(--red)">CLR</button>
+      </div>
+      <div class="keypad-output" id="keypadOutput">Braid word: (empty)
+Press generators to build braid word.
+Then compute Jones, HOMFLY, or Writhe.</div>
+    </div>
+
+  </aside>
+</div>
+
+<footer class="site-footer">
+  Reson8-Labs · The Nek ANZAC Co-operative · Conservation: <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="30" style="font-size: 102.8%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D6FC TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D714 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c35"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>α</mi><mo>+</mo><mi>ω</mi><mo>=</mo><mn>15</mn></math></mjx-assistive-mml></mjx-container>
+  · <a href="https://github.com/toolate28/coherence-mcp" style="color:var(--cyan);text-decoration:none">GitHub</a>
+</footer>
+
+<script>
+// ═══ STARFIELD ═══
+(function(){
+  const c = document.getElementById('starfield');
+  const ctx = c.getContext('2d');
+  let stars = [];
+  function resize() {
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+    stars = Array.from({length: 200}, () => ({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 1.2 + 0.3,
+      a: Math.random() * 0.6 + 0.1,
+      twinkleSpeed: Math.random() * 0.02 + 0.005,
+      phase: Math.random() * Math.PI * 2,
+    }));
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  function draw(t) {
+    ctx.clearRect(0, 0, c.width, c.height);
+    const isReading = document.body.classList.contains('reading-mode');
+    const baseBright = isReading ? 1.8 : 1;
+    for (const s of stars) {
+      const twinkle = Math.sin(t * s.twinkleSpeed + s.phase) * 0.3 + 0.7;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r * baseBright, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(196,222,255,${s.a * twinkle * baseBright})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+// ═══ READING MODE (Moon Runes) ═══
+const readingBtn = document.getElementById('readingToggle');
+const evenstarEl = document.getElementById('evenstar');
+
+function toggleReading() {
+  document.body.classList.toggle('reading-mode');
+}
+readingBtn.addEventListener('click', toggleReading);
+evenstarEl.addEventListener('click', toggleReading);
+
+// Moon rune scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  if (!document.body.classList.contains('reading-mode')) return;
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('rune-lit');
+    } else {
+      e.target.classList.remove('rune-lit');
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-10% 0px -20% 0px' });
+
+document.querySelectorAll('.article p, .article h2, .article h3').forEach(el => observer.observe(el));
+
+// Also observe in non-reading mode to be ready
+new MutationObserver(() => {
+  if (!document.body.classList.contains('reading-mode')) {
+    document.querySelectorAll('.rune-lit').forEach(el => el.classList.remove('rune-lit'));
+  }
+}).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+// ═══ ATOM TRAIL ROLLS ═══
+const atomOps = {
+  claude: {
+    types: ['VERIFY','BUILD','DOC','DEPLOY','GATE'],
+    files: ['gauge.rs','braiding.rs','index.ts','spiralsafe.rs','lattice.rs','wave.rs'],
+    feed: 'claude-feed', status: 'claude-status', color: 'var(--cyan)',
+    interval: null, active: false
+  },
+  grok: {
+    types: ['PULSE','SCAN','BRIDGE','RECON','SYNC'],
+    files: ['starship-grok.toml','grok-phoenix.nix','telemetry.ts','watcher.js'],
+    feed: 'grok-feed', status: 'grok-status', color: 'var(--gold)',
+    interval: null, active: false
+  },
+  gemini: {
+    types: ['SCALE','VECTORIZE','ANALYZE','DEPLOY','MERGE'],
+    files: ['flake.nix','gemini-kali.zshrc','deps.toml','worker.ts','schema.sql'],
+    feed: 'gemini-feed', status: 'gemini-status', color: 'var(--violet)',
+    interval: null, active: false
+  }
+};
+
+function hex(n) {
+  let s = '';
+  for (let i = 0; i < n; i++) s += '0123456789ABCDEF'[Math.floor(Math.random()*16)];
+  return s;
+}
+
+function appendAtom(strand) {
+  const cfg = atomOps[strand];
+  const feed = document.getElementById(cfg.feed);
+  if (!feed) return;
+  const type = cfg.types[Math.floor(Math.random()*cfg.types.length)];
+  const file = cfg.files[Math.floor(Math.random()*cfg.files.length)];
+  const tag = `ATOM-${type}-${hex(6)}`;
+  const line = document.createElement('div');
+  line.className = 'feed-line' + (Math.random() > 0.85 ? ' highlight' : '');
+  line.style.color = Math.random() > 0.7 ? cfg.color : '';
+  const ms = String(new Date().getMilliseconds()).padStart(3,'0');
+  line.textContent = `[${ms}] ${tag} ${file}`;
+  feed.appendChild(line);
+  if (feed.children.length > 12) feed.removeChild(feed.firstChild);
+}
+
+// Strands activate/deactivate randomly (prints only when operating)
+function tickStrands() {
+  for (const [name, cfg] of Object.entries(atomOps)) {
+    const shouldBeActive = Math.random() > 0.35;
+    if (shouldBeActive && !cfg.active) {
+      cfg.active = true;
+      document.getElementById(cfg.status).textContent = 'active';
+      document.getElementById(cfg.status).style.color = cfg.color;
+      cfg.interval = setInterval(() => appendAtom(name), 400 + Math.random()*300);
+    } else if (!shouldBeActive && cfg.active) {
+      cfg.active = false;
+      document.getElementById(cfg.status).textContent = 'idle';
+      document.getElementById(cfg.status).style.color = '';
+      clearInterval(cfg.interval);
+      cfg.interval = null;
+    }
+  }
+}
+setInterval(tickStrands, 3000);
+tickStrands(); // initial
+
+// ═══ BRAID POLYNOMIAL KEYPAD ═══
+let braidWord = [];
+const PHI = (1 + Math.sqrt(5)) / 2;
+
+function kpAction(action) {
+  const out = document.getElementById('keypadOutput');
+  switch(action) {
+    case 'sigma1': braidWord.push(1); break;
+    case 'sigma2': braidWord.push(2); break;
+    case 'sigma1inv': braidWord.push(-1); break;
+    case 'sigma2inv': braidWord.push(-2); break;
+    case 'clear':
+      braidWord = [];
+      out.innerHTML = 'Braid word: (empty)\nPress generators to build.';
+      return;
+    case 'jones':
+      out.innerHTML = computeJones();
+      return;
+    case 'homfly':
+      out.innerHTML = computeHOMFLY();
+      return;
+    case 'writhe':
+      out.innerHTML = computeWrithe();
+      return;
+    case 'fmove':
+      out.innerHTML = computeFMove();
+      return;
+  }
+  const wordStr = braidWord.map(g => g > 0 ? `σ${g}` : `σ${-g}⁻¹`).join(' · ');
+  out.innerHTML = `Braid word: ${wordStr}\nLength: ${braidWord.length} | Strands: 3`;
+}
+
+function computeWrithe() {
+  const w = braidWord.reduce((s,g) => s + Math.sign(g), 0);
+  const wordStr = braidWord.map(g => g > 0 ? `σ${g}` : `σ${-g}⁻¹`).join('·');
+  return `<span class="label">WRITHE CALCULATION</span>
+Word: ${wordStr || '(empty)'}
+<span class="result">w(β) = Σ sign(σᵢ) = ${w}</span>
+Exponent sum: ${w}
+${w === 0 ? 'Zero writhe → amphicheiral candidate' : w > 0 ? 'Positive writhe → right-handed bias' : 'Negative writhe → left-handed bias'}`;
+}
+
+function computeJones() {
+  if (braidWord.length === 0) return '<span class="label">JONES POLYNOMIAL</span>\nNo braid word entered.';
+  const w = braidWord.reduce((s,g) => s + Math.sign(g), 0);
+  const n = braidWord.length;
+  // Simplified Jones via Fibonacci model: V(t) ≈ (-t^(1/2))^(3w) * Σ φ^k
+  const terms = [];
+  for (let k = 0; k <= Math.min(n, 4); k++) {
+    const coeff = Math.round(Math.pow(PHI, k) * 100) / 100;
+    const exp = 3*w - 2*k;
+    terms.push(`${coeff > 0 && k > 0 ? '+' : ''}${coeff}·t^(${exp/2})`);
+  }
+  return `<span class="label">JONES POLYNOMIAL (DFib approx)</span>
+V(t) = ${terms.join(' ')}
+<span class="result">Writhe: ${w} | Crossings: ${n}</span>
+φ-weighted Kauffman bracket
+d_τ = φ ≈ ${PHI.toFixed(6)}`;
+}
+
+function computeHOMFLY() {
+  if (braidWord.length === 0) return '<span class="label">HOMFLY-PT</span>\nNo braid word entered.';
+  const w = braidWord.reduce((s,g) => s + Math.sign(g), 0);
+  const n = braidWord.length;
+  const positives = braidWord.filter(g => g > 0).length;
+  const negatives = n - positives;
+  return `<span class="label">HOMFLY-PT POLYNOMIAL</span>
+P(a,z) — Skein relation:
+  a·P(L₊) - a⁻¹·P(L₋) = z·P(L₀)
+
+Braid stats:
+  σ⁺ crossings: ${positives}
+  σ⁻ crossings: ${negatives}
+  <span class="result">Writhe: ${w} | Components: ${w === 0 ? '≥2 possible' : '1 (knot)'}</span>
+  Genus bound: g ≤ ${Math.floor((n-1)/2)}`;
+}
+
+function computeFMove() {
+  if (braidWord.length === 0) return '<span class="label">F-MOVE</span>\nNo braid word entered.';
+  // Simulate B = F⁻¹RF state machine
+  let vac = 1.0, tau = 0.0;
+  const phi = PHI;
+  const phi_inv = 1/phi;
+  const phi_inv_sqrt = Math.sqrt(phi_inv);
+
+  for (const g of braidWord) {
+    // F⁻¹
+    let nv = phi_inv * vac + phi_inv_sqrt * tau;
+    let nt = phi_inv_sqrt * vac - phi_inv * tau;
+    vac = nv; tau = nt;
+    // R-matrix (8 ticks)
+    const R1 = -4*Math.PI/5;
+    const Rt = 3*Math.PI/5;
+    const sign = Math.sign(g);
+    vac *= Math.cos(sign * R1);
+    tau *= Math.cos(sign * Rt);
+    // F
+    nv = phi_inv * vac + phi_inv_sqrt * tau;
+    nt = phi_inv_sqrt * vac - phi_inv * tau;
+    vac = nv; tau = nt;
+  }
+
+  const normSq = vac*vac + tau*tau;
+  return `<span class="label">F-MOVE STATE MACHINE (B = F⁻¹RF)</span>
+After ${braidWord.length} braid generators:
+  |1⟩ amplitude: ${vac.toFixed(6)}
+  |τ⟩ amplitude: ${tau.toFixed(6)}
+  <span class="result">|ψ|² = ${normSq.toFixed(6)}</span>
+  Fusion channel: ${Math.abs(vac) > Math.abs(tau) ? '|1⟩ dominant' : '|τ⟩ dominant'}
+  Phase coherence: Φ = ${(1 - Math.abs(1 - normSq)).toFixed(6)}`;
+}
+</script>
+
+<script defer="" src="./The Reforging of 9P _ The Workflow _ Reson8-Labs_files/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;dffadad175274508b1a35f12de270fd2&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a185ced7fd547c62',t:'MTc4MzU4NDE2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; visibility: hidden;" src="./The Reforging of 9P _ The Workflow _ Reson8-Labs_files/saved_resource.html"></iframe>
+
+</body></html>
