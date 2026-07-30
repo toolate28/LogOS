@@ -178,3 +178,7 @@ Progress is real: a concrete \(S(5,8,24)\) on Golay blocks is machine-checked on
   "music": "conserved"
 }
 ```
+
+### Formal CB-1 deep dive
+- `docs/formal/CB1-MONOMIAL-WITNESS-TRANSPORT-EXPLORATION-20260730.md`
+
