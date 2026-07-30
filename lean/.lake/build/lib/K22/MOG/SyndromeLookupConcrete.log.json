@@ -1,0 +1,17 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=.\\.\\.lake/packages\\batteries\\.lake\\build\\lib;.\\.\\.lake/packages\\Qq\\.lake\\build\\lib;.\\.\\.lake/packages\\aesop\\.lake\\build\\lib;.\\.\\.lake/packages\\proofwidgets\\.lake\\build\\lib;.\\.\\.lake/packages\\Cli\\.lake\\build\\lib;.\\.\\.lake/packages\\importGraph\\.lake\\build\\lib;.\\.\\.lake/packages\\mathlib\\.lake\\build\\lib;.\\.\\.lake\\build\\lib PATH c:\\Users\\toolated\\.elan\\toolchains\\leanprover--lean4---v4.8.0\\bin\\lean.exe -DautoImplicit=false .\\.\\.\\.\\K22\\MOG\\SyndromeLookupConcrete.lean -R .\\.\\.\\. -o .\\.\\.lake\\build\\lib\\K22\\MOG\\SyndromeLookupConcrete.olean -i .\\.\\.lake\\build\\lib\\K22\\MOG\\SyndromeLookupConcrete.ilean -c .\\.\\.lake\\build\\ir\\K22\\MOG\\SyndromeLookupConcrete.c --json",
+   "level": "trace"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\SyndromeLookupConcrete.lean:157:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\SyndromeLookupConcrete.lean:169:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\SyndromeLookupConcrete.lean:175:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\.\\K22\\MOG\\SyndromeLookupConcrete.lean:185:8: declaration uses 'sorry'",
+   "level": "warning"}],
+ "depHash": "2441213550144052621"}
