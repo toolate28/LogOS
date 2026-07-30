@@ -1,0 +1,178 @@
+{
+  "bettiProxyBelowThreshold": true,
+  "tomczakPreserved": true,
+  "maxErrorBound": 0.0,
+  "reliable": true,
+  "waveScore": 0.999,
+  "alphaOmegaSum": 15.0,
+  "coherenceDelta": 0.0,
+  "atomTrailId": "ATOM-MOG-PREFLIGHT-STEINER-FULL-20260711",
+  "prevCertificateHash": "485325b42f0c25ef129b1c469778e9e1",
+  "kernelVersion": "mog-e2e-conway-column-sum+gating+exhaustive-steiner+corroboration",
+  "inputStateHash": "bd7856d9a84e7701",
+  "certificateHash": "f6187303500a23c82dd2e650284f3067",
+  "timestampNs": 1783719857973272700,
+  "sracCorrections": 0,
+  "harmonicBenefit": 1.0,
+  "mehlerReliable": true,
+  "ottoCdCertificate": true,
+  "mog": {
+    "octads": 759,
+    "steiner_target": 759,
+    "definition": "parity+column_sum_hexacode",
+    "gating_pass": true,
+    "gating_components": 10,
+    "non_gating_components": 1,
+    "components": [
+      {
+        "name": "GF4 field tables",
+        "ok": true,
+        "detail": "pass",
+        "alpha_local": 8,
+        "omega_local": 7,
+        "gating": true
+      },
+      {
+        "name": "standardMOG bijection",
+        "ok": true,
+        "detail": "|image|=24",
+        "alpha_local": 9,
+        "omega_local": 6,
+        "gating": true
+      },
+      {
+        "name": "hexacode G strings",
+        "ok": true,
+        "detail": "1001WB | 0101BW | 001111",
+        "alpha_local": 7,
+        "omega_local": 8,
+        "gating": true
+      },
+      {
+        "name": "hexacode |C|=64 linear",
+        "ok": true,
+        "detail": "|C|=64",
+        "alpha_local": 7,
+        "omega_local": 8,
+        "gating": true
+      },
+      {
+        "name": "telemetry string",
+        "ok": true,
+        "detail": "MOG-TELEM hex=64 pts=24 cols=6 rows=4 steiner=759 peak=(7,8) \u03a3=15",
+        "alpha_local": 7,
+        "omega_local": 8,
+        "gating": true
+      },
+      {
+        "name": "parity matrix rank=9",
+        "ok": true,
+        "detail": "rank=9 first9=9 dep_all_ones=True ker_dim=15 (T-Formal-01 Gaussian elim)",
+        "alpha_local": 8,
+        "omega_local": 7,
+        "gating": true
+      },
+      {
+        "name": "legacy columnSymbol VOID (count-only)",
+        "ok": false,
+        "detail": "even-compat=11 count-sums=[0, 8, 16, 18] (legacy non-gating diagnostic; expected none=8)",
+        "alpha_local": 8,
+        "omega_local": 7,
+        "gating": false
+      },
+      {
+        "name": "G24 + octads (759)",
+        "ok": true,
+        "detail": "|G|=4096 wtd={0: 1, 8: 759, 12: 2576, 16: 759, 24: 1} |oct|=759",
+        "alpha_local": 5,
+        "omega_local": 10,
+        "gating": true
+      },
+      {
+        "name": "intersection {0,2,4}",
+        "ok": true,
+        "detail": "checked=2000 bad=0",
+        "alpha_local": 6,
+        "omega_local": 9,
+        "gating": true
+      },
+      {
+        "name": "Steiner uniqueness sample",
+        "ok": true,
+        "detail": "EXHAUSTIVE unique=42504 multi=0 max_cover=1 |fives|=42504 expect_C(24,5)=42504 pairs=42504 oct=759 | MC10000: unique=10000 none=0 multi=0",
+        "alpha_local": 5,
+        "omega_local": 10,
+        "gating": true
+      },
+      {
+        "name": "mogDecode skeleton",
+        "ok": true,
+        "detail": "oct=True wt3=True",
+        "alpha_local": 7,
+        "omega_local": 8,
+        "gating": true
+      }
+    ]
+  },
+  "localReproduction": {
+    "status": "PASS",
+    "octads": 759,
+    "weight_enumerator": {
+      "0": 1,
+      "8": 759,
+      "12": 2576,
+      "16": 759,
+      "24": 1
+    },
+    "golay_cardinality": 4096,
+    "intersection_sample": {
+      "checked": 2000,
+      "bad": 0,
+      "allowed": [
+        0,
+        2,
+        4
+      ]
+    },
+    "steiner_exhaustive_local": {
+      "unique": 42504,
+      "none": 0,
+      "multi": 0,
+      "max_cover": 1,
+      "c_24_5": 42504
+    },
+    "gate_policy": "reliable/tomczakPreserved flip ONLY after local reproduction; external not used as justification",
+    "gating_and": true,
+    "legacy_void_gating": false
+  },
+  "corroboration": {
+    "source": "external exhaustive Steiner check pre-validated (handoff packet)",
+    "steiner_external": {
+      "unique": 42504,
+      "none": 0,
+      "multi": 0
+    },
+    "role": "corroboration_only",
+    "not_used_for": [
+      "reliable",
+      "tomczakPreserved"
+    ],
+    "matches_local_exhaustive": true
+  },
+  "laneD_final_ratified": {
+    "packet": "final-ratified-lane-d-20260711",
+    "instance": "sm_100",
+    "atom_seeds": [
+      "sm100-FIRST-RUN-20260706",
+      "ATOM-MOG-LANEWAYS-HANDOFF-20260711",
+      "ratified-packets-20260711"
+    ],
+    "prev_certificate_hash_chain": {
+      "baseline": "351d5feac2309ebc34cd918e1dc3a3e7",
+      "immediate_preflight": "485325b42f0c25ef129b1c469778e9e1"
+    },
+    "generator_rows_artifact": "generator_rows_for_lane_a.json",
+    "gating_policy": "reliable = AND over gating components; legacy VOID gating=false retained",
+    "lean_files_modified": false
+  }
+}

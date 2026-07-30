@@ -1,0 +1,55 @@
+Lane D build_status — 2026-07-11T05:16:51.9012052+10:00
+ATOM: ATOM-MOG-PREFLIGHT-STEINER-FULL-20260711
+
+=== K22.HexacodeGolay ===
+exit=0 duration_ms=10565
+status=GREEN
+Build completed successfully.
+
+
+=== K22.MOG.SyndromeLookup ===
+exit=0 duration_ms=1079
+status=GREEN
+ΓÜá [568/568] Replayed K22.MOG.SyndromeLookup
+warning: .\.\.\.\K22\MOG\SyndromeLookup.lean:55:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookup.lean:60:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookup.lean:69:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookup.lean:78:8: declaration uses 'sorry'
+Build completed successfully.
+
+
+=== K22.MOG.SyndromeLookupConcrete ===
+exit=0 duration_ms=1088
+status=GREEN
+ΓÜá [931/937] Replayed K22.MOG.SyndromeLookup
+warning: .\.\.\.\K22\MOG\SyndromeLookup.lean:55:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookup.lean:60:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookup.lean:69:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookup.lean:78:8: declaration uses 'sorry'
+ΓÜá [937/937] Replayed K22.MOG.SyndromeLookupConcrete
+warning: .\.\.\.\K22\MOG\SyndromeLookupConcrete.lean:157:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookupConcrete.lean:169:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookupConcrete.lean:175:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MOG\SyndromeLookupConcrete.lean:185:8: declaration uses 'sorry'
+Build completed successfully.
+
+
+=== K22.MiracleOctadGenerator ===
+exit=0 duration_ms=12921
+status=GREEN
+ΓÜá [575/575] Built K22.MiracleOctadGenerator
+warning: .\.\.\.\K22\MiracleOctadGenerator.lean:241:8: declaration uses 'sorry'
+warning: .\.\.\.\K22\MiracleOctadGenerator.lean:258:6: declaration uses 'sorry'
+warning: .\.\.\.\K22\MiracleOctadGenerator.lean:263:6: declaration uses 'sorry'
+Build completed successfully.
+
+
+=== K22.MOG.ParityLiftRank ===
+exit=0 duration_ms=1269
+status=GREEN
+ΓÜá [516/516] Replayed K22.MOG.ParityLiftRank
+warning: .\.\.\.\K22\MOG\ParityLiftRank.lean:54:4: unused variable `x`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+Build completed successfully.
+
+

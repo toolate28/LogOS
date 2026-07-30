@@ -1,0 +1,25 @@
+{
+  "atom": "ATOM-MOG-PREFLIGHT-STEINER-FULL-20260711",
+  "prev_certificate_hash": "351d5feac2309ebc34cd918e1dc3a3e7",
+  "method": "exhaustive: every 5-subset of every MOG octad; design eq 759*C(8,5)=C(24,5)",
+  "c_24_5": 42504,
+  "c_8_5": 56,
+  "octads": 759,
+  "expected_pairs": 42504,
+  "component": {
+    "name": "Steiner uniqueness sample",
+    "ok": true,
+    "detail": "EXHAUSTIVE unique=42504 multi=0 max_cover=1 |fives|=42504 expect_C(24,5)=42504 pairs=42504 oct=759 | MC10000: unique=10000 none=0 multi=0",
+    "alpha_local": 5,
+    "omega_local": 10,
+    "gating": true
+  },
+  "success_criteria": {
+    "unique": 42504,
+    "none": 0,
+    "multi": 0
+  },
+  "pass": true,
+  "lane": "D",
+  "note": "Python combinatorial witness on MOG generator. Lean mogOctadsFormSteinerSystem remains SlowStep until Lane A+B2."
+}

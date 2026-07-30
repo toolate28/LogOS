@@ -1,0 +1,221 @@
+{
+  "atom": "ATOM-MOG-PREFLIGHT-STEINER-FULL-20260711",
+  "lane": "D \u2192 A handoff",
+  "purpose": "Machine-readable hexacode generator rows for find_monomial_witness (\u03c0, scalings)",
+  "gf4_alphabet": {
+    "0": "zero",
+    "1": "one",
+    "2": "omega",
+    "3": "omegabar",
+    "glyphs": {
+      "0": "0",
+      "1": "1",
+      "2": "W",
+      "3": "B",
+      "W": 2,
+      "B": 3
+    }
+  },
+  "column_labelling_notes": {
+    "HexacodeGolay": "columns ordered \u221e,0,1,2,3,4 (MOG-normalized I|A form)",
+    "MiracleOctadGenerator": "Conway closed form (a,b,c)\u21a6(a,b,c,a+b+c,\u03c9a+\u03c9\u0304b+c,\u03c9\u0304a+\u03c9b+c); glyphs 1001WB/0101BW/001111"
+  },
+  "HexacodeGolay": {
+    "source": "lean/K22/HexacodeGolay.lean :: hexacodeGenerator",
+    "form": "(I|A) standard 3\u00d76",
+    "matrix_comment": [
+      "1 0 0 1 1  1",
+      "0 1 0 1 \u03c9  \u03c9\u0304",
+      "0 0 1 1 \u03c9\u0304 \u03c9"
+    ],
+    "rows_nat": [
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        3,
+        2
+      ]
+    ],
+    "rows_symbol": [
+      [
+        "1",
+        "0",
+        "0",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "1",
+        "\u03c9",
+        "\u03c9\u0304"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "1",
+        "\u03c9\u0304",
+        "\u03c9"
+      ]
+    ],
+    "parity_check_H_AT_I": {
+      "source": "lean/K22/HexacodeGolay.lean :: hexacodeParity",
+      "rows_nat": [
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          3,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          2,
+          0,
+          0,
+          1
+        ]
+      ]
+    }
+  },
+  "MiracleOctadGenerator": {
+    "source": "lean/K22/MiracleOctadGenerator.lean :: hexacodeGenerator",
+    "form": "Conway glyph generators",
+    "G_STRINGS": [
+      "1001WB",
+      "0101BW",
+      "001111"
+    ],
+    "rows_nat": [
+      [
+        1,
+        0,
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        3,
+        2
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "rows_symbol": [
+      [
+        "1",
+        "0",
+        "0",
+        "1",
+        "\u03c9",
+        "\u03c9\u0304"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "1",
+        "\u03c9\u0304",
+        "\u03c9"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    ]
+  },
+  "preflight_mirror": {
+    "source": "lean/K22/MOG/preflight_mog_e2e.py :: G_STRINGS / HEX_G",
+    "matches": "MiracleOctadGenerator Conway rows"
+  },
+  "lane_a_task_hint": {
+    "find": "monomial equivalence: \u03c0 : Fin 6 \u2243 Fin 6 and nonzero column scalings s_j \u2208 GF(4)^\u00d7 and optional row GL(3) action R such that rows(Conway) generate same code as rows(HexacodeGolay) after \u03c0 and scalings",
+    "verify_first": "decide that image sets of both generators (64 words each) coincide after the candidate monomial map",
+    "upshift_if": "no \u03c0\u2218R candidate verifies on generators"
+  },
+  "monomial_witness_candidate": {
+    "status": "FOUND (Python probe, Lane D informational \u2014 not Lean-certified)",
+    "map_kind": "column_permutation_only",
+    "pi_as_list": [
+      0,
+      3,
+      1,
+      2,
+      4,
+      5
+    ],
+    "meaning": "Conway codewords = { (w_{\u03c00},\u2026,w_{\u03c05}) | w \u2208 HexacodeGolay code } with \u03c0=[0,3,1,2,4,5] acting as reindex: new[j] = old[\u03c0[j]] on each codeword coordinate (equivalently, generator columns permuted by \u03c0)",
+    "scalings": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "verified_sets_equal": true,
+    "identity_sets_equal": false,
+    "identity_intersection_size": 4,
+    "note": "Feed into Lean as decide-checked Fin 6 \u2243 Fin 6 before Sonnet transport packets"
+  },
+  "steiner_external_prevalidation": {
+    "unique": 42504,
+    "none": 0,
+    "multi": 0,
+    "note": "Independent exhaustive result accepted; preflight also reproduces EXHAUSTIVE unique=42504"
+  },
+  "lane_d_final": {
+    "packet": "final-ratified-lane-d-20260711",
+    "instance": "sm_100",
+    "atom": "ATOM-MOG-PREFLIGHT-STEINER-FULL-20260711",
+    "verified_against": "lean/K22/HexacodeGolay.lean :: hexacodeGenerator",
+    "form": "(I|A)"
+  }
+}

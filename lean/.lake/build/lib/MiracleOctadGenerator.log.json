@@ -1,0 +1,30 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=.\\.\\.lake/packages\\batteries\\.lake\\build\\lib;.\\.\\.lake/packages\\Qq\\.lake\\build\\lib;.\\.\\.lake/packages\\aesop\\.lake\\build\\lib;.\\.\\.lake/packages\\proofwidgets\\.lake\\build\\lib;.\\.\\.lake/packages\\Cli\\.lake\\build\\lib;.\\.\\.lake/packages\\importGraph\\.lake\\build\\lib;.\\.\\.lake/packages\\mathlib\\.lake\\build\\lib;.\\.\\.lake\\build\\lib PATH c:\\Users\\toolated\\.elan\\toolchains\\leanprover--lean4---v4.8.0\\bin\\lean.exe -DautoImplicit=false .\\.\\.\\K22\\MiracleOctadGenerator.lean -R .\\.\\.\\K22 -o .\\.\\.lake\\build\\lib\\MiracleOctadGenerator.olean -i .\\.\\.lake\\build\\lib\\MiracleOctadGenerator.ilean -c .\\.\\.lake\\build\\ir\\MiracleOctadGenerator.c --json",
+   "level": "trace"},
+  {"message":
+   ".\\.\\.\\K22\\MiracleOctadGenerator.lean:41:2: unknown constant 'Matrix.ofFn'",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\K22\\MiracleOctadGenerator.lean:47:25: unknown identifier 'Tetrad'",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\K22\\MiracleOctadGenerator.lean:51:22: unknown identifier 'Tetrad'",
+   "level": "error"},
+  {"message":
+   ".\\.\\.\\K22\\MiracleOctadGenerator.lean:64:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\K22\\MiracleOctadGenerator.lean:70:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\K22\\MiracleOctadGenerator.lean:76:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\K22\\MiracleOctadGenerator.lean:85:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   ".\\.\\.\\K22\\MiracleOctadGenerator.lean:89:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message": "Lean exited with code 1", "level": "error"}],
+ "depHash": "39294238818032852"}
