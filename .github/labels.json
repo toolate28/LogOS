@@ -1,0 +1,36 @@
+{
+  "_atom": "ATOM-LABELS-CANON-20260731",
+  "_comment": "Canonical label taxonomy for Dependabot and supply-chain routing. ensure_dependabot_labels.py creates any missing entries. capability ≠ authority.",
+  "labels": [
+    {
+      "name": "dependencies",
+      "color": "0366d6",
+      "description": "Pull requests that update a dependency file"
+    },
+    {
+      "name": "advisory",
+      "color": "d93f0b",
+      "description": "Security / supply-chain advisory related (Dependabot, CodeQL, SPHINX-gated)"
+    },
+    {
+      "name": "rust",
+      "color": "dea584",
+      "description": "Rust / Cargo ecosystem updates and changes"
+    },
+    {
+      "name": "github-actions",
+      "color": "2088FF",
+      "description": "GitHub Actions workflow and action updates"
+    },
+    {
+      "name": "python",
+      "color": "3572A5",
+      "description": "Python / pip ecosystem updates and tooling"
+    },
+    {
+      "name": "javascript",
+      "color": "168700",
+      "description": "Pull requests that update javascript code"
+    }
+  ]
+}
