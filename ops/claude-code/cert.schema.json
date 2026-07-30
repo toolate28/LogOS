@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "logos://claude-code/cert.schema.json",
+  "title": "Claude Code init cert (keyless)",
+  "description": "State/backup artifact written to .atom-trail/certs/claude-code/. Config is git; this file is the schema only. pass:true only after real cold-start survey. Never store keys.",
+  "type": "object",
+  "required": [
+    "atom",
+    "init_packet",
+    "pass",
+    "surfaces",
+    "tui_needle",
+    "lsp",
+    "keys_present",
+    "head_sha"
+  ],
+  "properties": {
+    "atom": {
+      "type": "string",
+      "description": "ATOM-CC-CERT-<timestamp> or PLACEHOLDER"
+    },
+    "init_packet": {
+      "type": "string",
+      "const": "CLAUDECODE-INIT-v0_1"
+    },
+    "pass": {
+      "type": "boolean",
+      "description": "true only when all three surfaces ok AND no false-green placeholders"
+    },
+    "head_sha": {
+      "type": "string",
+      "description": "Full git commit SHA of HEAD when this cert was computed. Countersign trailer Mark-Cert-Head must equal the countersign commit's first parent. Required for D6."
+    },
+    "mark_id": {
+      "type": ["string", "null"],
+      "description": "Optional Mark-Id being countersigned (never minted by VERIFY)"
+    },
+    "wave_label": {
+      "type": "string",
+      "description": "Category C tag only — never a gate number"
+    },
+    "surfaces": {
+      "type": "object",
+      "required": ["spiralsafe_wrangler", "vcs", "formal_core"],
+      "properties": {
+        "spiralsafe_wrangler": { "$ref": "#/$defs/surface" },
+        "vcs": { "$ref": "#/$defs/surface" },
+        "formal_core": { "$ref": "#/$defs/surface" }
+      }
+    },
+    "tui_needle": { "type": "string" },
+    "lsp": {
+      "type": "object",
+      "properties": {
+        "lean_attached": { "type": "boolean" },
+        "als_attached": { "type": "boolean" },
+        "note": { "type": "string" }
+      }
+    },
+    "keys_present": {
+      "type": "boolean",
+      "description": "Must be false. Deploy refuses if true (misconfig)."
+    },
+    "wrangler": {
+      "type": "object",
+      "description": "Optional surface-A detail from repair probe",
+      "properties": {
+        "ok": { "type": "boolean" },
+        "version": { "type": ["string", "null"] },
+        "path": { "type": ["string", "null"] },
+        "detail": { "type": "string" }
+      }
+    },
+    "emitted_at": { "type": "string", "format": "date-time" },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "surface": {
+      "type": "object",
+      "required": ["ok", "detail"],
+      "properties": {
+        "ok": { "type": "boolean" },
+        "detail": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,165 @@
+# Marked stream — boundary detectors (config-git)
+
+**ATOM:** `ATOM-MARKED-STREAM-BOUNDARY-20260724`  
+**Status:** Category **B** scaffold — not live until trailers land on origin **and** a countersign with `Mark-Cert-Head` exists.
+
+## Rule
+
+Discipline at the envelope, freedom in the interior.
+
+- **Prose channel** — unconstrained voice, ASCII, design.
+- **Spine channel** — one fenced JSON block, always last, machine-parseable facts only.
+
+### Two fields — never overload them
+
+Each claim carries **two** orthogonal fields:
+
+| Field | Values | Meaning |
+|-------|--------|---------|
+| `category` | `A` / `B` / `C` / `D` | **Epistemic kind** — what sort of claim this is |
+| `verification` | `build-asserted` / `countersigned` | **Process status** — who has attested |
+
+**Countersign changes `verification` only. It never changes `category`.**
+
+| Category | Kind | After countersign becomes |
+|----------|------|---------------------------|
+| **A** | Machine-checked observation of the tree (grep, count, path exists) | `A` + `countersigned` (still A) |
+| **B** | Documented fact / edit with error bars (BUILD edit, bounded claim) | **`B` + `countersigned` only** — never B→A by re-badge |
+| **C** | Labeled convention (seats 8/5/3, α+ω=15 tag, independent-of-15 guard) | **`C` + `countersigned`** — verified-C means “convention is correctly *recorded*,” **not** that it is a theorem |
+| **D** | Open / unanchored | stays D until reclassified by evidence, not by process |
+
+**Promotion vs independent re-establishment (closed):**
+
+- Countersign confirms *the claim was made and the artifact is present* — it does **not** turn a BUILD claim into an observation.
+- If VERIFY wants an **A**, VERIFY emits a **new claim** with a **different subject** (its own grep), not a re-badge of BUILD’s subject.
+- Same rule for B as for C: **B@asserted → B@countersigned**. Closing only C→A left a B→A path open; both are closed.
+
+**Numerology re-entry vector (closed):** treating countersign as C→A (or B→A) promotion. Verifying that README contains the seats guard only proves the **string is present** (an A-grade *observation* of text under a **VERIFY-owned subject**). The **convention** “16 and 15 are independent” remains **C**.
+
+**BUILD self-promotion (closed):** BUILD may mint:
+
+- `category: A` + `verification: build-asserted` only for **observations** of disk
+- `category: B|C|D` + `verification: build-asserted` for edits and conventions
+- Never `verification: countersigned` on BUILD
+
+If BUILD mints A on its own **edits**, D1/D2 become decorative.
+
+### BUILD edit vs observation (category only)
+
+| Who | What | `category` BUILD may set |
+|-----|------|--------------------------|
+| BUILD | Observation of the tree | **A** |
+| BUILD | Edit BUILD just made | **B** (factual change) or **C** (convention text) |
+| VERIFY | Countersign | `verification: countersigned` only; **never** rewrite category |
+| VERIFY | Own observation | new subject, `category: A`, `verification: build-asserted` from VERIFY’s survey (VERIFY-owned A) |
+
+## Carrier (what crosses which boundary)
+
+```
+Grok Build ──B1──► Claude Code (VERIFY) ──B2──► GitHub
+```
+
+| Thing | Tracked in git? | Crosses B1 | Crosses B2 |
+|-------|-----------------|------------|------------|
+| Commit trailers | yes (commit object) | yes | yes |
+| `ops/marks/MARKS.jsonl` | yes (config-git) | yes | yes |
+| `.atom-trail/certs/*` | **no** (gitignored) | local only | fingerprint + head binding via trailers/ledger |
+
+Cert bodies stay local. The ledger carries `cert_sha256`, pass/fail, timestamp, and BUILD’s **`head_sha`**.
+
+### Two head SHAs (different meanings — do not collapse)
+
+| Name | Owner | Meaning |
+|------|-------|---------|
+| Ledger / BUILD `head_sha` | BUILD | Tree state the **claims describe** (artifacts as of that commit) |
+| Cert / `Mark-Cert-Head` | VERIFY | Tree state VERIFY **surveyed** |
+
+D6 binds countersign **to VERIFY’s head**. That alone does **not** bind VERIFY’s head to BUILD’s. Without D7, VERIFY can survey a tree where claimed artifacts moved since BUILD, countersign, and D6 stays green — a green countersign over **stale claims**. Ahead/behind + merge makes this non-hypothetical.
+
+| Field | Where | Role |
+|-------|-------|------|
+| ledger `head_sha` | `MARKS.jsonl` | BUILD claim tree |
+| `head_sha` | cert JSON (required) | VERIFY survey tree |
+| `Mark-Cert-Head` | VERIFY trailers | = cert `head_sha` = **parent** of countersign commit |
+| `Mark-Tree` (optional BUILD) | BUILD trailers | BUILD carrier commit |
+
+**D6 — cert head break:** countersign first parent ≠ `Mark-Cert-Head`. Process integrity of the VERIFY hop.
+
+**D7 — claim drift:** for every **claimed artifact** (not the ledger bookkeeping path):
+
+```text
+git diff --quiet <ledger.head_sha>..<Mark-Cert-Head> -- <artifact>
+```
+
+If any claimed path differs: **VERIFY refuses to countersign**. BUILD mints a **new** `Mark-Id` (changed artifacts = new build). “Never mint a new Mark-Id” constrains **VERIFY**, not BUILD.
+
+**D7 scope — exclude ledger:** stamp commits that only rewrite `ops/marks/MARKS.jsonl` must not false-positive. Always skip `ops/marks/MARKS.jsonl`. If an artifact is a directory (e.g. `ops/marks/`), diff with pathspec exclusion of the ledger file.
+
+**Operator guard before CC open:** reconcile or re-survey after merge **before** cert. Run D7 against the intended `Mark-Cert-Head` (usually `HEAD`) prior to countersign.
+
+## Trailer format (git interpret-trailers)
+
+Compact claim encoding on the wire (category only in short form; full category+verification lives in ledger/spine JSON):
+
+`subject=CATEGORY` with optional verification suffix: `subject=CATEGORY@asserted` or `subject=CATEGORY@countersigned`
+
+Build commit (Grok mints `Mark-Id`) — **all five required**:
+
+```
+Mark-Id: MK-20260724T0400Z-b0und01
+Mark-Strand: grok-build
+Mark-Role: BUILD
+Mark-Claims: conservation_tag=B@asserted; seats=C@asserted; k22_sorry=A@asserted
+Mark-Self-Certified: false
+```
+
+Optional on BUILD once the commit exists (same SHA as the commit object):
+
+```
+Mark-Tree: <40hex>
+```
+
+Verify commit (Claude Code countersigns — **never** mints a new Mark-Id):
+
+```
+Mark-Id: MK-20260724T0400Z-b0und01
+Mark-Countersign: claude-code
+Mark-Cert-Sha256: <64hex>
+Mark-Cert-Pass: false
+Mark-Cert-Head: <40hex>
+Mark-Observed: conservation_tag=B@countersigned; seats=C@countersigned; k22_sorry=A@countersigned
+```
+
+**D2** diffs `Mark-Claims` vs `Mark-Observed` for the same Mark-Id **on git history** (remote after push). Category letters must not mutate (C stays C); verification suffix may change asserted→countersigned; state tokens may differ when VERIFY sees MISSING/BROKEN.
+
+## Detectors (spec only until wired)
+
+| ID | Name | Fires when |
+|----|------|------------|
+| D1 | Uncountersigned arrival | mark on origin without `Mark-Countersign` |
+| D2 | Label mutation (Novikov) | `Mark-Claims` category bits ≠ `Mark-Observed` categories for same id, or observation collapse (claimed A observed MISSING) |
+| D3 | Fingerprint break | local cert sha256 ≠ ledger |
+| D4 | Silent drop | id in `MARKS.jsonl`, absent from origin trailers |
+| D5 | Key leak | `keys_present: true` / `Mark-Keys-Present: true` |
+| D6 | Cert head break | countersign parent ≠ `Mark-Cert-Head` / cert `head_sha` |
+| D7 | Claim drift | any **claimed** artifact differs between ledger `head_sha` and `Mark-Cert-Head` (ledger path excluded) |
+
+D1, D2, D6, and D7 are load-bearing. **Do not report detectors as live** before: ledger exists, five BUILD trailers on a commit, a countersign with Cert-Head, D1 query against origin.
+
+## Order of work
+
+1. §0 first-contact doctrine fixes
+2. Trailer-bearing BUILD commit (**five** Mark-* trailers; claims on the carrier for D2)
+3. Reconcile or accept `ahead/behind` vs origin **before** cert
+4. Claude Code three-surface survey + cert emit (**must record `head_sha`**)
+5. **D7 preflight:** no drift on claimed artifacts vs ledger `head_sha`; else BUILD new Mark-Id
+6. Claude Code countersign (same Mark-Id + `Mark-Cert-Head`) only if D6+D7 would pass
+7. Run D1/D2/D4/D6/D7 against origin (after push)
+
+A ledger row or chat spine alone is **not** a carrier.
+
+## Related atoms
+
+- `ATOM-MARKED-STREAM-BOUNDARY-20260724` — this envelope
+- Onboarding manifold / ALIAS — dual-channel continuity; Category C numerology fix
+- `ATOM-GEMINILM-READING-STRAND-20260724` — Ithaca Reforge / K22 epistemic tagging parity

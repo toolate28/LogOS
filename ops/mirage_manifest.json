@@ -1,0 +1,38 @@
+{
+  "atom": "ATOM-GB04-MIRAGE-20260713",
+  "packet": "PKT-GB04",
+  "recorded_at": "2026-07-15T03:08:50Z",
+  "lineage": "hup/unikernel/bbbr-verifier (extends hup/unikernel HUP M1)",
+  "service": "bbbr-verifier",
+  "mode": "hermetic-unix",
+  "listen": "127.0.0.1:8081",
+  "binary_sha256": "49f9270815457907c9b1256639cf15750cdcb8bc6724f337671af0631a35d411",
+  "python_module_sha256": "1d3a36a7225cabd343350b0326f8afa8f782a0f1d067b0b4d35a5d9cfd49395f",
+  "baked_chain_sha256": "844f2f1da0ded268d1cabcdb8b96285bab885eea2b67935677decb3e21581c4f",
+  "boot_log": [
+    "bbbr-verifier unix listening on http://127.0.0.1:8081 baked=166781a3f7ce856d genesis=351d5feac230\u2026",
+    "bbbr-verifier: \"GET /health HTTP/1.1\" 200 -",
+    "bbbr-verifier: \"GET /genesis HTTP/1.1\" 200 -",
+    "bbbr-verifier: \"GET /verify HTTP/1.1\" 200 -",
+    "bbbr-verifier: \"GET /verify HTTP/1.1\" 200 -"
+  ],
+  "verify": {
+    "linkage": true,
+    "tip": "f6187303500a23c82dd2e650284f3067",
+    "genesis": "351d5feac2309ebc34cd918e1dc3a3e7"
+  },
+  "targets": {
+    "unix": "SC green via nix package packages.bbbr-verifier",
+    "hvt": "deferred \u2014 mirage CLI not on PATH; /dev/kvm present (honest fail not kvm-blocked)"
+  },
+  "success_criteria": {
+    "SC-unix": true,
+    "SC-flake": true,
+    "SC-hvt": "documented-deferred-opam-mirage"
+  },
+  "refused": [
+    "POST",
+    "runtime fetch",
+    "emit/sign"
+  ]
+}

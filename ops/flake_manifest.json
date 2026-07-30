@@ -1,0 +1,42 @@
+{
+  "atom": "ATOM-GB01-FLAKE-20260713",
+  "packet": "PKT-GB01",
+  "recorded_at": "2026-07-14T08:52:05Z",
+  "nixpkgs_rev": "e7a3ca8092b61ff85b6a45bf863ea2b2d6a661b3",
+  "nixpkgs_url": "github:NixOS/nixpkgs/e7a3ca8092b61ff85b6a45bf863ea2b2d6a661b3",
+  "toolchains": {
+    "rustc": "1.95.0",
+    "agda": "2.8.0+cubical-0.9 (nixpkgs agdaPackages)",
+    "python3": "3.13.13",
+    "lean_toolchain_file": "leanprover/lean4:v4.8.0",
+    "elan": "devShell lean (Category B)",
+    "mirage": "devShell mirage (opam+solo5; GB-04)"
+  },
+  "checks": {
+    "schemas-validate": true,
+    "cutile-rmatrix": true,
+    "agda-everything": "UPSHIFT",
+    "agda_partial_core": true,
+    "agda_upshift_reason": "nixpkgs cubical-0.9 API drift vs agda/ (S2 rename, Float/Rational.Unsafe removed); DO NOT edit .agda sources",
+    "waist-image-stub": true,
+    "bbbr-verifier-stub": false,
+    "bbbr-verifier-unix": true
+  },
+  "success_criteria": {
+    "SC-check": true,
+    "SC-agda": "UPSHIFT",
+    "SC-lean": "Category B receipt",
+    "SC-schemas": true
+  },
+  "lean_receipt": {
+    "category": "B",
+    "note": "existing olean.hash from prior lake build (Category B; not re-run this session)",
+    "olean_hash_or_status": "12005728088828627491"
+  },
+  "packages": {
+    "waist-image": "reson8-waist:0.1.0 (GB-02)",
+    "bbbr-verifier": "unix hermetic (GB-04); hvt deferred"
+  },
+  "cuda_impurity": "declared; LD_LIBRARY_PATH=/usr/lib/wsl/lib when present; cutile CPU always-green",
+  "artifact_sha256_bundle": "e2d0bfb2d69a408cfe3bf6cd9b89ca1feca47b6aec4f18e8415c8f5aa121e166"
+}

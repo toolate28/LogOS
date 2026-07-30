@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://logos.local/ops/marks/spine.schema.json",
+  "title": "Grok Build dual-channel spine",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["mark_id", "atom", "strand", "role", "claims", "keys_present", "self_certified"],
+  "properties": {
+    "mark_id": {
+      "type": "string",
+      "pattern": "^MK-[0-9]{8}T[0-9]{4}Z-[0-9a-f]{6}$"
+    },
+    "atom": { "type": "string" },
+    "strand": { "type": "string" },
+    "role": { "type": "string", "enum": ["BUILD", "VERIFY", "LABEL", "READ"] },
+    "artifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["subject", "category", "verification", "state"],
+        "properties": {
+          "subject": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": ["A", "B", "C", "D"],
+            "description": "Epistemic kind. Countersign never changes this."
+          },
+          "verification": {
+            "type": "string",
+            "enum": ["build-asserted", "countersigned"],
+            "description": "Process status only. Countersign may set countersigned; never rewrite category."
+          },
+          "state": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "keys_present": { "type": "boolean" },
+    "self_certified": { "type": "boolean" },
+    "head_sha": {
+      "type": ["string", "null"],
+      "description": "Optional on BUILD spine; required on VERIFY cert binding"
+    }
+  }
+}

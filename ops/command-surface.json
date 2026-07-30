@@ -1,0 +1,276 @@
+{
+  "$schema": "https://reson8labs.ai/schemas/command-surface.v1.json",
+  "version": "1.0.0",
+  "invariant": "alpha+omega=15",
+  "strand": "reason",
+  "description": "Unified LogOS command surface — shell, coherence-mcp, reson8-tui, HTML meta-map/RUST Market.",
+  "layers": {
+    "shell": {
+      "module": "ops/LogOS.Shell.psm1",
+      "profile": "ops/TriWeavon.Profile.psm1",
+      "unitary": "ops/TriWeavon.Unitary.Profile.psm1",
+      "windows": "ops/LogOS.Windows.psm1",
+      "bridge": "ops/serve.ps1",
+      "role": "α entry — PATH, roots, local tool probes, surface openers, Windows axis"
+    },
+    "mcp": {
+      "package": "coherence-mcp",
+      "root_env": "COHERENCE_MCP_ROOT",
+      "tools_manifest": "mcps/coherence-mcp/tools",
+      "verify": "ops/verify-coherence-tools.mjs",
+      "cli": "ops/logos-mcp.mjs",
+      "role": "ω gate — gauge, WAVE, ATOM, rust status, context store"
+    },
+    "tui": {
+      "crate": "crates/tui",
+      "package": "reson8-tui",
+      "bin": "reson8-forge",
+      "ws": "ws://127.0.0.1:8088",
+      "env": "FORGE_WS_URL",
+      "barcode": "barcode-tui",
+      "role": "α dashboard — providers, tasks, braid, logs, tests"
+    },
+    "html": {
+      "site_public": "coherence-mcp/coherence-site/public",
+      "docs_surfaces": "docs/surfaces",
+      "stitch": "stitch",
+      "role": "ω projection — meta-map, RUST Market, orchestrator, reforge"
+    }
+  },
+  "commands": [
+    {
+      "id": "logos",
+      "alias": ["cd-logos"],
+      "layer": "shell",
+      "fn": "Enter-LogOS",
+      "summary": "cd LOGOS_ROOT"
+    },
+    {
+      "id": "logos-status",
+      "layer": "shell",
+      "fn": "Get-LogOSToolchain",
+      "mcp_mirror": "rust_toolchain_status",
+      "summary": "Probe cargo/python/lean/agda/nvcc/wsl + surface roots"
+    },
+    {
+      "id": "logos-mcp",
+      "layer": "mcp",
+      "fn": "Invoke-LogOSMcp",
+      "summary": "Call coherence-mcp tools (gauge, wave, rust status, store)"
+    },
+    {
+      "id": "logos-tui",
+      "layer": "tui",
+      "fn": "Start-LogOSTui",
+      "summary": "Launch reson8-forge (reson8-tui) against FORGE_WS_URL"
+    },
+    {
+      "id": "logos-barcode",
+      "layer": "tui",
+      "fn": "Start-LogOSBarcode",
+      "summary": "Launch barcode-tui PH barcode viewer"
+    },
+    {
+      "id": "logos-bridge",
+      "layer": "shell",
+      "fn": "Start-LogOSBridge",
+      "summary": "Start triweave WS bridge on :8088"
+    },
+    {
+      "id": "logos-site",
+      "layer": "html",
+      "fn": "Open-LogOSSurface",
+      "default_surface": "meta-map",
+      "summary": "Open HTML command surface (meta-map by default)"
+    },
+    {
+      "id": "logos-surfaces",
+      "layer": "html",
+      "fn": "Get-LogOSSurfaces",
+      "summary": "List registered HTML/TUI/MCP surfaces + paths"
+    },
+    {
+      "id": "logos-agda",
+      "layer": "shell",
+      "fn": "Invoke-LogOSAgda",
+      "summary": "Typecheck TriWeavon Agda"
+    },
+    {
+      "id": "logos-lean",
+      "layer": "shell",
+      "fn": "Invoke-LogOSLean",
+      "summary": "lake build lean/"
+    },
+    {
+      "id": "logos-kernels",
+      "layer": "shell",
+      "fn": "Invoke-LogOSKernels",
+      "summary": "List/build CUDA kernels"
+    },
+    {
+      "id": "logos-cargo",
+      "layer": "shell",
+      "fn": "Invoke-LogOSCargo",
+      "summary": "cargo from workspace root"
+    },
+    {
+      "id": "logos-wsl",
+      "layer": "shell",
+      "fn": "Enter-LogOSWsl",
+      "summary": "WSL shell with logos-env"
+    },
+    {
+      "id": "logos-preflight",
+      "layer": "shell",
+      "fn": "Invoke-LogOSPreflight",
+      "module": "ops/LogOS.Windows.psm1",
+      "summary": "Windows preflight board (git/profile/wrangler/schemas)"
+    },
+    {
+      "id": "logos-align",
+      "layer": "shell",
+      "fn": "Set-LogOSWindowsAxis",
+      "module": "ops/LogOS.Windows.psm1",
+      "summary": "Idempotent Windows axis: profiles, LOGOS_ROOT, wrangler"
+    },
+    {
+      "id": "logos-wrangler",
+      "layer": "shell",
+      "fn": "Invoke-LogOSWrangler",
+      "module": "ops/LogOS.Windows.psm1",
+      "summary": "coherence-site wrangler whoami/pages-dev/pages-deploy (HITL)"
+    },
+    {
+      "id": "logos-terminal",
+      "layer": "html",
+      "fn": "Start-LogOSDynamicTerminal",
+      "module": "ops/LogOS.Windows.psm1",
+      "summary": "HTML terminal / sensors / TUI / pop|window|tab OS console"
+    },
+    {
+      "id": "logos-pop",
+      "layer": "shell",
+      "fn": "Open-LogOSConsole",
+      "module": "ops/LogOS.Windows.psm1",
+      "summary": "Pop out new Windows Terminal window or tab (real OS console)"
+    },
+    {
+      "id": "logos-console",
+      "layer": "shell",
+      "fn": "Open-LogOSConsole",
+      "module": "ops/LogOS.Windows.psm1",
+      "summary": "Alias of logos-pop"
+    },
+    {
+      "id": "logos-confidence",
+      "layer": "shell",
+      "fn": "Show-LogOSConfidence",
+      "module": "ops/LogOS.Confidence.psm1",
+      "summary": "1-click confidence: cert · 3 surfaces · needle · deploy gate (honest B)"
+    },
+    {
+      "id": "tw",
+      "layer": "shell",
+      "fn": "Invoke-TriWeavonTw",
+      "module": "ops/TriWeavon.Unitary.Profile.psm1",
+      "summary": "Unitary cockpit: status, confidence, up, fix, verify"
+    },
+    {
+      "id": "tw-confidence",
+      "layer": "shell",
+      "fn": "Show-TriWeavonConfidence",
+      "module": "ops/TriWeavon.Unitary.Profile.psm1",
+      "summary": "tw confidence → LogOS.Confidence board"
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "meta-map",
+      "kind": "html",
+      "path": "coherence-mcp/coherence-site/public/meta-map/index.html",
+      "url_path": "/meta-map/",
+      "role": "Sovereign MCP inspector + command surface hub"
+    },
+    {
+      "id": "rust-market",
+      "kind": "html",
+      "path": "coherence-mcp/coherence-site/public/RUST_Market/index.html",
+      "url_path": "/RUST_Market/",
+      "role": "Crate certification market + workspace map"
+    },
+    {
+      "id": "orchestrator",
+      "kind": "html",
+      "path": "docs/surfaces/orchestrator.html",
+      "url_path": "/surfaces/orchestrator.html",
+      "role": "Live multi-strand orchestrator"
+    },
+    {
+      "id": "reforge",
+      "kind": "html",
+      "path": "docs/surfaces/reforge/index.html",
+      "url_path": "/reforge/",
+      "role": "Ithildin reading / live state"
+    },
+    {
+      "id": "evenstar",
+      "kind": "html",
+      "path": "docs/surfaces/evenstar.html",
+      "url_path": "/surfaces/evenstar.html",
+      "role": "Evenstar surface"
+    },
+    {
+      "id": "cockpit",
+      "kind": "html",
+      "path": "stitch/coherence_mcp_cockpit/code.html",
+      "url_path": "/stitch/cockpit/",
+      "role": "coherence-mcp cockpit stitch"
+    },
+    {
+      "id": "gate",
+      "kind": "html",
+      "path": "coherence-mcp/coherence-site/public/gate/index.html",
+      "url_path": "/gate/",
+      "role": "SPHINX gate surface"
+    },
+    {
+      "id": "flow",
+      "kind": "html",
+      "path": "coherence-mcp/coherence-site/public/flow/index.html",
+      "url_path": "/flow/",
+      "role": "Flow surface"
+    },
+    {
+      "id": "terminal",
+      "kind": "html",
+      "path": "coherence-mcp/coherence-site/public/terminal/index.html",
+      "url_path": "/terminal/",
+      "role": "Dynamic terminal display · Windows axis board"
+    },
+    {
+      "id": "tui",
+      "kind": "tui",
+      "package": "reson8-tui",
+      "bin": "reson8-forge",
+      "role": "Ratatui forge dashboard"
+    },
+    {
+      "id": "barcode",
+      "kind": "tui",
+      "package": "barcode-tui",
+      "role": "PH barcode terminal viewer"
+    },
+    {
+      "id": "mcp",
+      "kind": "mcp",
+      "role": "coherence-mcp tool bus"
+    }
+  ],
+  "isomorphisms": {
+    "logos-status": ["rust_toolchain_status", "rust_workspace_status"],
+    "gauge": ["gauge_verify", "invariant_check"],
+    "wave": ["wave_coherence_check", "wave_analyze"],
+    "atom": ["atom_track"],
+    "bridge": ["Start-LogOSBridge", "triweave serve", "FORGE_WS_URL"]
+  }
+}

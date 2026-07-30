@@ -1,0 +1,46 @@
+{
+  "atom": "ATOM-GB00-WSL2-NIX-20260713",
+  "packet": "PKT-GB00",
+  "recorded_at": "2026-07-14T07:43:44Z",
+  "host": {
+    "wsl_version": "2.7.10.0",
+    "wsl_kernel": "6.18.33.2-microsoft-standard-WSL2",
+    "windows_version": "10.0.26200.8737",
+    "distro": "Kali GNU/Linux 2026.2",
+    "arch": "x86_64"
+  },
+  "wsl_kernel": "6.18.33.2-microsoft-standard-WSL2",
+  "nix_version": "nix (Determinate Nix 3.21.5) 2.34.8",
+  "nix_flakes_enabled": true,
+  "kvm": true,
+  "cuda_libs": false,
+  "cuda_notes": " /usr/lib/wsl/lib has libd3d12*/libdxcore only; nvidia-smi absent; no libcuda",
+  "clone_sha": "d98cd7f3a24910f8ef1bf805ddf28d9b7fef4ceb",
+  "winhost_sha": "d98cd7f3a24910f8ef1bf805ddf28d9b7fef4ceb",
+  "clone_path": "/home/toolated/LogOS",
+  "winhost_path": "/mnt/f/Users/Matthew Ruhnau/LogOS",
+  "winhost_remote": "winhost",
+  "sha_match": true,
+  "docker_version": "Docker version 28.5.2+dfsg4, build 9cc6dea35e9a963f281434761c656fba4ac43aed",
+  "success_criteria": {
+    "SC-nix": true,
+    "SC-clone": true,
+    "SC-manifest": true
+  },
+  "upshift": [],
+  "human_flags": [
+    "CUDA libs false \u2014 optional for GB-00; cutile CPU path is always-green per GB-01"
+  ],
+  "probes": {
+    "dev_kvm": true,
+    "usr_lib_wsl_lib": [
+      "libd3d12core.so",
+      "libd3d12.so",
+      "libdxcore.so"
+    ],
+    "nvidia_smi": false
+  },
+  "smoke": {
+    "nix_run_hello": 0
+  }
+}
