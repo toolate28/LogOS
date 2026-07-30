@@ -1,5 +1,6 @@
 # Dependabot — supply-chain updates (advisory; capability ≠ authority)
 # ATOM: ATOM-DEPENDABOT-20260730-sm100
+# Updated: ATOM-DEPENDABOT-LABEL-FIX-20260731 — removed non-existent labels
 version: 2
 updates:
   # Root Cargo workspace (LogOS monorepo)
@@ -11,8 +12,6 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - dependencies
-      - rust
-      - advisory
     commit-message:
       prefix: "deps(cargo)"
 
@@ -25,8 +24,6 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - dependencies
-      - github-actions
-      - advisory
     commit-message:
       prefix: "deps(actions)"
 
@@ -38,8 +35,6 @@ updates:
     open-pull-requests-limit: 3
     labels:
       - dependencies
-      - python
-      - advisory
     commit-message:
       prefix: "deps(pip)"
     # No-op when no requirements file exists; Dependabot skips gracefully.
