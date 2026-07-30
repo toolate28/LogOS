@@ -1,0 +1,11 @@
+[package]
+name = "cqk-entropy"
+version = "0.1.0"
+edition = "2021"
+description = "Microlocal entropy W[omega_tilde] functional + Theorem-4 dissipation witness"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+reson8-core = { path = "../core" }
+cqk-microlocal = { path = "../cqk-microlocal" }
+serde = { version = "1", features = ["derive"] }

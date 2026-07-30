@@ -1,0 +1,25 @@
+[package]
+name = "cqk-ga"
+version = "0.1.0"
+edition = "2021"
+description = "Geometric algebra Cl(1,3) + Weyl gauge theory + Octonion algebra for cQ-kitty-rips"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+reson8-core = { path = "../core" }
+serde = { version = "1", features = ["derive"] }
+
+[dependencies.petgraph]
+version = "0.6"
+default-features = false
+features = ["serde-1"]
+optional = true
+
+[dependencies.rayon]
+version = "1.10"
+optional = true
+
+[features]
+default = ["std"]
+std = []
+graph = ["petgraph", "rayon"]

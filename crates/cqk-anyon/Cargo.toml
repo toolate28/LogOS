@@ -1,0 +1,11 @@
+[package]
+name = "cqk-anyon"
+version = "0.1.0"
+edition = "2021"
+description = "Fibonacci anyon F/R/S matrices, braid-group reps, Jones polynomial evaluator"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+reson8-core = { path = "../core" }
+num-complex = "0.4"
+serde = { version = "1", features = ["derive"] }

@@ -1,0 +1,73 @@
+[package]
+name = "fib-braid-core"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["Matthew Ruhnau <matthew.ruhnau@gmail.com>"]
+description = "Double Fibonacci anyon primitive: B₃ braid words, BKL normal form, Burau at ω₅, Fibonacci representation, Jones polynomial. no_std."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/toolate28/coherence-mcp"
+keywords = ["braid", "fibonacci", "anyon", "topological", "burau"]
+categories = ["mathematics", "cryptography", "no-std"]
+readme = "README.md"
+
+# ──────────────────────────────────────────────────────────────────────
+# Design intent
+# ──────────────────────────────────────────────────────────────────────
+# fib-braid-core is the topological rail for the Tri-Weavon.
+#
+# Primitives:
+#   - B₃ = ⟨σ₁, σ₂ | σ₁σ₂σ₁ = σ₂σ₁σ₂⟩
+#   - Birman-Ko-Lee (BKL) canonical form for braid words
+#   - Burau representation at t = e^(2πi/5) = ω₅
+#   - Fibonacci fusion category: objects {1, τ}, fusion τ⊗τ = 1⊕τ,
+#     quantum dim d_τ = φ = (1+√5)/2
+#   - Double Fibonacci = Z(Fib) = Fib ⊠ F̄ib, Z₂-graded, modular
+#   - Jones polynomial evaluated at ω₅ as closure invariant
+#
+# This crate does NOT contain:
+#   - Key-exchange protocols (Anshel-Anshel-Goldfeld etc.) — see
+#     `atom-sig` + the wallet-layer crate.
+#   - Cross-chain bridge logic — see `vortex-bridges`.
+#   - NEAR contract code — see `conservation-braid`.
+#   - The Invariant Gate — see `coherence-mcp`.
+#
+# What we expose is the pure topological machinery: braid word →
+# canonical form → representation matrix → invariant. Everything
+# downstream composes this.
+#
+# no_std by default. num-complex for ω₅ arithmetic; we roll our own
+# 3×3 matrix type to avoid pulling in nalgebra for a single matrix size.
+# ──────────────────────────────────────────────────────────────────────
+
+[features]
+default = ["std"]
+std = ["num-complex/std", "num-traits/std"]
+nostd = []
+
+[dependencies]
+# Complex arithmetic at roots of unity.
+num-complex = { version = "0.4", default-features = false, features = ["libm"] }
+num-traits = { version = "0.2", default-features = false, features = ["libm"] }
+
+# Small-vector optimisation for short braid words (the common case —
+# typical wallet keys are 100-1000 generators).
+smallvec = { version = "1.13", default-features = false, features = ["const_generics", "union"] }
+
+# BLAKE3 for deriving braid seeds from strand entropy.
+blake3 = { version = "1.5", default-features = false }
+
+[dev-dependencies]
+approx = "0.5"
+proptest = "1.4"
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+# Roots of unity and matrix arithmetic will produce many
+# `float_cmp` and `similar_names` warnings that are false positives.
+float_cmp = "allow"
+similar_names = "allow"

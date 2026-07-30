@@ -1,0 +1,16 @@
+[package]
+name = "cqk-microlocal"
+version = "0.1.0"
+edition = "2021"
+description = "Cosphere-bundle lift S*M, microlocal vorticity 2-form, rho = log||omega_tilde||"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+reson8-core = { path = "../core" }
+cqk-ga = { path = "../cqk-ga" }
+nalgebra = { version = "0.33", default-features = false, features = ["libm"] }
+serde = { version = "1", features = ["derive"] }
+# Needed because stdlib `Serialize`/`Deserialize` impls for arrays only cover
+# lengths ≤ 32. CosphereLift stores `fibre_angles: [[f64; D]; N]` — a
+# const-generic nested array that serde cannot derive directly.
+serde-big-array = "0.5"

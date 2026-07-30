@@ -1,0 +1,27 @@
+[package]
+name = "cqk-kitty-rips-verify"
+version = "0.1.0"
+edition = "2021"
+description = "Property-based verification crate for the cQ-kitty-rips pipeline: Cl(1,3) associativity, octonion Moufang identities, composition-norm, and the α+ω=15 boundary invariant."
+license = "MIT OR Apache-2.0"
+publish = false
+
+# This crate has no runtime code of its own — it exists to exercise the
+# algebraic substrate under randomized inputs. All checks live in `tests/`.
+
+[dependencies]
+cqk-ga = { path = "../cqk-ga" }
+resonance-invariant = { path = "../resonance-invariant" }
+# proptest is a normal dep (not dev-dep) because src/lib.rs exposes public
+# strategy helpers (arb_cl13, arb_octonion_bounded, …) that downstream test
+# files — and potentially other verify crates — consume.
+proptest = "1.4"
+
+[dev-dependencies]
+proptest = "1.4"
+
+[features]
+default = []
+# Gate for the parallel-transport flat-connection test — requires weyl_graph
+# (not yet a workspace member). See tests/thtw_parallel_transport.rs.
+thtw = []

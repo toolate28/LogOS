@@ -1,0 +1,10 @@
+[package]
+name = "reson8-hash"
+version = "0.1.0"
+edition = "2021"
+description = "Cryptographic hashing and ATOM-TAG generation for provenance"
+
+[dependencies]
+reson8-core = { path = "../core" }
+sha2 = "0.10"
+hex = "0.4"
