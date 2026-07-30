@@ -8,7 +8,7 @@ license = "MIT OR Apache-2.0"
 [dependencies]
 reson8-core = { path = "../core" }
 cqk-ga = { path = "../cqk-ga" }
-nalgebra = { version = "0.33", default-features = false, features = ["libm"] }
+nalgebra = { version = "0.35", default-features = false, features = ["libm"] }
 serde = { version = "1", features = ["derive"] }
 # Needed because stdlib `Serialize`/`Deserialize` impls for arrays only cover
 # lengths ≤ 32. CosphereLift stores `fibre_angles: [[f64; D]; N]` — a
