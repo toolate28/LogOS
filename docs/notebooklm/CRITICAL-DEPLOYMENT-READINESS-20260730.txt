@@ -1,0 +1,79 @@
+================================================================================
+CRITICAL SNAPSHOT — Project Component Deployment Readiness
+================================================================================
+Snapshot date   : 2026-07-30
+Audience        : NotebookLM · operators · strand routing
+Rule            : READY / AMBER / HELD only — no silent green paint
+Hub             : NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt §4
+================================================================================
+
+Legend
+  READY  green local path; ship with operator care
+  AMBER  partial / demo / offline usable; gaps named
+  HELD   blocked on human, external, or formal residual
+
+--------------------------------------------------------------------------------
+COMPONENT MATRIX
+--------------------------------------------------------------------------------
+Component                         | Status | Notes
+----------------------------------|--------|------------------------------------
+docs/componentry on-ramp          | READY  | cold-start structure 00–06
+NotebookLM ingest pack            | READY  | plain-text CRITICAL + hub 20260730
+cutile R-matrix tests             | READY  | numeric SoT for cascade
+Lean HexacodeGolay                | READY  | octad_count=759 native_decide
+Lean MonomialWitness (transport)  | AMBER  | lake GREEN; 2 residual sorries
+Lean SteinerDoubleCount           | AMBER  | lake GREEN; bridge bodies open
+Lean/Agda SubRiemannian plant     | HELD   | skeletons / postulates / sorries
+MiracleOctadGenerator Steiner     | HELD   | keystone sorry
+ExistenceCertificate cutile→Lean  | AMBER  | path exists; Bool trust boundary
+coherence-mcp live stdio          | AMBER  | 12 tools; catalog drift CB
+Mehler in MCP process             | HELD   | CERTIFIED_ERROR_TOL in cutile only
+Local bridge ws 127.0.0.1:8088    | AMBER  | logos-bridge on demand
+AdHealth analyze --demo           | READY  | local CTQW demo
+AdHealth production auth          | HELD   | multi-tenant + connectors NEED
+Cloud Run / GCP SAIF              | HELD   | human IAM waist A1
+Cubical Agda pin                  | HELD   | nixpkgs drift risk
+Marks VERIFY countersign          | AMBER  | spine present; origin reconcile
+GB-06 Cloud Run gate              | HELD   | intentionally held in componentry
+KKS Orbit Policy Kernel product   | HELD   | design + bracket JSON; Jacobi untested
+
+--------------------------------------------------------------------------------
+CASCADE-BLOCKERS (block false "production ready")
+--------------------------------------------------------------------------------
+CB-1  monom Steiner via transport residual
+CB-2  MCP tool-count drift (12 live vs 58–64 docs)
+CB-3  K22 full live sheaf as OS base (not lake-clean plant)
+CB-4  Human GCP IAM waist
+CB-5  AdHealth production auth + live ad APIs
+
+--------------------------------------------------------------------------------
+NETWORK / SECURITY CONSTRAINT (BUILD)
+--------------------------------------------------------------------------------
+New listeners: bind 127.0.0.1 only; no unauthenticated endpoints.
+MCP RCE class: do not claim SpiralSafe/WAVE close the vector without live
+tool list + bind + test evidence (Category B / D-latent until then).
+
+--------------------------------------------------------------------------------
+SAFE EXTERNAL CLAIMS
+--------------------------------------------------------------------------------
+YES  R-matrix cascade + cutile SoT
+YES  HexacodeGolay machine-checked on pin
+YES  Lane-A transport integrated; Steiner residual open
+YES  12 live MCP tools
+YES  AdHealth demo path
+NO   Steiner fully closed
+NO   Live verified sub-Riemannian multi-agent control
+NO   α+ω=15 as physical law / free Casimir
+NO   58–64 MCP tools live
+NO   Multi-tenant AdHealth / Cloud Run production without human gates
+
+--------------------------------------------------------------------------------
+OPERATOR QUICK PATH
+--------------------------------------------------------------------------------
+1. Import-Module ops/LogOS.Shell.psm1
+2. cargo test -p cutile r_matrix --manifest-path cutiles/cutile/Cargo.toml
+3. cd lean; lake build K22.MOG.MonomialWitness
+4. Verify MCP list_tools == 12 before writing agent runbooks
+5. Do not mark Cloud Run READY until SAIF A1 cleared by human
+
+--- end CRITICAL-DEPLOYMENT-READINESS-20260730 ---
