@@ -147,11 +147,50 @@ theorem hexacodePacked_IA_card : hexacodePacked_IA.card = 64 := by
 theorem hexacodePacked_Conway_card : hexacodePacked_Conway.card = 64 := by
   native_decide
 
-/-- SlowStep: Finset.image membership transport from the packed iso. -/
-theorem mem_conway_packed_iff (n : Nat) :
+/-- Reindex is an involution on base-4 words with 6 digits (`n < 4^6`). -/
+private theorem reindexPackedByπ_left_inv (n : Fin (4 ^ 6)) :
+    reindexPackedByπsymm (reindexPackedByπ n.val) = n.val := by
+  native_decide
+
+private theorem reindexPackedByπ_right_inv (n : Fin (4 ^ 6)) :
+    reindexPackedByπ (reindexPackedByπsymm n.val) = n.val := by
+  native_decide
+
+private theorem packWordN_lt_4pow6 (w0 w1 w2 w3 w4 w5 : Nat)
+    (h0 : w0 < 4) (h1 : w1 < 4) (h2 : w2 < 4) (h3 : w3 < 4) (h4 : w4 < 4) (h5 : w5 < 4) :
+    packWordN w0 w1 w2 w3 w4 w5 < 4 ^ 6 := by
+  unfold packWordN
+  omega
+
+private theorem mem_hexacodePacked_IA_lt (n : Nat) (hn : n ∈ hexacodePacked_IA) :
+    n < 4 ^ 6 := by
+  rcases Finset.mem_image.mp hn with ⟨m, _, rfl⟩
+  have d (x : _root_.GF4.GF4) : gf4ToNat x < 4 := by cases x <;> decide
+  exact packWordN_lt_4pow6 _ _ _ _ _ _
+    (d (m 0)) (d (m 1)) (d (m 2)) (d (m 3)) (d (m 4)) (d (m 5))
+
+/-- Membership transport from packed iso (valid on 6-digit base-4 words). -/
+theorem mem_conway_packed_iff {n : Nat} (hn : n < 4 ^ 6) :
     n ∈ hexacodePacked_Conway ↔ reindexPackedByπsymm n ∈ hexacodePacked_IA := by
-  have _iso := hexacode_packed_iso_via_π
-  sorry
+  constructor
+  · intro hmem
+    have hiso := hexacode_packed_iso_via_π
+    have himg : n ∈ hexacodePacked_IA.image reindexPackedByπ := by
+      rw [hiso]; exact hmem
+    rcases Finset.mem_image.mp himg with ⟨m, hm, rfl⟩
+    have hm_lt := mem_hexacodePacked_IA_lt m hm
+    have hinv : reindexPackedByπsymm (reindexPackedByπ m) = m :=
+      reindexPackedByπ_left_inv ⟨m, hm_lt⟩
+    simpa [hinv] using hm
+  · intro hm
+    have hiso := hexacode_packed_iso_via_π
+    have heq : reindexPackedByπ (reindexPackedByπsymm n) = n :=
+      reindexPackedByπ_right_inv ⟨n, hn⟩
+    have : reindexPackedByπ (reindexPackedByπsymm n) ∈
+        hexacodePacked_IA.image reindexPackedByπ :=
+      Finset.mem_image.mpr ⟨reindexPackedByπsymm n, hm, rfl⟩
+    rw [← hiso, ← heq]
+    exact this
 
 def toConwayWord (w : Fin 6 → _root_.GF4.GF4) : Fin 6 → MiracleOctadGenerator.GF4 :=
   fun j => toConwayGF4 (w (π j))
@@ -194,9 +233,10 @@ def mapPointInv (p : MOGPoint) : MOGPoint :=
 def mapOctad (s : Finset MOGPoint) : Finset MOGPoint :=
   s.image mapPoint
 
-/-- Bitmask of a point set (bit `p.val`). -/
+/-- Bitmask of a point set (bit `p.val`).
+    Definitionally the S6 OR-fold packing — avoids a fragile sum/OR induction. -/
 def maskOf (s : Finset MOGPoint) : Nat :=
-  ∑ p ∈ s, 2 ^ p.val
+  octadToMask s
 
 /-! ## Transport lemmas (SlowSteps with precise statements) -/
 

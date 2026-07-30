@@ -1,0 +1,19 @@
+{
+  "name": "server_healthcheck",
+  "description": "Live health probe for LogOS verification surfaces: MCP registry, forge WS bridge (:8088), manifold dashboard API, optional edge endpoints. Returns per-service latency, ok flags, and composite WAVE score on 0–100 scale (publish gate 85).",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "targets": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Optional subset: registry | forge_ws | manifold | edge | all (default all)"
+      },
+      "timeout_ms": {
+        "type": "number",
+        "description": "Per-target timeout (default 3000)"
+      }
+    },
+    "additionalProperties": false
+  }
+}

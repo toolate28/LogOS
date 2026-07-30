@@ -14,7 +14,8 @@ Custom tactics and formal bridges for Tri-Weavon / K22 sheaf reasoning.
 | `K22.MOG.SyndromeLookup` | ⚠️ | Skeletal decoder types + stub lookup |
 | `K22.MOG.SyndromeLookupConcrete` | ◐ | Real H from `golayBasisN`, sphere decoder, grid + octad pattern; Finset glue / Lipschitz SlowStep |
 | `K22.Auto` / tactics | ⚠️ | Imports fixed; run `lake build K22` |
-| `K22.MiracleOctadGenerator` | ⚠️ | Conway set recognition; Steiner uniqueness still SlowStep `sorry` |
+| `K22.MOG.SteinerDoubleCount` | ✅ | **S1–S5 green** — `golayOctadBlocks_card`/`_pack` + `golay_octads_form_steiner` (S4+S5); no `sorry` |
+| `K22.MiracleOctadGenerator` | ⚠️ | Conway set recognition; `mogOctadsFormSteinerSystem` still SlowStep `sorry` (use MonomialWitness CB-1 residual for transport form) |
 | `K22.MOG.ParityLiftRank` | ✅ | **rank(A)=9** (GF(2) Gaussian elim + global dependency); ker dim 15; Steiner glue open |
 
 **HexacodeGolay** is the verified algebraic spine for RESON8:QWALK Heroes 2–5 (combinatorics **and** self-dual syndrome / sphere decode).  

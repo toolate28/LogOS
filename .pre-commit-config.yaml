@@ -1,0 +1,11 @@
+# Optional complementary layer (pip install pre-commit && pre-commit install)
+# Local githooks (ops/githooks) remain the primary secret-path mirror for CI.
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace

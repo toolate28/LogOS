@@ -1,0 +1,15 @@
+{
+  "$comment": "Example only — copy into repo Settings → Copilot → Coding agent → MCP, or a private local mcp.json. Never commit live tokens. ATOM: ATOM-MCP-VALIDATE-20260730-sm100",
+  "mcpServers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/readonly",
+      "tools": [
+        "get_file_contents",
+        "list_commits",
+        "search_code",
+        "list_issues"
+      ]
+    }
+  }
+}

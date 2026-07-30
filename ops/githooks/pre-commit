@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Local mirror of ops/ci/guard.sh for staged changes only.
+# Install: git config core.hooksPath ops/githooks
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+FAIL=0
+fail() { echo "pre-commit: $*" >&2; FAIL=1; }
+
+SECRET_RE='(^|/)\.env($|\.)|(^|/)id_rsa|(^|/)id_ed25519|\.pem$|\.p12$|(^|/)credentials\.json$'
+LAKE_RE='\.(olean|ilean)$|\.lake/build/'
+
+while IFS= read -r path; do
+  [[ -z "$path" ]] && continue
+  if echo "$path" | grep -Eiq "$SECRET_RE"; then
+    fail "secret-like path staged: $path"
+  fi
+  if echo "$path" | grep -Eiq "$LAKE_RE"; then
+    fail "lake artefact staged: $path"
+  fi
+done < <(git diff --cached --name-only --diff-filter=ACM)
+
+# MCP config quick check if staged
+STAGED_MCP=$(git diff --cached --name-only --diff-filter=ACM | grep -E 'mcp(-config)?\.json$|\.vscode/mcp\.json$' || true)
+if [[ -n "${STAGED_MCP}" ]] && command -v python3 >/dev/null 2>&1; then
+  python3 ops/ci/validate_mcp_config.py || fail "MCP config policy failed"
+elif [[ -n "${STAGED_MCP}" ]] && command -v python >/dev/null 2>&1; then
+  python ops/ci/validate_mcp_config.py || fail "MCP config policy failed"
+fi
+
+if [[ "$FAIL" -ne 0 ]]; then
+  exit 1
+fi
+exit 0

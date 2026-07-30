@@ -1,0 +1,62 @@
+# Security advisory CI — mirrors local githooks; cargo-audit when deps exist
+# ATOM: ATOM-SEC-ADVISORY-20260730-sm100
+# Advisory / policy: does not auto-promote any register.
+
+name: Security Advisory
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    - cron: "30 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  secret-path-and-lake-guard:
+    name: Secret-path + lake artefact guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run tree guards
+        run: bash ops/ci/guard.sh
+
+  cargo-audit:
+    name: cargo audit (when external crates present)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install cargo-audit
+        run: cargo install cargo-audit --locked || cargo install cargo-audit
+
+      - name: Audit root workspace
+        working-directory: .
+        run: |
+          set -euo pipefail
+          if [[ ! -f Cargo.toml ]]; then
+            echo "No root Cargo.toml — skip"
+            exit 0
+          fi
+          # cargo-audit needs a lockfile for full advisories
+          if [[ ! -f Cargo.lock ]]; then
+            echo "::notice::No Cargo.lock — generating for audit only"
+            cargo generate-lockfile || true
+          fi
+          if [[ -f Cargo.lock ]]; then
+            cargo audit || {
+              echo "::warning::cargo audit reported findings (advisory; not auto-promotion)"
+              exit 0
+            }
+          else
+            echo "::notice::Could not produce Cargo.lock — audit skipped"
+          fi

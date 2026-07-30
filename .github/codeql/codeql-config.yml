@@ -1,0 +1,35 @@
+# CodeQL scope — executable registers only
+# ATOM: ATOM-CODEQL-20260730-sm100
+#
+# Lean / Agda / formal residuals are outside CodeQL language support
+# and remain on the formal ATOM trail (not CVEs).
+
+name: LogOS executable surfaces
+
+paths:
+  - crates
+  - apps
+  - cutiles
+  - coherence-mcp
+
+paths-ignore:
+  - lean/**
+  - agda/**
+  - kernels/**
+  - docs/**
+  - notebooks/**
+  - "**/.lake/**"
+  - "**/target/**"
+  - "**/node_modules/**"
+  - "**/tests/**"
+  - "**/benches/**"
+  - "**/examples/**"
+  - vendor/**
+  - 9P2000.L/**
+  - stitch/**
+  - artifacts/**
+
+queries:
+  - uses: security-extended
+  # Uncomment after noise floor is characterized:
+  # - uses: security-and-quality

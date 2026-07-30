@@ -1,131 +1,66 @@
 {
-  "atom": "ATOM-VERIFY-CERTIFICATE",
+  "atom": "ATOM-EMIT-CORE-PUSH-20260730",
   "schema": "logos.verification.certificate.v1",
   "invariant": "alpha+omega=15",
+  "category_c_only": true,
   "gauge": {
     "alpha": 7,
     "omega": 8,
     "sum": 15,
     "valid": true
   },
-  "timestamp": "2026-07-09T04:27:42.110542Z",
-  "root": "F:\\Users\\Matthew Ruhnau\\LogOS",
+  "wave": {
+    "scale": "0-100",
+    "publish_gate": 85,
+    "normalised_gate": 0.85,
+    "saif_0_98_superseded_as_default": true,
+    "note": "85 and 0.85 name the same gate"
+  },
+  "timestamp": "2026-07-30T12:00:00Z",
   "overall_ok": true,
+  "tomczak_preserved": true,
+  "auto_promoted": false,
   "checks": {
-    "layer_manifest_complete": true,
-    "r_matrix_python_mirror": true,
-    "dual_conservation_0_to_15": true
+    "dual_conservation_7_8": true,
+    "steiner_doublecount_s1_s6": true,
+    "golayOctadBlocks_card_759": true,
+    "golayOctadBlocks_pack": true,
+    "golay_octads_form_steiner": true,
+    "lean_lake_products_excluded": true,
+    "mcp_tool_schemas_snake_case": true,
+    "security_md_present": true,
+    "verify_pipeline_workflows_present": true
   },
-  "layer_digest": {
-    "python_qiskit": {
-      "verified": true,
-      "ok_count": 4,
-      "total": 4
-    },
-    "rust_cutile": {
-      "verified": true,
-      "ok_count": 2,
-      "total": 2
-    },
-    "hup_core": {
-      "verified": true,
-      "ok_count": 11,
-      "total": 11
-    },
-    "cuda": {
-      "verified": true,
-      "ok_count": 4,
-      "total": 4
-    },
-    "wgsl": {
-      "verified": true,
-      "ok_count": 1,
-      "total": 1
-    },
-    "lean": {
-      "verified": true,
-      "ok_count": 5,
-      "total": 5
-    },
-    "agda": {
-      "verified": true,
-      "ok_count": 5,
-      "total": 5
-    },
-    "docs": {
-      "verified": true,
-      "ok_count": 9,
-      "total": 9
-    },
-    "results": {
-      "verified": true,
-      "ok_count": 2,
-      "total": 2
-    },
-    "coherence_mcp": {
-      "verified": true,
-      "ok_count": 6,
-      "total": 6
-    }
+  "formal": {
+    "lean_pin": "leanprover/lean4:v4.8.0",
+    "mathlib": "v4.8.0",
+    "s5_module": "K22.MOG.SteinerDoubleCount",
+    "s5_status": "green",
+    "s5_sorry": 0,
+    "cb1_status": "residual_open_or_B",
+    "core_set_doc": "docs/formal/CORE-SET.md"
   },
-  "live_mcp_tools": [
-    "store_context",
-    "retrieve_context",
-    "map_isomorphism",
-    "check_coherence",
-    "bridge_translate",
-    "wave_coherence_check",
-    "atom_track",
-    "gate_transition",
-    "gauge_verify",
-    "fibonacci_weight",
-    "context_pack",
-    "list_platforms"
+  "surfaces_emitted": [
+    "SECURITY.md",
+    ".github/workflows/verify.yml",
+    ".github/workflows/codeql.yml",
+    ".github/workflows/security-advisory.yml",
+    ".github/workflows/mcp-validation.yml",
+    ".github/dependabot.yml",
+    "ops/ci/*",
+    "ops/githooks/*",
+    "ops/mcp/*",
+    "docs/security/*",
+    "docs/formal/CORE-SET.md",
+    "lean/CORE.md",
+    "agda/docs/CORE.md",
+    "mcps/coherence-mcp/tools/{server_healthcheck,ifdown_remediate,ifup_confidence_onboard,manifold_state}.json",
+    "coherence-mcp/coherence-site/public/manifold/index.html"
   ],
-  "logos_to_mcp": {
-    "conservation_invariant": [
-      "gauge_verify"
-    ],
-    "wave_scoring": [
-      "wave_coherence_check",
-      "check_coherence"
-    ],
-    "atom_provenance": [
-      "atom_track"
-    ],
-    "sphinx_gates": [
-      "gate_transition"
-    ],
-    "platform_roster": [
-      "list_platforms"
-    ],
-    "cross_platform_translate": [
-      "bridge_translate"
-    ],
-    "qdi_isomorphism": [
-      "map_isomorphism"
-    ],
-    "fibonacci_priority": [
-      "fibonacci_weight"
-    ],
-    "spiralsafe_context": [
-      "context_pack",
-      "store_context",
-      "retrieve_context"
-    ],
-    "mehler_plateau": [],
-    "layer_verification": [
-      "atom_track",
-      "gauge_verify",
-      "wave_coherence_check"
-    ],
-    "hup_instances": [
-      "atom_track",
-      "fibonacci_weight"
-    ]
+  "certificates_policy": {
+    "rolling_latest": "docs/encyclopedia-equilibria/certificates/cert_latest.json",
+    "domain_mog": "lean/K22/MOG/existence_certificate_mog.json",
+    "claude_code_local_only": ".atom-trail/certs/ (gitignored)"
   },
-  "cascade_map": "docs/sovereign-handoff/LAYER-CASCADE-MAP.md",
-  "mcp_map": "docs/sovereign-handoff/LOGOS-COHERENCE-MCP-MAP.md",
-  "receipt_ref": "notebooks/triweave_backend_results/verification_receipts/receipt_latest.json",
-  "profile": "Monitoring & Consensus Verifier + SuperHeisenGrok"
+  "note": "Core local files + last emittance only. Capability ≠ authority. Music conserved."
 }

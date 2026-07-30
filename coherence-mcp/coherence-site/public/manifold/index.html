@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LogOS · Manifold 2D Projection</title>
+  <meta name="description" content="Cut-and-project 2D view of LogOS manifold — live state, healthcheck, ifdown remediation, ifup TW onboarding. WAVE 0–100 · publish 85." />
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --border: #1e293b;
+      --ink: #e2e8f0;
+      --muted: #64748b;
+      --cyan: #06b6d4;
+      --magenta: #d946ef;
+      --gold: #fbbf24;
+      --ok: #10b981;
+      --warn: #f59e0b;
+      --bad: #ef4444;
+      --mono: "JetBrains Mono", "Cascadia Code", Consolas, ui-monospace, monospace;
+      --sans: Inter, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--ink);
+      font-family: var(--sans);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, #12203a 0%, transparent 55%),
+        var(--bg);
+    }
+    header {
+      display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem;
+      align-items: center; justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 20;
+    }
+    h1 {
+      margin: 0; font-family: var(--mono); font-size: 0.95rem;
+      letter-spacing: 0.04em; color: var(--cyan);
+    }
+    h1 span { color: var(--gold); }
+    .badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .badge {
+      font-family: var(--mono); font-size: 0.68rem;
+      padding: 0.28rem 0.55rem; border-radius: 999px;
+      border: 1px solid var(--border); color: var(--muted);
+    }
+    .badge.ok { color: var(--ok); border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.08); }
+    .badge.warn { color: var(--warn); border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.08); }
+    .badge.bad { color: var(--bad); border-color: rgba(239,68,68,0.4); background: rgba(239,68,68,0.08); }
+    .badge.pub { color: var(--gold); border-color: rgba(251,191,36,0.45); }
+    main {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1rem;
+      max-width: 1280px; margin: 0 auto; padding: 1rem 1.25rem 2rem;
+    }
+    @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1rem 1.1rem;
+    }
+    .panel h2 {
+      margin: 0 0 0.75rem; font-family: var(--mono); font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold);
+    }
+    #canvas-wrap {
+      position: relative; height: min(52vh, 480px);
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: #070d18;
+    }
+    canvas { display: block; width: 100%; height: 100%; }
+    .row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+    button, select {
+      font-family: var(--mono); font-size: 0.72rem;
+      background: #0b1220; color: var(--ink);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.45rem 0.7rem; cursor: pointer;
+    }
+    button:hover { border-color: var(--cyan); color: var(--cyan); }
+    button.primary { border-color: rgba(6,182,212,0.5); color: var(--cyan); }
+    button.danger { border-color: rgba(239,68,68,0.45); color: #fca5a5; }
+    button.good { border-color: rgba(16,185,129,0.45); color: #6ee7b7; }
+    .metric {
+      flex: 1 1 90px; min-width: 90px;
+      background: #0b1220; border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.55rem 0.65rem;
+    }
+    .metric .k { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); text-transform: uppercase; }
+    .metric .v { font-family: var(--mono); font-size: 1.05rem; color: var(--cyan); margin-top: 0.15rem; }
+    .metric .v.gold { color: var(--gold); }
+    .metric .v.ok { color: var(--ok); }
+    .metric .v.bad { color: var(--bad); }
+    pre {
+      margin: 0; max-height: 280px; overflow: auto;
+      font-family: var(--mono); font-size: 0.68rem; line-height: 1.45;
+      background: #070d18; border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.75rem;
+      color: #cbd5e1; white-space: pre-wrap; word-break: break-word;
+    }
+    .surf { display: grid; gap: 0.4rem; margin-bottom: 0.75rem; }
+    .surf div {
+      display: flex; justify-content: space-between; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.72rem;
+      padding: 0.4rem 0.55rem; border-radius: 8px;
+      background: #0b1220; border: 1px solid var(--border);
+    }
+    .wave-bar {
+      height: 10px; border-radius: 999px; background: #0b1220;
+      border: 1px solid var(--border); overflow: hidden; margin: 0.4rem 0 0.75rem;
+    }
+    .wave-bar > i {
+      display: block; height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--magenta));
+      width: 0%; transition: width 0.4s ease;
+    }
+    .gates {
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 0.58rem; color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      max-width: 1280px; margin: 0 auto; padding: 0 1.25rem 2rem;
+      font-family: var(--mono); font-size: 0.65rem; color: var(--muted);
+    }
+    .err {
+      color: var(--bad); font-family: var(--mono); font-size: 0.72rem;
+      padding: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LOGOS · MANIFOLD <span>2D</span> · cut &amp; project</h1>
+    <div class="badges">
+      <span class="badge" id="badge-conn">API · —</span>
+      <span class="badge pub" id="badge-wave">WAVE · —</span>
+      <span class="badge" id="badge-band">band · —</span>
+      <span class="badge ok" id="badge-cons">α=7 ω=8 Σ=15</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Higher-D → 2D projection</h2>
+      <div id="canvas-wrap"><canvas id="c"></canvas></div>
+      <div class="gates">
+        <span>60 BASELINE</span><span>80 EMERGENT</span><span>85 PUBLISH</span><span>99 CRITICAL</span>
+      </div>
+      <div class="wave-bar"><i id="wave-fill"></i></div>
+      <div class="row" id="metrics"></div>
+      <div class="row">
+        <button class="primary" id="btn-refresh">Refresh state</button>
+        <button id="btn-poll">Live poll: ON</button>
+      </div>
+      <p class="err" id="err" hidden></p>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <section class="panel">
+        <h2>Live server healthcheck</h2>
+        <div class="surf" id="surfaces"></div>
+        <button class="primary" id="btn-health">Run healthcheck</button>
+      </section>
+
+      <section class="panel">
+        <h2>ifdown remediation</h2>
+        <div class="row">
+          <select id="surface-sel">
+            <option value="all">all</option>
+            <option value="registry">registry</option>
+            <option value="manifold">manifold</option>
+            <option value="forge_ws">forge_ws</option>
+            <option value="mcp">mcp</option>
+            <option value="tui">tui</option>
+          </select>
+          <button class="danger" id="btn-ifdown">ifdown (dry-run)</button>
+        </div>
+        <pre id="out-ifdown">—</pre>
+      </section>
+
+      <section class="panel">
+        <h2>ifup · TW confidence onboarding</h2>
+        <div class="row">
+          <button class="good" id="btn-ifup">ifup onboard (7,8)</button>
+        </div>
+        <pre id="out-ifup">—</pre>
+      </section>
+
+      <section class="panel">
+        <h2>Raw state / ATOM</h2>
+        <pre id="out-state">loading…</pre>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    ATOM-MANIFOLD-2D-20260730-sm100 · WAVE 0–100 · publish gate 85 (= 0.85) ·
+    SAIF 0.98 superseded as default · snake_case tools · capability ≠ authority ·
+    tomczak_preserved · α + ω = 15 (Category C) · Hope&amp;&amp;Sauced
+  </footer>
+
+  <script>
+    const API = (path) => {
+      // Same origin when served by manifold_server; fallback for file://
+      const base = window.location.protocol.startsWith("http")
+        ? ""
+        : "http://127.0.0.1:8790";
+      return base + path;
+    };
+
+    const $ = (id) => document.getElementById(id);
+    let state = null;
+    let poll = true;
+    let pollTimer = null;
+    let animPhase = 0;
+
+    function setBadge(el, text, cls) {
+      el.textContent = text;
+      el.className = "badge" + (cls ? " " + cls : "");
+    }
+
+    async function fetchJSON(path, opts) {
+      const res = await fetch(API(path), opts);
+      if (!res.ok) throw new Error(path + " → " + res.status);
+      return res.json();
+    }
+
+    function renderMetrics(s) {
+      const w = s.wave || {};
+      const t = s.tools || {};
+      const f = s.formal || {};
+      $("metrics").innerHTML = [
+        metric("WAVE", (w.score_0_100 ?? "—") + "", w.publish_ok ? "ok" : "gold"),
+        metric("band", w.band || "—", "gold"),
+        metric("tools", `${t.logos_tool_schemas ?? "—"} / 58`, ""),
+        metric("OOB", String(t.out_of_band ?? "—"), ""),
+        metric("K22 sorry", String(f.k22_sorry ?? "—"), ""),
+        metric("uptime", (s.uptime_s ?? "—") + "s", ""),
+      ].join("");
+      $("wave-fill").style.width = Math.min(100, w.score_0_100 || 0) + "%";
+      setBadge($("badge-wave"), `WAVE · ${w.score_0_100 ?? "—"}`, w.publish_ok ? "ok" : "warn");
+      setBadge($("badge-band"), `band · ${w.band || "—"}`, w.publish_ok ? "ok" : "warn");
+    }
+
+    function metric(k, v, cls) {
+      return `<div class="metric"><div class="k">${k}</div><div class="v ${cls}">${v}</div></div>`;
+    }
+
+    function renderSurfaces(surfaces) {
+      const box = $("surfaces");
+      box.innerHTML = "";
+      for (const [name, info] of Object.entries(surfaces || {})) {
+        const ok = !!info.ok;
+        const lat = info.latency_ms != null ? `${info.latency_ms} ms` : "—";
+        const div = document.createElement("div");
+        div.innerHTML = `<span>${name}</span><span style="color:${ok ? "var(--ok)" : "var(--bad)"}">${ok ? "UP" : "DOWN"} · ${lat}</span>`;
+        box.appendChild(div);
+      }
+    }
+
+    function draw() {
+      const canvas = $("c");
+      const wrap = $("canvas-wrap");
+      const dpr = window.devicePixelRatio || 1;
+      const w = wrap.clientWidth;
+      const h = wrap.clientHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+
+      // grid
+      ctx.strokeStyle = "rgba(30,41,59,0.9)";
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 10; i++) {
+        const x = (i / 10) * w;
+        const y = (i / 10) * h;
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // axes labels
+      ctx.fillStyle = "#64748b";
+      ctx.font = "11px JetBrains Mono, monospace";
+      ctx.fillText("α structural →", 12, h - 12);
+      ctx.save();
+      ctx.translate(14, h - 40);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText("ω semantic →", 0, 0);
+      ctx.restore();
+
+      // conservation peak marker (7/15, 8/15)
+      const cx = (7 / 15) * w;
+      const cy = h - (8 / 15) * h;
+      ctx.strokeStyle = "rgba(251,191,36,0.35)";
+      ctx.beginPath();
+      ctx.arc(cx, cy, 28 + 4 * Math.sin(animPhase), 0, Math.PI * 2);
+      ctx.stroke();
+
+      const nodes = (state && state.nodes) || [];
+      const edges = (state && state.edges) || [];
+      const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
+
+      // edges
+      ctx.strokeStyle = "rgba(6,182,212,0.35)";
+      ctx.lineWidth = 1.5;
+      for (const [a, b] of edges) {
+        const na = byId[a], nb = byId[b];
+        if (!na || !nb) continue;
+        const x1 = (na.px ?? na.x) * w;
+        const y1 = h - (na.py ?? na.y) * h;
+        const x2 = (nb.px ?? nb.x) * w;
+        const y2 = h - (nb.py ?? nb.y) * h;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      }
+
+      // nodes
+      for (const n of nodes) {
+        const x = (n.px ?? n.x) * w;
+        const y = h - (n.py ?? n.y) * h;
+        const ok = n.ok !== false;
+        const r = 7 + (n.layer || 0) * 1.2;
+        ctx.beginPath();
+        ctx.fillStyle = ok ? "#06b6d4" : "#ef4444";
+        if (n.id === "conservation") ctx.fillStyle = "#fbbf24";
+        if (n.id === "manifold") ctx.fillStyle = "#d946ef";
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "#cbd5e1";
+        ctx.font = "10px JetBrains Mono, monospace";
+        ctx.fillText(n.label || n.id, x + r + 4, y + 3);
+      }
+
+      animPhase += 0.02;
+      requestAnimationFrame(draw);
+    }
+
+    async function refreshState() {
+      try {
+        state = await fetchJSON("/api/state");
+        $("err").hidden = true;
+        setBadge($("badge-conn"), "API · live", "ok");
+        renderMetrics(state);
+        renderSurfaces(state.health);
+        $("out-state").textContent = JSON.stringify(state, null, 2);
+      } catch (e) {
+        setBadge($("badge-conn"), "API · down", "bad");
+        $("err").hidden = false;
+        $("err").textContent =
+          "Cannot reach manifold API. Start: python ops/mcp/manifold_server.py — " + e.message;
+      }
+    }
+
+    async function runHealth() {
+      try {
+        const hc = await fetchJSON("/api/healthcheck");
+        renderSurfaces(hc.surfaces);
+        if (hc.wave) {
+          state = state || {};
+          state.wave = hc.wave;
+          renderMetrics({ ...state, wave: hc.wave, tools: state.tools || {}, formal: state.formal || {}, uptime_s: state.uptime_s });
+        }
+        $("out-state").textContent = JSON.stringify(hc, null, 2);
+      } catch (e) {
+        $("err").hidden = false;
+        $("err").textContent = e.message;
+      }
+    }
+
+    async function runIfdown() {
+      const surface = $("surface-sel").value;
+      try {
+        const res = await fetchJSON("/api/ifdown", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ surface, dry_run: true }),
+        });
+        $("out-ifdown").textContent = JSON.stringify(res, null, 2);
+      } catch (e) {
+        $("out-ifdown").textContent = String(e);
+      }
+    }
+
+    async function runIfup() {
+      try {
+        const res = await fetchJSON("/api/ifup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ alpha: 7, omega: 8, operator: "manifold-ui" }),
+        });
+        $("out-ifup").textContent = JSON.stringify(res, null, 2);
+        if (res.wave) {
+          setBadge($("badge-wave"), `WAVE · ${res.wave.score_0_100}`, res.wave.publish_ok ? "ok" : "warn");
+          setBadge($("badge-band"), `band · ${res.confidence_band}`, res.wave.publish_ok ? "ok" : "warn");
+        }
+      } catch (e) {
+        $("out-ifup").textContent = String(e);
+      }
+    }
+
+    function setPoll(on) {
+      poll = on;
+      $("btn-poll").textContent = "Live poll: " + (on ? "ON" : "OFF");
+      if (pollTimer) clearInterval(pollTimer);
+      if (on) pollTimer = setInterval(refreshState, 4000);
+    }
+
+    $("btn-refresh").onclick = refreshState;
+    $("btn-health").onclick = runHealth;
+    $("btn-ifdown").onclick = runIfdown;
+    $("btn-ifup").onclick = runIfup;
+    $("btn-poll").onclick = () => setPoll(!poll);
+
+    window.addEventListener("resize", () => {});
+    refreshState();
+    setPoll(true);
+    requestAnimationFrame(draw);
+  </script>
+</body>
+</html>

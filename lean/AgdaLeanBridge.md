@@ -1,8 +1,10 @@
 # Lean ↔ Agda Equivalence Notes
 
 **Cascade layer:** L10 — formal bridge  
-**Invariant:** `α + ω = 15`  
-**Date:** 2026-07-09
+**Invariant:** `α + ω = 15` (Category C label / software constant)  
+**WAVE publish gate:** 85 on 0–100 (= 0.85)  
+**Date:** 2026-07-09 · **Standardised:** 2026-07-30  
+**Core map:** `docs/formal/CORE-SET.md` · `lean/CORE.md` · `agda/docs/CORE.md`
 
 ## Shared statement
 
@@ -25,6 +27,9 @@ CONSERVATION_SUM = 15
 | Peak | `peak_resonance` (7, 8) | `peak-resonance` (7, 8) |
 | Peak proof | `peak_resonance_conserved` (`rfl`) | `peak-conserved` (`refl`) |
 | R-matrix | (executable: Rust/CUDA) | `fundamental-r-matrix` (symbolic tag) |
+| K22 / Serre | `K22.SerreScarTactic` / MOG | `TriWeavon.K22.SerreScarr` · `SerrePage` |
+| Steiner (Golay pin) | `K22.MOG.SteinerDoubleCount` S1–S6 | (A-lit twin; not required for S5) |
+| Aggregate | `lake build K22…` | `src/Everything.agda` |
 
 ## Consistency claim (informal)
 

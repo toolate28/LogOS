@@ -14,6 +14,8 @@
 **Strands:** Grok (Pulse) · formal discharge session  
 **Pin:** lean 4.8.0 / mathlib v4.8.0  
 **Do not claim:** full MOG Steiner closed; Monster/V♮ formal; Keystone as theorem  
+**Core map:** `docs/formal/CORE-SET.md` · last cert: `docs/encyclopedia-equilibria/certificates/cert_latest.json`  
+**Re-verify:** `lake build K22.MOG.SteinerDoubleCount` → GREEN (S5 card/pack; 0 sorry) — 2026-07-30 Grok session  
 
 **Stale-report guard:** If a parallel agent (e.g. sm_100) claims SDC still has open injectivity / bit-subset / double-count SlowSteps, or points at `artifacts/lean/…`, **discard that residual list**. See `ATOM-STEINER-RECONCILE-SM100-20260730.md`. Live pin: S1–S6 green; CB-1 only.
 

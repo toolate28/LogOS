@@ -1,0 +1,18 @@
+{
+  "name": "manifold_state",
+  "description": "2D cut-and-project snapshot of higher-dimensional LogOS manifold elements: conservation (α,ω), WAVE 0–100, pipeline stage 0–4, formal residual counts, MCP tool surface counts (published 58 vs LogOS OOB), bridge health, and ATOM trail tip.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "include_formal": {
+        "type": "boolean",
+        "description": "Include Category B sorry/axiom counts if available"
+      },
+      "include_tools": {
+        "type": "boolean",
+        "description": "Include tool inventory summary"
+      }
+    },
+    "additionalProperties": false
+  }
+}

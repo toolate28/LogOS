@@ -1,0 +1,47 @@
+{
+  "servers": [
+    {
+      "name": "io.github.github/github-mcp-readonly",
+      "description": "Official GitHub MCP — readonly endpoint (preferred)",
+      "version": "latest",
+      "remotes": [
+        {
+          "type": "http",
+          "url": "https://api.githubcopilot.com/mcp/readonly"
+        }
+      ],
+      "packages": [],
+      "repository": {
+        "url": "https://github.com/github/github-mcp-server",
+        "source": "github"
+      },
+      "meta": {
+        "logos_posture": "readonly",
+        "tools_wildcard_forbidden": true
+      }
+    },
+    {
+      "name": "io.github.toolate28/coherence-mcp",
+      "description": "coherence-mcp 0.4.2 — TriWeavon formal executable mapping (snake_case tools)",
+      "version": "0.4.2",
+      "remotes": [],
+      "packages": [
+        {
+          "registry_name": "npm",
+          "name": "@toolated/coherence-mcp",
+          "version": "0.4.2"
+        }
+      ],
+      "repository": {
+        "url": "https://github.com/toolate28/coherence-mcp",
+        "source": "github"
+      },
+      "meta": {
+        "tool_count_published": 58,
+        "logos_oob_tools_possible": true,
+        "wave_publish_gate": 85,
+        "wave_scale": "0-100"
+      }
+    }
+  ]
+}

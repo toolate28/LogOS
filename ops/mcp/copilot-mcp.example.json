@@ -1,0 +1,14 @@
+{
+  "$comment": "LogOS recommended Copilot MCP posture: readonly GitHub + no wildcards. ATOM: ATOM-MCP-VALIDATE-20260730-sm100",
+  "mcpServers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/readonly",
+      "tools": [
+        "get_file_contents",
+        "list_commits",
+        "search_code"
+      ]
+    }
+  }
+}

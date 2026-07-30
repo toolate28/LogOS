@@ -1,0 +1,72 @@
+# CodeQL — Rust monorepo (explicit cargo build populates TRAP)
+# ATOM: ATOM-CODEQL-20260730-sm100
+# Findings are advisory: capability ≠ authority; no auto-promotion.
+
+name: CodeQL
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    # Weekly Monday 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+concurrency:
+  group: codeql-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze (Rust)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [rust]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          config-file: .github/codeql/codeql-config.yml
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ". -> target"
+
+      # Explicit build preferred over pure autobuild for monorepo reliability.
+      # --locked omitted when Cargo.lock may be absent on first promotion.
+      - name: Build workspace (CodeQL TRAP)
+        run: |
+          set -euo pipefail
+          if [[ -f Cargo.lock ]]; then
+            cargo build --workspace --locked --all-targets || cargo build --workspace --all-targets
+          else
+            cargo build --workspace --all-targets
+          fi
+        env:
+          CARGO_TERM_COLOR: always
+          RUSTFLAGS: "-D warnings"
+        continue-on-error: true
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"

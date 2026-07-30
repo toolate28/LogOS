@@ -1,0 +1,63 @@
+# MCP Validation — fail-closed policy for committed MCP configs
+# ATOM: ATOM-MCP-VALIDATE-20260730-sm100
+#
+# Complements org/enterprise MCP registry + "Registry only".
+# Agent Bash firewall does NOT cover MCP traffic.
+
+name: MCP Validation
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "**/mcp.json"
+      - "**/mcp-config.json"
+      - "**/.vscode/mcp.json"
+      - ".github/mcp/**"
+      - ".github/copilot/**"
+      - "ops/mcp/**"
+      - ".github/workflows/mcp-validation.yml"
+      - "ops/ci/validate_mcp_config.py"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "**/mcp.json"
+      - "**/mcp-config.json"
+      - "**/.vscode/mcp.json"
+      - ".github/mcp/**"
+      - ".github/copilot/**"
+      - "ops/mcp/**"
+      - ".github/workflows/mcp-validation.yml"
+      - "ops/ci/validate_mcp_config.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-mcp-configs:
+    name: Validate committed MCP configs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Policy scan
+        run: python ops/ci/validate_mcp_config.py
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## MCP Validation"
+            echo ""
+            echo "- Fail-closed: wildcard tools \`[\"*\"]\` rejected"
+            echo "- Fail-closed: embedded secrets / classic PATs rejected"
+            echo "- Prefer GitHub MCP readonly endpoint"
+            echo "- Org **Registry only** remains higher-leverage control"
+            echo ""
+            echo "ATOM: \`ATOM-MCP-VALIDATE-20260730-sm100\`"
+          } >> "$GITHUB_STEP_SUMMARY"

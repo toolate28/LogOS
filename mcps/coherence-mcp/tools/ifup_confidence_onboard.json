@@ -1,0 +1,16 @@
+{
+  "name": "ifup_confidence_onboard",
+  "description": "Tri-Weavon confidence onboarding after ifup: walks gauge_verify → wave_coherence_check → invariant_check on peak (7,8), sets confidence band (BASELINE/EMERGENT/PUBLISH/CRITICAL) using WAVE 0–100 scale, and returns first-three-calls smoke checklist for coherence-mcp 0.4.2.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "alpha": { "type": "number", "description": "default 7" },
+      "omega": { "type": "number", "description": "default 8" },
+      "operator": {
+        "type": "string",
+        "description": "Strand or human operator label"
+      }
+    },
+    "additionalProperties": false
+  }
+}

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Optional pre-push: re-run tree guard (tracked files).
+set -euo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+if [[ -x ops/ci/guard.sh ]] || [[ -f ops/ci/guard.sh ]]; then
+  bash ops/ci/guard.sh
+fi

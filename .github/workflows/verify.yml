@@ -1,0 +1,94 @@
+# Verification pipeline — core invariants + MCP schemas + formal residual report
+# ATOM: ATOM-VERIFY-PIPELINE-20260730-sm100
+# This is the waist for executable verification. Formal sorry residuals are
+# reported as Category B (not CVEs). Capability ≠ authority.
+
+name: Verify
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    name: Tree guards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash ops/ci/guard.sh
+
+  mcp-schemas:
+    name: MCP tool schemas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate mcps/coherence-mcp/tools/*.json
+        run: python ops/ci/validate_mcp_schemas.py
+
+  formal-residual:
+    name: Formal residual report (advisory)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Count sorry / axiom (Category B)
+        run: python ops/ci/formal_residual_report.py
+        # Always green: residuals are not security defects
+        continue-on-error: false
+
+  rust-core:
+    name: Rust core + wave + invariant
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ". -> target"
+
+      - name: Check foundation crates
+        env:
+          CARGO_TERM_COLOR: always
+          # Avoid sccache path issues on clean runners
+          RUSTC_WRAPPER: ""
+        run: |
+          set -euo pipefail
+          cargo check -p reson8-core -p reson8-wave -p resonance-invariant -p reson8-forge-core
+          cargo test  -p reson8-core -p reson8-wave -p resonance-invariant -- --nocapture
+
+  rust-tui-smoke:
+    name: TUI + barcode compile smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    needs: [rust-core]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ". -> target"
+      - name: Check TUI surfaces
+        env:
+          CARGO_TERM_COLOR: always
+          RUSTC_WRAPPER: ""
+        run: |
+          set -euo pipefail
+          cargo check -p reson8-tui -p barcode-tui
