@@ -1,6 +1,6 @@
 # Dependabot — supply-chain updates (advisory; capability ≠ authority)
 # ATOM: ATOM-DEPENDABOT-20260730-sm100
-# Restored: ATOM-DEPENDABOT-LABEL-RESTORE-20260731 — labels now exist
+# Affirmed: ATOM-DEPENDABOT-LABEL-AFFIRM-20260731 — labels verified present
 version: 2
 updates:
   # Root Cargo workspace (LogOS monorepo)
