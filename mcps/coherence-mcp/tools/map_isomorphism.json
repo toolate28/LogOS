@@ -1,0 +1,31 @@
+{
+  "name": "map_isomorphism",
+  "description": "Map capabilities across platforms. Structure-preserving: if a capability exists in one AI, its isomorphic equivalent is mapped in others.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "capability": {
+        "type": "string",
+        "description": "Capability to map (e.g., 'structured_reasoning')"
+      },
+      "mappings": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Platform → implementation mapping"
+      },
+      "verify": {
+        "type": "boolean",
+        "default": false,
+        "description": "Run coherence verification on mappings"
+      }
+    },
+    "required": [
+      "capability",
+      "mappings"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

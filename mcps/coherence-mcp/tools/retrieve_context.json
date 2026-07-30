@@ -1,0 +1,18 @@
+{
+  "name": "retrieve_context",
+  "description": "Retrieve context with coherence metadata and freshness assessment.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "key": {
+        "type": "string",
+        "description": "Context key to retrieve"
+      }
+    },
+    "required": [
+      "key"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "atom": "ATOM-VERIFY-CERTIFICATE",
+  "schema": "logos.verification.certificate.v1",
+  "invariant": "alpha+omega=15",
+  "gauge": {
+    "alpha": 7,
+    "omega": 8,
+    "sum": 15,
+    "valid": true
+  },
+  "timestamp": "2026-07-09T04:27:42.110542Z",
+  "root": "F:\\Users\\Matthew Ruhnau\\LogOS",
+  "overall_ok": true,
+  "checks": {
+    "layer_manifest_complete": true,
+    "r_matrix_python_mirror": true,
+    "dual_conservation_0_to_15": true
+  },
+  "layer_digest": {
+    "python_qiskit": {
+      "verified": true,
+      "ok_count": 4,
+      "total": 4
+    },
+    "rust_cutile": {
+      "verified": true,
+      "ok_count": 2,
+      "total": 2
+    },
+    "hup_core": {
+      "verified": true,
+      "ok_count": 11,
+      "total": 11
+    },
+    "cuda": {
+      "verified": true,
+      "ok_count": 4,
+      "total": 4
+    },
+    "wgsl": {
+      "verified": true,
+      "ok_count": 1,
+      "total": 1
+    },
+    "lean": {
+      "verified": true,
+      "ok_count": 5,
+      "total": 5
+    },
+    "agda": {
+      "verified": true,
+      "ok_count": 5,
+      "total": 5
+    },
+    "docs": {
+      "verified": true,
+      "ok_count": 9,
+      "total": 9
+    },
+    "results": {
+      "verified": true,
+      "ok_count": 2,
+      "total": 2
+    },
+    "coherence_mcp": {
+      "verified": true,
+      "ok_count": 6,
+      "total": 6
+    }
+  },
+  "live_mcp_tools": [
+    "store_context",
+    "retrieve_context",
+    "map_isomorphism",
+    "check_coherence",
+    "bridge_translate",
+    "wave_coherence_check",
+    "atom_track",
+    "gate_transition",
+    "gauge_verify",
+    "fibonacci_weight",
+    "context_pack",
+    "list_platforms"
+  ],
+  "logos_to_mcp": {
+    "conservation_invariant": [
+      "gauge_verify"
+    ],
+    "wave_scoring": [
+      "wave_coherence_check",
+      "check_coherence"
+    ],
+    "atom_provenance": [
+      "atom_track"
+    ],
+    "sphinx_gates": [
+      "gate_transition"
+    ],
+    "platform_roster": [
+      "list_platforms"
+    ],
+    "cross_platform_translate": [
+      "bridge_translate"
+    ],
+    "qdi_isomorphism": [
+      "map_isomorphism"
+    ],
+    "fibonacci_priority": [
+      "fibonacci_weight"
+    ],
+    "spiralsafe_context": [
+      "context_pack",
+      "store_context",
+      "retrieve_context"
+    ],
+    "mehler_plateau": [],
+    "layer_verification": [
+      "atom_track",
+      "gauge_verify",
+      "wave_coherence_check"
+    ],
+    "hup_instances": [
+      "atom_track",
+      "fibonacci_weight"
+    ]
+  },
+  "cascade_map": "docs/sovereign-handoff/LAYER-CASCADE-MAP.md",
+  "mcp_map": "docs/sovereign-handoff/LOGOS-COHERENCE-MCP-MAP.md",
+  "receipt_ref": "notebooks/triweave_backend_results/verification_receipts/receipt_latest.json",
+  "profile": "Monitoring & Consensus Verifier + SuperHeisenGrok"
+}

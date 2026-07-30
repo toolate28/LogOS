@@ -1,0 +1,33 @@
+{
+  "name": "bridge_translate",
+  "description": "Translate content between platform contexts through the vortex bridge. Strips noise, preserves semantics, verifies coherence.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to translate"
+      },
+      "source": {
+        "type": "string",
+        "description": "Source platform"
+      },
+      "target": {
+        "type": "string",
+        "description": "Target platform"
+      },
+      "coherence_threshold": {
+        "type": "number",
+        "default": 60,
+        "description": "Minimum coherence for translation"
+      }
+    },
+    "required": [
+      "content",
+      "source",
+      "target"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

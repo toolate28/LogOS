@@ -1,0 +1,33 @@
+{
+  "name": "wave_validate",
+  "description": "Validate documentation/code coherence using the foundational WAVE algorithm. Returns comprehensive coherence score (0-100) with semantic, reference, structure, and consistency analysis. Supports configurable thresholds (>60% baseline, >80% emergent, >99% maximum). Includes Fibonacci weighting for critical sections and full ATOM trail provenance.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Single document string or array of strings for multi-document analysis"
+      },
+      "threshold": {
+        "type": "number",
+        "description": "Minimum acceptable coherence percentage (default: 80). Common thresholds: >60 (baseline), >80 (emergent), >99 (maximum)",
+        "default": 80,
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

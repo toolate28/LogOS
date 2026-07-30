@@ -1,0 +1,18 @@
+{
+  "atom": "ATOM-AUKUS-CHESSBOARD-20260629",
+  "generated": "2026-06-29T09:21:27.306853Z",
+  "alpha": 7,
+  "omega": 8,
+  "move_count": 7,
+  "mean_wave": 0.8871428571428571,
+  "top_negative_space": {
+    "gap": "Proof\u2192daily VOID loop",
+    "crowdedness": 0.08,
+    "corridor": "C_quasicrystal",
+    "moat": "this notebook",
+    "score": 0.92
+  },
+  "serre_scarr_status": "E2\u2192E\u221e closure \u00b7 experiment phase active",
+  "doctrine": "negative space via daily experiment constructs",
+  "completion_hash": "ad9fbc9a4c5ec729"
+}

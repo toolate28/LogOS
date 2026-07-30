@@ -1,0 +1,30 @@
+{
+  "atom": "ATOM-MCP-PAYLOAD-INDEX",
+  "timestamp": "2026-07-09T04:27:42.112775Z",
+  "live_tools": [
+    "store_context",
+    "retrieve_context",
+    "map_isomorphism",
+    "check_coherence",
+    "bridge_translate",
+    "wave_coherence_check",
+    "atom_track",
+    "gate_transition",
+    "gauge_verify",
+    "fibonacci_weight",
+    "context_pack",
+    "list_platforms"
+  ],
+  "payloads": {
+    "atom_track.json": "F:\\Users\\Matthew Ruhnau\\LogOS\\notebooks\\triweave_backend_results\\mcp_payloads\\atom_track.json",
+    "gauge_verify.json": "F:\\Users\\Matthew Ruhnau\\LogOS\\notebooks\\triweave_backend_results\\mcp_payloads\\gauge_verify.json",
+    "wave_coherence_check.json": "F:\\Users\\Matthew Ruhnau\\LogOS\\notebooks\\triweave_backend_results\\mcp_payloads\\wave_coherence_check.json",
+    "store_context.json": "F:\\Users\\Matthew Ruhnau\\LogOS\\notebooks\\triweave_backend_results\\mcp_payloads\\store_context.json",
+    "wave_content.txt": "F:\\Users\\Matthew Ruhnau\\LogOS\\notebooks\\triweave_backend_results\\mcp_payloads\\wave_content.txt"
+  },
+  "inspector_config": "docs/sovereign-handoff/mcp-inspector.coherence.json",
+  "env_required": {
+    "LOGOS_ROOT": "F:\\Users\\Matthew Ruhnau\\LogOS",
+    "ATOM_TRAIL_ROOT": "F:\\Users\\Matthew Ruhnau\\LogOS\\.atom-trail"
+  }
+}

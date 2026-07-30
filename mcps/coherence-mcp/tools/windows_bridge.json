@@ -1,0 +1,32 @@
+{
+  "name": "windows_bridge",
+  "description": "Communicate with Windows systems via PowerShell. Invoke MCP tools through PowerShell HTTP requests or check named-pipe availability for local IPC.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": [
+          "invoke_tool",
+          "check_pipe"
+        ],
+        "description": "Action to perform"
+      },
+      "toolName": {
+        "type": "string",
+        "description": "MCP tool name (for invoke_tool)"
+      },
+      "toolArgs": {
+        "type": "object",
+        "description": "MCP tool arguments (for invoke_tool)"
+      },
+      "serverUrl": {
+        "type": "string",
+        "description": "Server URL (default: http://localhost:3000)"
+      }
+    },
+    "required": [
+      "action"
+    ]
+  }
+}

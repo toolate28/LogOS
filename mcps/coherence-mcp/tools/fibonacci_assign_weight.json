@@ -1,0 +1,23 @@
+{
+  "name": "fibonacci_assign_weight",
+  "description": "Assign Fibonacci weight to a system component based on importance. Returns weight position, impact multiplier, and priority level (critical/high/medium/low). Higher importance = exponentially greater weight.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "componentName": {
+        "type": "string",
+        "description": "Name of the component to weight"
+      },
+      "importance": {
+        "type": "number",
+        "description": "Importance score (0-100). Maps to Fibonacci position for exponential weighting.",
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    "required": [
+      "componentName",
+      "importance"
+    ]
+  }
+}

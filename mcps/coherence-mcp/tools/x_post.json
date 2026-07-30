@@ -1,0 +1,20 @@
+{
+  "name": "x_post",
+  "description": "Post a tweet to X (Twitter) as the authenticated user. Supports thread replies via replyToTweetId. Requires OAuth 1.0a env vars (X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET).",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "Tweet text (max 280 chars)"
+      },
+      "replyToTweetId": {
+        "type": "string",
+        "description": "Optional tweet id to reply to (thread continuation)"
+      }
+    },
+    "required": [
+      "text"
+    ]
+  }
+}

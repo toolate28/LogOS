@@ -1,0 +1,447 @@
+{
+  "atom": "ATOM-VERIFY-RECEIPT",
+  "invariant": "alpha+omega=15",
+  "profile": "Monitoring & Consensus Verifier + SuperHeisenGrok",
+  "timestamp": "2026-07-09T02:48:46.355563Z",
+  "root": "F:\\Users\\Matthew Ruhnau\\LogOS",
+  "layers": [
+    {
+      "layer": "python_qiskit",
+      "verified": true,
+      "ok_count": 4,
+      "total": 4,
+      "files": [
+        {
+          "path": "notebooks/gpu/Agent_M24_RMatrix.ipynb",
+          "status": "OK",
+          "sha256_16": "b427c45724a03779",
+          "size_bytes": 4413,
+          "is_dir": false
+        },
+        {
+          "path": "notebooks/triweave-backends.ipynb",
+          "status": "OK",
+          "sha256_16": "fdf642bece3c3185",
+          "size_bytes": 22362,
+          "is_dir": false
+        },
+        {
+          "path": "notebooks/verification_orchestrator.ipynb",
+          "status": "OK",
+          "sha256_16": "f5ad01e178fda93f",
+          "size_bytes": 4525,
+          "is_dir": false
+        },
+        {
+          "path": "notebooks/verification_helpers.py",
+          "status": "OK",
+          "sha256_16": "72906ae01047a36d",
+          "size_bytes": 7275,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.337369Z"
+    },
+    {
+      "layer": "rust_cutile",
+      "verified": true,
+      "ok_count": 2,
+      "total": 2,
+      "files": [
+        {
+          "path": "cutiles/cutile/src/core/r_matrix.rs",
+          "status": "OK",
+          "sha256_16": "b35cc914980ad667",
+          "size_bytes": 2053,
+          "is_dir": false
+        },
+        {
+          "path": "cutiles/cutile/src/core/mod.rs",
+          "status": "OK",
+          "sha256_16": "9caf6ba9f03eab8f",
+          "size_bytes": 636,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.338675Z"
+    },
+    {
+      "layer": "hup_core",
+      "verified": true,
+      "ok_count": 10,
+      "total": 10,
+      "files": [
+        {
+          "path": "hup/INSTANCE.md",
+          "status": "OK",
+          "sha256_16": "94d7e84741d144d7",
+          "size_bytes": 2201,
+          "is_dir": false
+        },
+        {
+          "path": "hup/rust/src/main.rs",
+          "status": "OK",
+          "sha256_16": "ac0dd1d4e702c23e",
+          "size_bytes": 6182,
+          "is_dir": false
+        },
+        {
+          "path": "hup/python/constraint_mathematics.py",
+          "status": "OK",
+          "sha256_16": "b935e1a55c505915",
+          "size_bytes": 1188,
+          "is_dir": false
+        },
+        {
+          "path": "hup/python/dimensional_collapse.py",
+          "status": "OK",
+          "sha256_16": "47a14a6a2683df2d",
+          "size_bytes": 10327,
+          "is_dir": false
+        },
+        {
+          "path": "hup/typescript/partial-port.ts",
+          "status": "OK",
+          "sha256_16": "8fe6e425b1f98cbd",
+          "size_bytes": 1237,
+          "is_dir": false
+        },
+        {
+          "path": "hup/unikernel/unikernel.ml",
+          "status": "OK",
+          "sha256_16": "9267bc7b15e46f38",
+          "size_bytes": 340,
+          "is_dir": false
+        },
+        {
+          "path": "hup/instance2-redox/README.md",
+          "status": "OK",
+          "sha256_16": "ea8abfc310962dfb",
+          "size_bytes": 1454,
+          "is_dir": false
+        },
+        {
+          "path": "hup/instance3-rvm/README.md",
+          "status": "OK",
+          "sha256_16": "97a45ddbb89c1158",
+          "size_bytes": 1887,
+          "is_dir": false
+        },
+        {
+          "path": "hup/instance3-rvm/run-rvm.sh",
+          "status": "OK",
+          "sha256_16": "65a8e2524b9303d0",
+          "size_bytes": 1392,
+          "is_dir": false
+        },
+        {
+          "path": "docs/sovereign-handoff/mehler-serrescarr-convergence.dag.yaml",
+          "status": "OK",
+          "sha256_16": "5925659e452bb397",
+          "size_bytes": 3538,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.344294Z"
+    },
+    {
+      "layer": "cuda",
+      "verified": true,
+      "ok_count": 4,
+      "total": 4,
+      "files": [
+        {
+          "path": "kernels/fundamental_r_matrix.cu",
+          "status": "OK",
+          "sha256_16": "68758fd624f7f3f5",
+          "size_bytes": 1539,
+          "is_dir": false
+        },
+        {
+          "path": "kernels/fundamental_r_matrix.cuh",
+          "status": "OK",
+          "sha256_16": "5655cd89ab874f32",
+          "size_bytes": 399,
+          "is_dir": false
+        },
+        {
+          "path": "kernels/r_matrix_interface.h",
+          "status": "OK",
+          "sha256_16": "0884fcdeff59a43c",
+          "size_bytes": 976,
+          "is_dir": false
+        },
+        {
+          "path": "cutiles/r_matrix_host.cpp",
+          "status": "OK",
+          "sha256_16": "5b369f2297c9e3b3",
+          "size_bytes": 1733,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.345603Z"
+    },
+    {
+      "layer": "wgsl",
+      "verified": true,
+      "ok_count": 1,
+      "total": 1,
+      "files": [
+        {
+          "path": "kernels/fundamental_r_matrix.wgsl",
+          "status": "OK",
+          "sha256_16": "924860df83e4a7c3",
+          "size_bytes": 1366,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.345929Z"
+    },
+    {
+      "layer": "lean",
+      "verified": true,
+      "ok_count": 5,
+      "total": 5,
+      "files": [
+        {
+          "path": "lean/TriWeavon/ConservationInvariant.lean",
+          "status": "OK",
+          "sha256_16": "13cbcd09e2d2351b",
+          "size_bytes": 1297,
+          "is_dir": false
+        },
+        {
+          "path": "lean/AgdaLeanBridge.md",
+          "status": "OK",
+          "sha256_16": "4dd7afa172c4eaf1",
+          "size_bytes": 1526,
+          "is_dir": false
+        },
+        {
+          "path": "lean/K22/M24Coefficient.lean",
+          "status": "OK",
+          "sha256_16": "eede4dfa2b30184b",
+          "size_bytes": 1270,
+          "is_dir": false
+        },
+        {
+          "path": "lean/K22/MiracleOctadGenerator.lean",
+          "status": "OK",
+          "sha256_16": "351ad9968004d8ce",
+          "size_bytes": 4519,
+          "is_dir": false
+        },
+        {
+          "path": "lean/TriWeavon/SubRiemannian/Core.lean",
+          "status": "OK",
+          "sha256_16": "f28bf542fe117edd",
+          "size_bytes": 1225,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.350460Z"
+    },
+    {
+      "layer": "agda",
+      "verified": true,
+      "ok_count": 5,
+      "total": 5,
+      "files": [
+        {
+          "path": "agda/src/TriWeavon/ConservationRMatrix.agda",
+          "status": "OK",
+          "sha256_16": "e5e474dbe8f57ff7",
+          "size_bytes": 1560,
+          "is_dir": false
+        },
+        {
+          "path": "agda/src/TriWeavon/Core.agda",
+          "status": "OK",
+          "sha256_16": "831488c2676c081d",
+          "size_bytes": 622,
+          "is_dir": false
+        },
+        {
+          "path": "agda/src/TriWeavon/K22/SerreScarr.agda",
+          "status": "OK",
+          "sha256_16": "b006cd5eeb4a4d5b",
+          "size_bytes": 1191,
+          "is_dir": false
+        },
+        {
+          "path": "agda/src/TriWeavon/SubRiemannian/MehlerJesusBridge.agda",
+          "status": "OK",
+          "sha256_16": "2842d8f30fd4ba14",
+          "size_bytes": 3397,
+          "is_dir": false
+        },
+        {
+          "path": "agda/src/Everything.agda",
+          "status": "OK",
+          "sha256_16": "87c61798ee4fa6f2",
+          "size_bytes": 662,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.353305Z"
+    },
+    {
+      "layer": "docs",
+      "verified": true,
+      "ok_count": 7,
+      "total": 7,
+      "files": [
+        {
+          "path": "docs/sovereign-handoff/LAYER-CASCADE-MAP.md",
+          "status": "OK",
+          "sha256_16": "dccb58190a1f3107",
+          "size_bytes": 5474,
+          "is_dir": false
+        },
+        {
+          "path": "docs/sovereign-handoff/CONSENSUS-VERIFIER-M1-M2.md",
+          "status": "OK",
+          "sha256_16": "b345850bb79adb0f",
+          "size_bytes": 2483,
+          "is_dir": false
+        },
+        {
+          "path": "docs/sovereign-handoff/overlays/trainmap-interjoin.md",
+          "status": "OK",
+          "sha256_16": "73b30957568230f2",
+          "size_bytes": 2084,
+          "is_dir": false
+        },
+        {
+          "path": "docs/sovereign-handoff/terminal-shaders/INSTANCE2-REDOX-SUITE.md",
+          "status": "OK",
+          "sha256_16": "e90c727e0e437f66",
+          "size_bytes": 7847,
+          "is_dir": false
+        },
+        {
+          "path": "docs/sovereign-handoff/session-handovers/HO-05-CUTILE-TDA-M24.md",
+          "status": "OK",
+          "sha256_16": "d69a38865229ae46",
+          "size_bytes": 4898,
+          "is_dir": false
+        },
+        {
+          "path": "docs/sovereign-handoff/UNIFIED-WORKFLOW-FROM-MAX-CONTEXT-SESSIONS-2026-07-09.md",
+          "status": "OK",
+          "sha256_16": "62a3ddd0ad31bdd0",
+          "size_bytes": 13500,
+          "is_dir": false
+        },
+        {
+          "path": "SAIF-Docs/Mehler_CoherenceMCP_Wiring_v0.5.0.md",
+          "status": "OK",
+          "sha256_16": "34f62bc8a9bdaea2",
+          "size_bytes": 1348,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.355273Z"
+    },
+    {
+      "layer": "results",
+      "verified": true,
+      "ok_count": 2,
+      "total": 2,
+      "files": [
+        {
+          "path": "notebooks/triweave_backend_results/ax_wave_optimization.json",
+          "status": "OK",
+          "sha256_16": "8bd3ffe1c97519c4",
+          "size_bytes": 378,
+          "is_dir": false
+        },
+        {
+          "path": "notebooks/triweave_backend_results/dspy_strand_router.json",
+          "status": "OK",
+          "sha256_16": "3ed50c4c93682f79",
+          "size_bytes": 512,
+          "is_dir": false
+        }
+      ],
+      "timestamp": "2026-07-09T02:48:46.355538Z"
+    }
+  ],
+  "overall_ok": true,
+  "checks": {
+    "layer_manifest_complete": true,
+    "r_matrix_python_mirror": true,
+    "dual_conservation_0_to_15": true
+  },
+  "r_matrix_sample": {
+    "q": 1.4142135623730951,
+    "entries_re_im": [
+      [
+        1.4142135623730951,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.7071067811865475,
+        0.0
+      ],
+      [
+        -1.0000000000000004,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.4142135623730951,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.7071067811865475,
+        0.0
+      ]
+    ],
+    "layout": "row-major-4x4-complex"
+  },
+  "cascade_map": "docs/sovereign-handoff/LAYER-CASCADE-MAP.md"
+}

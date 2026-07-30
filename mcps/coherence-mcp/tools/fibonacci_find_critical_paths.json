@@ -1,0 +1,33 @@
+{
+  "name": "fibonacci_find_critical_paths",
+  "description": "Identify critical paths by analyzing component weights and priorities. Groups by risk level (extreme/high/medium/low) with total weight calculations.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "components": {
+        "type": "array",
+        "description": "Array of weighted components",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "fibonacciWeight": {
+              "type": "number"
+            },
+            "impactMultiplier": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "components"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "gemini_check_coherence",
+  "description": "Run a coherence check on content via Google Gemini API. The model scores content 0-100 and returns analysis. Requires GEMINI_API_KEY.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to check for coherence"
+      },
+      "model": {
+        "type": "string",
+        "description": "Gemini model (default: gemini-2.0-flash)"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

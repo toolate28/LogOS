@@ -1,0 +1,29 @@
+{
+  "name": "check_coherence",
+  "description": "Validate coherence scores between documentation and code, or analyze standalone content.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to analyze"
+      },
+      "reference": {
+        "type": "string",
+        "description": "Reference content for comparison (e.g., documentation)"
+      },
+      "threshold": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "default": 60,
+        "description": "Minimum coherence threshold"
+      }
+    },
+    "required": [
+      "content"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

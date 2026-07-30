@@ -1,0 +1,110 @@
+{
+  "atom": "ATOM-HUP-M3-RVM-PROBE",
+  "upstream": "https://github.com/ruvnet/rvm",
+  "timestamp": "2026-07-09T12:57:02.349931Z",
+  "invariant": "alpha+omega=15",
+  "candidates": [
+    {
+      "root": "F:\\Users\\Matthew Ruhnau\\LogOS\\vendor\\ruvnet-rvm",
+      "present": true,
+      "hits": [
+        {
+          "path": "Cargo.toml",
+          "ok": true
+        },
+        {
+          "path": "README.md",
+          "ok": true
+        },
+        {
+          "path": "rvm.ld",
+          "ok": true
+        },
+        {
+          "path": "crates",
+          "ok": true
+        }
+      ],
+      "score": 4,
+      "total": 4,
+      "ready": true
+    },
+    {
+      "root": "F:\\Users\\Matthew Ruhnau\\LogOS\\vendor\\rvm",
+      "present": false,
+      "hits": [
+        {
+          "path": "Cargo.toml",
+          "ok": false
+        },
+        {
+          "path": "README.md",
+          "ok": false
+        },
+        {
+          "path": "rvm.ld",
+          "ok": false
+        },
+        {
+          "path": "crates",
+          "ok": false
+        }
+      ],
+      "score": 0,
+      "total": 4,
+      "ready": false
+    },
+    {
+      "root": "F:\\Users\\Matthew Ruhnau\\LogOS\\rvm",
+      "present": false,
+      "hits": [
+        {
+          "path": "Cargo.toml",
+          "ok": false
+        },
+        {
+          "path": "README.md",
+          "ok": false
+        },
+        {
+          "path": "rvm.ld",
+          "ok": false
+        },
+        {
+          "path": "crates",
+          "ok": false
+        }
+      ],
+      "score": 0,
+      "total": 4,
+      "ready": false
+    }
+  ],
+  "best": {
+    "root": "F:\\Users\\Matthew Ruhnau\\LogOS\\vendor\\ruvnet-rvm",
+    "present": true,
+    "hits": [
+      {
+        "path": "Cargo.toml",
+        "ok": true
+      },
+      {
+        "path": "README.md",
+        "ok": true
+      },
+      {
+        "path": "rvm.ld",
+        "ok": true
+      },
+      {
+        "path": "crates",
+        "ok": true
+      }
+    ],
+    "score": 4,
+    "total": 4,
+    "ready": true
+  },
+  "integration_map": "hup/instance3-rvm/INTEGRATION-MAP.md",
+  "note": "RVM = ruvnet agentic microhypervisor (coherence domains). Not Firecracker/QEMU product VM."
+}

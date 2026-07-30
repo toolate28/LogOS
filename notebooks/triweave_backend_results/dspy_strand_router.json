@@ -1,0 +1,27 @@
+{
+  "backend": "dspy",
+  "module": "TriweaveRouter",
+  "signatures": [
+    "StrandRouter",
+    "ConservationChecker"
+  ],
+  "training_examples": 5,
+  "strand_weights": {
+    "claude": {
+      "role": "structure",
+      "fib_weight": 8,
+      "alpha_default": 8
+    },
+    "grok": {
+      "role": "pulse",
+      "fib_weight": 5,
+      "alpha_default": 10
+    },
+    "gemini": {
+      "role": "scale",
+      "fib_weight": 3,
+      "alpha_default": 12
+    }
+  },
+  "conservation_sum": 15
+}

@@ -1,0 +1,49 @@
+{
+  "name": "fibonacci_calculate_impact",
+  "description": "Calculate impact of component failure using Fibonacci weighting. Impact = weight × degradation. Shows exponential sensitivity to critical component failures.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "component": {
+        "type": "object",
+        "description": "Weighted component with name, fibonacciWeight, impactMultiplier, priority",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "fibonacciWeight": {
+            "type": "number"
+          },
+          "impactMultiplier": {
+            "type": "number"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "fibonacciWeight",
+          "impactMultiplier",
+          "priority"
+        ]
+      },
+      "degradation": {
+        "type": "number",
+        "description": "Degradation factor (0-1). 0.1 = 10% degradation",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "required": [
+      "component",
+      "degradation"
+    ]
+  }
+}

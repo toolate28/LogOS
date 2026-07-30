@@ -1,0 +1,64 @@
+{
+  "name": "vortex_translate",
+  "description": "Translate content between AI platforms (Claude, Grok, Gemini, Llama, DeepSeek, Qwen, Mistral) through the vortex bridge. Strips platform-specific noise, preserves semantic coherence, and logs translation provenance in the ATOM trail.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to translate"
+      },
+      "source": {
+        "type": "string",
+        "enum": [
+          "claude",
+          "grok",
+          "gemini",
+          "llama",
+          "deepseek",
+          "qwen",
+          "mistral",
+          "qdi",
+          "quantum-redstone",
+          "spiralsafe",
+          "vortex-bridges",
+          "reson8-labs",
+          "hope-ai-npc-suite",
+          "human",
+          "generic"
+        ],
+        "description": "Source platform"
+      },
+      "target": {
+        "type": "string",
+        "enum": [
+          "claude",
+          "grok",
+          "gemini",
+          "llama",
+          "deepseek",
+          "qwen",
+          "mistral",
+          "qdi",
+          "quantum-redstone",
+          "spiralsafe",
+          "vortex-bridges",
+          "reson8-labs",
+          "hope-ai-npc-suite",
+          "human",
+          "generic"
+        ],
+        "description": "Target platform"
+      },
+      "coherenceThreshold": {
+        "type": "number",
+        "description": "Minimum coherence score (0-100) for faithful translation (default: 60)"
+      }
+    },
+    "required": [
+      "content",
+      "source",
+      "target"
+    ]
+  }
+}

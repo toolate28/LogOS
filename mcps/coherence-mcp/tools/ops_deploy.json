@@ -1,0 +1,25 @@
+{
+  "name": "ops_deploy",
+  "description": "Deploy to environment with optional dry-run (guarded operation with production safety)",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "env": {
+        "type": "string",
+        "enum": [
+          "development",
+          "staging",
+          "production"
+        ],
+        "description": "Target environment for deployment"
+      },
+      "dryRun": {
+        "type": "boolean",
+        "description": "Whether to perform a dry run (required for production)"
+      }
+    },
+    "required": [
+      "env"
+    ]
+  }
+}

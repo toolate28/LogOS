@@ -1,0 +1,20 @@
+{
+  "name": "grok_check_coherence",
+  "description": "Run a coherence check on content via xAI's Grok. Returns score (0-100) and WAVE-dimensional analysis. Requires XAI_API_KEY env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to check for coherence"
+      },
+      "model": {
+        "type": "string",
+        "description": "Model name (default: grok-3)"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

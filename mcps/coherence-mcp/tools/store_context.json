@@ -1,0 +1,55 @@
+{
+  "name": "store_context",
+  "description": "Store cross-platform context with coherence metadata. Conservation law enforced.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "key": {
+        "type": "string",
+        "description": "Unique context key"
+      },
+      "content": {
+        "type": "string",
+        "description": "Context content to store"
+      },
+      "platform": {
+        "type": "string",
+        "enum": [
+          "claude",
+          "grok",
+          "gemini",
+          "llama",
+          "human",
+          "generic"
+        ],
+        "description": "Source platform"
+      },
+      "alpha": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 15,
+        "default": 7,
+        "description": "α gauge value (structural rigidity)"
+      },
+      "omega": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 15,
+        "default": 8,
+        "description": "ω gauge value (semantic intent)"
+      },
+      "metadata": {
+        "type": "object",
+        "additionalProperties": {},
+        "description": "Additional metadata"
+      }
+    },
+    "required": [
+      "key",
+      "content",
+      "platform"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

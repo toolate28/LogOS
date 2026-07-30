@@ -1,0 +1,8 @@
+{
+  "name": "ops_health",
+  "description": "Check operational health status via SpiralSafe API (https://api.spiralsafe.org/health)",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

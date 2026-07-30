@@ -1,0 +1,8 @@
+{
+  "name": "grok_list_models",
+  "description": "List available models at the xAI API endpoint. Requires XAI_API_KEY env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

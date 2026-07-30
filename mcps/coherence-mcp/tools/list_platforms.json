@@ -1,0 +1,9 @@
+{
+  "name": "list_platforms",
+  "description": "List all supported platforms with their capabilities and bridge characteristics.",
+  "inputSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {}
+  }
+}

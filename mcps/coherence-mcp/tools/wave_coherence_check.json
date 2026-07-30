@@ -1,0 +1,18 @@
+{
+  "name": "wave_coherence_check",
+  "description": "Full WAVE coherence analysis: curl (circular reasoning), divergence (unresolved expansion), potential (latent structure), entropy (information density).",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to analyze"
+      }
+    },
+    "required": [
+      "content"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

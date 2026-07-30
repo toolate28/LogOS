@@ -1,0 +1,8 @@
+{
+  "name": "rust_toolchain_status",
+  "description": "Rust toolchain health for the active host: cargo/rustc/rustup on PATH, CARGO_HOME/RUSTUP_HOME, MSVC Build Tools discovery, and recommended PATH additions for NUCBOX/Beelink layouts.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

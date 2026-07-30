@@ -1,0 +1,17 @@
+{
+  "name": "handoff_packet_validate",
+  "description": "Validate a HANDOFF_PACKET (Opus↔Sonnet downshift or bio-digital handoff) for required fields, invariant encoding, and optional α/ω conservation.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Raw HANDOFF_PACKET markdown/text"
+      },
+      "packet": {
+        "type": "object",
+        "description": "Structured packet object"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "gauge_verify",
+  "description": "Verify the conservation law: α + ω = 15. Returns gauge status and Fibonacci resonance score.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "alpha": {
+        "type": "number",
+        "description": "α value (structural rigidity)"
+      },
+      "omega": {
+        "type": "number",
+        "description": "ω value (semantic intent)"
+      }
+    },
+    "required": [
+      "alpha",
+      "omega"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

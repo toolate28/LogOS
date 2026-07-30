@@ -1,0 +1,26 @@
+{
+  "name": "dropout_scan",
+  "description": "Scan the dropout registry for open gaps, hard gates, and remediation signals. Filters by severity and class.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "severity": {
+        "type": "string",
+        "enum": [
+          "LOW",
+          "MED",
+          "HIGH",
+          "CRIT"
+        ]
+      },
+      "class": {
+        "type": "string",
+        "description": "scan_coverage | task_never_run | integration_e2e | workspace_drift | etc."
+      },
+      "hard_gates_only": {
+        "type": "boolean",
+        "description": "Only return SPIKE/hard-gate dropouts"
+      }
+    }
+  }
+}

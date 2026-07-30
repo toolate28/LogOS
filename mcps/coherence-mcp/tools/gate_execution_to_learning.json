@@ -1,0 +1,13 @@
+{
+  "name": "gate_execution_to_learning",
+  "description": "Gate transition from execution phase to learning phase (ATOM → SAIF) with real validation",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "context": {
+        "type": "object",
+        "description": "Context data for the gate transition"
+      }
+    }
+  }
+}

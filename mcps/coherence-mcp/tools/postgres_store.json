@@ -1,0 +1,21 @@
+{
+  "name": "postgres_store",
+  "description": "Store a coherence result or ATOM entry in a PostgreSQL table via REST. Requires POSTGRES_URL env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "table": {
+        "type": "string",
+        "description": "Target table name"
+      },
+      "data": {
+        "type": "object",
+        "description": "Record to insert (key-value pairs)"
+      }
+    },
+    "required": [
+      "table",
+      "data"
+    ]
+  }
+}

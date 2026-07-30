@@ -1,0 +1,13 @@
+{
+  "name": "android_scaffold",
+  "description": "Generate a Kotlin/Android project scaffold for a coherence-mcp client app. Includes OkHttp client, BroadcastReceiver for intent-based invocation, and build.gradle.kts.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "packageName": {
+        "type": "string",
+        "description": "Android package name (default: org.spiralsafe.coherencemcp)"
+      }
+    }
+  }
+}

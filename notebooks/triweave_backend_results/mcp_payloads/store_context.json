@@ -1,0 +1,11 @@
+{
+  "key": "logos-receipt-latest",
+  "content": "{\n  \"overall_ok\": true,\n  \"checks\": {\n    \"layer_manifest_complete\": true,\n    \"r_matrix_python_mirror\": true,\n    \"dual_conservation_0_to_15\": true\n  },\n  \"timestamp\": \"2026-07-09T04:27:42.109386Z\"\n}",
+  "platform": "generic",
+  "alpha": 7,
+  "omega": 8,
+  "metadata": {
+    "atom": "ATOM-VERIFY-RECEIPT",
+    "root": "F:\\Users\\Matthew Ruhnau\\LogOS"
+  }
+}

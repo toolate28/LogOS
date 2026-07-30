@@ -1,0 +1,16 @@
+{
+  "name": "bump_validate",
+  "description": "Validate a handoff for BUMP compatibility: H&&S markers (WAVE/PASS/PING/SYNC/BLOCK), routing, and context preservation",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "handoff": {
+        "type": "object",
+        "description": "Handoff data to validate (must include source, target, payload)"
+      }
+    },
+    "required": [
+      "handoff"
+    ]
+  }
+}

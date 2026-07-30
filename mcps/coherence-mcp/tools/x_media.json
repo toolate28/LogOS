@@ -1,0 +1,17 @@
+{
+  "name": "x_media",
+  "description": "List media attachments from a user's recent X posts. Requires X_BEARER_TOKEN.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "username": {
+        "type": "string",
+        "description": "X handle (default: reson8Labs)"
+      },
+      "maxResults": {
+        "type": "number",
+        "description": "Tweets to scan (default 30)"
+      }
+    }
+  }
+}

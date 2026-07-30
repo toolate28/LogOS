@@ -1,0 +1,24 @@
+{
+  "name": "gemini_translate",
+  "description": "Translate content for Google Gemini consumption via the Gemini API. Strips platform-specific noise, preserves semantic content, and reformats for Gemini's multimodal/scale strengths. Requires GEMINI_API_KEY.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to translate for Gemini"
+      },
+      "metadata": {
+        "type": "object",
+        "description": "Optional metadata context for translation"
+      },
+      "model": {
+        "type": "string",
+        "description": "Gemini model (default: gemini-2.0-flash)"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "x_timeline",
+  "description": "Fetch recent posts for an X username (default @reson8Labs). Requires X_BEARER_TOKEN.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "username": {
+        "type": "string",
+        "description": "X handle without @ (default: reson8Labs)"
+      },
+      "maxResults": {
+        "type": "number",
+        "description": "Max tweets (5-100, default 20)"
+      }
+    }
+  }
+}

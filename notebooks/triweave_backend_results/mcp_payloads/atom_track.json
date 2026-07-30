@@ -1,0 +1,17 @@
+{
+  "decision": "LogOS verification overall_ok=True layers=10 missing=0",
+  "files": [
+    "docs/sovereign-handoff/LAYER-CASCADE-MAP.md",
+    "docs/sovereign-handoff/LOGOS-COHERENCE-MCP-MAP.md",
+    "notebooks/verification_helpers.py",
+    "notebooks/triweave_backend_results/verification_receipts/receipt_latest.json",
+    "notebooks/triweave_backend_results/verification_certificates/cert_latest.json"
+  ],
+  "tags": [
+    "VERIFY",
+    "LOGOS",
+    "RECEIPT",
+    "CERTIFICATE"
+  ],
+  "type": "VERIFY"
+}

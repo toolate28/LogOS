@@ -1,0 +1,16 @@
+{
+  "name": "manifest_read",
+  "description": "Read a LogOS manifest JSON from manifests/ (dropout-map, zip-registry, logos-crates-map, etc.) or an absolute/relative path under LOGOS_ROOT.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "manifest": {
+        "type": "string",
+        "description": "Manifest name (e.g. dropout-map) or file path"
+      }
+    },
+    "required": [
+      "manifest"
+    ]
+  }
+}

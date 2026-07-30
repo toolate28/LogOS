@@ -1,0 +1,40 @@
+{
+  "name": "context_pack",
+  "description": "Create .context.yaml files for SpiralSafe corpus integration.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "doc_paths": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Document paths to include"
+      },
+      "domain": {
+        "type": "string",
+        "default": "spiralsafe",
+        "description": "Context domain"
+      },
+      "confidence": {
+        "type": "string",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "source": {
+        "type": "string",
+        "default": "coherence-mcp",
+        "description": "Context source"
+      }
+    },
+    "required": [
+      "doc_paths"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

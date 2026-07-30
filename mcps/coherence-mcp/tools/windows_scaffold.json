@@ -1,0 +1,13 @@
+{
+  "name": "windows_scaffold",
+  "description": "Generate a .NET (C#) project scaffold for a Windows coherence-mcp client. Includes HttpClient JSON-RPC wrapper, named-pipe transport, and PowerShell module.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "projectName": {
+        "type": "string",
+        "description": "Project name (default: CoherenceMcpClient)"
+      }
+    }
+  }
+}

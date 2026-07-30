@@ -1,0 +1,38 @@
+{
+  "name": "mehler_plateau_monitor",
+  "description": "Process Mehler Levin payload through MehlerPlateauDetector and enrich LiftedStrengthenedWitness. Returns updated witness, SRAC correction, and status bar fields. FPA (B) wiring endpoint.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "explicit_k": {
+        "type": "number",
+        "description": "Explicit curvature lower bound K from Gamma2 derivation"
+      },
+      "mehler_reliable": {
+        "type": "boolean",
+        "description": "Certified path flag (< 5e-7 relative error)"
+      },
+      "mehler_max_error": {
+        "type": "number",
+        "description": "Certified max_error from Mehler harness"
+      },
+      "residual": {
+        "type": "number",
+        "description": "Current W-residual value"
+      },
+      "descent_envelope": {
+        "type": "number",
+        "description": "exp(-2Kt) modulated envelope"
+      },
+      "step_index": {
+        "type": "integer",
+        "description": "SRAC step index"
+      },
+      "dt": {
+        "type": "number",
+        "description": "Time delta for plateau metric"
+      }
+    },
+    "required": ["explicit_k", "mehler_reliable", "residual"]
+  }
+}

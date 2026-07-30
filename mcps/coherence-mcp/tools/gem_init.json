@@ -1,0 +1,103 @@
+{
+  "name": "gem_init",
+  "description": "Initialize a Polymorphic Rendering Seed (Gem) for an Agentic Canvas. Dynamically configures rendering constraints for TSX, HTML, or Quantum Redstone substrates. Integrates with the Obsidian Bridge (ws://127.0.0.1:8088).",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "gem_manifest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "target_substrate": {
+            "type": "object",
+            "properties": {
+              "file_path": {
+                "type": "string"
+              },
+              "mime_type": {
+                "type": "string"
+              },
+              "fallback_render": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "file_path"
+            ]
+          },
+          "alpha_rail_config": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "parser": {
+                "type": "string"
+              },
+              "live_reload": {
+                "type": "boolean"
+              },
+              "sandbox_level": {
+                "type": "string"
+              }
+            }
+          },
+          "omega_rail_config": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "bridge_uri": {
+                "type": "string"
+              },
+              "sync_target": {
+                "type": "string"
+              },
+              "auto_generate_docs": {
+                "type": "boolean"
+              },
+              "tagging_mode": {
+                "type": "string"
+              }
+            }
+          },
+          "coherence_engine": {
+            "type": "object",
+            "properties": {
+              "wave_threshold": {
+                "type": "number"
+              },
+              "on_desync": {
+                "type": "string"
+              },
+              "tri_weave_routing": {
+                "type": "object",
+                "properties": {
+                  "structure_eval": {
+                    "type": "string"
+                  },
+                  "pulse_eval": {
+                    "type": "string"
+                  },
+                  "scale_eval": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "target_substrate"
+        ]
+      }
+    },
+    "required": [
+      "gem_manifest"
+    ]
+  }
+}

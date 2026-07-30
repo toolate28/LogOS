@@ -1,0 +1,42 @@
+{
+  "name": "docs_search",
+  "description": "Search across the SpiralSafe corpus with layer (foundation/interface/protocol/methodology/manifestation) and kind (document/code/notebook/theory) filters",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Search query string"
+      },
+      "layer": {
+        "type": "string",
+        "enum": [
+          "foundation",
+          "interface",
+          "methodology",
+          "protocol",
+          "manifestation",
+          "docs",
+          "books",
+          "operations"
+        ],
+        "description": "Optional layer filter"
+      },
+      "kind": {
+        "type": "string",
+        "enum": [
+          "document",
+          "code",
+          "notebook",
+          "theory",
+          "build",
+          "config"
+        ],
+        "description": "Optional kind filter"
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

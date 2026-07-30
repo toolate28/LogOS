@@ -1,0 +1,24 @@
+{
+  "name": "grok_translate",
+  "description": "Translate content for Grok consumption. Strips platform-specific noise, preserves semantic coherence, reformats for Grok's reasoning and real-time data strengths. Requires XAI_API_KEY env var.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Content to translate for Grok"
+      },
+      "metadata": {
+        "type": "object",
+        "description": "Optional metadata context for translation"
+      },
+      "model": {
+        "type": "string",
+        "description": "Grok model (default: grok-3)"
+      }
+    },
+    "required": [
+      "content"
+    ]
+  }
+}

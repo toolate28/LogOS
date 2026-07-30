@@ -1,0 +1,30 @@
+{
+  "name": "vortex_platforms",
+  "description": "List all supported platforms in the vortex bridge with their capabilities and bridge characteristics.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "platform": {
+        "type": "string",
+        "enum": [
+          "claude",
+          "grok",
+          "gemini",
+          "llama",
+          "deepseek",
+          "qwen",
+          "mistral",
+          "qdi",
+          "quantum-redstone",
+          "spiralsafe",
+          "vortex-bridges",
+          "reson8-labs",
+          "hope-ai-npc-suite",
+          "human",
+          "generic"
+        ],
+        "description": "Optional: get info for a specific platform. If omitted, lists all."
+      }
+    }
+  }
+}

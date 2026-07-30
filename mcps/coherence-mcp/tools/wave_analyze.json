@@ -1,0 +1,16 @@
+{
+  "name": "wave_analyze",
+  "description": "Analyze text or document reference for coherence patterns using WAVE protocol (curl, divergence, potential)",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Text content or document reference to analyze"
+      }
+    },
+    "required": [
+      "input"
+    ]
+  }
+}

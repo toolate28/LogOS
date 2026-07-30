@@ -1,0 +1,40 @@
+{
+  "name": "fibonacci_weight",
+  "description": "Assign Fibonacci-weighted priority to components and optimize resource allocation.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "components": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "importance": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "name",
+            "importance"
+          ],
+          "additionalProperties": false
+        },
+        "description": "Components with importance scores"
+      },
+      "budget": {
+        "type": "number",
+        "description": "Resource budget for allocation optimization"
+      }
+    },
+    "required": [
+      "components"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}

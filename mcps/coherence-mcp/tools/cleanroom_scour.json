@@ -1,0 +1,20 @@
+{
+  "name": "cleanroom_scour",
+  "description": "Perform a hardened cleanroom audit on node data to extract protected cores (SpiralSafe, Vortex Bridge, etc.) from legacy noise. Uses regex signatures, structural DNA markers, and complexity heuristics to determine if logic should be integrated, quarantined, or archived.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "nodeData": {
+        "type": "string",
+        "description": "The raw text or code content of the node to audit"
+      },
+      "nodeMeta": {
+        "type": "object",
+        "description": "Optional metadata associated with the node (timestamp, author, etc.)"
+      }
+    },
+    "required": [
+      "nodeData"
+    ]
+  }
+}
