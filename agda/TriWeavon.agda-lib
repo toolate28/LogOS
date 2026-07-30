@@ -1,0 +1,8 @@
+name: TriWeavon
+include: src
+depend:
+  cubical: vendor/agda-cubical
+  stdlib: vendor/agda-stdlib
+flags:
+  --cubical
+  --safe

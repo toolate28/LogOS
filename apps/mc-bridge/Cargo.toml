@@ -1,0 +1,16 @@
+[package]
+name = "reson8-mc-bridge"
+version = "0.1.0"
+edition = "2021"
+description = "Minecraft RCON bridge — quantum circuits as redstone, conservation verification"
+
+[[bin]]
+name = "mc-bridge"
+path = "src/main.rs"
+
+[dependencies]
+reson8-core = { path = "../../crates/core" }
+reson8-wave = { path = "../../crates/wave" }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

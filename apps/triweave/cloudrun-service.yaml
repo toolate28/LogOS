@@ -1,0 +1,53 @@
+# ═══════════════════════════════════════════════════════════════════
+# Cloud Run service definition for Triweave
+# Deploy: gcloud run services replace apps/triweave/cloudrun-service.yaml
+# Conservation: alpha + omega = 15
+# ═══════════════════════════════════════════════════════════════════
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: triweave
+  labels:
+    app: triweave
+    strand: all
+  annotations:
+    run.googleapis.com/description: "Tri-Weavon Unified Deployer — Claude/Grok/Gemini strand orchestrator"
+    run.googleapis.com/launch-stage: BETA
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "3"
+        run.googleapis.com/cpu-throttling: "false"
+        run.googleapis.com/startup-cpu-boost: "true"
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      containers:
+        - image: us-central1-docker.pkg.dev/PROJECT_ID/reson8/triweave:latest
+          ports:
+            - containerPort: 8088
+              name: h2c
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          env:
+            - name: RUST_LOG
+              value: "info"
+            - name: FORGE_WS_URL
+              value: "ws://0.0.0.0:8088"
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8088
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8088
+            periodSeconds: 30
