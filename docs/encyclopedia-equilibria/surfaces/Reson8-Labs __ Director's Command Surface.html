@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://coherence.toolated.online/portal/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reson8-Labs // Director's Command Surface</title>
+    <script src="./Reson8-Labs __ Director&#39;s Command Surface_files/saved_resource"></script>
+    <script src="./Reson8-Labs __ Director&#39;s Command Surface_files/lucide@latest"></script>
+    <link href="./Reson8-Labs __ Director&#39;s Command Surface_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="./Reson8-Labs __ Director&#39;s Command Surface_files/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        'regime-bg': '#00000a',
+                        'panel-bg': '#030612',
+                        'accent-cyan': '#5d8fc8',
+                        'accent-magenta': '#c49040',
+                        'status-emerald': '#10b981',
+                        'phi-gold': '#c9a84c',
+                        'evenstar': '#a8c4e8',
+                        'strand-2': '#38b8b0',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-blur { backdrop-filter: blur(12px); background: rgba(3, 6, 18, 0.85); border: 1px solid rgba(26, 37, 64, 0.7); }
+        .sidebar-item-active { background: linear-gradient(90deg, rgba(93, 143, 200, 0.15) 0%, transparent 100%); border-left: 2px solid #5d8fc8; color: #a8c4e8; }
+        .ledger-line:hover { background: rgba(255, 255, 255, 0.02); }
+        iframe { filter: contrast(1.05) brightness(1.05); }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:JetBrains Mono, monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.z-10{z-index:10}.z-50{z-index:50}.col-span-1{grid-column:span 1 / span 1}.col-span-2{grid-column:span 2 / span 2}.col-span-6{grid-column:span 6 / span 6}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-2{margin-top:0.5rem}.mt-8{margin-top:2rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-2{height:0.5rem}.h-4{height:1rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-full{height:100%}.h-screen{height:100vh}.w-12{width:3rem}.w-2{width:0.5rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-8{width:2rem}.w-\[12\%\]{width:12%}.w-\[1px\]{width:1px}.w-full{width:100%}.min-w-\[120px\]{min-width:120px}.max-w-2xl{max-width:42rem}.flex-1{flex:1 1 0%}.rotate-45{--tw-rotate:45deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}@keyframes spin{to{transform:rotate(360deg)}}.animate-spin{animation:spin 1s linear infinite}.cursor-not-allowed{cursor:not-allowed}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-r{border-right-width:1px}.border-t{border-top-width:1px}.border-none{border-style:none}.border-accent-cyan{--tw-border-opacity:1;border-color:rgb(93 143 200 / var(--tw-border-opacity, 1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.border-t-transparent{border-top-color:transparent}.bg-accent-cyan{--tw-bg-opacity:1;background-color:rgb(93 143 200 / var(--tw-bg-opacity, 1))}.bg-accent-magenta{--tw-bg-opacity:1;background-color:rgb(196 144 64 / var(--tw-bg-opacity, 1))}.bg-regime-bg{--tw-bg-opacity:1;background-color:rgb(0 0 10 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-status-emerald{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-slate-900\/50{background-color:rgb(15 23 42 / 0.5)}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.pt-6{padding-top:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.font-mono{font-family:JetBrains Mono, monospace}.font-sans{font-family:Inter, sans-serif}.font-serif{font-family:Cormorant Garamond, serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[9px\]{font-size:9px}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[11px\]{font-size:11px}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-\[0\.2em\]{letter-spacing:0.2em}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-tight{letter-spacing:-0.025em}.tracking-tighter{letter-spacing:-0.05em}.tracking-widest{letter-spacing:0.1em}.text-accent-cyan{--tw-text-opacity:1;color:rgb(93 143 200 / var(--tw-text-opacity, 1))}.text-accent-magenta{--tw-text-opacity:1;color:rgb(196 144 64 / var(--tw-text-opacity, 1))}.text-phi-gold{--tw-text-opacity:1;color:rgb(201 168 76 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-status-emerald{--tw-text-opacity:1;color:rgb(16 185 129 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-50{opacity:0.5}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:border-accent-cyan:hover{--tw-border-opacity:1;border-color:rgb(93 143 200 / var(--tw-border-opacity, 1))}.hover\:border-accent-magenta:hover{--tw-border-opacity:1;border-color:rgb(196 144 64 / var(--tw-border-opacity, 1))}.hover\:border-status-emerald:hover{--tw-border-opacity:1;border-color:rgb(16 185 129 / var(--tw-border-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}</style></head>
+<body class="bg-regime-bg text-slate-300 font-sans h-screen overflow-hidden flex flex-col">
+
+    <!-- Global Header -->
+    <header class="h-14 border-b border-slate-800 flex items-center justify-between px-6 bg-slate-950 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-6 h-6 border-2 border-accent-cyan rounded rotate-45 flex items-center justify-center">
+                <div class="w-2 h-2 bg-accent-magenta animate-pulse"></div>
+            </div>
+            <span class="font-bold text-xs tracking-[0.3em] text-white uppercase">Reson8-Labs <span class="text-slate-600">//</span> Command Surface</span>
+        </div>
+        <div class="flex items-center gap-8">
+            <div class="flex flex-col items-end">
+                <span class="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Coherence Threshold</span>
+                <span class="text-xs font-mono text-phi-gold">Φ 0.87 (OPTIMAL)</span>
+            </div>
+            <div class="h-8 w-[1px] bg-slate-800"></div>
+            <div class="flex items-center gap-3">
+                <div class="text-right">
+                    <p class="text-[10px] text-white font-semibold leading-none">@toolate28</p>
+                    <p class="text-[9px] text-status-emerald font-mono uppercase tracking-tighter">Director Active</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-accent-cyan font-mono text-xs">TR</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden">
+        <!-- Unified Sidebar -->
+        <aside class="w-64 border-r border-slate-800 flex flex-col bg-slate-950">
+            <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+                <div class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em] mb-4 mt-2 px-2">Core Substrates</div>
+                <button onclick="nav(&#39;dashboard&#39;)" id="nav-dashboard" class="w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium text-slate-400 hover:text-white transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-dashboard" aria-hidden="true" class="lucide lucide-layout-dashboard w-4 h-4"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg> Sovereign Dashboard
+                </button>
+                <button onclick="nav(&#39;canvas&#39;)" id="nav-canvas" class="sidebar-item-active w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium rounded-md transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="component" aria-hidden="true" class="lucide lucide-component w-4 h-4"><path d="M15.536 11.293a1 1 0 0 0 0 1.414l2.376 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"></path><path d="M2.297 11.293a1 1 0 0 0 0 1.414l2.377 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414L6.088 8.916a1 1 0 0 0-1.414 0z"></path><path d="M8.916 17.912a1 1 0 0 0 0 1.415l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.415l-2.377-2.376a1 1 0 0 0-1.414 0z"></path><path d="M8.916 4.674a1 1 0 0 0 0 1.414l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"></path></svg> Agentic Canvas v2.0
+                </button>
+                <button onclick="nav(&#39;ledger&#39;)" id="nav-ledger" class="w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium text-slate-400 hover:text-white transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="database" aria-hidden="true" class="lucide lucide-database w-4 h-4"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg> ATOM Ledger
+                </button>
+
+                <div class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em] mb-4 mt-8 px-2">Institutional Briefings</div>
+                <button onclick="nav(&#39;brief-1&#39;)" class="w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium text-slate-400 hover:text-white transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-4 h-4"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg> 1/3 ALPHA: Fluid Dynamics
+                </button>
+                <button onclick="nav(&#39;brief-2&#39;)" class="w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium text-slate-400 hover:text-white transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-4 h-4"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg> 2/3 OMEGA: The Handoff
+                </button>
+                <button onclick="nav(&#39;brief-3&#39;)" class="w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium text-slate-400 hover:text-white transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-4 h-4"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg> 3/3 SPACE: The Law
+                </button>
+                <button onclick="nav(&#39;brief-4&#39;)" class="w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium text-slate-400 hover:text-white transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-4 h-4"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg> 4/3 NETWORK: Being In It
+                </button>
+
+                <div class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em] mb-4 mt-8 px-2">External Surface</div>
+                <a href="https://github.com/toolate28/coherence-mcp" target="_blank" class="w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium text-slate-400 hover:text-white transition-all">
+                    <i data-lucide="github" class="w-4 h-4"></i> Engineering Repository
+                </a>
+            </nav>
+            <div class="p-4 border-t border-slate-800">
+                <div class="glass-blur rounded-lg p-3">
+                    <p class="text-[9px] font-mono text-slate-500 uppercase mb-1">Director Gate Status</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] text-accent-cyan font-bold uppercase">Locked</span>
+                        <span class="text-[10px] text-phi-gold font-bold">12%</span>
+                    </div>
+                    <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                        <div class="h-full bg-accent-cyan w-[12%]"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Display -->
+        <main class="flex-1 bg-slate-900 relative">
+            <div id="content-container" class="w-full h-full">
+                <!-- Dashboard View (Default) -->
+                <div id="view-dashboard" class="p-8 space-y-8 overflow-y-auto h-full w-full hidden">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h1 class="text-3xl font-bold text-white tracking-tight mb-2 font-serif" style="font-family:&#39;Cormorant Garamond&#39;,serif;letter-spacing:0.04em;">Sovereign Command Center</h1>
+                            <p class="text-slate-400 text-sm max-w-2xl font-light">Converged view of the Reson8-Labs ecosystem. Real-time alignment of technical architecture and institutional intent.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="glass-blur px-6 py-4 rounded-xl text-center min-w-[120px]">
+                                <p class="text-[10px] font-mono text-slate-500 uppercase mb-1">WAVE Coherence</p>
+                                <p class="text-2xl font-bold text-status-emerald">0.87</p>
+                            </div>
+                            <div class="glass-blur px-6 py-4 rounded-xl text-center min-w-[120px]">
+                                <p class="text-[10px] font-mono text-slate-500 uppercase mb-1">Active Strands</p>
+                                <p class="text-2xl font-bold text-accent-cyan">3/3</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-6">
+                        <!-- Quick Actions -->
+                        <div class="col-span-2 grid grid-cols-2 gap-4">
+                            <button onclick="nav(&#39;canvas&#39;)" class="glass-blur p-6 rounded-2xl text-left hover:border-accent-cyan transition-all group">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="component" aria-hidden="true" class="lucide lucide-component w-8 h-8 text-accent-cyan mb-4 group-hover:scale-110 transition-transform"><path d="M15.536 11.293a1 1 0 0 0 0 1.414l2.376 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"></path><path d="M2.297 11.293a1 1 0 0 0 0 1.414l2.377 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414L6.088 8.916a1 1 0 0 0-1.414 0z"></path><path d="M8.916 17.912a1 1 0 0 0 0 1.415l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.415l-2.377-2.376a1 1 0 0 0-1.414 0z"></path><path d="M8.916 4.674a1 1 0 0 0 0 1.414l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"></path></svg>
+                                <h3 class="text-white font-bold mb-1">Agentic Canvas</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed">Launch the polymorphic rendering surface for hardware and topology analysis.</p>
+                            </button>
+                            <button onclick="nav(&#39;brief-1&#39;)" class="glass-blur p-6 rounded-2xl text-left hover:border-accent-magenta transition-all group">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-8 h-8 text-accent-magenta mb-4 group-hover:scale-110 transition-transform"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                                <h3 class="text-white font-bold mb-1">Institutional Briefings</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed">Review the theoretical foundations and the path to ASIC registration.</p>
+                            </button>
+                            <button onclick="nav(&#39;ledger&#39;)" class="glass-blur p-6 rounded-2xl text-left hover:border-status-emerald transition-all group">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="database" aria-hidden="true" class="lucide lucide-database w-8 h-8 text-status-emerald mb-4 group-hover:scale-110 transition-transform"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
+                                <h3 class="text-white font-bold mb-1">ATOM Ledger</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed">Audit the immutable provenance trail of all system state changes.</p>
+                            </button>
+                            <div class="glass-blur p-6 rounded-2xl text-left opacity-50 cursor-not-allowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="landmark" aria-hidden="true" class="lucide lucide-landmark w-8 h-8 text-phi-gold mb-4"><path d="M10 18v-7"></path><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"></path><path d="M14 18v-7"></path><path d="M18 18v-7"></path><path d="M3 22h18"></path><path d="M6 18v-7"></path></svg>
+                                <h3 class="text-white font-bold mb-1 uppercase">Financial Substrate</h3>
+                                <p class="text-[10px] text-phi-gold font-mono mb-2 uppercase">Blocked by Phase 1</p>
+                                <p class="text-xs text-slate-500 leading-relaxed">Secure bank accounts, Stripe integration, and R&amp;D Tax Incentive registration.</p>
+                            </div>
+                        </div>
+
+                        <!-- System Status -->
+                        <div class="col-span-1 glass-blur p-6 rounded-2xl flex flex-col">
+                            <h3 class="text-white font-bold mb-6 text-sm flex items-center gap-2 uppercase">
+                                <span class="w-2 h-2 rounded-full bg-status-emerald animate-pulse"></span> Network Pulse
+                            </h3>
+                            <div class="space-y-6 flex-1">
+                                <div class="flex justify-between items-end">
+                                    <div class="space-y-1">
+                                        <p class="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Base Frequency</p>
+                                        <p class="text-xl text-white font-mono">42.000 Hz</p>
+                                    </div>
+                                    <span class="text-[10px] text-status-emerald font-mono">STABLE</span>
+                                </div>
+                                <div class="flex justify-between items-end">
+                                    <div class="space-y-1">
+                                        <p class="text-[10px] text-slate-500 uppercase font-mono tracking-widest">TGP Load</p>
+                                        <p class="text-xl text-white font-mono">572 W</p>
+                                    </div>
+                                    <span class="text-[10px] text-accent-cyan font-mono">OPTIMAL</span>
+                                </div>
+                                <div class="flex justify-between items-end">
+                                    <div class="space-y-1">
+                                        <p class="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Node MIRRORS</p>
+                                        <p class="text-xl text-white font-mono">ACTIVE</p>
+                                    </div>
+                                    <span class="text-[10px] text-accent-magenta font-mono">SYNCED</span>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-slate-800">
+                                <p class="text-[10px] text-slate-500 font-mono italic mb-2 uppercase tracking-tighter">"The ridge is held."</p>
+                                <p class="text-[9px] text-slate-600 leading-tight">By architecting a self-proving Sovereign Institutional Entity, we solve the entropy problem of fragmentation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Content View (Iframe) -->
+                <div id="view-web" class="w-full h-full bg-white relative">
+                    <div id="web-loader" class="absolute inset-0 bg-slate-900 flex items-center justify-center z-10" style="display: none;">
+                        <div class="flex flex-col items-center gap-4">
+                            <div class="w-12 h-12 border-2 border-accent-cyan border-t-transparent rounded-full animate-spin"></div>
+                            <p class="text-xs font-mono text-accent-cyan uppercase tracking-widest">Accessing Substrate...</p>
+                        </div>
+                    </div>
+                    <iframe id="web-frame" src="./Reson8-Labs __ Director&#39;s Command Surface_files/saved_resource.html" class="w-full h-full border-none" onload="document.getElementById(&#39;web-loader&#39;).style.display=&#39;none&#39;"></iframe>
+                </div>
+
+                <!-- Ledger View -->
+                <div id="view-ledger" class="hidden p-8 overflow-y-auto h-full w-full space-y-6">
+                    <div>
+                        <h1 class="text-2xl font-bold text-white tracking-tight mb-2 uppercase">ATOM Provenance Ledger</h1>
+                        <p class="text-slate-400 text-sm font-light">Immutable audit trail of system decisions and state transitions.</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden font-mono text-[11px]">
+                        <div class="grid grid-cols-12 gap-4 px-6 py-3 bg-slate-900/50 border-b border-slate-800 text-slate-500 uppercase tracking-widest font-bold">
+                            <div class="col-span-2">Timestamp</div>
+                            <div class="col-span-2">Action</div>
+                            <div class="col-span-6">Target/Description</div>
+                            <div class="col-span-2">Status</div>
+                        </div>
+                        <div class="divide-y border-slate-800" id="ledger-body">
+                            <!-- Lines will be injected -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const views = ['dashboard', 'web', 'ledger'];
+        const frame = document.getElementById('web-frame');
+        const loader = document.getElementById('web-loader');
+
+        function nav(target) {
+            const dashboard = document.getElementById('view-dashboard');
+            const web = document.getElementById('view-web');
+            const ledger = document.getElementById('view-ledger');
+
+            // Reset buttons
+            document.querySelectorAll('aside button').forEach(b => {
+                b.className = "w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium text-slate-400 hover:text-white transition-all";
+            });
+
+            if (target === 'dashboard') {
+                dashboard.classList.remove('hidden');
+                web.classList.add('hidden');
+                ledger.classList.add('hidden');
+                document.getElementById('nav-dashboard').className = "sidebar-item-active w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium rounded-md transition-all";
+            } else if (target === 'ledger') {
+                dashboard.classList.add('hidden');
+                web.classList.add('hidden');
+                ledger.classList.remove('hidden');
+                document.getElementById('nav-ledger').className = "sidebar-item-active w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium rounded-md transition-all";
+                renderLedger();
+            } else {
+                dashboard.classList.add('hidden');
+                web.classList.remove('hidden');
+                ledger.classList.add('hidden');
+                loader.style.display = 'flex';
+                
+                let url = '';
+                if (target === 'canvas') url = '/canvas';
+                else if (target === 'brief-1') url = '/1';
+                else if (target === 'brief-2') url = '/2';
+                else if (target === 'brief-3') url = '/3';
+                else if (target === 'brief-4') url = '/4';
+                
+                frame.src = url;
+                if(document.getElementById(`nav-${target}`)) {
+                    document.getElementById(`nav-${target}`).className = "sidebar-item-active w-full flex items-center gap-3 px-3 py-2.5 text-xs font-medium rounded-md transition-all";
+                }
+            }
+        }
+
+        const mockLedger = [
+            { time: '2026-02-20T09:42:01', action: 'RELEASE_TAG', desc: 'v3.0.0-quantum-complete manifest lockdown', status: 'PASS' },
+            { time: '2026-02-20T09:15:44', action: 'DEPIN_SYNC', desc: 'Unitary branch rebase: toolate28/coherence-mcp', status: 'SYNC' },
+            { time: '2026-02-20T08:55:12', action: 'WAVE_CHECK', desc: 'Orchestrator Core validation: 0.87 Φ', status: 'PASS' },
+            { time: '2026-02-20T08:12:00', action: 'PORTAL_INIT', desc: 'Converged Director Command Surface activation', status: 'PASS' },
+            { time: '2026-02-19T22:30:11', action: 'GATE_SYNC', desc: 'AWI → ATOM transition verified for First Cohort', status: 'PASS' },
+            { time: '2026-02-19T18:05:33', action: 'GEM_INIT', desc: 'Polymorphic Rendering Seed instantiated: canvas_v2', status: 'PASS' }
+        ];
+
+        function renderLedger() {
+            const body = document.getElementById('ledger-body');
+            body.innerHTML = mockLedger.map(l => `
+                <div class="grid grid-cols-12 gap-4 px-6 py-4 ledger-line transition-colors">
+                    <div class="col-span-2 text-slate-500">${l.time.split('T')[1]}</div>
+                    <div class="col-span-2 text-accent-cyan font-bold">${l.action}</div>
+                    <div class="col-span-6 text-slate-300">${l.desc}</div>
+                    <div class="col-span-2 ${l.status === 'PASS' ? 'text-status-emerald' : 'text-accent-magenta'} font-bold">${l.status}</div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body></html>

@@ -1,0 +1,17 @@
+[package]
+name = "cudarc"
+version = "0.1.0"
+edition = "2021"
+authors = ["TriWeavon Team"]
+description = "High-level safe CUDA abstractions for TriWeavon manifold computations"
+
+[dependencies]
+cudarc = { version = "0.12", features = ["cuda-12040"] }
+thiserror = "1.0"
+ndarray = { version = "0.16", optional = true }
+nalgebra = { version = "0.33", optional = true }
+
+[features]
+default = ["cuda"]
+cuda = []
+cpu-fallback = ["ndarray", "nalgebra"]
