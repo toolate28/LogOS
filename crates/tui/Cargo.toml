@@ -1,0 +1,20 @@
+[package]
+name = "reson8-tui"
+version = "0.1.0"
+edition = "2021"
+description = "Ratatui-based terminal dashboard — Evenstar, WAVE, barcodes, ATOM trail"
+
+[[bin]]
+name = "reson8-forge"
+path = "src/main.rs"
+
+[dependencies]
+reson8-core = { path = "../core" }
+reson8-wave = { path = "../wave" }
+reson8-topology = { path = "../reson8-topology" }
+reson8-forge-core = { path = "../forge-core" }
+ratatui = "0.29"
+crossterm = "0.28"
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

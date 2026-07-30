@@ -1,0 +1,12 @@
+[package]
+name = "reson8-marketplace"
+version = "0.1.0"
+edition = "2021"
+description = "Skill marketplace — discovery, installation, versioning, and WAVE-gated publishing"
+
+[dependencies]
+reson8-core = { path = "../core" }
+reson8-wave = { path = "../wave" }
+reson8-hash = { path = "../hash" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

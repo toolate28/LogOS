@@ -1,0 +1,16 @@
+[package]
+name = "reson8-wasm"
+version = "0.1.0"
+edition = "2021"
+description = "WebAssembly bindings for edge deployment on Cloudflare Workers"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+reson8-core = { path = "../core" }
+reson8-wave = { path = "../wave" }
+wasm-bindgen = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde-wasm-bindgen = "0.6"

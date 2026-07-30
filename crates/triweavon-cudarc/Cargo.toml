@@ -1,0 +1,23 @@
+[package]
+name = "triweavon-cudarc"
+version = "0.1.0"
+edition = "2021"
+authors = ["TriWeavon Team"]
+description = "High-level safe CUDA abstractions for TriWeavon manifold math and SRAC observability"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+
+[dependencies]
+cudarc = { version = "0.12", features = ["cuda-12040"], optional = true }
+cutile = { path = "../../cutiles/cutile", default-features = false }
+thiserror = "1.0"
+
+[features]
+default = ["cpu-fallback"]
+cuda = ["dep:cudarc", "cutile/cuda"]
+cpu-fallback = []
+nvidia = ["cuda"]
+amd = [] # ROCm/HIP via cutile wgpu path until native HIP
+
+[dev-dependencies]
+cutile = { path = "../../cutiles/cutile", features = ["wgpu-backend"] }

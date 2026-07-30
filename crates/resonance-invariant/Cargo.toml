@@ -1,0 +1,8 @@
+[package]
+name = "resonance-invariant"
+version = "0.1.0"
+edition = "2021"
+description = "Integer-domain conservation law enforcement (no_std). LevinWen lattice with α + ω = 15."
+
+[dependencies]
+# no_std — zero external dependencies

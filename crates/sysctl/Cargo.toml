@@ -1,0 +1,13 @@
+[package]
+name = "reson8-sysctl"
+version = "0.1.0"
+edition = "2021"
+description = "System control — hardware grounding, sensor integration, resource management"
+
+[dependencies]
+reson8-core = { path = "../core" }
+reson8-wave = { path = "../wave" }
+tokio = { version = "1", features = ["full", "process"] }
+serde = { version = "1", features = ["derive"] }
+anyhow = "1"
+async-trait = "0.1"
