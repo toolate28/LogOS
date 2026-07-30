@@ -1,0 +1,5 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=.\\.\\.lake/packages\\batteries\\.lake\\build\\lib;.\\.\\.lake/packages\\Qq\\.lake\\build\\lib;.\\.\\.lake/packages\\aesop\\.lake\\build\\lib;.\\.\\.lake/packages\\proofwidgets\\.lake\\build\\lib;.\\.\\.lake/packages\\Cli\\.lake\\build\\lib;.\\.\\.lake/packages\\importGraph\\.lake\\build\\lib;.\\.\\.lake/packages\\mathlib\\.lake\\build\\lib;.\\.\\.lake\\build\\lib PATH c:\\Users\\toolated\\.elan\\toolchains\\leanprover--lean4---v4.8.0\\bin\\lean.exe -DautoImplicit=false .\\.\\.\\.\\K22\\Existence.lean -R .\\.\\.\\. -o .\\.\\.lake\\build\\lib\\K22\\Existence.olean -i .\\.\\.lake\\build\\lib\\K22\\Existence.ilean -c .\\.\\.lake\\build\\ir\\K22\\Existence.c --json",
+   "level": "trace"}],
+ "depHash": "9444832470229003396"}
