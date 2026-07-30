@@ -1,0 +1,67 @@
+# Label provisioning — keep Dependabot label references resolvable
+# ATOM: ATOM-LABELS-WORKFLOW-20260731
+# Creates missing labels only; never deletes. capability ≠ authority.
+
+name: Labels
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - ".github/dependabot.yml"
+      - ".github/labels.json"
+      - ".github/workflows/labels.yml"
+      - "ops/ci/ensure_dependabot_labels.py"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - ".github/dependabot.yml"
+      - ".github/labels.json"
+      - ".github/workflows/labels.yml"
+      - "ops/ci/ensure_dependabot_labels.py"
+  schedule:
+    # Sunday 22:00 UTC — ahead of Dependabot Monday schedules
+    - cron: "0 22 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write   # required to create repository labels
+
+concurrency:
+  group: labels-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ensure-dependabot-labels:
+    name: Ensure Dependabot labels
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dry-run metadata check
+        run: python ops/ci/ensure_dependabot_labels.py
+
+      - name: Apply missing labels
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python ops/ci/ensure_dependabot_labels.py --apply
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Dependabot label ensure"
+            echo ""
+            echo "- Catalog: \`.github/labels.json\`"
+            echo "- Script: \`ops/ci/ensure_dependabot_labels.py\`"
+            echo "- Mode: create-if-missing only (never delete)"
+            echo "- PR runs: dry-run only; push/schedule/dispatch apply"
+            echo ""
+            echo "ATOM: \`ATOM-LABELS-WORKFLOW-20260731\`"
+          } >> "$GITHUB_STEP_SUMMARY"
