@@ -1,4 +1,4 @@
-<img width="601" height="557" alt="image" src="https://github.com/user-attachments/assets/67eab1d8-5bb9-4798-b42a-e5b3af2dce30" />**Reson8 — LogOS Cognitive Lattice**
+>**Reson8 — LogOS Cognitive Lattice**
 
 **A formally verified, homotopically coherent distributed operating system unifying multiple reasoning strands through topological invariants, conservation enforcement, and SPHINX-gated authentication.**
 
