@@ -4,7 +4,7 @@
 
 ![9P2000.L session lattice]Uploading Mehler-Levin Operator Self-Test.mp4…
 
-**2026-07-09 checkpoint:**  ·![Uploading i8za0.jpg…]() 
+**2026-07-09 checkpoint:**
 root docs distributed (`docs/theory|architecture|coherence|ops|publications|surfaces`) ·
 stitch + reforge + orchestrator wired to `coherence-mcp/coherence-site/public/` · 
 live hub [/encyclopedia/](https://coherence.toolated.online/encyclopedia/)
