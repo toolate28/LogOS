@@ -1,10 +1,6 @@
-Mehler-Levin Operator Self-Test Uploading Mehler-Levin Operator Self-Test.mp4…
-
 **Reson8 — LogOS Cognitive Lattice**
 
 **A formally verified, homotopically coherent distributed operating system unifying multiple reasoning strands through topological invariants, conservation enforcement, and SPHINX-gated authentication.**
-
-![9P2000.L session lattice]![Uploading grok-9203670e-6619-4f95-a4de-708a8cb05b3d.jpg…]()
 
 **2026-07-09 checkpoint:** [Encyclopedia Equilibria](docs/encyclopedia-equilibria/README.md) · 
 root docs distributed (`docs/theory|architecture|coherence|ops|publications|surfaces`) · 
@@ -12,8 +8,6 @@ stitch + reforge + orchestrator wired to `coherence-mcp/coherence-site/public/` 
 live hub [/encyclopedia/](https://coherence.toolated.online/encyclopedia/)
 
 **2026-07-06 checkpoint:** ExistenceCertificate E2E demo · symmetry gate (`permit_witness_mutation`) · `K22.Existence` Lean bridge · [handoff](docs/sovereign-handoff/HANDOFF-2026-07-06-EXISTENCE-SYMMETRY-GATE.md)
-
-![Uploading grok-c6124119-6ee5-4219-b166-147932353f49 - Copy.jpg…]()
 
 **2026-07-04 checkpoint:** 9P component lock-off lattice · GitNexus embeddings (coherence-mcp) · Mehler MMA-Levin kernel · Sub-Riemannian S\*M formalization (OB1) · [handoff](9P2000.L/ops/CHECKPOINT-HANDOFF-WEB-INSTANCE-2026-07-03.md)
 
