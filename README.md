@@ -1,21 +1,32 @@
->**Reson8 — LogOS Cognitive Lattice**
+Mehler-Levin Operator Self-Test Uploading Mehler-Levin Operator Self-Test.mp4…
+
+**Reson8 — LogOS Cognitive Lattice**
 
 **A formally verified, homotopically coherent distributed operating system unifying multiple reasoning strands through topological invariants, conservation enforcement, and SPHINX-gated authentication.**
 
+![9P2000.L session lattice]![Uploading grok-9203670e-6619-4f95-a4de-708a8cb05b3d.jpg…]()
+
+**2026-07-09 checkpoint:** [Encyclopedia Equilibria](docs/encyclopedia-equilibria/README.md) · 
+root docs distributed (`docs/theory|architecture|coherence|ops|publications|surfaces`) · 
+stitch + reforge + orchestrator wired to `coherence-mcp/coherence-site/public/` · 
+live hub [/encyclopedia/](https://coherence.toolated.online/encyclopedia/)
+
 **2026-07-06 checkpoint:** ExistenceCertificate E2E demo · symmetry gate (`permit_witness_mutation`) · `K22.Existence` Lean bridge · [handoff](docs/sovereign-handoff/HANDOFF-2026-07-06-EXISTENCE-SYMMETRY-GATE.md)
+
+![Uploading grok-c6124119-6ee5-4219-b166-147932353f49 - Copy.jpg…]()
 
 **2026-07-04 checkpoint:** 9P component lock-off lattice · GitNexus embeddings (coherence-mcp) · Mehler MMA-Levin kernel · Sub-Riemannian S\*M formalization (OB1) · [handoff](9P2000.L/ops/CHECKPOINT-HANDOFF-WEB-INSTANCE-2026-07-03.md)
 
-### Build Status (exact, 2026-07-06)
+### Build Status (exact, 2027-07-06)
 
-| Crate / Layer            | Compiles | Tests          | Notes                                
-|--------------------------|----------|----------------|-------------------------------------
-| `cutile` v0.             |    ✅    |   ✅          | `demo_existence_certificate_emission` 
-| `coherence-mcp` v0.5     |    ✅    |   ✅ 5        | Symmetry gate live                    
-| `triweavon-cudarc`       |    ✅    | run locally    | `manifold.rs` fixed                   
-| `lean/K22.Existence`     |    ✅    | example goal   | No `sorry` in bridge                  
-| `agda/JesusAxiomEpsilon` | scaffold |       —        | Contraction + Termination            
-| Standalone npm `coherence-mcp` | ❌ |       —        | TS build errors (v0.3.1)              
+| Crate / Layer | Compiles | Tests | Notes |
+|---------------|----------|-------|-------|
+| `cutile` v0.3 | ✅ | ✅ | `demo_existence_certificate_emission` |
+| `coherence-mcp` v0.5 | ✅ | ✅ 5 | Symmetry gate live |
+| `triweavon-cudarc` | ✅ | run locally | `manifold.rs` fixed |
+| `lean/K22.Existence` | ✅ | example goal | No `sorry` in bridge |
+| `agda/JesusAxiomEpsilon` | scaffold | — | Contraction + Termination |
+| Standalone npm `coherence-mcp` | ❌ | — | TS build errors (v0.3.1) |
 
 ### 1. Overview
 
@@ -132,22 +143,34 @@ A spatial embodiment of the lattice running on a dedicated server:
 
 ### 8. Quick Start
 
+**Just cloned?** Start with the **Four Gates** arrival guide — thermal probe → downshift → Novikov round-trip → honest VOID list:
+
+→ **[docs/ops/FOUR-GATES-ARRIVAL.md](docs/ops/FOUR-GATES-ARRIVAL.md)**
+
+Professional candor: this repository is a multi-layer lattice. A first green does **not** require full Agda/Lean/CUDA/9P. Prefer one downshifted surface and Category B claims you can re-run twice.
+
 ```bash
-# Build
+# Minimal: probe + one crate (examples)
+git rev-parse --short HEAD
+cargo check -p reson8-tui    # or: cargo test -p cutile
+
+# Windows shell wiring (optional, primary operator path)
+# pwsh -File ops\Install-LogOSShell.ps1
+# . $PROFILE
+# logos-status
+# logos-tui
+```
+
+```bash
+# Fuller app path (when you want the deployer)
 cargo build -p triweave --release
-
-# Initialize (creates vault + configuration)
 triweave init
-
-# Start all strands + background worker
 triweave up all
-
-# Monitor
 triweave status
-
-# Diagnostics (including formal invariant checks)
 triweave doctor
 ```
+
+Session cold-starts (not MAX-context resume): [docs/sovereign-handoff/session-handovers/README.md](docs/sovereign-handoff/session-handovers/README.md) · Deploy waist: [ops/GB-STATUS-UPDATE-20260715.md](ops/GB-STATUS-UPDATE-20260715.md)
 
 ### 9. Key Configuration & State Files
 
