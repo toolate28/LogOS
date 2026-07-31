@@ -1,10 +1,13 @@
-**Reson8 — LogOS Cognitive Lattice**
+<img width="601" height="557" alt="image" src="https://github.com/user-attachments/assets/67eab1d8-5bb9-4798-b42a-e5b3af2dce30" />**Reson8 — LogOS Cognitive Lattice**
 
 **A formally verified, homotopically coherent distributed operating system unifying multiple reasoning strands through topological invariants, conservation enforcement, and SPHINX-gated authentication.**
 
-![9P2000.L session lattice](docs/assets/session-resume-2026-07-04.png)
+![9P2000.L session lattice]Uploading Mehler-Levin Operator Self-Test.mp4…
 
-**2026-07-09 checkpoint:** [Encyclopedia Equilibria](docs/encyclopedia-equilibria/README.md) · root docs distributed (`docs/theory|architecture|coherence|ops|publications|surfaces`) · stitch + reforge + orchestrator wired to `coherence-mcp/coherence-site/public/` · live hub [/encyclopedia/](https://coherence.toolated.online/encyclopedia/)
+**2026-07-09 checkpoint:**  ·![Uploading i8za0.jpg…]() 
+root docs distributed (`docs/theory|architecture|coherence|ops|publications|surfaces`) ·
+stitch + reforge + orchestrator wired to `coherence-mcp/coherence-site/public/` · 
+live hub [/encyclopedia/](https://coherence.toolated.online/encyclopedia/)
 
 **2026-07-06 checkpoint:** ExistenceCertificate E2E demo · symmetry gate (`permit_witness_mutation`) · `K22.Existence` Lean bridge · [handoff](docs/sovereign-handoff/HANDOFF-2026-07-06-EXISTENCE-SYMMETRY-GATE.md)
 
@@ -12,14 +15,14 @@
 
 ### Build Status (exact, 2026-07-06)
 
-| Crate / Layer | Compiles | Tests | Notes |
-|---------------|----------|-------|-------|
-| `cutile` v0.3 | ✅ | ✅ | `demo_existence_certificate_emission` |
-| `coherence-mcp` v0.5 | ✅ | ✅ 5 | Symmetry gate live |
-| `triweavon-cudarc` | ✅ | run locally | `manifold.rs` fixed |
-| `lean/K22.Existence` | ✅ | example goal | No `sorry` in bridge |
-| `agda/JesusAxiomEpsilon` | scaffold | — | Contraction + Termination |
-| Standalone npm `coherence-mcp` | ❌ | — | TS build errors (v0.3.1) |
+| Crate / Layer            | Compiles | Tests          | Notes                                
+|--------------------------|----------|----------------|-------------------------------------
+| `cutile` v0.             |    ✅    |   ✅          | `demo_existence_certificate_emission` 
+| `coherence-mcp` v0.5     |    ✅    |   ✅ 5        | Symmetry gate live                    
+| `triweavon-cudarc`       |    ✅    | run locally    | `manifold.rs` fixed                   
+| `lean/K22.Existence`     |    ✅    | example goal   | No `sorry` in bridge                  
+| `agda/JesusAxiomEpsilon` | scaffold |       —        | Contraction + Termination            
+| Standalone npm `coherence-mcp` | ❌ |       —        | TS build errors (v0.3.1)              
 
 ### 1. Overview
 
