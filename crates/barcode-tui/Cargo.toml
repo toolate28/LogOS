@@ -21,7 +21,7 @@ reson8-wave = { path = "../wave" }
 
 # Ratatui stack — kept minimal; no `canvas` feature so the crate stays
 # under 2 MB stripped (TODO(manus): verify with `--profile tiny`).
-ratatui = { version = "0.28", default-features = false, features = ["crossterm"] }
+ratatui = { version = "0.29", default-features = false, features = ["crossterm"] }
 crossterm = "0.28"
 
 # CLI parsing for `--cloud` flag. clap kept feature-light.
