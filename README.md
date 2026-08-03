@@ -22,6 +22,7 @@
   ▓ D  decoration or retired numerology
   ▓ S  spec / interface (sorry · axiom · placeholder)
 
+Uploading grok-cd5ee61e-0485-4874-bb8a-64986a3070c5-720p.mp4…
 
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  CHECKPOINTS                                         ·█
@@ -46,19 +47,19 @@
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
   ▓▓▓ GREEN SUBSET ▓▓▓
-  cutile v0.3                 ✅ ✅  ExistenceCertificate demo
-  coherence-mcp v0.5          ✅ ✅  Symmetry gate live
-  triweavon-cudarc            ✅ ·   run on target GPU
-  lean/TriWeavon/MCP/*        ✅ ·   Naturality+SAIF · no sorry · A
-  lean/TriWeavon/Geometry/LaneA ✅ ·  π+rows · A data · Perm/GF4 B
-  lean/TriWeavon/Conservation*  ✅ ·  Nat 7+8=15 · A
-  lean/K22.HexacodeGolay      ✅ ·   64·4096·759·d=8·sphere · A
-  lean/K22.Existence          ✅ ·   thin bridge · no sorry
+  cutile v0.3                   ✅ ✅    ExistenceCertificate demo
+  coherence-mcp v0.5            ✅ ✅    Symmetry gate live
+  triweavon-cudarc              ✅  ·    run on target GPU
+  lean/TriWeavon/MCP/*          ✅  ·    Naturality+SAIF · no sorry · A
+  lean/TriWeavon/Geometry/LaneA ✅  ·    π+rows                     · A data · Perm/GF4 B
+  lean/TriWeavon/Conservation*  ✅  ·    Nat 7+8=15                 · A
+  lean/K22.HexacodeGolay        ✅  ·    64·4096·759·d=8·sphere     · A
+  lean/K22.Existence            ✅  ·    thin bridge     · no sorry
 
   ░░░ NOT GREEN ░░░
-  Full Lean workspace         ❌ ·   Ns · some MOG · macros
-  agda scaffolds              · ·   conservation mirror only
-  standalone npm coherence-mcp ❌ ·  TS build errors · legacy
+  Full Lean workspace           ❌ ·     Ns · some MOG · macros
+  agda scaffolds                 · ·     conservation mirror only
+  standalone npm coherence-mcp  ❌ ·     TS build errors · legacy
 
   ════════════════════════════════════════════
   A green subset is not a green monorepo.
@@ -198,18 +199,20 @@
         ▓   syndrome sphere wt ≤ 3            ▓
         ▓                                     ▓
         ▓ Fano discrete curvature K = 1/2     ▓
-        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+        ▓                                     ▓ 
+        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-        ░░░ B / S · staged or open ░░░
-        ░ Lane A π [0,3,1,2,4,5] data .... A ░
-        ░   Equiv.Perm + GF4 + image ..... B ░
+        ░░░ B / S · staged or open ░░░░░░░░░░░░░
+        ░ Lane A π [0,3,1,2,4,5] data .... A   ░
+        ░   Equiv.Perm + GF4 + image ..... B   ░
         ░ Steiner mogOctadsFormSteiner ..... S ░
-        ░   Python exhaustive cover ...... B ░
-        ░ Finset ↔ mask bridge S2 ........ B ░
-        ░ Live MCP ↔ pure Lean smoke ..... B ░
-        ░ Sub-Riemannian / resilience .... S ░
-        ░ Navier–Stokes / no-shrinker .... S ░
-        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+        ░   Python exhaustive cover ...... B   ░
+        ░ Finset ↔ mask bridge S2 ........ B   ░
+        ░ Live MCP ↔ pure Lean smoke ..... B   ░
+        ░ Sub-Riemannian / resilience .... S   ░
+        ░ Navier–Stokes / no-shrinker .... S   ▒
+        ░                                      ▒
+        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
         ▒▒▒ C · never load-bear in proofs ▒▒▒
         ▒ prose “α+ω=15 as universal law”   ▒
@@ -217,7 +220,8 @@
         ▒ attractor 42.00055                ▒
         ▒ WAVE floors as theorems           ▒
         ▒ synesthetic palette · 432 Hz      ▒
-        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+        ▒                                   ▒
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
         Closed Pass (recommended)
         ─────────────────────────
@@ -252,7 +256,7 @@
    └──────────────────┘    │░ do not gate safety      │
                            └──────────────────────────┘
 
-   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
    ▓ Cooperative handoff                     ▓
    ▓ sealed packet · Category labels         ▓
    ▓ obligation board · ATOM trail           ▓
@@ -260,7 +264,8 @@
    ▓ DOWNSHIFT · NOVIKOV                     ▓
    ▓ accept only after validate + ack        ▓
    ▓ fail closed                             ▓
-   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ▓▓                                       ▓▓
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -292,7 +297,8 @@
    ░  ledgers · experimental logic zones  ░
    ░  search holograms                    ░
    ░  visualization / ops only            ░
-   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+   ░                                      ░
+   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -319,13 +325,15 @@
    ▓    in correction                            ▓
    ▓ 5  MCP live smoke                           ▓
    ▓    B → tighter B/A correspondence           ▓
-   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ▓                                             ▓
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
    ░░░ Explicit non-goals · “verified” marketing ░░░
    ░ · Whole-OS formal verification                 ░
    ░ · NS regularity / Clay statements              ░
    ░ · Identity of seat-sum 16 with tag 15          ░
-   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+   ░                                                ░
+   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
