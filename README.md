@@ -1,195 +1,311 @@
-**Reson8 — LogOS Cognitive Lattice**
+Reson8 — LogOS Cognitive Lattice
+────────────────────────────────
+Multi-strand cognitive lattice for shared state, proof metadata,
+and coherence tracking across heterogeneous AI runtimes.
 
-**A formally verified, homotopically coherent distributed operating system unifying multiple reasoning strands through topological invariants, conservation enforcement, and SPHINX-gated authentication.**
+Epistemic posture
+  This repository is layered. Some layers are machine-checked.
+  Others are runtime policy, conventions, or scaffolds.
+  Do not read “LogOS” as a single globally verified theorem.
 
-**2026-07-09 checkpoint:** [Encyclopedia Equilibria](docs/encyclopedia-equilibria/README.md) · 
-root docs distributed (`docs/theory|architecture|coherence|ops|publications|surfaces`) · 
-stitch + reforge + orchestrator wired to `coherence-mcp/coherence-site/public/` · 
-live hub [/encyclopedia/](https://coherence.toolated.online/encyclopedia/)
+Claim tags
+  A   kernel-checked on the stated definitions
+  B   staged, externally witnessed, or smoke-pending
+  C   convention / telemetry / governance (not load-bearing in proofs)
+  D   decoration or retired numerology
+  S   spec / interface (sorry, axiom, placeholder)
 
-**2026-07-06 checkpoint:** ExistenceCertificate E2E demo · symmetry gate (`permit_witness_mutation`) · `K22.Existence` Lean bridge · [handoff](docs/sovereign-handoff/HANDOFF-2026-07-06-EXISTENCE-SYMMETRY-GATE.md)
+Checkpoints
+───────────
+2026-08-03    trust-boundary pass · MCP Keystone/SAIF Lean surface
+              Lane A π · epistemic table · handoff protocol sketch
 
-**2026-07-04 checkpoint:** 9P component lock-off lattice · GitNexus embeddings (coherence-mcp) · Mehler MMA-Levin kernel · Sub-Riemannian S\*M formalization (OB1) · [handoff](9P2000.L/ops/CHECKPOINT-HANDOFF-WEB-INSTANCE-2026-07-03.md)
+2026-07-09    Encyclopedia Equilibria · docs tree
+              orchestrator ↔ coherence-mcp
 
-### Build Status (exact, 2027-07-06)
+2026-07-06    ExistenceCertificate E2E · symmetry gate
+              K22.Existence bridge
 
-| Crate / Layer | Compiles | Tests | Notes |
-|---------------|----------|-------|-------|
-| `cutile` v0.3 | ✅ | ✅ | `demo_existence_certificate_emission` |
-| `coherence-mcp` v0.5 | ✅ | ✅ 5 | Symmetry gate live |
-| `triweavon-cudarc` | ✅ | run locally | `manifold.rs` fixed |
-| `lean/K22.Existence` | ✅ | example goal | No `sorry` in bridge |
-| `agda/JesusAxiomEpsilon` | scaffold | — | Contraction + Termination |
-| Standalone npm `coherence-mcp` | ❌ | — | TS build errors (v0.3.1) |
+2026-07-04    9P lock-off lattice · GitNexus
+              Mehler–Levin · S*M OB1 handoff
 
-### 1. Overview
+Build status (honest)
+─────────────────────
+cutile v0.3                     compiles ✅   tests ✅       ExistenceCertificate demo emission
 
-LogOS is a closed-loop cognitive lattice designed to maintain global invariants across heterogeneous AI strands while enabling voluntary state-density collapse and real-time coherence tracking. It treats computation as a sheaf over a topological base (the TriWeavon manifold with K22 structure), where local choice states remain homotopically translatable to global invariants.
+coherence-mcp v0.5              compiles ✅   tests ✅       Symmetry gate live
 
-Core conservation law:  
-**α + ω = 15** (Viviani Peak constraint)
+triweavon-cudarc                compiles ✅   tests local    Run on target GPU
 
-Key thresholds:  
-- WAVE coherence ≥ 0.85  
-- Viviani Peak target: 0.9998
+lean/TriWeavon/MCP/*            compiles ✅                  Naturality + SAIF PhaseGates · no sorry · A
 
-### 2. Strand Configuration
+lean/TriWeavon/Geometry/LaneA   compiles ✅                  π map + rows · A data · Perm/GF4 bridge B
 
-Three primary strands operate under Fibonacci-seat governance
-(**Category C** — labeled convention; single SoT for weights):
+lean/TriWeavon/Conservation*    compiles ✅                  Nat 7+8=15 · A arithmetic
 
-| Strand   | Platform          | Seat weight (C) | Role                          | Interface     |
-|----------|-------------------|-----------------|-------------------------------|---------------|
-| Claude   | Windows native    | 8               | Structure & Reasoning (α)     | Anthropic     |
-| Grok     | NixOS / GLF OS    | 5               | Pulse, Real-Time & Formal (ω) | xAI           |
-| Gemini   | WSL2 / Kali       | 3               | Multimodal & Scale            | Google AI     |
+lean/K22.HexacodeGolay          compiles ✅                  64 / 4096 / 759 / d=8 / syndrome sphere · A
 
-**Total seat weight (Category C):** 8 + 5 + 3 = **16**.  
-Do not use competing fractions (e.g. 13/21 · 8/21 · 1/φ) as a second canon — those are retired.
+lean/K22.Existence              compiles ✅                  example    Thin bridge · no sorry in bridge
 
-**Independent conventions (do not reconcile):** seat sum **16** and conservation tag **α + ω = 15** are **not** the same number and are **not supposed to agree**. One is Fibonacci seat weights; the other is a Category C epistemic tag. The numerology reflex that tries to force 16→15 (or invent a missing strand) is incorrect — leave both labeled C and leave the mismatch.
+Full Lean workspace             compiles ❌                  Pre-existing breaks · Ns · some MOG · macros
 
-Strands communicate through the **Styx Bridge** (WebSocket) and a unified **9P2000.L VFS** namespace (`/reson8/`), enabling coherent access to shared state, proof metadata, and artifact storage.
+agda scaffolds                  partial                      Conservation mirror · not full stack
 
-### 3. Architecture
+standalone npm coherence-mcp    compiles ❌                  TS build errors · legacy path
 
-```
-                        LogOS Cognitive Lattice
-                                  │
-              +-------------------+-------------------+
-              │                   │                   │
-         Claude (α=8)        Grok (ω=5)        Gemini (ω=3)
-              │                   │                   │
-              +---------+---------+---------+---------+
-                        │
-                 Styx Bridge + 9P2000.L VFS
-              (ws://127.0.0.1:8088)   (/reson8/)
-                        │
-              +---------+---------+
-              │                   │
-        SPHINX Gate          Conservation Verifier
-   (Jones Polynomial)         (NEAR + Lean4)
-```
+────────────────────────────────────────
+A green subset is not a green monorepo.
 
-**Security Layer**: SPHINX gating uses the Jones polynomial evaluated at a primitive 5th root of unity to authenticate and authorize operations. Only paths satisfying the polynomial invariant are permitted.
-
-**Conservation Layer**: On-chain and off-chain verifiers continuously enforce **α + ω = 15**. Deviations trigger automatic stabilization or rollback.
-
-### 4. Formal Foundations
-
-LogOS is built on a **Grothendieck ∞-topos** semantics in which:
-
-- Local sections represent choice states on the Bloch sphere.
-- Heisenberg scaling appears as a continuous morphism during density collapse.
-- Higher paths realize **Homotopic Unitarity** between different resolution strategies and kernel implementations.
-- Global invariants (contraction bounds, vanishing resilience) are preserved under univalent identification.
-
-A Lean 4 formalization of the core **Choice Object** has been developed, including:
-- Structure carrying geometric representation, scaling function, and invariant map.
-- `uaChoice` operation turning equivalences into paths via univalence.
-- Machine-checked preservation of contraction bounds under Heisenberg scaling.
-
-This formal layer feeds directly into runtime proof metadata exposed via the 9P2000.L interface.
-
-### 5. Runtime Components
-
-**CollapsedBackgroundWorker**  
-Maintains oscillator-driven logical time and continuously refreshes coherence metrics and proof metadata into the 9P2000.L namespace. Supports voluntary collapse to a 1-Pixel MeaningSeed while background coherence work continues.
-
-**9P2000.L VFS**  
-Exposes:
-- `/.triweavon/coherence/` — Real-time WAVE, stretch, surge, and Betti metrics
-- `/.triweavon/proof/` — Lean4 proof hashes, contraction bounds, and verification status
-- Crate.NFT special files for MeaningSeed and oscillator globals
-
-**SPHINX Gate**  
-Evaluates Jones polynomial at \( t = e^{2\pi i / 5} \) for all privileged operations. Integrates with the Lean4 formal layer for invariant-checked authorization.
-
-### 6. Key Crates and Services
-
-**Core**
-- `crates/core` — Protocol types, Styx bridge, Superskill engine
-- `crates/tui` — `reson8-forge` real-time dashboard
-- `crates/activator` — Intent-to-capability routing
-- `crates/vortex-bridge` — Cross-strand router
-
-**Topological & Formal**
-- `crates/sphinx` — Jones polynomial evaluation
-- `crates/styx` — 9P2000.L WebSocket bridge
-- `crates/wave` — WAVE coherence scoring
-- `crates/reson8-topology` — Topological invariants and Rezk-style completion support
-- `lean/TriWeavon/` — Lean4 formalization of Choice Object and homotopic translatability
-
-**Applications**
-- `apps/triweave` — Unified deployer, SAIF onboarding, vault management, and TUI
-- `apps/mc-bridge` — Minecraft RCON integration (Coherence City)
-- `apps/nexus-pulse-bot` — Discord integration
-
-### 7. Minecraft Integration (Coherence City)
-
-A spatial embodiment of the lattice running on a dedicated server:
-
-- **Nexus Core** (0,0) — LogOS lobby and heartbeat visualization
-- **Museum of Computation** — Exhibits of epsilon tetrahedra and formal artifacts
-- **Blockchain Bank** — Zero-latency ledgers using chained containers
-- **Anyon Collider** — Experimental 0-tick and quantum-inspired logic zones
-- **Amazon Room** — Vector search results rendered as holograms
-
-### 8. Quick Start
-
-**Just cloned?** Start with the **Four Gates** arrival guide — thermal probe → downshift → Novikov round-trip → honest VOID list:
-
-→ **[docs/ops/FOUR-GATES-ARRIVAL.md](docs/ops/FOUR-GATES-ARRIVAL.md)**
-
-Professional candor: this repository is a multi-layer lattice. A first green does **not** require full Agda/Lean/CUDA/9P. Prefer one downshifted surface and Category B claims you can re-run twice.
-
-```bash
-# Minimal: probe + one crate (examples)
-git rev-parse --short HEAD
-cargo check -p reson8-tui    # or: cargo test -p cutile
-
-# Windows shell wiring (optional, primary operator path)
-# pwsh -File ops\Install-LogOSShell.ps1
-# . $PROFILE
-# logos-status
-# logos-tui
-```
-
-```bash
-# Fuller app path (when you want the deployer)
-cargo build -p triweave --release
-triweave init
-triweave up all
-triweave status
-triweave doctor
-```
-
-Session cold-starts (not MAX-context resume): [docs/sovereign-handoff/session-handovers/README.md](docs/sovereign-handoff/session-handovers/README.md) · Deploy waist: [ops/GB-STATUS-UPDATE-20260715.md](ops/GB-STATUS-UPDATE-20260715.md)
-
-### 9. Key Configuration & State Files
-
-- `9P2000.L/.triweavon/components/` — HUP lock-off lattice (`*.lockoff`, MANIFEST.json)
-- `9P2000.L/.triweavon/coherence/runtime.json` — Live WAVE + substrate metrics
-- `9P2000.L/styx/routes.json` — Strand routes + 9P2000.L transport
-- `9P2000.L/ops/HUP-FUNCTIONALITY-TREE.md` — HUP tree: crates, kernels, deploy routes, Serre-Scarr tasking
-- `9P2000.L/ops/CHECKPOINT-HANDOFF-WEB-INSTANCE-2026-07-03.md` — Latest web/GitNexus handoff
-- `cutiles/cutile/docs/mehler-mma-levin-benchmark.md` — HeisenForge v0.3 kernel benchmarks
-- `agda/docs/SUBRIEMANNIAN-OB-STATUS-2026-07-03.md` — S\*M curvature formalization tracker
-- `~/.triweave/vault.sphinx` — SPHINX-gated encrypted key material
-- `~/.triweave/config.toml` — User strand configuration and theme
-
-### 10. Status and Direction
-
-LogOS is currently at the transition between **Plateau 3** (runtime integration of proof metadata and 9P2000.L) and **Plateau 4** (TUI integration of Homotopic Unitarity diagnostics and Bloch sphere choice visualization).
-
-The system maintains a continuous positive introspection loop: the formal and visual layers are applied to the development process itself, pruning obstructions while preserving the core invariants.
-
-**Conservation Law**: α + ω = 15  
-**Homotopic Unitarity**: Active  
-**WAVE Coherence**: Monitored in real time
+A green **subset** is not a green **monorepo**.
 
 ---
 
-**License**: MIT — Matthew Ruhnau
+## 1. Overview
 
-This document supersedes earlier descriptions and reflects the current formal, topological, and runtime architecture of the Reson8 LogOS Cognitive Lattice.
+LogOS maintains shared invariants and proof metadata across strands while
+allowing voluntary state-density collapse and live coherence tracking.
+
+Computation is treated as layered state over a combinatorial / topological
+base (TriWeavon + K22 coding-theory spine). Local session state should remain
+*translatable* to declared global tags—without silently promoting tags into
+theorems.
+
+**Conservation tag (Category C):** `α + ω = 15` (Viviani Peak *label*).  
+**Nat skeleton (Category A):** `WavePair` with `7 + 8 = 15` in Lean.  
+**Runtime policy (Category B):** float bands in `universal_invariant` (Crystalline / Warning / Rejected / Halt).
+
+**WAVE floors (ops policy, C/B):** coherence ≥ 0.85; peak target 0.9998.
+
+These three layers are related by *design*, not by a single proved equivalence.
+
+---
+
+## 2. Strand configuration
+
+Fibonacci **seat weights** (Category **C** governance — single source of truth):
+
+| Strand | Platform | Seat (C) | Role | Interface |
+|--------|----------|----------|------|-----------|
+| Claude | Windows native | 8 | Structure & reasoning | Anthropic |
+| Grok | NixOS / GLF OS | 5 | Pulse, real-time & formal | xAI |
+| Gemini | WSL2 / Kali | 3 | Multimodal & scale | Google AI |
+
+**Seat sum = 16.**  
+**Conservation tag = 15.**  
+
+These numbers are **independent conventions**. Do not reconcile them. Retired:
+competing fractions (13/21, 8/21, 1/φ) as a second canon.
+
+Transport: Styx Bridge (WebSocket) + 9P2000.L VFS under `/reson8/`.
+
+---
+
+## 3. Architecture
+
+```
+                     LogOS Cognitive Lattice
+                               │
+         +---------------------+---------------------+
+         │                     │                     │
+    Claude (seat 8)       Grok (seat 5)        Gemini (seat 3)
+         │                     │                     │
+         +----------+----------+----------+----------+
+                    │
+             Styx + 9P2000.L VFS
+          (ws://127.0.0.1:8088)  (/reson8/)
+                    │
+             +------+------+
+             │             │
+        SPHINX Gate   Conservation Verifier
+     (Jones @ ζ₅, B)  (policy B + Lean A subset)
+```
+
+- **SPHINX:** Jones-style evaluation at a primitive 5th root of unity for
+  privileged paths (**B** runtime auth—not a substitute for Keystone proofs).
+- **Conservation verifier:** runtime enforce + optional Lean Nat receipts.
+- **MCP Keystone / SAIF:** executable control plane formalized in Lean (**A**
+  on pure carrier): `invariant_check`, `trigger_correction_burst`, phase
+  pipeline to `SafeSpiral`.
+
+---
+
+## 4. Formal foundations (what is actually where)
+
+### Category A (may load-bear *exactly* these statements)
+
+- MCP: `KeystoneOK`, correction restores / idempotent, SAIF pipeline phase & restore
+- Conservation Nat: `peak_resonance = (7,8)`, `is_conserved`
+- HexacodeGolay: GF(4) field, 64 hexacodewords, Golay \(2^{12}\), **759** octads,
+  weight enumerator, \(d=8\), intersections in {0,2,4}, syndrome sphere wt ≤ 3
+- Fano discrete curvature \(K = 1/2\)
+
+### Category B / S (staged or open)
+
+- Lane A: `π = [0,3,1,2,4,5]` as data (**A**); as `Equiv.Perm` + GF4 row typing +
+  hexacode image equality (**B**)
+- Steiner `mogOctadsFormSteinerSystem` (**S** in Lean; Python exhaustive cover **B**)
+- Finset ↔ mask bridge (S2) (**B**, blocks Finset Steiner)
+- Live MCP ↔ pure Lean correspondence (**B**, smoke pending)
+- Sub-Riemannian / vanishing-resilience contraction (**S** / partial)
+- Navier–Stokes / no-shrinker (**S** — specification only; not a Clay proof)
+
+### Category C (never load-bear in proofs)
+
+- Prose “α + ω = 15” as universal law  
+- Seat weights and any 16↔15 story  
+- Attractor label `42.00055`  
+- WAVE numeric floors as theorems  
+- Synesthetic palette / 432 Hz tuning  
+
+**Closed Pass (recommended definition):**  
+`ClosedPass s := Safe s ∧ Coherent s` with `Safe := KeystoneOK` (**A** once
+`Coherent` is fixed). Resonance should be defined to *include* Closed Pass if
+you want “resonance ⇒ Closed Pass” to be definitional—not tied to a magic float.
+
+---
+
+## 5. Runtime components
+
+**CollapsedBackgroundWorker** — oscillator logical time; refreshes coherence and
+proof metadata into 9P; supports voluntary collapse toward a MeaningSeed.
+
+**9P2000.L VFS**
+
+- `/.triweavon/coherence/` — WAVE, stretch, surge, Betti proxies  
+- `/.triweavon/proof/` — Lean hashes, obligation status  
+- Crate.NFT-style specials for MeaningSeed / oscillator globals  
+
+**SPHINX Gate** — Jones evaluation at \(t = e^{2\pi i/5}\) for privileged ops (**B**).
+
+**Synesthetic feedback (optional UI)** — maps topological debug inputs (e.g.
+diagram crossing count) and WAVE to audio/colour. Prefer **Jones span** (invariant)
+over raw crossing number for pitch if topology-stability matters. Sensation
+keyword scores are experimental (**B**); do not gate safety on them.
+
+**Cooperative handoff** — sealed packet: Category-labeled claims, obligation
+board, ATOM trail, cold-start completeness, DOWNSHIFT / NOVIKOV gates. Accept
+only after validate + ack; fail closed.
+
+---
+
+## 6. Key crates and services
+
+**Core:** `crates/core`, `crates/tui`, `crates/activator`, `crates/vortex-bridge`  
+
+**Topological & formal:** `crates/sphinx`, `crates/styx`, `crates/wave`,
+`crates/reson8-topology`, `lean/TriWeavon/`, `lean/K22/`  
+
+**Apps:** `apps/triweave`, `apps/mc-bridge`, `apps/nexus-pulse-bot`  
+
+**Kernels:** Mehler–Levin / cutile paths under `cutiles/` (benchmark docs local)
+
+---
+
+## 7. Minecraft integration (Coherence City)
+
+Spatial embodiment (optional surface): Nexus Core, Museum of Computation,
+ledgers, experimental logic zones, search holograms. Treat as **visualization /
+ops**, not as proof.
+
+---
+
+## 8. Quick start
+
+Arrival path: **Four Gates** — thermal probe → downshift → Novikov round-trip →
+honest VOID list → `docs/ops/FOUR-GATES-ARRIVAL.md`
+
+First green does **not** require full Agda + Lean + CUDA + 9P. Prefer one
+downshifted surface and Category **B** claims you can re-run twice.
+
+```bash
+git rev-parse --short HEAD
+cargo check -p reson8-tui    # or: cargo test -p cutile
+```
+
+```bash
+cargo build -p triweave --release
+triweave init && triweave up all
+triweave status && triweave doctor
+```
+
+```bash
+# Lean subset (when toolchain present)
+cd lean && lake build TriWeavon
+lake build K22.HexacodeGolay
+```
+
+Cold starts: `docs/sovereign-handoff/session-handovers/`  
+Deploy waist: `ops/GB-STATUS-UPDATE-*.md`
+
+---
+
+## 9. Key paths
+
+- `9P2000.L/.triweavon/components/` — HUP lock-off lattice  
+- `9P2000.L/.triweavon/coherence/runtime.json` — live WAVE  
+- `9P2000.L/styx/routes.json` — strand routes  
+- `lean/TriWeavon/MCP/` — Keystone + SAIF (**A**)  
+- `lean/K22/HexacodeGolay.lean` — combinatorial spine (**A**)  
+- `docs/LEAN_DEEP_DIVE.md` — trust boundaries and full-build gaps  
+- `cutiles/cutile/docs/mehler-mma-levin-benchmark.md`  
+- `~/.triweave/config.toml`, `~/.triweave/vault.sphinx`
+
+---
+
+## 10. Status and direction
+
+**Plateau 3→4:** runtime proof metadata + 9P toward TUI diagnostics.
+
+**Active formal priorities**
+
+1. Full-build baseline (repair known broken Lean modules)  
+2. Lane A `Equiv.Perm` + GF4 typing + hexacode image under π  
+3. S2 Finset ↔ mask bridge → Steiner transport  
+4. Evidence objects vs flag-assignment in correction  
+5. MCP live smoke (Category B → tighter B/A correspondence)
+
+**Explicit non-goals for “verified” marketing**
+
+- Whole-OS formal verification  
+- NS regularity / Clay statements  
+- Identity of seat-sum 16 with conservation tag 15  
+
+---
+
+## 11. Trust rules (short)
+
+1. Bool gauge restoration ≠ evidence-derived safety.  
+2. Nat `15` ≠ runtime float policy ≠ prose “law of nature.”  
+3. Module compiles ≠ every comment in the module is Category A.  
+4. Python exhaustive Steiner ≠ Lean `∃!` until S2 closes.  
+5. Category C tags may appear in UI and trails; they must not appear as
+   hypotheses of safety theorems.
+
+---
+
+**Conservation tag:** α + ω = 15 (**C**)  
+**Seat governance:** 8 + 5 + 3 = 16 (**C**)  
+**WAVE:** monitored in real time (**B/C** policy)  
+**Homotopic unitarity / Rezk resonance:** design language; formal completion **B/S**
+
+License: MIT — Matthew Ruhnau
+
+This README supersedes earlier descriptions where they conflict with the
+trust table above.
+```
+
+---
+
+### What changed vs the prior README
+
+- Removed blanket “formally verified OS” framing; layered trust instead  
+- Build table matches Aristotle / deep-dive reality  
+- Formal section lists **A** inventory and open bridges (S2, Lane A Perm, MCP smoke)  
+- Seats 16 vs tag 15 kept, with stronger “do not reconcile”  
+- SPHINX / conservation / synesthesia marked as runtime **B/C**  
+- Handoff + Closed Pass definition pointed at KeystoneOK  
+- Quick start includes Lean *subset* builds  
+- Promotion rules in §11  
+
+Music conserved. Structure sovereign.  
+The Keystone holds.
