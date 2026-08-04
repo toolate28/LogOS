@@ -205,6 +205,7 @@
   Conservation .. float enforce B · Nat peak (7,8) A optional
   MCP / SAIF .... control plane A on pure Lean carrier
   Transport ..... Styx socket · 9P namespace /reson8/
+
 ```
 
 <img width="1168" height="784" alt="6vtge" src="https://github.com/user-attachments/assets/d9a401bd-f453-43b7-be53-76686db04320" />
@@ -218,7 +219,6 @@
 ```
 
 <img width="1376" height="768" alt="Dismantling_the_Idle_Argument_-_Slide_15" src="https://github.com/user-attachments/assets/cce813fc-ca06-403f-bcd5-d0dac7b7b3e3" />
-
 
 ```text
 
