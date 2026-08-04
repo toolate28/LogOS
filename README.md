@@ -1,4 +1,8 @@
-<img width="1536" height="2752" alt="K22_Keystone_Project_Verification_Results (1)" src="https://github.com/user-attachments/assets/c53245a5-0ae1-421b-85eb-085318611845" />
+<img width="1792" height="1008" alt="grok-6f89240e-b858-48be-8d8d-02b60bb8e538" src="https://github.com/user-attachments/assets/520accc7-3e3e-4ad4-a3bd-2886b7dc7de3" />
+
+<img width="1376" height="768" alt="Dismantling_the_Idle_Argument_-_Slide_4" src="https://github.com/user-attachments/assets/69ec587f-8988-49cd-8abd-2ced31683054" />
+
+<img width="1536" height="2752" alt="AI_OS_Topological_Architecture_Infographic" src="https://github.com/user-attachments/assets/59de0049-fc66-41d7-a753-181b4fc6669e" />
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -11,6 +15,12 @@
   ░ Some layers are machine-checked.
   ░ Others are runtime policy, conventions, or scaffolds.
   ░ Do not read “LogOS” as a single globally verified theorem.
+```
+<img width="2048" height="2048" alt="Keystone_Control_Plane_Technical_Overview" src="https://github.com/user-attachments/assets/2e6bfd67-fd1a-4763-85ef-b758ddac79fa" />
+
+<img width="1376" height="768" alt="v0_2_Arrival_Detection_-_Slide_4" src="https://github.com/user-attachments/assets/c9769be9-b37a-4d95-98b0-b678611a1969" />
+
+```text
 
   ▓ Claim tags
   ▓ A  kernel-checked on the stated definitions
@@ -48,11 +58,11 @@
 <img width="1408" height="1408" alt="grok-c6124119-6ee5-4219-b166-147932353f49" src="https://github.com/user-attachments/assets/ff33e1d8-32db-4b1b-b47c-2603dabb3a9a" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  BUILD STATUS · honest                                                       ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  BUILD STATUS · honest                                                                         ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-  ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
   cutile v0.3                   ✅ ✅    ExistenceCertificate demo
   coherence-mcp v0.5            ✅ ✅    Symmetry gate live
   triweavon-cudarc              ✅  ·    run on target GPU
@@ -62,14 +72,15 @@
   lean/K22.HexacodeGolay        ✅  ·    64·4096·759·d=8·sphere     · A
   lean/K22.Existence            ✅  ·    thin bridge     · no sorry
 
-  ░░░ NOT GREEN ░░░
-  Full Lean workspace           ❌  ·    Ns · some MOG · macros
-  agda scaffolds                 ·  ·    conservation mirror only
-  standalone npm coherence-mcp  ❌  ·    TS build errors · legacy
-
-  ════════════════════════════════════════════
+  ░░░ NOT GREEN ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+  Full Lean workspace           ❌  ·    Ns · some MOG · macros       ░░░░░░
+  agda scaffolds                 ·  ·    conservation mirror only      ░░░░░
+  standalone npm coherence-mcp  ❌  ·    TS build errors · legacy     ░░░░░░
+                                                                      ░░░░░░
+  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+  ════════════════════════════════════════════════════════════════════════════════════════════════════════
   A green subset is not a green monorepo.
-  ════════════════════════════════════════════
+  ════════════════════════════════════════════════════════════════════════════════════════════════════════
 ```
 <img width="1792" height="1008" alt="grok-8e7fd613-8d9b-4175-9092-bfb3c3f6ec8c" src="https://github.com/user-attachments/assets/d5c030f9-ec87-4ede-ba90-df6cef442e41" />
 
@@ -85,17 +96,17 @@
 █  §1  OVERVIEW                                                                         ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-  LogOS maintains shared invariants and proof metadata
-  across strands while allowing voluntary state-density
-  collapse and live coherence tracking.
+  LogOS maintains shared invariants and proof metadata across strands while
+  allowing voluntary state-density collapse and live coherence tracking.
 
-  Computation is layered state over a combinatorial /
-  topological base (TriWeavon + K22 coding-theory spine).
-  Local session state should remain translatable to
-  declared global tags — without silently promoting
-  tags into theorems.
+  Computation is layered state over a combinatorial / topological base (TriWeavon
+  + K22 coding-theory spine). Local session state should remain translatable
+  to declared global tags — without silently promoting tags into theorems.
+
 ```
 <img width="1168" height="784" alt="OWJGM" src="https://github.com/user-attachments/assets/c10147a5-09fd-4cb1-bb8d-0f60f456e6aa" />
+
+<img width="1536" height="2752" alt="K22_Keystone_Project_Verification_Results (1)" src="https://github.com/user-attachments/assets/c53245a5-0ae1-421b-85eb-085318611845" />
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -103,20 +114,15 @@
 █  C governance · B runtime · A Lean subset                                           ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-  ┌─────────────────────────────────────────────┐
-  │ Conservation tag    α + ω = 15              │
-  │                     Viviani Peak label · C  │
-  ├─────────────────────────────────────────────┤
-  │ Nat skeleton        WavePair 7 + 8 = 15     │
-  │                     Lean arithmetic · A     │
-  ├─────────────────────────────────────────────┤
-  │ Runtime policy      float bands             │
-  │                     Crystalline / Warning   │
-  │                     Rejected / Halt · B     │
-  ├─────────────────────────────────────────────┤
-  │ WAVE floors         ≥ 0.85 · peak 0.9998    │
-  │                     ops policy · C/B        │
-  └─────────────────────────────────────────────┘
+  ┌─────────────────────────────────────────────────────────────────────────────────┐
+  │ Conservation tag    α + ω = 15  · Viviani Peak label                      · C  ·│
+  ├─────────────────────────────────────────────────────────────────────────────────┤
+  │ Nat skeleton        WavePair    · 7 + 8 = 15            · Lean arithmetic · A  ·│
+  ├─────────────────────────────────────────────────────────────────────────────────┤
+  │ Runtime policy      float bands · Crystalline / Warning · Rejected / Halt · B  ·│
+  ├─────────────────────────────────────────────────────────────────────────────────┤
+  │ WAVE floors         ≥ 0.85      · peak 0.9998           · ops policy     · C/B ·│
+  └─────────────────────────────────────────────────────────────────────────────────┘
   Related by design — not by a single proved equivalence.
 
 ```
@@ -185,6 +191,9 @@
                          ═ spine join ═
 ```
 
+<img width="1536" height="2752" alt="The_Hilbert-Schmidt_Blueprint_Infographic" src="https://github.com/user-attachments/assets/72f44649-113e-454f-a351-085eaefda01c" />
+
+
 <img width="1168" height="784" alt="o3kS6" src="https://github.com/user-attachments/assets/2fede304-d157-424a-9c80-b2bd0108aaa8" />
 
 ```text
@@ -218,11 +227,13 @@
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 ```
 
-<img width="1376" height="768" alt="Dismantling_the_Idle_Argument_-_Slide_15" src="https://github.com/user-attachments/assets/cce813fc-ca06-403f-bcd5-d0dac7b7b3e3" />
+
+<img width="1536" height="2752" alt="Krawczyk_Iteration_Operator_Logic" src="https://github.com/user-attachments/assets/bbf83875-51f5-4436-9402-081aee16a5e9" />
+
 
 ```text
-
-
+         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+        ▓▓▓                                 ▓▓▓
         ▓▓▓ A · may load-bear exactly these ▓▓▓
         ▓─────────────────────────────────────▓
         ▓ MCP                                 ▓
@@ -245,6 +256,8 @@
         ▓                                     ▓ 
         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ```
+<img width="1018" height="699" alt="grok-4813c16a-8503-400b-864f-ee6eeddba09f (1)" src="https://github.com/user-attachments/assets/e9c9e244-17a5-4fe9-bd23-0ce37cbb0c99" /><img width="1018" height="699" alt="grok-c0ad7d5f-33d2-4567-9dc9-7fced4103c2b" src="https://github.com/user-attachments/assets/790fa0a4-f762-4a9a-bd0f-30fc50610b49" />
+
 
 ```text
 
@@ -292,40 +305,29 @@
 <img width="1408" height="1408" alt="grok-173ffa3e-b896-439c-ba87-8c6b2f5bc469" src="https://github.com/user-attachments/assets/da2140bf-5a5d-446d-9bcc-a07bd6a1daf9" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §5  RUNTIME COMPONENTS                                                             ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  §5  RUNTIME COMPONENTS                                                                                     ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-   ┌──────────────────┐    ┌──────────────────────────┐
-   │█ Collapsed       │    │█ 9P2000.L VFS            │
-   │█ BackgroundWorker│    │░ /.triweavon/coherence/  │
-   │░ oscillator time │    │░   WAVE stretch surge    │
-   │░ 9P refresh      │    │░   Betti proxies         │
-   │░ → MeaningSeed   │    │░ /.triweavon/proof/      │
-   └──────────────────┘    │░   Lean hashes · status  │
+   ┌──────────────────┐    ┌──────────────────────────┐    ┌──────────────────┐    ┌──────────────────────────┐
+   │█ Collapsed       │    │█ 9P2000.L VFS            │    │█ SPHINX Gate     │    │█ Synesthetic UI (opt)    │
+   │█ BackgroundWorker│    │░ /.triweavon/coherence/  │    │░ Jones @ ζ₅      │    │░ prefer Jones span       │
+   │░ oscillator time │    │░   WAVE stretch surge    │    │░ privileged ops  │    │░ over raw crossing count │
+   │░ 9P refresh      │    │░   Betti proxies         │    │░ Category B      │    │░ sensation score · exp B │
+   │░ → MeaningSeed   │    │░ /.triweavon/proof/      │    └──────────────────┘    │░ do not gate safety      │
+   └──────────────────┘    │░   Lean hashes · status  │                            └──────────────────────────┘
                            │░ Crate.NFT specials      │
                            └──────────────────────────┘
 ```
 
 ```text
-   ┌──────────────────┐    ┌──────────────────────────┐
-   │█ SPHINX Gate     │    │█ Synesthetic UI (opt)    │
-   │░ Jones @ ζ₅      │    │░ prefer Jones span       │
-   │░ privileged ops  │    │░ over raw crossing count │
-   │░ Category B      │    │░ sensation score · exp B │
-   └──────────────────┘    │░ do not gate safety      │
-                           └──────────────────────────┘
 
-   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-   ▓ Cooperative handoff                     ▓
-   ▓ sealed packet · Category labels         ▓
-   ▓ obligation board · ATOM trail           ▓
-   ▓ cold-start complete                     ▓
-   ▓ DOWNSHIFT · NOVIKOV                     ▓
-   ▓ accept only after validate + ack        ▓
-   ▓ fail closed                             ▓
-   ▓▓                                       ▓▓
-   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ▓                             Cooperative handoff                                           ▓▓
+   ▓  sealed packet · Category labels + obligation board · ATOM trail + cold-start complete    ▓▓
+   ▓         DOWNSHIFT · NOVIKOV + accept only after validate + ack  +  fail closed            ▓▓
+   ▓▓                                                                        m                 ▓▓ 
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ```
 
 <img width="1168" height="784" alt="59INR" src="https://github.com/user-attachments/assets/5128a009-d3ea-4a02-9892-34bbb6257c3d" />
@@ -335,24 +337,19 @@
 <img width="1168" height="784" alt="Yz7UL" src="https://github.com/user-attachments/assets/851d7a22-8f84-4345-8ef9-045f77ae35fb" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §6  KEY CRATES AND SERVICES                                                       ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  §6  KEY CRATES AND SERVICES                                                                   ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-   CORE                 TOPOLOGICAL & FORMAL
-   ────                 ────────────────────
-   crates/core          crates/sphinx
-   crates/tui           crates/styx
-   crates/activator     crates/wave
+   CORE                 TOPOLOGICAL & FORMAL    APPS                 KERNELS
+   ────                 ────────────────────    ────                 ───────
+   crates/core          crates/sphinx           apps/triweave        cutiles/ · Mehler–Levin
+   crates/tui           crates/styx             apps/mc-bridge       cutile benchmarks (local)
+   crates/activator     crates/wave             apps/nexus-pulse-bot
    crates/vortex-bridge crates/reson8-topology
                         lean/TriWeavon/
                         lean/K22/
 
-   APPS                 KERNELS
-   ────                 ───────
-   apps/triweave        cutiles/ · Mehler–Levin
-   apps/mc-bridge       cutile benchmarks (local)
-   apps/nexus-pulse-bot
 ```
 
 <img width="1376" height="768" alt="LogOS_Tactical_Terminal_-_Slide_11" src="https://github.com/user-attachments/assets/132dfd02-7cdb-42c7-b758-0b753fdf0d9c" />
@@ -362,7 +359,7 @@
 ```text
 
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█     §7         MINECRAFT · COHERENCE CITY                                          ·█
+█  §7  MINECRAFT · COHERENCE CITY                                                    ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 ```
 <img width="1168" height="784" alt="2UYry" src="https://github.com/user-attachments/assets/b723998b-9d62-4c7f-bc62-3a190acf9fc3" />
@@ -425,28 +422,21 @@
 
 ```text
 
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█    §11      TRUST RULES · short                                                          ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█    §11      TRUST RULES · short                                                                              ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-   ┌─────────────────────────────────────────────────┐
-   │ 1  Bool gauge restoration                       │
-   │    ≠ evidence-derived safety                    │
-   ├─────────────────────────────────────────────────┤
-   │ 2  Nat 15                                       │
-   │    ≠ runtime float policy                       │
-   │    ≠ prose “law of nature”                      │
-   ├─────────────────────────────────────────────────┤
-   │ 3  Module compiles                              │
-   │    ≠ every comment in that module is A          │
-   ├─────────────────────────────────────────────────┤
-   │ 4  Python exhaustive Steiner                    │
-   │    ≠ Lean ∃! until S2 closes                    │
-   ├─────────────────────────────────────────────────┤
-   │ 5  Category C may appear in UI and trails       │
-   │    — must not appear as hypotheses              │
-   │      of safety theorems                         │
-   └─────────────────────────────────────────────────┘
+   ┌───────────────────────────────────────────────────────────────────────────────────────────────────┐
+   │ 1  Bool gauge restoration                  ≠ evidence-derived safety                             ·│
+   ├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ 2  Nat 15                                  ≠ runtime float policy    ≠ prose “law of nature”     ·│
+   ├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ 3  Module compiles                         ≠ every comment in that module is A                   ·│
+   ├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ 4  Python exhaustive Steiner               ≠ Lean ∃! until S2 closes                             ·│
+   ├───────────────────────────────────────────────────────────────────────────────────────────────────┤
+   │ 5  Category C may appear in UI and trails  — must not appear as hypotheses of safety theorems    ·│
+   └───────────────────────────────────────────────────────────────────────────────────────────────────┘
 
    Footer tags
    ───────────
@@ -470,7 +460,7 @@
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█                  DELTA ·             what changed vs prior README                       · █
+█   DELTA ·  what changed vs prior README                                                 · █
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
    ▓ Removed blanket “formally verified OS” framing
