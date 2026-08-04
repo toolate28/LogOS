@@ -26,10 +26,7 @@
         to declared global tags — without silently promoting tags into theorems.
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
-```
-<img width="1792" height="1008" alt="grok-2a7a0a27-c7a9-4ac9-9925-c7572e72db68" src="https://github.com/user-attachments/assets/95e57fd4-8bf9-4316-a8f3-55348a32bf44" />
-
-```text                                                    
+                                                    
       █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
       ▓ Claim tags                                               ·█     CHECKPOINTS             ·█
       ▓ A  kernel-checked on the stated definitions              ·█ ░░░░░░░░░░░░░░░░░░░░░░   ░░░·█
@@ -59,17 +56,13 @@
       ▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
-```
-
-
-```text
 
     █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
     █  BUILD STATUS · honest                                                                   ·█
     █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 
-    ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+     ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
      cutile v0.3                   ✅ ✅    ExistenceCertificate demo
      coherence-mcp v0.5            ✅ ✅    Symmetry gate live
      triweavon-cudarc              ✅  ·    run on target GPU
@@ -78,13 +71,13 @@
      lean/TriWeavon/Conservation*  ✅  ·    Nat 7+8=15                 · A
      lean/K22.HexacodeGolay        ✅  ·    64·4096·759·d=8·sphere     · A
      lean/K22.Existence            ✅  ·    thin bridge     · no sorry
-
-  ░░░ NOT GREEN     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-     Full Lean workspace           ❌  ·    Ns · some MOG · macros       ░░░░░░
-     agda scaffolds                 ·  ·    conservation mirror only      ░░░░░
-     standalone npm coherence-mcp  ❌  ·    TS build errors · legacy     ░░░░░░
-                                                                          ░░░░░░
-   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+   
+     ░░░ NOT GREEN     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+     Full Lean workspace           ❌  ·    Ns · some MOG · macros          
+     agda scaffolds                 ·  ·    conservation mirror only        
+     standalone npm coherence-mcp  ❌  ·    TS build errors · legacy
+                                                                            
+     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
   ═════════════════════════════════════════════════════════════════════════════════════════════════
