@@ -315,8 +315,7 @@
 
 <img width="1792" height="1008" alt="grok-3b82ad94-56f0-4b44-9cdf-c32f9cb0bc88" src="https://github.com/user-attachments/assets/780583b0-963d-48ad-ae45-9b0f971612a1" />
 
-<img width="1792" height="1008" alt="grok-8cbdd437-8736-44c7-be07-8e43ef3690f9" src="https://github.com/user-attachments/assets/74d7a78c-c67c-446a-8dd1-792d29b05c26" />
-
+<img width="1792" height="1008" alt="grok-b1c44485-143e-489f-987f-7e16711d40d3" src="https://github.com/user-attachments/assets/600b4be5-a76e-4e73-b8bb-c2ab194633c2" />
 
 
 
