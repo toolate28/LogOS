@@ -1,71 +1,72 @@
-<img width="1792" height="1008" alt="grok-616836e4-0a7d-4959-91b1-a869ccab92c0 (1)" src="https://github.com/user-attachments/assets/5ee5e081-b4cb-4a13-a3f7-e30d21501a6f" />
+<img width="1792" height="1008" alt="grok-06c3b0c0-cede-4821-b4e0-0a87e1d0c1d7" src="https://github.com/user-attachments/assets/59563fa6-0412-4a41-a36a-252f1eafcd21" />
 
 <img width="1792" height="1008" alt="grok-0e66f2a3-da5c-4875-bbb5-5bf1cb0de1e1" src="https://github.com/user-attachments/assets/68de1267-c342-452d-b0ec-b9e495e54545" />
 
-<img width="1792" height="1008" alt="grok-55ee3d35-5366-434d-a5fe-f192877f5d82" src="https://github.com/user-attachments/assets/fbdab0dd-6a3c-4c09-94c5-62ca60b74832" />
+<img width="1792" height="1008" alt="grok-616836e4-0a7d-4959-91b1-a869ccab92c0 (1)" src="https://github.com/user-attachments/assets/5ee5e081-b4cb-4a13-a3f7-e30d21501a6f" />
 
 ```text
 
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█             R E S O N 8  ·  L O G O S  C O G N I T I V E  L A T T I C E                 ·█
-█ multi-strand · shared state · proof metadata coherence across heterogeneous AI runtimes ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+    █             R E S O N 8  ·  L O G O S  C O G N I T I V E  L A T T I C E                 ·█
+    █ multi-strand · shared state · proof metadata coherence across heterogeneous AI runtimes ·█
+    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
+      
+      ░ Epistemic posture
+      ░ This repository is layered.
+      ░ Some layers are machine-checked.
+      ░ Others are runtime policy, conventions, or scaffolds.
+      ░ Do not read “LogOS” as a single globally verified theorem.
 
-  ░ Epistemic posture
-  ░ This repository is layered.
-  ░ Some layers are machine-checked.
-  ░ Others are runtime policy, conventions, or scaffolds.
-  ░ Do not read “LogOS” as a single globally verified theorem.
+    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+    █ §1   OVERVIEW                                                                        ·█
+    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-  █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-  █ §1   OVERVIEW                                                                        ·█
-  █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+        LogOS maintains shared invariants and proof metadata across strands while
+        allowing voluntary state-density collapse and live coherence tracking.
 
-  LogOS maintains shared invariants and proof metadata across strands while
-  allowing voluntary state-density collapse and live coherence tracking.
+        Computation is layered state over a combinatorial / topological base (TriWeavon
+        + K22 coding-theory spine). Local session state should remain translatable
+        to declared global tags — without silently promoting tags into theorems.
 
-  Computation is layered state over a combinatorial / topological base (TriWeavon
-  + K22 coding-theory spine). Local session state should remain translatable
-  to declared global tags — without silently promoting tags into theorems.
-
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
 ```
-<img width="1792" height="1008" alt="grok-8108e327-d9e2-42a8-855b-f1e349654303" src="https://github.com/user-attachments/assets/2ca62602-2c22-4fd4-9510-2266685e2e96" />
 
 <img width="1792" height="1008" alt="grok-3d1afe02-acb6-4c0f-806a-60db92785292" src="https://github.com/user-attachments/assets/214ae524-f686-4a03-9f35-c3fc6ca7d77a" />
 
-
+<img width="1008" height="1792" alt="grok-ee2a4ed7-1f5e-469b-9297-e50d946a8e98" src="https://github.com/user-attachments/assets/d3bb7b03-8a5f-4545-912d-24bfaf36e085" />
 
 
 ```text                                                    
-  █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-  ▓ Claim tags                                               ·█     CHECKPOINTS             ·█
-  ▓ A  kernel-checked on the stated definitions              ·█ ░░░░░░░░░░░░░░░░░░░░░░   ░░░·█
-  █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
-                                                                                        
-  ▓ B  staged · externally witnessed · smoke-pending 2026-08-03  ▓ trust-boundary pass       ▓
-  ▓ C  convention · telemetry · governance                       ▓ MCP Keystone / SAIF       ▓
-  ▓                                                              ▓ Lean surface              ▓
-  ▓    (not load-bearing in proofs)                              ▓ Lane A π ·epistemic       ▓
-  ▓                                                              ▓ table · handoff sketch    ▓
-  █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓                           ▓
-                                                                  ░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓
-  ▓ D  decoration or retired numerology               2026-07-09  ░ Encyclopedia Equilibria  ░▓
-                                                                  ░ · docs tree             ·░▓ 
-  ▓ S  spec / interface (sorry · axiom · placeholder)             ░ ·  ↔ orchestrator  ↔    ·░▓
-   █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄░ ·  ↔ coherence-mcp ↔    ·░▓
-  ▓ Claim tags                                                                                ▓
-  ▓ A  kernel-checked on the stated definitions       2026-07-06  ░ · ExistenceCertificate  ·░▓
-  ▓ B  staged · externally witnessed · smoke-pending              ░ · E2E · symmetry gate   ·░▓
-  ▓ C  convention · telemetry · governance                        ░ · K22.Existence bridge  ·░▓
-  ▓    (not load-bearing in proofs)                   2026-07-04  ░ · 9P lock-off lattice   ·░▓           
-  ▓ D  decoration or retired numerology                           ░ ·      GitNexus         ·░▓
-  ▓ S  spec / interface (sorry · axiom · placeholder)             ░ · Mehler–Levin · S*M OB1·░▓
-  ▓                                                               ░ · handoff               ·░▓ 
-  ▓ ░                                                             ░                          ░▓
-  ▓ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓   
-  ▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓
+      █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+      ▓ Claim tags                                               ·█     CHECKPOINTS             ·█
+      ▓ A  kernel-checked on the stated definitions              ·█ ░░░░░░░░░░░░░░░░░░░░░░   ░░░·█
+      █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+                                                                                           
+      ▓ B  staged · externally witnessed · smoke-pending 2026-08-03  ▓ trust-boundary pass       ▓
+      ▓ C  convention · telemetry · governance                       ▓ MCP Keystone / SAIF       ▓
+      ▓                                                              ▓ Lean surface              ▓
+      ▓    (not load-bearing in proofs)                              ▓ Lane A π ·epistemic       ▓
+      ▓                                                              ▓ table · handoff sketch    ▓
+      █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓                           ▓
+                                                                      ░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓
+      ▓ D  decoration or retired numerology               2026-07-09  ░ Encyclopedia Equilibria  ░▓
+                                                                      ░ · docs tree             ·░▓ 
+      ▓ S  spec / interface (sorry · axiom · placeholder)             ░ ·  ↔ orchestrator  ↔    ·░▓
+       █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄░ ·  ↔ coherence-mcp ↔    ·░▓
+      ▓ Claim tags                                                                                ▓
+      ▓ A  kernel-checked on the stated definitions       2026-07-06  ░ · ExistenceCertificate  ·░▓
+      ▓ B  staged · externally witnessed · smoke-pending              ░ · E2E · symmetry gate   ·░▓
+      ▓ C  convention · telemetry · governance                        ░ · K22.Existence bridge  ·░▓
+      ▓    (not load-bearing in proofs)                   2026-07-04  ░ · 9P lock-off lattice   ·░▓           
+      ▓ D  decoration or retired numerology                           ░ ·      GitNexus         ·░▓
+      ▓ S  spec / interface (sorry · axiom · placeholder)             ░ · Mehler–Levin · S*M OB1·░▓
+      ▓                                                               ░ · handoff               ·░▓ 
+      ▓ ░                                                             ░                          ░▓
+      ▓ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓   
+      ▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓
 
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
 ```
 
 <img width="1792" height="1008" alt="grok-2a7a0a27-c7a9-4ac9-9925-c7572e72db68" src="https://github.com/user-attachments/assets/43e78237-e27e-4359-a4d7-972e2022e4ec" />
@@ -76,51 +77,57 @@
 
 ```text
 
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  BUILD STATUS · honest                                                                   ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+    █  BUILD STATUS · honest                                                                   ·█
+    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 
-  ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-  cutile v0.3                   ✅ ✅    ExistenceCertificate demo
-  coherence-mcp v0.5            ✅ ✅    Symmetry gate live
-  triweavon-cudarc              ✅  ·    run on target GPU
-  lean/TriWeavon/MCP/*          ✅  ·    Naturality+SAIF · no sorry · A
-  lean/TriWeavon/Geometry/LaneA ✅  ·    π+rows                     · A data · Perm/GF4 B
-  lean/TriWeavon/Conservation*  ✅  ·    Nat 7+8=15                 · A
-  lean/K22.HexacodeGolay        ✅  ·    64·4096·759·d=8·sphere     · A
-  lean/K22.Existence            ✅  ·    thin bridge     · no sorry
+    ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+     cutile v0.3                   ✅ ✅    ExistenceCertificate demo
+     coherence-mcp v0.5            ✅ ✅    Symmetry gate live
+     triweavon-cudarc              ✅  ·    run on target GPU
+     lean/TriWeavon/MCP/*          ✅  ·    Naturality+SAIF · no sorry · A
+     lean/TriWeavon/Geometry/LaneA ✅  ·    π+rows                     · A data · Perm/GF4 B
+     lean/TriWeavon/Conservation*  ✅  ·    Nat 7+8=15                 · A
+     lean/K22.HexacodeGolay        ✅  ·    64·4096·759·d=8·sphere     · A
+     lean/K22.Existence            ✅  ·    thin bridge     · no sorry
 
-  ░░░ NOT GREEN ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-  Full Lean workspace           ❌  ·    Ns · some MOG · macros       ░░░░░░
-  agda scaffolds                 ·  ·    conservation mirror only      ░░░░░
-  standalone npm coherence-mcp  ❌  ·    TS build errors · legacy     ░░░░░░
-                                                                      ░░░░░░
-  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+  ░░░ NOT GREEN     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+     Full Lean workspace           ❌  ·    Ns · some MOG · macros       ░░░░░░
+     agda scaffolds                 ·  ·    conservation mirror only      ░░░░░
+     standalone npm coherence-mcp  ❌  ·    TS build errors · legacy     ░░░░░░
+                                                                          ░░░░░░
+   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
   ═════════════════════════════════════════════════════════════════════════════════════════════════
 ```
 <img width="1792" height="1008" alt="grok-b232ed8a-db1b-4209-b899-92b6039fd5c6" src="https://github.com/user-attachments/assets/bad615e7-6188-4d71-9f38-d255d99d01ea" />
 
+
+<img width="1792" height="1008" alt="grok-436c359a-03c3-4aa7-9bcb-38afdd7b26b7" src="https://github.com/user-attachments/assets/f13f2555-944e-40da-9646-c9dab188f518" />
+
+
 ```text
   ════════════════════════════════════════════════════════════════════════════════════════════════
 
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  RESON8 · LOGOS  strand seats × lattice spine C governance · B runtime · A Lean subset·  █
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+    █  RESON8 · LOGOS  strand seats × lattice spine C governance · B runtime · A Lean subset·  █
+    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-┌──────────────────────────────────────────────────────────────────────────────────────────┐
-│ Conservation tag    α + ω = 15  · Viviani Peak label                          · C  ·     │
-| Uploading grok-55ee3d35-5366-434d-a5fe-f192877f5d82.jpg…]()                              |
-├──────────────────────────────────────────────────────────────────────────────────────────┤
-│ Nat skeleton        WavePair    · 7 + 8 = 15            · Lean arithmetic     · A  ·     │
-├──────────────────────────────────────────────────────────────────────────────────────────┤
-│ Runtime policy      float bands · Crystalline / Warning · Rejected / Halt     · B  ·     │
-├──────────────────────────────────────────────────────────────────────────────────────────┤
-│ WAVE floors         ≥ 0.85      · peak 0.9998           · ops policy          · C/B ·    │
-└──────────────────────────────────────────────────────────────────────────────────────────┘
-  Related by design — not by a single proved equivalence.
+     ┌──────────────────────────────────────────────────────────────────────────────────────────┐
+     │ Conservation tag    α + ω = 15  · Viviani Peak label                          · C  ·     │
+     | Uploading grok-55ee3d35-5366-434d-a5fe-f192877f5d82.jpg…]()                              |
+     ├──────────────────────────────────────────────────────────────────────────────────────────┤
+     │ Nat skeleton        WavePair    · 7 + 8 = 15            · Lean arithmetic     · A  ·     │
+     ├──────────────────────────────────────────────────────────────────────────────────────────┤
+     │ Runtime policy      float bands · Crystalline / Warning · Rejected / Halt     · B  ·     │
+     ├──────────────────────────────────────────────────────────────────────────────────────────┤
+     │ WAVE floors         ≥ 0.85      · peak 0.9998           · ops policy          · C/B ·    │
+     └──────────────────────────────────────────────────────────────────────────────────────────┘
+       Related by design — not by a single proved equivalence.
 
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
 ```
 
 <img width="1792" height="1008" alt="630883792-03cc7a12-e5d4-4433-bcc3-4fbc5a943c7f" src="https://github.com/user-attachments/assets/b81ce49f-04de-41e9-b0e9-8446171f246e" />
@@ -143,16 +150,16 @@
         ┌─────────────────┘                                          └───────────────┐
         │                                                                            │
         ▼                                                                            ▼
-┌───────────────┐                                                         ┌──────────────────┐
-│█ SPHINX GATE █│                                                         │█ CONSERVATION   █│
-│█ Jones @ ζ₅  █│                 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█            │█ VERIFIER       █│
-│░ auth · B    ░│                 █  §4  FORMAL FOUNDATIONS ·▄            │░ policy B       ░│
-│░ not Keystone░│                 █ what is actually where   █            │░ + Lean A       ░│
-└───────┬───────┘                 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█            └──────────┬───────┘
-        |                                                                            |
-        |                                                                            | 
-        │                                                                            │
-        └────────────────────────────────────┬───────────────────────────────────────┘
+┌───────────────┐                                                           ┌──────────────────┐
+│█ SPHINX GATE █│                                                           │█ CONSERVATION   █│
+│█ Jones @ ζ₅  █│                 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█              │█ VERIFIER       █│
+│░ auth · B    ░│                 █  §4  FORMAL FOUNDATIONS ·▄              │░ policy B       ░│
+│░ not Keystone░│                 █ what is actually where   █              │░ + Lean A       ░│
+└───────┬───────┘                 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█              └──────────┬───────┘
+        |                                                                              |
+        |                                                                              | 
+        │                                                                              │
+        └────────────────────────────────────┬─────────────────────────────────────────┘
                                              |
                    █ STRAND BLOCKS · Fibonacci seats · Category C only █▒▒░░▒▒░░
               ┌──────────────────┐    ┌──────────────────┐    ┌───────────────────┐
@@ -169,6 +176,7 @@
                        └───────────────────────┼───────────────────────┘
                                                ▼
                                         ═ spine join ═
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
 ```
 
 <img width="1168" height="784" alt="630884975-d9a401bd-f453-43b7-be53-76686db04320" src="https://github.com/user-attachments/assets/47096e06-7455-4508-aed8-f9ab5f618fcf" />
@@ -181,6 +189,7 @@
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  §5  RUNTIME COMPONENTS                                                                           ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
  ┌──────────────────┐ ┌──────────────────────────┐ ┌──────────────────┐ ┌─────────────────────────┐
  │█ Collapsed       │ │█ 9P2000.L VFS            │ │█ SPHINX Gate     │ │█ Synesthetic UI (opt)   |
  │█ BackgroundWorker│ │░ /.triweavon/coherence/  │ │░ Jones @ ζ₅      │ │░ prefer Jones span      | 
@@ -191,9 +200,16 @@
                       │░ Crate.NFT specials      │
                       └──────────────────────────┘
 
+
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░
+
 ```
 
+<img width="1792" height="1008" alt="grok-6ea4239b-8ef2-4960-ab09-3b5993a5caa7" src="https://github.com/user-attachments/assets/dfd9e122-6d51-40e2-a49e-e724f96f4e2d" />
+
+<img width="1792" height="1008" alt="grok-30da4356-9111-46d3-827e-a5004d378fa8" src="https://github.com/user-attachments/assets/e67681ca-9df6-4a96-ade1-fe367f57abd8" />
+
+<img width="1792" height="1008" alt="grok-0dc81656-a192-4155-b855-8af9e3e7b152" src="https://github.com/user-attachments/assets/7635f5a1-32f2-44e6-b31a-c99b4299a5e3" />
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -209,7 +225,18 @@
                         lean/TriWeavon/
                         lean/K22/
 
-       ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
+```
+
+<img width="1500" height="844" alt="grok-143a083c-efbf-4958-be31-ccc7b6ffcd92" src="https://github.com/user-attachments/assets/dbafa57b-c54d-41dd-8f53-91a25d6c04ee" />
+
+
+<img width="1792" height="1008" alt="grok-188f733c-9f15-475d-b98c-3a80161e2506" src="https://github.com/user-attachments/assets/42cf6c93-9b9b-4979-a0da-5fd260ea10f5" />
+
+
+```text
+
+   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
    ░░░░░ optional surface · not proof ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
    ░  Nexus Core · Museum of Computation  ░  ledgers · experimental logic zones  ░
    ░  search holograms                    ░  visualization / ops only            ░
@@ -283,8 +310,6 @@
 <img width="1792" height="1008" alt="grok-1f47af3f-b12c-4d33-88f0-3994110d2aa4" src="https://github.com/user-attachments/assets/12be0865-faf3-4e5b-8a51-740b3987758b" />
 
 <img width="1792" height="1008" alt="grok-6cf4d5fc-0aa8-48d5-9ce6-17151a2ca5d8" src="https://github.com/user-attachments/assets/9399e2ce-9111-473e-8bd5-53a2cfe4d5cc" />
-
-
 
 <img width="1792" height="1008" alt="grok-430ccb2d-67d2-4be5-8fdf-18623f110b75" src="https://github.com/user-attachments/assets/4029b5af-6081-45c1-b211-a1d056e9b6ad" />
 
