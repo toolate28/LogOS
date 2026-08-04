@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "label": "agentic-mlops",
+  "message": "pass",
+  "color": "brightgreen",
+  "namedLogo": "githubactions",
+  "cacheSeconds": 300
+}

@@ -1,6 +1,6 @@
 # CodeQL — Rust monorepo (explicit cargo build populates TRAP)
 # ATOM: ATOM-CODEQL-20260730-sm100
-# Findings are advisory: capability ≠ authority; no auto-promotion.
+# Findings are advisory: capability != authority; no auto-promotion.
 
 name: CodeQL
 
@@ -23,16 +23,23 @@ concurrency:
   group: codeql-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   analyze:
     name: Analyze (Rust)
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     strategy:
       fail-fast: false
       matrix:
         language: [rust]
-
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -45,6 +52,8 @@ jobs:
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@4cda84d5c5c54efe2404f9d843567869ab1699d4 # stable
+        with:
+          toolchain: stable
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@e18b497796c12c097a38f9edb9d0641fb99eee32 # v2
@@ -52,7 +61,6 @@ jobs:
           workspaces: ". -> target"
 
       # Explicit build preferred over pure autobuild for monorepo reliability.
-      # --locked omitted when Cargo.lock may be absent on first promotion.
       - name: Build workspace (CodeQL TRAP)
         run: |
           set -euo pipefail

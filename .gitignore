@@ -33,3 +33,12 @@ lean/.lake/
 __pycache__/
 terminals/
 
+# CI / CODEX local scan products (badges under docs/badges are committed)
+artifacts/codex/
+
+# Fleet pin run reports (regenerate via fleet_pin_actions.py)
+ops/ci/fleet-pin-*.json
+ops/ci/fleet-status.json
+ops/ci/fleet-pin-dryrun.json
+ops/ci/action-pin-map.json
+

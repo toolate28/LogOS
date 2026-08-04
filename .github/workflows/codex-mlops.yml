@@ -1,0 +1,172 @@
+# CODEX + Agentic MLOps — SARIF code scanning + shields badges
+# ATOM: ATOM-CODEX-MLOPS-20260804-sm100
+# Security gates fail-closed; alpha+omega is Category C telemetry only.
+# capability != authority.
+
+name: CODEX / Agentic MLOps
+
+on:
+  push:
+    branches: [main, master]
+    paths-ignore:
+      # Badge publisher commits only these; avoid feedback loops
+      - "docs/badges/**"
+  pull_request:
+    branches: [main, master]
+    paths-ignore:
+      - "docs/badges/**"
+  schedule:
+    # Tuesday 07:00 UTC — after Monday Dependabot / CodeQL
+    - cron: "0 7 * * 2"
+  workflow_dispatch:
+
+# Least privilege at workflow level; jobs elevate only when required.
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: codex-mlops-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  codex-scan:
+    name: CODEX scan to SARIF + badges
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: Assert Action SHA pins
+        run: |
+          set -euo pipefail
+          python ops/ci/assert_action_pins.py
+
+      - name: Run CODEX / Agentic MLOps scan
+        id: codex
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/codex docs/badges
+          python ops/ci/codex_scan.py \
+            --out artifacts/codex \
+            --badge-dir docs/badges \
+            --fail-on-security
+          test -f artifacts/codex/report.json
+          test -f artifacts/codex/codex.sarif
+          test -f docs/badges/codex.json
+
+      - name: Upload CODEX SARIF (same-repo only)
+        # Fork PRs cannot write security-events; skip rather than fail the matrix.
+        if: >-
+          always()
+          && hashFiles('artifacts/codex/codex.sarif') != ''
+          && (
+            github.event_name != 'pull_request'
+            || github.event.pull_request.head.repo.full_name == github.repository
+          )
+        continue-on-error: true
+        uses: github/codeql-action/upload-sarif@f205ea1c3313d32999d8d6a48b4f6530d4437b38 # v4.37.4
+        with:
+          sarif_file: artifacts/codex/codex.sarif
+          category: logos-codex
+
+      - name: Upload scan artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: logos-codex-${{ github.run_id }}
+          path: |
+            artifacts/codex/
+            docs/badges/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Job summary footer
+        if: always()
+        run: |
+          {
+            echo ""
+            echo "### Surfaces"
+            echo ""
+            echo "| Surface | Role |"
+            echo "|---------|------|"
+            echo "| \`ops/ci/assert_action_pins.py\` | SHA pin fail-closed |"
+            echo "| \`ops/ci/codex_scan.py\` | Deterministic gates + badges |"
+            echo "| SARIF category \`logos-codex\` | GitHub Code Scanning |"
+            echo "| \`docs/badges/*.json\` | Shields endpoint badges |"
+            echo ""
+            echo "ATOM: \`ATOM-CODEX-MLOPS-20260804-sm100\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  publish-badges:
+    name: Publish badge endpoints (main)
+    needs: [codex-scan]
+    # Only after a green scan on default-branch push; never from bots / schedules alone is OK.
+    if: >-
+      success()
+      && github.event_name == 'push'
+      && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+      && github.actor != 'github-actions[bot]'
+      && github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    concurrency:
+      group: logos-badge-publish
+      cancel-in-progress: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          # Need write-capable token for same-repo push
+          persist-credentials: true
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate badges (advisory mode)
+        run: |
+          set -euo pipefail
+          python ops/ci/codex_scan.py \
+            --out artifacts/codex \
+            --badge-dir docs/badges \
+            --no-fail-on-security
+
+      - name: Commit badge endpoints if changed
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/badges/*.json docs/badges/README.md 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No badge changes"
+            exit 0
+          fi
+          git commit -m "ci(badges): refresh CODEX / Agentic MLOps endpoints"
+          # Rebase then push; one retry for races with other main commits
+          git pull --rebase origin "$BRANCH" || true
+          if ! git push origin "HEAD:$BRANCH"; then
+            echo "::warning::badge push failed once; retrying after rebase"
+            git pull --rebase origin "$BRANCH"
+            git push origin "HEAD:$BRANCH"
+          fi
