@@ -21,7 +21,7 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 reqwest = { version = "0.13", features = ["json"] }
 chrono = { version = "0.4", features = ["serde"] }
 toml = "1.1"
-aes-gcm = "0.10"
+aes-gcm = "0.11"
 argon2 = "0.5"
 rand = "0.10"
 sha2 = "0.10"
