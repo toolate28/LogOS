@@ -10,7 +10,7 @@ readme = "README.md"
 [dependencies]
 cudarc = { version = "0.19", features = ["cuda-12040"], optional = true }
 cutile = { path = "../../cutiles/cutile", default-features = false }
-thiserror = "1.0"
+thiserror = "2.0"
 
 [features]
 default = ["cpu-fallback"]
