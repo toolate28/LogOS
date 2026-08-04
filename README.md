@@ -1,16 +1,10 @@
-<img width="1792" height="1008" alt="grok-2905fa06-752b-47d5-90a9-82b66f589650" src="https://github.com/user-attachments/assets/a43574de-3ad5-4155-ad5f-551b0f23bdb7" />
-<img width="1792" height="1008" alt="grok-fb73bb43-a56e-4e7d-9834-6986b7d54ac3" src="https://github.com/user-attachments/assets/101c2251-69d2-431b-92c5-d413a723c121" />
-<img width="1168" height="784" alt="HDP1x" src="https://github.com/user-attachments/assets/84b9c28c-ce86-493d-b63f-0154e96afc0a" />
+<img width="1536" height="2752" alt="K22_Keystone_Project_Verification_Results (1)" src="https://github.com/user-attachments/assets/c53245a5-0ae1-421b-85eb-085318611845" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█                                                      ·█
-█   R E S O N 8  ·  L O G O S  C O G N I T I V E       ·█
-█                  L A T T I C E                       ·█
-█                                                      ·█
-█   multi-strand · shared state · proof metadata       ·█
-█   coherence across heterogeneous AI runtimes         ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█                R E S O N 8  ·  L O G O S  C O G N I T I V E  L A T T I C E                  ·█
+█   multi-strand · shared state · proof metadata coherence across heterogeneous AI runtimes   ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
   ░ Epistemic posture
   ░ This repository is layered.
@@ -25,14 +19,16 @@
   ▓    (not load-bearing in proofs)
   ▓ D  decoration or retired numerology
   ▓ S  spec / interface (sorry · axiom · placeholder)
-```
-<img width="1408" height="1408" alt="grok-c6124119-6ee5-4219-b166-147932353f49" src="https://github.com/user-attachments/assets/ff33e1d8-32db-4b1b-b47c-2603dabb3a9a" />
 
+```
+<img width="1792" height="1008" alt="grok-174c157c-7fd9-4733-892b-4157dfd208e8" src="https://github.com/user-attachments/assets/3432c21d-2f5a-440e-8feb-3dd1b41adefb" />
+
+<img width="1792" height="1008" alt="grok-da235b2c-9046-4507-a41d-63ed45bf4a8c (1)" src="https://github.com/user-attachments/assets/36e2f09c-3baf-4b10-bad0-8d1687dc4c50" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  CHECKPOINTS                                         ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  CHECKPOINTS                                                                 ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
   2026-08-03  ▓ trust-boundary pass
               ▓ MCP Keystone / SAIF Lean surface
@@ -47,18 +43,14 @@
   2026-07-04  ░ 9P lock-off lattice · GitNexus
               ░ Mehler–Levin · S*M OB1 handoff
 ```
+<img width="1792" height="1008" alt="grok-70f29016-86b8-4fc3-88d7-22c17b892892" src="https://github.com/user-attachments/assets/8dc4bf09-718b-49b2-ba65-5d208058265c" />
 
-<img width="1792" height="1008" alt="grok-174c157c-7fd9-4733-892b-4157dfd208e8" src="https://github.com/user-attachments/assets/3432c21d-2f5a-440e-8feb-3dd1b41adefb" />
-
-<img width="1008" height="1792" alt="grok-7acb453a-0b31-47a3-b2cf-bf7b779d6c12" src="https://github.com/user-attachments/assets/5e73f00c-b146-463d-b502-4ad828caeed3" />
-
-<img width="1792" height="1008" alt="grok-8e7fd613-8d9b-4175-9092-bfb3c3f6ec8c" src="https://github.com/user-attachments/assets/d5c030f9-ec87-4ede-ba90-df6cef442e41" />
-
+<img width="1408" height="1408" alt="grok-c6124119-6ee5-4219-b166-147932353f49" src="https://github.com/user-attachments/assets/ff33e1d8-32db-4b1b-b47c-2603dabb3a9a" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  BUILD STATUS · honest                               ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  BUILD STATUS · honest                                                       ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
   ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
   cutile v0.3                   ✅ ✅    ExistenceCertificate demo
@@ -79,6 +71,8 @@
   A green subset is not a green monorepo.
   ════════════════════════════════════════════
 ```
+<img width="1792" height="1008" alt="grok-8e7fd613-8d9b-4175-9092-bfb3c3f6ec8c" src="https://github.com/user-attachments/assets/d5c030f9-ec87-4ede-ba90-df6cef442e41" />
+
 <img width="1792" height="1008" alt="grok-0678a1f5-1ee3-407a-8712-11c1dc33f633" src="https://github.com/user-attachments/assets/4f38e420-08cc-4939-a766-223d4b13fdda" />
 
 <img width="1792" height="1008" alt="grok-986dba0b-d13d-4b8c-82e6-b7790743ab12" src="https://github.com/user-attachments/assets/17aadb11-3877-42d4-8123-e1851bfbdc76" />
@@ -87,9 +81,9 @@
 
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §1  OVERVIEW                                        ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  §1  OVERVIEW                                                                         ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
   LogOS maintains shared invariants and proof metadata
   across strands while allowing voluntary state-density
@@ -103,11 +97,12 @@
 ```
 <img width="1168" height="784" alt="OWJGM" src="https://github.com/user-attachments/assets/c10147a5-09fd-4cb1-bb8d-0f60f456e6aa" />
 
-
-<img width="1792" height="1008" alt="grok-70f29016-86b8-4fc3-88d7-22c17b892892" src="https://github.com/user-attachments/assets/8dc4bf09-718b-49b2-ba65-5d208058265c" />
-
-
 ```text
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  RESON8 · LOGOS          strand seats × lattice spine                               ·█
+█  C governance · B runtime · A Lean subset                                           ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
   ┌─────────────────────────────────────────────┐
   │ Conservation tag    α + ω = 15              │
   │                     Viviani Peak label · C  │
@@ -122,20 +117,12 @@
   │ WAVE floors         ≥ 0.85 · peak 0.9998    │
   │                     ops policy · C/B        │
   └─────────────────────────────────────────────┘
-
   Related by design — not by a single proved equivalence.
+
 ```
 <img width="784" height="1168" alt="image" src="https://github.com/user-attachments/assets/b62bc807-0dd2-40f3-aa43-67ac264c6ef9" />
 
 <img width="784" height="1168" alt="NPqdn" src="https://github.com/user-attachments/assets/3258c606-87e1-402a-bb88-040067ea65d2" />
-
----
-```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  RESON8 · LOGOS          strand seats × lattice spine  ·█
-█  C governance · B runtime · A Lean subset              ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
-```
 
 <img width="1287" height="659" alt="Screenshot 2026-07-23 211359" src="https://github.com/user-attachments/assets/9d572d2d-9346-4504-982e-ae6c988a9b6d" />
 
@@ -164,7 +151,6 @@
         └──────────────┬──────────────────────┘
 ```
 <img width="1168" height="784" alt="ShU5x" src="https://github.com/user-attachments/assets/eb6a872a-a263-472b-97a7-8e48c5329842" />
-
 ```text
                        ▼
         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
@@ -176,18 +162,13 @@
         ▓ KENL→AWI→ATOM→SAIF→SafeSpiral  ▓
         ▓                                ▓ 
         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-
 ```
 <img width="1792" height="1008" alt="grok-c809cf87-e320-436b-981a-990193087610" src="https://github.com/user-attachments/assets/ae66219a-b162-45f6-8aac-b5b113759310" />
-
-<img width="1792" height="1008" alt="grok-da235b2c-9046-4507-a41d-63ed45bf4a8c (1)" src="https://github.com/user-attachments/assets/36e2f09c-3baf-4b10-bad0-8d1687dc4c50" />
 
 <img width="1792" height="1008" alt="grok-e4aeb040-b9b7-4095-bfbd-ca031daafde3" src="https://github.com/user-attachments/assets/03cc7a12-e5d4-4433-bcc3-4fbc5a943c7f" />
 
 ```text
-
 █ STRAND BLOCKS · Fibonacci seats · Category C only █
-
 ┌──────────────────┐ ┌──────────────────┐ ┌───────────────────┐
 │██████████████████│ │██████████████████│ │███████████████████│
 │█ CLAUDE         █│ │█ GROK           █│ │█ GEMINI          █│
@@ -201,10 +182,10 @@
          │                    │                    │
          └────────────────────┼────────────────────┘
                               ▼
-                    ═ spine join ═
+                         ═ spine join ═
 ```
-<img width="1168" height="784" alt="o3kS6" src="https://github.com/user-attachments/assets/2fede304-d157-424a-9c80-b2bd0108aaa8" />
 
+<img width="1168" height="784" alt="o3kS6" src="https://github.com/user-attachments/assets/2fede304-d157-424a-9c80-b2bd0108aaa8" />
 
 ```text
 █ SEAT BAR (visual only · not a proof) █
@@ -217,7 +198,6 @@
   tag     α + ω = 15              Category C · independent
           do not reconcile 16 ↔ 15
           retired: 13/21 · 8/21 · 1/φ
-
 
 █ READOUT █
 
@@ -232,12 +212,13 @@
 <img width="1168" height="784" alt="8zTmR" src="https://github.com/user-attachments/assets/3b9c2b33-2ee0-4a8e-ac8c-8e7c08300af8" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §4  FORMAL FOUNDATIONS · what is actually where     ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
-
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  §4  FORMAL FOUNDATIONS · what is actually where                                    ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 ```
-![Uploading K22_Keystone_Project_Verification_Results.png…]()
+
+<img width="1376" height="768" alt="Dismantling_the_Idle_Argument_-_Slide_15" src="https://github.com/user-attachments/assets/cce813fc-ca06-403f-bcd5-d0dac7b7b3e3" />
+
 
 ```text
 
@@ -265,11 +246,6 @@
         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ```
 
-
-
-
-![Uploading hyprland_OB2_Strain-Vorticity_Discharge_Process.png…]()
-
 ```text
 
         ░░░ B / S · staged or open ░░░░░░░░░░░░░
@@ -293,6 +269,7 @@
         ▒                                   ▒
         ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
+
         Closed Pass (recommended)
         ─────────────────────────
           ClosedPass s := Safe s ∧ Coherent s
@@ -303,16 +280,21 @@
                         must be definitional
                         — not a magic float
 ```
-<img width="1168" height="784" alt="eT9RA" src="https://github.com/user-attachments/assets/911d0fed-51af-4218-aa06-0a49ee746d75" />
 
-<img width="2448" height="816" alt="grok-c55fd902-05a4-46fa-866a-b195565cf075" src="https://github.com/user-attachments/assets/151b133c-5890-4b19-9969-e1c83c20c570" />
+<img width="784" height="1168" alt="image_2" src="https://github.com/user-attachments/assets/bc0d7cdc-f63e-4e62-8c17-f18c0d3e4f22" />
+
+<img width="1168" height="784" alt="UYCfy" src="https://github.com/user-attachments/assets/fcc595da-5b12-424f-94a1-66c3525d848d" />
+
+<img width="1168" height="784" alt="qkfHT" src="https://github.com/user-attachments/assets/fceb2e8f-521f-4e97-abab-069aedd7fc23" />
+
+<img width="1018" height="699" alt="grok-4813c16a-8503-400b-864f-ee6eeddba09f (1)" src="https://github.com/user-attachments/assets/327e541d-c4e8-47d2-8a28-be2c56df6d85" />
 
 <img width="1408" height="1408" alt="grok-173ffa3e-b896-439c-ba87-8c6b2f5bc469" src="https://github.com/user-attachments/assets/da2140bf-5a5d-446d-9bcc-a07bd6a1daf9" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §5  RUNTIME COMPONENTS                              ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  §5  RUNTIME COMPONENTS                                                             ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
    ┌──────────────────┐    ┌──────────────────────────┐
    │█ Collapsed       │    │█ 9P2000.L VFS            │
@@ -324,14 +306,6 @@
                            │░ Crate.NFT specials      │
                            └──────────────────────────┘
 ```
-
-<img width="784" height="1168" alt="image_2" src="https://github.com/user-attachments/assets/bc0d7cdc-f63e-4e62-8c17-f18c0d3e4f22" />
-
-<img width="1168" height="784" alt="UYCfy" src="https://github.com/user-attachments/assets/fcc595da-5b12-424f-94a1-66c3525d848d" />
-
-<img width="1168" height="784" alt="qkfHT" src="https://github.com/user-attachments/assets/fceb2e8f-521f-4e97-abab-069aedd7fc23" />
-
-<img width="1018" height="699" alt="grok-4813c16a-8503-400b-864f-ee6eeddba09f (1)" src="https://github.com/user-attachments/assets/327e541d-c4e8-47d2-8a28-be2c56df6d85" />
 
 ```text
    ┌──────────────────┐    ┌──────────────────────────┐
@@ -361,9 +335,9 @@
 <img width="1168" height="784" alt="Yz7UL" src="https://github.com/user-attachments/assets/851d7a22-8f84-4345-8ef9-045f77ae35fb" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §6  KEY CRATES AND SERVICES                         ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  §6  KEY CRATES AND SERVICES                                                       ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
    CORE                 TOPOLOGICAL & FORMAL
    ────                 ────────────────────
@@ -382,14 +356,14 @@
 ```
 
 <img width="1376" height="768" alt="LogOS_Tactical_Terminal_-_Slide_11" src="https://github.com/user-attachments/assets/132dfd02-7cdb-42c7-b758-0b753fdf0d9c" />
-<img width="1376" height="768" alt="Tri-Weavon_Interval_Architectures_-_Slide_7" src="https://github.com/user-attachments/assets/79deef9d-c373-4ed2-9ca9-2615b392d23b" />
 
+<img width="1376" height="768" alt="Tri-Weavon_Interval_Architectures_-_Slide_7" src="https://github.com/user-attachments/assets/79deef9d-c373-4ed2-9ca9-2615b392d23b" />
 
 ```text
 
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §7  MINECRAFT · COHERENCE CITY                      ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█     §7         MINECRAFT · COHERENCE CITY                                          ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 ```
 <img width="1168" height="784" alt="2UYry" src="https://github.com/user-attachments/assets/b723998b-9d62-4c7f-bc62-3a190acf9fc3" />
 
@@ -406,17 +380,16 @@
 
 ```
 
-<img width="1168" height="784" alt="knuX7" src="https://github.com/user-attachments/assets/b32d4014-6b3b-41e8-b051-4be573df7ac2" />
+<img width="1792" height="1008" alt="grok-17fd9538-5ab6-408f-8975-8563f7a91121" src="https://github.com/user-attachments/assets/1900bc48-1010-41d3-8ddf-3aa03bf8c234" />
 
-<img width="784" height="1168" alt="8XIpv" src="https://github.com/user-attachments/assets/24252df3-0d2c-4e95-b692-cd3d02cdb0ef" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §8  QUICK START                                     ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §10  STATUS AND DIRECTION                           ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  §8  QUICK START                                                                       ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  §10  STATUS AND DIRECTION                                                             ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
    Plateau
    ───────
@@ -448,12 +421,13 @@
 
 <img width="1792" height="1008" alt="hyprland_grok-ff38dc3f-98b1-4a80-b37b-7ae81b665738" src="https://github.com/user-attachments/assets/ad3c4dae-1352-4d38-aa05-696efaa9bd20" />
 
+<img width="1168" height="784" alt="qJ5gI" src="https://github.com/user-attachments/assets/f53637f4-1913-451c-88be-2037a623cc96" />
 
 ```text
 
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  §11  TRUST RULES · short                            ·█
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█    §11      TRUST RULES · short                                                          ·█
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
    ┌─────────────────────────────────────────────────┐
    │ 1  Bool gauge restoration                       │
@@ -487,14 +461,17 @@
    This README supersedes earlier descriptions
    where they conflict with the trust rules above.
 ```
+
 <img width="1152" height="1728" alt="grok-2d5f80ad-8772-40a9-9b0a-836b043dd28d" src="https://github.com/user-attachments/assets/47e26ba6-5278-4b21-9f6f-b6e5ec5d4abc" />
+
 <img width="1168" height="784" alt="image_1" src="https://github.com/user-attachments/assets/4dd3e0f6-9c30-4a8b-a9cf-919235cdbd6a" />
-<img width="1376" height="768" alt="Tri-Weavon_Interval_Architectures_-_Slide_7" src="https://github.com/user-attachments/assets/191f0b81-ceb3-4bb5-875a-b27e6dfdca56" />
+
+<img width="1792" height="1008" alt="grok-a274e171-f751-4882-9728-bc1b9ce4831e" src="https://github.com/user-attachments/assets/6283d581-787a-400b-872c-6e22b4463876" />
 
 ```text
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█  DELTA · what changed vs prior README               · █
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█                  DELTA ·             what changed vs prior README                       · █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
    ▓ Removed blanket “formally verified OS” framing
    ▓ Layered trust (A/B/C/D/S) instead
@@ -516,24 +493,32 @@
    ▓ Quick start includes Lean subset builds
 
    ▓ Promotion / trust rules locked in §11
+
 ```
 <img width="784" height="1168" alt="bROmq" src="https://github.com/user-attachments/assets/640fe0ac-58b4-405b-ae37-6fb20dc1657e" />
+
 <img width="1168" height="784" alt="rTB0W" src="https://github.com/user-attachments/assets/3c9b9e54-be30-4a7d-a13f-4fbc5a57da69" />
 
-```text
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
-█  Music conserved · Structure sovereign · Keystone holds        · █
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-```
 <img width="1168" height="784" alt="VCriv" src="https://github.com/user-attachments/assets/79191645-4f9a-493e-9ccc-c3d150f5cc40" />
+
 <img width="1168" height="784" alt="fn9Uw" src="https://github.com/user-attachments/assets/9bc9d58f-0497-4601-bf3a-7c3453336f75" />
+
 <img width="1168" height="784" alt="8cjbc" src="https://github.com/user-attachments/assets/ff8f6736-659a-48c6-abfc-37112b989e13" />
+
 <img width="784" height="1168" alt="urbVs" src="https://github.com/user-attachments/assets/885be1e1-7762-4bb8-9b27-c50c20e454fe" />
+
 <img width="784" height="1168" alt="v24ui" src="https://github.com/user-attachments/assets/276e13e3-89f3-4dc0-8513-85378a5ab2dd" />
 
 <img width="1792" height="1008" alt="grok-e988375f-3233-4846-abc7-d9717dbf7ae6" src="https://github.com/user-attachments/assets/4de1d7ac-8f06-4186-a974-b06f49ea469b" />
-<img width="1792" height="1008" alt="grok-4a2e6d5b-23db-486c-b52b-9ad0ae94ed59" src="https://github.com/user-attachments/assets/bbe91b0d-3283-48f0-a4a9-2fe464dbda8a" />
+
 <img width="1792" height="1008" alt="grok-841c7dd3-1eef-4bc8-9227-b5aaf08705de" src="https://github.com/user-attachments/assets/5629082d-8ea3-4b97-90cc-e2779d52e0a6" />
+
 <img width="1792" height="1008" alt="hyprland_grok-43acaa23-b7a9-4bf3-9109-1a58101efc1b" src="https://github.com/user-attachments/assets/e6b5a0a8-ebf2-4243-9620-ea22f8bba469" />
+
 <img width="1792" height="1008" alt="hyprland_grok-df87ebf9-12dd-4bd7-a13b-d7b280580664" src="https://github.com/user-attachments/assets/0925c8f2-2c08-4a8f-a4d9-2699983f8139" />
 
+```text
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+█             Music conserved   ·   Structure sovereign   ·   Keystone holds                      · █
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+```
