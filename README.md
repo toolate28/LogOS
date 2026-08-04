@@ -1,6 +1,4 @@
-<img width="1792" height="1008" alt="grok-6f89240e-b858-48be-8d8d-02b60bb8e538" src="https://github.com/user-attachments/assets/520accc7-3e3e-4ad4-a3bd-2886b7dc7de3" />
 
-<img width="1376" height="768" alt="Dismantling_the_Idle_Argument_-_Slide_4" src="https://github.com/user-attachments/assets/69ec587f-8988-49cd-8abd-2ced31683054" />
 
 <img width="1536" height="2752" alt="AI_OS_Topological_Architecture_Infographic" src="https://github.com/user-attachments/assets/59de0049-fc66-41d7-a753-181b4fc6669e" />
 
@@ -226,7 +224,7 @@
 █  §4  FORMAL FOUNDATIONS · what is actually where                                    ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 ```
-
+<img width="1792" height="1008" alt="grok-6f89240e-b858-48be-8d8d-02b60bb8e538" src="https://github.com/user-attachments/assets/520accc7-3e3e-4ad4-a3bd-2886b7dc7de3" />
 
 <img width="1536" height="2752" alt="Krawczyk_Iteration_Operator_Logic" src="https://github.com/user-attachments/assets/bbf83875-51f5-4436-9402-081aee16a5e9" />
 
@@ -319,6 +317,7 @@
                            │░ Crate.NFT specials      │
                            └──────────────────────────┘
 ```
+<img width="1376" height="768" alt="Dismantling_the_Idle_Argument_-_Slide_4" src="https://github.com/user-attachments/assets/69ec587f-8988-49cd-8abd-2ced31683054" />
 
 ```text
 
