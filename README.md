@@ -1,4 +1,3 @@
-<img width="720" height="423" alt="Screenshot 2026-07-17 185658" src="https://github.com/user-attachments/assets/6479c40e-3af7-4864-9911-51282aff2114" />
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -46,7 +45,8 @@
               ░ Mehler–Levin · S*M OB1 handoff
 ```
 
-<img width="711" height="607" alt="Screenshot 2026-06-04 063550" src="https://github.com/user-attachments/assets/2ad63d41-3fa5-44f6-84a3-3ef8efe6f555" />
+<img width="539" height="302" alt="Screenshot 2026-07-24 083255" src="https://github.com/user-attachments/assets/92f94d28-d286-43a4-9667-a67abb526d51" />
+
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -74,7 +74,6 @@
 ```
 <img width="1204" height="646" alt="Screenshot 2026-08-03 114250" src="https://github.com/user-attachments/assets/991f07f1-f7bc-4bdd-a755-ffcd89071db8" />
 
-<img width="940" height="272" alt="Screenshot 2026-06-28 035202" src="https://github.com/user-attachments/assets/5d406e7c-2dac-4191-9a1f-f9f164753f52" />
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -107,14 +106,20 @@
   └─────────────────────────────────────────────┘
 
   Related by design — not by a single proved equivalence.
+```
+
 
 ---
-
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  RESON8 · LOGOS          strand seats × lattice spine  ·█
 █  C governance · B runtime · A Lean subset              ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+```
 
+<img width="1287" height="659" alt="Screenshot 2026-07-23 211359" src="https://github.com/user-attachments/assets/9d572d2d-9346-4504-982e-ae6c988a9b6d" />
+
+```text
                         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
                         █ LOGOS CORE  █
                         █ /reson8/    █
@@ -184,8 +189,12 @@
   Conservation .. float enforce B · Nat peak (7,8) A optional
   MCP / SAIF .... control plane A on pure Lean carrier
   Transport ..... Styx socket · 9P namespace /reson8/
+```
 
+<img width="1245" height="877" alt="Screenshot 2026-07-16 155748" src="https://github.com/user-attachments/assets/b8e89333-b613-4c34-af7f-e4f2b24885f9" />
+<img width="743" height="579" alt="Screenshot 2026-07-16 215759" src="https://github.com/user-attachments/assets/3d05aa90-9355-4d9a-84b1-01a1ce4c871d" />
 
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  §4  FORMAL FOUNDATIONS · what is actually where     ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -211,6 +220,13 @@
         ▓ Fano discrete curvature K = 1/2     ▓
         ▓                                     ▓ 
         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+```
+
+<img width="720" height="423" alt="Screenshot 2026-07-17 185658" src="https://github.com/user-attachments/assets/6479c40e-3af7-4864-9911-51282aff2114" />
+
+<img width="528" height="319" alt="Screenshot 2026-07-17 185522" src="https://github.com/user-attachments/assets/c7b3b61f-e3bc-412b-bb4a-71e9dad28ddc" />
+
+```text
 
         ░░░ B / S · staged or open ░░░░░░░░░░░░░
         ░ Lane A π [0,3,1,2,4,5] data .... A   ░
@@ -242,7 +258,10 @@
                         “resonance ⇒ ClosedPass”
                         must be definitional
                         — not a magic float
+```
+<img width="1168" height="784" alt="eT9RA" src="https://github.com/user-attachments/assets/911d0fed-51af-4218-aa06-0a49ee746d75" />
 
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  §5  RUNTIME COMPONENTS                              ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -275,7 +294,13 @@
    ▓ fail closed                             ▓
    ▓▓                                       ▓▓
    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+```
 
+<img width="1168" height="784" alt="59INR" src="https://github.com/user-attachments/assets/5128a009-d3ea-4a02-9892-34bbb6257c3d" />
+<img width="1168" height="784" alt="aHd6q" src="https://github.com/user-attachments/assets/6d4197d5-bc69-4b7e-922e-ad86230d632e" />
+<img width="1168" height="784" alt="Yz7UL" src="https://github.com/user-attachments/assets/851d7a22-8f84-4345-8ef9-045f77ae35fb" />
+
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  §6  KEY CRATES AND SERVICES                         ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
