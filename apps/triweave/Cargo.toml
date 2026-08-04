@@ -24,7 +24,7 @@ toml = "1.1"
 aes-gcm = "0.11"
 argon2 = "0.5"
 rand = "0.10"
-sha2 = "0.10"
+sha2 = "0.11"
 reson8-forge-core = { path = "../../crates/forge-core" }
 ratatui = { version = "0.30", default-features = false, features = ["crossterm"] }
 crossterm = "0.29"
