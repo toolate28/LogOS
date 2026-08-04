@@ -23,10 +23,11 @@
   ▓    (not load-bearing in proofs)
   ▓ D  decoration or retired numerology
   ▓ S  spec / interface (sorry · axiom · placeholder)
+```
 
-<img width="1287" height="659" alt="Screenshot 2026-07-23 211359" src="https://github.com/user-attachments/assets/931abb54-b1bf-4020-b0c9-8c003a1b0fc3" />
+<img width="940" height="272" alt="Screenshot 2026-06-28 035202" src="https://github.com/user-attachments/assets/35458d6f-8e80-441a-bf6c-e89f2c1f3489" />
 
-
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  CHECKPOINTS                                         ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -43,11 +44,11 @@
 
   2026-07-04  ░ 9P lock-off lattice · GitNexus
               ░ Mehler–Levin · S*M OB1 handoff
+```
 
-<img width="720" height="423" alt="Screenshot 2026-07-17 185658" src="https://github.com/user-attachments/assets/11ca24db-789f-4a6c-8a13-00427d2c59c5" />
+<img width="711" height="607" alt="Screenshot 2026-06-04 063550" src="https://github.com/user-attachments/assets/2ad63d41-3fa5-44f6-84a3-3ef8efe6f555" />
 
-<img width="528" height="319" alt="Screenshot 2026-07-17 185522" src="https://github.com/user-attachments/assets/00acc865-00b6-4f65-a514-82850483636a" />
-
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  BUILD STATUS · honest                               ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -70,12 +71,12 @@
   ════════════════════════════════════════════
   A green subset is not a green monorepo.
   ════════════════════════════════════════════
-
+```
 <img width="1204" height="646" alt="Screenshot 2026-08-03 114250" src="https://github.com/user-attachments/assets/991f07f1-f7bc-4bdd-a755-ffcd89071db8" />
 
 <img width="940" height="272" alt="Screenshot 2026-06-28 035202" src="https://github.com/user-attachments/assets/5d406e7c-2dac-4191-9a1f-f9f164753f52" />
 
-
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  §1  OVERVIEW                                        ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -107,11 +108,6 @@
 
   Related by design — not by a single proved equivalence.
 
-<img width="1245" height="877" alt="Screenshot 2026-07-16 155748" src="https://github.com/user-attachments/assets/658026d3-3516-4bce-99fd-e20508be00ea" />
-
-<img width="1168" height="784" alt="screen" src="https://github.com/user-attachments/assets/f3a4be14-d06f-4d2e-b640-1a36938925fb" />
-
-<img width="1376" height="768" alt="Dismantling_the_Idle_Argument_-_Slide_4" src="https://github.com/user-attachments/assets/d201dcc7-6f33-405c-91d9-3afe66d4a909" />
 ---
 
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -152,7 +148,6 @@
         ▓                                ▓ 
         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-<img width="1018" height="699" alt="grok-4813c16a-8503-400b-864f-ee6eeddba09f (1)" src="https://github.com/user-attachments/assets/c7aee944-f9de-4107-bacd-67a1a349ea3b" />
 
 █ STRAND BLOCKS · Fibonacci seats · Category C only █
 
@@ -170,11 +165,6 @@
          └────────────────────┼────────────────────┘
                               ▼
                     ═ spine join ═
-
-<img width="1027" height="518" alt="Screenshot 2026-07-15 001040" src="https://github.com/user-attachments/assets/c42451d7-bc3a-4fa0-962f-308a649a0d22" />
-
-<img width="1243" height="568" alt="Screenshot 2026-07-15 000718" src="https://github.com/user-attachments/assets/f3565ada-b227-4fdf-8331-550615cf77cc" />
-
 
 █ SEAT BAR (visual only · not a proof) █
 
@@ -253,9 +243,6 @@
                         must be definitional
                         — not a magic float
 
-<img width="1168" height="784" alt="sbqeE" src="https://github.com/user-attachments/assets/ca139fc1-4fd5-4dc6-9d5c-dc01f1cc0907" />
-
-
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  §5  RUNTIME COMPONENTS                              ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -288,10 +275,6 @@
    ▓ fail closed                             ▓
    ▓▓                                       ▓▓
    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-
-<img width="870" height="386" alt="Screenshot 2026-07-15 000637" src="https://github.com/user-attachments/assets/00bb28ab-4cf1-42c5-8a12-96175c054302" />
-<img width="1168" height="784" alt="DzkE9" src="https://github.com/user-attachments/assets/8c630b8b-31a8-4129-ae4f-50c53acac34f" />
-<img width="1168" height="784" alt="eT9RA" src="https://github.com/user-attachments/assets/379dabaf-e43a-4afc-905a-ecc79b94dc82" />
 
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  §6  KEY CRATES AND SERVICES                         ·█
@@ -397,8 +380,6 @@
    This README supersedes earlier descriptions
    where they conflict with the trust rules above.
 
-<img width="1376" height="768" alt="Tri-Weavon_Interval_Architectures_-_Slide_7" src="https://github.com/user-attachments/assets/40f84a91-89da-4eaa-8ce8-65467aa6687e" />
-
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  DELTA · what changed vs prior README               · █
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -423,11 +404,6 @@
    ▓ Quick start includes Lean subset builds
 
    ▓ Promotion / trust rules locked in §11
-
-<img width="552" height="868" alt="Screenshot 2026-06-08 025726" src="https://github.com/user-attachments/assets/c4d8fa53-f32c-4c45-8373-e005e4c96dcb" />
-
-<img width="1168" height="784" alt="VCriv" src="https://github.com/user-attachments/assets/476f8a31-41b0-43e1-90db-87c48eea5e85" />
-
 
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 █  Music conserved · Structure sovereign · Keystone holds        · █
