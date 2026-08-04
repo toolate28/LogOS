@@ -1,7 +1,5 @@
 <img width="1792" height="1008" alt="grok-616836e4-0a7d-4959-91b1-a869ccab92c0 (1)" src="https://github.com/user-attachments/assets/5ee5e081-b4cb-4a13-a3f7-e30d21501a6f" />
 <img width="1792" height="1008" alt="grok-0e66f2a3-da5c-4875-bbb5-5bf1cb0de1e1" src="https://github.com/user-attachments/assets/68de1267-c342-452d-b0ec-b9e495e54545" />
-https://github.com/user-attachments/assets/c0d539f5-1e12-4a21-be65-79c62445f257
-
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █                R E S O N 8  ·  L O G O S  C O G N I T I V E  L A T T I C E                  ·█
@@ -14,6 +12,17 @@ https://github.com/user-attachments/assets/c0d539f5-1e12-4a21-be65-79c62445f257
   ░ Others are runtime policy, conventions, or scaffolds.
   ░ Do not read “LogOS” as a single globally verified theorem.
 
+  █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+  █ §1   OVERVIEW                                                                            ·█
+  █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+  LogOS maintains shared invariants and proof metadata across strands while
+  allowing voluntary state-density collapse and live coherence tracking.
+
+  Computation is layered state over a combinatorial / topological base (TriWeavon
+  + K22 coding-theory spine). Local session state should remain translatable
+  to declared global tags — without silently promoting tags into theorems.
+                                                    
   █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
   ▓ Claim tags                                                   ·█     CHECKPOINTS          ·█
   ▓ A  kernel-checked on the stated definitions                  ·█ ░░░░░░░░░░░░░░░░░░░░░░░░░·█
@@ -41,17 +50,7 @@ https://github.com/user-attachments/assets/c0d539f5-1e12-4a21-be65-79c62445f257
   ▓ ░                                                             ░                          ░▓
   ▓ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓   
   ▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓
-  █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-  █ §1   OVERVIEW                                                                            ·█
-  █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-  LogOS maintains shared invariants and proof metadata across strands while
-  allowing voluntary state-density collapse and live coherence tracking.
-
-  Computation is layered state over a combinatorial / topological base (TriWeavon
-  + K22 coding-theory spine). Local session state should remain translatable
-  to declared global tags — without silently promoting tags into theorems.
-                                                    
 ```
 
 <img width="1792" height="1008" alt="grok-2a7a0a27-c7a9-4ac9-9925-c7572e72db68" src="https://github.com/user-attachments/assets/43e78237-e27e-4359-a4d7-972e2022e4ec" />
@@ -114,8 +113,8 @@ https://github.com/user-attachments/assets/c0d539f5-1e12-4a21-be65-79c62445f257
 <img width="1792" height="1008" alt="630883660-ae66219a-b162-45f6-8aac-b5b113759310" src="https://github.com/user-attachments/assets/832681a5-3878-4507-ab0b-f0db284205e5" />
 
 ```text
-
-▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░
+**
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░
 
                         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
                         █ LOGOS CORE  /reson8/    █
@@ -176,7 +175,15 @@ https://github.com/user-attachments/assets/c0d539f5-1e12-4a21-be65-79c62445f257
  └──────────────────┘    │░   Lean hashes · status  │                           └─────────────────────────┘
                          │░ Crate.NFT specials      │
                          └──────────────────────────┘
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░
+```
+![Uploading grok-8805c931-67c3-48e1-b8fa-1401df3a6d11.jpg…]()
 
+![Uploading grok-b344bc25-7ed8-4a9f-977b-9ad76f958032.jpg…]()
+
+![Uploading grok-e36283e4-f181-4585-8d32-e455f0d9ce94.jpg…]()
+
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  §6  KEY CRATES AND SERVICES                                                                            ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -226,9 +233,9 @@ https://github.com/user-attachments/assets/c0d539f5-1e12-4a21-be65-79c62445f257
    ▓                                             ▓
    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█    §11      TRUST RULES · short                                                                       ·█
+█ §11 TRUST RULES · short                                                                               ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
    ┌───────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -250,6 +257,12 @@ https://github.com/user-attachments/assets/c0d539f5-1e12-4a21-be65-79c62445f257
    WAVE .................. monitored live ........ B/C 
    Homotopic unitarity /   
    Rezk resonance ........ design language ....... B/S
+
+▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░
 ```
 
+![Uploading grok-4f8794be-6b6e-46f4-b75a-523a271b33ae.jpg…]()
+![Uploading grok-6bd5021c-c92b-49aa-9986-a7bae8ce413f.jpg…]()
+<img width="1792" height="1008" alt="grok-dbeb7876-d298-4d4b-bbf0-4cf26c5cafa5" src="https://github.com/user-attachments/assets/b78f8287-1138-44d5-80f9-bf27f0d857c6" />
+![Uploading grok-3cbd9922-5aa8-4c9f-83bb-46a0b1898331.jpg…]()
                          
