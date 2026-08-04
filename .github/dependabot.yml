@@ -17,7 +17,9 @@ updates:
     commit-message:
       prefix: "deps(cargo)"
 
-  # GitHub Actions
+  # GitHub Actions — keep full-length commit SHAs (repo requires sha_pinning).
+  # Dependabot updates SHA pins when version comments are present:
+  #   uses: owner/action@<40-hex> # vX.Y.Z
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
@@ -30,6 +32,10 @@ updates:
       - advisory
     commit-message:
       prefix: "deps(actions)"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
 
   # Optional pre-commit / Python tooling (if present at root)
   - package-ecosystem: pip

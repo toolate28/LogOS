@@ -1,8 +1,7 @@
 # MCP Validation — fail-closed policy for committed MCP configs
 # ATOM: ATOM-MCP-VALIDATE-20260730-sm100
-#
 # Complements org/enterprise MCP registry + "Registry only".
-# Agent Bash firewall does NOT cover MCP traffic.
+# capability != authority.
 
 name: MCP Validation
 
@@ -34,20 +33,28 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: mcp-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
   validate-mcp-configs:
     name: Validate committed MCP configs
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: "3.12"
-
       - name: Policy scan
         run: python ops/ci/validate_mcp_config.py
-
       - name: Job summary
         if: always()
         run: |

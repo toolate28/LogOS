@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "label": "actions",
+  "message": "SHA-pinned",
+  "color": "brightgreen",
+  "namedLogo": "githubactions",
+  "cacheSeconds": 300
+}

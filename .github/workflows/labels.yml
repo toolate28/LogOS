@@ -1,6 +1,6 @@
 # Label provisioning — keep Dependabot label references resolvable
 # ATOM: ATOM-LABELS-WORKFLOW-20260731
-# Creates missing labels only; never deletes. capability ≠ authority.
+# Creates missing labels only; never deletes. capability != authority.
 
 name: Labels
 
@@ -26,32 +26,35 @@ on:
 
 permissions:
   contents: read
-  issues: write   # required to create repository labels
+  issues: write
 
 concurrency:
   group: labels-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   ensure-dependabot-labels:
     name: Ensure Dependabot labels
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: "3.12"
-
       - name: Dry-run metadata check
         run: python ops/ci/ensure_dependabot_labels.py
-
       - name: Apply missing labels
         if: github.event_name != 'pull_request'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python ops/ci/ensure_dependabot_labels.py --apply
-
       - name: Job summary
         if: always()
         run: |

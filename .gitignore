@@ -33,3 +33,6 @@ lean/.lake/
 __pycache__/
 terminals/
 
+# CI / CODEX local scan products (badges under docs/badges are committed)
+artifacts/codex/
+

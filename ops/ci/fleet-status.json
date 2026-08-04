@@ -1,0 +1,282 @@
+[
+  {
+    "repo": "coherence-mcp",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "2"
+  },
+  {
+    "repo": "dotfiles_llr-v2.0",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "20"
+  },
+  {
+    "repo": "LogOS",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "7"
+  },
+  {
+    "repo": "SpiralSafe",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "31"
+  },
+  {
+    "repo": "QDI",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "8"
+  },
+  {
+    "repo": "reson8-Labs",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "8"
+  },
+  {
+    "repo": "spiralsafe-mono",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "3"
+  },
+  {
+    "repo": "kenl",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "15"
+  },
+  {
+    "repo": "wave-toolkit",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "2"
+  },
+  {
+    "repo": "vortex-bridges",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "2"
+  },
+  {
+    "repo": "locus-proxmox-infra",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "6"
+  },
+  {
+    "repo": "spiralsafe-metrics-e",
+    "fork": false,
+    "actions": true,
+    "sha_pin": true,
+    "workflows": "2"
+  },
+  {
+    "repo": "vercel",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "10"
+  },
+  {
+    "repo": "jenkins",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "7"
+  },
+  {
+    "repo": "compose-for-agents",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "8"
+  },
+  {
+    "repo": "HOPE-AI-NPC-SUITE",
+    "fork": false,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "AutoFigure",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "claude-plugins-official",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "2"
+  },
+  {
+    "repo": "A-Curated-List-of-ML-System-Design-Case-Studies",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "original_performance_takehome",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "AGI",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "2"
+  },
+  {
+    "repo": "LEANN-QuaRC",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "4"
+  },
+  {
+    "repo": "quantum-redstone",
+    "fork": false,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "Roo-noCode",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "9"
+  },
+  {
+    "repo": "claude-code-tools",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "1"
+  },
+  {
+    "repo": "hopeisclaudeishope",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "11"
+  },
+  {
+    "repo": "ProxmoxVE",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "17"
+  },
+  {
+    "repo": "bazzite-dx",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "1"
+  },
+  {
+    "repo": "desktop-tutorial",
+    "fork": false,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "nerd-fonts",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "10"
+  },
+  {
+    "repo": "windows",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "4"
+  },
+  {
+    "repo": "dotfiles",
+    "fork": false,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "19"
+  },
+  {
+    "repo": "awesome-cli-apps",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "seait",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "nnn-parrot",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "3"
+  },
+  {
+    "repo": "CachyOS-Settings",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "textfox",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "n8n-free-templates",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+  },
+  {
+    "repo": "shell_gpt",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "4"
+  },
+  {
+    "repo": "qBittorrent-Enhanced-locus-refinement",
+    "fork": true,
+    "actions": true,
+    "sha_pin": false,
+    "workflows": "13"
+  }
+]
