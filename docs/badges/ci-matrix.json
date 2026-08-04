@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "label": "ci-matrix",
-  "message": "agentic 100% \u00b7 codex 99",
-  "color": "brightgreen",
+  "message": "agentic 86% \u00b7 codex 97",
+  "color": "green",
   "namedLogo": "githubactions",
   "cacheSeconds": 300
 }
