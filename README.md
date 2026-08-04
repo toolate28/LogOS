@@ -1,8 +1,6 @@
-<img width="784" height="1168" alt="6vju4" src="https://github.com/user-attachments/assets/d1acb242-f5b6-467a-93ea-6f920f2fb34a" /><img width="1792" height="1008" alt="grok-fb73bb43-a56e-4e7d-9834-6986b7d54ac3" src="https://github.com/user-attachments/assets/101c2251-69d2-431b-92c5-d413a723c121" />
-
 <img width="1792" height="1008" alt="grok-2905fa06-752b-47d5-90a9-82b66f589650" src="https://github.com/user-attachments/assets/a43574de-3ad5-4155-ad5f-551b0f23bdb7" />
-
-![Uploading AI_OS_Topological_Architecture_Infographic (1).png…]()
+<img width="1792" height="1008" alt="grok-fb73bb43-a56e-4e7d-9834-6986b7d54ac3" src="https://github.com/user-attachments/assets/101c2251-69d2-431b-92c5-d413a723c121" />
+<img width="1168" height="784" alt="HDP1x" src="https://github.com/user-attachments/assets/84b9c28c-ce86-493d-b63f-0154e96afc0a" />
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -28,11 +26,7 @@
   ▓ D  decoration or retired numerology
   ▓ S  spec / interface (sorry · axiom · placeholder)
 ```
-<img width="1792" height="1008" alt="grok-461622c8-449d-4490-89ba-a09eb95294d8" src="https://github.com/user-attachments/assets/e72b7197-1f93-4561-a12c-cf85bc9626ac" />
-
-<img width="940" height="272" alt="Screenshot 2026-06-28 035202" src="https://github.com/user-attachments/assets/35458d6f-8e80-441a-bf6c-e89f2c1f3489" />
-
-<img width="2160" height="912" alt="grok-c6f3b151-78ca-429d-a786-30ff7b5ac403" src="https://github.com/user-attachments/assets/495167b1-e99e-47f7-ad12-73d1393824ce" />
+<img width="1408" height="1408" alt="grok-c6124119-6ee5-4219-b166-147932353f49" src="https://github.com/user-attachments/assets/ff33e1d8-32db-4b1b-b47c-2603dabb3a9a" />
 
 
 ```text
@@ -107,9 +101,11 @@
   declared global tags — without silently promoting
   tags into theorems.
 ```
-<img width="1792" height="1008" alt="grok-b405c69d-78b9-47bc-b032-4ef00e91d651" src="https://github.com/user-attachments/assets/5d9720cf-a8a4-4bce-981a-8ea78835cc1c" />
-!
-[Uploading grok-fb73bb43-a56e-4e7d-9834-6986b7d54ac3.jpg…]()
+<img width="1168" height="784" alt="OWJGM" src="https://github.com/user-attachments/assets/c10147a5-09fd-4cb1-bb8d-0f60f456e6aa" />
+
+
+<img width="1792" height="1008" alt="grok-70f29016-86b8-4fc3-88d7-22c17b892892" src="https://github.com/user-attachments/assets/8dc4bf09-718b-49b2-ba65-5d208058265c" />
+
 
 ```text
   ┌─────────────────────────────────────────────┐
@@ -167,9 +163,7 @@
         │                                     │
         └──────────────┬──────────────────────┘
 ```
-<img width="784" height="1168" alt="6vju4" src="https://github.com/user-attachments/assets/bf2e3ba9-b69d-4f46-9bb7-6f7fc8f715df" />
-
-<img width="1008" height="1792" alt="grok-ee2a4ed7-1f5e-469b-9297-e50d946a8e98" src="https://github.com/user-attachments/assets/315f4b0d-58c8-45da-bdd0-63e3e4f30c53" />
+<img width="1168" height="784" alt="ShU5x" src="https://github.com/user-attachments/assets/eb6a872a-a263-472b-97a7-8e48c5329842" />
 
 ```text
                        ▼
@@ -209,10 +203,7 @@
                               ▼
                     ═ spine join ═
 ```
-
-<img width="1792" height="1008" alt="grok-c025a18d-9b08-4821-bef1-ec2225e4896c" src="https://github.com/user-attachments/assets/6f37a1a6-dbbc-45b0-955c-2cfa640b1e29" />
-
-<img width="1792" height="1008" alt="grok-abe51558-ea77-4cf4-9abe-6c2071f4623e" src="https://github.com/user-attachments/assets/6f34065a-5501-4be1-b550-015ae49f3c10" />
+<img width="1168" height="784" alt="o3kS6" src="https://github.com/user-attachments/assets/2fede304-d157-424a-9c80-b2bd0108aaa8" />
 
 
 ```text
@@ -246,13 +237,7 @@
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 ```
-<img width="1168" height="784" alt="SbtSo" src="https://github.com/user-attachments/assets/a43bf817-4871-4ebe-9c0b-2d8b1c506ad8" />
-
-<img width="1168" height="784" alt="KmHhu" src="https://github.com/user-attachments/assets/38d45ca1-4362-47a6-b491-fa6a90b096bf" />
-
-<img width="784" height="1168" alt="image" src="https://github.com/user-attachments/assets/3bec2c72-22ce-45da-9470-2c9b69dca1ec" />
-
-<img width="1168" height="784" alt="siMjv" src="https://github.com/user-attachments/assets/49aeb23c-fb31-4953-baed-45439716e5a8" />
+![Uploading K22_Keystone_Project_Verification_Results.png…]()
 
 ```text
 
@@ -281,14 +266,9 @@
 ```
 
 
-<img width="1168" height="784" alt="xVudJ" src="https://github.com/user-attachments/assets/880d656a-9075-4566-9873-cc054a0a5605" />
 
-<img width="784" height="1168" alt="YI48s" src="https://github.com/user-attachments/assets/c4a76ee1-f85e-4c33-9349-2144ed315723" />
 
-<img width="1168" height="784" alt="2PRqt" src="https://github.com/user-attachments/assets/2707d4c9-08e8-4ccd-a745-e924fc45c57d" />
-
-<img width="1168" height="784" alt="ZULBI" src="https://github.com/user-attachments/assets/bc310a67-5f7d-4253-8513-6c020a6b1527" />
-
+![Uploading hyprland_OB2_Strain-Vorticity_Discharge_Process.png…]()
 
 ```text
 
@@ -538,6 +518,7 @@
    ▓ Promotion / trust rules locked in §11
 ```
 <img width="784" height="1168" alt="bROmq" src="https://github.com/user-attachments/assets/640fe0ac-58b4-405b-ae37-6fb20dc1657e" />
+<img width="1168" height="784" alt="rTB0W" src="https://github.com/user-attachments/assets/3c9b9e54-be30-4a7d-a13f-4fbc5a57da69" />
 
 ```text
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
