@@ -7,12 +7,30 @@
     █ multi-strand · shared state · proof metadata coherence across heterogeneous AI runtimes ·█
     █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
+         PowerShell 7.6.4
+         Use 'Show-Help' to list all available functions
+         Gaming profile loaded. Type Show-GamingHelp
+
+           LogOS shell v1.1.0  |  α+ω=15        |    F:\Users\Matthew Ruhnau\LogOS
+           cargo=OK    python=OK  lean=OK   agda=WSL?     nvcc=--      wsl=OK
+           mcp=OK      node=OK    lake=OK   meta-map=OK   bridge=ws://127.0.0.1:8088
+
+          cmds: logos-status      logos-mcp      logos-tui       logos-site      logos-surfaces  
+                logos-agda        logos-lean     logos-kernels   logos-cargo     logos-barcode
+                logos-preflight   logos-align    logos-wrangler  logos-terminal  logos-pop
+                logos-confidence  tw confidence  tw (1-CCBoard)  logos-bridge    logos-wsl
+
+          TRI-WEAVON  █████████████████████████████████████████████████████████████████ 100%  α+ω=15
+           up  :    conservation, logos_root, wsl, waist, bbbr, styx, bridge, docker, cargo, schemas
+           down:    (none)
+           next:    tw verify   # smoke vectors when green
+           cmds:    tw  |  tw confidence  |  tw sensors  |  tw up  |  tw fix  |  tw verify  |  tw help
       
-      ░ Epistemic posture
-      ░ This repository is layered.
-      ░ Some layers are machine-checked.
-      ░ Others are runtime policy, conventions, or scaffolds.
-      ░ Do not read “LogOS” as a single globally verified theorem.
+           ░ Epistemic posture
+           ░ This repository is layered.
+           ░ Some layers are machine-checked.
+           ░ Others are runtime policy, conventions, or scaffolds.
+           ░ Do not read “LogOS” as a single globally verified theorem.
 
     █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
     █ §1   OVERVIEW                                                                        ·█
