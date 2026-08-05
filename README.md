@@ -1,4 +1,4 @@
-<img width="1792" height="1008" alt="grok-ef7dea2a-e715-4353-a4da-b080e5c6c3ec" src="https://github.com/user-attachments/assets/fb32db60-3aa1-48d3-b1e6-4c29e94634fc" />
+<img width="2048" height="2048" alt="16998616768977872564" src="https://github.com/user-attachments/assets/57c4f27c-89a0-4b48-932e-13fc0648e706" />
 
 ```text
 
@@ -11,20 +11,20 @@
          Use 'Show-Help' to list all available functions
          Gaming profile loaded. Type Show-GamingHelp
 
-           LogOS shell v1.1.0  |  α+ω=15        |    F:\Users\Matthew Ruhnau\LogOS
-           cargo=OK    python=OK  lean=OK   agda=WSL?     nvcc=--      wsl=OK
-           mcp=OK      node=OK    lake=OK   meta-map=OK   bridge=ws://127.0.0.1:8088
+         LogOS shell v1.1.0   |             α+ω=15            |  F:\Users\Matthew Ruhnau\LogOS
+           cargo=OK    python=OK        lean=OK     agda=WSL?       nvcc=--             wsl=OK
+           mcp=OK      node=OK          lake=OK     meta-map=OK     bridge=ws://127.0.0.1:8088
 
           cmds: logos-status      logos-mcp      logos-tui       logos-site      logos-surfaces  
                 logos-agda        logos-lean     logos-kernels   logos-cargo     logos-barcode
                 logos-preflight   logos-align    logos-wrangler  logos-terminal  logos-pop
                 logos-confidence  tw confidence  tw (1-CCBoard)  logos-bridge    logos-wsl
 
-          TRI-WEAVON  █████████████████████████████████████████████████████████████████ 100%  α+ω=15
-           up  :    conservation, logos_root, wsl, waist, bbbr, styx, bridge, docker, cargo, schemas
-           down:    (none)
-           next:    tw verify   # smoke vectors when green
-           cmds:    tw  |  tw confidence  |  tw sensors  |  tw up  |  tw fix  |  tw verify  |  tw help
+      TRI-WEAVON  █████████████████████████████████████████████████████████████████ 100%  α+ω=15
+       up  :  conservation, logos_root, wsl, waist, bbbr, styx, bridge, docker, cargo, schemas
+       down:  (none)
+       next:  tw verify   # smoke vectors when green
+       cmds:  tw  |  tw confidence  |  tw sensors  |  tw up  |  tw fix  |  tw verify  |  tw help
       
            ░ Epistemic posture
            ░ This repository is layered.
@@ -44,7 +44,10 @@
         to declared global tags — without silently promoting tags into theorems.
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
-                                                    
+ ```
+<img width="1168" height="784" alt="sAx0v" src="https://github.com/user-attachments/assets/e09f25d8-ac4f-4bab-805c-dd9a6dffce5f" />
+
+ ```text                                                   
       █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
       ▓ Claim tags                                               ·█     CHECKPOINTS             ·█
       ▓ A  kernel-checked on the stated definitions              ·█ ░░░░░░░░░░░░░░░░░░░░░░   ░░░·█
@@ -170,7 +173,8 @@
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
 ```
 
-<img width="1792" height="1008" alt="grok-4f8794be-6b6e-46f4-b75a-523a271b33ae (1)" src="https://github.com/user-attachments/assets/142a9623-8964-4023-bb6e-bdbcd234293e" />
+<img width="1792" height="1008" alt="grok-fbf2e90a-e815-4a87-a32c-b4ee74568535 (1)" src="https://github.com/user-attachments/assets/acbe3d4b-e354-4fe4-bcab-d33c89783cf2" />
+
 
 ```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
@@ -212,11 +216,7 @@
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
 ```
 
-<img width="1792" height="1008" alt="grok-b6a30e54-f990-4358-839b-7638616b0f70 (1)" src="https://github.com/user-attachments/assets/f264a11b-653d-4047-887c-ef62f0cf243f" />
-
-<img width="1211" height="620" alt="Screenshot 2026-07-31 152518" src="https://github.com/user-attachments/assets/bc55079a-3ce1-415c-a985-3edac67aa4ad" />
-
-<img width="1227" height="617" alt="Screenshot 2026-07-31 153632" src="https://github.com/user-attachments/assets/0a92b008-14b8-4087-b5b0-3b45099c4023" />
+<img width="1792" height="1008" alt="grok-946333d7-8105-45f5-867e-ad997862b722" src="https://github.com/user-attachments/assets/612bd115-18aa-49b6-963b-15c8f5898220" />
 
 ```text
 
@@ -257,6 +257,11 @@
    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░
+```
+
+
+
+```text
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █ §11 TRUST RULES · short                                                                           ·█
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
@@ -284,25 +289,8 @@
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░
 ```
-<img width="1008" height="1792" alt="grok-4d1350ea-5b51-48ed-9564-6085e7dcf92d" src="https://github.com/user-attachments/assets/f2f70920-db93-4a75-95bd-dc7e554b9d36" />
-
-<img width="1792" height="1008" alt="grok-2a7a0a27-c7a9-4ac9-9925-c7572e72db68" src="https://github.com/user-attachments/assets/fb9ad956-4b71-4ca5-8ec2-2c3522a077f3" />
-
-<img width="1792" height="1008" alt="grok-dbeb7876-d298-4d4b-bbf0-4cf26c5cafa5" src="https://github.com/user-attachments/assets/b78f8287-1138-44d5-80f9-bf27f0d857c6" />
-
-<img width="1792" height="1008" alt="grok-7af10140-3810-4b0e-8f91-2b6bd2dcb80e" src="https://github.com/user-attachments/assets/45e39ffc-4800-41ef-ac8d-57432ea667cb" />
-
-<img width="1792" height="1008" alt="grok-6bd5021c-c92b-49aa-9986-a7bae8ce413f" src="https://github.com/user-attachments/assets/cba34ebf-864e-4de1-bb19-54340f4d098f" />
-
-<img width="1792" height="1008" alt="grok-1f47af3f-b12c-4d33-88f0-3994110d2aa4" src="https://github.com/user-attachments/assets/12be0865-faf3-4e5b-8a51-740b3987758b" />
-
-<img width="1792" height="1008" alt="grok-6cf4d5fc-0aa8-48d5-9ce6-17151a2ca5d8" src="https://github.com/user-attachments/assets/9399e2ce-9111-473e-8bd5-53a2cfe4d5cc" />
-
-<img width="1792" height="1008" alt="grok-430ccb2d-67d2-4be5-8fdf-18623f110b75" src="https://github.com/user-attachments/assets/4029b5af-6081-45c1-b211-a1d056e9b6ad" />
-
-<img width="1792" height="1008" alt="grok-3b82ad94-56f0-4b44-9cdf-c32f9cb0bc88" src="https://github.com/user-attachments/assets/780583b0-963d-48ad-ae45-9b0f971612a1" />
-
-<img width="1792" height="1008" alt="grok-b1c44485-143e-489f-987f-7e16711d40d3" src="https://github.com/user-attachments/assets/600b4be5-a76e-4e73-b8bb-c2ab194633c2" />
+<img width="1792" height="1008" alt="grok-dcc535e4-a8e7-4a9b-a45a-3e66b57cb969" src="https://github.com/user-attachments/assets/e8764f32-9a4e-43d9-94eb-07250673e639" />
 
 <img width="1792" height="1008" alt="grok-fbf2e90a-e815-4a87-a32c-b4ee74568535 (1)" src="https://github.com/user-attachments/assets/9d49e84f-e2ed-4ee9-a1d1-fb8443c0dece" />
 
+<img width="1792" height="1008" alt="grok-019836c4-4bab-4187-9359-3ae73ecce2a9" src="https://github.com/user-attachments/assets/97a840fd-e4ea-46eb-8f37-bea66af557aa" />
