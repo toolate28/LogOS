@@ -1,4 +1,4 @@
-<img width="2048" height="2048" alt="16998616768977872564" src="https://github.com/user-attachments/assets/57c4f27c-89a0-4b48-932e-13fc0648e706" />
+<img width="1792" height="1008" alt="grok-7144e2c8-9209-4201-818d-a10f94c31dea" src="https://github.com/user-attachments/assets/135cfba7-b4dd-4580-86f0-f944c9ff5e2c" /><img width="2048" height="2048" alt="16998616768977872564" src="https://github.com/user-attachments/assets/57c4f27c-89a0-4b48-932e-13fc0648e706" />
 
 ```text
 
@@ -45,8 +45,7 @@
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
  ```
-<img width="1168" height="784" alt="sAx0v" src="https://github.com/user-attachments/assets/e09f25d8-ac4f-4bab-805c-dd9a6dffce5f" />
-
+![Uploading grok-c8f4d653-bf45-4326-879a-13f11a8e07c2 (1).jpg…]()
  ```text                                                   
       █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
       ▓ Claim tags                                               ·█     CHECKPOINTS             ·█
@@ -83,7 +82,7 @@
     █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 
-     ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+     ▓▓▓ GREEN SUBSET ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
      cutile v0.3                   ✅ ✅    ExistenceCertificate demo
      coherence-mcp v0.5            ✅ ✅    Symmetry gate live
      triweavon-cudarc              ✅  ·    run on target GPU
@@ -93,18 +92,19 @@
      lean/K22.HexacodeGolay        ✅  ·    64·4096·759·d=8·sphere     · A
      lean/K22.Existence            ✅  ·    thin bridge     · no sorry
    
-     ░░░ NOT GREEN     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+     ░░░ NOT GREEN     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
      Full Lean workspace           ❌  ·    Ns · some MOG · macros          
      agda scaffolds                 ·  ·    conservation mirror only        
      standalone npm coherence-mcp  ❌  ·    TS build errors · legacy
                                                                             
-     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
   ═════════════════════════════════════════════════════════════════════════════════════════════════
 ```
 <img width="1792" height="1008" alt="grok-c971b5a7-df27-4838-9f83-13df3e1e5b50 (1)" src="https://github.com/user-attachments/assets/293e2d6d-69ac-4af7-ac99-f7d6ed3fe24a" />
 
+<img width="1792" height="1008" alt="grok-b3e95582-4798-4441-abb0-e8e3de976f4c" src="https://github.com/user-attachments/assets/dd9e75f5-be93-4b40-a43f-14897b6582a0" />
 
 ```text
   ════════════════════════════════════════════════════════════════════════════════════════════════
@@ -127,8 +127,7 @@
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
 ```
-
-<img width="1792" height="1008" alt="grok-eadbcd85-a0d9-4f67-a442-2988a7c82cd4" src="https://github.com/user-attachments/assets/85553e2a-9356-481f-bbfd-a4b4c33be788" />
+<img width="1792" height="1008" alt="grok-766c4592-0aad-47e0-a209-e3ee98291dd7" src="https://github.com/user-attachments/assets/59395c7e-9833-4b9c-87c3-ee1d23fbfd8b" />
 
 ```text
                                      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -259,6 +258,7 @@
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░
 ```
 
+<img width="1792" height="1008" alt="grok-34da3b84-211b-4f33-8f99-5db1ec145f48" src="https://github.com/user-attachments/assets/f97573af-779f-4915-8ee7-fef2abe91256" />
 
 
 ```text
@@ -291,6 +291,6 @@
 ```
 <img width="1792" height="1008" alt="grok-dcc535e4-a8e7-4a9b-a45a-3e66b57cb969" src="https://github.com/user-attachments/assets/e8764f32-9a4e-43d9-94eb-07250673e639" />
 
-<img width="1792" height="1008" alt="grok-fbf2e90a-e815-4a87-a32c-b4ee74568535 (1)" src="https://github.com/user-attachments/assets/9d49e84f-e2ed-4ee9-a1d1-fb8443c0dece" />
-
 <img width="1792" height="1008" alt="grok-019836c4-4bab-4187-9359-3ae73ecce2a9" src="https://github.com/user-attachments/assets/97a840fd-e4ea-46eb-8f37-bea66af557aa" />
+
+
