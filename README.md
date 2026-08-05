@@ -1,4 +1,4 @@
-<img width="1792" height="1008" alt="grok-7144e2c8-9209-4201-818d-a10f94c31dea" src="https://github.com/user-attachments/assets/135cfba7-b4dd-4580-86f0-f944c9ff5e2c" /><img width="2048" height="2048" alt="16998616768977872564" src="https://github.com/user-attachments/assets/57c4f27c-89a0-4b48-932e-13fc0648e706" />
+<img width="2048" height="2048" alt="16998616768977872564" src="https://github.com/user-attachments/assets/57c4f27c-89a0-4b48-932e-13fc0648e706" />
 
 ```text
 
