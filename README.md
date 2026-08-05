@@ -196,6 +196,10 @@
 
 <img width="1792" height="1008" alt="grok-b6a30e54-f990-4358-839b-7638616b0f70 (1)" src="https://github.com/user-attachments/assets/f264a11b-653d-4047-887c-ef62f0cf243f" />
 
+<img width="1211" height="620" alt="Screenshot 2026-07-31 152518" src="https://github.com/user-attachments/assets/bc55079a-3ce1-415c-a985-3edac67aa4ad" />
+
+<img width="1227" height="617" alt="Screenshot 2026-07-31 153632" src="https://github.com/user-attachments/assets/0a92b008-14b8-4087-b5b0-3b45099c4023" />
+
 ```text
 
    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -284,5 +288,3 @@
 
 <img width="1792" height="1008" alt="grok-fbf2e90a-e815-4a87-a32c-b4ee74568535 (1)" src="https://github.com/user-attachments/assets/9d49e84f-e2ed-4ee9-a1d1-fb8443c0dece" />
 
-
-![Uploading image.png…]()
