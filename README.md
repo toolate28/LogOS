@@ -44,9 +44,7 @@
         to declared global tags — without silently promoting tags into theorems.
 
 ▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░▒▒░░▒▒░░▒▒░░▒▒░░▒▒░░▒▒
- ```
-![Uploading grok-c8f4d653-bf45-4326-879a-13f11a8e07c2 (1).jpg…]()
- ```text                                                   
+                                                 
       █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
       ▓ Claim tags                                               ·█     CHECKPOINTS             ·█
       ▓ A  kernel-checked on the stated definitions              ·█ ░░░░░░░░░░░░░░░░░░░░░░   ░░░·█
