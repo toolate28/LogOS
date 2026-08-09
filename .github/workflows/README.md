@@ -11,6 +11,7 @@
 | **Security Advisory** | `security-advisory.yml` | Secret-path + lake artefacts · cargo-audit |
 | **MCP Validation** | `mcp-validation.yml` | Fail-closed committed MCP configs |
 | **Labels** | `labels.yml` | Ensure Dependabot-referenced labels exist |
+| **Entangle** | `entangle.yml` | Remote PR path-slots · local slice ingest (dispatch only) |
 | **Dependabot** | `../dependabot.yml` | Cargo + Actions (+ optional pip) |
 
 ### Badges
