@@ -1,0 +1,8 @@
+{
+  "name": "LogOS oncall email (example — do not commit real addresses if private)",
+  "properties": {
+    "email": {
+      "emails": ["you@example.com"]
+    }
+  }
+}
