@@ -1,0 +1,144 @@
+# LogOS Entangle Manifest — local ⇄ remote path slots
+# ATOM: ATOM-ENTANGLE-MANIFEST-20260809
+# Remote scaffold opens empty PR slots; local emit fills them; human approves.
+# capability ≠ authority. α+ω=15 is Category C label only.
+
+version: 1
+atom: ATOM-ENTANGLE-MANIFEST-20260809
+updated: "2026-08-09"
+
+# Path slices that may land independently (no crates/target, no .git)
+components:
+  - id: reson8-tui
+    title: reson8-tui / reson8-forge cockpit
+    paths:
+      - crates/tui/
+    verify:
+      - cargo check -p reson8-tui
+      - cargo test -p reson8-tui --bin reson8-forge
+    saif: ops
+    priority: A
+    notes: "v0.2.1 codes lab · QDI drain · surface-aware layout"
+
+  - id: barcode-tui
+    title: barcode-tui H0 viewer
+    paths:
+      - crates/barcode-tui/
+    verify:
+      - cargo check -p barcode-tui
+      - cargo test -p barcode-tui
+    saif: ops
+    priority: A
+    notes: "H0 done; H1/braille TODOs for other strands"
+
+  - id: apps-triweave
+    title: apps/triweave surface
+    paths:
+      - apps/triweave/
+    verify:
+      - cargo check -p triweave
+    saif: deploy
+    priority: B
+
+  - id: apps-mc-bridge
+    title: Minecraft RCON bridge
+    paths:
+      - apps/mc-bridge/
+    verify:
+      - cargo check -p mc-bridge
+    saif: ops
+    priority: C
+
+  - id: apps-nexus-pulse
+    title: nexus-pulse-bot
+    paths:
+      - apps/nexus-pulse-bot/
+    verify:
+      - cargo check -p nexus-pulse-bot
+    saif: ops
+    priority: C
+
+  - id: formal-srac
+    title: Stage A/B/C SRAC · claim gate · DriftGuard packet
+    paths:
+      - docs/formal/
+      - docs/packets/dual-research-enterprise-alpha-20260806/
+      - lean/TriWeavon/
+      - tools/claim_lint.py
+      - cutiles/cutile/src/claim_gate.rs
+      - cutiles/cutile/src/core/drift_guard.rs
+      - cutiles/cutile/src/core/srac_strategies.rs
+    verify:
+      - python tools/claim_lint.py --help
+    saif: formal
+    priority: A
+
+  - id: net-proxy
+    title: LogOS net proxy stack (TUI Net panel)
+    paths:
+      - ops/net/
+      - crates/tui/src/net_proxy.rs
+    verify: []
+    saif: ops
+    priority: B
+    notes: "gaming clearnet vs privacy lane; DNSCrypt:53553"
+
+  - id: ci-verify
+    title: CI policy + verify pipeline
+    paths:
+      - .github/workflows/
+      - ops/ci/
+    verify:
+      - python ops/ci/assert_action_pins.py
+      - bash ops/ci/guard.sh
+    saif: security
+    priority: A
+
+  - id: showcase-media
+    title: coherence-site showcase media (LFS / bulk)
+    paths:
+      - coherence-mcp/coherence-site/public/showcase/
+    verify: []
+    saif: media
+    priority: D
+    transfer: bulk
+    notes: "Use transfer-lane (qBittorrent / CF R2 / clearnet) — not git receive-pack"
+
+# Hard excludes for every emit (never ship these)
+excludes:
+  - "**/target/**"
+  - "**/crates/target/**"
+  - "**/.git/**"
+  - "**/node_modules/**"
+  - "**/.lake/**"
+  - "**/__pycache__/**"
+  - "**/*.pdb"
+  - "**/*.rlib"
+  - "**/*.rmeta"
+
+# Remote PR layout the Actions scaffold creates
+remote:
+  base: main
+  branch_prefix: entangle/
+  label: entangle
+  pr_title_template: "entangle({id}): {title}"
+  body_template: |
+    ## Entangle slot `{id}`
+
+    **ATOM:** `ATOM-ENTANGLE-MANIFEST-20260809`
+    **Priority:** {priority}
+    **SAIF lane:** {saif}
+
+    ### Paths
+    {paths}
+
+    ### Verify (local then CI)
+    {verify}
+
+    ### Protocol
+    1. Remote scaffold opened this empty (or placeholder) PR.
+    2. Operator runs `pwsh -File ops/entangle/emit-slice.ps1 -Id {id}` and attaches the slice.
+    3. Actions `entangle` workflow mode=`ingest` applies the slice (or human commits).
+    4. Human approves merge after Verify green.
+
+    capability ≠ authority · Music conserved
