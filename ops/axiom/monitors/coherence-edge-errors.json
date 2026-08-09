@@ -1,0 +1,16 @@
+{
+  "name": "LogOS coherence edge error rate",
+  "type": "Threshold",
+  "description": "Scaffold — bind to live edge dataset. ATOM-AXIOM-SCAFFOLD-20260809",
+  "aplQuery": "['coherence-edge'] | where status >= 500 or level == 'error' | summarize count() by bin(_time, 5m)",
+  "operator": "Above",
+  "threshold": 20,
+  "rangeMinutes": 15,
+  "intervalMinutes": 5,
+  "notifierIds": [],
+  "triggerAfterNPositiveResults": 2,
+  "triggerFromNRuns": 3,
+  "alertOnNoData": false,
+  "disabled": true,
+  "resolvable": true
+}

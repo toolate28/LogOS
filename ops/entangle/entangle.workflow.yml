@@ -1,0 +1,274 @@
+# Entangle — scaffold remote PR slots + ingest local path slices
+# ATOM: ATOM-ENTANGLE-WORKFLOW-20260809
+# capability ≠ authority · human approves merges · SHA pins required
+
+name: Entangle
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "scaffold = open empty PR slots · validate = manifest only · ingest = apply attached slices from ops/entangle/out on branch"
+        required: true
+        type: choice
+        options:
+          - validate
+          - scaffold
+          - ingest
+        default: validate
+      components:
+        description: "Comma-separated component ids (empty = all Priority A)"
+        required: false
+        type: string
+        default: ""
+      dry_run:
+        description: "If true, print plan only (no push/PR)"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: entangle-${{ github.ref }}-${{ inputs.mode }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  validate:
+    name: Validate entangle manifest
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Assert Action SHA pins
+        run: python3 ops/ci/assert_action_pins.py
+
+      - name: Validate manifest
+        run: python3 ops/entangle/validate_manifest.py
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Entangle validate"
+            echo ""
+            echo "- ATOM: \`ATOM-ENTANGLE-WORKFLOW-20260809\`"
+            echo "- mode input: \`${{ inputs.mode }}\`"
+            echo "- components: \`${{ inputs.components }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  scaffold:
+    name: Scaffold remote PR slots
+    needs: [validate]
+    if: inputs.mode == 'scaffold'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Resolve component list
+        id: list
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os, re, pathlib
+          text = pathlib.Path("ops/entangle/manifest.yaml").read_text(encoding="utf-8")
+          wanted = [x.strip() for x in os.environ.get("COMPONENTS", "").split(",") if x.strip()]
+          blocks = re.split(r"\n  - id:\s*", text)
+          comps = []
+          for b in blocks[1:]:
+              lines = b.splitlines()
+              cid = lines[0].strip()
+              title = ""
+              prio = ""
+              paths = []
+              in_paths = False
+              for line in lines[1:]:
+                  if line.startswith("  - id:"):
+                      break
+                  if re.match(r"\s+title:\s*", line):
+                      title = re.sub(r"\s+title:\s*", "", line).strip().strip('"')
+                      in_paths = False
+                  elif re.match(r"\s+priority:\s*", line):
+                      prio = re.sub(r"\s+priority:\s*", "", line).strip()
+                      in_paths = False
+                  elif re.match(r"\s+paths:\s*", line):
+                      in_paths = True
+                  elif in_paths and re.match(r"\s+-\s+", line):
+                      paths.append(re.sub(r"\s+-\s+", "", line).strip())
+                  elif in_paths and re.match(r"\s+\w+:", line):
+                      in_paths = False
+              if wanted and cid not in wanted:
+                  continue
+              if not wanted and prio not in ("A", "B"):
+                  continue
+              comps.append((cid, title, prio, paths))
+          out = pathlib.Path(os.environ["GITHUB_OUTPUT"])
+          with out.open("a", encoding="utf-8") as f:
+              f.write(f"count={len(comps)}\n")
+              # encode as lines for matrix-less loop
+          pathlib.Path("/tmp/entangle_comps.txt").write_text(
+              "\n".join(f"{c}|{t}|{p}|{';'.join(ps)}" for c, t, p, ps in comps),
+              encoding="utf-8",
+          )
+          print(f"resolved {len(comps)} components")
+          for c, t, p, ps in comps:
+              print(f"  - {c} [{p}] {t} paths={len(ps)}")
+          PY
+        env:
+          COMPONENTS: ${{ inputs.components }}
+
+      - name: Open entangle PR slots
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          BASE="${{ github.event.repository.default_branch }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # ensure label
+          gh label create entangle --color "5319E7" --description "Entangle path-slot PR" 2>/dev/null || true
+
+          while IFS= read -r line; do
+            [[ -z "$line" ]] && continue
+            IFS='|' read -r CID TITLE PRIO PATHS <<<"$line"
+            BRANCH="entangle/${CID}"
+            echo "::group::slot ${CID}"
+            if [[ "${DRY_RUN}" == "true" ]]; then
+              echo "dry-run: would open PR branch=${BRANCH} title=${TITLE}"
+              echo "::endgroup::"
+              continue
+            fi
+            git checkout -B "$BRANCH" "origin/${BASE}"
+            SLOT_DIR="ops/entangle/slots/${CID}"
+            mkdir -p "$SLOT_DIR"
+            cat > "${SLOT_DIR}/SLOT.md" <<EOF
+          # Entangle slot \`${CID}\`
+
+          - **Title:** ${TITLE}
+          - **Priority:** ${PRIO}
+          - **Paths:** ${PATHS}
+          - **Status:** empty — awaiting local emit / ingest
+          - **ATOM:** ATOM-ENTANGLE-MANIFEST-20260809
+
+          ## Operator
+
+          \`\`\`powershell
+          pwsh -File ops/entangle/emit-slice.ps1 -Id ${CID}
+          \`\`\`
+
+          Then run workflow **Entangle** mode=\`ingest\` with this component, or commit the slice onto \`${BRANCH}\`.
+          EOF
+            git add "${SLOT_DIR}/SLOT.md"
+            if git diff --cached --quiet; then
+              echo "no change for ${CID}"
+            else
+              git commit -m "entangle(${CID}): open empty slot"
+              git push -u origin "$BRANCH" --force-with-lease
+            fi
+            # open PR if missing
+            if gh pr list --head "$BRANCH" --json number --jq 'length' | grep -vq '^0$'; then
+              echo "PR already exists for ${BRANCH}"
+            else
+              BODY=$(cat <<EOB
+          ## Entangle slot \`${CID}\`
+
+          **Priority:** ${PRIO}
+          **Paths:** \`${PATHS}\`
+
+          Remote structure is open. Populate via:
+
+          1. \`pwsh -File ops/entangle/emit-slice.ps1 -Id ${CID}\`
+          2. Workflow **Entangle** → mode=\`ingest\` **or** commit onto \`${BRANCH}\`
+          3. Human approves merge after Verify green
+
+          **Transfer bulk media** separately — see \`ops/entangle/transfer-lane.md\`.
+
+          ATOM: \`ATOM-ENTANGLE-MANIFEST-20260809\` · capability ≠ authority
+          EOB
+          )
+              gh pr create --base "$BASE" --head "$BRANCH" \
+                --title "entangle(${CID}): ${TITLE}" \
+                --body "$BODY" \
+                --label entangle || true
+            fi
+            echo "::endgroup::"
+          done < /tmp/entangle_comps.txt
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "## Entangle scaffold"
+            echo ""
+            echo "Slots resolved: see job log."
+            echo "Approve merges only after Verify + your review."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  ingest:
+    name: Ingest slices from branch out/
+    needs: [validate]
+    if: inputs.mode == 'ingest'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Apply zips under ops/entangle/out
+        env:
+          COMPONENTS: ${{ inputs.components }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          zips=(ops/entangle/out/*.zip)
+          if [[ ${#zips[@]} -eq 0 ]]; then
+            echo "No zips in ops/entangle/out — commit slices to the branch or upload artifacts first."
+            echo "Local: pwsh -File ops/entangle/emit-slice.ps1 -Id <component>"
+            exit 1
+          fi
+          for z in "${zips[@]}"; do
+            base="$(basename "$z")"
+            cid="${base%%-*}"
+            if [[ -n "${COMPONENTS}" && ",${COMPONENTS}," != *",${cid},"* ]]; then
+              echo "skip $base (filter)"
+              continue
+            fi
+            echo "apply $z"
+            if [[ "${DRY_RUN}" == "true" ]]; then
+              unzip -l "$z" | head -n 40
+            else
+              bash ops/entangle/apply-slice.sh "$z"
+            fi
+          done
+          if [[ "${DRY_RUN}" != "true" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            if git diff --cached --quiet; then
+              echo "nothing to commit"
+            else
+              BR="entangle/ingest-$(date -u +%Y%m%d%H%M%S)"
+              git checkout -B "$BR"
+              git commit -m "entangle(ingest): apply path slices"
+              git push -u origin "$BR"
+              gh pr create --fill --label entangle || true
+            fi
+          fi

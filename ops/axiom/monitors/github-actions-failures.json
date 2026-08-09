@@ -1,0 +1,13 @@
+{
+  "name": "LogOS GitHub Actions failures",
+  "type": "MatchEvent",
+  "description": "Scaffold — set dataset name after Actions→Axiom shipping is wired. ATOM-AXIOM-SCAFFOLD-20260809",
+  "aplQuery": "['github-actions'] | where conclusion == 'failure' or action == 'failure'",
+  "rangeMinutes": 15,
+  "intervalMinutes": 5,
+  "notifierIds": [],
+  "triggerAfterNPositiveResults": 1,
+  "triggerFromNRuns": 1,
+  "disabled": true,
+  "resolvable": true
+}
