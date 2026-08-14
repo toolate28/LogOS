@@ -21,24 +21,8 @@ function Get-TriWeavonRoots {
     [CmdletBinding()]
     param()
 
-    # Prefer F: Beelink tree; ignore stale C:\Users\Matthew Ruhnau\LogOS when F: exists.
-    $preferredLogOS = $null
-    foreach ($cand in @(
-            $(if ($env:LOGOS_ROOT -and (Test-Path -LiteralPath $env:LOGOS_ROOT)) { $env:LOGOS_ROOT }),
-            'F:\Users\Matthew Ruhnau\LogOS',
-            'C:\Users\Matthew Ruhnau\LogOS',
-            (Join-Path $env:USERPROFILE 'LogOS')
-        )) {
-        if ($cand -and (Test-Path -LiteralPath $cand)) {
-            # If env points at C: but F: exists, upgrade to F:
-            if ($cand -like 'C:\Users\Matthew Ruhnau\LogOS*' -and (Test-Path -LiteralPath 'F:\Users\Matthew Ruhnau\LogOS')) {
-                $preferredLogOS = 'F:\Users\Matthew Ruhnau\LogOS'
-            } else {
-                $preferredLogOS = $cand
-            }
-            break
-        }
-    }
+    . (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
+    $preferredLogOS = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot
     if (-not $preferredLogOS) {
         $preferredLogOS = Join-Path $env:USERPROFILE 'LogOS'
     }

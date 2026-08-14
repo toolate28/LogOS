@@ -17,7 +17,7 @@
 
 Set-StrictMode -Version Latest
 
-$script:UnitaryVersion = '1.1.0-unitary'
+$script:UnitaryVersion = '1.1.1-unitary'
 $script:SensorCache = $null
 $script:SensorCacheAt = [datetime]::MinValue
 $script:SensorTtlSec = 6
@@ -29,20 +29,15 @@ $script:WslDistro = $null
 function Get-UnitaryLogOSRoot {
     [CmdletBinding()]
     param()
-    foreach ($c in @(
-            $env:LOGOS_ROOT,
-            'F:\Users\Matthew Ruhnau\LogOS',
-            (Join-Path $HOME 'LogOS')
-        )) {
-        if ($c -and (Test-Path -LiteralPath $c)) {
-            if ($c -like 'C:\*' -and (Test-Path 'F:\Users\Matthew Ruhnau\LogOS')) {
-                return (Resolve-Path 'F:\Users\Matthew Ruhnau\LogOS').Path
-            }
-            return (Resolve-Path -LiteralPath $c).Path
-        }
+    # Portable: env · ops-parent · %USERPROFILE%\LogOS · %USERNAME% drive scan — never a person-named path.
+    . (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
+    $root = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot
+    if ($root) { return $root }
+
+    # Optional WSL ext4 mirror via env (set LOGOS_WSL_UNC=\\wsl$\Distro\home\%USER%\LogOS)
+    if ($env:LOGOS_WSL_UNC -and (Test-Path -LiteralPath $env:LOGOS_WSL_UNC)) {
+        return (Resolve-Path -LiteralPath $env:LOGOS_WSL_UNC).Path
     }
-    $wsl = '\\wsl$\Kali\home\toolated\LogOS'
-    if (Test-Path $wsl) { return $wsl }
     return $null
 }
 
@@ -72,6 +67,11 @@ function Invoke-UnitaryWsl {
     <#
     .SYNOPSIS
         Run a bash command in the LogOS WSL distro (ext4 ~/LogOS).
+
+    .NOTES
+        Multiline bash must not be stuffed into `bash -lc "$cmd"` (newlines /
+        unquoted `if` → "unexpected end of file"). We base64-wrap the payload
+        and decode inside WSL so scripts stay intact.
     #>
     [CmdletBinding()]
     param(
@@ -80,11 +80,17 @@ function Invoke-UnitaryWsl {
     )
     $distro = Get-UnitaryWslDistro
     if (-not $distro) { throw 'WSL distro not found (need Kali/Ubuntu for deploy waist).' }
-    $cmd = "cd ~/LogOS && $Bash"
+
+    $payload = if ($Bash -match '^\s*cd\s+') { $Bash } else { "cd ~/LogOS`n$Bash" }
+    # Normalize to LF for bash
+    $payload = $payload -replace "`r`n", "`n" -replace "`r", "`n"
+    $b64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($payload))
+    # Single-line outer command; inner script may be multiline
+    $outer = "echo $b64 | base64 -d | bash"
     if ($Interactive) {
-        & wsl.exe -d $distro -- bash -lc $cmd
+        & wsl.exe -d $distro -- bash -lc $outer
     } else {
-        & wsl.exe -d $distro -- bash -lc $cmd 2>&1
+        & wsl.exe -d $distro -- bash -lc $outer 2>&1
     }
 }
 
@@ -165,7 +171,7 @@ function Get-TriWeavonSensors {
     $s.logos_root = [pscustomobject]@{
         name = 'logos_root'; ok = [bool]$root; critical = $true
         detail = if ($root) { $root } else { 'MISSING — set LOGOS_ROOT' }
-        fix = if (-not $root) { 'Set LOGOS_ROOT to F:\Users\Matthew Ruhnau\LogOS' } else { $null }
+        fix = if (-not $root) { 'Set LOGOS_ROOT=%USERPROFILE%\LogOS (or your clone path)' } else { $null }
         shade = Get-ShadeBar $(if ($root) { 1 } else { 0 })
     }
 
@@ -183,7 +189,7 @@ function Get-TriWeavonSensors {
     $s.waist = [pscustomobject]@{
         name = 'waist'; ok = [bool]$wHttp.ok; critical = $false
         detail = if ($wHttp.ok) { "http://127.0.0.1:8080  ✓ $($wHttp.status)" } else { 'down — verify/validate API' }
-        fix = if (-not $wHttp.ok) { 'tw up waist   # or: wsl -d kali-linux -- bash -lc "cd /mnt/f/Users/Matthew\ Ruhnau/LogOS && docker compose up -d"' } else { $null }
+        fix = if (-not $wHttp.ok) { 'tw up waist   # or WSL: cd "$LOGOS_ROOT" && docker compose up -d' } else { $null }
         shade = Get-ShadeBar $(if ($wHttp.ok) { 1 } elseif ($wTcp) { 0.4 } else { 0.05 })
         url = 'http://127.0.0.1:8080/health'
     }
@@ -194,7 +200,7 @@ function Get-TriWeavonSensors {
     $s.bbbr = [pscustomobject]@{
         name = 'bbbr'; ok = [bool]$bHttp.ok; critical = $false
         detail = if ($bHttp.ok) { 'http://127.0.0.1:8081  linkage auditor' } else { 'down — hermetic chain verify' }
-        fix = if (-not $bHttp.ok) { 'tw up bbbr    # nix build .#bbbr-verifier && result-bbbr/bin/bbbr-verifier' } else { $null }
+        fix = if (-not $bHttp.ok) { 'tw up bbbr    # python hup/unikernel/bbbr-verifier/bbbr_unix.py (:8081)' } else { $null }
         shade = Get-ShadeBar $(if ($bHttp.ok) { 1 } else { 0.05 })
         url = 'http://127.0.0.1:8081/verify'
     }
@@ -372,18 +378,108 @@ function Start-TriWeavonServices {
         Invoke-UnitaryWsl -Bash 'docker compose up -d 2>&1 | tail -5' | ForEach-Object { Write-Host "    $_" }
     }
     if ($Service -eq 'bbbr' -or $Service -eq 'all') {
-        Write-Host '  → bbbr-verifier :8081' -ForegroundColor DarkCyan
-        $bash = @'
-if [ -f /tmp/bbbr.pid ] && kill -0 $(cat /tmp/bbbr.pid) 2>/dev/null; then echo already_up; exit 0; fi
-if [ ! -x result-bbbr/bin/bbbr-verifier ]; then
-  . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh 2>/dev/null
-  nix build .#bbbr-verifier --out-link result-bbbr 2>&1 | tail -3
+        Write-Host '  → bbbr-verifier :8081 (hermetic python unix SC)' -ForegroundColor DarkCyan
+        # Host sensors probe 127.0.0.1:8081 — start on Windows first when possible.
+        # WSL ~/LogOS is often a slim tree without hup/; /mnt/f winhost path may have it.
+        $started = $false
+        try {
+            $h = Invoke-WebRequest -Uri 'http://127.0.0.1:8081/health' -UseBasicParsing -TimeoutSec 1
+            if ($h.StatusCode -eq 200) {
+                Write-Host '    already_up (host :8081)' -ForegroundColor Green
+                $started = $true
+            }
+        } catch { }
+
+        if (-not $started) {
+            $root = Get-UnitaryLogOSRoot
+            $py = if ($root) { Join-Path $root 'hup\unikernel\bbbr-verifier\bbbr_unix.py' } else { $null }
+            $pyExe = if (Get-Command python -EA SilentlyContinue) { 'python' }
+                     elseif (Get-Command python3 -EA SilentlyContinue) { 'python3' }
+                     else { $null }
+            if ($py -and (Test-Path -LiteralPath $py) -and $pyExe) {
+                Write-Host "    host: $pyExe bbbr_unix.py" -ForegroundColor DarkCyan
+                $logOut = Join-Path $env:TEMP 'bbbr-host.out.log'
+                $logErr = Join-Path $env:TEMP 'bbbr-host.err.log'
+                # Paths may contain spaces — always quote as a single argv element.
+                $workDir = Split-Path -Parent $py
+                # Prefer cmd start /B with quoted paths (robust vs Start-Process arg splitting)
+                $cmdLine = "start `"`" /B `"$pyExe`" `"$py`""
+                Start-Process -FilePath 'cmd.exe' -ArgumentList @('/c', $cmdLine) `
+                    -WorkingDirectory $workDir -WindowStyle Hidden | Out-Null
+                Start-Sleep -Milliseconds 900
+                try {
+                    $h2 = Invoke-WebRequest -Uri 'http://127.0.0.1:8081/health' -UseBasicParsing -TimeoutSec 2
+                    if ($h2.StatusCode -eq 200) {
+                        Write-Host '    OK host :8081' -ForegroundColor Green
+                        $started = $true
+                    }
+                } catch {
+                    Write-Host "    host start failed (quoted path) — trying ProcessStartInfo" -ForegroundColor Yellow
+                    try {
+                        $psi = New-Object System.Diagnostics.ProcessStartInfo
+                        $psi.FileName = $pyExe
+                        $psi.Arguments = '"' + ($py -replace '"', '""') + '"'
+                        $psi.WorkingDirectory = $workDir
+                        $psi.UseShellExecute = $false
+                        $psi.CreateNoWindow = $true
+                        $psi.RedirectStandardOutput = $true
+                        $psi.RedirectStandardError = $true
+                        $proc = [System.Diagnostics.Process]::Start($psi)
+                        Start-Sleep -Milliseconds 900
+                        $h3 = Invoke-WebRequest -Uri 'http://127.0.0.1:8081/health' -UseBasicParsing -TimeoutSec 2
+                        if ($h3.StatusCode -eq 200) {
+                            Write-Host "    OK host :8081 pid=$($proc.Id)" -ForegroundColor Green
+                            $started = $true
+                        }
+                    } catch {
+                        Write-Host "    host start failed — check python + $py" -ForegroundColor Yellow
+                        if (Test-Path -LiteralPath $logErr) {
+                            Get-Content -LiteralPath $logErr -Tail 6 | ForEach-Object { Write-Host "      $_" -ForegroundColor DarkGray }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (-not $started) {
+            Write-Host '    WSL path (python or optional nix)' -ForegroundColor DarkCyan
+            # Discover roots without person-named paths: $HOME/LogOS · $LOGOS_ROOT · /mnt/*/Users/*/LogOS
+            $bash = @'
+set -e
+ROOT=""
+if [ -n "${LOGOS_ROOT:-}" ] && [ -f "$LOGOS_ROOT/hup/unikernel/bbbr-verifier/bbbr_unix.py" ]; then
+  ROOT="$LOGOS_ROOT"
 fi
-nohup ./result-bbbr/bin/bbbr-verifier >/tmp/bbbr.log 2>&1 & echo $! >/tmp/bbbr.pid
-sleep 0.5
-curl -sf http://127.0.0.1:8081/health && echo OK || (echo FAIL; tail -5 /tmp/bbbr.log)
+if [ -z "$ROOT" ] && [ -f "$HOME/LogOS/hup/unikernel/bbbr-verifier/bbbr_unix.py" ]; then
+  ROOT="$HOME/LogOS"
+fi
+if [ -z "$ROOT" ]; then
+  for d in /mnt/*/Users/*/LogOS; do
+    if [ -f "$d/hup/unikernel/bbbr-verifier/bbbr_unix.py" ] || [ -f "$d/ops/wsl/tw-up-bbbr.sh" ]; then
+      ROOT="$d"
+      break
+    fi
+  done
+fi
+if [ -z "$ROOT" ]; then
+  echo "MISSING bbbr_unix.py — set LOGOS_ROOT or clone to \$HOME/LogOS"
+  echo "  note: flake.nix / k8s/base not required; need hup/unikernel/bbbr-verifier/"
+  exit 1
+fi
+cd "$ROOT"
+export LOGOS_HOME="$ROOT"
+export LOGOS_ROOT="$ROOT"
+if [ -f ops/wsl/tw-up-bbbr.sh ]; then
+  bash ops/wsl/tw-up-bbbr.sh
+else
+  nohup python3 hup/unikernel/bbbr-verifier/bbbr_unix.py >/tmp/bbbr.log 2>&1 &
+  echo $! >/tmp/bbbr.pid
+  sleep 0.6
+  curl -sf http://127.0.0.1:8081/health && echo OK || (echo FAIL; tail -10 /tmp/bbbr.log; exit 1)
+fi
 '@
-        Invoke-UnitaryWsl -Bash $bash | ForEach-Object { Write-Host "    $_" }
+            Invoke-UnitaryWsl -Bash $bash | ForEach-Object { Write-Host "    $_" }
+        }
     }
     if ($Service -eq 'styx' -or $Service -eq 'all') {
         Write-Host '  → styx-bookshelf :5640' -ForegroundColor DarkCyan

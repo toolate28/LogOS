@@ -14,11 +14,8 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$Root = if ($env:LOGOS_ROOT -and (Test-Path $env:LOGOS_ROOT)) {
-    $env:LOGOS_ROOT
-} else {
-    'F:\Users\Matthew Ruhnau\LogOS'
-}
+. (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
+$Root = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot -ThrowIfMissing
 $Module = Join-Path $Root 'ops\LogOS.Windows.psm1'
 if (-not (Test-Path -LiteralPath $Module)) {
     throw "Missing $Module"

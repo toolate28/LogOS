@@ -1,7 +1,7 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    Windows-native preflight, bootstrap, wrangler, and dynamic-terminal axis for LogOS.
+    Windows-native preflight, bootstrap, wrangler, clean, and dynamic-terminal axis for LogOS.
 .DESCRIPTION
     PowerShell equivalents for bash preflight/bootstrap scripts so Windows hosts
     stay on the same toral focii as WSL (α+ω=15).
@@ -10,10 +10,12 @@
       Import-Module "$env:LOGOS_ROOT\ops\LogOS.Windows.psm1" -Force
       Invoke-LogOSPreflight
       logos-align
+      logos-clean
 
     Commands:
       logos-preflight   Full Windows preflight board
       logos-align       Idempotent profile + PATH + wrangler axis (Set-LogOSWindowsAxis)
+      logos-clean       Repo hygiene scan / deep reclaim (HITL — Apply needs -Force)
       logos-wrangler    Deploy / whoami / pages for coherence-site
       logos-terminal    HTML dynamic terminal · tui · sensors · pop/window/tab
       logos-pop         Pop out a new OS console (Windows Terminal / pwsh)
@@ -24,28 +26,20 @@
 
 Set-StrictMode -Version Latest
 
-$script:WindowsAxisVersion = '1.0.0-win-axis'
-$script:CanonicalRoot = 'F:\Users\Matthew Ruhnau\LogOS'
+$script:WindowsAxisVersion = '1.0.1-win-axis'
+# Portable default: %USERPROFILE%\LogOS (override with LOGOS_ROOT)
+$script:CanonicalRoot = if ($env:USERPROFILE) { Join-Path $env:USERPROFILE 'LogOS' } else { $null }
+
+. (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
 
 # ─── Roots ───────────────────────────────────────────────────────────────────
 
 function Resolve-LogOSWindowsRoot {
     [CmdletBinding()]
     param()
-    foreach ($c in @(
-            $env:LOGOS_ROOT,
-            $script:CanonicalRoot,
-            (Join-Path $HOME 'LogOS'),
-            'C:\Users\Matthew Ruhnau\LogOS'
-        )) {
-        if (-not $c -or -not (Test-Path -LiteralPath $c)) { continue }
-        # Prefer F: Beelink over stale C: copy
-        if ($c -like 'C:\*' -and (Test-Path -LiteralPath $script:CanonicalRoot)) {
-            return (Resolve-Path -LiteralPath $script:CanonicalRoot).Path
-        }
-        return (Resolve-Path -LiteralPath $c).Path
-    }
-    throw 'LogOS root not found. Set LOGOS_ROOT or clone to F:\Users\Matthew Ruhnau\LogOS'
+    $root = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot
+    if ($root) { return $root }
+    throw 'LogOS root not found. Set LOGOS_ROOT=%USERPROFILE%\LogOS (or your clone path)'
 }
 
 function Get-LogOSPython {
@@ -336,22 +330,36 @@ function Invoke-LogOSWrangler {
     $site = Get-CoherenceSiteRoot
     $npx = Get-Command npx -ErrorAction SilentlyContinue
     $wr = Get-Command wrangler -ErrorAction SilentlyContinue
-    $runner = if ($wr) { @('wrangler') } elseif ($npx) { @('npx', '--yes', 'wrangler') } else {
+    # Force [string[]] — single-element @() unrolls to [string]; StrictMode then
+    # throws PropertyNotFoundException on .Count (user-facing logos-wrangler status).
+    if ($wr) {
+        [string[]]$runner = @('wrangler')
+    } elseif ($npx) {
+        [string[]]$runner = @('npx', '--yes', 'wrangler')
+    } else {
         throw 'wrangler not found. Run: npm i -g wrangler   or ensure npx is on PATH'
     }
 
     function Invoke-Wrangler {
-        param([string[]]$Args, [string]$WorkDir)
+        # Do not name param $Args — collides with automatic $args and drops CLI tokens.
+        param(
+            [Parameter(Mandatory)]
+            [string[]]$CliArgs,
+            [Parameter(Mandatory)]
+            [string]$WorkDir
+        )
+        $cmd = [string[]]@($runner)
         if ($DryRun) {
-            Write-Host ("  DRY  cd {0}; {1} {2}" -f $WorkDir, ($runner -join ' '), ($Args -join ' ')) -ForegroundColor Yellow
+            Write-Host ("  DRY  cd {0}; {1} {2}" -f $WorkDir, ($cmd -join ' '), ($CliArgs -join ' ')) -ForegroundColor Yellow
             return
         }
         Push-Location $WorkDir
         try {
-            if ($runner.Count -eq 1) {
-                & $runner[0] @Args
+            if ($cmd.Length -eq 1) {
+                & $cmd[0] @CliArgs
             } else {
-                & $runner[0] $runner[1] $runner[2] @Args
+                $prefix = [string[]]@($cmd[1..($cmd.Length - 1)])
+                & $cmd[0] @prefix @CliArgs
             }
         } finally { Pop-Location }
     }
@@ -361,16 +369,46 @@ function Invoke-LogOSWrangler {
             Write-Host "coherence-site: $site"
             Write-Host "wrangler.toml:  $(Test-Path (Join-Path $site 'wrangler.toml'))"
             Write-Host "public/:        $(Test-Path (Join-Path $site 'public'))"
+            Write-Host "ops-shell:      $(Test-Path (Join-Path $site 'public\stitch\_shared\ops-shell.js'))"
+            Write-Host "mcp-client:     $(Test-Path (Join-Path $site 'public\stitch\_shared\mcp-client.js'))"
+            Write-Host "lattice OS:     $(Test-Path (Join-Path $site 'public\os\lattice\index.html'))"
             Write-Host "runner:         $($runner -join ' ')"
         }
         'status' {
-            Invoke-Wrangler -WorkDir $site -Args @('whoami')
+            Write-Host "=== logos-wrangler status · SpiralSafe lattice ===" -ForegroundColor Cyan
+            Write-Host "site: $site"
+            $proj = if ($env:LOGOS_PAGES_PROJECT) { $env:LOGOS_PAGES_PROJECT } else { 'spiralsafe' }
+            Write-Host "pages project: $proj"
+            Write-Host "SITE_BASE default: https://spiralsafe-ey9.pages.dev"
+            Write-Host "API_BASE:          https://api.spiralsafe.org"
+            foreach ($rel in @(
+                'public\index.html',
+                'public\os\lattice\index.html',
+                'public\cockpit\index.html',
+                'public\meta-map\index.html',
+                'public\terminal\index.html',
+                'public\site-config.js',
+                'public\stitch\_shared\mcp-client.js',
+                'public\stitch\_shared\ops-shell.js'
+            )) {
+                $p = Join-Path $site $rel
+                $ok = Test-Path $p
+                Write-Host ("  {0}  {1}" -f ($(if ($ok) { 'OK ' } else { 'MISS' })), $rel)
+            }
+            try {
+                $h = Invoke-RestMethod -Uri 'https://api.spiralsafe.org/api/health' -TimeoutSec 8
+                Write-Host ("API health: {0} v{1}" -f $h.status, $h.version) -ForegroundColor Green
+            } catch {
+                Write-Host ("API health: amber / unreachable ({0})" -f $_.Exception.Message) -ForegroundColor Yellow
+            }
+            Write-Host '--- wrangler whoami ---' -ForegroundColor DarkGray
+            Invoke-Wrangler -WorkDir $site -CliArgs @('whoami')
         }
         'whoami' {
-            Invoke-Wrangler -WorkDir $site -Args @('whoami')
+            Invoke-Wrangler -WorkDir $site -CliArgs @('whoami')
         }
         'pages-dev' {
-            Invoke-Wrangler -WorkDir $site -Args @('pages', 'dev', 'public', '--compatibility-date=2024-11-01')
+            Invoke-Wrangler -WorkDir $site -CliArgs @('pages', 'dev', 'public', '--compatibility-date=2024-11-01')
         }
         'pages-deploy' {
             if (-not $Force -and -not $DryRun) {
@@ -378,7 +416,9 @@ function Invoke-LogOSWrangler {
                 Write-Host "  logos-wrangler pages-deploy -Force" -ForegroundColor Cyan
                 return
             }
-            Invoke-Wrangler -WorkDir $site -Args @('pages', 'deploy', 'public', '--project-name=coherence-site')
+            # Prefer SpiralSafe Pages project (toolated lattice host retired).
+            $proj = if ($env:LOGOS_PAGES_PROJECT) { $env:LOGOS_PAGES_PROJECT } else { 'spiralsafe' }
+            Invoke-Wrangler -WorkDir $site -CliArgs @('pages', 'deploy', 'public', "--project-name=$proj")
         }
         'adhealth-deploy' {
             $ad = Join-Path (Resolve-LogOSWindowsRoot) 'adhealth-meaningseed'
@@ -386,7 +426,7 @@ function Invoke-LogOSWrangler {
                 Write-Host 'HITL: adhealth portal deploy. Re-run with -Force or -DryRun.' -ForegroundColor Yellow
                 return
             }
-            Invoke-Wrangler -WorkDir $ad -Args @('pages', 'deploy')
+            Invoke-Wrangler -WorkDir $ad -CliArgs @('pages', 'deploy')
         }
     }
 }
@@ -566,6 +606,12 @@ function Start-LogOSDynamicTerminal {
             }
         }
         'tui' {
+            # Broken sccache RUSTC_WRAPPER is a known host trap (os error 2).
+            if (Get-Command Repair-LogOSRustcWrapper -ErrorAction SilentlyContinue) {
+                Repair-LogOSRustcWrapper | Out-Null
+            } elseif ($env:RUSTC_WRAPPER -and -not (Test-Path -LiteralPath ($env:RUSTC_WRAPPER.Trim().Trim('"')))) {
+                $env:RUSTC_WRAPPER = ''
+            }
             if (Get-Command Start-LogOSTui -ErrorAction SilentlyContinue) {
                 Start-LogOSTui
             } else {
@@ -682,7 +728,10 @@ function Set-LogOSWindowsAxis {
     $allHosts = $PROFILE.CurrentUserAllHosts
     if ($allHosts -and (Test-Path -LiteralPath $allHosts)) {
         $raw = Get-Content -LiteralPath $allHosts -Raw
-        $stale = 'C:\Users\Matthew Ruhnau\LogOS'
+        # Stale same-user C: tree when a preferred non-C: root exists
+        $stale = if ($env:USERNAME -and $env:SystemDrive) {
+            Join-Path $env:SystemDrive "Users\$env:USERNAME\LogOS"
+        } else { $null }
         if ($raw.Contains($stale)) {
             $fixed = $raw.Replace($stale, $root)
             $bak = "$allHosts.bak-axis-$(Get-Date -Format 'yyyyMMddHHmmss')"
@@ -785,31 +834,552 @@ $markerE
     if (-not $Quiet) {
         Write-Host ''
         Write-Host "  Axis aligned  LOGOS_ROOT=$root  v$script:WindowsAxisVersion" -ForegroundColor Green
-        Write-Host '  Next: . $PROFILE   |   logos-preflight   |   tw   |   logos-pop   |   logos-terminal' -ForegroundColor Cyan
+        Write-Host '  Next: . $PROFILE   |   logos-preflight   |   logos-clean   |   tw   |   logos-pop' -ForegroundColor Cyan
         Write-Host ''
     }
     Invoke-LogOSPreflight -Quiet:$Quiet
 }
 
+# ─── Repo hygiene (logos-clean) ───────────────────────────────────────────────
+# Design: docs/ops/LOGOS-CLEAN-DESIGN-2026-08-07.md
+# Default = scan only. Apply always requires -Force (deep hygiene HITL).
+
+function Get-LogOSPathBytes {
+    [CmdletBinding()]
+    param([Parameter(Mandatory)][string]$Path)
+    if (-not (Test-Path -LiteralPath $Path)) { return [int64]0 }
+    try {
+        $item = Get-Item -LiteralPath $Path -Force -ErrorAction Stop
+        if ($item.PSIsContainer) {
+            $fso = New-Object -ComObject Scripting.FileSystemObject
+            return [int64]$fso.GetFolder($item.FullName).Size
+        }
+        return [int64]$item.Length
+    } catch {
+        $sum = [int64]0
+        Get-ChildItem -LiteralPath $Path -Recurse -Force -File -ErrorAction SilentlyContinue |
+            ForEach-Object { $sum += $_.Length }
+        return $sum
+    }
+}
+
+function Get-LogOSVolumeFreeBytes {
+    [CmdletBinding()]
+    param([Parameter(Mandatory)][string]$Path)
+    try {
+        $full = (Resolve-Path -LiteralPath $Path -ErrorAction Stop).Path
+        $rootPath = [System.IO.Path]::GetPathRoot($full)
+        $drive = Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue |
+            Where-Object { $_.Root -eq $rootPath -or ($_.Name + ':\') -eq $rootPath } |
+            Select-Object -First 1
+        if ($drive) { return [int64]$drive.Free }
+    } catch { }
+    return [int64]0
+}
+
+function Get-LogOSPythonCacheTargets {
+    [CmdletBinding()]
+    param([Parameter(Mandatory)][string]$Root)
+    $skipNames = [System.Collections.Generic.HashSet[string]]::new(
+        [string[]]@('.git', 'target', 'node_modules', '.venv', 'venv2', 'venv-ctfwi',
+            '.tmp.driveupload', '.gitnexus', 'vendor', 'agda'),
+        [StringComparer]::OrdinalIgnoreCase
+    )
+    $found = [System.Collections.Generic.List[string]]::new()
+    $stack = [System.Collections.Generic.Stack[string]]::new()
+    $stack.Push($Root)
+    $maxHits = 400
+    while ($stack.Count -gt 0 -and $found.Count -lt $maxHits) {
+        $dir = $stack.Pop()
+        try {
+            foreach ($child in [System.IO.Directory]::EnumerateDirectories($dir)) {
+                $name = [System.IO.Path]::GetFileName($child)
+                if ($skipNames.Contains($name)) { continue }
+                if ($name -eq '__pycache__') {
+                    $found.Add($child)
+                    continue
+                }
+                $stack.Push($child)
+            }
+        } catch { }
+    }
+    return @($found)
+}
+
+function Invoke-LogOSClean {
+    <#
+    .SYNOPSIS
+        Scan (default) or reclaim LogOS regenerable / temp / orphan bulk.
+    .DESCRIPTION
+        Deep-hygiene classes under LOGOS_ROOT. Scan is default.
+        -Apply requires -Force. Never removes .venv. See docs/ops/LOGOS-CLEAN-DESIGN-2026-08-07.md.
+    .EXAMPLE
+        logos-clean
+    .EXAMPLE
+        logos-clean -Class DriveTmp,Cargo -Apply -Force
+    .EXAMPLE
+        logos-clean -Class Deep -Apply -Force -Json
+    #>
+    [CmdletBinding()]
+    param(
+        [ValidateSet(
+            'DriveTmp', 'Cargo', 'PythonCache', 'NodeModules', 'BuildCaches',
+            'GitPrune', 'VenvOrphan', 'Deep', 'All'
+        )]
+        [string[]]$Class = @('All'),
+        [switch]$Apply,
+        [switch]$Force,
+        [switch]$Json,
+        [switch]$Quiet
+    )
+
+    $root = Resolve-LogOSWindowsRoot
+    $env:LOGOS_ROOT = $root
+
+    $allClasses = @(
+        'DriveTmp', 'Cargo', 'PythonCache', 'NodeModules',
+        'BuildCaches', 'GitPrune', 'VenvOrphan'
+    )
+    $deepClasses = @('GitPrune', 'VenvOrphan')
+    $selected = [System.Collections.Generic.List[string]]::new()
+    foreach ($c in $Class) {
+        if ($c -eq 'All' -or $c -eq 'Deep') {
+            foreach ($a in $allClasses) { if (-not $selected.Contains($a)) { $selected.Add($a) } }
+        } else {
+            if (-not $selected.Contains($c)) { $selected.Add($c) }
+        }
+    }
+
+    if ($Apply -and -not $Force) {
+        throw 'logos-clean -Apply requires -Force (HITL). Run without -Apply for scan-only board.'
+    }
+
+    $freeBefore = Get-LogOSVolumeFreeBytes -Path $root
+    $dirty = 0
+    if (Get-Command git -ErrorAction SilentlyContinue) {
+        Push-Location $root
+        try { $dirty = @((git status --porcelain 2>$null)).Count } finally { Pop-Location }
+    }
+
+    $rows = [System.Collections.Generic.List[object]]::new()
+    # script-scoped accumulators (StrictMode-safe across class blocks)
+    $script:reclaimableScan = [int64]0
+    $script:reclaimedTotal = [int64]0
+
+    # ── DriveTmp ────────────────────────────────────────────────────────────
+    if ($selected -contains 'DriveTmp') {
+        $p = Join-Path $root '.tmp.driveupload'
+        $bytes = Get-LogOSPathBytes -Path $p
+        $exists = Test-Path -LiteralPath $p
+        $status = 'scanned'
+        $notes = if ($exists) { '.tmp.driveupload (Drive staging)' } else { 'absent' }
+        if ($Apply -and $exists -and $bytes -ge 0) {
+            try {
+                Remove-Item -LiteralPath $p -Recurse -Force -ErrorAction Stop
+                $status = 'reclaimed'
+                $script:reclaimedTotal += $bytes
+                $notes = 'removed'
+            } catch {
+                $status = 'failed'
+                $notes = $_.Exception.Message
+            }
+        } elseif ($Apply -and -not $exists) {
+            $status = 'skipped'
+        }
+        if ($status -eq 'scanned') { $script:reclaimableScan += $bytes }
+        $rows.Add([pscustomobject]@{
+                class = 'DriveTmp'; paths = @($p); bytes = $bytes
+                depth = 'safe'; status = $status; notes = $notes
+            }) | Out-Null
+    }
+
+    # ── Cargo ───────────────────────────────────────────────────────────────
+    if ($selected -contains 'Cargo') {
+        $cargoPaths = @(
+            (Join-Path $root 'target'),
+            (Join-Path $root 'crates\target'),
+            (Join-Path $root 'cutiles\target')
+        ) | Where-Object { Test-Path -LiteralPath $_ }
+        $cargoPaths = @($cargoPaths)
+        $bytes = [int64]0
+        foreach ($cp in $cargoPaths) { $bytes += Get-LogOSPathBytes -Path $cp }
+        $status = 'scanned'
+        $notes = if (@($cargoPaths).Count -gt 0) { ($cargoPaths | ForEach-Object { $_.Replace($root + '\', '') }) -join ', ' } else { 'no target dirs' }
+        if ($Apply -and @($cargoPaths).Count -gt 0) {
+            try {
+                $cargoCmd = Get-Command cargo -ErrorAction SilentlyContinue
+                if ($cargoCmd -and (Test-Path -LiteralPath (Join-Path $root 'Cargo.toml'))) {
+                    Push-Location $root
+                    try {
+                        & cargo clean 2>&1 | Out-Null
+                    } finally { Pop-Location }
+                }
+                foreach ($cp in $cargoPaths) {
+                    if (Test-Path -LiteralPath $cp) {
+                        Remove-Item -LiteralPath $cp -Recurse -Force -ErrorAction SilentlyContinue
+                    }
+                }
+                # residual nested targets + root target (cargo clean can leave stubs)
+                foreach ($extra in @('target', 'crates\target', 'cutiles\target')) {
+                    $ep = Join-Path $root $extra
+                    if (Test-Path -LiteralPath $ep) {
+                        cmd /c "rmdir /s /q `"$ep`"" 2>$null | Out-Null
+                        if (Test-Path -LiteralPath $ep) {
+                            Remove-Item -LiteralPath $ep -Recurse -Force -ErrorAction SilentlyContinue
+                        }
+                    }
+                }
+                $still = @(@('target', 'crates\target', 'cutiles\target') | ForEach-Object { Join-Path $root $_ } | Where-Object { Test-Path -LiteralPath $_ })
+                if (@($still).Count -gt 0) {
+                    $status = 'failed'
+                    $notes = "partial; still present: $($still -join ', ')"
+                } else {
+                    $status = 'reclaimed'
+                    $script:reclaimedTotal += $bytes
+                    $notes = 'cargo clean + target dirs removed'
+                }
+            } catch {
+                $status = 'failed'
+                $notes = $_.Exception.Message
+            }
+        } elseif ($Apply -and @($cargoPaths).Count -eq 0) {
+            $status = 'skipped'
+        }
+        if ($status -eq 'scanned') { $script:reclaimableScan += $bytes }
+        $rows.Add([pscustomobject]@{
+                class = 'Cargo'; paths = @($cargoPaths); bytes = $bytes
+                depth = 'safe'; status = $status; notes = $notes
+            }) | Out-Null
+    }
+
+    # ── PythonCache ─────────────────────────────────────────────────────────
+    if ($selected -contains 'PythonCache') {
+        $pcPaths = @(Get-LogOSPythonCacheTargets -Root $root)
+        $bytes = [int64]0
+        foreach ($pp in $pcPaths) { $bytes += Get-LogOSPathBytes -Path $pp }
+        $status = 'scanned'
+        $notes = "$(@($pcPaths).Count) __pycache__ dirs (capped walk)"
+        if ($Apply -and @($pcPaths).Count -gt 0) {
+            $failed = 0
+            foreach ($pp in $pcPaths) {
+                try {
+                    Remove-Item -LiteralPath $pp -Recurse -Force -ErrorAction Stop
+                } catch { $failed++ }
+            }
+            if ($failed -eq 0) {
+                $status = 'reclaimed'
+                $script:reclaimedTotal += $bytes
+                $notes = "removed $(@($pcPaths).Count) dirs"
+            } else {
+                $status = 'failed'
+                $notes = "removed with $failed failures"
+            }
+        } elseif ($Apply) {
+            $status = 'skipped'
+            $notes = 'none found'
+        }
+        if ($status -eq 'scanned') { $script:reclaimableScan += $bytes }
+        $rows.Add([pscustomobject]@{
+                class = 'PythonCache'; paths = @($pcPaths | Select-Object -First 12); bytes = $bytes
+                depth = 'safe'; status = $status; notes = $notes
+            }) | Out-Null
+    }
+
+    # ── NodeModules (allowlist) ─────────────────────────────────────────────
+    if ($selected -contains 'NodeModules') {
+        $allow = @(
+            'ops\mcp\logos-residual-zero\node_modules'
+        )
+        $nmPaths = @()
+        $bytes = [int64]0
+        foreach ($rel in $allow) {
+            $fp = Join-Path $root $rel
+            if (Test-Path -LiteralPath $fp) {
+                $nmPaths += $fp
+                $bytes += Get-LogOSPathBytes -Path $fp
+            }
+        }
+        $status = 'scanned'
+        $nmPaths = @($nmPaths)
+        $notes = if (@($nmPaths).Count -gt 0) { 'allowlisted only' } else { 'no allowlisted node_modules' }
+        if ($Apply -and @($nmPaths).Count -gt 0) {
+            try {
+                foreach ($np in $nmPaths) {
+                    Remove-Item -LiteralPath $np -Recurse -Force -ErrorAction Stop
+                }
+                $status = 'reclaimed'
+                $script:reclaimedTotal += $bytes
+                $notes = 'allowlist removed'
+            } catch {
+                $status = 'failed'
+                $notes = $_.Exception.Message
+            }
+        } elseif ($Apply) {
+            $status = 'skipped'
+        }
+        if ($status -eq 'scanned') { $script:reclaimableScan += $bytes }
+        $rows.Add([pscustomobject]@{
+                class = 'NodeModules'; paths = @($nmPaths); bytes = $bytes
+                depth = 'safe'; status = $status; notes = $notes
+            }) | Out-Null
+    }
+
+    # ── BuildCaches ─────────────────────────────────────────────────────────
+    if ($selected -contains 'BuildCaches') {
+        $bcPaths = [System.Collections.Generic.List[string]]::new()
+        $lake = Join-Path $root 'lean\.lake'
+        if (Test-Path -LiteralPath $lake) { $bcPaths.Add($lake) }
+        $agdaRoot = Join-Path $root 'agda'
+        if (Test-Path -LiteralPath $agdaRoot) {
+            Get-ChildItem -LiteralPath $agdaRoot -Filter '*.agdai' -Recurse -File -Force -ErrorAction SilentlyContinue |
+                ForEach-Object { $bcPaths.Add($_.FullName) }
+            Get-ChildItem -LiteralPath $agdaRoot -Directory -Filter 'MAlonzo' -Recurse -Force -ErrorAction SilentlyContinue |
+                ForEach-Object { $bcPaths.Add($_.FullName) }
+        }
+        $bytes = [int64]0
+        foreach ($bp in $bcPaths) { $bytes += Get-LogOSPathBytes -Path $bp }
+        $status = 'scanned'
+        $notes = "$(@($bcPaths).Count) cache paths (lean .lake / agda)"
+        if ($Apply -and @($bcPaths).Count -gt 0) {
+            try {
+                foreach ($bp in $bcPaths) {
+                    if (Test-Path -LiteralPath $bp) {
+                        Remove-Item -LiteralPath $bp -Recurse -Force -ErrorAction SilentlyContinue
+                    }
+                }
+                $status = 'reclaimed'
+                $script:reclaimedTotal += $bytes
+                $notes = 'build caches removed'
+            } catch {
+                $status = 'failed'
+                $notes = $_.Exception.Message
+            }
+        } elseif ($Apply) {
+            $status = 'skipped'
+        }
+        if ($status -eq 'scanned') { $script:reclaimableScan += $bytes }
+        $rows.Add([pscustomobject]@{
+                class = 'BuildCaches'; paths = @($bcPaths | Select-Object -First 8); bytes = $bytes
+                depth = 'safe'; status = $status; notes = $notes
+            }) | Out-Null
+    }
+
+    # ── GitPrune (deep) ─────────────────────────────────────────────────────
+    if ($selected -contains 'GitPrune') {
+        $status = 'scanned'
+        $notes = 'git worktree prune + git gc --prune=now (no rewrite)'
+        $bytes = [int64]0
+        $gitDir = Join-Path $root '.git'
+        if (Test-Path -LiteralPath $gitDir) {
+            # estimate only: not reclaimable until apply; report 0 for scan estimate
+            $notes = 'deep: run -Apply -Force to prune worktrees + gc'
+        } else {
+            $status = 'skipped'
+            $notes = 'no .git'
+        }
+        if ($Apply -and (Test-Path -LiteralPath $gitDir)) {
+            try {
+                Push-Location $root
+                try {
+                    $beforeGit = Get-LogOSPathBytes -Path $gitDir
+                    git worktree prune 2>&1 | Out-Null
+                    git gc --prune=now 2>&1 | Out-Null
+                    $afterGit = Get-LogOSPathBytes -Path $gitDir
+                    $delta = [Math]::Max([int64]0, $beforeGit - $afterGit)
+                    $bytes = $delta
+                    $script:reclaimedTotal += $delta
+                    $status = 'reclaimed'
+                    $notes = "worktree prune + gc; freed ~$([math]::Round($delta/1MB,1)) MB"
+                } finally { Pop-Location }
+            } catch {
+                $status = 'failed'
+                $notes = $_.Exception.Message
+            }
+        }
+        $rows.Add([pscustomobject]@{
+                class = 'GitPrune'; paths = @((Join-Path $root '.git')); bytes = $bytes
+                depth = 'deep'; status = $status; notes = $notes
+            }) | Out-Null
+    }
+
+    # ── VenvOrphan (deep) ───────────────────────────────────────────────────
+    if ($selected -contains 'VenvOrphan') {
+        $preferred = Get-LogOSPython -Root $root
+        $candidates = @('venv2', 'venv-ctfwi')
+        $voPaths = [System.Collections.Generic.List[string]]::new()
+        $bytes = [int64]0
+        $blocked = [System.Collections.Generic.List[string]]::new()
+        foreach ($name in $candidates) {
+            $vp = Join-Path $root $name
+            if (-not (Test-Path -LiteralPath $vp)) { continue }
+            $sz = Get-LogOSPathBytes -Path $vp
+            if ($preferred -and $preferred.StartsWith($vp, [System.StringComparison]::OrdinalIgnoreCase)) {
+                $blocked.Add($name)
+                continue
+            }
+            $voPaths.Add($vp)
+            $bytes += $sz
+        }
+        $canonicalVenv = Join-Path $root '.venv'
+        $status = 'scanned'
+        $notes = "orphan candidates; .venv protected$(if (@($blocked).Count -gt 0) { '; blocked: ' + ($blocked -join ',') })"
+        if ($Apply) {
+            if (@($voPaths).Count -eq 0) {
+                $status = 'skipped'
+                $notes = 'no orphan venvs (or all protected)'
+            } else {
+                try {
+                    foreach ($vp in $voPaths) {
+                        Remove-Item -LiteralPath $vp -Recurse -Force -ErrorAction Stop
+                    }
+                    $status = 'reclaimed'
+                    $script:reclaimedTotal += $bytes
+                    $notes = 'removed orphan venvs; .venv kept'
+                } catch {
+                    $status = 'failed'
+                    $notes = $_.Exception.Message
+                }
+            }
+        }
+        if ($status -eq 'scanned') { $script:reclaimableScan += $bytes }
+        # ensure we never list .venv as a target path
+        $rows.Add([pscustomobject]@{
+                class = 'VenvOrphan'
+                paths = @($voPaths + @("PROTECTED:$canonicalVenv"))
+                bytes = $bytes
+                depth = 'deep'
+                status = $status
+                notes = $notes
+            }) | Out-Null
+    }
+
+    $reclaimable = $script:reclaimableScan
+    $reclaimed = $script:reclaimedTotal
+    $freeAfter = Get-LogOSVolumeFreeBytes -Path $root
+
+    $report = [pscustomobject]@{
+        root               = $root
+        mode               = $(if ($Apply) { 'apply' } else { 'scan' })
+        force              = [bool]$Force
+        classes            = @($rows)
+        reclaimable_bytes  = $reclaimable
+        reclaimed_bytes    = $reclaimed
+        free_before_bytes  = $freeBefore
+        free_after_bytes   = $freeAfter
+        git_dirty          = $dirty
+        axis_version       = $script:WindowsAxisVersion
+        design             = 'docs/ops/LOGOS-CLEAN-DESIGN-2026-08-07.md'
+    }
+
+    if ($Json) {
+        $report | ConvertTo-Json -Depth 6
+    } elseif (-not $Quiet) {
+        Write-Host ''
+        Write-Host "  logos-clean  mode=$($report.mode)  LOGOS_ROOT=$root" -ForegroundColor Cyan
+        if ($dirty -gt 0) {
+            Write-Host "  WARN git dirty files: $dirty (clean does not touch tracked source)" -ForegroundColor Yellow
+        }
+        Write-Host ('  {0,-14} {1,10} {2,-10} {3,-10} {4}' -f 'CLASS', 'SIZE_MB', 'DEPTH', 'STATUS', 'NOTES') -ForegroundColor DarkGray
+        foreach ($r in $rows) {
+            $mb = [math]::Round($r.bytes / 1MB, 1)
+            $color = switch ($r.status) {
+                'reclaimed' { 'Green' }
+                'failed' { 'Red' }
+                'skipped' { 'DarkGray' }
+                default { 'White' }
+            }
+            Write-Host ('  {0,-14} {1,10:N1} {2,-10} {3,-10} {4}' -f $r.class, $mb, $r.depth, $r.status, $r.notes) -ForegroundColor $color
+        }
+        Write-Host ''
+        Write-Host ("  Reclaimable: {0:N1} MB   Reclaimed: {1:N1} MB" -f ($reclaimable / 1MB), ($reclaimed / 1MB)) -ForegroundColor Cyan
+        Write-Host ("  Free on volume: {0:N1} GB → {1:N1} GB" -f ($freeBefore / 1GB), ($freeAfter / 1GB)) -ForegroundColor DarkGray
+        if (-not $Apply) {
+            Write-Host '  Apply: logos-clean -Class DriveTmp,Cargo -Apply -Force' -ForegroundColor Yellow
+            Write-Host '         logos-clean -Class Deep -Apply -Force   # all classes' -ForegroundColor Yellow
+        }
+        Write-Host ''
+    }
+
+    return $report
+}
+
 # ─── Aliases ─────────────────────────────────────────────────────────────────
+# Module-scoped aliases (no -Scope Global): Export-ModuleMember can export them.
+# Global-scoped aliases previously survived module unload → orphan logos-wrangler
+# pointing at missing Invoke-LogOSWrangler.
 
 # Compat alias for older docs / scripts
-Set-Alias -Name Align-LogOSWindowsAxis -Value Set-LogOSWindowsAxis -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name logos-preflight -Value Invoke-LogOSPreflight -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name logos-align -Value Set-LogOSWindowsAxis -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name logos-wrangler -Value Invoke-LogOSWrangler -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name logos-terminal -Value Start-LogOSDynamicTerminal -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name logos-pop -Value Open-LogOSConsole -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name logos-console -Value Open-LogOSConsole -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name adhealth-preflight -Value Invoke-AdHealthPreflight -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name adhealth-run -Value Invoke-AdHealthRun -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name hup-preflight -Value Invoke-HupGuestPreflight -Scope Global -Force -ErrorAction SilentlyContinue
-Set-Alias -Name gb-deploy -Value Invoke-GB06Deploy -Scope Global -Force -ErrorAction SilentlyContinue
+Set-Alias -Name Align-LogOSWindowsAxis -Value Set-LogOSWindowsAxis -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-preflight -Value Invoke-LogOSPreflight -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-align -Value Set-LogOSWindowsAxis -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-clean -Value Invoke-LogOSClean -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-wrangler -Value Invoke-LogOSWrangler -Force -ErrorAction SilentlyContinue
+
+function Invoke-LogOSNet {
+    <#
+    .SYNOPSIS
+        Selective net proxy stack (gaming clearnet vs privacy Tor/i2pd).
+    .EXAMPLE
+        logos-net
+        logos-net -Action start-gaming
+        logos-net -Action start-privacy
+        logos-net -Action optimize
+        logos-net -Action activate
+    #>
+    [CmdletBinding()]
+    param(
+        [ValidateSet('status', 'start-privacy', 'start-gaming', 'stop', 'install', 'optimize', 'activate')]
+        [string]$Action = 'status',
+        [switch]$Json
+    )
+    $root = Resolve-LogOSWindowsRoot
+    $script = Join-Path $root 'ops\net\LogOS.NetProxy.ps1'
+    if (-not (Test-Path -LiteralPath $script)) {
+        throw "Net proxy controller missing: $script"
+    }
+    $argList = @('-NoProfile', '-File', $script, '-Action', $Action)
+    if ($Json) { $argList += '-Json' }
+    & pwsh @argList
+
+    # Apply lane proxy env to *this* session (child process env does not stick).
+    $laneFile = Join-Path $root 'ops\net\data\active_lane.txt'
+    $lane = if (Test-Path -LiteralPath $laneFile) {
+        (Get-Content -LiteralPath $laneFile -Raw).Trim()
+    } else {
+        'unknown'
+    }
+    switch ($lane) {
+        'privacy' {
+            $env:ALL_PROXY = 'socks5://127.0.0.1:9050'
+            $env:HTTP_PROXY = 'http://127.0.0.1:8118'
+            $env:HTTPS_PROXY = 'http://127.0.0.1:8118'
+            $env:NO_PROXY = 'localhost,127.0.0.1'
+            Write-Host "  session env: privacy proxies set (ALL_PROXY/HTTP_PROXY)" -ForegroundColor DarkCyan
+        }
+        { $_ -in @('gaming', 'idle') } {
+            foreach ($k in @('ALL_PROXY', 'HTTP_PROXY', 'HTTPS_PROXY', 'all_proxy', 'http_proxy', 'https_proxy')) {
+                Remove-Item -Path "Env:$k" -ErrorAction SilentlyContinue
+            }
+            $env:NO_PROXY = '*'
+            Write-Host "  session env: proxies cleared (lane=$lane)" -ForegroundColor DarkCyan
+        }
+    }
+}
+Set-Alias -Name logos-net -Value Invoke-LogOSNet -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-terminal -Value Start-LogOSDynamicTerminal -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-pop -Value Open-LogOSConsole -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-console -Value Open-LogOSConsole -Force -ErrorAction SilentlyContinue
+Set-Alias -Name adhealth-preflight -Value Invoke-AdHealthPreflight -Force -ErrorAction SilentlyContinue
+Set-Alias -Name adhealth-run -Value Invoke-AdHealthRun -Force -ErrorAction SilentlyContinue
+Set-Alias -Name hup-preflight -Value Invoke-HupGuestPreflight -Force -ErrorAction SilentlyContinue
+Set-Alias -Name gb-deploy -Value Invoke-GB06Deploy -Force -ErrorAction SilentlyContinue
 
 Export-ModuleMember -Function @(
     'Resolve-LogOSWindowsRoot',
     'Get-LogOSPython',
     'Invoke-LogOSPreflight',
+    'Invoke-LogOSClean',
+    'Invoke-LogOSNet',
     'Invoke-AdHealthPreflight',
     'Invoke-AdHealthRun',
     'Invoke-HupGuestPreflight',
@@ -820,7 +1390,7 @@ Export-ModuleMember -Function @(
     'Invoke-GB06Deploy',
     'Set-LogOSWindowsAxis'
 ) -Alias @(
-    'logos-preflight', 'logos-align', 'logos-wrangler', 'logos-terminal',
+    'logos-preflight', 'logos-align', 'logos-clean', 'logos-net', 'logos-wrangler', 'logos-terminal',
     'logos-pop', 'logos-console',
     'adhealth-preflight', 'adhealth-run', 'hup-preflight', 'gb-deploy',
     'Align-LogOSWindowsAxis'

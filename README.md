@@ -12,7 +12,7 @@
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
      PowerShell 7+   ·   Import-Module ops\LogOS.Shell.psm1   ·   ops\LogOS.Windows.psm1
-     LogOS shell     ·   α+ω=15 [C]   ·   LOGOS_ROOT prefers F:\Users\Matthew Ruhnau\LogOS
+     LogOS shell     ·   α+ω=15 [C]   ·   LOGOS_ROOT portable · %USERPROFILE%\LogOS
 
      probes  (illustrative — re-run logos-preflight / tw for live)
        cargo · python · lean · lake · node · mcp · wsl · bridge=ws://127.0.0.1:8088
@@ -45,9 +45,17 @@
   ops/LogOS.Shell.psm1 ................. shell exports · help board
   ops/LogOS.Windows.psm1 ............... Windows axis · logos-clean · logos-net · preflight
   ops/net/LogOS.NetProxy.ps1 ........... net lanes · gaming / privacy / optimize
+  docs/canon/CORE.md ................... unitary docs standard · current choke pointer
+  docs/ops/CHECKPOINT-CHOKE-20260814.md  LABEL→FIX→BUILD packet (Claude next)
   docs/formal/FORMAL-EXECUTABLE-MAP.md . formal versus executable corners
   docs/media/GAIT-MONO-SPEC-*.md ....... hand-off monotype · unitarity U1-U6
   tools/claim_lint.py .................. untagged quantitative claims fail
+  VERSION / CHANGELOG.md ............... lattice tag v0.3.0
+  ops/release/RELEASE-v0.3.0.md ........ release notes · ship board
+  ops/release/verify-release.ps1 ....... Priority A verify · error to remediate
+  docs/ops/OPERATOR-JOURNEY-AND-RECOVERY-20260809.md
+  docs/theory/HOPF-PIROUETTE-INVESTIGATION-20260809.md   observe only
+  ops/entangle/ ........................ path-slot ship under 408 constraint
   tools/gait_mono.py ................... closed-set lint for elevated labels
   Cargo.toml + crates/* ................ Rust workspace packages
   lean/TriWeavon/* · lean/K22/* ........ Lean modules · green subset is not the whole lake
@@ -330,7 +338,8 @@
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
     # Windows axis
-    cd F:\Users\Matthew Ruhnau\LogOS
+    cd $env:LOGOS_ROOT
+    # or:  cd $HOME\LogOS
     Import-Module .\ops\LogOS.Windows.psm1 -Force
     Import-Module .\ops\LogOS.Shell.psm1 -Force
     logos-preflight
