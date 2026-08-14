@@ -63,7 +63,9 @@ function Invoke-GB06DeployFromModule {
         [string]$Project = $env:GOOGLE_CLOUD_PROJECT,
         [switch]$Force
     )
-    $win = Join-Path (if ($env:LOGOS_ROOT) { $env:LOGOS_ROOT } else { 'F:\Users\Matthew Ruhnau\LogOS' }) 'ops\LogOS.Windows.psm1'
+    . (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
+    $gbRoot = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot
+    $win = if ($gbRoot) { Join-Path $gbRoot 'ops\LogOS.Windows.psm1' } else { $null }
     if (Test-Path $win) {
         Import-Module $win -Force
         Invoke-GB06Deploy -Project $Project -Force:$Force -UseWsl

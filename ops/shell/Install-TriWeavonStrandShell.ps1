@@ -16,13 +16,20 @@
 #>
 [CmdletBinding(SupportsShouldProcess)]
 param(
-    [string]$LogOSRoot = $(if ($env:LOGOS_ROOT) { $env:LOGOS_ROOT } else { 'F:\Users\Matthew Ruhnau\LogOS' }),
+    [string]$LogOSRoot = '',
     [ValidateSet('grok', 'claude', 'gemini')]
     [string]$DefaultStrand = 'grok',
     [switch]$CopyStarshipDefault
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path (Split-Path $PSScriptRoot -Parent) 'LogOS.Root.ps1')
+if (-not $LogOSRoot) {
+    $LogOSRoot = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot
+}
+if (-not $LogOSRoot) {
+    throw 'LogOS root not found. Pass -LogOSRoot or set LOGOS_ROOT=%USERPROFILE%\LogOS'
+}
 
 $shellDir = Join-Path $LogOSRoot 'ops\shell'
 $fragment = Join-Path $shellDir 'Microsoft.PowerShell_profile.triweavon.ps1'

@@ -5,10 +5,17 @@
 #>
 [CmdletBinding()]
 param(
-    [string]$LogOSRoot = $(if ($env:LOGOS_ROOT) { $env:LOGOS_ROOT } else { 'F:\Users\Matthew Ruhnau\LogOS' })
+    [string]$LogOSRoot = ''
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
+if (-not $LogOSRoot) {
+    $LogOSRoot = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot
+}
+if (-not $LogOSRoot) {
+    throw 'LogOS root not found. Pass -LogOSRoot or set LOGOS_ROOT=%USERPROFILE%\LogOS'
+}
 $module = Join-Path $LogOSRoot 'ops\TriWeavon.Unitary.Profile.psm1'
 if (-not (Test-Path -LiteralPath $module)) {
     throw "Unitary module not found: $module"

@@ -19,7 +19,7 @@
 #>
 [CmdletBinding(SupportsShouldProcess)]
 param(
-    [string]$LogOSRoot = $(if ($env:LOGOS_ROOT) { $env:LOGOS_ROOT } else { 'F:\Users\Matthew Ruhnau\LogOS' }),
+    [string]$LogOSRoot = '',
     # When set, run live probes and allow pass:true if all ok. Without it, honest B placeholder.
     [switch]$AsInitRun,
     [switch]$SkipTimestampCopy
@@ -70,10 +70,17 @@ function Probe-Wrangler {
     return [pscustomobject]$result
 }
 
+function Get-EmitCertRootHelper {
+    Join-Path (Split-Path $PSScriptRoot -Parent) 'LogOS.Root.ps1'
+}
+
 function Probe-SpiralSafeWrangler([string]$Root) {
+    $sibling = Split-Path -Parent $Root
+    $ssRoot = if ($env:SPIRALSAFE_ROOT) { $env:SPIRALSAFE_ROOT } else { Join-Path $sibling 'SpiralSafe' }
     $candidates = @(
-        'F:\Users\Matthew Ruhnau\SpiralSafe\ops\wrangler.toml',
+        (Join-Path $ssRoot 'ops\wrangler.toml'),
         (Join-Path $Root 'wrangler.toml'),
+        (Join-Path $Root 'coherence-mcp\coherence-site\wrangler.toml'),
         (Join-Path $Root 'adhealth-meaningseed\wrangler.toml')
     )
     $found = @()
@@ -151,8 +158,13 @@ function Probe-Formal([string]$Root) {
 }
 
 # ── main ────────────────────────────────────────────────────────────────────
-if (-not (Test-Path -LiteralPath $LogOSRoot)) {
-    throw "LogOSRoot not found: $LogOSRoot"
+$rootHelper = Get-EmitCertRootHelper
+if (Test-Path -LiteralPath $rootHelper) { . $rootHelper }
+if (-not $LogOSRoot) {
+    $LogOSRoot = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot
+}
+if (-not $LogOSRoot -or -not (Test-Path -LiteralPath $LogOSRoot)) {
+    throw 'LogOSRoot not found. Pass -LogOSRoot or set LOGOS_ROOT=%USERPROFILE%\LogOS'
 }
 
 $certDir = Join-Path $LogOSRoot '.atom-trail\certs\claude-code'
