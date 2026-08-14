@@ -15,7 +15,7 @@ use aes_gcm::{
 use anyhow::{bail, Context, Result};
 use argon2::Argon2;
 use chrono::{DateTime, Utc};
-use rand::RngCore;
+use aes_gcm::aead::rand_core::RngCore;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
@@ -95,7 +95,7 @@ impl Vault {
         // Derive AES-256 key: argon2id(passphrase, salt=fingerprint_bytes)
         let cipher_key = derive_key(passphrase, &fp)?;
         let cipher = Aes256Gcm::new_from_slice(&cipher_key)
-            .context("creating AES-256-GCM cipher")?;
+            .map_err(|_| anyhow::anyhow!("creating AES-256-GCM cipher"))?;
 
         // Encrypt
         let mut nonce_bytes = [0u8; 12];
@@ -155,7 +155,7 @@ impl Vault {
         // Derive decryption key
         let cipher_key = derive_key(passphrase, &entry.fingerprint)?;
         let cipher = Aes256Gcm::new_from_slice(&cipher_key)
-            .context("creating AES-256-GCM cipher")?;
+            .map_err(|_| anyhow::anyhow!("creating AES-256-GCM cipher"))?;
 
         let nonce = Nonce::from_slice(&entry.nonce);
         let plaintext = cipher

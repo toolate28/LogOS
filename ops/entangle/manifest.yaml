@@ -5,7 +5,7 @@
 
 version: 1
 atom: ATOM-ENTANGLE-MANIFEST-20260809
-updated: "2026-08-09"
+updated: "2026-08-15"
 
 # Path slices that may land independently (no crates/target, no .git)
 components:
@@ -32,13 +32,41 @@ components:
     notes: "H0 done; H1/braille TODOs for other strands"
 
   - id: apps-triweave
-    title: apps/triweave surface
+    title: apps/triweave surface (reson8-triweave bin triweave)
     paths:
       - apps/triweave/
     verify:
-      - cargo check -p triweave
+      - cargo check -p reson8-triweave
     saif: deploy
-    priority: B
+    priority: A
+    notes: "package name is reson8-triweave; bin is triweave. Bridge :8088."
+
+  - id: ops-portable-root
+    title: portable LOGOS_ROOT Windows/WSL axis
+    paths:
+      - ops/LogOS.Root.ps1
+      - ops/LogOS.Shell.psm1
+      - ops/LogOS.Windows.psm1
+      - ops/LogOS.Confidence.psm1
+      - ops/TriWeavon.Profile.psm1
+      - ops/TriWeavon.Unitary.Profile.psm1
+      - ops/Align-WindowsAxis.ps1
+      - ops/Install-TriWeavonUnitaryProfile.ps1
+      - ops/install_nssm_services.ps1
+      - ops/serve.ps1
+      - ops/GB.Deploy.psm1
+      - ops/claude-code/Emit-ClaudeCodeCert.ps1
+      - ops/shell/Install-TriWeavonStrandShell.ps1
+      - ops/shell/Microsoft.PowerShell_profile.triweavon.ps1
+      - ops/shell/TriWeavon.StrandShell.psm1
+      - ops/wsl/logos-env.sh
+      - ops/wsl/tw-up-bbbr.sh
+      - README.md
+    verify:
+      - pwsh -NoProfile -File ops/release/verify-release.ps1 -Quick
+    saif: ops
+    priority: A
+    notes: "No person-named homes. Resolve via LOGOS_ROOT / %USERPROFILE%\\LogOS."
 
   - id: apps-mc-bridge
     title: Minecraft RCON bridge
@@ -93,6 +121,22 @@ components:
       - bash ops/ci/guard.sh
     saif: security
     priority: A
+
+  - id: journey-release
+    title: Operator journey · recovery loops · lattice v0.3.0 notes
+    paths:
+      - docs/ops/OPERATOR-JOURNEY-AND-RECOVERY-20260809.md
+      - docs/theory/HOPF-PIROUETTE-INVESTIGATION-20260809.md
+      - docs/ops/LATTICE-ASSESSMENT-2026-08-09.md
+      - ops/release/
+      - VERSION
+      - CHANGELOG.md
+    verify:
+      - python ops/entangle/validate_manifest.py
+      - pwsh -File ops/release/verify-release.ps1 -Quick
+    saif: ops
+    priority: A
+    notes: "error→remediation R1–R8 · Hopf observe-only · tag v0.3.0"
 
   - id: showcase-media
     title: coherence-site showcase media (LFS / bulk)
