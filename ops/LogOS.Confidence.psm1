@@ -26,19 +26,8 @@ Set-StrictMode -Version Latest
 $script:ConfidenceVersion = '0.1.0'
 
 function Resolve-LogOSConfidenceRoot {
-    foreach ($c in @(
-            $env:LOGOS_ROOT,
-            'F:\Users\Matthew Ruhnau\LogOS',
-            (Join-Path $HOME 'LogOS')
-        )) {
-        if ($c -and (Test-Path -LiteralPath $c)) {
-            if ($c -like 'C:\Users\Matthew Ruhnau\LogOS*' -and (Test-Path 'F:\Users\Matthew Ruhnau\LogOS')) {
-                return 'F:\Users\Matthew Ruhnau\LogOS'
-            }
-            return (Resolve-Path -LiteralPath $c).Path
-        }
-    }
-    return $null
+    . (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
+    return (Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot)
 }
 
 function Test-LogOSCmd([string]$Name) {
@@ -151,10 +140,12 @@ function Get-LogOSConfidence {
             }
         } catch { $wOk = $false }
     }
+    $ssRoot = if ($env:SPIRALSAFE_ROOT) { $env:SPIRALSAFE_ROOT } else { Join-Path (Split-Path $root -Parent) 'SpiralSafe' }
     $wTomls = @(
         (Join-Path $root 'wrangler.toml'),
+        (Join-Path $root 'coherence-mcp\coherence-site\wrangler.toml'),
         (Join-Path $root 'adhealth-meaningseed\wrangler.toml'),
-        'F:\Users\Matthew Ruhnau\SpiralSafe\ops\wrangler.toml'
+        (Join-Path $ssRoot 'ops\wrangler.toml')
     ) | Where-Object { Test-Path -LiteralPath $_ }
     if ($wOk) {
         Add-Row 'surf_a' 'Surface A · wrangler' 'green' "CLI $wVer · configs=$($wTomls.Count)" 'grep'

@@ -25,14 +25,25 @@
 # =============================================================================
 
 # >>> TriWeavon.StrandShell >>>
-# FILL_ME_LOGOS_ROOT — prefer F: Beelink tree
+# Portable LOGOS_ROOT: env · %USERPROFILE%\LogOS · %USERNAME% drive scan (prefer non-C:)
 if (-not $env:LOGOS_ROOT -or -not (Test-Path -LiteralPath $env:LOGOS_ROOT)) {
-    if (Test-Path 'F:\Users\Matthew Ruhnau\LogOS') {
-        $env:LOGOS_ROOT = 'F:\Users\Matthew Ruhnau\LogOS'
-    } elseif (Test-Path (Join-Path $HOME 'LogOS')) {
-        $env:LOGOS_ROOT = (Join-Path $HOME 'LogOS')
+    $__twCands = [System.Collections.Generic.List[string]]::new()
+    if ($env:USERPROFILE) { [void]$__twCands.Add((Join-Path $env:USERPROFILE 'LogOS')) }
+    if ($HOME) { [void]$__twCands.Add((Join-Path $HOME 'LogOS')) }
+    if ($env:USERNAME) {
+        foreach ($__drv in @('F:', 'D:', 'G:', 'E:', 'H:', 'C:')) {
+            [void]$__twCands.Add("$__drv\Users\$env:USERNAME\LogOS")
+        }
     }
-    # else: FILL_ME_LOGOS_ROOT manually
+    $__twPick = $null
+    foreach ($__c in $__twCands) {
+        if ($__c -and (Test-Path -LiteralPath (Join-Path $__c 'Cargo.toml'))) {
+            if ($__c -notmatch '^[Cc]:\\') { $__twPick = $__c; break }
+            if (-not $__twPick) { $__twPick = $__c }
+        }
+    }
+    if ($__twPick) { $env:LOGOS_ROOT = $__twPick }
+    Remove-Variable __twCands, __twPick, __c, __drv -ErrorAction SilentlyContinue
 }
 
 # FILL_ME_DEFAULT_STRAND: grok | claude | gemini

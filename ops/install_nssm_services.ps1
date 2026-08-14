@@ -5,8 +5,9 @@ NSSM installer and service registration script for Windows
 #>
 param()
 
-$Base = "F:\Users\Matthew Ruhnau\LogOS\9P2000.L"
-$LogOS = "F:\Users\Matthew Ruhnau\LogOS"
+. (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
+$LogOS = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot -ThrowIfMissing
+$Base = Join-Path $LogOS '9P2000.L'
 $Watchers = @(
     @{ Name = "styx-bridge"; Path = "$Base\styx\styx-bridge.py"; Args = "" },
     @{ Name = "inferno-watcher"; Path = "$Base\inferno\watch-waveai.py"; Args = "" },

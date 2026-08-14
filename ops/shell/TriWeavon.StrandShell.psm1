@@ -37,20 +37,9 @@ function Get-TriWeavonShellRoot {
     #>
     [CmdletBinding()]
     param()
-    foreach ($c in @(
-            $env:LOGOS_ROOT,
-            'F:\Users\Matthew Ruhnau\LogOS',
-            'C:\Users\Matthew Ruhnau\LogOS',
-            (Join-Path $env:USERPROFILE 'LogOS')
-        )) {
-        if ($c -and (Test-Path -LiteralPath $c)) {
-            if ($c -like 'C:\Users\Matthew Ruhnau\LogOS*' -and (Test-Path 'F:\Users\Matthew Ruhnau\LogOS')) {
-                return 'F:\Users\Matthew Ruhnau\LogOS'
-            }
-            return (Resolve-Path -LiteralPath $c).Path
-        }
-    }
-    # FILL_ME_LOGOS_ROOT
+    . (Join-Path (Split-Path $PSScriptRoot -Parent) 'LogOS.Root.ps1')
+    $root = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot
+    if ($root) { return $root }
     return $null
 }
 

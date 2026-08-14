@@ -3,51 +3,42 @@
 .SYNOPSIS
     LogOS shell bootstrap — Rust/Python/Agda/Lean/CUDA kernels on every shell open.
 .DESCRIPTION
-    Resolve F: Beelink LogOS as canonical root, prepend toolchain PATH segments,
-    export formal-layer env vars, and surface convenience commands.
+    Resolve portable LOGOS_ROOT (env · ops parent · %USERPROFILE%\LogOS),
+    prepend toolchain PATH segments, export formal-layer env vars, and
+    surface convenience commands.
 
     Load via Install-LogOSShell.ps1 (writes $PROFILE hook) or:
-      Import-Module 'F:\Users\Matthew Ruhnau\LogOS\ops\LogOS.Shell.psm1' -Force
+      Import-Module "$env:LOGOS_ROOT\ops\LogOS.Shell.psm1" -Force
+      # or: Import-Module (Join-Path $PSScriptRoot 'LogOS.Shell.psm1')
       Initialize-LogOSShell
 #>
 
 Set-StrictMode -Version Latest
 
-$script:LogOSShellVersion = '1.1.0'
+$script:LogOSShellVersion = '1.1.1'
 $script:LogOSInitialized = $false
 $script:LogOSCommandSurfacePath = $null
+
+. (Join-Path $PSScriptRoot 'LogOS.Root.ps1')
 
 function Get-LogOSCandidateRoots {
     [CmdletBinding()]
     param()
-
-    @(
-        $env:LOGOS_ROOT
-        'F:\Users\Matthew Ruhnau\LogOS'
-        'C:\Users\Matthew Ruhnau\LogOS'
-        (Join-Path $env:USERPROFILE 'LogOS')
-        'G:\Reson8-Labs\LogOS'
-        'G:\LogOS'
-    ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) } | Select-Object -Unique
+    Get-LogOSPortableCandidates -ScriptRoot $PSScriptRoot |
+        Where-Object { $_ -and (Test-Path -LiteralPath $_) } |
+        Select-Object -Unique
 }
 
 function Resolve-LogOSRoot {
     <#
     .SYNOPSIS
-        Prefer F:\ Beelink tree; ignore stale C: copy unless F: is missing.
+        Portable root: LOGOS_ROOT · ops parent · %USERPROFILE%\LogOS · %USERNAME% drives.
+        Prefers non-C: when multiple valid trees exist.
     #>
     [CmdletBinding()]
     param()
-
-    $candidates = @(Get-LogOSCandidateRoots)
-    if (-not $candidates) {
-        throw 'LogOS root not found. Set LOGOS_ROOT or clone to F:\Users\Matthew Ruhnau\LogOS'
-    }
-
-    $fPreferred = $candidates | Where-Object { $_ -like 'F:\*' } | Select-Object -First 1
-    if ($fPreferred) { return (Resolve-Path -LiteralPath $fPreferred).Path }
-
-    return (Resolve-Path -LiteralPath $candidates[0]).Path
+    $root = Resolve-LogOSRootPortable -ScriptRoot $PSScriptRoot -ThrowIfMissing
+    return $root
 }
 
 function Add-LogOSPathEntry {
@@ -122,6 +113,116 @@ function Find-LogOSAgda {
     $null
 }
 
+function Repair-LogOSRustcWrapper {
+    <#
+    .SYNOPSIS
+        Clear broken RUSTC_WRAPPER (missing/0-byte sccache) so cargo can run.
+    .NOTES
+        Host trap: env points at ~/.cargo/bin/sccache.exe while only a dead
+        WinGet symlink exists → rustc -vV never executes (os error 2).
+    #>
+    [CmdletBinding()]
+    param([switch]$Quiet)
+
+    $w = $env:RUSTC_WRAPPER
+    if (-not $w) { return $false }
+
+    $path = $w.Trim().Trim('"')
+    $broken = $false
+    if (-not (Test-Path -LiteralPath $path)) {
+        $broken = $true
+    } else {
+        try {
+            $item = Get-Item -LiteralPath $path -Force -ErrorAction Stop
+            # 0-byte WinGet Links stubs / dangling symlinks
+            if ($item.Length -eq 0) { $broken = $true }
+            elseif ($item.LinkType -and $item.Target) {
+                $t = @($item.Target)[0]
+                if ($t -and -not (Test-Path -LiteralPath $t)) { $broken = $true }
+            }
+        } catch { $broken = $true }
+    }
+
+    if (-not $broken) {
+        # Still require the wrapper to be invokable as a process
+        $cmd = Get-Command $path -ErrorAction SilentlyContinue
+        if (-not $cmd) { $broken = $true }
+    }
+
+    if ($broken) {
+        if (-not $Quiet) {
+            Write-Host "[logos] clearing broken RUSTC_WRAPPER=$w" -ForegroundColor Yellow
+        }
+        $env:RUSTC_WRAPPER = ''
+        Remove-Item Env:\RUSTC_WRAPPER -ErrorAction SilentlyContinue
+        return $true
+    }
+    return $false
+}
+
+function Import-LogOSWindowsAxis {
+    <#
+    .SYNOPSIS
+        Load ops/LogOS.Windows.psm1 (preflight, wrangler, terminal, pop).
+    .DESCRIPTION
+        Clears orphan Global aliases that point at missing Windows-axis functions
+        (classic failure: logos-wrangler → Invoke-LogOSWrangler with module unloaded),
+        then imports the module -Force -Global so exports bind in the session.
+    #>
+    [CmdletBinding()]
+    param(
+        [string]$Root,
+        [switch]$Quiet
+    )
+
+    if (-not $Root) {
+        $Root = if ($env:LOGOS_ROOT) { $env:LOGOS_ROOT } else { Resolve-LogOSRoot }
+    }
+    $path = Join-Path $Root 'ops\LogOS.Windows.psm1'
+    if (-not (Test-Path -LiteralPath $path)) {
+        if (-not $Quiet) {
+            Write-Warning "LogOS.Windows.psm1 not found: $path"
+        }
+        return $false
+    }
+
+    # Orphan Global aliases outlive module unload and shadow healthy exports.
+    $axisAliases = @(
+        'logos-wrangler', 'logos-preflight', 'logos-align', 'logos-terminal',
+        'logos-pop', 'logos-console', 'adhealth-preflight', 'adhealth-run',
+        'hup-preflight', 'gb-deploy', 'Align-LogOSWindowsAxis'
+    )
+    foreach ($name in $axisAliases) {
+        $alias = Get-Alias -Name $name -ErrorAction SilentlyContinue
+        if (-not $alias) { continue }
+        $target = $alias.Definition
+        $resolved = Get-Command $target -ErrorAction SilentlyContinue
+        if (-not $resolved) {
+            Remove-Item -LiteralPath "Alias:\$name" -Force -ErrorAction SilentlyContinue
+            if (-not $Quiet) {
+                Write-Host "[logos] cleared orphan alias $name → $target" -ForegroundColor DarkYellow
+            }
+        }
+    }
+
+    try {
+        Import-Module $path -Force -Global -ErrorAction Stop
+    } catch {
+        if (-not $Quiet) {
+            Write-Warning "Import-Module LogOS.Windows failed: $($_.Exception.Message)"
+        }
+        return $false
+    }
+
+    if (-not (Get-Command Invoke-LogOSWrangler -ErrorAction SilentlyContinue)) {
+        if (-not $Quiet) {
+            Write-Warning 'LogOS.Windows loaded but Invoke-LogOSWrangler is missing'
+        }
+        return $false
+    }
+    $true
+}
+
 function Initialize-LogOSShell {
     <#
     .SYNOPSIS
@@ -145,11 +246,15 @@ function Initialize-LogOSShell {
     )
 
     # Process-level guard: AllHosts + CurrentHost profiles both import this module.
+    # Still re-assert Windows-axis soft deps (wrangler/preflight) — early return used to
+    # leave orphan global aliases (logos-wrangler → Invoke-LogOSWrangler) with no function.
     if (-not $Force -and ($script:LogOSInitialized -or $env:LOGOS_SHELL_INIT -eq '1')) {
         if (-not $Quiet -and -not $script:LogOSInitialized) {
             # Module re-imported (-Force) but process already wired — stay silent.
         }
+        Import-LogOSWindowsAxis -Quiet | Out-Null
         $script:LogOSInitialized = $true
+        $env:LOGOS_SHELL_INIT = '1'
         return Get-LogOSRoots
     }
 
@@ -173,6 +278,9 @@ function Initialize-LogOSShell {
     }
     if (-not $env:FORGE_WS_URL) { $env:FORGE_WS_URL = 'ws://127.0.0.1:8088' }
 
+    # sccache missing/stub must not block logos-tui / cargo
+    Repair-LogOSRustcWrapper -Quiet:$Quiet | Out-Null
+
     $base = Split-Path $root -Parent
     if (-not $env:COHERENCE_MCP_ROOT) {
         # Prefer sibling repo with built server (F:\Users\...\coherence-mcp), else in-tree site.
@@ -191,14 +299,10 @@ function Initialize-LogOSShell {
     }
 
     # --- PATH: toolchains first ---
+    # Toolchain bins under %USERPROFILE% only — never person-named homes.
     $pathAdds = @(
         (Join-Path $env:USERPROFILE '.cargo\bin')
         (Join-Path $env:USERPROFILE '.elan\bin')
-        'C:\Users\toolated\.cargo\bin'
-        'C:\Users\toolated\.elan\bin'
-        'F:\Users\Matthew Ruhnau\.cargo\bin'
-        'F:\Users\Matthew Ruhnau\.elan\bin'
-        'C:\Program Files\Rust stable MSVC 1.96\bin'
         (Join-Path $env:USERPROFILE 'AppData\Roaming\cabal\bin')
         (Join-Path $env:USERPROFILE 'AppData\Roaming\local\bin')
         (Join-Path $env:USERPROFILE 'AppData\Roaming\ghcup\bin')
@@ -271,11 +375,8 @@ function Initialize-LogOSShell {
         }
     }
 
-    # Windows preflight / wrangler / dynamic-terminal axis (idempotent soft load)
-    $winAxis = Join-Path $root 'ops\LogOS.Windows.psm1'
-    if (Test-Path -LiteralPath $winAxis) {
-        Import-Module $winAxis -Force -ErrorAction SilentlyContinue
-    }
+    # Windows preflight / wrangler / dynamic-terminal axis (idempotent soft load).
+    Import-LogOSWindowsAxis -Root $root -Quiet:$Quiet | Out-Null
 
     $script:LogOSInitialized = $true
     $env:LOGOS_SHELL_INIT = '1'
@@ -391,6 +492,7 @@ function Invoke-LogOSCargo {
         [string[]]$CargoArgs
     )
     if (-not $env:LOGOS_ROOT) { Initialize-LogOSShell -Quiet | Out-Null }
+    Repair-LogOSRustcWrapper -Quiet | Out-Null
     if (-not (Get-Command cargo -ErrorAction SilentlyContinue)) {
         Write-Error 'cargo not on PATH — install Rust or run Initialize-LogOSShell'
         return
@@ -794,15 +896,28 @@ function Start-LogOSTui {
     [CmdletBinding()]
     param(
         [switch]$Release,
-        [string]$WsUrl
+        [string]$WsUrl,
+        [switch]$NoBuild
     )
     if (-not $env:LOGOS_ROOT) { Initialize-LogOSShell -Quiet | Out-Null }
+    Repair-LogOSRustcWrapper | Out-Null
     if ($WsUrl) { $env:FORGE_WS_URL = $WsUrl }
     if (-not $env:FORGE_WS_URL) { $env:FORGE_WS_URL = 'ws://127.0.0.1:8088' }
+
+    # Prefer prebuilt binary when present — faster path onto Formal pane.
+    $forgeBin = Join-Path $env:LOGOS_ROOT 'target\debug\reson8-forge.exe'
+    if ($Release) {
+        $rel = Join-Path $env:LOGOS_ROOT 'target\release\reson8-forge.exe'
+        if (Test-Path -LiteralPath $rel) { $forgeBin = $rel }
+    }
+
     Write-Host "reson8-tui → FORGE_WS_URL=$env:FORGE_WS_URL" -ForegroundColor Cyan
     Push-Location $env:LOGOS_ROOT
     try {
-        if ($Release) {
+        if ((-not $NoBuild) -and (Test-Path -LiteralPath $forgeBin) -and -not $Release) {
+            Write-Host "  bin: $forgeBin" -ForegroundColor DarkGray
+            & $forgeBin
+        } elseif ($Release) {
             cargo run -p reson8-tui --release
         } else {
             cargo run -p reson8-tui
@@ -823,6 +938,7 @@ function Start-LogOSBarcode {
         [string[]]$BarcodeArgs
     )
     if (-not $env:LOGOS_ROOT) { Initialize-LogOSShell -Quiet | Out-Null }
+    Repair-LogOSRustcWrapper | Out-Null
     Push-Location $env:LOGOS_ROOT
     try {
         if ($BarcodeArgs -and $BarcodeArgs.Count -gt 0) {
@@ -960,8 +1076,6 @@ function Set-LogOSUserEnvironment {
     $want = @(
         (Join-Path $env:USERPROFILE '.cargo\bin')
         (Join-Path $env:USERPROFILE '.elan\bin')
-        'C:\Users\toolated\.cargo\bin'
-        'C:\Users\toolated\.elan\bin'
         (Join-Path $root '.venv\Scripts')
         (Join-Path $root 'ops')
         (Join-Path $root 'agda\scripts')
@@ -1018,13 +1132,14 @@ Set-Alias -Name cd-kernels -Value Enter-LogOSKernels -Force -ErrorAction Silentl
 
 Export-ModuleMember -Function @(
     'Get-LogOSCandidateRoots', 'Resolve-LogOSRoot', 'Initialize-LogOSShell',
+    'Import-LogOSWindowsAxis',
     'Get-LogOSRoots', 'Show-LogOSBanner', 'Get-LogOSToolchain',
     'Enter-LogOS', 'Enter-LogOSCrates', 'Enter-LogOSAgda', 'Enter-LogOSLean',
     'Enter-LogOSKernels', 'Enter-LogOSCutile',
     'Invoke-LogOSCargo', 'Invoke-LogOSAgda', 'Invoke-LogOSLean', 'Invoke-LogOSKernels',
     'ConvertTo-LogOSWslPath', 'Enter-LogOSWsl',
     'Install-LogOSShellHook', 'Set-LogOSUserEnvironment',
-    'Find-LogOSCudaHome', 'Find-LogOSAgda', 'Add-LogOSPathEntry',
+    'Find-LogOSCudaHome', 'Find-LogOSAgda', 'Repair-LogOSRustcWrapper', 'Add-LogOSPathEntry',
     'Get-LogOSCommandSurface', 'Get-LogOSSurfaces', 'Resolve-LogOSSurfacePath',
     'Open-LogOSSurface', 'Invoke-LogOSMcp', 'Start-LogOSBridge',
     'Start-LogOSTui', 'Start-LogOSBarcode', 'Show-LogOSCommandSurfaceHelp'
