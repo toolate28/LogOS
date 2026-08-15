@@ -1,0 +1,25 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b0d10;
+  --fg: #d7dde5;
+  --dim: #7a8490;
+  --acc: #7ec8e3;
+  --ok: #8fce7a;
+  --line: #2a313a;
+  font-family: "Cascadia Mono", "JetBrains Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--fg); }
+a { color: var(--acc); text-decoration: none; }
+a:hover { text-decoration: underline; }
+main { max-width: 920px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+pre, .etch {
+  background: #11151a;
+  border: 1px solid var(--line);
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  line-height: 1.45;
+}
+nav.layers { display: flex; flex-wrap: wrap; gap: 0.5rem 0.85rem; margin: 1.25rem 0; }
+.badge { color: var(--dim); font-size: 0.85rem; }
+h1 { font-size: 1.15rem; letter-spacing: 0.04em; }

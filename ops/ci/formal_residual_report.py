@@ -6,6 +6,7 @@ Always exits 0 unless the report itself cannot be produced.
 """
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -69,13 +70,9 @@ def main() -> int:
     if len(lean["paths"] + agda["paths"]) > 40:
         print(f"- … {len(lean['paths'] + agda['paths']) - 40} more")
 
-    # GitHub job summary if available
-    summary = Path(os.environ["GITHUB_STEP_SUMMARY"]) if "GITHUB_STEP_SUMMARY" in __import__("os").environ else None
-    if summary:
-        # re-run writing to step summary
-        import os
-
-        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fh:
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        with open(summary_path, "a", encoding="utf-8") as fh:
             fh.write("## Formal residual report (Category B)\n\n")
             fh.write(
                 f"- Lean: files={lean['files']} sorry={lean['sorry']} axiom={lean['axiom']}\n"
@@ -89,6 +86,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    import os  # noqa: F401 — used optionally
-
     sys.exit(main())
