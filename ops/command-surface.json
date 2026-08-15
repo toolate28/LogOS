@@ -261,6 +261,13 @@
       "role": "PH barcode terminal viewer"
     },
     {
+      "id": "logos-tw1",
+      "kind": "html",
+      "path": "apps/logos-tw1",
+      "url_path": "/",
+      "role": "Firebase App Hosting lattice projection (tri-weavon / us-east4)"
+    },
+    {
       "id": "mcp",
       "kind": "mcp",
       "role": "coherence-mcp tool bus"
