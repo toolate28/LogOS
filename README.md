@@ -49,7 +49,10 @@
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
   ops/command-surface.json ............. shell aliases · logos-* · tw entrypoints
-  ops/LogOS.Shell.psm1 ................. shell exports · help board
+  ops/LogOS.Shell.psm1 ................. shell exports · logos-activate 1.2.0
+  apps/logos-tw1 ....................... Firebase App Hosting · /agda…/tools
+  firebase.json · apphosting.yaml ...... backend logos-tw1 rootDir
+  docs/ops/APPHOSTING-LOGOS-TW1-20260815.md
   ops/LogOS.Windows.psm1 ............... Windows axis · logos-clean · logos-net · preflight
   ops/net/LogOS.NetProxy.ps1 ........... net lanes · gaming / privacy / optimize
   docs/canon/CORE.md ................... unitary docs standard · current choke pointer

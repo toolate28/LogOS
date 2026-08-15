@@ -1,0 +1,24 @@
+# Firebase App Hosting — logos-tw1 (us-east4)
+# ATOM: ATOM-APPHOSTING-LOGOS-TW1-20260815
+# Root for this backend: apps/logos-tw1
+# FIREBASE_CONFIG / FIREBASE_WEBAPP_CONFIG are injected by App Hosting.
+# Do not put secrets here.
+
+runConfig:
+  minInstances: 0
+  maxInstances: 4
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+
+env:
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: tri-weavon
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: LOGOS_LATTICE_LAYERS
+    value: agda,apps,crates,cutiles,docs,kernels,lean,notebooks,ops,tools
+    availability:
+      - BUILD
+      - RUNTIME
