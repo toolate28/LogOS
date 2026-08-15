@@ -1,0 +1,14 @@
+{
+  "apphosting": {
+    "backendId": "logos-tw1",
+    "rootDir": "apps/logos-tw1",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log",
+      "target",
+      "lean/.lake"
+    ]
+  }
+}

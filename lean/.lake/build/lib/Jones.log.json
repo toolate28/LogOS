@@ -1,9 +1,0 @@
-{"log":
- [{"message":
-   ".> LEAN_PATH=.\\.\\.lake/packages\\batteries\\.lake\\build\\lib;.\\.\\.lake/packages\\Qq\\.lake\\build\\lib;.\\.\\.lake/packages\\aesop\\.lake\\build\\lib;.\\.\\.lake/packages\\proofwidgets\\.lake\\build\\lib;.\\.\\.lake/packages\\Cli\\.lake\\build\\lib;.\\.\\.lake/packages\\importGraph\\.lake\\build\\lib;.\\.\\.lake/packages\\mathlib\\.lake\\build\\lib;.\\.\\.lake\\build\\lib PATH c:\\Users\\toolated\\.elan\\toolchains\\leanprover--lean4---v4.8.0\\bin\\lean.exe -DautoImplicit=false .\\.\\.\\K22\\Jones.lean -R .\\.\\.\\K22 -o .\\.\\.lake\\build\\lib\\Jones.olean -i .\\.\\.lake\\build\\lib\\Jones.ilean -c .\\.\\.lake\\build\\ir\\Jones.c --json",
-   "level": "trace"},
-  {"message":
-   ".\\.\\.\\K22\\Jones.lean:9:0: invalid 'import' command, it must be used in the beginning of the file",
-   "level": "error"},
-  {"message": "Lean exited with code 1", "level": "error"}],
- "depHash": "9076587134516752714"}
