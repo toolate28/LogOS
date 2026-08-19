@@ -44,25 +44,31 @@ fn main() -> io::Result<()> {
 fn run<B: ratatui::backend::Backend>(
     terminal: &mut ratatui::Terminal<B>,
     state: &mut AppState,
-) -> io::Result<()> {
+) -> io::Result<()>
+where
+    B::Error: std::error::Error + Send + Sync + 'static,
+{
     let mut last_tick = Instant::now();
 
     while !state.should_quit {
-        terminal.draw(|f| {
-            let size = f.area();
-            let chunks = Layout::default()
-                .direction(Direction::Vertical)
-                .constraints([
-                    Constraint::Percentage(40), // cloud
-                    Constraint::Percentage(55), // barcodes
-                    Constraint::Length(1),      // status
-                ])
-                .split(size);
+        // ratatui 0.30: Backend::Error is not always io::Error — map into io for the loop.
+        terminal
+            .draw(|f| {
+                let size = f.area();
+                let chunks = Layout::default()
+                    .direction(Direction::Vertical)
+                    .constraints([
+                        Constraint::Percentage(40), // cloud
+                        Constraint::Percentage(55), // barcodes
+                        Constraint::Length(1),      // status
+                    ])
+                    .split(size);
 
-            barcode_tui::draw_cloud(f, chunks[0], state);
-            barcode_tui::draw_barcodes(f, chunks[1], state);
-            barcode_tui::draw_status(f, chunks[2], state);
-        })?;
+                barcode_tui::draw_cloud(f, chunks[0], state);
+                barcode_tui::draw_barcodes(f, chunks[1], state);
+                barcode_tui::draw_status(f, chunks[2], state);
+            })
+            .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?;
 
         let timeout = TICK
             .checked_sub(last_tick.elapsed())
