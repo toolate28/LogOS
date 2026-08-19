@@ -74,8 +74,35 @@ export CUTILE_ROOT="${CUTILE_ROOT:-$LOGOS_ROOT/cutiles/cutile}"
 export AGDA_ROOT="${AGDA_ROOT:-$LOGOS_ROOT/agda}"
 export LEAN_ROOT="${LEAN_ROOT:-$LOGOS_ROOT/lean}"
 export KERNELS_ROOT="${KERNELS_ROOT:-$LOGOS_ROOT/kernels}"
+export CRATES_ROOT="${CRATES_ROOT:-$LOGOS_ROOT/crates}"
+export APPS_ROOT="${APPS_ROOT:-$LOGOS_ROOT/apps}"
+export LOGOS_OPS="${LOGOS_OPS:-$LOGOS_ROOT/ops}"
 export FORGE_WS_URL="${FORGE_WS_URL:-ws://127.0.0.1:8088}"
 export CTWFI_INVARIANT="${CTWFI_INVARIANT:-alpha+omega=15}"
+_parent="$(CDPATH= cd -- "$LOGOS_ROOT/.." && pwd)"
+if [ -z "${COHERENCE_MCP_ROOT:-}" ]; then
+  if [ -d "$_parent/coherence-mcp" ]; then
+    export COHERENCE_MCP_ROOT="$_parent/coherence-mcp"
+  elif [ -d "$LOGOS_ROOT/coherence-mcp" ]; then
+    export COHERENCE_MCP_ROOT="$LOGOS_ROOT/coherence-mcp"
+  fi
+fi
+if [ -z "${SPIRALSAFE_ROOT:-}" ]; then
+  if [ -d "$_parent/SpiralSafe" ]; then export SPIRALSAFE_ROOT="$_parent/SpiralSafe"
+  elif [ -d "$_parent/Spiralsafe" ]; then export SPIRALSAFE_ROOT="$_parent/Spiralsafe"
+  fi
+fi
+if [ -z "${HOPE_NPC_ROOT:-}" ] && [ -d "$_parent/HOPE-AI-NPC-SUITE" ]; then
+  export HOPE_NPC_ROOT="$_parent/HOPE-AI-NPC-SUITE"
+fi
+if [ -z "${QUANTUM_REDSTONE_ROOT:-}" ]; then
+  if [ -d "$_parent/quantum-redstone" ]; then
+    export QUANTUM_REDSTONE_ROOT="$_parent/quantum-redstone"
+  elif [ -d "$_parent/HOPE-AI-NPC-SUITE/quantum-redstone" ]; then
+    export QUANTUM_REDSTONE_ROOT="$_parent/HOPE-AI-NPC-SUITE/quantum-redstone"
+  fi
+fi
+unset _parent
 
 # PATH: local toolchains under $HOME only
 case ":${PATH}:" in
@@ -93,3 +120,32 @@ esac
 
 # Convenience
 logos() { cd "$LOGOS_ROOT" || return 1; }
+cd-logos() { logos; }
+cd-apps() { cd "$APPS_ROOT" || return 1; }
+cd-crates() { cd "$CRATES_ROOT" || return 1; }
+cd-cutiles() { cd "$CUTILE_ROOT" || return 1; }
+cd-kernels() { cd "$KERNELS_ROOT" || return 1; }
+cd-ops() { cd "$LOGOS_OPS" || return 1; }
+cd-lean() { cd "$LEAN_ROOT" || return 1; }
+cd-agda() { cd "$AGDA_ROOT" || return 1; }
+
+logos-lattice() {
+  echo "  lattice  LOGOS_ROOT=$LOGOS_ROOT"
+  for spec in "apps:$APPS_ROOT/triweave/Cargo.toml" \
+              "cutiles:$CUTILE_ROOT/Cargo.toml" \
+              "crates:$CRATES_ROOT/tui/Cargo.toml" \
+              "kernels:$KERNELS_ROOT/fundamental_r_matrix.cu" \
+              "ops:$LOGOS_OPS/command-surface.json"; do
+    id="${spec%%:*}"
+    mark="${spec#*:}"
+    if [ -e "$mark" ]; then echo "  [OK] $id"; else echo "  [--] $id  ($mark)"; fi
+  done
+  echo "  interweave"
+  [ -n "${COHERENCE_MCP_ROOT:-}" ] && [ -e "$COHERENCE_MCP_ROOT" ] && echo "  [OK] coherence-mcp  $COHERENCE_MCP_ROOT" || echo "  [--] coherence-mcp"
+  [ -n "${SPIRALSAFE_ROOT:-}" ] && [ -e "$SPIRALSAFE_ROOT" ] && echo "  [OK] spiral-safe  $SPIRALSAFE_ROOT" || echo "  [--] spiral-safe"
+  [ -n "${QUANTUM_REDSTONE_ROOT:-}" ] && [ -e "$QUANTUM_REDSTONE_ROOT" ] && echo "  [OK] quantum-redstone  $QUANTUM_REDSTONE_ROOT" || echo "  [--] quantum-redstone"
+  [ -n "${HOPE_NPC_ROOT:-}" ] && [ -e "$HOPE_NPC_ROOT" ] && echo "  [OK] hope-npc  $HOPE_NPC_ROOT" || echo "  [--] hope-npc"
+}
+logos-activate() { logos-lattice; }
+logos-tui() { (cd "$LOGOS_ROOT" && cargo run -p reson8-tui); }
+logos-lean() { (cd "$LEAN_ROOT" && lake build "$@"); }
