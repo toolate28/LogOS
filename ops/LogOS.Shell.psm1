@@ -15,7 +15,7 @@
 
 Set-StrictMode -Version Latest
 
-$script:LogOSShellVersion = '1.1.1'
+$script:LogOSShellVersion = '1.2.0'
 $script:LogOSInitialized = $false
 $script:LogOSCommandSurfacePath = $null
 
@@ -266,7 +266,27 @@ function Initialize-LogOSShell {
     $env:LEAN_ROOT = Join-Path $root 'lean'
     $env:KERNELS_ROOT = Join-Path $root 'kernels'
     $env:CRATES_ROOT = Join-Path $root 'crates'
+    $env:APPS_ROOT = Join-Path $root 'apps'
     $env:LOGOS_OPS = Join-Path $root 'ops'
+    $base = Split-Path $root -Parent
+    if (-not $env:SPIRALSAFE_ROOT) {
+        foreach ($n in @('SpiralSafe', 'Spiralsafe')) {
+            $cand = Join-Path $base $n
+            if (Test-Path -LiteralPath $cand) { $env:SPIRALSAFE_ROOT = $cand; break }
+        }
+    }
+    if (-not $env:HOPE_NPC_ROOT) {
+        $hope = Join-Path $base 'HOPE-AI-NPC-SUITE'
+        if (Test-Path -LiteralPath $hope) { $env:HOPE_NPC_ROOT = $hope }
+    }
+    if (-not $env:QUANTUM_REDSTONE_ROOT) {
+        foreach ($cand in @(
+                (Join-Path $base 'quantum-redstone'),
+                (Join-Path $base 'HOPE-AI-NPC-SUITE\quantum-redstone')
+            )) {
+            if (Test-Path -LiteralPath $cand) { $env:QUANTUM_REDSTONE_ROOT = $cand; break }
+        }
+    }
     $env:LOGOS_SURFACES = Join-Path $root 'docs\surfaces'
     $env:LOGOS_SITE_PUBLIC = Join-Path $root 'coherence-mcp\coherence-site\public'
     $env:LOGOS_COMMAND_SURFACE = Join-Path $root 'ops\command-surface.json'
@@ -396,7 +416,11 @@ function Get-LogOSRoots {
         Lean       = Join-Path $root 'lean'
         Kernels    = Join-Path $root 'kernels'
         Cutile     = Join-Path $root 'cutiles\cutile'
+        Apps       = Join-Path $root 'apps'
         Ops        = Join-Path $root 'ops'
+        SpiralSafe = $env:SPIRALSAFE_ROOT
+        HopeNpc    = $env:HOPE_NPC_ROOT
+        QuantumRedstone = $env:QUANTUM_REDSTONE_ROOT
         Venv       = Join-Path $root '.venv'
         CudaHome   = $env:CUDA_PATH
         AgdaExe    = if ($env:AGDA) { $env:AGDA } else { Find-LogOSAgda }
@@ -436,7 +460,8 @@ function Show-LogOSBanner {
         $(if ($env:FORGE_WS_URL) { $env:FORGE_WS_URL } else { 'ws://127.0.0.1:8088' })
     ) -ForegroundColor DarkGray
     Write-Host '  cmds: logos-status  logos-mcp  logos-tui  logos-site  logos-surfaces  logos-bridge' -ForegroundColor DarkGray
-    Write-Host '        logos-agda  logos-lean  logos-kernels  logos-cargo  logos-barcode  logos-wsl' -ForegroundColor DarkGray
+    Write-Host '        logos-activate  logos-lattice  logos-apps  logos-cutiles  logos-kernels' -ForegroundColor DarkGray
+    Write-Host '        logos-agda  logos-lean  logos-cargo  logos-barcode  logos-wsl' -ForegroundColor DarkGray
     Write-Host '        logos-preflight  logos-align  logos-wrangler  logos-terminal  logos-pop' -ForegroundColor DarkGray
     Write-Host '        logos-confidence  tw confidence  tw  (1-click confidence board)' -ForegroundColor DarkGray
     Write-Host ''
@@ -480,6 +505,8 @@ function Enter-LogOSAgda { Enter-LogOS 'agda' }
 function Enter-LogOSLean { Enter-LogOS 'lean' }
 function Enter-LogOSKernels { Enter-LogOS 'kernels' }
 function Enter-LogOSCutile { Enter-LogOS 'cutiles\cutile' }
+function Enter-LogOSApps { Enter-LogOS 'apps' }
+function Enter-LogOSOps { Enter-LogOS 'ops' }
 
 function Invoke-LogOSCargo {
     <#
@@ -641,6 +668,185 @@ function Invoke-LogOSKernels {
         } else {
             Write-Error "Missing $ptx"
         }
+    }
+}
+
+function Get-LogOSLattice {
+    <#
+    .SYNOPSIS
+        Probe apps / cutiles / crates / kernels / ops + sibling interweave.
+    #>
+    [CmdletBinding()]
+    param([switch]$AsObject)
+
+    if (-not $env:LOGOS_ROOT) { Initialize-LogOSShell -Quiet | Out-Null }
+    $root = $env:LOGOS_ROOT
+    $layers = @(
+        @{ Id = 'apps'; Rel = 'apps'; Marker = 'triweave\Cargo.toml' }
+        @{ Id = 'cutiles'; Rel = 'cutiles\cutile'; Marker = 'Cargo.toml' }
+        @{ Id = 'crates'; Rel = 'crates'; Marker = 'tui\Cargo.toml' }
+        @{ Id = 'kernels'; Rel = 'kernels'; Marker = 'fundamental_r_matrix.cu' }
+        @{ Id = 'ops'; Rel = 'ops'; Marker = 'command-surface.json' }
+    )
+    $layerRows = foreach ($l in $layers) {
+        $path = Join-Path $root $l.Rel
+        $mark = Join-Path $path $l.Marker
+        [pscustomobject]@{
+            kind    = 'layer'
+            id      = $l.Id
+            path    = $path
+            present = (Test-Path -LiteralPath $path) -and (Test-Path -LiteralPath $mark)
+        }
+    }
+    $base = Split-Path $root -Parent
+    $weaves = @(
+        @{
+            Id = 'coherence-mcp'
+            Paths = @(
+                $env:COHERENCE_MCP_ROOT
+                (Join-Path $base 'coherence-mcp')
+                (Join-Path $root 'coherence-mcp')
+            )
+        }
+        @{
+            Id = 'spiral-safe'
+            Paths = @(
+                (Join-Path $root 'crates\spiral-safe\Cargo.toml')
+                $env:SPIRALSAFE_ROOT
+                (Join-Path $base 'SpiralSafe')
+            )
+        }
+        @{
+            Id = 'quantum-redstone'
+            Paths = @(
+                $env:QUANTUM_REDSTONE_ROOT
+                (Join-Path $base 'quantum-redstone')
+                (Join-Path $base 'HOPE-AI-NPC-SUITE\quantum-redstone')
+                (Join-Path $root 'docs\architecture\TUI-QR-METAPROGRAMMING.md')
+            )
+        }
+        @{
+            Id = 'hope-npc'
+            Paths = @(
+                $env:HOPE_NPC_ROOT
+                (Join-Path $base 'HOPE-AI-NPC-SUITE')
+            )
+        }
+    )
+    $weaveRows = foreach ($w in $weaves) {
+        $hit = $null
+        foreach ($p in $w.Paths) {
+            if ($p -and (Test-Path -LiteralPath $p)) { $hit = $p; break }
+        }
+        [pscustomobject]@{
+            kind    = 'interweave'
+            id      = $w.Id
+            path    = $hit
+            present = [bool]$hit
+        }
+    }
+    $all = @($layerRows) + @($weaveRows)
+    if ($AsObject) { return $all }
+
+    $ready = @($layerRows | Where-Object { $_.present }).Count
+    Write-Host ("  lattice {0}/5  LOGOS_ROOT={1}" -f $ready, $root) -ForegroundColor Cyan
+    foreach ($r in $layerRows) {
+        $mark = if ($r.present) { '[OK]' } else { '[--]' }
+        '{0} {1,-10} {2}' -f $mark, $r.id, $r.path
+    }
+    Write-Host '  interweave' -ForegroundColor DarkGray
+    foreach ($r in $weaveRows) {
+        $mark = if ($r.present) { '[OK]' } else { '[--]' }
+        '{0} {1,-18} {2}' -f $mark, $r.id, $r.path
+    }
+}
+
+function Invoke-LogOSActivate {
+    <#
+    .SYNOPSIS
+        Activate the five lattice layers through the command surface.
+    .PARAMETER Check
+        cargo check cutile + reson8-tui + reson8-triweave + spiral-safe (no deploy).
+    #>
+    [CmdletBinding()]
+    param([switch]$Check)
+
+    if (-not $env:LOGOS_ROOT) { Initialize-LogOSShell -Quiet | Out-Null }
+    Get-LogOSLattice
+    if (-not $Check) { return }
+
+    Repair-LogOSRustcWrapper -Quiet | Out-Null
+    if (-not (Get-Command cargo -ErrorAction SilentlyContinue)) {
+        Write-Error 'cargo not on PATH — cannot -Check'
+        return
+    }
+    $pkgs = @('cutile', 'reson8-tui', 'reson8-triweave', 'spiral-safe')
+    Push-Location -LiteralPath $env:LOGOS_ROOT
+    try {
+        foreach ($p in $pkgs) {
+            Write-Host "cargo check -p $p" -ForegroundColor Cyan
+            & cargo check -p $p
+        }
+    } finally {
+        Pop-Location
+    }
+}
+
+function Invoke-LogOSApps {
+    <#
+    .SYNOPSIS
+        List workspace app crates; -Check runs cargo check on each.
+    #>
+    [CmdletBinding()]
+    param([switch]$Check)
+
+    if (-not $env:LOGOS_ROOT) { Initialize-LogOSShell -Quiet | Out-Null }
+    $apps = Join-Path $env:LOGOS_ROOT 'apps'
+    Write-Host "LOGOS apps: $apps" -ForegroundColor Cyan
+    $tomls = Get-ChildItem -LiteralPath $apps -Filter Cargo.toml -Recurse -Depth 2 -ErrorAction SilentlyContinue
+    foreach ($t in $tomls) {
+        $rel = $t.DirectoryName.Substring($env:LOGOS_ROOT.Length + 1)
+        '  {0}' -f $rel
+    }
+    if ($Check) {
+        Repair-LogOSRustcWrapper -Quiet | Out-Null
+        Push-Location -LiteralPath $env:LOGOS_ROOT
+        try {
+            foreach ($pkg in @('reson8-triweave', 'reson8-mc-bridge', 'reson8-nexus-pulse-bot', 'supergrok-dde')) {
+                Write-Host "cargo check -p $pkg" -ForegroundColor Cyan
+                & cargo check -p $pkg
+            }
+        } finally {
+            Pop-Location
+        }
+    }
+}
+
+function Invoke-LogOSCutile {
+    <#
+    .SYNOPSIS
+        cargo check/test the cutile crate (claim_gate / DriftGuard).
+    #>
+    [CmdletBinding()]
+    param(
+        [switch]$Test,
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [string[]]$CargoArgs
+    )
+    if (-not $env:LOGOS_ROOT) { Initialize-LogOSShell -Quiet | Out-Null }
+    Repair-LogOSRustcWrapper -Quiet | Out-Null
+    Push-Location -LiteralPath $env:LOGOS_ROOT
+    try {
+        if ($CargoArgs -and $CargoArgs.Count -gt 0) {
+            & cargo @CargoArgs -p cutile
+        } elseif ($Test) {
+            & cargo test -p cutile --no-default-features --lib
+        } else {
+            Write-Host "cutile: $env:CUTILE_ROOT" -ForegroundColor Cyan
+            & cargo check -p cutile
+        }
+    } finally {
+        Pop-Location
     }
 }
 
@@ -973,6 +1179,8 @@ function Show-LogOSCommandSurfaceHelp {
     Write-Host '  WIN     logos-preflight | logos-align | logos-wrangler | logos-terminal | logos-pop'
     Write-Host '  CONF    logos-confidence | tw confidence | logos-pop -Command logos-confidence'
     Write-Host '  FORMAL  logos-agda | logos-lean | logos-kernels | logos-cargo'
+    Write-Host '  LATTICE logos-activate | logos-lattice | logos-apps | logos-cutiles'
+    Write-Host '          cd-apps | cd-cutiles | cd-crates | cd-kernels | cd-ops'
     Write-Host '  registry: ops/command-surface.json' -ForegroundColor DarkGray
     Write-Host ''
 }
@@ -1064,6 +1272,8 @@ function Set-LogOSUserEnvironment {
     [Environment]::SetEnvironmentVariable('AGDA_ROOT', (Join-Path $root 'agda'), 'User')
     [Environment]::SetEnvironmentVariable('LEAN_ROOT', (Join-Path $root 'lean'), 'User')
     [Environment]::SetEnvironmentVariable('KERNELS_ROOT', (Join-Path $root 'kernels'), 'User')
+    [Environment]::SetEnvironmentVariable('APPS_ROOT', (Join-Path $root 'apps'), 'User')
+    [Environment]::SetEnvironmentVariable('CRATES_ROOT', (Join-Path $root 'crates'), 'User')
     [Environment]::SetEnvironmentVariable('CTWFI_INVARIANT', 'alpha+omega=15', 'User')
 
     $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
@@ -1129,14 +1339,22 @@ Set-Alias -Name cd-crates -Value Enter-LogOSCrates -Force -ErrorAction SilentlyC
 Set-Alias -Name cd-agda -Value Enter-LogOSAgda -Force -ErrorAction SilentlyContinue
 Set-Alias -Name cd-lean -Value Enter-LogOSLean -Force -ErrorAction SilentlyContinue
 Set-Alias -Name cd-kernels -Value Enter-LogOSKernels -Force -ErrorAction SilentlyContinue
+Set-Alias -Name cd-cutiles -Value Enter-LogOSCutile -Force -ErrorAction SilentlyContinue
+Set-Alias -Name cd-apps -Value Enter-LogOSApps -Force -ErrorAction SilentlyContinue
+Set-Alias -Name cd-ops -Value Enter-LogOSOps -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-activate -Value Invoke-LogOSActivate -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-lattice -Value Get-LogOSLattice -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-apps -Value Invoke-LogOSApps -Force -ErrorAction SilentlyContinue
+Set-Alias -Name logos-cutiles -Value Invoke-LogOSCutile -Force -ErrorAction SilentlyContinue
 
 Export-ModuleMember -Function @(
     'Get-LogOSCandidateRoots', 'Resolve-LogOSRoot', 'Initialize-LogOSShell',
     'Import-LogOSWindowsAxis',
     'Get-LogOSRoots', 'Show-LogOSBanner', 'Get-LogOSToolchain',
     'Enter-LogOS', 'Enter-LogOSCrates', 'Enter-LogOSAgda', 'Enter-LogOSLean',
-    'Enter-LogOSKernels', 'Enter-LogOSCutile',
+    'Enter-LogOSKernels', 'Enter-LogOSCutile', 'Enter-LogOSApps', 'Enter-LogOSOps',
     'Invoke-LogOSCargo', 'Invoke-LogOSAgda', 'Invoke-LogOSLean', 'Invoke-LogOSKernels',
+    'Get-LogOSLattice', 'Invoke-LogOSActivate', 'Invoke-LogOSApps', 'Invoke-LogOSCutile',
     'ConvertTo-LogOSWslPath', 'Enter-LogOSWsl',
     'Install-LogOSShellHook', 'Set-LogOSUserEnvironment',
     'Find-LogOSCudaHome', 'Find-LogOSAgda', 'Repair-LogOSRustcWrapper', 'Add-LogOSPathEntry',
@@ -1147,5 +1365,7 @@ Export-ModuleMember -Function @(
     'logos', 'logos-status', 'logos-agda', 'logos-lean', 'logos-kernels',
     'logos-cargo', 'logos-wsl', 'logos-mcp', 'logos-tui', 'logos-barcode',
     'logos-bridge', 'logos-site', 'logos-surfaces', 'logos-help',
-    'cd-logos', 'cd-crates', 'cd-agda', 'cd-lean', 'cd-kernels'
+    'cd-logos', 'cd-crates', 'cd-agda', 'cd-lean', 'cd-kernels',
+    'cd-cutiles', 'cd-apps', 'cd-ops',
+    'logos-activate', 'logos-lattice', 'logos-apps', 'logos-cutiles'
 )

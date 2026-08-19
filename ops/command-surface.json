@@ -28,7 +28,7 @@
       "ws": "ws://127.0.0.1:8088",
       "env": "FORGE_WS_URL",
       "barcode": "barcode-tui",
-      "role": "α dashboard — providers, tasks, braid, logs, tests"
+      "role": "α dashboard — providers, tasks, braid, HITL gate, logs, tests"
     },
     "html": {
       "site_public": "coherence-mcp/coherence-site/public",
@@ -63,6 +63,13 @@
       "layer": "tui",
       "fn": "Start-LogOSTui",
       "summary": "Launch reson8-forge (reson8-tui) against FORGE_WS_URL"
+    },
+    {
+      "id": "logos-hitl",
+      "layer": "tui",
+      "fn": "Start-LogOSTui",
+      "env": "RESON8_LAYOUT=hitl",
+      "summary": "Launch reson8-forge on layout 8 — SAIF ⚑ request/escalate/approve (receipt only)"
     },
     {
       "id": "logos-barcode",
@@ -108,6 +115,45 @@
       "summary": "List/build CUDA kernels"
     },
     {
+      "id": "logos-activate",
+      "alias": ["logos-lattice"],
+      "layer": "shell",
+      "fn": "Invoke-LogOSActivate",
+      "tui": "CircuitIntent::RefreshLattice",
+      "keys": ["A"],
+      "summary": "Probe apps/cutiles/crates/kernels/ops + sibling interweave"
+    },
+    {
+      "id": "logos-apps",
+      "layer": "shell",
+      "fn": "Invoke-LogOSApps",
+      "summary": "List/check workspace app crates"
+    },
+    {
+      "id": "logos-cutiles",
+      "layer": "shell",
+      "fn": "Invoke-LogOSCutile",
+      "summary": "cargo check/test cutile"
+    },
+    {
+      "id": "cd-apps",
+      "layer": "shell",
+      "fn": "Enter-LogOSApps",
+      "summary": "cd APPS_ROOT"
+    },
+    {
+      "id": "cd-ops",
+      "layer": "shell",
+      "fn": "Enter-LogOSOps",
+      "summary": "cd LOGOS_OPS"
+    },
+    {
+      "id": "cd-cutiles",
+      "layer": "shell",
+      "fn": "Enter-LogOSCutile",
+      "summary": "cd CUTILE_ROOT"
+    },
+    {
       "id": "logos-cargo",
       "layer": "shell",
       "fn": "Invoke-LogOSCargo",
@@ -125,6 +171,21 @@
       "fn": "Invoke-LogOSPreflight",
       "module": "ops/LogOS.Windows.psm1",
       "summary": "Windows preflight board (git/profile/wrangler/schemas)"
+    },
+    {
+      "id": "logos-clean",
+      "layer": "shell",
+      "fn": "Invoke-LogOSClean",
+      "module": "ops/LogOS.Windows.psm1",
+      "summary": "Repo hygiene scan / deep reclaim (DriveTmp, Cargo, caches; Apply needs -Force)"
+    },
+    {
+      "id": "logos-net",
+      "layer": "shell",
+      "fn": "ops/net/LogOS.NetProxy.ps1",
+      "tui": "FocusPanel::Net",
+      "keys": ["N", "R", "M"],
+      "summary": "Selective proxy: privacy (Tor/Privoxy/i2pd/DNSCrypt) vs gaming clearnet; reson8-tui Net panel"
     },
     {
       "id": "logos-align",
@@ -259,6 +320,24 @@
       "kind": "tui",
       "package": "barcode-tui",
       "role": "PH barcode terminal viewer"
+    },
+    {
+      "id": "lattice",
+      "kind": "tui",
+      "package": "reson8-tui",
+      "role": "lat n/5 strip + [A] RefreshLattice · logos-activate twin"
+    },
+    {
+      "id": "hitl",
+      "kind": "tui",
+      "package": "reson8-tui",
+      "role": "SAIF ⚑ board + approval subroutine · [o] [u] [8] · ATOM-GROK-TUI-HITL-GATE-20260818"
+    },
+    {
+      "id": "git-observe",
+      "kind": "tui",
+      "package": "reson8-tui",
+      "role": "observe-only git pane [G] refresh [V] fetch · no commit/push"
     },
     {
       "id": "logos-tw1",

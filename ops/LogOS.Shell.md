@@ -36,12 +36,15 @@ Root resolution prefers **F:\Users\Matthew Ruhnau\LogOS** over the stale **C:\Us
 | Cmd | Purpose |
 |-----|---------|
 | `logos` / `cd-logos` | `cd` LogOS root |
-| `cd-crates` `cd-agda` `cd-lean` `cd-kernels` | Jump to formal / systems layers |
+| `cd-crates` `cd-agda` `cd-lean` `cd-kernels` `cd-apps` `cd-ops` `cd-cutiles` | Jump to lattice layers |
 | `logos-status` | Probe cargo / python / lean / lake / agda / nvcc / wsl |
 | `logos-cargo [args]` | `cargo` from workspace root (lists packages if no args) |
 | `logos-agda` | `agda/scripts/check.ps1` or WSL Agda fallback |
 | `logos-lean` | `lake build` in `lean/` (toolchain v4.8.0) |
 | `logos-kernels` | List `.cu`; `-Build` runs cutile `build_ptx.ps1` |
+| `logos-activate` / `logos-lattice` | Probe apps/cutiles/crates/kernels/ops + siblings; `-Check` cargo |
+| `logos-apps` | List app crates; `-Check` cargo |
+| `logos-cutiles` | `cargo check -p cutile` (`-Test` for lib tests) |
 | `logos-wsl` | Enter Ubuntu with env sourced at LogOS |
 
 ### MCP · TUI · HTML
@@ -61,6 +64,8 @@ Root resolution prefers **F:\Users\Matthew Ruhnau\LogOS** over the stale **C:\Us
 | `logos-barcode` | `cargo run -p barcode-tui` |
 | `logos-site [name]` | Open HTML surface (default **meta-map**) |
 | `logos-preflight` | Windows axis board (git/profile/wrangler/schemas) |
+| `logos-clean` | Repo hygiene scan / deep reclaim (HITL: `-Apply -Force`) — see `docs/ops/LOGOS-CLEAN-DESIGN-2026-08-07.md` |
+| `logos-net` | Selective proxy stack (`ops/net/LogOS.NetProxy.ps1`) — also **reson8-tui** Net panel `[N]`/`[R]`/`[M]` |
 | `logos-align` | Re-lock profiles + `LOGOS_ROOT` + optional wrangler install |
 | `logos-wrangler …` | coherence-site whoami / pages-dev / pages-deploy (HITL `-Force`) |
 | `logos-terminal` | HTML terminal · `sensors` · `tui` · **`pop`/`window`/`tab`** real OS console |
@@ -93,6 +98,8 @@ logos-site cockpit          # stitch coherence_mcp_cockpit
 pwsh -File ops\Align-WindowsAxis.ps1 -InstallWrangler
 . $PROFILE
 logos-preflight
+logos-clean                              # scan reclaimable bulk (Drive tmp, cargo target, …)
+# logos-clean -Class DriveTmp,Cargo -Apply -Force   # HITL reclaim
 ```
 
 `.sh` → Windows pairs: `adhealth-meaningseed/bin/Preflight.ps1` / `Run.ps1`, `hup/instance3-rvm/Preflight-Guest.ps1`, `ops/LogOS.Windows.psm1`, `ops/GB.Deploy.psm1`.

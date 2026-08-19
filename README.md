@@ -26,9 +26,11 @@
 
      cmds  (SoT: ops/command-surface.json)
        logos-status      logos-mcp        logos-tui         logos-site       logos-surfaces
-       logos-agda        logos-lean       logos-kernels     logos-cargo      logos-barcode
+       logos-activate    logos-lattice    logos-apps        logos-cutiles    logos-kernels
+       logos-agda        logos-lean       logos-cargo       logos-barcode    logos-wsl
        logos-preflight   logos-align      logos-clean       logos-net        logos-wrangler
        logos-terminal    logos-pop        logos-confidence  logos-bridge     logos-wsl
+       cd-apps  cd-cutiles  cd-crates  cd-kernels  cd-ops
        tw   ·   tw confidence   ·   tw sensors   ·   tw up   ·   tw fix   ·   tw verify
 
      TRI-WEAVON  ████████████████████████████████████████████████░░░░░░░░  stack sensors
@@ -50,6 +52,11 @@
 
   ops/command-surface.json ............. shell aliases · logos-* · tw entrypoints
   ops/LogOS.Shell.psm1 ................. shell exports · logos-activate 1.2.0
+  ops/wsl/logos-env.sh ................. WSL2 .bashrc / .zshrc lattice aliases
+  docs/ops/LATTICE-ACTIVATION-20260815.md  apps·cutiles·crates·kernels·ops
+  lean/TriWeavon/QuantumRedstone.lean .. H→CNOT→RS-NOR→ε skeleton [A]
+  lean/TriWeavon/LatticeLayers.lean .... five-layer type [A]
+  crates/tui/src/lattice.rs ............ lat n/5 strip · key A
   apps/logos-tw1 ....................... Firebase App Hosting · /agda…/tools
   firebase.json · apphosting.yaml ...... backend logos-tw1 rootDir
   docs/ops/APPHOSTING-LOGOS-TW1-20260815.md
@@ -206,10 +213,10 @@
   ▒▒▒▒ emits MeaningSeed        ▒▒▒▒ /.triweavon/proof/        ░░░░
   ░░░░                          ▒▒▒▒   Lean hashes · status    ░░░░
 
-  ████ reson8-tui               ████ logos-net proxy stack     ████ logos-clean
+  ████ reson8-tui 0.2.2         ████ logos-net proxy stack     ████ logos-clean
   ▒▒▒▒ crates/tui               ▒▒▒▒ ops/net/*                 ▒▒▒▒ Invoke-LogOSClean
-  ▒▒▒▒ codes lab 0.2.1          ▒▒▒▒ gaming and privacy lanes  ▒▒▒▒ scan by default
-  ▒▒▒▒ Net panel N · R · M      ▒▒▒▒ Tor 9050 · Privoxy        ▒▒▒▒ apply needs Force
+  ▒▒▒▒ HITL 8 · o · u · G git   ▒▒▒▒ gaming and privacy lanes  ▒▒▒▒ scan by default
+  ▒▒▒▒ Net N · R · M            ▒▒▒▒ Tor 9050 · Privoxy        ▒▒▒▒ apply needs Force
   ░░░░ QR times SPHINX          ▒▒▒▒ i2pd · DNSCrypt           ░░░░
 
   ████ coherence-mcp            ████ residual-zero MCP         ████ GAIT-Mono
@@ -247,7 +254,8 @@
     pwsh -File ops\net\LogOS.NetProxy.ps1 -Action activate
 
   TUI   key N opens the Net panel · R refresh · M control menu
-  docs  ops/net/README.md
+  TUI   key A re-probes lattice (apps cutiles crates kernels ops)
+  docs  ops/net/README.md · docs/ops/LATTICE-ACTIVATION-20260815.md
 ```
 ```text
 ████████████████████████████████████████████████████████████████████████████████████████████████
