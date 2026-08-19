@@ -164,4 +164,18 @@ Suggested first monitors (after auth):
 6. Close PR #48; refresh SAIF A2 as done.  
 7. Axiom when token exists.
 
+### 8.1 Progress — lattice v0.3.0 (2026-08-09)
+
+| Item | Status |
+|------|--------|
+| Operator journey + R1–R8 recovery | **landed** `docs/ops/OPERATOR-JOURNEY-AND-RECOVERY-20260809.md` |
+| `ops/release/verify-release.ps1` | **landed** · Priority A board |
+| VERSION / CHANGELOG / RELEASE-v0.3.0 | **landed** |
+| Hopf–pirouette investigation | **stamped observe-only** · no residual acted |
+| barcode-tui ratatui 0.30 `Backend::Error` map | **fixed** (compile blocker) |
+| claim_lint formal docs | **green** (WAVE 0.85 tagged **[C]**) |
+| Entangle component `journey-release` | **added** |
+| Annotated tag `v0.3.0` | local after verify; **push** still human ⚑ / slim path |
+| Fat main receive-pack 408 | still use entangle — not fixed by hope |
+
 Music conserved · Keystone holds · capability ≠ authority
