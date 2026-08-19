@@ -1,0 +1,54 @@
+# Operator-dispatched sequence — observe cheap gates before heavy rust.
+# ATOM: ATOM-GHA-SEQUENCE-20260818
+# Does not replace per-push workflows. capability ≠ authority.
+# Do not call Pages (legacy Jekyll) or Entangle ingest from here.
+
+name: CI Sequence
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+  security-events: write
+
+concurrency:
+  group: ci-sequence-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  01-policy:
+    name: 01 CI Policy
+    uses: ./.github/workflows/ci-policy.yml
+
+  02-mcp:
+    name: 02 MCP Validation
+    needs: [01-policy]
+    uses: ./.github/workflows/mcp-validation.yml
+
+  03-labels:
+    name: 03 Labels
+    needs: [02-mcp]
+    uses: ./.github/workflows/labels.yml
+
+  04-security:
+    name: 04 Security Advisory
+    needs: [03-labels]
+    uses: ./.github/workflows/security-advisory.yml
+
+  05-codex:
+    name: 05 CODEX
+    needs: [04-security]
+    uses: ./.github/workflows/codex-mlops.yml
+
+  06-verify:
+    name: 06 Verify
+    needs: [05-codex]
+    uses: ./.github/workflows/verify.yml
+
+  07-codeql:
+    name: 07 CodeQL
+    needs: [06-verify]
+    uses: ./.github/workflows/codeql.yml

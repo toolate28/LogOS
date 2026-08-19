@@ -26,6 +26,18 @@ while IFS= read -r path; do
   fi
 done < <(git ls-files)
 
+note "== gitlink without .gitmodules =="
+# Ghost gitlinks (mode 160000) with no .gitmodules url break
+# GitHub's legacy Pages recursive checkout:
+#   fatal: No url found for submodule path 'crates/coherence-mcp'
+while IFS= read -r mode _sha _stage path; do
+  [[ -z "${path:-}" ]] && continue
+  [[ "$mode" != "160000" ]] && continue
+  if [[ ! -f .gitmodules ]] || ! grep -q "path = ${path}" .gitmodules; then
+    fail "gitlink without .gitmodules url: $path (breaks Pages recursive checkout)"
+  fi
+done < <(git ls-files -s)
+
 note "== lake / build artefact guard =="
 LAKE_RE='\.(olean|ilean|trace)$|\.lake/build/|\.c\.hash$|\.olean\.hash$'
 while IFS= read -r path; do
