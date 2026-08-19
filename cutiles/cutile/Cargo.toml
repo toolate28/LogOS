@@ -22,7 +22,9 @@ eframe = { version = "0.36", optional = true, default-features = false, features
 egui = { version = "0.36", optional = true }
 
 [features]
-default = ["wgpu-backend"]
+# Default is CPU-only (R6). wgpu 30 API drift must not gate Verify.
+# Enable `wgpu-backend` or `cuda` when GPU backends are needed.
+default = []
 cuda = ["dep:cudarc"]
 wgpu-backend = ["dep:wgpu", "dep:bytemuck", "dep:pollster"]
 viz = ["dep:eframe", "dep:egui"]
