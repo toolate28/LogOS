@@ -4,6 +4,9 @@
 //! thing you need**: SAIF/Completed regenerates into KENL/Pending seed.
 //!
 //! Conservation: α + ω = 15 · Music conserved · Keystone holds.
+//!
+//! Metaprogramming map (Ratatui/Tokio ↔ QR circuits):
+//! see `qr_meta` and `docs/architecture/TUI-QR-METAPROGRAMMING.md`.
 
 use reson8_forge_core::task::TaskPhase;
 use serde::{Deserialize, Serialize};

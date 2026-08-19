@@ -1,8 +1,8 @@
 [package]
 name = "reson8-tui"
-version = "0.1.0"
+version = "0.2.2"
 edition = "2021"
-description = "Ratatui-based terminal dashboard — Evenstar, WAVE, barcodes, ATOM trail"
+description = "Ratatui α dashboard — QR×SPHINX QDI loop, HITL gate, codes lab, residual-C eye (v0.2.2)"
 
 [[bin]]
 name = "reson8-forge"
@@ -13,8 +13,14 @@ reson8-core = { path = "../core" }
 reson8-wave = { path = "../wave" }
 reson8-topology = { path = "../reson8-topology" }
 reson8-forge-core = { path = "../forge-core" }
-ratatui = "0.30"
+reson8-activator = { path = "../activator" }
+cutile = { path = "../../cutiles/cutile", default-features = false }
+ratatui = { version = "0.30", default-features = false, features = ["crossterm"] }
 crossterm = "0.29"
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+
+[[example]]
+name = "ctqw_monitor"
+path = "examples/ctqw_monitor.rs"
