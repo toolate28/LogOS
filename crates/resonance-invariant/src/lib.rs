@@ -1,4 +1,5 @@
-#![no_std]
+// `no_std` for every real build; tests need std for the harness only.
+#![cfg_attr(not(test), no_std)]
 
 pub mod phase;
 
@@ -26,6 +27,24 @@ impl LevinWenLattice {
             omega: AtomicU32::new(initial_omega),
             frequency: AtomicU32::new(PCH_FREQUENCY_HZ),
         }
+    }
+
+    /// Current α. Exposed so [`phase`] can classify without owning the fields.
+    #[inline]
+    pub fn alpha_value(&self, order: Ordering) -> u32 {
+        self.alpha.load(order)
+    }
+
+    /// Current ω. Counterpart to [`Self::alpha_value`].
+    #[inline]
+    pub fn omega_value(&self, order: Ordering) -> u32 {
+        self.omega.load(order)
+    }
+
+    /// Configured resonance frequency (Hz).
+    #[inline]
+    pub fn frequency_hz(&self) -> u32 {
+        self.frequency.load(Ordering::Relaxed)
     }
 
     #[inline(always)]
