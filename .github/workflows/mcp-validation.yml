@@ -29,6 +29,7 @@ on:
       - ".github/workflows/mcp-validation.yml"
       - "ops/ci/validate_mcp_config.py"
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read

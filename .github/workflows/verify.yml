@@ -10,6 +10,7 @@ on:
   pull_request:
     branches: [main, master]
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
@@ -30,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          submodules: false
       - name: Assert Action SHA pins
         run: python3 ops/ci/assert_action_pins.py
       - name: Tree guards
@@ -63,6 +66,23 @@ jobs:
       - name: Count sorry / axiom (Category B)
         run: python ops/ci/formal_residual_report.py
 
+  json-kit:
+    name: Queue + command-surface JSON
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          submodules: false
+      - name: Parse machine twins
+        run: |
+          set -euo pipefail
+          python3 -m json.tool ops/command-surface.json > /dev/null
+          python3 -m json.tool ops/human-actions.json > /dev/null
+          test -f ops/SAIF-OUTSTANDING-HUMAN-ACTIONS.md
+          echo "json-kit: OK"
+
   rust-core:
     name: Rust core + wave + invariant
     runs-on: ubuntu-latest
@@ -87,11 +107,10 @@ jobs:
           cargo check -p reson8-core -p reson8-wave -p resonance-invariant -p reson8-forge-core
           cargo test  -p reson8-core -p reson8-wave -p resonance-invariant -- --nocapture
 
-  rust-tui-smoke:
-    name: TUI + barcode compile smoke
+  rust-activate:
+    name: Activated crate compile
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    needs: [rust-core]
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -103,10 +122,62 @@ jobs:
         uses: Swatinem/rust-cache@e18b497796c12c097a38f9edb9d0641fb99eee32 # v2
         with:
           workspaces: ". -> target"
-      - name: Check TUI surfaces
+      - name: Check activated lattice crates
         env:
           CARGO_TERM_COLOR: always
           RUSTC_WRAPPER: ""
         run: |
           set -euo pipefail
+          failed=0
+          for p in reson8-activator reson8-hash reson8-styx spiral-safe reson8-topology reson8-sphinx cutile; do
+            echo "::group::cargo check -p ${p}"
+            if ! cargo check -p "$p"; then
+              echo "::error::crate ${p} failed cargo check"
+              failed=1
+            fi
+            echo "::endgroup::"
+          done
+          exit "$failed"
+
+  lean-green:
+    name: Lean 4 green subset
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Install elan
+        run: |
+          set -euo pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: lake build TriWeavon (no mathlib)
+        working-directory: lean
+        run: |
+          set -euo pipefail
+          lake build TriWeavon
+
+  rust-tui-smoke:
+    name: TUI + barcode compile smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@4cda84d5c5c54efe2404f9d843567869ab1699d4 # stable
+        with:
+          toolchain: stable
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@e18b497796c12c097a38f9edb9d0641fb99eee32 # v2
+        with:
+          workspaces: ". -> target"
+      - name: Check TUI surfaces + lib tests
+        env:
+          CARGO_TERM_COLOR: always
+          RUSTC_WRAPPER: ""
+        run: |
+          set -euo pipefail
+          cargo test -p reson8-tui --lib -- --nocapture
           cargo check -p reson8-tui -p barcode-tui

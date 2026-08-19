@@ -19,6 +19,7 @@ on:
     # Tuesday 07:00 UTC — after Monday Dependabot / CodeQL
     - cron: "0 7 * * 2"
   workflow_dispatch:
+  workflow_call:
 
 # Least privilege at workflow level; jobs elevate only when required.
 permissions:
@@ -104,6 +105,7 @@ jobs:
             echo "|---------|------|"
             echo "| \`ops/ci/assert_action_pins.py\` | SHA pin fail-closed |"
             echo "| \`ops/ci/codex_scan.py\` | Deterministic gates + badges |"
+            echo "| \`ops/ci/skill_chain_scan.py\` | ChainGuard-shaped skill composition |"
             echo "| SARIF category \`logos-codex\` | GitHub Code Scanning |"
             echo "| \`docs/badges/*.json\` | Shields endpoint badges |"
             echo ""
