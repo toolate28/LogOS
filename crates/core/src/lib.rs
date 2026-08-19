@@ -50,11 +50,17 @@ pub mod fibonacci {
     /// Golden ratio (φ)
     pub const PHI: f64 = 1.618_033_988_749_895;
 
-    /// WAVE component weights
+    /// WAVE component weights (sum to 1: 8+5+5+3 = 21).
     pub const W_TOPO: f64 = F8;       // 0.381
     pub const W_SEM: f64 = F5;        // 0.238
     pub const W_STRUCT: f64 = F5;     // 0.238
     pub const W_TEMP: f64 = F3;       // 0.143
+
+    /// Split of [`W_TOPO`] (F8) into H0 components vs H1 loops.
+    /// Category **C** — convention so a loop is not silently folded into `w_topo`.
+    /// F5 + F3 = F8; existing four-term sum is unchanged if you keep `W_TOPO`.
+    pub const W_H0: f64 = F5;         // 0.238 — connected components
+    pub const W_LOOP: f64 = F3;       // 0.143 — persistent 1-cycles
 }
 
 // Forge protocol surface (consumed as `reson8-forge-core` by TUI / triweave)
@@ -368,6 +374,7 @@ mod tests {
     fn fibonacci_weights_sum_to_one() {
         let sum = fibonacci::W_TOPO + fibonacci::W_SEM + fibonacci::W_STRUCT + fibonacci::W_TEMP;
         assert!((sum - 1.0).abs() < 0.01);
+        assert!((fibonacci::W_H0 + fibonacci::W_LOOP - fibonacci::W_TOPO).abs() < 1e-12);
     }
 }
 

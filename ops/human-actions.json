@@ -1,0 +1,168 @@
+{
+  "atom": "ATOM-SAIF-HUMAN-QUEUE-20260723",
+  "constraint": "20260723.saif-human-queue",
+  "depends_on": [
+    "ATOM-CHECKPOINT-CHOKE-20260814",
+    "ATOM-LATTICE-ACTIVATE-20260815"
+  ],
+  "source": "ops/SAIF-OUTSTANDING-HUMAN-ACTIONS.md",
+  "choke": "docs/ops/CHECKPOINT-CHOKE-20260814.md",
+  "note": "Machine twin of the human ⚑ queue. Markdown remains the operator document. TUI reads this first; MD parse is fallback. Approve in TUI writes a receipt — it does not run GCP/sudo.",
+  "actions": [
+    {
+      "id": "A1",
+      "priority": "A",
+      "who": "human",
+      "title": "GCP / Cloud Run (GB-06)",
+      "why": "Last deploy-waist packet; agent cannot invent project/IAM.",
+      "do": [
+        "Create/select GCP project + billing",
+        "Choose region (e.g. australia-southeast1)",
+        "Artifact Registry docker repo",
+        "Deploy SA: run.admin + artifactregistry.writer",
+        "Runtime SA: storage.objectCreator only on receipts bucket (no delete)",
+        "Bucket: versioning ON + retention (append-only)",
+        "On WSL: gcloud, auth login, configure-docker"
+      ],
+      "reply": "GCP ready\nproject=…\nregion=…\nar_repo=…\nruntime_sa=…\nreceipts_bucket=…",
+      "refs": ["ops/GB06-worklog.md", "adapters/gcloud/surface_manifest.json"]
+    },
+    {
+      "id": "A2",
+      "priority": "A",
+      "who": "human",
+      "title": "Git push surfaces (partially remediated)",
+      "why": "Fat main receive-pack often HTTP 408; LFS showcase stalls.",
+      "do": [
+        "Preferred: Entangle Priority A slots — scaffold → emit-slice.ps1 → ingest PR → human merge",
+        "Tag path: after verify-release.ps1 green, annotated v0.3.0 locally; push tag when network allows",
+        "Host reconcile: merge/rebase winhost LogOS with origin; no casual force-push",
+        "Bulk media: transfer-lane, not git receive-pack"
+      ],
+      "refs": [
+        "ops/entangle/README.md",
+        "docs/ops/LATTICE-ASSESSMENT-20260809.md",
+        "ops/release/RELEASE-v0.3.0.md"
+      ]
+    },
+    {
+      "id": "A3",
+      "priority": "A",
+      "who": "human",
+      "title": "Sudo once for 9P v9fs mount (optional SC)",
+      "why": "Styx TCP smoke is green; kernel mount needs elevated rights.",
+      "do": [
+        "sudo mkdir -p /mnt/bookshelf",
+        "sudo mount -t 9p -o trans=tcp,port=5640,version=9p2000.L,uname=$USER 127.0.0.1 /mnt/bookshelf",
+        "sha256sum schema vs /mnt/bookshelf/schemas/certificate.schema.json"
+      ],
+      "refs": ["adapters/9p/surface_manifest.json"]
+    },
+    {
+      "id": "B1",
+      "priority": "B",
+      "who": "human",
+      "title": "First Claude Code cold start",
+      "why": "VERIFY strand cert is the gate; BUILD must not self-certify.",
+      "do": [
+        "Open LogOS root in Claude Code",
+        "Point at CLAUDECODE-INIT-v0_1.md",
+        "Three-surface survey only (no deploy, no push)",
+        "Emit cert via ops/claude-code/Emit-ClaudeCodeCert.ps1 -AsInitRun"
+      ],
+      "refs": ["CLAUDECODE-INIT-v0_1.md", "ops/claude-code"]
+    },
+    {
+      "id": "B2",
+      "priority": "B",
+      "who": "human",
+      "title": "Wrangler / SpiralSafe inventory (read-only)",
+      "why": "Confirm SoT for SpiralSafe; Vectorize 768/cosine is immutable if index exists.",
+      "do": [
+        "Confirm which tree is SoT for SpiralSafe",
+        "Note Vectorize 768/cosine if index exists",
+        "Do not wrangler deploy until cert path is green"
+      ]
+    },
+    {
+      "id": "B3",
+      "priority": "B",
+      "who": "human",
+      "title": "Reload unitary profile after module update",
+      "why": "Profile hook must surface tw sensors / fix / verify.",
+      "do": [
+        ". $PROFILE",
+        "tw help",
+        "tw fix",
+        "tw verify"
+      ]
+    },
+    {
+      "id": "C1",
+      "priority": "C",
+      "who": "blocked",
+      "title": "Cubical pin decision (GB-01 UPSHIFT)",
+      "why": "Agda Everything / ArrivalDetector may not typecheck on nixpkgs cubical-0.9.",
+      "do": [
+        "Sovereign choice: pin older cubical or formal-layer packet",
+        "Do not casually edit frozen .agda to silence LSP"
+      ]
+    },
+    {
+      "id": "C2",
+      "priority": "C",
+      "who": "blocked",
+      "title": "Lean mathlib warm + OB2 sorry seams",
+      "why": "Formal sprint when ready; sorries stay amber.",
+      "do": [
+        "lake build TriWeavon after mathlib fetch",
+        "Track sorries as amber, not green"
+      ],
+      "refs": ["lean/TriWeavon/SubRiemannian/OB2_StrainVorticity.lean"]
+    },
+    {
+      "id": "C3",
+      "priority": "C",
+      "who": "blocked",
+      "title": "Opam mirage for bbbr hvt (optional)",
+      "why": "KVM present; mirage CLI was absent. Only if unikernel hvt is near-term.",
+      "do": ["Install opam/mirage only if hvt is a near-term goal"]
+    },
+    {
+      "id": "D1",
+      "priority": "D",
+      "who": "agent",
+      "title": "Re-pin compose/k8s digests after any waist rebuild",
+      "why": "Hygiene after image change."
+    },
+    {
+      "id": "D2",
+      "priority": "D",
+      "who": "human",
+      "title": "Enable systemd --user linger for styx",
+      "why": "Optional if user bus available."
+    },
+    {
+      "id": "D3",
+      "priority": "D",
+      "who": "human",
+      "title": "Crystalline redispersion plan review",
+      "why": "Read only — do not implement yet.",
+      "refs": ["9P2000.L/strands/claude/CLAUDE-PLAN-REQUEST-CRYSTALLINE-REDISPERSION.md"]
+    },
+    {
+      "id": "D4",
+      "priority": "D",
+      "who": "human",
+      "title": "IMAGINE storyboard generation from handoff",
+      "why": "Claude Desktop + IMAGINE."
+    },
+    {
+      "id": "D5",
+      "priority": "D",
+      "who": "human",
+      "title": "Docker Desktop on Windows host",
+      "why": "Optional if docker is wanted outside WSL."
+    }
+  ]
+}
