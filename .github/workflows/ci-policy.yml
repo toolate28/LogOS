@@ -6,21 +6,14 @@
 name: CI Policy
 
 on:
+  # Always run. Path filters + required-check = 0s "workflow file issue"
+  # ghosts on Dependabot pushes that never touch these files.
   push:
     branches: [main, master]
-    paths:
-      - ".github/workflows/**"
-      - "ops/ci/assert_action_pins.py"
-      - "ops/ci/codex_scan.py"
-      - ".github/dependabot.yml"
   pull_request:
     branches: [main, master]
-    paths:
-      - ".github/workflows/**"
-      - "ops/ci/assert_action_pins.py"
-      - "ops/ci/codex_scan.py"
-      - ".github/dependabot.yml"
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read

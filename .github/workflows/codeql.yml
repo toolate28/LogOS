@@ -13,6 +13,7 @@ on:
     # Weekly Monday 06:00 UTC
     - cron: "0 6 * * 1"
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   actions: read
@@ -43,6 +44,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          submodules: false
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@f205ea1c3313d32999d8d6a48b4f6530d4437b38 # v4.37.4

@@ -23,6 +23,7 @@ on:
     # Sunday 22:00 UTC — ahead of Dependabot Monday schedules
     - cron: "0 22 * * 0"
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read

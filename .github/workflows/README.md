@@ -4,7 +4,8 @@
 
 | Workflow | File | Role |
 |----------|------|------|
-| **Verify** | `verify.yml` | Tree guards · MCP schemas · formal residual report · rust core/tui |
+| **CI Sequence** | `ci-sequence.yml` | Dispatch-only chain: policy → MCP → labels → security → CODEX → verify → CodeQL |
+| **Verify** | `verify.yml` | Tree guards · JSON kit · MCP schemas · formal residual · rust core/tui |
 | **CodeQL** | `codeql.yml` | Rust SAST (explicit `cargo build`) |
 | **CI Policy** | `ci-policy.yml` | Fail-closed full SHA pin gate on every `uses:` |
 | **CODEX / Agentic MLOps** | `codex-mlops.yml` | Topology-aware gates · SARIF code scanning · shields badges |
@@ -45,6 +46,29 @@ uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 - Keep the `# version` comment so Dependabot can propose deterministic upgrades.
 - For `dtolnay/rust-toolchain`, pin the action SHA and set `with: toolchain: stable` (branch name is no longer the toolchain selector once SHA-pinned).
 
+## Observed 2026-08-18 (origin `main`)
+
+| Workflow | Evidence | Fix (this tree) |
+|----------|----------|-----------------|
+| **CI Policy** | 0s, no jobs, "workflow file issue" on every Dependabot push | Drop path filters — required-check + skip = ghost fail |
+| **Verify** | `resonance-invariant` missing `alpha_value`/`omega_value` on origin | Getters live in local `crates/resonance-invariant` |
+| **Pages** | Legacy Jekyll `submodules: recursive` → `No url found for submodule path 'crates/coherence-mcp'` | `pages.yml` (`submodules: false`). Repo still `build_type=legacy` until Pages source = Actions **and** `pages.yml` is on `main` |
+| **CODEX / CodeQL / Security** | green | leave |
+
+Do **not** dispatch Entangle `ingest`/`scaffold` or Pages deploy from the sequence (HITL / writes).
+
+```bash
+gh workflow run "CI Policy"
+gh workflow run "MCP Validation"
+gh workflow run "Labels"
+gh workflow run "Security Advisory"
+gh workflow run "CODEX / Agentic MLOps"
+gh workflow run "Verify"
+gh workflow run "CodeQL"
+# after pages.yml is on main:
+# gh api -X PUT repos/toolate28/LogOS/pages -f build_type=workflow
+```
+
 ## Local mirrors
 
 ```bash
@@ -57,6 +81,7 @@ python ops/ci/ensure_dependabot_labels.py          # dry-run
 # GITHUB_TOKEN=... python ops/ci/ensure_dependabot_labels.py --apply
 python ops/ci/assert_action_pins.py                # fail-closed SHA pins
 python ops/ci/codex_scan.py                        # CODEX + badges + SARIF
+python ops/ci/skill_chain_scan.py --self-test      # ChainGuard-shaped skill graph
 ```
 
 ## GCP Gemini Cloud Assist

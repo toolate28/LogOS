@@ -8,7 +8,7 @@ Epistemic posture
 - **Security gates** (fail closed): unpinned Actions, secret-like paths/content,
   MCP fail-closed policy violations.
 - **Advisory layers** (Category B): formal residuals, CI surface inventory,
-  agentic surface completeness.
+  agentic surface completeness, skill-chain composition (ChainGuard posture).
 - **Category C telemetry only**: α / ω heuristic balance tag — never a reject
   gate and never presented as a theorem.
 
@@ -28,6 +28,8 @@ from pathlib import Path
 from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from skill_chain_scan import scan as scan_skill_chain  # noqa: E402
 SCAN_VERSION = "2.1.0"
 ATOM_ID = "ATOM-CODEX-MLOPS-20260804-sm100"
 
@@ -424,6 +426,38 @@ def layer_agentic_surface(root: Path) -> LayerResult:
     )
 
 
+def layer_skill_chain(root: Path) -> LayerResult:
+    """ChainGuard-shaped scan of installed SKILL.md files (arXiv:2608.09732).
+
+    Isolated skill review is L5. This layer reconstructs producer→consumer
+    edges and flags capability splits that only exist as a composed workflow.
+    Category B heuristic — not an LLM reproduction of ChainGuard, and not
+    the ColluSkill attack.
+    """
+    chain_findings, metrics, score = scan_skill_chain(root)
+    findings = [
+        Finding(
+            rule_id=f.rule_id,
+            level=f.level,
+            message=f.message,
+            path=f.path,
+            start_line=f.start_line,
+            category="security" if f.level == "error" else "advisory",
+            help_uri="https://arxiv.org/html/2608.09732v1",
+        )
+        for f in chain_findings
+    ]
+    return LayerResult(
+        id="L7_skill_chain",
+        name="Skill-chain (ChainGuard posture)",
+        score=score,
+        weight=0.10,
+        findings=findings,
+        metrics=metrics,
+        epistemic="B",
+    )
+
+
 def layer_topology_telemetry(root: Path) -> LayerResult:
     """Category C α/ω heuristic — telemetry only, never a reject gate."""
     alphas: list[float] = []
@@ -683,6 +717,7 @@ def run(root: Path, out_dir: Path, badge_dir: Path, fail_on_security: bool) -> i
         layer_ci_surface(root),
         layer_agentic_surface(root),
         layer_topology_telemetry(root),
+        layer_skill_chain(root),
     ]
     score = composite_score(layers)
     sec_errs = security_errors(layers)
