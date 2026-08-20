@@ -17,7 +17,7 @@
 
 Set-StrictMode -Version Latest
 
-$script:UnitaryVersion = '1.1.1-unitary'
+$script:UnitaryVersion = '1.1.2-unitary'
 $script:SensorCache = $null
 $script:SensorCacheAt = [datetime]::MinValue
 $script:SensorTtlSec = 6
@@ -147,6 +147,33 @@ function Get-ShadeBar {
     return ('█' * $n) + ('░' * ($Width - $n))
 }
 
+
+function Test-NextActionRunnable {
+    <#
+    .SYNOPSIS
+        ATOM-CLAUDE-LABEL-TW-NEXTLINE-20260820
+        A next: line is paste-able iff it is a resolvable command or comment-prefixed.
+        Prose in a command slot must fail here, not reach the operator.
+    #>
+    [CmdletBinding()]
+    param([Parameter(Mandatory)][AllowEmptyString()][string]$Line)
+    $item = ($Line -replace '^\d+\.\s*', '').Trim()
+    if (-not $item) { return $true }
+    if ($item.StartsWith('#')) { return $true }
+    $payload = ($item -split '#', 2)[0].Trim()
+    return [bool]($payload -match '^(tw|logos-[a-z-]+|cargo|docker|python|pwsh|cd|git|npm|node)\b')
+}
+
+function Assert-NextActionsRunnable {
+    param([string[]]$Actions)
+    foreach ($a in @($Actions)) {
+        if ($null -eq $a -or "$a" -eq '') { continue }
+        if (-not (Test-NextActionRunnable -Line "$a")) {
+            throw "tw next: prose in a command slot: $a — emit a resolvable command or prefix with #"
+        }
+    }
+}
+
 # ─── Sensor board ────────────────────────────────────────────────────────────
 
 function Get-TriWeavonSensors {
@@ -171,7 +198,7 @@ function Get-TriWeavonSensors {
     $s.logos_root = [pscustomobject]@{
         name = 'logos_root'; ok = [bool]$root; critical = $true
         detail = if ($root) { $root } else { 'MISSING — set LOGOS_ROOT' }
-        fix = if (-not $root) { 'Set LOGOS_ROOT=%USERPROFILE%\LogOS (or your clone path)' } else { $null }
+        fix = if (-not $root) { '# Set LOGOS_ROOT=%USERPROFILE%\LogOS (or your clone path)' } else { $null }
         shade = Get-ShadeBar $(if ($root) { 1 } else { 0 })
     }
 
@@ -179,7 +206,7 @@ function Get-TriWeavonSensors {
     $s.wsl = [pscustomobject]@{
         name = 'wsl'; ok = [bool]$wsl; critical = $true
         detail = if ($wsl) { $wsl } else { 'no distro' }
-        fix = if (-not $wsl) { 'Install/start WSL Kali (build substrate)' } else { $null }
+        fix = if (-not $wsl) { '# Install/start WSL Kali (build substrate)' } else { $null }
         shade = Get-ShadeBar $(if ($wsl) { 1 } else { 0 })
     }
 
@@ -219,7 +246,7 @@ function Get-TriWeavonSensors {
     $s.bridge = [pscustomobject]@{
         name = 'bridge'; ok = $br; critical = $false
         detail = if ($br) { 'ws://127.0.0.1:8088' } else { 'down — optional SPHINX WS' }
-        fix = if (-not $br) { 'Optional: start reson8 styx WS bridge on :8088' } else { $null }
+        fix = if (-not $br) { 'logos-bridge' } else { $null }
         shade = Get-ShadeBar $(if ($br) { 0.9 } else { 0.15 })
     }
 
@@ -235,7 +262,7 @@ function Get-TriWeavonSensors {
     $s.docker = [pscustomobject]@{
         name = 'docker'; ok = ($dockerHost -or $dockerWsl); critical = $false
         detail = if ($dockerHost) { 'host CLI' } elseif ($dockerWsl) { "WSL/$wsl" } else { 'absent' }
-        fix = if (-not ($dockerHost -or $dockerWsl)) { 'Start Docker Desktop or dockerd in WSL' } else { $null }
+        fix = if (-not ($dockerHost -or $dockerWsl)) { '# Start Docker Desktop or dockerd in WSL' } else { $null }
         shade = Get-ShadeBar $(if ($dockerHost -or $dockerWsl) { 0.9 } else { 0.1 })
     }
 
@@ -250,7 +277,7 @@ function Get-TriWeavonSensors {
     $s.schemas = [pscustomobject]@{
         name = 'schemas'; ok = $schemaOk; critical = $true
         detail = if ($schemaOk) { 'v0.1 filed' } else { 'schemas missing' }
-        fix = if (-not $schemaOk) { 'Pull LogOS; ensure docs/schemas/v0.1 exists' } else { $null }
+        fix = if (-not $schemaOk) { '# Pull LogOS; ensure docs/schemas/v0.1 exists' } else { $null }
         shade = Get-ShadeBar $(if ($schemaOk) { 1 } else { 0 })
     }
 
@@ -269,6 +296,7 @@ function Get-TriWeavonSensors {
 
     $down = @($s.Values | Where-Object { -not $_.ok })
     $actions = @($down | Where-Object { $_.fix } | ForEach-Object { $_.fix } | Select-Object -First 5)
+    Assert-NextActionsRunnable $actions
 
     $board = [pscustomobject]@{
         timestamp       = $now.ToString('o')
@@ -751,5 +779,7 @@ Export-ModuleMember -Function @(
     'Invoke-TriWeavonTw',
     'Start-TriWeavonUnitary',
     'Get-ShadeBar',
-    'Test-TcpPortFast'
+    'Test-TcpPortFast',
+    'Test-NextActionRunnable',
+    'Assert-NextActionsRunnable'
 ) -Alias @('tw', 'tw-sensors', 'tw-health', 'tw-fix', 'tw-up', 'tw-verify', 'tw-help', 'tw-confidence')
