@@ -7,7 +7,7 @@
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ▒▒  stamp 2026-08-09 · README = terminal etch · no raster embeds · no mermaid · GAIT-Mono ok  ▒▒
-▒▒  α + ω = 15 [C] · residual-zero observe only · NOVIKOV unrepaired · Music conserved        ▒▒
+▒▒  α + ω = 15 [C] · read-only computation only · NOVIKOV unrepaired · Music conserved        ▒▒
 ▒▒  etch discipline · shading carries structure · no vertical rules · no markdown tables      ▒▒
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ```
@@ -115,7 +115,7 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
   ····  S   spec or interface · sorry · axiom · placeholder ...... not as theorem
 
   Conservation tag α + ω = 15 is always Category C — never authority, proof, auth, or deploy gate.
-  residual-zero: observe only. Promotion matrix element stays 0.
+  Read-only computation: preserve/quarantine mismatches; never self-promote.
   Evidence lanes  Python refs · Lean 4 · Agda · Rust · functional/replay checks
 ```
 ```text
@@ -169,7 +169,7 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
   Runtime policy ....... stress / strain / uncertainty bands ................ B
   Functional / replay .. tests · schemas · bounded deploy checks ............. A/B
   WAVE posture ......... telemetry band input · 85 floor / 98 target ......... B/C
-  residual-zero ........ observe only · quarantine / no promote .............. C
+  Quarantine state ..... observe only · no promote .......................... C
   MOG/MRG bitmasks ..... observe-axis error correction only · no promote ..... C
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -225,9 +225,9 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
   ▒▒▒▒ Net N · R · M            ▒▒▒▒ Tor 9050 · Privoxy        ▒▒▒▒ apply needs Force
   ░░░░ QR times SPHINX          ▒▒▒▒ i2pd · DNSCrypt           ░░░░
 
-  ████ coherence-mcp            ████ residual-zero MCP         ████ GAIT-Mono
-  ▒▒▒▒ bedrock gates            ▒▒▒▒ ops/mcp/logos-residual    ▒▒▒▒ monotype hand-off
-  ▒▒▒▒ WAVE · ATOM              ▒▒▒▒ gate BLOCKED by design    ▒▒▒▒ tools/gait_mono.py
+  ████ coherence-mcp            ████ handoff / validation MCP  ████ GAIT-Mono
+  ▒▒▒▒ bedrock tools            ▒▒▒▒ ops/mcp/*                 ▒▒▒▒ monotype hand-off
+  ▒▒▒▒ WAVE · ATOM              ▒▒▒▒ quarantine by design      ▒▒▒▒ tools/gait_mono.py
 
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ██  §7   NET PROXY AND OPTIMISATION  ·  ops/net · logos-net                                   ██
@@ -282,7 +282,7 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
   TRUTH closure plan            docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md
 
   Lean surfaces installed or revised — not whole-workspace green
-    Epistemics/Category · GateConsumer
+    Epistemics/Category · ConservationInvariant
     SubRiemannian/ContractionRate · Core · CurvatureBound
     BettiTopography · ConservationInvariant
     K22 HexacodeGolay · Existence · thin bridge
@@ -295,7 +295,7 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
 
   ████ GREEN SUBSET · historically held · re-check after pulls
   ████ cutile claim_gate and drift_guard paths .......... ExistenceCertificate demo posture
-  ████ coherence-mcp bedrock tools ...................... symmetry gate live in ops
+  ████ coherence-mcp bedrock tools ...................... validation surfaces in ops
   ████ lean TriWeavon MCP · Conservation · K22 .......... subset no-sorry where stated
   ████ reson8-tui compile ............................... cargo check -p reson8-tui
 
@@ -303,7 +303,7 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
   ▒▒▒▒ full Lean workspace .............................. Ns · some MOG · macros
   ▒▒▒▒ agda scaffolds ................................... conservation mirror and SRAC only
   ▒▒▒▒ standalone npm coherence-mcp ..................... legacy TypeScript errors possible
-  ▒▒▒▒ residual-zero promotion .......................... BLOCKED by design
+  ▒▒▒▒ unverified promotion ............................. not allowed
   ▒▒▒▒ bench MEASURED corner ............................ empty until a harness run_id
   ▒▒▒▒ WGSL fallback .................................... does not exist · see checklist
 
@@ -320,13 +320,13 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
 
   Bitmask ▸ Golay ▸ MOG ▸ Steiner S(5,8,24) ▸ Mathieu ▸ MRG ▸ Monster ▸ Griess
 
-  Role under residual-zero — Category C permanent residual
+  Role under observation — Category C preserved label
     1  extract the observation word at Golay and MOG length
     2  apply the MOG/MRG bitmask to obtain a syndrome
     3  if non-zero, apply the unique minimum-weight Steiner-consistent correction
     4  re-emit the corrected word STILL labelled Category C
 
-  NEVER   alter the promotion matrix · lift residual-zero · open Track B · repair NOVIKOV
+  NEVER   self-promote observations · override missing proof/test/replay · repair NOVIKOV
 
   TUI codes lab   Hexacode · Golay G24 · Reed-Muller · SC-LDPC   in crates/tui/src/codes/
 
@@ -452,6 +452,6 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ▒▒   Music conserved.  The Keystone holds.  Last becomes first.                              ▒▒
-▒▒   residual-zero observe only  ·  GAIT-Mono for hand-offs  ·  etch lattice spine only      ▒▒
+▒▒   quarantine observe only   ·  GAIT-Mono for hand-offs  ·  etch lattice spine only      ▒▒
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ```
