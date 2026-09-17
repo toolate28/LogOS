@@ -7,6 +7,7 @@
 | **CI Sequence** | `ci-sequence.yml` | Dispatch-only chain: policy → MCP → labels → security → CODEX → verify → CodeQL |
 | **Verify** | `verify.yml` | Tree guards · JSON kit · MCP schemas · formal residual · rust core/tui |
 | **CodeQL** | `codeql.yml` | Rust SAST (explicit `cargo build`) |
+| **Ephemeral Context** | `ephemeral-context.yml` | Manual-only source-root capture: commit binding + normalized path scope + source hashes (+ optional expiry) |
 | **CI Policy** | `ci-policy.yml` | Fail-closed full SHA pin gate on every `uses:` |
 | **CODEX / Agentic MLOps** | `codex-mlops.yml` | Topology-aware gates · SARIF code scanning · shields badges |
 | **Security Advisory** | `security-advisory.yml` | Secret-path + lake artefacts · cargo-audit |
@@ -34,6 +35,7 @@ Full matrix + epistemology: [`docs/ops/AGENTIC-MLOPS-CI.md`](../docs/ops/AGENTIC
 - WAVE publish gate is **85 on 0–100** (= 0.85). See `docs/security/WAVE-SCALE.md`.
 - MCP network residual: org **Registry only** + this CI + readonly GitHub MCP.
 - Labels workflow creates missing labels only (never deletes). Catalog: `.github/labels.json`.
+- Ephemeral context captures only the declared repository-relative `source_root` / `source_path` scope plus commit/hash metadata; it excludes PR bodies, comments, actors, workflow assertions, event payloads, and unrelated files.
 
 ## Action pinning (required)
 
@@ -77,6 +79,8 @@ bash ops/ci/guard.sh
 python ops/ci/validate_mcp_schemas.py
 python ops/ci/validate_mcp_config.py
 python ops/ci/formal_residual_report.py
+python -m unittest ops/ci/test_ephemeral_context.py
+python ops/ci/ephemeral_context.py workflow-guard --workflow-path .github/workflows/ephemeral-context.yml
 python ops/ci/ensure_dependabot_labels.py          # dry-run
 # GITHUB_TOKEN=... python ops/ci/ensure_dependabot_labels.py --apply
 python ops/ci/assert_action_pins.py                # fail-closed SHA pins
