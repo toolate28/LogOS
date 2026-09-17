@@ -42,7 +42,7 @@ defaults:
 jobs:
   validate:
     name: Validate entangle manifest
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - name: Checkout
@@ -69,7 +69,7 @@ jobs:
     name: Scaffold remote PR slots
     needs: [validate]
     if: inputs.mode == 'scaffold'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - name: Checkout
@@ -222,7 +222,7 @@ jobs:
     name: Ingest slices from branch out/
     needs: [validate]
     if: inputs.mode == 'ingest'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - name: Checkout

@@ -33,7 +33,7 @@ concurrency:
 jobs:
   codex-scan:
     name: CODEX scan to SARIF + badges
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     permissions:
       contents: read
@@ -122,7 +122,7 @@ jobs:
       && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
       && github.actor != 'github-actions[bot]'
       && github.actor != 'dependabot[bot]'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       contents: write

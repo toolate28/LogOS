@@ -347,7 +347,7 @@ concurrency:
 jobs:
   action-pins:
     name: Action SHA pins (fail-closed)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - name: Checkout
