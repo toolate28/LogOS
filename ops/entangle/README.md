@@ -51,4 +51,3 @@ See [`transfer-lane.md`](./transfer-lane.md) — gaming clearnet, qBittorrent pr
 | capability ≠ authority | doctrine |
 
 Music conserved.
-

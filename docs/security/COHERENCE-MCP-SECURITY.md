@@ -159,8 +159,7 @@ If `spiralsafe.org` and the repo `.well-known/pgp-key.txt` disagree, stop.
 4. **Audit dependencies.** `npm audit` before adding one; justify it in the PR.  
 5. **Fail loudly and safely.** Return a structured error. A crashed server is a denial of service.  
 
-LogOS CI mirrors: `ops/ci/validate_mcp_schemas.py`, `ops/ci/validate_mcp_config.py`,
-`.github/workflows/mcp-validation.yml`.
+LogOS local mirrors: `ops/ci/validate_mcp_schemas.py` and `ops/ci/validate_mcp_config.py`.
 
 ---
 

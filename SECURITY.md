@@ -110,12 +110,8 @@ and `tomczak_preserved` discipline where that trail is in use.
 
 | Control | Path / surface | Role |
 |---------|----------------|------|
-| CodeQL (Rust) | `.github/workflows/codeql.yml` | SAST on executable registers |
-| CodeQL scope | `.github/codeql/codeql-config.yml` | crates / apps / cutiles only |
-| Dependabot | `.github/dependabot.yml` | Cargo + Actions supply chain |
-| Security advisory CI | `.github/workflows/security-advisory.yml` | Secret-path + lake-artifact + cargo-audit |
-| Verification pipeline | `.github/workflows/verify.yml` | Core invariant tests + MCP schema gate |
-| MCP config validation | `.github/workflows/mcp-validation.yml` | Fail-closed: no `tools: ["*"]`, no secrets |
+| Dependabot | `.github/dependabot.yml` | Cargo + pip supply chain |
+| Local CI/security helpers | `ops/ci/` | Local policy, schema, and scan helpers |
 | Local githooks | `ops/githooks/` | Mirror of secret-path / lake guards |
 | MCP company registry skeleton | `ops/mcp/registry/` | Curated allowlist (org “Registry only”) |
 | Package security policy | `docs/security/COHERENCE-MCP-SECURITY.md` | Threat surface, hardening, integrity for 0.4.x |
