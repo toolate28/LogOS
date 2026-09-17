@@ -12,4 +12,4 @@
 pwsh -File ops/entangle/emit-slice.ps1 -Id ops-portable-root
 ```
 
-Then run workflow **Entangle** mode=`ingest` with this component, or commit the slice onto `entangle/ops-portable-root`.
+Then apply the slice locally or commit it onto `entangle/ops-portable-root`.

@@ -12,4 +12,4 @@
 pwsh -File ops/entangle/emit-slice.ps1 -Id reson8-tui
 ```
 
-Then run workflow **Entangle** mode=`ingest` with this component, or commit the slice onto `entangle/reson8-tui`.
+Then apply the slice locally or commit it onto `entangle/reson8-tui`.

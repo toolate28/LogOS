@@ -12,4 +12,4 @@
 pwsh -File ops/entangle/emit-slice.ps1 -Id formal-srac
 ```
 
-Then run workflow **Entangle** mode=`ingest` with this component, or commit the slice onto `entangle/formal-srac`.
+Then apply the slice locally or commit it onto `entangle/formal-srac`.

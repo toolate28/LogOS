@@ -12,4 +12,4 @@
 pwsh -File ops/entangle/emit-slice.ps1 -Id apps-triweave
 ```
 
-Then run workflow **Entangle** mode=`ingest` with this component, or commit the slice onto `entangle/apps-triweave`.
+Then apply the slice locally or commit it onto `entangle/apps-triweave`.

@@ -112,9 +112,8 @@ components:
     notes: "gaming clearnet vs privacy lane; DNSCrypt:53553"
 
   - id: ci-verify
-    title: CI policy + verify pipeline
+    title: Local verify scaffolding
     paths:
-      - .github/workflows/
       - ops/ci/
     verify:
       - python ops/ci/assert_action_pins.py
