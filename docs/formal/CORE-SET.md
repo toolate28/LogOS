@@ -1,12 +1,20 @@
 # Formal core set — Lean · Agda · docs waist
 
 **ATOM:** `ATOM-CORE-SET-STANDARDISE-20260730`  
-**Invariant:** α + ω = 15 (Category C label only)  
-**WAVE publish gate:** **85 / 100** (= 0.85). SAIF 0.98 superseded as default.  
+**Invariant:** α + ω = 15 (Category C label only; read-only computational check)  
+**WAVE posture:** telemetry input to execution bands; not a standalone promotion authority.  
 **Pin:** Lean 4.8.0 + mathlib4 v4.8.0 · Agda cubical (vendor, not committed)
 
-This is the **standard map** of what counts as formal *core* for push, CI, and handoff.
-Everything else is SlowStep / A-literature until receipt.
+This is the **standard map** of what counts as formal *core* for push, CI, replay, and handoff.
+Everything else is SlowStep / A-literature until receipt. Canonical truth closure lives in
+`docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md`.
+
+## 0. Closure lane
+
+`Python reference → Lean 4 target → Agda target → Rust executable → functional/integration → replay → bounded operations`
+
+The core set defines the stronger layers of that lane. Narrative and transport surfaces remain
+preserved, but they do not override the promoted proof, executable, replay, or provenance bundle.
 
 ---
 

@@ -3,7 +3,12 @@
 **BUMP_ID:** HnS-HANDOFF-2026-04-01
 **Status:** ACTIVE | CANONICAL
 **Authors:** Claude (Reason) + Grok (Pulse) · co-morphic design
-**Invariant:** α + ω = 15 · WAVE ≥ 0.95
+**Invariant:** α + ω = 15 read-only label · WAVE target ≥ 0.95 when measurable
+
+**Canonical note:** Handoffs preserve user-authored narrative and reference material, but truth
+promotion follows `docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md`. GitHub Actions,
+Discussions, copied packets, and artifacts are zero-trust transport. `α + ω = 15` is a
+null-closed computational check and handoff-identification signal only.
 
 > "The braid closes where it began — but the landscape it encloses has changed."
 > — trace_synthesis, Part VII
@@ -63,10 +68,10 @@ The envelope is the minimum viable context for cold-start continuation.
 ### 1.3 Validation Rule
 
 A receiving strand MUST verify:
-1. `α + ω = 15` (reject if invariant broken)
-2. `WAVE ≥ 0.85` (flag warning if below; reject if below 0.70)
-3. `BUMP_ID` is well-formed and not a duplicate
-4. `FROM` matches a known strand identity
+1. if `α` and `ω` are present, compute the read-only `α + ω = 15` check and quarantine malformed packets rather than treating the result as authority
+2. record WAVE, stress, strain, and signal completeness when available; missing signals increase restriction rather than fabricate a pass
+3. `BUMP_ID` is well-formed, not a duplicate, and linked to the declared parent context
+4. `FROM` matches a known strand identity or is explicitly marked unverified
 
 ---
 
@@ -314,7 +319,7 @@ document_classes:
   - ATOM_TRAIL              # Append-only audit log entry
 ```
 
-### 6.3 Blacklisted Patterns (auto-reject)
+### 6.3 Blacklisted Patterns (quarantine or reject by class)
 
 ```yaml
 blacklist:
@@ -332,7 +337,7 @@ blacklist:
 
   - pattern: "α\\s*\\+\\s*ω\\s*=\\s*(?!15)\\d+"
     reason: "invariant violation"
-    action: REJECT
+    action: QUARANTINE_AND_LOG
 
   - pattern: "(?:password|secret|private.?key|api.?key)\\s*[:=]\\s*\\S+"
     reason: "credential leak"
@@ -353,7 +358,7 @@ blacklist:
 | `@all` | Broadcast to all strands |
 | `!checkpoint` | Force all strands to emit current CHECKPOINT |
 | `!rotate [from] [to]` | Initiate token-limit rotation from one strand to another |
-| `!seal` | Argonath seal — lock current state as canonical |
+| `!seal` | Record the current state as a narrative/reference checkpoint with hashes and lineage |
 | `!reforge [target]` | Initiate deep restructuring of target component |
 | `!purge [scope]` | Remove specified scope from active context (Limbo) |
 | `!wave` | Request WAVE score from all active strands |
@@ -380,7 +385,7 @@ The receiving strand MUST:
 1. **Extract** all skill invocations from the message (use regex §5.2)
 2. **Validate** each skill exists in the active skill registry
 3. **Check context sufficiency:** Are prerequisite tools, data, and MCPs available?
-4. **Coherence gate:** WAVE ≥ 0.85 before any execution
+4. **Execution band check:** use available WAVE, stress, strain, provenance, and signal completeness to determine the allowed execution band; missing signals tighten restriction
 5. **Conflict detection:** If multiple invocations are interdependent, emit an
    execution plan before proceeding:
    ```
@@ -397,43 +402,40 @@ The receiving strand MUST:
 
 ---
 
-## 8. PERMISSION MODEL
+## 8. ROLES AND SAFE ACTIONS
 
-### 8.1 Authority Levels
+### 8.1 Roles
 
 ```
-SOVEREIGN (Matt/Argonath)
+OPERATOR
     │
-    ├── Can override any strand decision
-    ├── Can seal/unseal checkpoints
-    ├── Can initiate reforge
-    ├── Can modify this protocol
+    ├── Can route work, request checkpoints, review evidence, and initiate rollback/restoration
+    ├── Can start or stop bounded workflows that already exist in the repository
+    ├── CANNOT convert a missing proof, test, replay, or provenance predicate into truth by fiat
     │
-STRAND (Claude/Grok/Gemini)
+STRAND
     │
     ├── Can emit within own document classes
     ├── Can ACK/BLOCK/DEFER
-    ├── Can flag VOIDs
+    ├── Can flag VOIDs and uncertainty
     ├── Can request !checkpoint
-    ├── CANNOT override another strand's sealed output
-    ├── CANNOT modify this protocol (can propose changes)
+    ├── CANNOT promote a claim without the declared evidence bundle
     │
 OBSERVER (external agents, CI/CD, automated tools)
     │
-    ├── Can read checkpoints
-    ├── Can emit ATOM_TRAIL entries
-    ├── CANNOT emit handoffs
-    ├── CANNOT modify state
+    ├── Can read checkpoints and emit ATOM_TRAIL entries
+    ├── Can run validation that is already permitted by the repository
+    ├── CANNOT create authority-only state transitions
 ```
 
 ### 8.2 Escalation Protocol
 
-When a strand encounters a decision that exceeds its authority:
+When a strand encounters a decision whose predicates are incomplete:
 
-1. Emit `[BLOCK: requires SOVEREIGN decision]`
-2. Include the decision context and options
-3. Wait for Admin response before proceeding
-4. If Admin is unavailable, emit CHECKPOINT and enter standby
+1. Emit `[BLOCK: missing predicate or elevated uncertainty]`
+2. Include the exact missing proof, test, replay, provenance, or signal context
+3. Continue only on read-only, validation, repair, or rollback paths
+4. If the operator is unavailable, emit CHECKPOINT and enter standby rather than fabricate a pass
 
 ---
 

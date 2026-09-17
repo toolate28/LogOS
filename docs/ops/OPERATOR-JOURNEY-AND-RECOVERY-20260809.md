@@ -5,6 +5,11 @@
 **Release:** LogOS lattice **v0.3.0**  
 **Doctrine:** capability ≠ authority · residual-zero observe only · α+ω=15 **[C]** label only
 
+Canonical truth-closure and rollback rules live in
+`docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md`. Operator flow preserves narrative,
+validates at the local/static narrow waist, and uses stress / strain / uncertainty bands to
+restrict execution when signals are missing.
+
 This document is the **user-journey spine** for the lattice release. Every stage
 lists: happy path → common faults → remediation command → recovery loop exit.
 
@@ -39,7 +44,7 @@ claim_lint · cutile claim_gate (no false green)
 entangle emit-slice → ingest PR → human merge
     │  fail → §R8 ship / 408
     ▼
-tagged release verify · SAIF human gates only ⚑
+tagged release verify · bounded human review of evidence bundle only ⚑
 ```
 
 ---
@@ -149,8 +154,8 @@ skip forward on amber. Never promote residual-zero to deploy-green.
 2. Match §R# table — do not invent new gate
 3. Run ONE remediation command
 4. Re-enter stage verify
-5. If still red after two loops → escalate SAIF human queue ⚑
-6. Never: residual-zero promotion · force-push · unauthenticated Cloud Run
+5. If still red after two loops → escalate SAIF human queue for review of the evidence bundle ⚑
+6. Never: residual-zero promotion · force-push · unauthenticated Cloud Run · approval-only truth transition
 ```
 
 Scripted subset:

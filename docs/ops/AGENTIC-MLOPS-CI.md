@@ -1,7 +1,7 @@
 # Agentic MLOps CI — CODEX code scanning & badges
 
 **ATOM:** `ATOM-CODEX-MLOPS-20260804-sm100`  
-**Status:** Active · deterministic gates · honest categories  
+**Status:** Active · deterministic restrictions · honest categories  
 **capability ≠ authority**
 
 ## Purpose
@@ -43,7 +43,7 @@ python ops/ci/codex_scan.py \
 | Topology α/ω tag | L6 | **C** | **never** |
 
 Composite score is a weighted rollup on **0–100**.  
-**Publish posture** aligns with WAVE gate **≥ 85** (`docs/security/WAVE-SCALE.md`).
+**Integration posture** records the historical WAVE floor **≥ 85** (`docs/security/WAVE-SCALE.md`), but promotion still requires the truth-closure predicates in `docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md`.
 
 Exit code **1** only when security-category errors exist (unless `--no-fail-on-security`).
 
@@ -87,7 +87,7 @@ Workflow status badges (native GitHub):
 [![Security Advisory](https://github.com/toolate28/LogOS/actions/workflows/security-advisory.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/security-advisory.yml)
 ```
 
-On pushes to `main`, the `publish-badges` job regenerates and commits `docs/badges/*` when values change. The workflow ignores `docs/badges/**` paths to avoid loops.
+On pushes to `main`, the `publish-badges` job regenerates and commits `docs/badges/*` when values change. The workflow ignores `docs/badges/**` paths to avoid loops. Badge JSON and workflow artifacts are transport and posture surfaces, not standalone authority.
 
 ## Related automations
 

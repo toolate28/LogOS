@@ -1,26 +1,31 @@
-# WAVE scale — one scale, four gates
+# WAVE scale — posture bands, not authority
 
 **Canonical scale: 0–100 integer.**  
-**85 and 0.85 name the same publish gate** (normalised = score / 100).
+WAVE is an operational posture signal that feeds execution bands; it does **not** by itself
+authorize proof, promotion, authentication, or deployment.
 
-| Label | Score | Normalised | Use |
-|-------|------:|------------|-----|
-| BASELINE | 60 | 0.60 | floor for exploratory work |
-| EMERGENT | 80 | 0.80 | integration / strand handoff floor |
-| **PUBLISH** | **85** | **0.85** | npm publish · docs merge · HUP handoff |
-| CRITICAL | 99 | 0.99 | high-assurance corridors only |
+## Inputs
 
-### Superseded
+- **Stress** — external load, novelty, outages, concurrency, hostile/noisy context.
+- **Strain** — internal inconsistency, failing proofs/tests, replay drift, stale lineage.
+- **Uncertainty** — derived from stress, strain, signal completeness, and divergence.
 
-- SAIF-era **WAVE ≥ 0.98** as the default publish / docs-merge gate is
-  **superseded**. Keep historical references only with that label.
+Missing signals always increase uncertainty and tighten the allowed execution band.
 
-### Fibonacci strand weights (convention)
+## Bands
 
-Components remain weighted **8 : 5 : 3** → **50% / 31.25% / 18.75%**.  
-The ratio arithmetic is exact; choosing Fibonacci weights is a **Category C**
-convention, not a load-bearing physical law.
+| Band | WAVE guidance | Meaning | Allowed execution |
+|------|---------------|---------|-------------------|
+| Observe-only | < 60 or unknown | high uncertainty / missing signals | preserve evidence, quarantine, repair, replay locally |
+| Reference / validation | 60–84 | bounded but incomplete confidence | docs, schemas, prototypes, local validation, targeted tests |
+| Integration / replay candidate | 85–97 | bounded operational confidence | integration tests, replay, dry-runs, recovery rehearsal |
+| High-coherence target | 98–100 | preferred operating target when measurable | same as above, with tighter confidence; still not promotion authority |
 
-### Category C
+## Notes
 
-`α + ω = 15` remains a **labeled systemic convention**, not a security gate.
+- **85 / 0.85** remains the historical floor for integration/publish posture in existing docs.
+- **0.98** remains the preferred high-coherence operating target in strand guidance.
+- Neither value can substitute for the proof/test/replay/provenance predicates defined in
+  `docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md`.
+- `α + ω = 15` remains a Category C read-only computational check and handoff-identification
+  signal only.

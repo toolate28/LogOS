@@ -23,6 +23,19 @@ When in doubt, **prefer** WAVE coherence ≥ 0.98 and minimal VOID expansion as 
 **operational target**, not a hard constitutional threshold that blocks progress.
 Honest amber / Category B status is preferred over false-green claims.
 
+## Truth closure
+
+- Preserve user-authored narrative and speculative material as narrative unless a stronger
+  evidence layer verifies it.
+- Treat GitHub Actions, Discussions, copied handoffs, and uploaded artifacts as zero-trust,
+  ephemeral transport. Re-validate them at the local/static narrow waist.
+- Strongest admissible truth claims come from the declared Python reference → Lean 4 → Agda →
+  Rust → functional/replay/operational chain.
+- `α + ω = 15` is a null-closed, read-only computational check and handoff-identification signal
+  only; never authority, proof, authentication, promotion, deployment authorization, or punishment.
+- Track stress, strain, and uncertainty honestly. Missing signals increase restriction on allowed
+  execution; no approval-only or override-only state transition may promote a claim.
+
 ## Master Architecture
 
 The entire system is a 4D xyzt manifold navigated by the 4D Topological Rotor.

@@ -17,6 +17,12 @@
 [![MCP Validation](https://github.com/toolate28/LogOS/actions/workflows/mcp-validation.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/mcp-validation.yml)
 [![Labels](https://github.com/toolate28/LogOS/actions/workflows/labels.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/labels.yml)
 
+Canonical truth-closure guidance lives in `docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md`.
+User-authored narrative is preserved and may be distributed through GitHub Actions, Discussions,
+artifacts, and the local/static narrow waist, while the strongest admissible truth claims come
+only from the declared Python → Lean 4 → Agda → Rust → functional/replay/operational evidence
+chain. `α + ω = 15` remains a read-only computational label and handoff-identification signal.
+
 ```text
      PowerShell 7+   ·   Import-Module ops\LogOS.Shell.psm1   ·   ops\LogOS.Windows.psm1
      LogOS shell     ·   α+ω=15 [C]   ·   LOGOS_ROOT portable · %USERPROFILE%\LogOS
@@ -64,7 +70,7 @@
   ops/net/LogOS.NetProxy.ps1 ........... net lanes · gaming / privacy / optimize
   docs/canon/CORE.md ................... unitary docs standard · current choke pointer
   docs/ops/CHECKPOINT-CHOKE-20260814.md  LABEL→FIX→BUILD packet (Claude next)
-  docs/formal/FORMAL-EXECUTABLE-MAP.md . formal versus executable corners
+  docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md .. truth closure · formal/executable map
   docs/media/GAIT-MONO-SPEC-*.md ....... hand-off monotype · unitarity U1-U6
   tools/claim_lint.py .................. untagged quantitative claims fail
   VERSION / CHANGELOG.md ............... lattice tag v0.3.0
@@ -101,16 +107,16 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  ████  A   kernel-checked on stated definitions ................. may gate · absolute
-  ▓▓▓▓  B   staged · externally witnessed · smoke-pending ......... may gate · labelled
-  ▒▒▒▒  C   convention · telemetry · governance .................. may gate · labelled
-            not load-bearing in proofs
+  ████  A   kernel-checked on stated definitions ................. strongest admissible truth in scope
+  ▓▓▓▓  B   executable / integration / replay evidence ........... bounded truth in declared scope
+  ▒▒▒▒  C   convention · telemetry · governance .................. never authority, proof, or auth
+            preserved for narrative and operations; not load-bearing in proofs
   ░░░░  D   decoration · retired numerology · unanchored ......... NO
   ····  S   spec or interface · sorry · axiom · placeholder ...... not as theorem
 
-  Conservation tag α + ω = 15 is always Category C — never a CPU, IO, or limit gate.
+  Conservation tag α + ω = 15 is always Category C — never authority, proof, auth, or deploy gate.
   residual-zero: observe only. Promotion matrix element stays 0.
-  Mechanical gate  lean/TriWeavon/Epistemics/*  ·  tools/claim_lint.py  ·  claim_gate.rs
+  Evidence lanes  Python refs · Lean 4 · Agda · Rust · functional/replay checks
 ```
 ```text
 ████████████████████████████████████████████████████████████████████████████████████████████████
@@ -160,15 +166,15 @@
 
   Conservation tag ..... α + ω = 15 · Viviani Peak label ..................... C
   Nat skeleton ......... WavePair · 7 + 8 = 15 in Lean ....................... A
-  Runtime policy ....... float bands · Crystalline / Warn / Halt ............. B
-  WAVE floors .......... ops floor 0.85 · peak display ....................... C/B
-  residual-zero ........ observe only · gate blocked ......................... C
+  Runtime policy ....... stress / strain / uncertainty bands ................ B
+  Functional / replay .. tests · schemas · bounded deploy checks ............. A/B
+  WAVE posture ......... telemetry band input · 85 floor / 98 target ......... B/C
+  residual-zero ........ observe only · quarantine / no promote .............. C
   MOG/MRG bitmasks ..... observe-axis error correction only · no promote ..... C
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-  UNRESOLVED   two WAVE thresholds circulate — ops floor 0.85 and header invariant 0.995.
-               Both appear as gates in different surfaces. Only one can be the gate.
-               Recorded, not silently reconciled.
+  CANONICAL   Missing signals increase restriction. WAVE contributes to posture but does not
+              authorize promotion by itself. See docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md.
 ```
 ```text
 ████████████████████████████████████████████████████████████████████████████████████████████████
@@ -273,7 +279,7 @@
   crates/spiral-safe      lean/TriWeavon/*
   crates/atom-sig         lean/K22/*
 
-  FORMAL versus EXECUTABLE map   docs/formal/FORMAL-EXECUTABLE-MAP.md
+  FORMAL versus EXECUTABLE map   docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md
 
   Lean surfaces installed or revised — not whole-workspace green
     Epistemics/Category · GateConsumer
@@ -403,7 +409,7 @@
   ░░░░ whole-OS formal verification marketing
   ░░░░ Clay statements such as NS regularity as shipped claims
   ░░░░ identity of seat-sum 16 with the conservation tag 15
-  ░░░░ residual-zero promotion without an open gate
+  ░░░░ authority-only or override-only promotion paths
 
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ██  §14  TRUST RULES  ·  short                                                                ██
@@ -435,8 +441,8 @@
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
   CLAUDE.md · AGENTS.md .................... strand and GitNexus doctrine
-  docs/formal/FORMAL-EXECUTABLE-MAP.md ..... four corners
-  docs/formal/EPISTEMICS-GATE-REGISTER.md .. gate register
+  docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md .. truth classes · promotion · rollback
+  docs/formal/CORE-SET.md .................. formal / executable boundary map
   docs/ops/LOGOS-CLEAN-DESIGN-2026-08-07.md  hygiene design
   docs/ops/BOOT-PROMPT-SET.md .............. cold boot · from idle · hot start
   ops/net/README.md ........................ net proxy
