@@ -1,11 +1,123 @@
-# LogOS Entangle Manifest — local ⇄ remote path slots
+# LogOS Entangle Manifest — local ⇄ narrow-wormhole path slots
 # ATOM: ATOM-ENTANGLE-MANIFEST-20260809
-# Remote scaffold opens empty PR slots; local emit fills them; human approves.
+# Observation wormholes bind Discussions + ephemeral roots; path slots stay bounded.
 # capability ≠ authority. α+ω=15 is Category C label only.
 
 version: 1
 atom: ATOM-ENTANGLE-MANIFEST-20260809
-updated: "2026-08-15"
+updated: "2026-09-17"
+
+component_classes:
+  visual-observation:
+    admissible_sources:
+      - youtube
+      - notebooklm
+      - grokCollections
+      - googleDrive
+      - githubDiscussion
+    verify:
+      - python ops/ci/entangle_observe.py capture --help
+      - python ops/ci/entangle_observe.py reconcile --help
+  notebooklm-closure:
+    admissible_sources:
+      - notebooklm
+      - githubDiscussion
+    verify:
+      - python ops/ci/entangle_observe.py close --help
+  grok-closure:
+    admissible_sources:
+      - grokCollections
+      - githubDiscussion
+    verify:
+      - python ops/ci/entangle_observe.py reconcile --help
+  drive-archive:
+    admissible_sources:
+      - googleDrive
+      - githubDiscussion
+    verify:
+      - python ops/entangle/validate_manifest.py
+  algebra-3a:
+    admissible_sources:
+      - youtube
+      - notebooklm
+      - grokCollections
+      - googleDrive
+      - githubDiscussion
+    verify:
+      - python ops/ci/entangle_observe.py reconcile --help
+
+source_bindings:
+  youtube:
+    trust_class: observational-media
+    authority_effect: none
+    required_fields:
+      - videoId
+      - segments
+      - transcriptSha256
+  notebooklm:
+    trust_class: secondary-synthesis
+    authority_effect: none
+    required_fields:
+      - documentId
+      - snapshotPath
+      - snapshotSha256
+  grokCollections:
+    trust_class: clustered-commentary
+    authority_effect: none
+    required_fields:
+      - collectionId
+      - snapshotPath
+      - snapshotSha256
+  googleDrive:
+    trust_class: bulk-archive
+    authority_effect: none
+    required_fields:
+      - objectId
+      - sha256
+      - pathHint
+  githubDiscussion:
+    trust_class: narrow-waist-coordination
+    authority_effect: none
+    required_fields:
+      - number
+      - url
+
+invariant_profiles:
+  norton-sakuma-3a:
+    authority_effect: none
+    allowed_involutions:
+      - swap-observer-observed
+      - reverse-segment-order
+      - mirror-claim-polarity
+    return_conditions:
+      - double-normalization-fixed-point
+      - duplicate-fragment-ratio-below-budget
+      - source-order-independent-digests
+    noise_erasures:
+      - timestamp-jitter
+      - ocr-noise
+      - ui-chrome
+      - duplicate-semantic-fragments
+    failure_states:
+      - involution_escape
+      - noise-budget-exceeded
+      - source-class-violation
+      - component-path-drift
+      - codeql-incompatible
+
+closure_states:
+  - observed
+  - normalized
+  - reconciled
+  - drifted
+  - closure-ready
+  - held
+
+narrow_wormhole:
+  authority_effect: none
+  discussion_required: true
+  ephemeral_root_required: true
+  state_root: runner.temp
 
 # Path slices that may land independently (no crates/target, no .git)
 components:
@@ -115,9 +227,10 @@ components:
     title: Local verify scaffolding
     paths:
       - ops/ci/
+      - .github/workflows/entangle-observe.yml
     verify:
       - python ops/ci/assert_action_pins.py
-      - bash ops/ci/guard.sh
+      - python ops/ci/entangle_observe.py workflow-guard --workflow-path .github/workflows/entangle-observe.yml
     saif: security
     priority: A
 
@@ -136,6 +249,89 @@ components:
     saif: ops
     priority: A
     notes: "error→remediation R1–R8 · Hopf observe-only · tag v0.3.0"
+
+  - id: visual-observation
+    class: visual-observation
+    title: Video-linked observation envelopes
+    paths:
+      - docs/encyclopedia-equilibria/surfaces/
+      - docs/notebooklm/
+    verify:
+      - python ops/ci/entangle_observe.py capture --help
+      - python ops/ci/entangle_observe.py reconcile --help
+    saif: media
+    priority: A
+    admissible_sources:
+      - youtube
+      - notebooklm
+      - grokCollections
+      - googleDrive
+      - githubDiscussion
+    invariant_profile: norton-sakuma-3a
+    notes: "YouTube + NotebookLM observation lane; discussion-tied narrow wormhole."
+
+  - id: notebooklm-closure
+    class: notebooklm-closure
+    title: NotebookLM closure snapshots
+    paths:
+      - docs/notebooklm/
+    verify:
+      - python ops/ci/entangle_observe.py close --help
+    saif: docs
+    priority: A
+    admissible_sources:
+      - notebooklm
+      - githubDiscussion
+    invariant_profile: norton-sakuma-3a
+
+  - id: grok-closure
+    class: grok-closure
+    title: Grok collection closure overlays
+    paths:
+      - docs/ops/STRAND-VERDICT-GEMINI-GROK-20260403-B.md
+      - docs/encyclopedia-equilibria/misc/
+    verify:
+      - python ops/ci/entangle_observe.py reconcile --help
+    saif: docs
+    priority: B
+    admissible_sources:
+      - grokCollections
+      - githubDiscussion
+    invariant_profile: norton-sakuma-3a
+
+  - id: drive-archive
+    class: drive-archive
+    title: Google Drive closure archive pointers
+    paths:
+      - docs/encyclopedia-equilibria/README.md
+      - ops/entangle/transfer-lane.md
+    verify:
+      - python ops/entangle/validate_manifest.py
+    saif: media
+    priority: B
+    admissible_sources:
+      - googleDrive
+      - githubDiscussion
+    invariant_profile: norton-sakuma-3a
+
+  - id: algebra-3a
+    class: algebra-3a
+    title: Norton–Sakuma 3A involution lane
+    paths:
+      - docs/formal/
+      - cutiles/cutile/src/
+      - docs/encyclopedia-equilibria/formal-lean/
+    verify:
+      - python ops/ci/entangle_observe.py reconcile --help
+    saif: formal
+    priority: A
+    admissible_sources:
+      - youtube
+      - notebooklm
+      - grokCollections
+      - googleDrive
+      - githubDiscussion
+    invariant_profile: norton-sakuma-3a
 
   - id: showcase-media
     title: coherence-site showcase media (LFS / bulk)
@@ -159,7 +355,7 @@ excludes:
   - "**/*.rlib"
   - "**/*.rmeta"
 
-# Remote PR layout the Actions scaffold creates
+# Remote PR layout remains optional; observation closure uses the narrow wormhole.
 remote:
   base: main
   branch_prefix: entangle/
@@ -175,13 +371,13 @@ remote:
     ### Paths
     {paths}
 
-    ### Verify (local then CI)
+    ### Verify
     {verify}
 
-    ### Protocol
-    1. Remote scaffold opened this empty (or placeholder) PR.
-    2. Operator runs `pwsh -File ops/entangle/emit-slice.ps1 -Id {id}` and attaches the slice.
-    3. Actions `entangle` workflow mode=`ingest` applies the slice (or human commits).
-    4. Human approves merge after Verify green.
+    ### Narrow wormhole
+    1. Operator binds a GitHub Discussion to the envelope.
+    2. ENTANGLE Observe normalizes into an ephemeral root.
+    3. Reconcile compares observations to component paths and invariant profile.
+    4. Human approves merge after closure-ready or bounded drift review.
 
     capability ≠ authority · Music conserved

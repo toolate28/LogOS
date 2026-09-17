@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "0.1.0",
+  "kind": "entangle_observation_envelope",
+  "atomTrailId": "ATOM-ENTANGLE-OBSERVE-20260917",
+  "component": {
+    "id": "visual-observation",
+    "class": "visual-observation"
+  },
+  "code": {
+    "commit": "9be3d6fc38d399687e2e99e8c31b62b3af90f9ec",
+    "ref": "refs/heads/main",
+    "paths": [
+      "docs/notebooklm/NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt",
+      "docs/encyclopedia-equilibria/surfaces/The Reforging of 9P _ The Workflow _ Reson8-Labs.html"
+    ]
+  },
+  "wormhole": {
+    "mode": "narrow-wormhole",
+    "ephemeralRoot": "runner://narrow-wormhole",
+    "discussion": {
+      "number": 47,
+      "url": "https://github.com/toolate28/LogOS/discussions/47"
+    }
+  },
+  "sources": {
+    "youtube": [
+      {
+        "videoId": "reson8labs-demo-01",
+        "url": "https://www.youtube.com/watch?v=reson8labs-demo-01",
+        "segments": [
+          {
+            "start": "00:00:14",
+            "end": "00:01:26"
+          }
+        ],
+        "transcriptSha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      }
+    ],
+    "notebooklm": [
+      {
+        "documentId": "NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730",
+        "snapshotPath": "docs/notebooklm/NOTEBOOKLM-SINGLE-IMPORT-LOADBEARING-20260730.txt",
+        "snapshotSha256": "12c812c5ba0e8f72a2a2ffece3dfd17f744eea70ce66c18601c8c1ba08e4e242"
+      }
+    ],
+    "grokCollections": [
+      {
+        "collectionId": "strand-verdict-gemini-grok-20260403-b",
+        "snapshotPath": "docs/ops/STRAND-VERDICT-GEMINI-GROK-20260403-B.md",
+        "snapshotSha256": "57801165d965ea48e1e6b38d854d5cbfd7cf155aa9bd2d1f60e107983efdf395"
+      }
+    ],
+    "googleDrive": [
+      {
+        "objectId": "drive-closure-envelope-001",
+        "sha256": "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789",
+        "pathHint": "My Drive/Reson8_Labs/NotebookLM/closure-envelope-001.pdf",
+        "mimeType": "application/pdf"
+      }
+    ],
+    "githubDiscussion": [
+      {
+        "number": 47,
+        "url": "https://github.com/toolate28/LogOS/discussions/47"
+      }
+    ]
+  },
+  "trust": {
+    "authorityEffect": "none",
+    "sourceClasses": {
+      "youtube": "observational-media",
+      "notebooklm": "secondary-synthesis",
+      "grokCollections": "clustered-commentary",
+      "googleDrive": "bulk-archive",
+      "githubDiscussion": "narrow-waist-coordination"
+    }
+  },
+  "operator": {
+    "principal": "toolate28",
+    "capturedAt": "2026-09-17T20:42:45Z",
+    "purpose": "Bind visual observation, notebook synthesis, Grok clustering, Google Drive archive, and discussion metadata to a bounded ENTANGLE closure envelope."
+  },
+  "noisePolicy": {
+    "profile": "norton-sakuma-3a",
+    "erasures": [
+      "timestamp-jitter",
+      "ocr-noise",
+      "ui-chrome",
+      "duplicate-semantic-fragments"
+    ],
+    "involutionTransforms": [
+      "swap-observer-observed",
+      "reverse-segment-order",
+      "mirror-claim-polarity"
+    ],
+    "returnConditions": [
+      "double-normalization-fixed-point",
+      "duplicate-fragment-ratio-below-budget",
+      "source-order-independent-digests"
+    ],
+    "duplicateFragmentBudget": 0.5
+  },
+  "observations": [
+    {
+      "id": "obs-visual-001",
+      "kind": "visual-claim",
+      "summary": "00:14 [Music] The workflow surface mirrors the notebook claim set. The workflow surface mirrors the notebook claim set.",
+      "transcript": "00:32 Subscribe. The component path stays bounded to docs notebook snapshots and surface HTML. The component path stays bounded to docs notebook snapshots and surface HTML.",
+      "evidence": [
+        "youtube:0",
+        "notebooklm:0",
+        "grokCollections:0",
+        "googleDrive:0",
+        "githubDiscussion:0"
+      ]
+    }
+  ],
+  "state": "observed",
+  "handoff": {
+    "conservationTag": "α + ω = 15",
+    "category": "C"
+  }
+}
