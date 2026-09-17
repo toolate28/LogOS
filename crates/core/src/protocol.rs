@@ -146,7 +146,7 @@ impl WaveScore {
 // Conservation state
 // ---------------------------------------------------------------------------
 
-/// α + ω = 15 invariant.
+/// α/ω computational check state carried as observational metadata.
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct ConservationState {
     pub alpha: u8,

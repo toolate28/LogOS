@@ -1,6 +1,6 @@
 {
   "name": "store_context",
-  "description": "Store cross-platform context with coherence metadata. Conservation law enforced.",
+  "description": "Store cross-platform context with optional α/ω metadata for read-only evidence and handoff recognition only.",
   "inputSchema": {
     "type": "object",
     "properties": {

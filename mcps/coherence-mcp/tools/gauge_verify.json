@@ -1,6 +1,6 @@
 {
   "name": "gauge_verify",
-  "description": "Verify the conservation law: α + ω = 15. Returns gauge status and Fibonacci resonance score.",
+  "description": "Compute a read-only α/ω check result and return gauge data. Not an authorization, proof, or promotion gate.",
   "inputSchema": {
     "type": "object",
     "properties": {

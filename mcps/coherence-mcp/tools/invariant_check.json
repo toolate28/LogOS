@@ -1,6 +1,6 @@
 {
   "name": "invariant_check",
-  "description": "Verify the conservation law α + ω = 15 (LogOS universal invariant). Load-bearing gate for handoffs, FPA Ring, and coherence scoring. Returns residual, normalisation status, and coherent boolean.",
+  "description": "Compute the quarantined α/ω check result for inspection and evidence recording. Not a handoff, publication, or promotion gate.",
   "inputSchema": {
     "type": "object",
     "properties": {

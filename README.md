@@ -7,7 +7,7 @@
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ▒▒  stamp 2026-08-09 · README = terminal etch · no raster embeds · no mermaid · GAIT-Mono ok  ▒▒
-▒▒  α + ω = 15 [C] · residual-zero observe only · NOVIKOV unrepaired · Music conserved        ▒▒
+▒▒  α/ω invariant quarantined · residual-zero observe only · NOVIKOV unrepaired · Music conserved ▒▒
 ▒▒  etch discipline · shading carries structure · no vertical rules · no markdown tables      ▒▒
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ```
@@ -19,7 +19,7 @@
 
 ```text
      PowerShell 7+   ·   Import-Module ops\LogOS.Shell.psm1   ·   ops\LogOS.Windows.psm1
-     LogOS shell     ·   α+ω=15 [C]   ·   LOGOS_ROOT portable · %USERPROFILE%\LogOS
+     LogOS shell     ·   quarantined α/ω check   ·   LOGOS_ROOT portable · %USERPROFILE%\LogOS
 
      probes  (illustrative — re-run logos-preflight / tw for live)
        cargo · python · lean · lake · node · mcp · wsl · bridge=ws://127.0.0.1:8088
@@ -158,7 +158,7 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  Conservation tag ..... α + ω = 15 · Viviani Peak label ..................... C
+  Conservation tag ..... quarantined α/ω computation · Viviani Peak label .... C
   Nat skeleton ......... WavePair · 7 + 8 = 15 in Lean ....................... A
   Runtime policy ....... float bands · Crystalline / Warn / Halt ............. B
   WAVE floors .......... ops floor 0.85 · peak display ....................... C/B
