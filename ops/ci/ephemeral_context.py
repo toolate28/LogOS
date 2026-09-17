@@ -23,6 +23,12 @@ HEX40 = set("0123456789abcdef")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from uncertainty_bands import assess_uncertainty  # noqa: E402
 
+try:
+    from jsonschema import Draft202012Validator, FormatChecker
+except ImportError:  # pragma: no cover - fallback is exercised only if dependency is absent
+    Draft202012Validator = None
+    FormatChecker = None
+
 
 class ValidationError(ValueError):
     """Fail-closed validation error."""
@@ -125,6 +131,22 @@ def _read_json(path: Path) -> Any:
         raise ValidationError(f"missing file: {path}") from exc
     except json.JSONDecodeError as exc:
         raise ValidationError(f"invalid JSON at {path}: {exc}") from exc
+
+
+def _validate_with_published_schema(envelope: dict[str, Any], schema_path: Path) -> None:
+    if Draft202012Validator is None or FormatChecker is None:
+        raise ValidationError("jsonschema dependency unavailable for published schema validation")
+    schema = _read_json(schema_path)
+    if not isinstance(schema, dict):
+        raise ValidationError("published schema must be an object")
+    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    errors = sorted(validator.iter_errors(envelope), key=lambda error: list(error.path))
+    if errors:
+        error = errors[0]
+        location = "$"
+        if error.path:
+            location += "." + ".".join(str(part) for part in error.path)
+        raise ValidationError(f"schema validation failed at {location}: {error.message}")
 
 
 def _parse_time(value: str) -> dt.datetime:
@@ -362,8 +384,6 @@ def validate_envelope(
     seen_hashes_file: Path | None = None,
     record_seen: bool = False,
 ) -> dict[str, Any]:
-    if not SCHEMA_PATH.is_file():
-        raise ValidationError(f"missing schema file: {SCHEMA_PATH}")
     policy = _load_policy_manifest(policy_manifest_path)
     fragments = _authority_fragments(policy)
 
@@ -386,6 +406,7 @@ def validate_envelope(
     _validate_observations(envelope["observations"], labels, fragments)
     _reject_secret_like_narrative(envelope["observations"])
     _validate_uncertainty(envelope.get("uncertainty"), fragments)
+    _validate_with_published_schema(envelope, SCHEMA_PATH)
 
     generated_at = _parse_time(envelope["generated_at"])
     expires_at = _parse_time(envelope["expires_at"])
