@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import copy
 import datetime as dt
+import fcntl
 import hashlib
 import json
 import os
@@ -172,18 +173,11 @@ def _authority_fragments(policy: dict[str, Any]) -> tuple[str, ...]:
     return tuple(fragment.lower() for fragment in fragments)
 
 
-def _check_forbidden_keys(node: Any, fragments: tuple[str, ...], path: str = "$") -> None:
-    if isinstance(node, dict):
-        for key, value in node.items():
-            lowered = key.lower()
-            if any(fragment in lowered for fragment in fragments):
-                raise ValidationError(f"authority-bearing field rejected at {path}.{key}")
-            if key == "authority_effect" and value != "none":
-                raise ValidationError(f"authority_effect must be none at {path}.{key}")
-            _check_forbidden_keys(value, fragments, f"{path}.{key}")
-    elif isinstance(node, list):
-        for index, value in enumerate(node):
-            _check_forbidden_keys(value, fragments, f"{path}[{index}]")
+def _reject_forbidden_extra_fields(extras: set[str], fragments: tuple[str, ...], scope: str) -> None:
+    for field_name in sorted(extras):
+        lowered = field_name.lower()
+        if any(fragment in lowered for fragment in fragments):
+            raise ValidationError(f"authority-bearing field rejected at {scope}.{field_name}")
 
 
 def _event_identifier(payload: dict[str, Any], workflow_run_id: int) -> tuple[str, int | None, int | None, int | None]:
@@ -240,23 +234,25 @@ def compute_context_hash(envelope: dict[str, Any]) -> str:
     return _sha256_bytes(_canonical_bytes(candidate))
 
 
-def _validate_top_level(envelope: dict[str, Any]) -> None:
+def _validate_top_level(envelope: dict[str, Any], fragments: tuple[str, ...]) -> None:
     keys = set(envelope)
     if not REQUIRED_TOP_LEVEL.issubset(keys):
         missing = sorted(REQUIRED_TOP_LEVEL - keys)
         raise ValidationError(f"missing required fields: {', '.join(missing)}")
     extras = keys - REQUIRED_TOP_LEVEL - OPTIONAL_TOP_LEVEL
+    _reject_forbidden_extra_fields(extras, fragments, "$")
     if extras:
         raise ValidationError(f"unexpected top-level fields: {', '.join(sorted(extras))}")
 
 
-def _validate_event(event: Any) -> None:
+def _validate_event(event: Any, fragments: tuple[str, ...]) -> None:
     if not isinstance(event, dict):
         raise ValidationError("event must be an object")
     if not EVENT_REQUIRED.issubset(event):
         missing = sorted(EVENT_REQUIRED - set(event))
         raise ValidationError(f"missing event fields: {', '.join(missing)}")
     extras = set(event) - EVENT_ALLOWED
+    _reject_forbidden_extra_fields(extras, fragments, "$.event")
     if extras:
         raise ValidationError(f"unexpected event fields: {', '.join(sorted(extras))}")
     if not isinstance(event["name"], str) or not event["name"]:
@@ -302,16 +298,17 @@ def _validate_hash_entries(evidence_hashes: Any) -> set[str]:
     return labels
 
 
-def _validate_observations(observations: Any, known_labels: set[str]) -> None:
+def _validate_observations(observations: Any, known_labels: set[str], fragments: tuple[str, ...]) -> None:
     if not isinstance(observations, list) or not observations:
         raise ValidationError("observations must be a non-empty array")
-    for observation in observations:
+    for index, observation in enumerate(observations):
         if not isinstance(observation, dict):
             raise ValidationError("observation must be an object")
         if not OBS_REQUIRED.issubset(observation):
             missing = sorted(OBS_REQUIRED - set(observation))
             raise ValidationError(f"missing observation fields: {', '.join(missing)}")
         extras = set(observation) - OBS_ALLOWED
+        _reject_forbidden_extra_fields(extras, fragments, f"$.observations[{index}]")
         if extras:
             raise ValidationError(f"unexpected observation fields: {', '.join(sorted(extras))}")
         if observation["truth_status"] not in TRUTH_STATUSES:
@@ -329,11 +326,13 @@ def _validate_observations(observations: Any, known_labels: set[str]) -> None:
             raise ValidationError("narrative observations must use truth_status=unverified")
 
 
-def _validate_uncertainty(uncertainty: Any) -> None:
+def _validate_uncertainty(uncertainty: Any, fragments: tuple[str, ...]) -> None:
     if uncertainty is None:
         return
     if not isinstance(uncertainty, dict):
         raise ValidationError("uncertainty must be an object")
+    extras = set(uncertainty) - UNCERTAINTY_REQUIRED
+    _reject_forbidden_extra_fields(extras, fragments, "$.uncertainty")
     if set(uncertainty) != UNCERTAINTY_REQUIRED:
         raise ValidationError("uncertainty must contain exactly the required fields")
     for field in ("stress", "strain", "provenance_confidence", "crosscheck_confidence"):
@@ -370,8 +369,7 @@ def validate_envelope(
 
     if not isinstance(envelope, dict):
         raise ValidationError("envelope must be an object")
-    _validate_top_level(envelope)
-    _check_forbidden_keys(envelope, fragments)
+    _validate_top_level(envelope, fragments)
 
     if envelope["schema_version"] != "1.0.0":
         raise ValidationError("schema_version must be 1.0.0")
@@ -382,12 +380,12 @@ def validate_envelope(
     if envelope["authority_effect"] != "none":
         raise ValidationError("authority_effect must be none")
 
-    _validate_event(envelope["event"])
+    _validate_event(envelope["event"], fragments)
     _validate_commit(envelope["commit"])
     labels = _validate_hash_entries(envelope["evidence_hashes"])
-    _validate_observations(envelope["observations"], labels)
+    _validate_observations(envelope["observations"], labels, fragments)
     _reject_secret_like_narrative(envelope["observations"])
-    _validate_uncertainty(envelope.get("uncertainty"))
+    _validate_uncertainty(envelope.get("uncertainty"), fragments)
 
     generated_at = _parse_time(envelope["generated_at"])
     expires_at = _parse_time(envelope["expires_at"])
@@ -424,18 +422,29 @@ def validate_envelope(
         raise ValidationError("context_hash mismatch")
 
     if seen_hashes_file is not None:
-        seen_hashes = []
-        if seen_hashes_file.exists():
-            loaded = _read_json(seen_hashes_file)
-            if not isinstance(loaded, list) or not all(isinstance(x, str) for x in loaded):
-                raise ValidationError("seen hashes file must be a JSON string array")
-            seen_hashes = loaded
-        if envelope["context_hash"] in seen_hashes:
-            raise ValidationError("replayed context hash rejected")
-        if record_seen:
-            seen_hashes.append(envelope["context_hash"])
-            seen_hashes_file.parent.mkdir(parents=True, exist_ok=True)
-            seen_hashes_file.write_text(json.dumps(seen_hashes, indent=2) + "\n", encoding="utf-8")
+        seen_hashes_file.parent.mkdir(parents=True, exist_ok=True)
+        with seen_hashes_file.open("a+", encoding="utf-8") as handle:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+            handle.seek(0)
+            raw = handle.read().strip()
+            if raw:
+                try:
+                    seen_hashes = json.loads(raw)
+                except json.JSONDecodeError as exc:
+                    raise ValidationError("seen hashes file must be valid JSON") from exc
+                if not isinstance(seen_hashes, list) or not all(isinstance(x, str) for x in seen_hashes):
+                    raise ValidationError("seen hashes file must be a JSON string array")
+            else:
+                seen_hashes = []
+            if envelope["context_hash"] in seen_hashes:
+                raise ValidationError("replayed context hash rejected")
+            if record_seen:
+                seen_hashes.append(envelope["context_hash"])
+                handle.seek(0)
+                handle.truncate()
+                handle.write(json.dumps(seen_hashes, indent=2) + "\n")
+                handle.flush()
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
 
     return {
         "context_hash": envelope["context_hash"],
