@@ -12,4 +12,4 @@
 pwsh -File ops/entangle/emit-slice.ps1 -Id net-proxy
 ```
 
-Then run workflow **Entangle** mode=`ingest` with this component, or commit the slice onto `entangle/net-proxy`.
+Then apply the slice locally or commit it onto `entangle/net-proxy`.

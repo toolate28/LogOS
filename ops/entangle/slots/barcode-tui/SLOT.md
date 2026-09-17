@@ -12,4 +12,4 @@
 pwsh -File ops/entangle/emit-slice.ps1 -Id barcode-tui
 ```
 
-Then run workflow **Entangle** mode=`ingest` with this component, or commit the slice onto `entangle/barcode-tui`.
+Then apply the slice locally or commit it onto `entangle/barcode-tui`.

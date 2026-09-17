@@ -11,11 +11,6 @@
 ▒▒  etch discipline · shading carries structure · no vertical rules · no markdown tables      ▒▒
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ```
-[![CODEX / Agentic MLOps](https://github.com/toolate28/LogOS/actions/workflows/codex-mlops.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/codex-mlops.yml)
-[![CodeQL](https://github.com/toolate28/LogOS/actions/workflows/codeql.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/codeql.yml)
-[![Entangle](https://github.com/toolate28/LogOS/actions/workflows/entangle.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/entangle.yml)
-[![MCP Validation](https://github.com/toolate28/LogOS/actions/workflows/mcp-validation.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/mcp-validation.yml)
-[![Labels](https://github.com/toolate28/LogOS/actions/workflows/labels.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/labels.yml)
 
 ```text
      PowerShell 7+   ·   Import-Module ops\LogOS.Shell.psm1   ·   ops\LogOS.Windows.psm1

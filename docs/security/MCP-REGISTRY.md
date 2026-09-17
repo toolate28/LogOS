@@ -22,7 +22,7 @@ Skeleton: `ops/mcp/registry/` (`serve_registry.py` + `catalog/servers.json`).
 | Control | Layer |
 |---------|-------|
 | Registry only | Discovery / installation |
-| `.github/workflows/mcp-validation.yml` | Committed config policy |
+| `ops/ci/validate_mcp_config.py` | Local committed config policy |
 | `.github/copilot/mcp-config.example.json` | Readonly tool list shape |
 | Agent firewall | Bash only — **does not** cover MCP |
 

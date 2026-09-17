@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reson8-labs.dev/schemas/v0.1/entangle-observation-envelope.schema.json",
+  "title": "ENTANGLE Observation Envelope v0.1",
+  "description": "Evidence-only closure envelope linking code paths to visual observations under a discussion-tied narrow wormhole.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "component",
+    "code",
+    "wormhole",
+    "sources",
+    "trust",
+    "operator",
+    "noisePolicy",
+    "observations",
+    "state",
+    "handoff"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "kind": {"const": "entangle_observation_envelope"},
+    "atomTrailId": {"type": "string"},
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "class"],
+      "properties": {
+        "id": {"type": "string", "minLength": 3},
+        "class": {"type": "string", "minLength": 3}
+      }
+    },
+    "code": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "ref", "paths"],
+      "properties": {
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{7,40}$"},
+        "ref": {"type": "string", "minLength": 3},
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "wormhole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "ephemeralRoot", "discussion"],
+      "properties": {
+        "mode": {"const": "narrow-wormhole"},
+        "ephemeralRoot": {"type": "string", "minLength": 1},
+        "discussion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["number", "url"],
+          "properties": {
+            "number": {"type": "integer", "minimum": 1},
+            "url": {
+              "type": "string",
+              "pattern": "^https://github\\.com/[^/]+/[^/]+/discussions/[0-9]+$"
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["youtube", "notebooklm", "grokCollections", "googleDrive", "githubDiscussion"],
+      "properties": {
+        "youtube": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["videoId", "url", "segments", "transcriptSha256"],
+            "properties": {
+              "videoId": {"type": "string", "minLength": 3},
+              "url": {"type": "string", "pattern": "^https://www\\.youtube\\.com/"},
+              "segments": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["start", "end"],
+                  "properties": {
+                    "start": {"type": "string", "minLength": 4},
+                    "end": {"type": "string", "minLength": 4}
+                  }
+                }
+              },
+              "transcriptSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        },
+        "notebooklm": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["documentId", "snapshotPath", "snapshotSha256"],
+            "properties": {
+              "documentId": {"type": "string", "minLength": 3},
+              "snapshotPath": {"type": "string", "minLength": 1},
+              "snapshotSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        },
+        "grokCollections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["collectionId", "snapshotPath", "snapshotSha256"],
+            "properties": {
+              "collectionId": {"type": "string", "minLength": 3},
+              "snapshotPath": {"type": "string", "minLength": 1},
+              "snapshotSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            }
+          }
+        },
+        "googleDrive": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["objectId", "sha256", "pathHint"],
+            "properties": {
+              "objectId": {"type": "string", "minLength": 3},
+              "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+              "pathHint": {"type": "string", "minLength": 3},
+              "mimeType": {"type": "string"}
+            }
+          }
+        },
+        "githubDiscussion": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["number", "url"],
+            "properties": {
+              "number": {"type": "integer", "minimum": 1},
+              "url": {
+                "type": "string",
+                "pattern": "^https://github\\.com/[^/]+/[^/]+/discussions/[0-9]+$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "trust": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorityEffect", "sourceClasses"],
+      "properties": {
+        "authorityEffect": {"const": "none"},
+        "sourceClasses": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["youtube", "notebooklm", "grokCollections", "googleDrive", "githubDiscussion"],
+          "properties": {
+            "youtube": {"const": "observational-media"},
+            "notebooklm": {"const": "secondary-synthesis"},
+            "grokCollections": {"const": "clustered-commentary"},
+            "googleDrive": {"const": "bulk-archive"},
+            "githubDiscussion": {"const": "narrow-waist-coordination"}
+          }
+        }
+      }
+    },
+    "operator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["principal", "capturedAt", "purpose"],
+      "properties": {
+        "principal": {"type": "string", "minLength": 1},
+        "capturedAt": {"type": "string", "format": "date-time"},
+        "purpose": {"type": "string", "minLength": 10}
+      }
+    },
+    "noisePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "erasures", "involutionTransforms", "returnConditions", "duplicateFragmentBudget"],
+      "properties": {
+        "profile": {"const": "norton-sakuma-3a"},
+        "erasures": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "timestamp-jitter",
+              "ocr-noise",
+              "ui-chrome",
+              "duplicate-semantic-fragments"
+            ]
+          }
+        },
+        "involutionTransforms": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 3}
+        },
+        "returnConditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 3}
+        },
+        "duplicateFragmentBudget": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "summary", "transcript", "evidence"],
+        "properties": {
+          "id": {"type": "string", "minLength": 3},
+          "kind": {"type": "string", "minLength": 3},
+          "summary": {"type": "string", "minLength": 3},
+          "transcript": {"type": "string", "minLength": 3},
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 3}
+          }
+        }
+      }
+    },
+    "state": {
+      "enum": ["observed", "normalized", "reconciled", "drifted", "closure-ready", "held"]
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conservationTag", "category"],
+      "properties": {
+        "conservationTag": {"const": "α + ω = 15"},
+        "category": {"const": "C"}
+      }
+    }
+  }
+}

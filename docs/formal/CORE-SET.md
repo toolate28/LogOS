@@ -71,12 +71,12 @@ lake build K22.MOG.SteinerDoubleCount   # green, 0 sorry
 
 ---
 
-## 4. Executable / verify companions (core for CI)
+## 4. Executable / verify companions
 
 | Path | Role |
 |------|------|
-| `.github/workflows/*` · `codeql/` · `dependabot.yml` | verification pipeline |
-| `ops/ci/*` · `ops/githooks/*` · `ops/mcp/*` | local mirrors · registry · manifold API |
+| `.github/dependabot.yml` | dependency update policy |
+| `ops/ci/*` · `ops/githooks/*` · `ops/mcp/*` | local verification helpers · registry · manifold API |
 | `mcps/coherence-mcp/tools/*.json` | tool schemas (snake_case 0.4.x) |
 | `coherence-mcp/coherence-site/public/manifold/` | 2D projection UI |
 

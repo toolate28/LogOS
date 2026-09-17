@@ -1,8 +1,8 @@
 # Entangle slot `ci-verify`
 
-- **Title:** CI policy + verify pipeline
+- **Title:** Local verify scaffolding
 - **Priority:** A
-- **Paths:** .github/workflows/;ops/ci/
+- **Paths:** ops/ci/
 - **Status:** empty — awaiting local emit / ingest
 - **ATOM:** ATOM-ENTANGLE-MANIFEST-20260809
 
@@ -12,4 +12,4 @@
 pwsh -File ops/entangle/emit-slice.ps1 -Id ci-verify
 ```
 
-Then run workflow **Entangle** mode=`ingest` with this component, or commit the slice onto `entangle/ci-verify`.
+Then apply the slice locally or commit it onto `entangle/ci-verify`.
