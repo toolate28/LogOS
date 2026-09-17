@@ -434,7 +434,7 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  CLAUDE.md · AGENTS.md .................... strand and GitNexus doctrine
+  CLAUDE.md · AGENTS.md .................... strand doctrine
   docs/formal/FORMAL-EXECUTABLE-MAP.md ..... four corners
   docs/formal/EPISTEMICS-GATE-REGISTER.md .. gate register
   docs/ops/LOGOS-CLEAN-DESIGN-2026-08-07.md  hygiene design
