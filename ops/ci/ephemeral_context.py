@@ -139,7 +139,22 @@ def extract_human_context(event_name: str, event: dict[str, Any]) -> list[dict[s
                 narrative["body_sha256"] = sha256_text(body)
             else:
                 narrative["classification"] = "OBSERVATION"
-    elif event_name in {"issue_comment", "issues"}:
+    elif event_name == "issue_comment":
+        issue = event.get("issue")
+        comment = event.get("comment")
+        if isinstance(issue, dict) and isinstance(comment, dict):
+            narrative = {
+                "classification": "USER_AUTHORED_NARRATIVE",
+                "event": event_name,
+                "number": issue.get("number") or event.get("number"),
+                "author_login": ((comment.get("user") or {}).get("login")),
+            }
+            body = comment.get("body")
+            if isinstance(body, str) and body:
+                narrative["body_sha256"] = sha256_text(body)
+            else:
+                narrative["classification"] = "OBSERVATION"
+    elif event_name == "issues":
         issue = event.get("issue")
         if isinstance(issue, dict):
             narrative = {
@@ -355,6 +370,7 @@ def validate_manifest(manifest: dict[str, Any], output_dir: Path, envelope: dict
         raise ValidationError("manifest expires_at mismatch")
 
     entries = manifest["entries"]
+    output_root = output_dir.resolve()
     if not isinstance(entries, list) or not entries:
         raise ValidationError("manifest entries must be a non-empty list")
     paths = [entry.get("path") for entry in entries]
@@ -369,7 +385,11 @@ def validate_manifest(manifest: dict[str, Any], output_dir: Path, envelope: dict
             raise ValidationError(f"invalid manifest path at entry {idx}")
         if not isinstance(hash_value, str) or not SHA256_RE.match(hash_value):
             raise ValidationError(f"invalid sha256 at entry {idx}")
-        candidate = output_dir / path_value
+        candidate = (output_dir / path_value).resolve()
+        try:
+            candidate.relative_to(output_root)
+        except ValueError as exc:
+            raise ValidationError(f"manifest path escapes output_dir at entry {idx}: {path_value}") from exc
         if not candidate.is_file():
             raise ValidationError(f"missing evidence file for manifest entry {idx}: {path_value}")
         if sha256_file(candidate) != hash_value:

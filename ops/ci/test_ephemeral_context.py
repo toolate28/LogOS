@@ -78,6 +78,25 @@ class EphemeralContextTests(unittest.TestCase):
             )
             ec.validate_manifest(manifest, output_dir, envelope)
 
+    def test_issue_comment_uses_comment_body_hash(self) -> None:
+        human_context = ec.extract_human_context(
+            "issue_comment",
+            {
+                "issue": {
+                    "number": 42,
+                    "user": {"login": "issue-author"},
+                    "body": "issue body should not be used",
+                },
+                "comment": {
+                    "user": {"login": "comment-author"},
+                    "body": "comment body should be hashed",
+                },
+            },
+        )
+        self.assertEqual(human_context[0]["author_login"], "comment-author")
+        self.assertEqual(human_context[0]["number"], 42)
+        self.assertEqual(human_context[0]["body_sha256"], ec.sha256_text("comment body should be hashed"))
+
     def test_expired_context_fails(self) -> None:
         envelope = ec.build_envelope(
             repository="toolate28/LogOS",
@@ -160,6 +179,39 @@ class EphemeralContextTests(unittest.TestCase):
         ]
         with self.assertRaises(ec.ValidationError):
             ec.validate_human_context(human_context)
+
+    def test_manifest_path_traversal_is_rejected(self) -> None:
+        envelope = ec.build_envelope(
+            repository="toolate28/LogOS",
+            event_name="push",
+            run_id="123456",
+            commit_sha="a" * 40,
+            ref="refs/heads/main",
+            actor="toolate28",
+            generated_at="2026-09-17T19:30:00Z",
+            expires_at="2026-09-18T19:30:00Z",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            output_dir = Path(tmp)
+            safe_file = output_dir / "context-envelope.json"
+            ec.write_json(safe_file, envelope)
+            outside_file = output_dir.parent / "escaped.txt"
+            outside_file.write_text("outside", encoding="utf-8")
+            manifest = {
+                "schema_version": ec.MANIFEST_SCHEMA_VERSION,
+                "commit_sha": envelope["commit_sha"],
+                "workflow_run_id": envelope["run_id"],
+                "generated_at": envelope["generated_at"],
+                "expires_at": envelope["expires_at"],
+                "entries": [
+                    {
+                        "path": "../escaped.txt",
+                        "sha256": ec.sha256_file(outside_file),
+                    }
+                ],
+            }
+            with self.assertRaises(ec.ValidationError):
+                ec.validate_manifest(manifest, output_dir, envelope)
 
 
 if __name__ == "__main__":
