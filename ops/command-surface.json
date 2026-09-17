@@ -19,7 +19,7 @@
       "tools_manifest": "mcps/coherence-mcp/tools",
       "verify": "ops/verify-coherence-tools.mjs",
       "cli": "ops/logos-mcp.mjs",
-      "role": "ω gate — gauge, WAVE, ATOM, rust status, context store"
+      "role": "ω tools — gauges, WAVE telemetry, ATOM records, rust status, context store"
     },
     "tui": {
       "crate": "crates/tui",
@@ -28,7 +28,7 @@
       "ws": "ws://127.0.0.1:8088",
       "env": "FORGE_WS_URL",
       "barcode": "barcode-tui",
-      "role": "α dashboard — providers, tasks, braid, HITL gate, logs, tests"
+      "role": "α dashboard — providers, tasks, braid, HITL receipts, logs, tests"
     },
     "html": {
       "site_public": "coherence-mcp/coherence-site/public",
@@ -40,7 +40,9 @@
   "commands": [
     {
       "id": "logos",
-      "alias": ["cd-logos"],
+      "alias": [
+        "cd-logos"
+      ],
       "layer": "shell",
       "fn": "Enter-LogOS",
       "summary": "cd LOGOS_ROOT"
@@ -69,7 +71,7 @@
       "layer": "tui",
       "fn": "Start-LogOSTui",
       "env": "RESON8_LAYOUT=hitl",
-      "summary": "Launch reson8-forge on layout 8 — SAIF ⚑ request/escalate/approve (receipt only)"
+      "summary": "Launch reson8-forge on layout 8 — SAIF receipt/request tracking only; no approval authority"
     },
     {
       "id": "logos-barcode",
@@ -116,11 +118,15 @@
     },
     {
       "id": "logos-activate",
-      "alias": ["logos-lattice"],
+      "alias": [
+        "logos-lattice"
+      ],
       "layer": "shell",
       "fn": "Invoke-LogOSActivate",
       "tui": "CircuitIntent::RefreshLattice",
-      "keys": ["A"],
+      "keys": [
+        "A"
+      ],
       "summary": "Probe apps/cutiles/crates/kernels/ops + sibling interweave"
     },
     {
@@ -184,7 +190,11 @@
       "layer": "shell",
       "fn": "ops/net/LogOS.NetProxy.ps1",
       "tui": "FocusPanel::Net",
-      "keys": ["N", "R", "M"],
+      "keys": [
+        "N",
+        "R",
+        "M"
+      ],
       "summary": "Selective proxy: privacy (Tor/Privoxy/i2pd/DNSCrypt) vs gaming clearnet; reson8-tui Net panel"
     },
     {
@@ -227,7 +237,7 @@
       "layer": "shell",
       "fn": "Show-LogOSConfidence",
       "module": "ops/LogOS.Confidence.psm1",
-      "summary": "1-click confidence: cert · 3 surfaces · needle · deploy gate (honest B)"
+      "summary": "1-click confidence: cert · 3 surfaces · needle · uncertainty posture (honest B)"
     },
     {
       "id": "tw",
@@ -250,7 +260,7 @@
       "kind": "html",
       "path": "coherence-mcp/coherence-site/public/meta-map/index.html",
       "url_path": "/meta-map/",
-      "role": "Sovereign MCP inspector + command surface hub"
+      "role": "LogOS MCP inspector + command surface hub"
     },
     {
       "id": "rust-market",
@@ -292,7 +302,7 @@
       "kind": "html",
       "path": "coherence-mcp/coherence-site/public/gate/index.html",
       "url_path": "/gate/",
-      "role": "SPHINX gate surface"
+      "role": "SPHINX validation surface"
     },
     {
       "id": "flow",
@@ -331,7 +341,7 @@
       "id": "hitl",
       "kind": "tui",
       "package": "reson8-tui",
-      "role": "SAIF ⚑ board + approval subroutine · [o] [u] [8] · ATOM-GROK-TUI-HITL-GATE-20260818"
+      "role": "SAIF ⚑ board + receipt/request subroutine · [o] [u] [8] · ATOM-GROK-TUI-HITL-GATE-20260818"
     },
     {
       "id": "git-observe",
@@ -353,10 +363,25 @@
     }
   ],
   "isomorphisms": {
-    "logos-status": ["rust_toolchain_status", "rust_workspace_status"],
-    "gauge": ["gauge_verify", "invariant_check"],
-    "wave": ["wave_coherence_check", "wave_analyze"],
-    "atom": ["atom_track"],
-    "bridge": ["Start-LogOSBridge", "triweave serve", "FORGE_WS_URL"]
+    "logos-status": [
+      "rust_toolchain_status",
+      "rust_workspace_status"
+    ],
+    "gauge": [
+      "gauge_verify",
+      "invariant_check"
+    ],
+    "wave": [
+      "wave_coherence_check",
+      "wave_analyze"
+    ],
+    "atom": [
+      "atom_track"
+    ],
+    "bridge": [
+      "Start-LogOSBridge",
+      "triweave serve",
+      "FORGE_WS_URL"
+    ]
   }
 }

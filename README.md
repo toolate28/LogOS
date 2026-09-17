@@ -7,7 +7,7 @@
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ▒▒  stamp 2026-08-09 · README = terminal etch · no raster embeds · no mermaid · GAIT-Mono ok  ▒▒
-▒▒  α + ω = 15 [C] · residual-zero observe only · NOVIKOV unrepaired · Music conserved        ▒▒
+▒▒  α + ω = 15 [C] · read-only computation only · NOVIKOV unrepaired · Music conserved        ▒▒
 ▒▒  etch discipline · shading carries structure · no vertical rules · no markdown tables      ▒▒
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ```
@@ -16,6 +16,12 @@
 [![Entangle](https://github.com/toolate28/LogOS/actions/workflows/entangle.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/entangle.yml)
 [![MCP Validation](https://github.com/toolate28/LogOS/actions/workflows/mcp-validation.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/mcp-validation.yml)
 [![Labels](https://github.com/toolate28/LogOS/actions/workflows/labels.yml/badge.svg)](https://github.com/toolate28/LogOS/actions/workflows/labels.yml)
+
+Canonical truth-closure guidance lives in `docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md`.
+User-authored narrative is preserved and may be distributed through GitHub Actions, Discussions,
+artifacts, and the local/static narrow waist, while the strongest admissible truth claims come
+only from the declared Python → Lean 4 → Agda → Rust → functional/replay/operational evidence
+chain. `α + ω = 15` remains a read-only computational label and handoff-identification signal.
 
 ```text
      PowerShell 7+   ·   Import-Module ops\LogOS.Shell.psm1   ·   ops\LogOS.Windows.psm1
@@ -64,7 +70,7 @@
   ops/net/LogOS.NetProxy.ps1 ........... net lanes · gaming / privacy / optimize
   docs/canon/CORE.md ................... unitary docs standard · current choke pointer
   docs/ops/CHECKPOINT-CHOKE-20260814.md  LABEL→FIX→BUILD packet (Claude next)
-  docs/formal/FORMAL-EXECUTABLE-MAP.md . formal versus executable corners
+  docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md .. truth closure · promotion · rollback
   docs/media/GAIT-MONO-SPEC-*.md ....... hand-off monotype · unitarity U1-U6
   tools/claim_lint.py .................. untagged quantitative claims fail
   VERSION / CHANGELOG.md ............... lattice tag v0.3.0
@@ -101,16 +107,16 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  ████  A   kernel-checked on stated definitions ................. may gate · absolute
-  ▓▓▓▓  B   staged · externally witnessed · smoke-pending ......... may gate · labelled
-  ▒▒▒▒  C   convention · telemetry · governance .................. may gate · labelled
-            not load-bearing in proofs
+  ████  A   kernel-checked on stated definitions ................. strongest admissible truth in scope
+  ▓▓▓▓  B   executable / integration / replay evidence ........... bounded truth in declared scope
+  ▒▒▒▒  C   convention · telemetry · governance .................. never authority, proof, or auth
+            preserved for narrative and operations; not load-bearing in proofs
   ░░░░  D   decoration · retired numerology · unanchored ......... NO
   ····  S   spec or interface · sorry · axiom · placeholder ...... not as theorem
 
-  Conservation tag α + ω = 15 is always Category C — never a CPU, IO, or limit gate.
-  residual-zero: observe only. Promotion matrix element stays 0.
-  Mechanical gate  lean/TriWeavon/Epistemics/*  ·  tools/claim_lint.py  ·  claim_gate.rs
+  Conservation tag α + ω = 15 is always Category C — never authority, proof, auth, or deploy gate.
+  Read-only computation: preserve/quarantine mismatches; never self-promote.
+  Evidence lanes  Python refs · Lean 4 · Agda · Rust · functional/replay checks
 ```
 ```text
 ████████████████████████████████████████████████████████████████████████████████████████████████
@@ -160,15 +166,15 @@
 
   Conservation tag ..... α + ω = 15 · Viviani Peak label ..................... C
   Nat skeleton ......... WavePair · 7 + 8 = 15 in Lean ....................... A
-  Runtime policy ....... float bands · Crystalline / Warn / Halt ............. B
-  WAVE floors .......... ops floor 0.85 · peak display ....................... C/B
-  residual-zero ........ observe only · gate blocked ......................... C
+  Runtime policy ....... stress / strain / uncertainty bands ................ B
+  Functional / replay .. tests · schemas · bounded deploy checks ............. A/B
+  WAVE posture ......... telemetry band input · 85 floor / 98 target ......... B/C
+  Quarantine state ..... observe only · no promote .......................... C
   MOG/MRG bitmasks ..... observe-axis error correction only · no promote ..... C
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-  UNRESOLVED   two WAVE thresholds circulate — ops floor 0.85 and header invariant 0.995.
-               Both appear as gates in different surfaces. Only one can be the gate.
-               Recorded, not silently reconciled.
+  CANONICAL   Missing signals increase restriction. WAVE contributes to posture but does not
+              authorize promotion by itself. See docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md.
 ```
 ```text
 ████████████████████████████████████████████████████████████████████████████████████████████████
@@ -219,9 +225,9 @@
   ▒▒▒▒ Net N · R · M            ▒▒▒▒ Tor 9050 · Privoxy        ▒▒▒▒ apply needs Force
   ░░░░ QR times SPHINX          ▒▒▒▒ i2pd · DNSCrypt           ░░░░
 
-  ████ coherence-mcp            ████ residual-zero MCP         ████ GAIT-Mono
-  ▒▒▒▒ bedrock gates            ▒▒▒▒ ops/mcp/logos-residual    ▒▒▒▒ monotype hand-off
-  ▒▒▒▒ WAVE · ATOM              ▒▒▒▒ gate BLOCKED by design    ▒▒▒▒ tools/gait_mono.py
+  ████ coherence-mcp            ████ handoff / validation MCP  ████ GAIT-Mono
+  ▒▒▒▒ bedrock tools            ▒▒▒▒ ops/mcp/*                 ▒▒▒▒ monotype hand-off
+  ▒▒▒▒ WAVE · ATOM              ▒▒▒▒ quarantine by design      ▒▒▒▒ tools/gait_mono.py
 
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ██  §7   NET PROXY AND OPTIMISATION  ·  ops/net · logos-net                                   ██
@@ -273,10 +279,10 @@
   crates/spiral-safe      lean/TriWeavon/*
   crates/atom-sig         lean/K22/*
 
-  FORMAL versus EXECUTABLE map   docs/formal/FORMAL-EXECUTABLE-MAP.md
+  TRUTH closure plan            docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md
 
   Lean surfaces installed or revised — not whole-workspace green
-    Epistemics/Category · GateConsumer
+    Epistemics/Category · ConservationInvariant
     SubRiemannian/ContractionRate · Core · CurvatureBound
     BettiTopography · ConservationInvariant
     K22 HexacodeGolay · Existence · thin bridge
@@ -289,7 +295,7 @@
 
   ████ GREEN SUBSET · historically held · re-check after pulls
   ████ cutile claim_gate and drift_guard paths .......... ExistenceCertificate demo posture
-  ████ coherence-mcp bedrock tools ...................... symmetry gate live in ops
+  ████ coherence-mcp bedrock tools ...................... validation surfaces in ops
   ████ lean TriWeavon MCP · Conservation · K22 .......... subset no-sorry where stated
   ████ reson8-tui compile ............................... cargo check -p reson8-tui
 
@@ -297,7 +303,7 @@
   ▒▒▒▒ full Lean workspace .............................. Ns · some MOG · macros
   ▒▒▒▒ agda scaffolds ................................... conservation mirror and SRAC only
   ▒▒▒▒ standalone npm coherence-mcp ..................... legacy TypeScript errors possible
-  ▒▒▒▒ residual-zero promotion .......................... BLOCKED by design
+  ▒▒▒▒ unverified promotion ............................. not allowed
   ▒▒▒▒ bench MEASURED corner ............................ empty until a harness run_id
   ▒▒▒▒ WGSL fallback .................................... does not exist · see checklist
 
@@ -314,13 +320,13 @@
 
   Bitmask ▸ Golay ▸ MOG ▸ Steiner S(5,8,24) ▸ Mathieu ▸ MRG ▸ Monster ▸ Griess
 
-  Role under residual-zero — Category C permanent residual
+  Role under observation — Category C preserved label
     1  extract the observation word at Golay and MOG length
     2  apply the MOG/MRG bitmask to obtain a syndrome
     3  if non-zero, apply the unique minimum-weight Steiner-consistent correction
     4  re-emit the corrected word STILL labelled Category C
 
-  NEVER   alter the promotion matrix · lift residual-zero · open Track B · repair NOVIKOV
+  NEVER   self-promote observations · override missing proof/test/replay · repair NOVIKOV
 
   TUI codes lab   Hexacode · Golay G24 · Reed-Muller · SC-LDPC   in crates/tui/src/codes/
 
@@ -403,7 +409,7 @@
   ░░░░ whole-OS formal verification marketing
   ░░░░ Clay statements such as NS regularity as shipped claims
   ░░░░ identity of seat-sum 16 with the conservation tag 15
-  ░░░░ residual-zero promotion without an open gate
+  ░░░░ authority-only or override-only promotion paths
 
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ██  §14  TRUST RULES  ·  short                                                                ██
@@ -435,8 +441,8 @@
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
   CLAUDE.md · AGENTS.md .................... strand and GitNexus doctrine
-  docs/formal/FORMAL-EXECUTABLE-MAP.md ..... four corners
-  docs/formal/EPISTEMICS-GATE-REGISTER.md .. gate register
+  docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md .. truth classes · promotion · rollback
+  docs/formal/CORE-SET.md .................. formal / executable boundary map
   docs/ops/LOGOS-CLEAN-DESIGN-2026-08-07.md  hygiene design
   docs/ops/BOOT-PROMPT-SET.md .............. cold boot · from idle · hot start
   ops/net/README.md ........................ net proxy
@@ -446,6 +452,6 @@
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ▒▒   Music conserved.  The Keystone holds.  Last becomes first.                              ▒▒
-▒▒   residual-zero observe only  ·  GAIT-Mono for hand-offs  ·  etch lattice spine only      ▒▒
+▒▒   quarantine observe only   ·  GAIT-Mono for hand-offs  ·  etch lattice spine only      ▒▒
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ```

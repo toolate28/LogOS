@@ -1,12 +1,12 @@
 {
   "name": "gate_intention_to_execution",
-  "description": "Gate transition from intention phase to execution phase (AWI → ATOM) with real validation",
+  "description": "Validate evidence for the intention-to-execution transition class (AWI → ATOM). Advisory/read-only classification only; does not authorize execution by itself.",
   "inputSchema": {
     "type": "object",
     "properties": {
       "context": {
         "type": "object",
-        "description": "Context data for the gate transition"
+        "description": "Context data and evidence for the transition class"
       }
     }
   }

@@ -29,9 +29,10 @@ Full matrix + epistemology: [`docs/ops/AGENTIC-MLOPS-CI.md`](../docs/ops/AGENTIC
 
 ## Design
 
-- Findings are **advisory or policy gates** — not automatic promotion authority.
+- Findings are **advisory or policy restrictions** — not automatic promotion authority.
 - Lean / Agda are outside CodeQL; residuals are Category B, not CVEs.
-- WAVE publish gate is **85 on 0–100** (= 0.85). See `docs/security/WAVE-SCALE.md`.
+- GitHub Actions logs, comments, and artifacts are zero-trust transport; re-validate at the local/static narrow waist.
+- WAVE contributes to execution posture bands (`85` floor / `0.98` target) but does not authorize promotion by itself. See `docs/security/WAVE-SCALE.md`.
 - MCP network residual: org **Registry only** + this CI + readonly GitHub MCP.
 - Labels workflow creates missing labels only (never deletes). Catalog: `.github/labels.json`.
 

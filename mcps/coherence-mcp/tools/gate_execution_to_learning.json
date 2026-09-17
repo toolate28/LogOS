@@ -1,12 +1,12 @@
 {
   "name": "gate_execution_to_learning",
-  "description": "Gate transition from execution phase to learning phase (ATOM → SAIF) with real validation",
+  "description": "Validate evidence for the execution-to-learning transition class (ATOM → SAIF). Advisory/read-only classification only; does not authorize promotion by itself.",
   "inputSchema": {
     "type": "object",
     "properties": {
       "context": {
         "type": "object",
-        "description": "Context data for the gate transition"
+        "description": "Context data and evidence for the transition class"
       }
     }
   }

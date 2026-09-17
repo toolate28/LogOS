@@ -7,8 +7,9 @@ Package: `@toolated/coherence-mcp` · Repo: `github.com/toolate28/coherence-mcp`
 
 This document is the **package threat surface** for the MCP server. The monorepo
 root [`SECURITY.md`](../../SECURITY.md) covers LogOS as a whole. Tool schemas in
-`mcps/coherence-mcp/tools/` are LogOS descriptors; the published npm package is
-the executable authority when versions disagree.
+`mcps/coherence-mcp/tools/` are LogOS descriptors; the published npm package is the executable
+reference surface to inspect first when versions disagree, but the strongest admissible claims
+still come from the matching formal, executable, replay, and provenance evidence bundle.
 
 ---
 
@@ -24,7 +25,7 @@ Check what you are actually running — the published version and the string the
 reports have drifted:
 
 ```bash
-npm view @toolated/coherence-mcp version   # 0.4.2 — authoritative
+npm view @toolated/coherence-mcp version   # 0.4.2 — reference check
 ```
 
 > **Known drift:** `src/index.ts` reports `server.version` as `0.3.2`. This is a
@@ -93,8 +94,9 @@ leaves because you configured a token that sends it.
 
 ### MCP vs agent firewall (LogOS)
 
-The Copilot agent Bash firewall does **not** constrain MCP traffic. Complementary
-controls in this monorepo:
+The Copilot agent Bash firewall does **not** constrain MCP traffic. GitHub Actions logs,
+Discussions, copied artifacts, and MCP payloads are treated as zero-trust transport.
+Complementary controls in this monorepo:
 
 - Org/enterprise MCP registry + **Registry only** — [MCP-REGISTRY.md](MCP-REGISTRY.md)
 - CI `mcp-validation.yml` — no `tools: ["*"]`, no embedded secrets
@@ -169,7 +171,7 @@ LogOS CI mirrors: `ops/ci/validate_mcp_schemas.py`, `ops/ci/validate_mcp_config.
 - **Input validation** — Ajv schemas on tool parameters; path sanitisation; argument validation before any execution  
 - **Audit logging** — invocations logged with request ID, timestamp, and caller context  
 - **Rate limiting** — configurable per-tool invocation limits  
-- **Scope checks** — tools restricted by scope; sensitive operations require explicit approval  
+- **Scope checks** — tools restricted by scope; sensitive operations require explicit operator invocation and logged provenance, not truth promotion by approval  
 - **Bounds** — size and time limits on every external call  
 
 Gaps, stated plainly: **ATOM-AUTH scope issuance is not implemented** (tokens are accepted;
@@ -187,8 +189,9 @@ if email is unconfirmed) → remediate → document what was learned → coordin
 
 ## WAVE scale (canonical)
 
-Publish / handoff gate for LogOS + package docs: **85 on 0–100** (= 0.85).  
-See [WAVE-SCALE.md](WAVE-SCALE.md). SAIF-era 0.98 is superseded as the default publish gate.
+WAVE contributes to execution posture on **0–100**; see [WAVE-SCALE.md](WAVE-SCALE.md).
+The 85 floor and 0.98 target are operational bands, not standalone publish authority.
+Promotion still requires the canonical proof/test/replay/provenance predicates.
 
 ---
 
