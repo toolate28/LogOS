@@ -70,7 +70,7 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
   ops/net/LogOS.NetProxy.ps1 ........... net lanes · gaming / privacy / optimize
   docs/canon/CORE.md ................... unitary docs standard · current choke pointer
   docs/ops/CHECKPOINT-CHOKE-20260814.md  LABEL→FIX→BUILD packet (Claude next)
-  docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md .. truth closure · formal/executable map
+  docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md .. truth closure · promotion · rollback
   docs/media/GAIT-MONO-SPEC-*.md ....... hand-off monotype · unitarity U1-U6
   tools/claim_lint.py .................. untagged quantitative claims fail
   VERSION / CHANGELOG.md ............... lattice tag v0.3.0
@@ -279,7 +279,7 @@ chain. `α + ω = 15` remains a read-only computational label and handoff-identi
   crates/spiral-safe      lean/TriWeavon/*
   crates/atom-sig         lean/K22/*
 
-  FORMAL versus EXECUTABLE map   docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md
+  TRUTH closure plan            docs/epistemics/REPOSYSTEM-TRUTH-CLOSURE-PLAN.md
 
   Lean surfaces installed or revised — not whole-workspace green
     Epistemics/Category · GateConsumer
