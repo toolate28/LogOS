@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from datetime import timedelta
 from pathlib import Path
 
 import sys
@@ -107,6 +108,22 @@ class EphemeralContextTests(unittest.TestCase):
             actor="toolate28",
             generated_at="2026-09-18T19:30:00Z",
             expires_at="2026-09-17T19:30:00Z",
+        )
+        with self.assertRaises(ec.ValidationError):
+            ec.validate_envelope(envelope, "toolate28/LogOS")
+
+    def test_already_expired_context_fails(self) -> None:
+        generated_at = ec.isoformat_utc(ec.utc_now() - timedelta(days=2))
+        expires_at = ec.isoformat_utc(ec.utc_now() - timedelta(days=1))
+        envelope = ec.build_envelope(
+            repository="toolate28/LogOS",
+            event_name="push",
+            run_id="123456",
+            commit_sha="a" * 40,
+            ref="refs/heads/main",
+            actor="toolate28",
+            generated_at=generated_at,
+            expires_at=expires_at,
         )
         with self.assertRaises(ec.ValidationError):
             ec.validate_envelope(envelope, "toolate28/LogOS")

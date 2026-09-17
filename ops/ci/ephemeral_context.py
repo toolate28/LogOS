@@ -249,6 +249,8 @@ def validate_envelope(envelope: dict[str, Any], expected_repository: str) -> Non
     expires_at = parse_iso8601(str(envelope["expires_at"]))
     if expires_at <= generated_at:
         raise ValidationError("expires_at must be after generated_at")
+    if expires_at <= utc_now():
+        raise ValidationError("context has expired")
     walk_payload(envelope)
 
 
