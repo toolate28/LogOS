@@ -7,6 +7,7 @@
 | **CI Sequence** | `ci-sequence.yml` | Dispatch-only chain: policy → MCP → labels → security → CODEX → verify → CodeQL |
 | **Verify** | `verify.yml` | Tree guards · JSON kit · MCP schemas · formal residual · rust core/tui |
 | **CodeQL** | `codeql.yml` | Rust SAST (explicit `cargo build`) |
+| **Ephemeral Context** | `ephemeral-context.yml` | Capture bounded shared-state evidence · hash/manifest it · validate fail-closed · expire by 1-day artifact retention |
 | **CI Policy** | `ci-policy.yml` | Fail-closed full SHA pin gate on every `uses:` |
 | **CODEX / Agentic MLOps** | `codex-mlops.yml` | Topology-aware gates · SARIF code scanning · shields badges |
 | **Security Advisory** | `security-advisory.yml` | Secret-path + lake artefacts · cargo-audit |
@@ -30,9 +31,11 @@ Full matrix + epistemology: [`docs/ops/AGENTIC-MLOPS-CI.md`](../docs/ops/AGENTIC
 ## Design
 
 - Findings are **advisory or policy gates** — not automatic promotion authority.
+- Ephemeral context artifacts are **observation-only evidence**; artifact retention is the expiry mechanism and does not rewrite repository state.
 - Lean / Agda are outside CodeQL; residuals are Category B, not CVEs.
 - WAVE publish gate is **85 on 0–100** (= 0.85). See `docs/security/WAVE-SCALE.md`.
 - MCP network residual: org **Registry only** + this CI + readonly GitHub MCP.
+- Current GitNexus local limitation: FTS was unavailable during local indexing and process coverage is truncated by analyzer budgets, so blast-radius output is useful but not exhaustive proof.
 - Labels workflow creates missing labels only (never deletes). Catalog: `.github/labels.json`.
 
 ## Action pinning (required)
@@ -77,6 +80,8 @@ bash ops/ci/guard.sh
 python ops/ci/validate_mcp_schemas.py
 python ops/ci/validate_mcp_config.py
 python ops/ci/formal_residual_report.py
+python -m unittest ops/ci/test_ephemeral_context.py
+python ops/ci/ephemeral_context.py workflow-guard --workflow-path .github/workflows/ephemeral-context.yml
 python ops/ci/ensure_dependabot_labels.py          # dry-run
 # GITHUB_TOKEN=... python ops/ci/ensure_dependabot_labels.py --apply
 python ops/ci/assert_action_pins.py                # fail-closed SHA pins
