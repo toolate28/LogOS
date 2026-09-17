@@ -91,6 +91,63 @@ jobs:
           test -f ops/SAIF-OUTSTANDING-HUMAN-ACTIONS.md
           echo "json-kit: OK"
 
+  ephemeral-context:
+    name: Ephemeral zero-trust context
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          submodules: false
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+      - name: Run ephemeral context tests
+        run: python -m unittest ops/ci/test_ephemeral_context.py
+      - name: Capture ephemeral context envelope
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/ephemeral-context
+          python ops/ci/ephemeral_context.py capture \
+            --repository "${GITHUB_REPOSITORY}" \
+            --event-name "${GITHUB_EVENT_NAME}" \
+            --workflow-run-id "${GITHUB_RUN_ID}" \
+            --workflow-run-attempt "${GITHUB_RUN_ATTEMPT}" \
+            --workflow-job "ephemeral-context" \
+            --event-path "${GITHUB_EVENT_PATH}" \
+            --ref "${GITHUB_REF}" \
+            --commit-sha "${GITHUB_SHA}" \
+            --output artifacts/ephemeral-context/context-envelope.json
+      - name: Validate ephemeral context envelope
+        run: |
+          set -euo pipefail
+          python ops/ci/ephemeral_context.py validate \
+            --input artifacts/ephemeral-context/context-envelope.json \
+            --expected-repository "${GITHUB_REPOSITORY}" \
+            --seen-hashes-file artifacts/ephemeral-context/seen-hashes.json \
+            --record-seen
+      - name: Upload ephemeral context artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ephemeral-context-${{ github.run_id }}
+          path: artifacts/ephemeral-context/context-envelope.json
+          if-no-files-found: error
+          retention-days: 1
+      - name: Job summary footer
+        if: always()
+        run: |
+          {
+            echo ""
+            echo "### Ephemeral zero-trust context"
+            echo ""
+            echo "- Packs repository-bound evidence only"
+            echo "- authority_effect remains \`none\`"
+            echo "- Transports observations and hashes; does not merge, deploy, publish, or promote state"
+          } >> "$GITHUB_STEP_SUMMARY"
+
   rust-core:
     name: Rust core + wave + invariant
     runs-on: ubuntu-latest
