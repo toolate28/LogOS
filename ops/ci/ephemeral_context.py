@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import copy
 import datetime as dt
-import fcntl
 import hashlib
 import json
 import os
@@ -46,8 +45,9 @@ REQUIRED_TOP_LEVEL = {
     "context_hash",
     "authority_effect",
     "evidence_hashes",
+    "uncertainty",
 }
-OPTIONAL_TOP_LEVEL = {"uncertainty"}
+OPTIONAL_TOP_LEVEL: set[str] = set()
 EVENT_REQUIRED = {"name", "event_id", "workflow_run_id", "workflow_run_attempt", "ref"}
 EVENT_ALLOWED = EVENT_REQUIRED | {
     "workflow_job",
@@ -147,6 +147,33 @@ def _validate_with_published_schema(envelope: dict[str, Any], schema_path: Path)
         if error.path:
             location += "." + ".".join(str(part) for part in error.path)
         raise ValidationError(f"schema validation failed at {location}: {error.message}")
+
+
+class _LockFile:
+    def __init__(self, path: Path, attempts: int = 20, delay_seconds: float = 0.1) -> None:
+        self._path = path
+        self._attempts = attempts
+        self._delay_seconds = delay_seconds
+        self._fd: int | None = None
+
+    def __enter__(self) -> "_LockFile":
+        import time
+
+        self._path.parent.mkdir(parents=True, exist_ok=True)
+        for _ in range(self._attempts):
+            try:
+                self._fd = os.open(self._path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+                os.write(self._fd, str(os.getpid()).encode("utf-8"))
+                return self
+            except FileExistsError:
+                time.sleep(self._delay_seconds)
+        raise ValidationError(f"could not acquire replay lock: {self._path}")
+
+    def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
+        if self._fd is not None:
+            os.close(self._fd)
+            self._fd = None
+        self._path.unlink(missing_ok=True)
 
 
 def _parse_time(value: str) -> dt.datetime:
@@ -444,28 +471,27 @@ def validate_envelope(
 
     if seen_hashes_file is not None:
         seen_hashes_file.parent.mkdir(parents=True, exist_ok=True)
-        with seen_hashes_file.open("a+", encoding="utf-8") as handle:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
-            handle.seek(0)
-            raw = handle.read().strip()
-            if raw:
-                try:
-                    seen_hashes = json.loads(raw)
-                except json.JSONDecodeError as exc:
-                    raise ValidationError("seen hashes file must be valid JSON") from exc
-                if not isinstance(seen_hashes, list) or not all(isinstance(x, str) for x in seen_hashes):
-                    raise ValidationError("seen hashes file must be a JSON string array")
+        with _LockFile(seen_hashes_file.with_suffix(seen_hashes_file.suffix + ".lock")):
+            if seen_hashes_file.exists():
+                raw = seen_hashes_file.read_text(encoding="utf-8").strip()
+                if raw:
+                    try:
+                        seen_hashes = json.loads(raw)
+                    except json.JSONDecodeError as exc:
+                        raise ValidationError("seen hashes file must be valid JSON") from exc
+                    if not isinstance(seen_hashes, list) or not all(isinstance(x, str) for x in seen_hashes):
+                        raise ValidationError("seen hashes file must be a JSON string array")
+                else:
+                    seen_hashes = []
             else:
                 seen_hashes = []
             if envelope["context_hash"] in seen_hashes:
                 raise ValidationError("replayed context hash rejected")
             if record_seen:
                 seen_hashes.append(envelope["context_hash"])
-                handle.seek(0)
-                handle.truncate()
-                handle.write(json.dumps(seen_hashes, indent=2) + "\n")
-                handle.flush()
-            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+                temp_path = seen_hashes_file.with_suffix(seen_hashes_file.suffix + ".tmp")
+                temp_path.write_text(json.dumps(seen_hashes, indent=2) + "\n", encoding="utf-8")
+                os.replace(temp_path, seen_hashes_file)
 
     return {
         "context_hash": envelope["context_hash"],

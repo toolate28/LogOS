@@ -16,7 +16,8 @@
     "parent_context_hash",
     "context_hash",
     "authority_effect",
-    "evidence_hashes"
+    "evidence_hashes",
+    "uncertainty"
   ],
   "properties": {
     "schema_version": {

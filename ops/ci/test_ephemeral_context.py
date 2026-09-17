@@ -114,6 +114,12 @@ class EphemeralContextTests(unittest.TestCase):
         with self.assertRaisesRegex(ValidationError, "missing required fields"):
             validate_envelope(invalid, expected_repository="toolate28/LogOS", now=self.now)
 
+    def test_missing_uncertainty_is_rejected(self) -> None:
+        invalid = copy.deepcopy(self.valid)
+        del invalid["uncertainty"]
+        with self.assertRaisesRegex(ValidationError, "missing required fields"):
+            validate_envelope(invalid, expected_repository="toolate28/LogOS", now=self.now)
+
     def test_authority_only_transition_fields_are_rejected(self) -> None:
         invalid = copy.deepcopy(self.valid)
         invalid["observations"][0]["approve"] = True
