@@ -1,0 +1,66 @@
+# Ephemeral shared-state evidence only: capture bounded metadata, hash it, validate it, expire it.
+
+name: Ephemeral Context
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ephemeral-context-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  capture-context:
+    name: Capture bounded evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+      - name: Assert Action SHA pins
+        run: python3 ops/ci/assert_action_pins.py
+      - name: Run ephemeral-context unit tests
+        run: python3 -m unittest ops/ci/test_ephemeral_context.py
+      - name: Validate evidence-only workflow shape
+        run: |
+          set -euo pipefail
+          python3 ops/ci/ephemeral_context.py workflow-guard \
+            --workflow-path .github/workflows/ephemeral-context.yml
+      - name: Capture bounded context evidence
+        env:
+          OUTPUT_DIR: ${{ runner.temp }}/ephemeral-context
+        run: |
+          set -euo pipefail
+          python3 ops/ci/ephemeral_context.py capture \
+            --output-dir "$OUTPUT_DIR" \
+            --workflow-path .github/workflows/ephemeral-context.yml \
+            --event-path "$GITHUB_EVENT_PATH" \
+            --repository "$GITHUB_REPOSITORY" \
+            --event-name "$GITHUB_EVENT_NAME" \
+            --run-id "$GITHUB_RUN_ID" \
+            --commit-sha "$GITHUB_SHA" \
+            --ref "$GITHUB_REF" \
+            --actor "$GITHUB_ACTOR"
+      - name: Upload bounded evidence artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ephemeral-context-${{ github.run_id }}
+          path: ${{ runner.temp }}/ephemeral-context
+          if-no-files-found: error
+          retention-days: 1

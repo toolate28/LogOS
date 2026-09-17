@@ -135,6 +135,7 @@ F:\Users\Matthew Ruhnau\My Drive\reson8_UNITARY_MASTER\
 2. **Fibonacci strand seats 8+5+3 = 16** are a *different* Category C convention. They are **not** required to equal 15.  
 3. **WAVE ≥ 0.98** is an operational *target*; honest amber beats painted green.  
 4. Descriptor JSON count (64 stubs) ≠ live stdio tool count (**12**). Call only live tools unless you rebuilt the server.
+5. GitHub Actions ephemeral shared-state context is bounded **observation metadata** only: it may carry hashes and expiry, but never authority, allowed-execution state, deployment rights, or promotion semantics.
 
 ---
 

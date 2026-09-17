@@ -7,10 +7,22 @@ version: 1
 atom: ATOM-ENTANGLE-MANIFEST-20260809
 updated: "2026-08-15"
 
+declaration_policy:
+  source_scope: repository
+  disallow_external_paths: true
+  require_declared_components: true
+  require_declared_observe_only: true
+  require_declared_mirrors: true
+
 # Path slices that may land independently (no crates/target, no .git)
 components:
   - id: reson8-tui
     title: reson8-tui / reson8-forge cockpit
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - crates/tui/
     verify:
@@ -22,6 +34,11 @@ components:
 
   - id: barcode-tui
     title: barcode-tui H0 viewer
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - crates/barcode-tui/
     verify:
@@ -33,6 +50,11 @@ components:
 
   - id: apps-triweave
     title: apps/triweave surface (reson8-triweave bin triweave)
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - apps/triweave/
     verify:
@@ -43,6 +65,11 @@ components:
 
   - id: ops-portable-root
     title: portable LOGOS_ROOT Windows/WSL axis
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - ops/LogOS.Root.ps1
       - ops/LogOS.Shell.psm1
@@ -70,6 +97,11 @@ components:
 
   - id: apps-mc-bridge
     title: Minecraft RCON bridge
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - apps/mc-bridge/
     verify:
@@ -79,6 +111,11 @@ components:
 
   - id: apps-nexus-pulse
     title: nexus-pulse-bot
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - apps/nexus-pulse-bot/
     verify:
@@ -88,6 +125,11 @@ components:
 
   - id: formal-srac
     title: Stage A/B/C SRAC · claim gate · DriftGuard packet
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - docs/formal/
       - docs/packets/dual-research-enterprise-alpha-20260806/
@@ -103,6 +145,11 @@ components:
 
   - id: net-proxy
     title: LogOS net proxy stack (TUI Net panel)
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - ops/net/
       - crates/tui/src/net_proxy.rs
@@ -113,6 +160,11 @@ components:
 
   - id: ci-verify
     title: CI policy + verify pipeline
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - .github/workflows/
       - ops/ci/
@@ -124,6 +176,11 @@ components:
 
   - id: journey-release
     title: Operator journey · recovery loops · lattice v0.3.0 notes
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: true
+      mirror: false
     paths:
       - docs/ops/OPERATOR-JOURNEY-AND-RECOVERY-20260809.md
       - docs/theory/HOPF-PIROUETTE-INVESTIGATION-20260809.md
@@ -140,6 +197,11 @@ components:
 
   - id: showcase-media
     title: coherence-site showcase media (LFS / bulk)
+    declaration:
+      declared: true
+      source_scope: repository
+      observe_only: false
+      mirror: false
     paths:
       - coherence-mcp/coherence-site/public/showcase/
     verify: []
