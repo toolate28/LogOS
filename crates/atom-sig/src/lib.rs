@@ -32,7 +32,7 @@
 //!
 //! - Canonicalisation is deterministic: encoding twice with the same
 //!   payload produces bit-identical bytes.
-//! - The α/ω computation is quarantined metadata. `atom-sig` does **not**
+//! - The α/ω computation is quarantined observational data. `atom-sig` does **not**
 //!   treat it as a proof, claim, or authority gate; it only guarantees
 //!   that whatever payload is supplied, its commitment is reproducible.
 //! - `no_std`-compatible (default-features = false, feature = "nostd").
@@ -104,7 +104,7 @@ pub struct AtomPayload {
     pub body: Vec<u8>,
     /// Unix timestamp (seconds). UTC.
     pub timestamp_utc: u64,
-    /// Conservation ledger summary preserved as read-only metadata.
+    /// Conservation ledger summary preserved as read-only observational data.
     pub conservation: ConservationSummary,
     /// Forward-compatible extension slot. Always canonicalised after
     /// the core fields regardless of insertion order.
@@ -195,10 +195,7 @@ pub struct AtomCommitment {
 
 impl AtomCommitment {
     /// Mint a commitment from a payload + signing key.
-    pub fn mint(
-        payload: &AtomPayload,
-        signing_key: &SigningKey,
-    ) -> Result<Self, AtomSigError> {
+    pub fn mint(payload: &AtomPayload, signing_key: &SigningKey) -> Result<Self, AtomSigError> {
         let canonical_bytes = canonical_encode(payload)?;
 
         let mut hasher = Hasher::new();
@@ -260,7 +257,10 @@ mod tests {
         assert!(peak.on_invariant());
         assert_eq!(peak.viviani_distance_sq(), 0);
 
-        let off = ConservationSummary { alpha: 4, omega: 11 };
+        let off = ConservationSummary {
+            alpha: 4,
+            omega: 11,
+        };
         assert_eq!(off.sum(), 15);
         assert!(off.on_invariant());
         // (4,11) - (7,8) = (-3, 3), squared-distance = 9 + 9 = 18

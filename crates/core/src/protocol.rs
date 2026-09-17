@@ -55,8 +55,8 @@ impl fmt::Display for LogLevel {
         match self {
             Self::Trace => write!(f, "TRACE"),
             Self::Debug => write!(f, "DEBUG"),
-            Self::Info  => write!(f, "INFO"),
-            Self::Warn  => write!(f, "WARN"),
+            Self::Info => write!(f, "INFO"),
+            Self::Warn => write!(f, "WARN"),
             Self::Error => write!(f, "ERROR"),
         }
     }
@@ -134,7 +134,12 @@ impl WaveScore {
     pub fn compute(structural: f64, semantic: f64, temporal: f64) -> Self {
         let w = crate::WAVE_WEIGHTS;
         let composite = structural * w.structural + semantic * w.semantic + temporal * w.temporal;
-        Self { structural, semantic, temporal, composite }
+        Self {
+            structural,
+            semantic,
+            temporal,
+            composite,
+        }
     }
 
     pub fn passes_threshold(&self) -> bool {
@@ -146,7 +151,7 @@ impl WaveScore {
 // Conservation state
 // ---------------------------------------------------------------------------
 
-/// α/ω computational check state carried as observational metadata.
+/// α/ω computational check state carried as observational data.
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct ConservationState {
     pub alpha: u8,
@@ -158,7 +163,12 @@ pub struct ConservationState {
 impl ConservationState {
     pub fn new(alpha: u8, omega: u8) -> Self {
         let sum = alpha.saturating_add(omega);
-        Self { alpha, omega, sum, valid: sum == crate::CONSERVATION_SUM }
+        Self {
+            alpha,
+            omega,
+            sum,
+            valid: sum == crate::CONSERVATION_SUM,
+        }
     }
 
     pub fn verify(&self) -> bool {

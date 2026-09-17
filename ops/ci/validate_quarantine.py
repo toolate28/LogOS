@@ -30,6 +30,7 @@ REQUIRED_SURFACE = {
 }
 READ_ONLY_OPS = {"inspect", "run_safe_tests", "record_handoff_recognition"}
 PROHIBITED_OPS = {
+    "mirror_context_window",
     "authorize_state_transition",
     "promote_state",
     "publish_artifact",

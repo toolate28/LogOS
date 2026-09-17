@@ -25,7 +25,7 @@ class ValidateQuarantineTests(unittest.TestCase):
             )
             target = root / "crates" / "core" / "src" / "lib.rs"
             target.write_text(
-                "alpha metadata may authorize deployment\n",
+                "alpha observation may authorize deployment\n",
                 encoding="utf-8",
             )
 

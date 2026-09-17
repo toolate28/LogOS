@@ -24,8 +24,8 @@ It must not, by itself:
 
 ## Required fail-closed behavior
 
-Every quarantined surface must fail closed when quarantine metadata is missing,
-empty, or malformed.
+Every quarantined surface must fail closed when the required ATOM-trail evidence
+or execution-state description is missing, empty, or malformed.
 
 Allowed behavior:
 
@@ -33,9 +33,17 @@ Allowed behavior:
 - safe local tests;
 - preservation of failed evidence;
 - handoff recognition records containing only:
+  - the ATOM-trail identifier;
   - the computation result;
   - the observed sum; and
   - an evidence hash.
+
+The quarantine boundary must not introduce a separate metadata-collection path.
+It may inspect the existing ATOM trail and execution-state context already
+present for the action being attempted, but it must not treat α/ω as a basis to
+collect or persist new authority-bearing runtime records.
+It must also reject mirroring or replaying an interactive context window as part
+of α/ω quarantine handling.
 
 Blocked behavior:
 
@@ -44,6 +52,7 @@ Blocked behavior:
 - promotion;
 - state authorization;
 - approval routing;
+- context-window mirroring;
 - override paths; and
 - generation of new artifacts that inscribe the relation as an authority claim.
 
@@ -60,5 +69,6 @@ become a signed claim, certificate, authentication result, or promoted state.
 The repository enforces this policy with:
 
 - `crates/core/src/quarantine.rs` for explicit runtime boundary checks;
+  those checks operate on existing ATOM-trail and execution-state context only;
 - `ops/quarantine/alpha-omega-quarantine.json` for machine-readable scope and prohibitions; and
 - `ops/ci/validate_quarantine.py` for fail-closed manifest validation and quarantined-surface scanning.
