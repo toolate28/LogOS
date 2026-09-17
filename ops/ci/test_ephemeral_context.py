@@ -19,6 +19,32 @@ class EphemeralContextTests(unittest.TestCase):
         assertions = ec.validate_workflow_file(workflow_path)
         self.assertEqual(assertions["permissions"], {"contents": "read", "actions": "read"})
 
+    def test_workflow_guard_rejects_job_level_id_token_write(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            workflow_path = Path(tmp) / "bad-workflow.yml"
+            workflow_path.write_text(
+                "\n".join(
+                    [
+                        "name: Bad Workflow",
+                        "on: workflow_dispatch",
+                        "permissions:",
+                        "  contents: read",
+                        "  actions: read",
+                        "jobs:",
+                        "  example:",
+                        "    runs-on: ubuntu-latest",
+                        "    permissions:",
+                        "      id-token: write",
+                        "    steps:",
+                        "      - run: echo bad",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            with self.assertRaises(ec.ValidationError):
+                ec.validate_workflow_file(workflow_path)
+
     def test_valid_context_and_manifest(self) -> None:
         envelope = ec.build_envelope(
             repository="toolate28/LogOS",

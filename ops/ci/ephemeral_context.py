@@ -306,7 +306,9 @@ def validate_workflow_file(workflow_path: Path) -> dict[str, Any]:
         raise ValidationError(f"unexpected permissions block: {permissions}")
 
     active_text = "\n".join(line.split("#", 1)[0].strip().lower() for line in lines if line.strip())
-    if re.search(r"\b(write|id-token|attestations)\s*:", active_text):
+    if re.search(r"\b(id-token|attestations)\s*:\s*write\b", active_text):
+        raise ValidationError("write-capable identity permissions are not allowed")
+    if re.search(r"\bwrite\s*:", active_text):
         raise ValidationError("write-capable permissions are not allowed")
     if re.search(r"^\s*environment\s*:", "\n".join(lines), re.MULTILINE):
         raise ValidationError("deployment environments are not allowed")
