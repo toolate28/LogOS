@@ -2,7 +2,7 @@
 
 Status: quarantined
 Scope: computational null-closed check surfaces only
-Machine manifest: `/home/runner/work/LogOS/LogOS/ops/quarantine/alpha-omega-quarantine.json`
+Machine manifest: `ops/quarantine/alpha-omega-quarantine.json`
 
 ## Policy
 
@@ -59,6 +59,6 @@ become a signed claim, certificate, authentication result, or promoted state.
 
 The repository enforces this policy with:
 
-- `/home/runner/work/LogOS/LogOS/crates/core/src/quarantine.rs` for explicit runtime boundary checks;
-- `/home/runner/work/LogOS/LogOS/ops/quarantine/alpha-omega-quarantine.json` for machine-readable scope and prohibitions; and
-- `/home/runner/work/LogOS/LogOS/ops/ci/validate_quarantine.py` for fail-closed manifest validation and quarantined-surface scanning.
+- `crates/core/src/quarantine.rs` for explicit runtime boundary checks;
+- `ops/quarantine/alpha-omega-quarantine.json` for machine-readable scope and prohibitions; and
+- `ops/ci/validate_quarantine.py` for fail-closed manifest validation and quarantined-surface scanning.

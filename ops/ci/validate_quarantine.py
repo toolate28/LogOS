@@ -60,8 +60,8 @@ def tracked_files(root: Path = ROOT) -> set[str]:
             capture_output=True,
             text=True,
         )
-    except (OSError, subprocess.CalledProcessError):
-        return set()
+    except (OSError, subprocess.CalledProcessError) as exc:
+        raise ValueError(f"unable to enumerate tracked files: {exc}") from exc
     return {line.strip() for line in proc.stdout.splitlines() if line.strip()}
 
 
@@ -86,7 +86,11 @@ def validate_manifest(manifest: dict, root: Path = ROOT) -> list[str]:
         errors.append("surfaces must be a non-empty list")
         return errors
 
-    tracked = tracked_files(root)
+    try:
+        tracked = tracked_files(root)
+    except ValueError as exc:
+        errors.append(str(exc))
+        tracked = set()
     seen_ids: set[str] = set()
     seen_paths: set[str] = set()
     for idx, surface in enumerate(surfaces):
@@ -134,6 +138,9 @@ def validate_manifest(manifest: dict, root: Path = ROOT) -> list[str]:
         errors.append("scan_rules must be an object")
         return errors
 
+    if scan_rules.get("tracked_only") is not True:
+        errors.append("scan_rules.tracked_only must be true")
+
     for key in ("authority_patterns", "artifact_inscription_patterns", "artifact_extensions", "exempt_paths"):
         if key not in scan_rules or not isinstance(scan_rules[key], list) or not scan_rules[key]:
             errors.append(f"scan_rules.{key} must be a non-empty list")
@@ -153,7 +160,10 @@ def validate_manifest(manifest: dict, root: Path = ROOT) -> list[str]:
 
 def scan_quarantined_files(manifest: dict, root: Path = ROOT) -> list[str]:
     errors: list[str] = []
-    tracked = tracked_files(root)
+    try:
+        tracked = tracked_files(root)
+    except ValueError as exc:
+        return [str(exc)]
     rules = manifest["scan_rules"]
     exempt_paths = set(rules["exempt_paths"])
     authority_patterns = [re.compile(pattern, re.IGNORECASE) for pattern in rules["authority_patterns"]]
