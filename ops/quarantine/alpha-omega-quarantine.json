@@ -171,6 +171,7 @@
     {
       "id": "top-level-guidance",
       "paths": [
+        "NOTICE",
         "README.md",
         "CLAUDE.md",
         "AGENTS.md"

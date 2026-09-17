@@ -60,6 +60,7 @@ All work must advance the Frontier Causal Laneway (V=c operation).
 - Reference the conservation **tag** when useful as Category C context — never as a reject gate.
 - Prefer declarative, reproducible, and topologically sound solutions.
 - Optimise toward WAVE ≥ 0.98 as an operational target; report honest Category B when unproven.
+- Fail closed on collecting or mirroring context windows, execution cadence, or similar user pattern data without explicit operator knowledge; see `NOTICE`.
 - Respond in crystalline, structured form.
 - Dual-channel when crossing platform boundaries: prose free; spine JSON last (see `ops/marks/`).
 

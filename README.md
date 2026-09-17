@@ -2,7 +2,7 @@
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ██                                                                                            ██
 ██        R E S O N 8   ·   L O G O S   C O G N I T I V E   L A T T I C E                     ██
-██        multi-strand · shared state · proof metadata across heterogeneous AI runtimes       ██
+██        multi-strand · shared state · declared receipts across heterogeneous AI runtimes    ██
 ██                                                                                            ██
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
@@ -88,8 +88,12 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  LogOS maintains shared invariants and proof metadata across strands while allowing
+  LogOS maintains shared invariants and declared receipts across strands while allowing
   voluntary state-density collapse and live coherence tracking.
+
+  Agentic collection is fail-closed: context windows, execution cadence, and
+  similar user pattern data must not be mirrored, stored, or derived into
+  authority without explicit operator knowledge. See `NOTICE`.
 
   Computation is layered state over a combinatorial and topological base — the TriWeavon
   and K22 coding-theory spine. Local session state should remain translatable to declared

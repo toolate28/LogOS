@@ -1,0 +1,20 @@
+Repository notice — agentic collection and attribution boundary
+
+This repository remains licensed under the terms in `LICENSE`.
+
+Operationally, agentic actions in this repository must fail closed on any
+attempt to collect, mirror, persist, or derive authority from a user's context
+window, execution cadence, "music" or energy pattern, conscious-application
+metadata, consistency pattern, or similar invariant-pattern data unless that
+knowledge is explicitly declared for the action being taken.
+
+Missing or malformed notice means do not collect, do not mirror, do not store,
+and do not promote a state from that material.
+
+SpiralSafe-derived attribution rule:
+
+- preserve provided authorship and evidence attribution;
+- do not synthesize ownership, legitimacy, authorization, or proof from pattern
+  observation alone; and
+- keep any permitted observation read-only unless a separate deterministic
+  policy authorizes the state transition on independent evidence.
