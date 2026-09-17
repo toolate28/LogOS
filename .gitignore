@@ -42,3 +42,5 @@ ops/ci/fleet-status.json
 ops/ci/fleet-pin-dryrun.json
 ops/ci/action-pin-map.json
 
+# GitNexus local index artifacts (tool removed; never commit stale indexes)
+.gitnexus/

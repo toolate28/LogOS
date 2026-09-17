@@ -35,8 +35,7 @@
   "rust-analyzer.cargo.buildScripts.enable": true,
   "search.exclude": {
     "**/target": true,
-    "**/node_modules": true,
-    "**/.gitnexus": true
+    "**/node_modules": true
   },
   "files.watcherExclude": {
     "**/target/**": true,

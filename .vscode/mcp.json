@@ -11,11 +11,6 @@
         "CTWFI_INVARIANT": "alpha+omega=15",
         "CTWFI_STRAND": "reason"
       }
-    },
-    "gitnexus": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "gitnexus", "mcp"]
     }
   }
 }

@@ -68,13 +68,6 @@
       "problemMatcher": []
     },
     {
-      "label": "GitNexus: Analyze Index",
-      "type": "shell",
-      "command": "npx gitnexus analyze",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
       "label": "Rust: Test Workspace",
       "type": "shell",
       "command": "cargo test --workspace --no-run",

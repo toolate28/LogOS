@@ -1,6 +1,5 @@
 import React from 'react';
 import { CrucixTDA_Map } from './components/CrucixTDA_Map';
-import { GitNexusGraph } from './components/GitNexusGraph';
 import { A2UI_AgentRenderer } from './components/A2UI_AgentRenderer';
 import './App.css';
 
@@ -28,7 +27,6 @@ function App() {
 
       {/* RIGHT PANEL: Code Intelligence & AI Agent Streams */}
       <aside className="right-panel" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <GitNexusGraph />
         <A2UI_AgentRenderer />
       </aside>
 
