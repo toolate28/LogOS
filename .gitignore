@@ -44,3 +44,7 @@ ops/ci/action-pin-map.json
 
 # GitNexus local index artifacts (tool removed; never commit stale indexes)
 .gitnexus/
+
+# Local-only agent permission grants (privacy stack: never commit;
+# required local permissions documented in docs/security/PRIVACY-STACK.md)
+.claude/settings.local.json

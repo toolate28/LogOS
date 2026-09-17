@@ -30,6 +30,19 @@ elif [[ -n "${STAGED_MCP}" ]] && command -v python >/dev/null 2>&1; then
   python ops/ci/validate_mcp_config.py || fail "MCP config policy failed"
 fi
 
+# Personal-path hygiene on staged config (privacy stack)
+STAGED_CFG=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^(\.claude/|\.ai/|\.vscode/|\.github/copilot/|ops/mcp/)|mcp[^/]*\.json$' || true)
+if [[ -n "${STAGED_CFG}" ]] && command -v python3 >/dev/null 2>&1; then
+  python3 ops/ci/check_personal_paths.py || fail "personal path in committed config"
+elif [[ -n "${STAGED_CFG}" ]] && command -v python >/dev/null 2>&1; then
+  python ops/ci/check_personal_paths.py || fail "personal path in committed config"
+fi
+
+# Never commit local-only agent permission grants
+if git diff --cached --name-only --diff-filter=ACM | grep -q '^\.claude/settings\.local\.json$'; then
+  fail ".claude/settings.local.json is local-only (see docs/security/PRIVACY-STACK.md)"
+fi
+
 if [[ "$FAIL" -ne 0 ]]; then
   exit 1
 fi

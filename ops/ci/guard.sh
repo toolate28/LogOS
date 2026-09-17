@@ -66,6 +66,13 @@ while IFS= read -r path; do
   fi
 done < <(git ls-files '*.yml' '*.yaml' '*.json' '*.toml' '*.env' '*.md' '*.ts' '*.js' '*.mjs' '*.rs' '*.py' 2>/dev/null || true)
 
+note "== personal-path guard (privacy stack) =="
+# Absolute personal paths (F:/Users/<name>, /Users/<name>, /home/<name>)
+# in committed config surfaces — see docs/security/PRIVACY-STACK.md
+if command -v python3 >/dev/null 2>&1; then
+  python3 ops/ci/check_personal_paths.py || fail "personal path in committed config"
+fi
+
 if [[ "$FAIL" -ne 0 ]]; then
   echo "guard: FAILED"
   exit 1

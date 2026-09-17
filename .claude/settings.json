@@ -3,18 +3,18 @@
   "description": "Keyless Claude Code workspace skeleton. No secrets. Certs are state under .atom-trail.",
   "keys": null,
   "workspace": {
-    "primary_root": "F:/Users/Matthew Ruhnau/LogOS",
+    "primary_root": "${LOGOS_ROOT}",
     "roots": [
-      "F:/Users/Matthew Ruhnau/LogOS",
-      "F:/Users/Matthew Ruhnau/SpiralSafe",
-      "F:/Users/Matthew Ruhnau/coherence-mcp",
-      "F:/Users/Matthew Ruhnau/reson8-Labs",
-      "F:/Users/Matthew Ruhnau/QDI"
+      "${LOGOS_ROOT}",
+      "${SPIRALSAFE_ROOT}",
+      "${COHERENCE_MCP_ROOT}",
+      "${RESON8_LABS_ROOT}",
+      "${QDI_ROOT}"
     ],
     "formal": {
-      "agda": "F:/Users/Matthew Ruhnau/LogOS/agda",
-      "lean": "F:/Users/Matthew Ruhnau/LogOS/lean",
-      "cutile": "F:/Users/Matthew Ruhnau/LogOS/cutiles/cutile"
+      "agda": "${LOGOS_ROOT}/agda",
+      "lean": "${LOGOS_ROOT}/lean",
+      "cutile": "${LOGOS_ROOT}/cutiles/cutile"
     }
   },
   "cold_start": {
@@ -33,17 +33,17 @@
   },
   "surfaces": {
     "spiralsafe_wrangler": {
-      "repo": "F:/Users/Matthew Ruhnau/SpiralSafe",
+      "repo": "${SPIRALSAFE_ROOT}",
       "wrangler_candidates": [
-        "F:/Users/Matthew Ruhnau/SpiralSafe/ops/wrangler.toml",
-        "F:/Users/Matthew Ruhnau/LogOS/wrangler.toml",
-        "F:/Users/Matthew Ruhnau/LogOS/adhealth-meaningseed/wrangler.toml",
-        "F:/Users/Matthew Ruhnau/reson8-Labs/workers"
+        "${SPIRALSAFE_ROOT}/ops/wrangler.toml",
+        "${LOGOS_ROOT}/wrangler.toml",
+        "${LOGOS_ROOT}/adhealth-meaningseed/wrangler.toml",
+        "${RESON8_LABS_ROOT}/workers"
       ],
       "cli_repair": "ops/claude-code/Repair-Wrangler.ps1"
     },
     "vcs": {
-      "repo": "F:/Users/Matthew Ruhnau/LogOS",
+      "repo": "${LOGOS_ROOT}",
       "remotes": ["origin", "LogOS"]
     },
     "formal_core": {
@@ -61,7 +61,7 @@
     "satellites_not_needle": [
       "crates/barcode-tui",
       "apps/triweave",
-      "F:/Users/Matthew Ruhnau/orchestrator-tui"
+      "${ORCHESTRATOR_TUI_ROOT}"
     ]
   },
   "lsp": {

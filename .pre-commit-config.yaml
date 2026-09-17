@@ -1,5 +1,7 @@
 # Optional complementary layer (pip install pre-commit && pre-commit install)
 # Local githooks (ops/githooks) remain the primary secret-path mirror for CI.
+# Privacy stack: gitleaks + personal-path hygiene run fully locally —
+# no telemetry, no external upload (docs/security/PRIVACY-STACK.md).
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
@@ -9,3 +11,20 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: trailing-whitespace
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+  - repo: local
+    hooks:
+      - id: personal-paths
+        name: No absolute personal paths in committed config
+        entry: python3 ops/ci/check_personal_paths.py
+        language: system
+        pass_filenames: false
+      - id: mcp-privacy
+        name: MCP config policy (x-privacy declarations)
+        entry: python3 ops/ci/validate_mcp_config.py
+        language: system
+        pass_filenames: false
+        files: 'mcp.*\.json$'

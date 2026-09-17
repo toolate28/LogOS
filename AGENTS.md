@@ -16,6 +16,10 @@ indexing services, no telemetry, no third-party MCP servers.
   approx / convention / open).
 - Respect the Ephemeral Context and ENTANGLE declaration rules: only declared,
   repository-relative sources; repository-root scope is rejected.
+- Follow the privacy-preservation stack (`docs/security/PRIVACY-STACK.md`):
+  MCP servers need `x-privacy` declarations, workflows need egress
+  declarations (`ops/ci/egress-allowlist.yaml`), and committed config must
+  not contain absolute personal paths (use `LOGOS_ROOT` et al.).
 
 ## Never Do
 

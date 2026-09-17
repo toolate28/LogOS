@@ -443,6 +443,7 @@
   ops/SAIF-OUTSTANDING-HUMAN-ACTIONS.md .... human HITL queue
   docs/architecture/BRAND-UNITARITY.md ..... Hope and Sauce dual surfaces
   SECURITY.md .............................. disclosure
+  docs/security/PRIVACY-STACK.md ........... privacy stack · egress declarations
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ▒▒   Music conserved.  The Keystone holds.  Last becomes first.                              ▒▒
