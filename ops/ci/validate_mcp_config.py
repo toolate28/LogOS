@@ -8,6 +8,11 @@ Rules:
 2. No tools: ["*"] wildcards
 3. No embedded secrets / classic PATs
 4. Prefer GitHub MCP readonly endpoint (warn on full endpoint)
+5. Every server entry carries an x-privacy egress declaration
+   (network: none|local|remote, data_scope: repository|declared-paths,
+   telemetry: none). Remote network additionally requires declared
+   endpoints. Mirrors the ENTANGLE manifest declaration-first pattern
+   (ATOM-ENTANGLE-MANIFEST-20260809).
 """
 from __future__ import annotations
 
@@ -23,6 +28,7 @@ CANDIDATE_GLOBS = [
     "**/mcp.json",
     "**/mcp-config.json",
     "**/.vscode/mcp.json",
+    "**/.ai/mcp/*.json",
     ".github/mcp/**/*.json",
     ".github/copilot/**/*.json",
     "ops/mcp/**/*.json",
@@ -61,6 +67,7 @@ def iter_candidates() -> list[Path]:
         ROOT / "mcp.json",
         ROOT / "mcp-config.json",
         ROOT / ".vscode" / "mcp.json",
+        ROOT / ".ai" / "mcp" / "mcp.json",
         ROOT / ".github" / "copilot" / "mcp-config.json",
         ROOT / ".github" / "copilot" / "mcp-config.example.json",
         ROOT / "ops" / "mcp" / "copilot-mcp.example.json",
@@ -74,6 +81,7 @@ def iter_candidates() -> list[Path]:
         ROOT / ".github" / "copilot",
         ROOT / "ops" / "mcp",
         ROOT / ".vscode",
+        ROOT / ".ai" / "mcp",
     ):
         if not base.exists():
             continue
@@ -114,6 +122,70 @@ def walk_urls(obj) -> list[str]:
         for v in obj:
             urls.extend(walk_urls(v))
     return urls
+
+
+def walk_servers(obj) -> list[tuple[str, dict]]:
+    """Yield (path, server_entry) for each server under servers/mcpServers maps."""
+    hits: list[tuple[str, dict]] = []
+    if isinstance(obj, dict):
+        for key in ("servers", "mcpServers"):
+            block = obj.get(key)
+            if isinstance(block, dict):
+                for name, entry in block.items():
+                    if isinstance(entry, dict):
+                        hits.append((f"$.{key}.{name}", entry))
+        for v in obj.values():
+            if isinstance(v, (dict, list)) and v is not obj.get("servers") and v is not obj.get("mcpServers"):
+                hits.extend(walk_servers(v))
+    elif isinstance(obj, list):
+        for v in obj:
+            hits.extend(walk_servers(v))
+    return hits
+
+
+PRIVACY_NETWORK = {"none", "local", "remote"}
+PRIVACY_SCOPE = {"repository", "declared-paths"}
+
+
+def check_privacy_declaration(rel, spath: str, entry: dict) -> int:
+    """Fail-closed x-privacy egress declaration on each server entry."""
+    errors = 0
+    decl = entry.get("x-privacy")
+    if not isinstance(decl, dict):
+        print(
+            f"::error file={rel}::server {spath} missing x-privacy declaration "
+            "(network/data_scope/telemetry) — declaration-first boundary"
+        )
+        return 1
+    network = decl.get("network")
+    if network not in PRIVACY_NETWORK:
+        print(
+            f"::error file={rel}::server {spath} x-privacy.network must be one of "
+            f"{sorted(PRIVACY_NETWORK)} (got {network!r})"
+        )
+        errors += 1
+    scope = decl.get("data_scope")
+    if scope not in PRIVACY_SCOPE:
+        print(
+            f"::error file={rel}::server {spath} x-privacy.data_scope must be one of "
+            f"{sorted(PRIVACY_SCOPE)} (got {scope!r})"
+        )
+        errors += 1
+    if decl.get("telemetry") != "none":
+        print(
+            f"::error file={rel}::server {spath} x-privacy.telemetry must be \"none\" "
+            "(third-party telemetry forbidden)"
+        )
+        errors += 1
+    if network == "remote":
+        endpoints = decl.get("endpoints")
+        if not isinstance(endpoints, list) or not endpoints:
+            print(
+                f"::error file={rel}::server {spath} declares network=remote but no "
+                "x-privacy.endpoints allowlist"
+            )
+            errors += 1
+    return errors
 
 
 def main() -> int:
@@ -165,6 +237,9 @@ def main() -> int:
                     "(expands unconstrained network surface outside agent firewall)"
                 )
                 errors += 1
+
+        for spath, entry in walk_servers(data):
+            errors += check_privacy_declaration(rel, spath, entry)
 
         for url in walk_urls(data):
             if url.rstrip("/") == FULL_GH_MCP.rstrip("/") or url == FULL_GH_MCP:

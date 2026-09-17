@@ -9,7 +9,13 @@
         "list_commits",
         "search_code",
         "list_issues"
-      ]
+      ],
+      "x-privacy": {
+        "network": "remote",
+        "data_scope": "repository",
+        "telemetry": "none",
+        "endpoints": ["https://api.githubcopilot.com/mcp/readonly"]
+      }
     }
   }
 }

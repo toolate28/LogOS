@@ -41,6 +41,11 @@ jobs:
           set -euo pipefail
           python ops/ci/assert_action_pins.py
 
+      - name: Assert egress declarations (deny-by-default allowlist)
+        run: |
+          set -euo pipefail
+          python ops/ci/validate_egress_declarations.py
+
       - name: Job summary
         if: always()
         run: |
@@ -49,7 +54,9 @@ jobs:
             echo ""
             echo "- Gate: full 40-char commit SHA on every \`uses:\`"
             echo "- Script: \`ops/ci/assert_action_pins.py\`"
+            echo "- Gate: egress declaration per workflow (deny-by-default)"
+            echo "- Script: \`ops/ci/validate_egress_declarations.py\`"
             echo "- Repo: \`sha_pinning_required=true\`"
             echo ""
-            echo "ATOM: \`ATOM-CI-POLICY-PINS-20260804\`"
+            echo "ATOM: \`ATOM-CI-POLICY-PINS-20260804\` · \`ATOM-PRIVACY-STACK-20260917\`"
           } >> "$GITHUB_STEP_SUMMARY"

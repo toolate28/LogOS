@@ -1,0 +1,50 @@
+# CI egress allowlist — deny-by-default network policy declarations
+# ATOM: ATOM-PRIVACY-STACK-20260917
+#
+# Declaration-first boundary (mirrors ops/entangle/manifest.yaml and the
+# x-privacy MCP declarations): every workflow under .github/workflows MUST
+# declare its egress classes here. A workflow with no entry fails CI
+# (ops/ci/validate_egress_declarations.py, wired into ci-policy.yml).
+#
+# Category B (bounded, operational): this is a declared + validated policy,
+# not a kernel-enforced firewall. Runtime enforcement via third-party
+# audit agents (e.g. harden-runner) was evaluated and rejected: they ship
+# runner telemetry to an external service, which violates the local-first
+# doctrine (AGENTS.md "Never Do"). capability != authority.
+
+version: 1
+atom: ATOM-PRIVACY-STACK-20260917
+policy: deny-by-default
+
+# Named egress classes -> endpoint families a job may contact.
+classes:
+  none: []
+  github-core:
+    - github.com
+    - api.github.com
+    - "*.actions.githubusercontent.com"
+    - objects.githubusercontent.com
+    - codeload.github.com
+    - ghcr.io
+  crates:
+    - crates.io
+    - static.crates.io
+    - index.crates.io
+    - static.rust-lang.org
+  github-pages:
+    - "*.github.io"
+
+# Every workflow file must appear exactly once. Add new workflows here
+# with the minimal class set before merging them.
+workflows:
+  ci-policy.yml: [github-core]
+  ci-sequence.yml: [github-core]
+  codeql.yml: [github-core, crates]
+  codex-mlops.yml: [github-core]
+  dependency-review.yml: [github-core]
+  entangle.yml: [github-core]
+  labels.yml: [github-core]
+  mcp-validation.yml: [github-core]
+  pages.yml: [github-core, github-pages]
+  security-advisory.yml: [github-core, crates]
+  verify.yml: [github-core]

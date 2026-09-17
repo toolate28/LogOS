@@ -1,0 +1,44 @@
+# Dependency review — surface new third-party packages before merge
+# ATOM: ATOM-PRIVACY-STACK-20260917
+# Part of the privacy-preservation stack (docs/security/PRIVACY-STACK.md).
+# First-party GitHub action only; SHA-pinned per ci-policy. capability != authority.
+
+name: Dependency Review
+
+on:
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependency-review-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dependency-review:
+    name: Review dependency changes (fail-closed)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          submodules: false
+      - name: Dependency review
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: never
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Dependency Review"
+            echo ""
+            echo "- New third-party packages surfaced before merge"
+            echo "- Fail-closed on high/critical known vulnerabilities"
+            echo ""
+            echo "ATOM: \`ATOM-PRIVACY-STACK-20260917\`"
+          } >> "$GITHUB_STEP_SUMMARY"

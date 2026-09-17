@@ -10,6 +10,11 @@
         "RESON8_LOGOS_ROOT": "${workspaceFolder}",
         "CTWFI_INVARIANT": "alpha+omega=15",
         "CTWFI_STRAND": "reason"
+      },
+      "x-privacy": {
+        "network": "none",
+        "data_scope": "repository",
+        "telemetry": "none"
       }
     }
   }
