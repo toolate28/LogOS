@@ -61,6 +61,8 @@ See [`transfer-lane.md`](./transfer-lane.md) — gaming clearnet, qBittorrent pr
 | Human approves merge | A (authority) |
 | α+ω=15 | C label only |
 | capability ≠ authority | doctrine |
+| Observe-only / mirror status must be explicit in manifest + embedded slice declaration | A |
+| Outside / undeclared files fail closed during ingest | A |
 
 Music conserved.
 

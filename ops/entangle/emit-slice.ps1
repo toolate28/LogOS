@@ -66,6 +66,18 @@ if ($pathSection.Success) {
 
 if ($paths.Count -eq 0) { throw "no paths resolved for $Id" }
 
+$declared = $block -match '(?m)^\s+declared:\s*true\s*$'
+$sourceScope = ([regex]::Match($block, '(?m)^\s+source_scope:\s*([A-Za-z0-9_-]+)\s*$')).Groups[1].Value
+$observeOnly = (([regex]::Match($block, '(?m)^\s+observe_only:\s*(true|false)\s*$')).Groups[1].Value) -eq 'true'
+$mirror = (([regex]::Match($block, '(?m)^\s+mirror:\s*(true|false)\s*$')).Groups[1].Value) -eq 'true'
+$title = ([regex]::Match($block, '(?m)^\s+title:\s*(.+?)\s*$')).Groups[1].Value.Trim().Trim('"')
+if (-not $declared -or -not $sourceScope) {
+    throw "component '$Id' is missing explicit declaration metadata"
+}
+if ($sourceScope -ne 'repository') {
+    throw "component '$Id' declares unsupported source_scope '$sourceScope'"
+}
+
 if (-not $OutDir) { $OutDir = Join-Path $Root 'ops/entangle/out' }
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
@@ -113,19 +125,46 @@ function Copy-Filtered {
 
 foreach ($p in $paths) { Copy-Filtered $p }
 
+$emittedFiles = Get-ChildItem -Path $stage -Recurse -File -Force | ForEach-Object {
+    $_.FullName.Substring($stage.Length).TrimStart('\', '/') -replace '\\', '/'
+} | Sort-Object
+if (@($emittedFiles).Count -eq 0) { throw "no files emitted for $Id" }
+
+$declarationDir = Join-Path $stage 'ops/entangle'
+New-Item -ItemType Directory -Force -Path $declarationDir | Out-Null
+$declaration = @{
+    atom         = 'ATOM-ENTANGLE-MANIFEST-20260809'
+    component_id = $Id
+    title        = $title
+    declared     = $true
+    source_scope = $sourceScope
+    observe_only = [bool]$observeOnly
+    mirror       = [bool]$mirror
+    allowed_paths = @($paths | ForEach-Object { $_.TrimEnd('/') -replace '\\', '/' } | Sort-Object)
+    emitted_files = @($emittedFiles)
+    head         = (git rev-parse HEAD)
+    branch       = (git rev-parse --abbrev-ref HEAD)
+    generated    = (Get-Date).ToUniversalTime().ToString('o')
+}
+$declarationPath = Join-Path $declarationDir 'DECLARATION.json'
+$declaration | ConvertTo-Json -Depth 6 | Set-Content -Path $declarationPath -Encoding utf8
+
 $zip = Join-Path $OutDir "$Id-$stamp.zip"
 if (Test-Path $zip) { Remove-Item -Force $zip }
 Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $zip -Force
+$zipHash = (Get-FileHash -Path $zip -Algorithm SHA256).Hash.ToLowerInvariant()
 
 $receipt = @{
-    atom      = 'ATOM-ENTANGLE-MANIFEST-20260809'
-    id        = $Id
-    stamp     = $stamp
-    paths     = $paths
-    zip       = $zip
-    head      = (git rev-parse HEAD)
-    branch    = (git rev-parse --abbrev-ref HEAD)
-    generated = (Get-Date).ToString('o')
+    atom         = 'ATOM-ENTANGLE-MANIFEST-20260809'
+    id           = $Id
+    stamp        = $stamp
+    paths        = @($paths | ForEach-Object { $_.TrimEnd('/') -replace '\\', '/' } | Sort-Object)
+    zip_name     = (Split-Path $zip -Leaf)
+    zip_sha256   = $zipHash
+    declaration  = $declaration
+    head         = (git rev-parse HEAD)
+    branch       = (git rev-parse --abbrev-ref HEAD)
+    generated    = (Get-Date).ToUniversalTime().ToString('o')
 } | ConvertTo-Json -Depth 4
 $receiptPath = Join-Path $OutDir "$Id-$stamp.receipt.json"
 Set-Content -Path $receiptPath -Value $receipt -Encoding utf8

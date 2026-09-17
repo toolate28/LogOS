@@ -23,6 +23,8 @@ if find "$TMP" -type d \( -name target -o -name .git -o -name node_modules \) | 
   exit 1
 fi
 
+python3 ops/entangle/validate_slice_declaration.py --root "$TMP"
+
 # Copy preserving structure
 if command -v rsync >/dev/null 2>&1; then
   rsync -a --exclude 'target/' --exclude '.git/' "$TMP"/ "$ROOT"/
