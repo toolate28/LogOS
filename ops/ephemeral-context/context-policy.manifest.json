@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifest_version": "1.0.0",
+  "schema_path": "ops/ephemeral-context/context-envelope.schema.json",
+  "authority_effect": "none",
+  "max_ttl_seconds": 3600,
+  "freshness_window_seconds": 900,
+  "repository_binding_required": true,
+  "replay_protection_required": true,
+  "forbidden_field_name_fragments": [
+    "override",
+    "approve",
+    "approval",
+    "force",
+    "promotion"
+  ],
+  "untrusted_surfaces": [
+    "github_actions_event",
+    "workflow_conclusion",
+    "artifact_metadata",
+    "discussion",
+    "pull_request_comment",
+    "label",
+    "approval",
+    "external_narrative"
+  ],
+  "evidence_classes": {
+    "narrative": "Human or model-authored claims. Transport only.",
+    "reference": "Identifiers and pointers. Never authority.",
+    "formal": "Proof or typecheck evidence bounded to the checked target.",
+    "executable": "Deterministic execution evidence bound to input hash and revision.",
+    "functional": "Derived execution restrictions such as uncertainty bands.",
+    "replayed": "Evidence re-derived from recorded input for drift detection.",
+    "operational": "CI and workflow metadata that transports evidence but does not certify truth."
+  },
+  "risk_statement": "These controls reduce and expose poisoning, grafting, and decay risk but cannot guarantee absolute elimination.",
+  "no_authority_transitions": [
+    "merge",
+    "deploy",
+    "publish",
+    "permission_change",
+    "promotion",
+    "override"
+  ]
+}

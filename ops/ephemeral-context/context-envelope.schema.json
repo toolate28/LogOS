@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "logos://ops/ephemeral-context/context-envelope.schema.json",
+  "title": "LogOS ephemeral zero-trust context envelope",
+  "description": "Ephemeral, repository-bound shared context. Transport evidence only; authority_effect must remain none.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_repository",
+    "event",
+    "commit",
+    "observations",
+    "generated_at",
+    "expires_at",
+    "parent_context_hash",
+    "context_hash",
+    "authority_effect",
+    "evidence_hashes",
+    "uncertainty"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "source_repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "event_id",
+        "workflow_run_id",
+        "workflow_run_attempt",
+        "ref"
+      ],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "event_id": { "type": "string", "minLength": 1 },
+        "workflow_run_id": { "type": "integer", "minimum": 1 },
+        "workflow_run_attempt": { "type": "integer", "minimum": 1 },
+        "workflow_job": { "type": ["string", "null"] },
+        "pull_request_number": { "type": ["integer", "null"], "minimum": 1 },
+        "discussion_number": { "type": ["integer", "null"], "minimum": 1 },
+        "comment_id": { "type": ["integer", "null"], "minimum": 1 },
+        "ref": { "type": "string", "minLength": 1 }
+      }
+    },
+    "commit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha", "ref"],
+      "properties": {
+        "sha": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "ref": { "type": "string", "minLength": 1 }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "source",
+          "summary",
+          "truth_status",
+          "authority_effect",
+          "observed_at",
+          "evidence_refs"
+        ],
+        "properties": {
+          "kind": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "narrative": { "type": ["string", "null"] },
+          "truth_status": {
+            "type": "string",
+            "enum": ["unverified", "observed", "crosschecked"]
+          },
+          "authority_effect": {
+            "type": "string",
+            "const": "none"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "parent_context_hash": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "context_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_effect": {
+      "type": "string",
+      "const": "none"
+    },
+    "evidence_hashes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "sha256", "origin"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "origin": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stress",
+        "strain",
+        "provenance_confidence",
+        "crosscheck_confidence",
+        "rollback_available",
+        "uncertainty_score",
+        "execution_band",
+        "restriction_reasons"
+      ],
+      "properties": {
+        "stress": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "strain": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "provenance_confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "crosscheck_confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "rollback_available": { "type": ["boolean", "null"] },
+        "uncertainty_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "execution_band": {
+          "type": "string",
+          "enum": [
+            "analysis",
+            "reversible",
+            "constrained",
+            "quarantine",
+            "fully_restricted"
+          ]
+        },
+        "restriction_reasons": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
