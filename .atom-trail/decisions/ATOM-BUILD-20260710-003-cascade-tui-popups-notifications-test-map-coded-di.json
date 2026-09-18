@@ -4,12 +4,12 @@
   "description": "Cascade: TUI popups/notifications/test-map coded; Director Command Surface v0.5 portal written; Gitea portable config+start script ready (binary download pending under IO load)",
   "timestamp": "2026-07-10T12:44:41.228Z",
   "files": [
-    "F:\\Users\\Matthew Ruhnau\\LogOS\\crates\\tui\\src\\app.rs",
-    "F:\\Users\\Matthew Ruhnau\\LogOS\\crates\\tui\\src\\ui.rs",
-    "F:\\Users\\Matthew Ruhnau\\LogOS\\crates\\tui\\src\\main.rs",
-    "C:\\worktrees\\logos-os\\portal\\directors-command-surface.html",
-    "C:\\worktrees\\logos-os\\gitea\\custom\\conf\\app.ini",
-    "C:\\worktrees\\logos-os\\gitea\\start-gitea.ps1"
+    "crates/tui/src/app.rs",
+    "crates/tui/src/ui.rs",
+    "crates/tui/src/main.rs",
+    "${LOGOS_WORKTREES}/logos-os/portal/directors-command-surface.html",
+    "${LOGOS_WORKTREES}/logos-os/gitea/custom/conf/app.ini",
+    "${LOGOS_WORKTREES}/logos-os/gitea/start-gitea.ps1"
   ],
   "tags": [
     "gitea",

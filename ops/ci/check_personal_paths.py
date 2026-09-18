@@ -9,7 +9,10 @@ variables instead (LOGOS_ROOT, COHERENCE_MCP_ROOT, ... — already exported by
 the VS Code Tri-Weavon terminal profile, .vscode/settings.json).
 
 Scope (git-tracked files only):
-  .claude/** .ai/** .vscode/** .github/copilot/** ops/mcp/** **/mcp*.json
+  .claude/** .ai/** .vscode/** .github/copilot/** ops/mcp/**
+  plus any tracked file named mcp*.json anywhere in the tree — MCP configs
+  are treated as config surfaces wherever they live (deliberately broad;
+  this is how docs/sovereign-handoff/mcp-inspector.coherence.json was caught).
 
 Exit 0 clean · Exit 1 personal path found.
 """

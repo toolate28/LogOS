@@ -109,7 +109,7 @@ def main() -> int:
     declared, classes = loaded
 
     present = sorted(
-        p.name for p in list(WF_DIR.glob("*.yml")) + list(WF_DIR.glob("*.yaml"))
+        {p.name for p in list(WF_DIR.glob("*.yml")) + list(WF_DIR.glob("*.yaml"))}
     )
 
     errors = 0
