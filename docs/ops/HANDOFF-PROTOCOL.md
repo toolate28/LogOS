@@ -188,7 +188,11 @@ Required boundary measurements:
    `phase_reference` MUST be one of `{pre_boundary, in_boundary, post_boundary}`.
    `estimator` MUST be an identifier string in `name@MAJOR.MINOR.PATCH` form
    (example: `phase-fit@1.2.3`). Pre-release and build metadata are not used in
-   protocol payloads.
+   protocol payloads. Non-stable forms (for example `-rc.1` or `+build.5`) are
+   invalid and MUST be rejected at parse time.
+   `name` MUST match `^[a-z0-9](?:[a-z0-9._-]*[a-z0-9])?$` and MUST NOT contain
+   additional `@` characters.
+   Full `estimator` regex: `^[a-z0-9](?:[a-z0-9._-]*[a-z0-9])?@[0-9]+\\.[0-9]+\\.[0-9]+$`.
 3. **Multi-vantage capture:** sample from at least three vantage points:
    - pre-boundary state
    - in-boundary execution state
@@ -207,11 +211,10 @@ Required boundary measurements:
    state label (`ι(ι(s)) = s`) for the recorded pair.
    Mappings MUST be emitted under `miyamoto_involution_map` as an array of
    objects, each containing `{boundary_id, pair_id, pre_state_label,
-   post_state_label, involution_id, inverse_pair_id}`.
+   post_state_label, involution_id}`.
    `involution_id` MUST be stable for the same involution family within a
-   `BUMP_ID` chain. `inverse_pair_id` MUST point to the pair entry that encodes
-   the reverse mapping. For self-inverse pairs, `inverse_pair_id` MUST equal
-   `pair_id`.
+   `BUMP_ID` chain. Each pair entry is self-sufficient and encodes both
+   directions of the involution for that boundary-local pair.
 
 All boundary observation records MUST be appended to the local ATOM-tag
 execution trail and remain traceable to the originating boundary event.
