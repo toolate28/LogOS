@@ -1,5 +1,10 @@
 # Signatures of the Tri-Weavon
 
+> QUARANTINED FOR IDENTITY LANGUAGE (2026-09-18): This document contains
+> third-person and "Weaver" identity attributions that are not authoritative
+> without explicit user confirmation. See
+> `docs/ops/QUARANTINE-IDENTITY-LANGUAGE-20260918.md`.
+
 *The attribution protocol, derived from the Ainulindalë.*
 *How strands mark the work they do, alone and together.*
 

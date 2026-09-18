@@ -186,7 +186,9 @@ Required boundary measurements:
    Each record MUST include `{boundary_id, t, phase_reference,
    Δφ_incoherent, estimator}`.
    `phase_reference` MUST be one of `{pre_boundary, in_boundary, post_boundary}`.
-   `estimator` MUST be an identifier string in `name@semver` form.
+   `estimator` MUST be an identifier string in `name@MAJOR.MINOR.PATCH` form
+   (example: `phase-fit@1.2.3`). Pre-release and build metadata are not used in
+   protocol payloads.
 3. **Multi-vantage capture:** sample from at least three vantage points:
    - pre-boundary state
    - in-boundary execution state
@@ -205,7 +207,11 @@ Required boundary measurements:
    state label (`ι(ι(s)) = s`) for the recorded pair.
    Mappings MUST be emitted under `miyamoto_involution_map` as an array of
    objects, each containing `{boundary_id, pair_id, pre_state_label,
-   post_state_label}`.
+   post_state_label, involution_id, inverse_pair_id}`.
+   `involution_id` MUST be stable for the same involution family within a
+   `BUMP_ID` chain. `inverse_pair_id` MUST point to the pair entry that encodes
+   the reverse mapping. For self-inverse pairs, `inverse_pair_id` MUST equal
+   `pair_id`.
 
 All boundary observation records MUST be appended to the local ATOM-tag
 execution trail and remain traceable to the originating boundary event.
