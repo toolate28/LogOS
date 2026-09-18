@@ -36,6 +36,11 @@ def load_allowlist() -> tuple[dict[str, list[str]], set[str]] | None:
             return None
         classes = data.get("classes")
         workflows = data.get("workflows")
+        if "classes" not in data or "workflows" not in data:
+            print("egress-policy: allowlist needs `classes` and `workflows` mappings")
+            return None
+        classes = classes or {}
+        workflows = workflows or {}
         if not isinstance(classes, dict) or not isinstance(workflows, dict):
             print("egress-policy: allowlist needs `classes` and `workflows` mappings")
             return None
@@ -49,6 +54,7 @@ def load_allowlist() -> tuple[dict[str, list[str]], set[str]] | None:
         # (`name:` followed by `  - a` items).
         classes: set[str] = set()
         workflows: dict[str, list[str]] = {}
+        seen_sections: set[str] = set()
         section = None
         current_wf: str | None = None
         for raw in text.splitlines():
@@ -57,10 +63,12 @@ def load_allowlist() -> tuple[dict[str, list[str]], set[str]] | None:
                 continue
             if line == "classes:":
                 section = "classes"
+                seen_sections.add(section)
                 current_wf = None
                 continue
             if line == "workflows:":
                 section = "workflows"
+                seen_sections.add(section)
                 current_wf = None
                 continue
             if not line.startswith(" "):
@@ -89,7 +97,9 @@ def load_allowlist() -> tuple[dict[str, list[str]], set[str]] | None:
                 else:
                     workflows[key] = []
                     current_wf = key
-        if not classes or not workflows:
+        # Only malformed structure (missing section headers) is a parse
+        # failure — intentionally empty mappings are valid deny-by-default.
+        if seen_sections != {"classes", "workflows"}:
             print("egress-policy: lite parse failed (install PyYAML)")
             return None
         return workflows, classes

@@ -205,3 +205,27 @@ def test_egress_fallback_undeclared_fails(tmp_path):
     r = run(CHECK_EGRESS, root, _no_yaml_env(tmp_path))
     assert r.returncode == 1
     assert "no egress declaration" in r.stdout
+
+
+ALLOWLIST_EMPTY = """\
+version: 1
+policy: deny-by-default
+classes:
+workflows:
+"""
+
+
+def test_egress_empty_allowlist_reports_undeclared(tmp_path):
+    # An intentionally empty deny-by-default allowlist must still parse so
+    # undeclared workflows are reported, not masked as a parse failure.
+    root = egress_tree(tmp_path, ALLOWLIST_EMPTY, ["a.yml"])
+    r = run(CHECK_EGRESS, root)
+    assert r.returncode == 1
+    assert "no egress declaration" in r.stdout
+
+
+def test_egress_fallback_empty_allowlist_reports_undeclared(tmp_path):
+    root = egress_tree(tmp_path, ALLOWLIST_EMPTY, ["a.yml"])
+    r = run(CHECK_EGRESS, root, _no_yaml_env(tmp_path))
+    assert r.returncode == 1
+    assert "no egress declaration" in r.stdout
