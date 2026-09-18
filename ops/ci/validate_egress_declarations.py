@@ -13,11 +13,14 @@ Exit 0 OK · Exit 1 policy violation or malformed allowlist.
 """
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(
+    os.environ.get("LOGOS_PRIVACY_ROOT", Path(__file__).resolve().parents[2])
+)
 WF_DIR = ROOT / ".github" / "workflows"
 ALLOWLIST = ROOT / "ops" / "ci" / "egress-allowlist.yaml"
 
@@ -41,22 +44,33 @@ def load_allowlist() -> tuple[dict[str, list[str]], set[str]] | None:
             wf[str(name)] = [str(c) for c in (cls or [])]
         return wf, {str(c) for c in classes}
     except ImportError:
-        # stdlib fallback: minimal line parser for the two mappings
+        # stdlib fallback: minimal line parser for the two mappings.
+        # Handles both inline lists (`name: [a, b]`) and block lists
+        # (`name:` followed by `  - a` items).
         classes: set[str] = set()
         workflows: dict[str, list[str]] = {}
         section = None
+        current_wf: str | None = None
         for raw in text.splitlines():
             line = raw.split("#", 1)[0].rstrip()
             if not line.strip():
                 continue
             if line == "classes:":
                 section = "classes"
+                current_wf = None
                 continue
             if line == "workflows:":
                 section = "workflows"
+                current_wf = None
                 continue
             if not line.startswith(" "):
                 section = None
+                current_wf = None
+                continue
+            item = re.match(r"^\s+-\s+(\S.*)$", line)
+            if item:
+                if section == "workflows" and current_wf is not None:
+                    workflows[current_wf].append(item.group(1).strip().strip('"'))
                 continue
             m = re.match(r"^  (\S[^:]*):\s*(.*)$", line)
             if not m:
@@ -64,11 +78,17 @@ def load_allowlist() -> tuple[dict[str, list[str]], set[str]] | None:
             key, rest = m.group(1).strip().strip('"'), m.group(2).strip()
             if section == "classes":
                 classes.add(key)
+                current_wf = None
             elif section == "workflows":
-                inner = rest.strip("[]")
-                workflows[key] = [
-                    c.strip().strip('"') for c in inner.split(",") if c.strip()
-                ]
+                if rest:
+                    inner = rest.strip("[]")
+                    workflows[key] = [
+                        c.strip().strip('"') for c in inner.split(",") if c.strip()
+                    ]
+                    current_wf = None
+                else:
+                    workflows[key] = []
+                    current_wf = key
         if not classes or not workflows:
             print("egress-policy: lite parse failed (install PyYAML)")
             return None

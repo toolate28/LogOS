@@ -15,12 +15,15 @@ Exit 0 clean · Exit 1 personal path found.
 """
 from __future__ import annotations
 
+import os
 import re
 import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(
+    os.environ.get("LOGOS_PRIVACY_ROOT", Path(__file__).resolve().parents[2])
+)
 
 SCOPE_RE = re.compile(
     r"^(\.claude/|\.ai/|\.vscode/|\.github/copilot/|ops/mcp/)|(^|/)mcp[^/]*\.json$"
@@ -28,7 +31,7 @@ SCOPE_RE = re.compile(
 
 PERSONAL_PATH_RE = re.compile(
     r"("
-    r"[A-Za-z]:[/\\]Users[/\\][^/\\\"']+"  # F:/Users/<name>, C:\Users\<name>
+    r"[A-Za-z]:[/\\]+Users[/\\]+[^/\\\"']+"  # F:/Users/<name>, C:\Users\<name> (JSON-escaped too)
     r"|/Users/[^/\"']+/"                    # macOS /Users/<name>/
     r"|/home/(?!runner\b)[^/\"']+/"         # linux /home/<name>/ (CI runner exempt)
     r")"

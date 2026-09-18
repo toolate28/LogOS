@@ -1,24 +1,30 @@
 {
+  "$comment": "MCP Inspector config for coherence-mcp. Machine-local values scrubbed per privacy stack (docs/security/PRIVACY-STACK.md) — fill from your own environment; never commit real user paths.",
   "mcpServers": {
     "coherence-mcp": {
       "command": "coherence-mcp",
       "args": [],
       "env": {
-        "LOGOS_ROOT": "F:\\Users\\Matthew Ruhnau\\LogOS",
-        "ATOM_TRAIL_ROOT": "F:\\Users\\Matthew Ruhnau\\LogOS\\.atom-trail",
-        "SPIRALSAFE_PATH": "F:\\Users\\Matthew Ruhnau\\LogOS",
-        "APPDATA": "C:\\Users\\toolated\\AppData\\Roaming",
-        "HOMEDRIVE": "C:",
-        "HOMEPATH": "\\Users\\toolated",
-        "LOCALAPPDATA": "C:\\Users\\toolated\\AppData\\Local",
-        "USERNAME": "toolated",
-        "USERPROFILE": "C:\\Users\\toolated",
-        "TEMP": "C:\\Users\\toolated\\AppData\\Local\\Temp",
+        "LOGOS_ROOT": "${LOGOS_ROOT}",
+        "ATOM_TRAIL_ROOT": "${LOGOS_ROOT}/.atom-trail",
+        "SPIRALSAFE_PATH": "${SPIRALSAFE_ROOT}",
+        "APPDATA": "${APPDATA}",
+        "HOMEDRIVE": "${HOMEDRIVE}",
+        "HOMEPATH": "${HOMEPATH}",
+        "LOCALAPPDATA": "${LOCALAPPDATA}",
+        "USERNAME": "${USERNAME}",
+        "USERPROFILE": "${USERPROFILE}",
+        "TEMP": "${TEMP}",
         "SYSTEMROOT": "C:\\WINDOWS",
         "SYSTEMDRIVE": "C:",
         "PROCESSOR_ARCHITECTURE": "AMD64",
         "PROGRAMFILES": "C:\\Program Files",
-        "PATH": "C:\\Users\\toolated\\AppData\\Roaming\\npm;C:\\Program Files\\nodejs;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\Program Files\\Git\\cmd"
+        "PATH": "${PATH}"
+      },
+      "x-privacy": {
+        "network": "none",
+        "data_scope": "repository",
+        "telemetry": "none"
       }
     }
   }
