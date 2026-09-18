@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reson8-labs.dev/schemas/v0.1/parity_1111_report.schema.json",
+  "title": "PARITY_1111_REPORT v0.1 (FROZEN)",
+  "description": "Per-run parity contract for silicon:code:math:reality = 1:1:1:1 with CTQW wave propagation observations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "runId",
+    "timestamp",
+    "laneSpine",
+    "boundaryId",
+    "pipelineStep",
+    "ctqwObservation",
+    "evidence",
+    "parityCheck",
+    "routingDecision",
+    "atomTrail"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "kind": {
+      "const": "parity_1111_report"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 6
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "laneSpine": {
+      "const": "cutile:rust:lean4/agda:origami-RSI"
+    },
+    "boundaryId": {
+      "type": "string",
+      "minLength": 3
+    },
+    "pipelineStep": {
+      "type": "string",
+      "minLength": 3
+    },
+    "ctqwObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "t",
+        "pReturn",
+        "incoherentPhaseShift",
+        "localization",
+        "coherence",
+        "vantageSnapshots"
+      ],
+      "properties": {
+        "t": {
+          "type": "number",
+          "minimum": 0
+        },
+        "pReturn": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "incoherentPhaseShift": {
+          "type": "number"
+        },
+        "localization": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "coherence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "vantageSnapshots": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": false,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/preBoundarySnapshot"
+            },
+            {
+              "$ref": "#/$defs/inBoundarySnapshot"
+            },
+            {
+              "$ref": "#/$defs/postBoundarySnapshot"
+            }
+          ]
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "silicon",
+        "code",
+        "math",
+        "reality"
+      ],
+      "properties": {
+        "silicon": {
+          "$ref": "#/$defs/singleEvidence"
+        },
+        "code": {
+          "$ref": "#/$defs/singleEvidence"
+        },
+        "math": {
+          "$ref": "#/$defs/singleEvidence"
+        },
+        "reality": {
+          "$ref": "#/$defs/singleEvidence"
+        }
+      }
+    },
+    "parityCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ratio",
+        "deltaS",
+        "bettiK",
+        "surface",
+        "pass"
+      ],
+      "properties": {
+        "ratio": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "integer",
+            "const": 1
+          }
+        },
+        "deltaS": {
+          "const": 0
+        },
+        "bettiK": {
+          "const": [
+            1,
+            2,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "surface": {
+          "const": "XY"
+        },
+        "pass": {
+          "const": true
+        }
+      }
+    },
+    "routingDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "driftClass",
+        "path",
+        "reason"
+      ],
+      "properties": {
+        "driftClass": {
+          "enum": [
+            "stable",
+            "moderate",
+            "high"
+          ]
+        },
+        "path": {
+          "enum": [
+            "fast",
+            "strict_verify"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    },
+    "atomTrail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "atomId",
+        "appendOnly"
+      ],
+      "properties": {
+        "atomId": {
+          "type": "string",
+          "pattern": "^ATOM-[A-Z0-9][A-Z0-9-]+$"
+        },
+        "appendOnly": {
+          "const": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "snapshotBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vantage",
+        "timestamp",
+        "stateHash",
+        "waveScore"
+      ],
+      "properties": {
+        "vantage": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stateHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{16,128}$"
+        },
+        "waveScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "preBoundarySnapshot": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/snapshotBase"
+        },
+        {
+          "properties": {
+            "vantage": {
+              "const": "pre_boundary"
+            }
+          }
+        }
+      ]
+    },
+    "inBoundarySnapshot": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/snapshotBase"
+        },
+        {
+          "properties": {
+            "vantage": {
+              "const": "in_boundary"
+            }
+          }
+        }
+      ]
+    },
+    "postBoundarySnapshot": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/snapshotBase"
+        },
+        {
+          "properties": {
+            "vantage": {
+              "const": "post_boundary"
+            }
+          }
+        }
+      ]
+    },
+    "singleEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact",
+        "language",
+        "stateHash"
+      ],
+      "properties": {
+        "artifact": {
+          "type": "string",
+          "minLength": 3
+        },
+        "language": {
+          "type": "string",
+          "minLength": 2
+        },
+        "stateHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{16,128}$"
+        }
+      }
+    }
+  }
+}

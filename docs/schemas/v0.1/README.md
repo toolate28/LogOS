@@ -15,7 +15,7 @@
 
 **Doc 17 / K22 Serre-Scar Sheaf v10.15:** **[QUARANTINED]** (F8-4) — never serve or bake as default input.
 
-## Quartet
+## Schema set
 
 | Schema | Purpose |
 |--------|---------|
@@ -23,6 +23,7 @@
 | `handoff_packet.schema.json` | Packet / mandate / SC / constraints |
 | `ledger_entry.schema.json` | Append-only ledger entry |
 | `claims_register.schema.json` | Claims register |
+| `parity_1111_report.schema.json` | CTQW parity report contract for 1:1:1:1 silicon/code/math/reality |
 
 ## Frame-8 corrections (restated)
 
@@ -40,7 +41,7 @@ cd docs/schemas/v0.1
 # FAIL vector path (Claude Projects mount) must resolve for full suite:
 #   /mnt/project/existence_certificate_mog.json  →  vectors/existence_certificate_pre_freeze.json
 python validate.py
-# Expect: 4× metaschema OK, 2× vector PASS, 1× FAIL-as-expected
+# Expect: 5× metaschema OK, 3× vector PASS, 4× FAIL-as-expected
 ```
 
 ## Vectors
@@ -48,7 +49,11 @@ python validate.py
 | File | Expect |
 |------|--------|
 | `vectors/packet_example_sa01.json` | PASS vs handoff_packet |
+| `vectors/packet_example_boundary_without_involution.json` | FAIL vs handoff_packet (boundary extension requires involution map) |
+| `vectors/packet_example_bad_vantage_order.json` | FAIL vs handoff_packet (wrong vantage ordering) |
 | `vectors/certificate_example_lane_d.json` | PASS vs certificate |
+| `vectors/parity_1111_report_example.json` | PASS vs parity_1111_report |
+| `vectors/parity_1111_report_bad_vantage.json` | FAIL vs parity_1111_report (wrong vantage ordering) |
 | `vectors/existence_certificate_pre_freeze.json` | FAIL vs certificate (migration delta) |
 
 ## Deploy law

@@ -59,6 +59,47 @@
     "lake build K22; confirm zero errors",
     "Run sorry census; confirm count decremented by exactly 1"
   ],
+  "boundary_observation_loop": [
+    {
+      "boundary_id": "BND-SA01-01",
+      "observation_index": 0,
+      "t": 1.0,
+      "state_basis": "packMOGWord_injective",
+      "p_return": 0.942,
+      "phase_reference": "in_boundary",
+      "delta_phi_incoherent": 0.015,
+      "estimator": "phase-fit@1.2.3",
+      "vantage_samples": [
+        {
+          "vantage": "pre_boundary",
+          "timestamp": "2026-07-12T09:59:40+10:00",
+          "state_hash": "11aa22bb33cc44dd55ee66ff77889900",
+          "wave_score": 0.982
+        },
+        {
+          "vantage": "in_boundary",
+          "timestamp": "2026-07-12T09:59:50+10:00",
+          "state_hash": "22aa33bb44cc55dd66ee77ff88990011",
+          "wave_score": 0.981
+        },
+        {
+          "vantage": "post_boundary",
+          "timestamp": "2026-07-12T10:00:00+10:00",
+          "state_hash": "33aa44bb55cc66dd77ee88ff99001122",
+          "wave_score": 0.983
+        }
+      ]
+    }
+  ],
+  "miyamoto_involution_map": [
+    {
+      "boundary_id": "BND-SA01-01",
+      "pair_id": "PAIR-0",
+      "pre_state_label": "s_pre",
+      "post_state_label": "s_post",
+      "involution_id": "INV-SA01"
+    }
+  ],
   "successCriteria": [
     {
       "id": "SC-build",

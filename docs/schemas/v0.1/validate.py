@@ -15,10 +15,14 @@ def check(schema_path, doc_path, expect_pass=True):
 
 r = True
 # schemas are themselves valid 2020-12
-for s in ["certificate.schema.json","handoff_packet.schema.json","ledger_entry.schema.json","claims_register.schema.json"]:
+for s in ["certificate.schema.json","handoff_packet.schema.json","ledger_entry.schema.json","claims_register.schema.json","parity_1111_report.schema.json"]:
     Draft202012Validator.check_schema(load(s)); print(f"[OK ] schema well-formed: {s}")
 r &= check("handoff_packet.schema.json","vectors/packet_example_sa01.json",True)
+r &= check("handoff_packet.schema.json","vectors/packet_example_boundary_without_involution.json",False)
+r &= check("handoff_packet.schema.json","vectors/packet_example_bad_vantage_order.json",False)
 r &= check("certificate.schema.json","vectors/certificate_example_lane_d.json",True)
+r &= check("parity_1111_report.schema.json","vectors/parity_1111_report_example.json",True)
+r &= check("parity_1111_report.schema.json","vectors/parity_1111_report_bad_vantage.json",False)
 print()
 print("=== pre-freeze cert vs v0.1 schema (EXPECT FAIL -> computed migration delta) ===")
 # Prefer Claude Projects mount when present; else filed local vector

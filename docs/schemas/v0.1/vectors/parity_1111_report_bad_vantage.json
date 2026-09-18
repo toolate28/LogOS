@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "0.1.0",
+  "kind": "parity_1111_report",
+  "runId": "RUN-CTQW-20260918-BAD1",
+  "timestamp": "2026-09-18T09:44:24Z",
+  "laneSpine": "cutile:rust:lean4/agda:origami-RSI",
+  "boundaryId": "BND-HYPA-REDUCE-01",
+  "pipelineStep": "boundary_reduction",
+  "ctqwObservation": {
+    "t": 1.25,
+    "pReturn": 0.941,
+    "incoherentPhaseShift": 0.017,
+    "localization": 0.903,
+    "coherence": 0.988,
+    "vantageSnapshots": [
+      {
+        "vantage": "in_boundary",
+        "timestamp": "2026-09-18T09:44:20Z",
+        "stateHash": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
+        "waveScore": 0.987
+      },
+      {
+        "vantage": "pre_boundary",
+        "timestamp": "2026-09-18T09:44:22Z",
+        "stateHash": "b1c2d3e4f5061728394a5b6c7d8e9f00",
+        "waveScore": 0.985
+      },
+      {
+        "vantage": "post_boundary",
+        "timestamp": "2026-09-18T09:44:24Z",
+        "stateHash": "c1d2e3f40516273849a5b6c7d8e9f001",
+        "waveScore": 0.988
+      }
+    ]
+  },
+  "evidence": {
+    "silicon": {
+      "artifact": "nvidia-smi sample",
+      "language": "hardware-telemetry",
+      "stateHash": "0abc1234def56789fedcba0987654321"
+    },
+    "code": {
+      "artifact": "crates/tui/examples/ctqw_monitor.rs",
+      "language": "rust",
+      "stateHash": "1abc1234def56789fedcba0987654321"
+    },
+    "math": {
+      "artifact": "lean/TriWeavon/SubRiemannian/Core.lean",
+      "language": "lean4",
+      "stateHash": "2abc1234def56789fedcba0987654321"
+    },
+    "reality": {
+      "artifact": "origami-RSI observation loop",
+      "language": "observation",
+      "stateHash": "3abc1234def56789fedcba0987654321"
+    }
+  },
+  "parityCheck": {
+    "ratio": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "deltaS": 0,
+    "bettiK": [
+      1,
+      2,
+      1,
+      0,
+      0,
+      0
+    ],
+    "surface": "XY",
+    "pass": true
+  },
+  "routingDecision": {
+    "driftClass": "stable",
+    "path": "fast",
+    "reason": "phase drift below strict threshold and coherence remains high"
+  },
+  "atomTrail": {
+    "atomId": "ATOM-CTQW-PARITY-20260918",
+    "appendOnly": true
+  }
+}
