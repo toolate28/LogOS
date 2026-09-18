@@ -219,6 +219,118 @@
         "type": "string"
       }
     },
+    "boundary_observation_loop": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Optional CTQW extension payload. Include only when boundary observation is enabled for this packet; when present, `miyamoto_involution_map` must also be present.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "boundary_id",
+          "observation_index",
+          "t",
+          "state_basis",
+          "p_return",
+          "phase_reference",
+          "delta_phi_incoherent",
+          "estimator",
+          "vantage_samples"
+        ],
+        "properties": {
+          "boundary_id": {
+            "type": "string",
+            "minLength": 3
+          },
+          "observation_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "t": {
+            "type": "number",
+            "minimum": 0
+          },
+          "state_basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "p_return": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "phase_reference": {
+            "enum": [
+              "pre_boundary",
+              "in_boundary",
+              "post_boundary"
+            ]
+          },
+          "delta_phi_incoherent": {
+            "type": "number"
+          },
+          "estimator": {
+            "type": "string",
+            "pattern": "^[a-z0-9](?:[a-z0-9._-]*[a-z0-9])?@[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "vantage_samples": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": false,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/pre_boundary_sample"
+              },
+              {
+                "$ref": "#/$defs/in_boundary_sample"
+              },
+              {
+                "$ref": "#/$defs/post_boundary_sample"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "miyamoto_involution_map": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Optional CTQW extension payload. Include only when boundary observation is enabled for this packet and paired with `boundary_observation_loop`; boundary-level semantic linkage is gate-validated by boundary_id at runtime.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "boundary_id",
+          "pair_id",
+          "pre_state_label",
+          "post_state_label",
+          "involution_id"
+        ],
+        "properties": {
+          "boundary_id": {
+            "type": "string",
+            "minLength": 3
+          },
+          "pair_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pre_state_label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "post_state_label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "involution_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
     "successCriteria": {
       "type": "array",
       "minItems": 1,
@@ -295,6 +407,86 @@
           "type": "string"
         }
       }
+    }
+  },
+  "dependentRequired": {
+    "boundary_observation_loop": [
+      "miyamoto_involution_map"
+    ],
+    "miyamoto_involution_map": [
+      "boundary_observation_loop"
+    ]
+  },
+  "$defs": {
+    "sample_base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vantage",
+        "timestamp",
+        "state_hash",
+        "wave_score"
+      ],
+      "properties": {
+        "vantage": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "state_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{16,128}$"
+        },
+        "wave_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "pre_boundary_sample": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/sample_base"
+        },
+        {
+          "properties": {
+            "vantage": {
+              "const": "pre_boundary"
+            }
+          }
+        }
+      ]
+    },
+    "in_boundary_sample": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/sample_base"
+        },
+        {
+          "properties": {
+            "vantage": {
+              "const": "in_boundary"
+            }
+          }
+        }
+      ]
+    },
+    "post_boundary_sample": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/sample_base"
+        },
+        {
+          "properties": {
+            "vantage": {
+              "const": "post_boundary"
+            }
+          }
+        }
+      ]
     }
   }
 }

@@ -171,6 +171,56 @@ Where:
 
 Target: HCS_score ≥ 0.90 for production sequences.
 
+### 3.4 Boundary CTQW Observation Loop
+
+At every transition boundary where a `GATE` decision, execution step, proof
+closure, or local loop closure occurs, the boundary MUST be evaluated as a
+continuous-time quantum walk (CTQW) observation point.
+
+Required boundary measurements:
+
+1. **Return probability:** compute `P_return(t)` for the active boundary state.
+   Each record MUST include `{boundary_id, t, state_basis, P_return}`.
+2. **Incoherent phase shift:** estimate `Δφ_incoherent` from the observed
+   return distribution.
+   Each record MUST include `{boundary_id, t, phase_reference,
+   Δφ_incoherent, estimator}`.
+   `phase_reference` MUST be one of `{pre_boundary, in_boundary, post_boundary}`.
+   `estimator` MUST be an identifier string in `name@MAJOR.MINOR.PATCH` form
+   (example: `phase-fit@1.2.3`). Pre-release and build metadata are not used in
+   protocol payloads. Non-stable forms (for example `-rc.1` or `+build.5`) are
+   invalid and MUST be rejected at parse time.
+   `name` MUST match `^[a-z0-9](?:[a-z0-9._-]*[a-z0-9])?$` and MUST NOT contain
+   additional `@` characters.
+   Full `estimator` regex: `^[a-z0-9](?:[a-z0-9._-]*[a-z0-9])?@[0-9]+\\.[0-9]+\\.[0-9]+$`.
+3. **Multi-vantage capture:** sample from exactly three vantage points:
+   - pre-boundary state
+   - in-boundary execution state
+   - post-boundary pipeline state
+   Each vantage sample MUST include `{vantage, timestamp, state_hash,
+   wave_score}`.
+   `wave_score` uses the same [0.00, 1.00] scale as the envelope `WAVE` field.
+4. **Structured observation loop:** record each boundary measurement as an
+   observation loop entry linked to the same `BUMP_ID` chain.
+   When CTQW boundary observation is enabled for a packet, entries MUST be
+   emitted under `boundary_observation_loop` as an array of
+   objects, each containing `{boundary_id, observation_index, ...}`.
+5. **Miyamoto involution map:** update an involution mapping from paired
+   boundary states and include it in the handoff payload summary.
+   In this protocol, a Miyamoto involution map is the boundary-local pairing
+   `ι: S_pre ↔ S_post` such that applying `ι` twice returns the originating
+   state label (`ι(ι(s)) = s`) for the recorded pair.
+   When CTQW boundary observation is enabled for a packet, mappings MUST be
+   emitted under `miyamoto_involution_map` as an array of
+   objects, each containing `{boundary_id, pair_id, pre_state_label,
+   post_state_label, involution_id}`.
+   `involution_id` MUST be stable for the same involution family within a
+   `BUMP_ID` chain. Each pair entry is self-sufficient and encodes both
+   directions of the involution for that boundary-local pair.
+
+All boundary observation records MUST be appended to the local ATOM-tag
+execution trail and remain traceable to the originating boundary event.
+
 ---
 
 ## 4. NOISE CLASSIFICATION & FILTERS
