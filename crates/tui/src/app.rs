@@ -1404,16 +1404,9 @@ impl App {
                 self.bridge.refresh_residual();
             }
             SuperskillEvent::InvariantViolated(v) => {
-                let level = if v.quarantined { LogLevel::Warn } else { LogLevel::Error };
-                let prefix = if v.quarantined {
-                    "QUARANTINED INVARIANT EVIDENCE"
-                } else {
-                    "INVARIANT VIOLATED"
-                };
                 self.log_sink.emit(&LogEntry::new(
-                    level,
-                    "superskill",
-                    format!("{prefix}: {}", v.reason),
+                    LogLevel::Error, "superskill",
+                    format!("INVARIANT VIOLATED: {}", v.reason),
                 ));
             }
             SuperskillEvent::PipelineComplete(id) => {

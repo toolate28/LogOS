@@ -2,12 +2,12 @@
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ██                                                                                            ██
 ██        R E S O N 8   ·   L O G O S   C O G N I T I V E   L A T T I C E                     ██
-██        multi-strand · shared state · declared receipts across heterogeneous AI runtimes    ██
+██        multi-strand · shared state · proof metadata across heterogeneous AI runtimes       ██
 ██                                                                                            ██
 ████████████████████████████████████████████████████████████████████████████████████████████████
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ▒▒  stamp 2026-08-09 · README = terminal etch · no raster embeds · no mermaid · GAIT-Mono ok  ▒▒
-▒▒  α/ω invariant quarantined · residual-zero observe only · NOVIKOV unrepaired · Music conserved ▒▒
+▒▒  α + ω = 15 [C] · residual-zero observe only · NOVIKOV unrepaired · Music conserved        ▒▒
 ▒▒  etch discipline · shading carries structure · no vertical rules · no markdown tables      ▒▒
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ```
@@ -19,7 +19,7 @@
 
 ```text
      PowerShell 7+   ·   Import-Module ops\LogOS.Shell.psm1   ·   ops\LogOS.Windows.psm1
-     LogOS shell     ·   quarantined α/ω check   ·   LOGOS_ROOT portable · %USERPROFILE%\LogOS
+     LogOS shell     ·   α+ω=15 [C]   ·   LOGOS_ROOT portable · %USERPROFILE%\LogOS
 
      probes  (illustrative — re-run logos-preflight / tw for live)
        cargo · python · lean · lake · node · mcp · wsl · bridge=ws://127.0.0.1:8088
@@ -88,12 +88,8 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  LogOS maintains shared invariants and declared receipts across strands while allowing
+  LogOS maintains shared invariants and proof metadata across strands while allowing
   voluntary state-density collapse and live coherence tracking.
-
-  Agentic collection is fail-closed: context windows, execution cadence, and
-  similar user pattern data must not be mirrored, stored, or derived into
-  authority without explicit operator knowledge. See `NOTICE`.
 
   Computation is layered state over a combinatorial and topological base — the TriWeavon
   and K22 coding-theory spine. Local session state should remain translatable to declared
@@ -162,7 +158,7 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  Conservation tag ..... quarantined α/ω computation · Viviani Peak label .... C
+  Conservation tag ..... α + ω = 15 · Viviani Peak label ..................... C
   Nat skeleton ......... WavePair · 7 + 8 = 15 in Lean ....................... A
   Runtime policy ....... float bands · Crystalline / Warn / Halt ............. B
   WAVE floors .......... ops floor 0.85 · peak display ....................... C/B
@@ -438,7 +434,7 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  CLAUDE.md · AGENTS.md .................... strand doctrine
+  CLAUDE.md · AGENTS.md .................... strand and GitNexus doctrine
   docs/formal/FORMAL-EXECUTABLE-MAP.md ..... four corners
   docs/formal/EPISTEMICS-GATE-REGISTER.md .. gate register
   docs/ops/LOGOS-CLEAN-DESIGN-2026-08-07.md  hygiene design

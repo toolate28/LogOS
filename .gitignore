@@ -42,6 +42,3 @@ ops/ci/fleet-status.json
 ops/ci/fleet-pin-dryrun.json
 ops/ci/action-pin-map.json
 
-
-# Rust workspace build output
-/crates/target/

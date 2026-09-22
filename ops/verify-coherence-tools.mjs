@@ -17,7 +17,7 @@ const probes = [
   { tool: "rust_toolchain_status", args: {} },
   { tool: "rust_workspace_status", args: {} },
   { tool: "edge_endpoint_lookup", args: { target: "triweavon", probe: true } },
-  { tool: "wave_coherence_check", args: { documentation: "quarantined alpha/omega computation", code: "const observedSum = alpha + omega;", threshold: 60 } },
+  { tool: "wave_coherence_check", args: { documentation: "alpha + omega = 15", code: "const sum = 7 + 8;", threshold: 60 } },
 ];
 
 function spawnServer() {
@@ -27,7 +27,7 @@ function spawnServer() {
       ...process.env,
       LOGOS_ROOT,
       RESON8_LOGOS_ROOT: LOGOS_ROOT,
-      CTWFI_INVARIANT: "alpha_omega_quarantined_computation",
+      CTWFI_INVARIANT: "alpha+omega=15",
       CTWFI_STRAND: "reason",
     },
     shell: false,

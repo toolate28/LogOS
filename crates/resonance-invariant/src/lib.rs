@@ -47,7 +47,6 @@ impl LevinWenLattice {
         self.frequency.load(Ordering::Relaxed)
     }
 
-    /// Compute the current α/ω check result for read-only inspection.
     #[inline(always)]
     pub fn verify_conservation(&self) -> TopologicalState {
         let a = self.alpha.load(Ordering::Acquire);
@@ -60,10 +59,6 @@ impl LevinWenLattice {
         }
     }
 
-    /// Rebalance the stored pair while keeping the conserved total intact.
-    ///
-    /// This mutation is a local computational helper and not an authorization,
-    /// publication, or promotion path.
     pub fn apply_transformation(&self, delta_alpha: i32) -> Result<(), &'static str> {
         let current_a = self.alpha.load(Ordering::SeqCst);
         let new_a = (current_a as i32 + delta_alpha).clamp(0, ALPHA_OMEGA_LIMIT as i32) as u32;

@@ -1,6 +1,6 @@
 {
   "name": "ifup_confidence_onboard",
-  "description": "Tri-Weavon confidence onboarding after ifup: runs read-only gauge and wave smoke checks, then returns a confidence checklist without authorizing publication or promotion.",
+  "description": "Tri-Weavon confidence onboarding after ifup: walks gauge_verify → wave_coherence_check → invariant_check on peak (7,8), sets confidence band (BASELINE/EMERGENT/PUBLISH/CRITICAL) using WAVE 0–100 scale, and returns first-three-calls smoke checklist for coherence-mcp 0.4.2.",
   "inputSchema": {
     "type": "object",
     "properties": {

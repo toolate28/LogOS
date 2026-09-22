@@ -32,9 +32,10 @@
 //!
 //! - Canonicalisation is deterministic: encoding twice with the same
 //!   payload produces bit-identical bytes.
-//! - The α/ω computation is quarantined observational data. `atom-sig` does **not**
-//!   treat it as a proof, claim, or authority gate; it only guarantees
-//!   that whatever payload is supplied, its commitment is reproducible.
+//! - The `α + ω = 15` universal invariant is **not** enforced by
+//!   `atom-sig`. That is the job of the Invariant Gate
+//!   (`coherence-mcp::check_coherence`). `atom-sig` only guarantees
+//!   *that whatever the payload is, its commitment is reproducible*.
 //! - `no_std`-compatible (default-features = false, feature = "nostd").
 //!
 //! ## Non-goals
@@ -104,14 +105,14 @@ pub struct AtomPayload {
     pub body: Vec<u8>,
     /// Unix timestamp (seconds). UTC.
     pub timestamp_utc: u64,
-    /// Conservation ledger summary preserved as read-only observational data.
+    /// Conservation ledger summary. The Gate verifies; we only store.
     pub conservation: ConservationSummary,
     /// Forward-compatible extension slot. Always canonicalised after
     /// the core fields regardless of insertion order.
     pub extensions: Vec<(String, Vec<u8>)>,
 }
 
-/// Compact α/ω computation summary.
+/// Compact α+ω conservation summary.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct ConservationSummary {
     /// α: structural rigidity load.
@@ -121,13 +122,13 @@ pub struct ConservationSummary {
 }
 
 impl ConservationSummary {
-    /// Read-only α/ω computation result. Does NOT authorize anything.
+    /// Universal invariant check. Does NOT reject; callers decide.
     #[must_use]
     pub fn sum(&self) -> u32 {
         u32::from(self.alpha) + u32::from(self.omega)
     }
 
-    /// Convenience: is this ATOM on the conserved sum?
+    /// Convenience: is this ATOM on-invariant (α + ω = 15)?
     #[must_use]
     pub fn on_invariant(&self) -> bool {
         self.sum() == 15
@@ -195,7 +196,10 @@ pub struct AtomCommitment {
 
 impl AtomCommitment {
     /// Mint a commitment from a payload + signing key.
-    pub fn mint(payload: &AtomPayload, signing_key: &SigningKey) -> Result<Self, AtomSigError> {
+    pub fn mint(
+        payload: &AtomPayload,
+        signing_key: &SigningKey,
+    ) -> Result<Self, AtomSigError> {
         let canonical_bytes = canonical_encode(payload)?;
 
         let mut hasher = Hasher::new();
@@ -257,10 +261,7 @@ mod tests {
         assert!(peak.on_invariant());
         assert_eq!(peak.viviani_distance_sq(), 0);
 
-        let off = ConservationSummary {
-            alpha: 4,
-            omega: 11,
-        };
+        let off = ConservationSummary { alpha: 4, omega: 11 };
         assert_eq!(off.sum(), 15);
         assert!(off.on_invariant());
         // (4,11) - (7,8) = (-3, 3), squared-distance = 9 + 9 = 18
