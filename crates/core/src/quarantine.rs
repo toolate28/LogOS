@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use sha2::{Digest, Sha256};
 
 use crate::protocol::{AtomEntry, ConservationState};
 
@@ -51,6 +52,7 @@ pub struct QuarantineContext {
 
 impl QuarantineContext {
     pub fn is_well_formed(&self) -> bool {
+        let expected_hash = canonical_atom_hash(&self.atom_trail);
         !self.surface.trim().is_empty()
             && !self.atom_trail.id.trim().is_empty()
             && !self.atom_trail.atom_type.trim().is_empty()
@@ -64,6 +66,7 @@ impl QuarantineContext {
                 .all(|c| c.is_ascii_hexdigit())
             && self.atom_trail.hash.len() == 64
             && self.atom_trail.hash.chars().all(|c| c.is_ascii_hexdigit())
+            && self.atom_trail.hash.eq_ignore_ascii_case(&expected_hash)
             && self.state_change.is_well_formed()
             && self.conservation.sum
                 == self
@@ -72,6 +75,33 @@ impl QuarantineContext {
                     .saturating_add(self.conservation.omega)
             && self.conservation.valid == self.conservation.verify()
     }
+}
+
+fn canonical_atom_hash(entry: &AtomEntry) -> String {
+    #[derive(Serialize)]
+    struct CanonicalAtomEntry<'a> {
+        id: &'a str,
+        atom_type: &'a str,
+        gate: &'a str,
+        description: &'a str,
+        coherence: f64,
+        timestamp: chrono::DateTime<chrono::Utc>,
+        prev_hash: &'a str,
+    }
+
+    let canonical = CanonicalAtomEntry {
+        id: &entry.id,
+        atom_type: &entry.atom_type,
+        gate: &entry.gate,
+        description: &entry.description,
+        coherence: entry.coherence,
+        timestamp: entry.timestamp,
+        prev_hash: &entry.prev_hash,
+    };
+
+    let serialized = serde_json::to_vec(&canonical).expect("canonical atom serialization");
+    let digest = Sha256::digest(serialized);
+    format!("{:x}", digest)
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -132,18 +162,24 @@ mod tests {
     use chrono::Utc;
 
     fn context() -> QuarantineContext {
+        let timestamp = Utc::now();
+        let atom_trail = AtomEntry {
+            id: "atom-1".into(),
+            atom_type: "quarantine_observation".into(),
+            gate: "observe".into(),
+            description: "read-only α/ω observation".into(),
+            coherence: 0.95,
+            timestamp,
+            prev_hash: "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789".into(),
+            hash: String::new(),
+        };
+        let atom_hash = canonical_atom_hash(&atom_trail);
+
         QuarantineContext {
             surface: "crates/core/src/superskill.rs".into(),
             atom_trail: AtomEntry {
-                id: "atom-1".into(),
-                atom_type: "quarantine_observation".into(),
-                gate: "observe".into(),
-                description: "read-only α/ω observation".into(),
-                coherence: 0.95,
-                timestamp: Utc::now(),
-                prev_hash: "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789"
-                    .into(),
-                hash: "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef".into(),
+                hash: atom_hash,
+                ..atom_trail
             },
             state_change: ExecutionStateChange {
                 from_state: "running".into(),

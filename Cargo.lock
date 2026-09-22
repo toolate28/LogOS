@@ -1196,7 +1196,7 @@ dependencies = [
  "curve25519-dalek",
  "ed25519",
  "rand_core 0.10.1",
- "sha2",
+ "sha2 0.11.0",
  "signature",
  "subtle",
  "zeroize",
@@ -3723,6 +3723,7 @@ dependencies = [
  "futures-util",
  "serde",
  "serde_json",
+ "sha2 0.10.9",
  "thiserror 2.0.20",
  "tokio",
  "tokio-tungstenite",
@@ -3743,7 +3744,7 @@ version = "0.1.0"
 dependencies = [
  "hex",
  "reson8-core",
- "sha2",
+ "sha2 0.11.0",
 ]
 
 [[package]]
@@ -3848,7 +3849,7 @@ dependencies = [
  "reson8-forge-core",
  "serde",
  "serde_json",
- "sha2",
+ "sha2 0.11.0",
  "tokio",
  "tokio-tungstenite",
  "toml",
@@ -4230,6 +4231,17 @@ dependencies = [
  "cfg-if",
  "cpufeatures 0.3.0",
  "digest 0.11.3",
+]
+
+[[package]]
+name = "sha2"
+version = "0.10.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283"
+dependencies = [
+ "cfg-if",
+ "cpufeatures 0.2.17",
+ "digest 0.10.7",
 ]
 
 [[package]]
