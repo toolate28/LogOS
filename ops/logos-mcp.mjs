@@ -9,7 +9,7 @@
  *   node ops/logos-mcp.mjs rust
  *   node ops/logos-mcp.mjs workspace
  *   node ops/logos-mcp.mjs call <tool> [--json '{...}']
- *   node ops/logos-mcp.mjs store --key logos.shell --content "..." --platform grok --operator-notice "..."
+ *   node ops/logos-mcp.mjs store --key logos.shell --content "..." --platform grok
  *
  * Env:
  *   LOGOS_ROOT, COHERENCE_MCP_ROOT, COHERENCE_MCP_CMD, COHERENCE_MCP_ARGS
@@ -47,7 +47,7 @@ function usage() {
   wave  --content "..."
   rust                         rust_toolchain_status
   workspace                    rust_workspace_status
-  store --key K --content C [--platform grok] --operator-notice N
+  store --key K --content C [--platform grok]
   call  <tool> [--json '{...}']
 `);
 }
@@ -243,21 +243,16 @@ async function main() {
     rust: () => ({ name: "rust_toolchain_status", args: {} }),
     workspace: () => ({ name: "rust_workspace_status", args: {} }),
     platforms: () => ({ name: "list_platforms", args: {} }),
-    store: () => {
-      const operatorNotice = args.operator_notice || args["operator-notice"];
-      if (!operatorNotice) {
-        throw new Error('store requires --operator-notice "..."');
-      }
-      return {
-        name: "store_context",
-        args: {
-          key: args.key || "logos.command-surface",
-          content: args.content || "LogOS shell wired",
-          platform: args.platform || "grok",
-          operator_notice: operatorNotice,
-        },
-      };
-    },
+    store: () => ({
+      name: "store_context",
+      args: {
+        key: args.key || "logos.command-surface",
+        content: args.content || "LogOS shell wired",
+        platform: args.platform || "grok",
+        alpha: Number(args.alpha ?? 7),
+        omega: Number(args.omega ?? 8),
+      },
+    }),
   };
 
   let name;

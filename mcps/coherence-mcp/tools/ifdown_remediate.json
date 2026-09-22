@@ -1,6 +1,6 @@
 {
   "name": "ifdown_remediate",
-  "description": "Remediation playbook when a LogOS surface is down (ifdown). Returns ordered steps and allows only read-only α/ω evidence recording.",
+  "description": "Remediation playbook when a LogOS surface is down (ifdown). Returns ordered steps: kill stale ports, restart registry/manifold/forge bridge, re-run gauge_verify(7,8), and record ATOM decision. Does not auto-promote; capability ≠ authority.",
   "inputSchema": {
     "type": "object",
     "properties": {
