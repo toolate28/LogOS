@@ -167,7 +167,10 @@ def scan_quarantined_files(manifest: dict, root: Path = ROOT) -> list[str]:
         return [str(exc)]
     rules = manifest["scan_rules"]
     exempt_paths = set(rules["exempt_paths"])
-    authority_patterns = [re.compile(pattern, re.IGNORECASE) for pattern in rules["authority_patterns"]]
+authority_patterns = [
+        re.compile(pattern, re.IGNORECASE | re.DOTALL)
+        for pattern in rules["authority_patterns"]
+    ]
     artifact_patterns = [
         re.compile(pattern, re.IGNORECASE)
         for pattern in rules["artifact_inscription_patterns"]
@@ -182,12 +185,12 @@ def scan_quarantined_files(manifest: dict, root: Path = ROOT) -> list[str]:
                 continue
             file_path = root / rel_path
             text = file_path.read_text(encoding="utf-8")
-            for line_no, line in enumerate(text.splitlines(), start=1):
-                for pattern in authority_patterns:
-                    if pattern.search(line):
-                        errors.append(
-                            f"{rel_path}:{line_no}: prohibited authority language matched {pattern.pattern!r}"
-                        )
+            for pattern in authority_patterns:
+                for match in pattern.finditer(text):
+                    line_no = text.count("\n", 0, match.start()) + 1
+                    errors.append(
+                        f"{rel_path}:{line_no}: prohibited authority language matched {pattern.pattern!r}"
+                    )
             if file_path.suffix in artifact_extensions:
                 for pattern in artifact_patterns:
                     if pattern.search(text):
