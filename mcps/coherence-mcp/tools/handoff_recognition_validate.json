@@ -1,0 +1,17 @@
+{
+  "name": "handoff_recognition_validate",
+  "description": "Validate read-only handoff-recognition input and treat any α/ω data as metadata only.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Raw handoff-recognition markdown/text"
+      },
+      "recognition": {
+        "type": "object",
+        "description": "Structured handoff-recognition object"
+      }
+    }
+  }
+}

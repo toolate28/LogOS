@@ -143,7 +143,7 @@
         "mcps/coherence-mcp/tools/gauge_verify.json",
         "mcps/coherence-mcp/tools/invariant_check.json",
         "mcps/coherence-mcp/tools/store_context.json",
-        "mcps/coherence-mcp/tools/handoff_packet_validate.json",
+        "mcps/coherence-mcp/tools/handoff_recognition_validate.json",
         "mcps/coherence-mcp/tools/ifup_confidence_onboard.json",
         "mcps/coherence-mcp/tools/ifdown_remediate.json"
       ],
