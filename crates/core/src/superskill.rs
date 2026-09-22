@@ -13,6 +13,7 @@ use tracing::{error, info};
 
 use crate::bridge::{BridgeCommand, BridgeEvent, CoherencePayload};
 use crate::protocol::ConservationState;
+use crate::quarantine::{enforce_quarantine_boundary, QuarantineOperation};
 use serde_json::Value;
 
 // ---------------------------------------------------------------------------
@@ -142,6 +143,18 @@ impl SuperskillEngine {
                 }
             }
             BridgeEvent::ExecuteMcpTool { tool_name, args: _, req_id } => {
+                if let Some(operation) = Self::quarantine_operation_for_tool(&tool_name) {
+                    if let Err(err) = enforce_quarantine_boundary(None, operation) {
+                        let reason = format!(
+                            "Quarantine blocked MCP tool '{}' (req_id={}): {}",
+                            tool_name, req_id, err
+                        );
+                        error!("{}", reason);
+                        self.abort(&reason).await;
+                        return;
+                    }
+                }
+
                 info!("ExecuteMcpTool received: tool={}, req_id={}", tool_name, req_id);
                 // In a full implementation, we would execute the tool logic here.
                 // For now, we simulate execution and commit to the ledger.
@@ -163,6 +176,17 @@ impl SuperskillEngine {
                 // Let's assume the TS MCP is listening for Coherence or Atom events as a form of "progress"
             }
             _ => {}
+        }
+    }
+
+    fn quarantine_operation_for_tool(tool_name: &str) -> Option<QuarantineOperation> {
+        match tool_name {
+            "mirror_context_window" => Some(QuarantineOperation::MirrorContextWindow),
+            "authorize_state_transition" => Some(QuarantineOperation::AuthorizeStateTransition),
+            "promote_state" => Some(QuarantineOperation::PromoteState),
+            "publish_artifact" => Some(QuarantineOperation::PublishArtifact),
+            "deploy_artifact" => Some(QuarantineOperation::DeployArtifact),
+            _ => None,
         }
     }
 
@@ -286,5 +310,28 @@ mod tests {
             timeout(Duration::from_millis(50), event_rx.recv()).await.is_err(),
             "invalid α/ω observation must not abort the pipeline"
         );
+    }
+
+    #[tokio::test]
+    async fn prohibited_mcp_tools_fail_closed_without_context() {
+        let (cmd_tx, _cmd_rx) = mpsc::channel(4);
+        let (event_tx, mut event_rx) = mpsc::channel(4);
+        let mut engine = SuperskillEngine::new(cmd_tx, event_tx);
+
+        engine
+            .handle(BridgeEvent::ExecuteMcpTool {
+                tool_name: "publish_artifact".into(),
+                args: Value::Null,
+                req_id: "req-1".into(),
+            })
+            .await;
+
+        match event_rx.recv().await.expect("abort emitted") {
+            SuperskillEvent::PipelineAborted { reason, .. } => {
+                assert!(reason.contains("fail closed"));
+                assert!(reason.contains("publish_artifact"));
+            }
+            other => panic!("expected pipeline abort, got {other:?}"),
+        }
     }
 }
