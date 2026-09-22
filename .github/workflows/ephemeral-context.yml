@@ -1,0 +1,73 @@
+# Source-scoped ephemeral context only: capture the declared source root/path, hash it, expire it.
+
+name: Ephemeral Context
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_root:
+        description: "Repository-relative root that bounds the capture scope"
+        required: true
+        type: string
+      source_path:
+        description: "Repository-relative file or directory to capture within source_root"
+        required: true
+        type: string
+      expiry_hours:
+        description: "Optional expiry window for the envelope; artifact retention remains one day"
+        required: false
+        type: string
+        default: "24"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ephemeral-context-${{ github.ref }}-${{ inputs.source_path }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  capture-context:
+    name: Capture source-scoped context
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Setup Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+      - name: Assert Action SHA pins
+        run: python3 ops/ci/assert_action_pins.py
+      - name: Run ephemeral-context unit tests
+        run: python3 -m unittest ops/ci/test_ephemeral_context.py
+      - name: Validate source-scoped workflow shape
+        run: |
+          set -euo pipefail
+          python3 ops/ci/ephemeral_context.py workflow-guard \
+            --workflow-path .github/workflows/ephemeral-context.yml
+      - name: Capture source-scoped context
+        env:
+          OUTPUT_DIR: ${{ runner.temp }}/ephemeral-context
+        run: |
+          set -euo pipefail
+          python3 ops/ci/ephemeral_context.py capture \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --output-dir "$OUTPUT_DIR" \
+            --workflow-path .github/workflows/ephemeral-context.yml \
+            --source-root "${{ inputs.source_root }}" \
+            --source-path "${{ inputs.source_path }}" \
+            --commit-sha "$GITHUB_SHA" \
+            --expiry-hours "${{ inputs.expiry_hours }}"
+      - name: Upload source-scoped context artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ephemeral-context-${{ github.run_id }}
+          path: ${{ runner.temp }}/ephemeral-context
+          if-no-files-found: error
+          retention-days: 1
