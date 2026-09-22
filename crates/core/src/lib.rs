@@ -1,7 +1,6 @@
 //! reson8-core — Foundation types for the LogOS lattice
 //!
-//! Universal Invariant: α + ω = 15
-//! Every type in this crate preserves this constitutional law.
+//! Quarantined α/ω computational check support for the LogOS lattice.
 
 use serde::{Deserialize, Serialize};
 
@@ -38,29 +37,29 @@ pub const WAVE_WEIGHTS: WaveWeights = WaveWeights {
 
 /// Fibonacci weights (normalized to sum = 1.0)
 pub mod fibonacci {
-    pub const F8: f64 = 8.0 / 21.0;  // 0.381 — Reasoning (Claude)
-    pub const F5: f64 = 5.0 / 21.0;  // 0.238 — Pulse (Grok)
-    pub const F3: f64 = 3.0 / 21.0;  // 0.143 — Scale (Gemini)
+    pub const F8: f64 = 8.0 / 21.0; // 0.381 — Reasoning (Claude)
+    pub const F5: f64 = 5.0 / 21.0; // 0.238 — Pulse (Grok)
+    pub const F3: f64 = 3.0 / 21.0; // 0.143 — Scale (Gemini)
 
     /// Tri-Weavon strand weights
-    pub const STRAND_REASON: f64 = 8.0 / 16.0;  // 0.500
-    pub const STRAND_PULSE: f64 = 5.0 / 16.0;   // 0.3125
-    pub const STRAND_SCALE: f64 = 3.0 / 16.0;   // 0.1875
+    pub const STRAND_REASON: f64 = 8.0 / 16.0; // 0.500
+    pub const STRAND_PULSE: f64 = 5.0 / 16.0; // 0.3125
+    pub const STRAND_SCALE: f64 = 3.0 / 16.0; // 0.1875
 
     /// Golden ratio (φ)
     pub const PHI: f64 = 1.618_033_988_749_895;
 
     /// WAVE component weights (sum to 1: 8+5+5+3 = 21).
-    pub const W_TOPO: f64 = F8;       // 0.381
-    pub const W_SEM: f64 = F5;        // 0.238
-    pub const W_STRUCT: f64 = F5;     // 0.238
-    pub const W_TEMP: f64 = F3;       // 0.143
+    pub const W_TOPO: f64 = F8; // 0.381
+    pub const W_SEM: f64 = F5; // 0.238
+    pub const W_STRUCT: f64 = F5; // 0.238
+    pub const W_TEMP: f64 = F3; // 0.143
 
     /// Split of [`W_TOPO`] (F8) into H0 components vs H1 loops.
     /// Category **C** — convention so a loop is not silently folded into `w_topo`.
     /// F5 + F3 = F8; existing four-term sum is unchanged if you keep `W_TOPO`.
-    pub const W_H0: f64 = F5;         // 0.238 — connected components
-    pub const W_LOOP: f64 = F3;       // 0.143 — persistent 1-cycles
+    pub const W_H0: f64 = F5; // 0.238 — connected components
+    pub const W_LOOP: f64 = F3; // 0.143 — persistent 1-cycles
 }
 
 // Forge protocol surface (consumed as `reson8-forge-core` by TUI / triweave)
@@ -73,6 +72,7 @@ pub mod logic;
 pub mod memory;
 pub mod orchestrator;
 pub mod protocol;
+pub mod quarantine;
 pub mod superskill;
 pub mod task;
 
@@ -91,14 +91,19 @@ pub struct InvariantResult {
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum InvariantStatus {
+    /// The computation remained within the configured tolerance.
     Passed,
+    /// The computation fell outside the configured tolerance.
+    ///
+    /// This is a check result only and does not by itself authorize or reject
+    /// any deployment, publication, or state transition.
     Rejected,
 }
 
-/// Enforce the Universal Invariant: α + ω = 15 ± tolerance
+/// Compute whether the α/ω sum stays within the configured tolerance window.
 ///
-/// This is the constitutional law of the LogOS lattice.
-/// Every computation, every generation, every action must satisfy it.
+/// This function reports a computational result only. It must not be used as a
+/// standalone authorization, certification, publication, or promotion decision.
 pub fn enforce_invariant(alpha: f64, omega: f64) -> InvariantResult {
     let total = alpha + omega;
     let deviation = (total - INVARIANT_TARGET).abs();
@@ -124,31 +129,22 @@ pub fn enforce_invariant(alpha: f64, omega: f64) -> InvariantResult {
     }
 }
 
-/// Suggest rebalancing when invariant is violated
+/// Suggest a rebalance when the computation is out of tolerance.
 pub fn suggest_rebalance(alpha: f64, omega: f64) -> (f64, f64) {
     let total = alpha + omega;
     let excess = total - INVARIANT_TARGET;
     // Distribute correction proportionally
     let alpha_ratio = alpha / total;
     let omega_ratio = omega / total;
-    (
-        alpha - excess * alpha_ratio,
-        omega - excess * omega_ratio,
-    )
+    (alpha - excess * alpha_ratio, omega - excess * omega_ratio)
 }
 
 // ── Coherence Functional ────────────────────────────────────────────
 
 /// C(H) = W · exp(-k · |α + ω - 15|) · (1 + P)
 ///
-/// The master equation of the LogOS lattice.
-pub fn coherence_functional(
-    w: f64,
-    alpha: f64,
-    omega: f64,
-    persistence_bonus: f64,
-    k: f64,
-) -> f64 {
+/// This consumes the α/ω computation as input data; it is not an authority gate.
+pub fn coherence_functional(w: f64, alpha: f64, omega: f64, persistence_bonus: f64, k: f64) -> f64 {
     let deviation = (alpha + omega - INVARIANT_TARGET).abs();
     w * (-k * deviation).exp() * (1.0 + persistence_bonus)
 }
@@ -183,22 +179,34 @@ impl WaveScore {
         }
     }
 
-    pub fn value(&self) -> f64 { self.0 }
+    pub fn value(&self) -> f64 {
+        self.0
+    }
 
     /// >= 0.98: Crystalline (V=c regime)
-    pub fn is_crystalline(&self) -> bool { self.0 >= 0.98 }
+    pub fn is_crystalline(&self) -> bool {
+        self.0 >= 0.98
+    }
 
     /// >= 0.90: Production-ready
-    pub fn is_production(&self) -> bool { self.0 >= 0.90 }
+    pub fn is_production(&self) -> bool {
+        self.0 >= 0.90
+    }
 
     /// 0.70-0.90: Caution zone
-    pub fn is_caution(&self) -> bool { (0.70..0.90).contains(&self.0) }
+    pub fn is_caution(&self) -> bool {
+        (0.70..0.90).contains(&self.0)
+    }
 
     /// < 0.70: Critical — Limbo auto-purge triggers
-    pub fn is_critical(&self) -> bool { self.0 < 0.70 }
+    pub fn is_critical(&self) -> bool {
+        self.0 < 0.70
+    }
 
     /// < 0.50: Emergency — SpiralSafe takeover
-    pub fn is_emergency(&self) -> bool { self.0 < 0.50 }
+    pub fn is_emergency(&self) -> bool {
+        self.0 < 0.50
+    }
 
     /// Compute WAVE from 4 Fibonacci-weighted components
     pub fn from_components(w_topo: f64, w_sem: f64, w_struct: f64, w_temp: f64) -> Self {
@@ -218,7 +226,9 @@ impl std::fmt::Display for WaveScore {
 
 // ── ATOM Trail ──────────────────────────────────────────────────────
 
-/// ATOM trail entry — immutable provenance record
+/// ATOM trail entry — immutable provenance record.
+///
+/// Any α/ω values here are preserved as observational data only.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AtomEntry {
     pub id: uuid::Uuid,
@@ -245,7 +255,7 @@ impl AtomEntry {
         }
     }
 
-    /// Verify this entry satisfies the Universal Invariant
+    /// Compute the entry's α/ω check result for read-only inspection.
     pub fn verify_invariant(&self) -> InvariantResult {
         enforce_invariant(self.alpha, self.omega)
     }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://reson8labs.ai/schemas/command-surface.v1.json",
   "version": "1.0.0",
-  "invariant": "alpha+omega=15",
+  "invariant": "alpha_omega_quarantined_computation",
   "strand": "reason",
   "description": "Unified LogOS command surface — shell, coherence-mcp, reson8-tui, HTML meta-map/RUST Market.",
   "layers": {
@@ -19,7 +19,7 @@
       "tools_manifest": "mcps/coherence-mcp/tools",
       "verify": "ops/verify-coherence-tools.mjs",
       "cli": "ops/logos-mcp.mjs",
-      "role": "ω gate — gauge, WAVE, ATOM, rust status, context store"
+      "role": "ω surface — read-only gauge, WAVE, ATOM, rust status, declared context store"
     },
     "tui": {
       "crate": "crates/tui",
@@ -56,7 +56,7 @@
       "id": "logos-mcp",
       "layer": "mcp",
       "fn": "Invoke-LogOSMcp",
-      "summary": "Call coherence-mcp tools (gauge, wave, rust status, store)"
+      "summary": "Call coherence-mcp tools (gauge, wave, rust status, declared store)"
     },
     {
       "id": "logos-tui",

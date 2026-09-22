@@ -58,23 +58,13 @@ Windows axis: `ops/LogOS.Windows.psm1` · `ops\Align-WindowsAxis.ps1`
 
 | Surface | Path | Notes |
 |---------|------|-------|
-| AGENTS.md / Claude.md | repo root | GitNexus rules + Tri-Weavon role |
-| GitNexus skills | `.claude/skills/gitnexus/*` | explore / impact / debug / refactor |
+| AGENTS.md / Claude.md | repo root | Tri-Weavon role |
 | HeisenbergGrok | Grok skill `heisenberg-grok` | uncertainty learning mode |
 | SpiralSafe / meaning seed | `crates/spiral-safe/`, adhealth | collapse / witness |
 | Strand shells | `ops/shell/strands/*.psm1` | Claude / Gemini / Grok profiles |
 | Marks spine | `ops/marks/` | MARKS.jsonl + detectors |
 | Skills tree | `skills/`, site `coherence-mcp/.../public/skills/` | domain skills |
 | MCP tool cache | `mcps/**/*.json` | many servers — not all live |
-
-### GitNexus rules that protect the lattice
-
-Before editing a symbol: **impact analysis** (upstream).  
-Before commit: **detect_changes**.  
-Never renames via blind find-replace when graph-aware rename exists.  
-Warn on HIGH/CRITICAL blast radius.
-
-*(If GitNexus MCP is offline, fall back to careful grep + document residual uncertainty — do not pretend graph impact was run.)*
 
 ---
 
@@ -133,7 +123,7 @@ Write files under `docs/componentry/ATOMS/` for this export family; runtime deci
 | Surface | Path | Role |
 |---------|------|------|
 | coherence-site | `coherence-mcp/coherence-site/` | Cloudflare Pages candidate |
-| lattice-react | `…/lattice-react/` | React TDA map / GitNexus graph UI |
+| lattice-react | `…/lattice-react/` | React TDA map / graph UI |
 | stitch | `stitch/` | UI dashboards / cockpit |
 | docs/surfaces | `docs/surfaces/*.html` | orchestrator, evenstar, reforge |
 | encyclopedia hub | live coherence.toolated.online/encyclopedia/ | public projection |

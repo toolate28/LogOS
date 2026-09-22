@@ -1,10 +1,11 @@
-//! SuperskillEngine — pipeline executor that enforces α+ω=15 at every transition.
+//! SuperskillEngine — pipeline executor that observes α/ω check results without
+//! using them as an authority gate.
 //!
 //! When a pipeline is triggered (e.g., "paper-draft"), the engine:
 //! 1. Sends `TriggerPipeline` command over the bridge
 //! 2. Monitors incoming `Coherence` events for WAVE score
 //! 3. If WAVE drops below threshold → aborts pipeline, emits `InvariantViolated`
-//! 4. If conservation law breaks → immediate abort
+//! 4. If the α/ω check is out of tolerance → preserve quarantined evidence
 //! 5. On completion → emits `PipelineComplete`
 
 use tokio::sync::mpsc;
@@ -49,6 +50,7 @@ pub struct Violation {
     pub reason: String,
     pub wave_score: f64,
     pub conservation: ConservationState,
+    pub quarantined: bool,
 }
 
 /// Pipeline status tracking.
@@ -173,22 +175,22 @@ impl SuperskillEngine {
             percent: 0,
         };
 
-        // Conservation check: α + ω = 15
+        // α/ω computation is quarantined: preserve evidence, but do not use it
+        // as a state-transition cause by itself.
         if !payload.conservation.verify() {
             let violation = Violation {
                 reason: format!(
-                    "Conservation violated: α({}) + ω({}) = {} ≠ 15",
+                    "Quarantined α/ω computation observed: α({}) + ω({}) = {}",
                     payload.conservation.alpha,
                     payload.conservation.omega,
                     payload.conservation.sum,
                 ),
                 wave_score: payload.wave_score,
                 conservation: payload.conservation,
+                quarantined: true,
             };
-            error!("{}", violation.reason);
+            tracing::warn!("{}", violation.reason);
             let _ = self.event_tx.send(SuperskillEvent::InvariantViolated(violation)).await;
-            self.abort("conservation law violated").await;
-            return;
         }
 
         // WAVE threshold check
@@ -201,6 +203,7 @@ impl SuperskillEngine {
                 ),
                 wave_score: payload.wave_score,
                 conservation: payload.conservation,
+                quarantined: false,
             };
             error!("{}", violation.reason);
             let _ = self.event_tx.send(SuperskillEvent::InvariantViolated(violation)).await;
@@ -231,5 +234,57 @@ impl SuperskillEngine {
                 reason: reason.to_string(),
             })
             .await;
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::bridge::{CoherenceComponents, CoherencePayload};
+    use tokio::time::{timeout, Duration};
+
+    #[tokio::test]
+    async fn quarantined_alpha_omega_does_not_abort_pipeline() {
+        let (cmd_tx, _cmd_rx) = mpsc::channel(4);
+        let (event_tx, mut event_rx) = mpsc::channel(4);
+        let mut engine = SuperskillEngine::new(cmd_tx, event_tx);
+
+        engine
+            .handle(BridgeEvent::Coherence(CoherencePayload {
+                pipeline_id: "pipe".into(),
+                step_id: "step-1".into(),
+                wave_score: crate::WAVE_THRESHOLD,
+                components: CoherenceComponents {
+                    lexical_diversity: 0.0,
+                    curl: 0.0,
+                    divergence: 0.0,
+                    potential: 0.0,
+                    entropy: 0.0,
+                },
+                conservation: ConservationState::new(5, 5),
+            }))
+            .await;
+
+        match event_rx.recv().await.expect("violation emitted") {
+            SuperskillEvent::InvariantViolated(violation) => {
+                assert!(violation.quarantined);
+                assert_eq!(violation.conservation.sum, 10);
+            }
+            other => panic!("expected quarantined violation, got {other:?}"),
+        }
+
+        match event_rx.recv().await.expect("state update emitted") {
+            SuperskillEvent::StateUpdated(state) => {
+                assert_eq!(state.current_step, "step-1");
+                assert_eq!(state.alpha, 5);
+                assert_eq!(state.omega, 5);
+            }
+            other => panic!("expected state update, got {other:?}"),
+        }
+
+        assert!(
+            timeout(Duration::from_millis(50), event_rx.recv()).await.is_err(),
+            "invalid α/ω observation must not abort the pipeline"
+        );
     }
 }

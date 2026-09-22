@@ -26,6 +26,9 @@ pub fn compute_wave(w_topo: f64, w_sem: f64, w_struct: f64, w_temp: f64) -> f64 
 }
 
 /// Coherence Functional: C(H) = W * exp(-k * |α + ω - 15|) * (1 + P)
+///
+/// This score consumes α/ω as observational input only and must not be treated
+/// as an authorization or promotion decision.
 pub fn coherence_functional(w: f64, alpha: f64, omega: f64, persistence_bonus: f64, k: f64) -> f64 {
     let deviation = (alpha + omega - INVARIANT_TARGET).abs();
     w * (-k * deviation).exp() * (1.0 + persistence_bonus)
@@ -199,9 +202,8 @@ pub fn diagnose_drift(jac: &VectorFieldJacobian) -> DriftDiagnosis {
 /// Viviani deviation: ΔV = α + ω − 15
 ///
 /// The Viviani curve is the intersection of sphere and cylinder on the
-/// manifold. ΔV = 0 defines the safe manifold where the universal
-/// invariant holds exactly. Distance from the Viviani curve measures
-/// how far the system has drifted from constitutional compliance.
+/// manifold. ΔV = 0 defines the conserved line for the computation.
+/// Distance from the Viviani curve measures observed drift only.
 pub fn viviani_deviation(alpha: f64, omega: f64) -> f64 {
     alpha + omega - INVARIANT_TARGET
 }
