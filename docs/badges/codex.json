@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "label": "codex",
-  "message": "94/100",
-  "color": "brightgreen",
+  "message": "89/100",
+  "color": "green",
   "namedLogo": "githubactions",
   "cacheSeconds": 300
 }
